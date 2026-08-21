@@ -2,6 +2,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from pathlib import Path
+import subprocess
+import sys
 
 import numpy as np
 
@@ -13,6 +15,39 @@ from ghist_bottleneck.train import _device
 
 
 class PipelineTests(unittest.TestCase):
+    def test_simulation_merge_preserves_nuisance_provenance(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            names = np.asarray(["scenario", "missingness"])
+            for index in range(2):
+                np.savez(
+                    root / f"part_{index}.npz",
+                    windows=np.zeros((1, 64, 8)),
+                    sfs=np.zeros((1, 116)),
+                    targets=np.zeros((1, 2)),
+                    ancestral_ne=np.ones(1),
+                    nuisance=np.asarray([[index, 0.01 * index]]),
+                    nuisance_names=names,
+                    n_haplotypes=np.int64(12),
+                    seed=np.int64(100 + index),
+                )
+            output = root / "merged.npz"
+            subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/merge_simulations.py",
+                    "--input",
+                    str(root / "part_*.npz"),
+                    "--output",
+                    str(output),
+                ],
+                check=True,
+            )
+            merged = np.load(output)
+            np.testing.assert_array_equal(merged["chunk_seeds"], [100, 101])
+            np.testing.assert_array_equal(merged["nuisance_names"], names)
+            self.assertEqual(merged["nuisance"].shape, (2, 2))
+
     def test_ld_accumulator_preserves_local_perfect_linkage(self):
         accumulator = LDAccumulator(pairs_per_bin=64)
         dosage = np.array([0, 0, 1, 1, 2, 2], dtype=np.float32)
