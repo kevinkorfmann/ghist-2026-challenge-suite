@@ -63,7 +63,7 @@ The checked-out workspace already uses `.venv`. To recreate it:
 
 ```bash
 python3.12 -m venv .venv
-.venv/bin/pip install numpy scipy scikit-learn msprime tskit pysam pyyaml pandas matplotlib tqdm torch
+.venv/bin/pip install -e '.[references]'
 ```
 
 ## Workflow
@@ -74,6 +74,10 @@ mkdir -p data
 # data/bottleneck.testing.vcf.gz
 
 # 2. Inspect and extract the observed feature tensor.
+.venv/bin/python -m ghist_bottleneck.cli sfs-reference \
+  --vcf data/bottleneck.testing.vcf.gz \
+  --out artifacts/bottleneck.sfs-reference.json
+
 .venv/bin/python -m ghist_bottleneck.cli extract \
   --vcf data/bottleneck.testing.vcf.gz \
   --out artifacts/observed.npz

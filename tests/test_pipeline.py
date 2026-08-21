@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import numpy as np
@@ -8,9 +9,14 @@ from ghist_bottleneck.features import FeatureBundle, summarize_variants
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
+from ghist_bottleneck.train import _device
 
 
 class PipelineTests(unittest.TestCase):
+    @patch("ghist_bottleneck.train.torch.cuda.is_available", return_value=True)
+    def test_cuda_is_preferred_when_available(self, _cuda_available):
+        self.assertEqual(_device().type, "cuda")
+
     def test_missingness_projected_sfs(self):
         spectrum, metadata = projected_sfs_from_vcf("tests/fixtures/tiny.vcf")
         self.assertEqual(metadata["projection"], 4)

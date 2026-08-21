@@ -9,7 +9,7 @@ import joblib
 
 from .features import FeatureBundle
 from .model import BottleneckNet
-from .train import reference_features
+from .train import _device, reference_features
 
 
 def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -> dict:
@@ -18,7 +18,7 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     norm = np.load(checkpoint_dir / "normalization.npz")
     xw = ((b.windows[None] - norm["mean"]) / norm["std"]).astype(np.float32)
     xs = b.sfs[None].astype(np.float32)
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    device = _device()
     preds, aleatoric = [], []
     for path in sorted(checkpoint_dir.glob("model_*.pt")):
         model = BottleneckNet(b.windows.shape[1], b.sfs.shape[0]).to(device)

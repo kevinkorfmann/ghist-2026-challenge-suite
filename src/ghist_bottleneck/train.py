@@ -21,7 +21,11 @@ def _seed_everything(seed: int) -> None:
 
 
 def _device() -> torch.device:
-    return torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    return torch.device("cpu")
 
 
 def reference_features(windows: np.ndarray, sfs: np.ndarray) -> np.ndarray:
