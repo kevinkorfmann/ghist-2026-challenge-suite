@@ -31,8 +31,8 @@ and [method comparison](docs/method_comparison.md).
 |---|---|---|
 | Repository | ready | private remote, neutral branch naming, isolated challenge directories |
 | Data intake | waiting for sign-in | authenticated downloader, checksums, and forensic VCF audit are ready |
-| Scheduled compute | CPU verified | environment bootstrap and end-to-end bottleneck smoke completed through SLURM |
-| GPU runtime | verifying | CUDA 12.8 wheel pinned; scheduled B200 gate must pass before full fitting |
+| Scheduled compute | CPU and GPU verified | CPU end-to-end job `7731188`; B200 forward/backward gate `7731200` |
+| GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | Bottleneck model | prototype verified | SFS, 19-bin LD, window context, genealogical hazards, mixture posterior, tree reference |
 | Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
 
