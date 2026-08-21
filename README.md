@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/ghist-2026-logo.png" alt="GHIST 2026 logo" width="280">
+</p>
+
 # GHIST 2026 challenge suite
 
 This private workspace develops and benchmarks methods for every available GHIST
