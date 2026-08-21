@@ -1,0 +1,85 @@
+project:
+  synapse_project: syn74803798
+  reference_wiki: https://www.synapse.org/Synapse:syn74803798/wiki/640740
+  policy: local_predictions_only
+
+demography:
+  bottleneck:
+    path: challenges/demography/bottleneck
+    testing: syn74933321
+    final: syn74933318
+    template: syn74933357
+    mutation_rate: 3.42e-8
+    recombination_rate: 1.87e-8
+    sequence_length: 100000000
+    outputs: [generations, post_decline_fraction]
+  secondary_contact:
+    path: challenges/demography/secondary_contact
+    testing: syn74933331
+    final: syn74933326
+    template: syn74933370
+    mutation_rate: 8.4e-8
+    recombination_rate: 5.39e-8
+    sequence_length: 100000000
+    outputs: [generations_since_split, generations_since_contact, population_sizes, migration_rate]
+  growth_background_selection:
+    path: challenges/demography/growth_background_selection
+    testing: syn75193299
+    final: syn75193300
+    template: syn74933480
+    coding_regions: syn74933457
+    recombination_map: syn75318370
+    mutation_rate: 3.36e-8
+    sequence_length: 108990206
+    outputs: [generations, growth_magnitude]
+  split_migration_background_selection:
+    path: challenges/demography/split_migration_background_selection
+    testing: syn75193298
+    final: syn75193301
+    template: syn74933479
+    coding_regions: syn74933457
+    recombination_map: syn75318369
+    mutation_rate: 1.015e-8
+    sequence_length: 108990206
+    outputs: [generations_since_split, population_sizes, migration_rate]
+
+sweeps:
+  shared:
+    testing_accessibility: syn75220186
+    final_accessibility: syn75821834
+    template: syn74933514
+  single_sweep:
+    path: challenges/sweeps/single_sweep
+    testing: syn75220176
+    final: syn75346852
+  soft_sweep:
+    path: challenges/sweeps/soft_sweep
+    testing: syn75220173
+    final: syn75346851
+  single_sweep_background_selection:
+    path: challenges/sweeps/single_sweep_background_selection
+    testing: syn75220175
+    final: syn75346861
+  multiple_sweeps_background_selection:
+    path: challenges/sweeps/multiple_sweeps_background_selection
+    testing: syn75220174
+    final: syn75346876
+
+relatedness:
+  ibd_segments:
+    path: challenges/relatedness/ibd_segments
+    testing: syn75202632
+    final: syn75202631
+  large_family:
+    path: challenges/relatedness/large_family
+    testing: syn75127571
+    final: syn75127572
+  multifamily_inbreeding:
+    path: challenges/relatedness/multifamily_inbreeding
+    testing: syn75203670
+    final: syn75203669
+  large_family_background_relatedness:
+    path: challenges/relatedness/large_family_background_relatedness
+    testing: syn75203673
+    final: syn75203676
+
