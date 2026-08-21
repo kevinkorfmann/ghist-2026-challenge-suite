@@ -7,9 +7,15 @@ import numpy as np
 from ghist_bottleneck.features import FeatureBundle, summarize_variants
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
+from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 
 
 class PipelineTests(unittest.TestCase):
+    def test_missingness_projected_sfs(self):
+        spectrum, metadata = projected_sfs_from_vcf("tests/fixtures/tiny.vcf")
+        self.assertEqual(metadata["projection"], 4)
+        self.assertAlmostEqual(float(spectrum.sum()), 2.0, places=8)
+
     def test_summary_is_fixed_shape_and_finite(self):
         b = summarize_variants(
             np.array([10, 20, 999]),

@@ -19,6 +19,10 @@ dependencies = [
   "synapseclient",
 ]
 
+[project.optional-dependencies]
+references = ["moments-popgen"]
+genealogy = ["tsinfer", "tsdate", "bio2zarr"]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 

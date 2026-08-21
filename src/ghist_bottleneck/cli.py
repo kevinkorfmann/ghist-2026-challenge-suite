@@ -7,6 +7,7 @@ from .features import FeatureBundle, extract_vcf
 from .infer import predict
 from .simulate import generate_dataset
 from .train import train_ensemble
+from .sfs_baseline import fit_two_epoch, write_fit
 
 
 def main() -> None:
@@ -30,6 +31,10 @@ def main() -> None:
     inf.add_argument("--observed", required=True)
     inf.add_argument("--checkpoint-dir", required=True)
     inf.add_argument("--out", required=True)
+    base = sub.add_parser("sfs-reference")
+    base.add_argument("--vcf", required=True)
+    base.add_argument("--out", required=True)
+    base.add_argument("--restarts", type=int, default=24)
     args = p.parse_args()
     if args.command == "extract":
         b = extract_vcf(args.vcf, tree_sequence=args.trees)
@@ -42,8 +47,12 @@ def main() -> None:
         )
     elif args.command == "train":
         train_ensemble(args.dataset, args.out_dir, quick=args.quick)
-    else:
+    elif args.command == "infer":
         print(json.dumps(predict(args.observed, args.checkpoint_dir, args.out), indent=2))
+    else:
+        result = fit_two_epoch(args.vcf, restarts=args.restarts)
+        write_fit(result, args.out)
+        print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
