@@ -19,6 +19,11 @@ Its estimator deliberately combines four signals:
 4. an ensemble of convolutional-transformer posterior models trained on coalescent
    simulations with nuisance-parameter randomization.
 
+Nominal-rate and confounder-perturbed simulations are labeled and evaluated
+separately. Perturbations cover mutation/recombination uncertainty, local
+recombination-rate variation, missing calls, and smooth diversity suppression;
+the nominal domain retains half of the training mass for precision.
+
 Public testing answers are isolated under `benchmarks/holdout/`, excluded from
 training and selection, and reserved for one-time audits after choices are frozen.
 

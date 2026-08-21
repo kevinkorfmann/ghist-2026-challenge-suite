@@ -73,6 +73,24 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(torch.isfinite(loss))
         loss.backward()
 
+    def test_confounder_domain_is_finite(self):
+        b = simulate_one(
+            12,
+            3000,
+            0.5,
+            10_000,
+            SimulationConfig(sequence_length=50_000),
+            seed=321,
+            mutation_multiplier=1.08,
+            recombination_multiplier=0.9,
+            recombination_cv=0.6,
+            missingness=0.08,
+            spatial_suppression=0.3,
+        )
+        self.assertEqual(b.windows.shape, (64, 8))
+        self.assertTrue(np.isfinite(b.windows).all())
+        self.assertTrue(np.isfinite(b.sfs).all())
+
 
 if __name__ == "__main__":
     unittest.main()

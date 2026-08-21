@@ -26,6 +26,49 @@ class SimulationConfig:
     ancestral_ne_max: float = 50_000
 
 
+def _recombination_model(
+    cfg: SimulationConfig,
+    *,
+    multiplier: float,
+    coefficient_of_variation: float,
+    rng: np.random.Generator,
+) -> float | msprime.RateMap:
+    mean_rate = cfg.recombination_rate * multiplier
+    if coefficient_of_variation <= 0:
+        return mean_rate
+    # A lognormal map is strictly positive and is renormalized so local
+    # heterogeneity cannot silently change the announced chromosome mean.
+    sigma = np.sqrt(np.log1p(coefficient_of_variation**2))
+    rates = rng.lognormal(-0.5 * sigma**2, sigma, 32)
+    rates *= mean_rate / rates.mean()
+    return msprime.RateMap(
+        position=np.linspace(0, cfg.sequence_length, len(rates) + 1),
+        rate=rates,
+    )
+
+
+def _apply_spatial_suppression(
+    bundle: FeatureBundle,
+    *,
+    intensity: float,
+    rng: np.random.Generator,
+) -> None:
+    """Add smooth low-diversity tracts without changing the target history."""
+    if intensity <= 0:
+        return
+    field = rng.normal(size=len(bundle.windows))
+    kernel = np.array([1, 2, 3, 2, 1], dtype=float)
+    kernel /= kernel.sum()
+    field = np.convolve(np.pad(field, 2, mode="reflect"), kernel, mode="valid")
+    field = 1 / (1 + np.exp(-field))
+    retention = np.clip(1 - intensity * field, 0.25, 1.0)
+    density = np.expm1(bundle.windows[:, 0])
+    bundle.windows[:, 0] = np.log1p(density * retention)
+    bundle.windows[:, 1] *= retention
+    bundle.windows[:, 2] *= retention
+    bundle.windows[:, 7] *= np.sqrt(retention)
+
+
 def _draw_prior(rng: np.random.Generator, cfg: SimulationConfig) -> tuple[float, float, float]:
     generations = np.exp(rng.uniform(np.log(cfg.generation_min), np.log(cfg.generation_max)))
     fraction = rng.uniform(cfg.fraction_min, cfg.fraction_max)
@@ -58,7 +101,14 @@ def simulate_one(
     ancestral_ne: float,
     cfg: SimulationConfig,
     seed: int,
+    *,
+    mutation_multiplier: float = 1.0,
+    recombination_multiplier: float = 1.0,
+    recombination_cv: float = 0.0,
+    missingness: float = 0.0,
+    spatial_suppression: float = 0.0,
 ) -> FeatureBundle:
+    rng = np.random.default_rng(seed + 2)
     demography = msprime.Demography()
     demography.add_population(name="pop", initial_size=ancestral_ne * fraction)
     demography.add_population_parameters_change(
@@ -68,26 +118,45 @@ def simulate_one(
         samples={"pop": n_haplotypes},
         ploidy=1,
         sequence_length=cfg.sequence_length,
-        recombination_rate=cfg.recombination_rate,
+        recombination_rate=_recombination_model(
+            cfg,
+            multiplier=recombination_multiplier,
+            coefficient_of_variation=recombination_cv,
+            rng=rng,
+        ),
         demography=demography,
         random_seed=seed,
     )
-    ts = msprime.sim_mutations(ancestry, rate=cfg.mutation_rate, random_seed=seed + 1)
+    ts = msprime.sim_mutations(
+        ancestry, rate=cfg.mutation_rate * mutation_multiplier, random_seed=seed + 1
+    )
     positions, ac, called, het = [], [], [], []
     ld_accumulator = LDAccumulator()
     for variant in ts.variants():
         g = variant.genotypes
-        alt = int(np.sum(g == 1))
-        if 0 < alt < n_haplotypes:
+        missing = rng.random(n_haplotypes) < missingness if missingness > 0 else np.zeros(
+            n_haplotypes, dtype=bool
+        )
+        observed = ~missing
+        alt = int(np.sum(g[observed] == 1))
+        n_called = int(observed.sum())
+        if 0 < alt < n_called:
             positions.append(variant.site.position)
             ac.append(alt)
-            called.append(n_haplotypes)
-            # Random pairing is sufficient for a polarization-free heterozygosity summary.
-            pairs = g[: (n_haplotypes // 2) * 2].reshape(-1, 2)
-            het.append(float(np.mean(pairs[:, 0] != pairs[:, 1])))
+            called.append(n_called)
+            paired_n = (n_haplotypes // 2) * 2
+            pairs = g[:paired_n].reshape(-1, 2)
+            pair_missing = missing[:paired_n].reshape(-1, 2).any(axis=1)
+            called_pairs = pairs[~pair_missing]
+            het.append(
+                float(np.mean(called_pairs[:, 0] != called_pairs[:, 1]))
+                if len(called_pairs)
+                else 0.0
+            )
             dosage = pairs.sum(axis=1).astype(np.float32)
+            dosage[pair_missing] = np.nan
             ld_accumulator.add(variant.site.position, dosage)
-    return summarize_variants(
+    bundle = summarize_variants(
         np.asarray(positions), np.asarray(ac), np.asarray(called), np.asarray(het),
         sequence_length=cfg.sequence_length,
         n_haplotypes=n_haplotypes,
@@ -96,6 +165,8 @@ def simulate_one(
         ld_decay=ld_accumulator.result(),
         arg_hazards=coalescence_hazard_features(ts),
     )
+    _apply_spatial_suppression(bundle, intensity=spatial_suppression, rng=rng)
+    return bundle
 
 
 def generate_dataset(
@@ -109,10 +180,35 @@ def generate_dataset(
     cfg = SimulationConfig(sequence_length=250_000 if quick else 2_000_000)
     rng = np.random.default_rng(seed)
     windows, spectra, targets, nuisance = [], [], [], []
+    nuisance_records = []
     for _ in tqdm(range(n_sims), desc="coalescent simulations"):
         generations, fraction, ancestral_ne = _draw_prior(rng, cfg)
         sim_seed = int(rng.integers(1, 2**31 - 2))
-        b = simulate_one(observed.n_haplotypes, generations, fraction, ancestral_ne, cfg, sim_seed)
+        draw = rng.random()
+        if draw < 0.5:
+            scenario = 0
+            mutation_multiplier = recombination_multiplier = 1.0
+            recombination_cv = missingness = spatial_suppression = 0.0
+        else:
+            scenario = 1 if draw < 0.75 else 2 if draw < 0.9 else 3
+            mutation_multiplier = float(np.exp(rng.normal(0, 0.08)))
+            recombination_multiplier = float(np.exp(rng.normal(0, 0.15)))
+            recombination_cv = float(rng.uniform(0.0, 0.8)) if scenario in (1, 3) else 0.0
+            missingness = float(rng.uniform(0.0, 0.06)) if scenario in (2, 3) else 0.0
+            spatial_suppression = float(rng.uniform(0.0, 0.4)) if scenario in (2, 3) else 0.0
+        b = simulate_one(
+            observed.n_haplotypes,
+            generations,
+            fraction,
+            ancestral_ne,
+            cfg,
+            sim_seed,
+            mutation_multiplier=mutation_multiplier,
+            recombination_multiplier=recombination_multiplier,
+            recombination_cv=recombination_cv,
+            missingness=missingness,
+            spatial_suppression=spatial_suppression,
+        )
         _degrade_arg_context(b.sfs, rng)
         # Train for graceful degradation when genealogical inference is absent or
         # unreliable. The final element is the ARG-availability mask.
@@ -122,6 +218,16 @@ def generate_dataset(
         spectra.append(b.sfs)
         targets.append((np.log(generations), np.log(fraction / (1 - fraction))))
         nuisance.append(ancestral_ne)
+        nuisance_records.append(
+            (
+                scenario,
+                mutation_multiplier,
+                recombination_multiplier,
+                recombination_cv,
+                missingness,
+                spatial_suppression,
+            )
+        )
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
@@ -130,6 +236,17 @@ def generate_dataset(
         sfs=np.asarray(spectra, dtype=np.float32),
         targets=np.asarray(targets, dtype=np.float32),
         ancestral_ne=np.asarray(nuisance, dtype=np.float32),
+        nuisance=np.asarray(nuisance_records, dtype=np.float32),
+        nuisance_names=np.asarray(
+            [
+                "scenario",
+                "mutation_multiplier",
+                "recombination_multiplier",
+                "recombination_cv",
+                "missingness",
+                "spatial_suppression",
+            ]
+        ),
         n_haplotypes=np.int64(observed.n_haplotypes),
         seed=np.int64(seed),
     )

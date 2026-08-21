@@ -134,6 +134,20 @@ def train_ensemble(
     ref_mse = np.mean(np.square(ref_pred - y_raw[val_idx]), axis=0)
     inv = np.stack((1 / (deep_mse + 1e-6), 1 / (ref_mse + 1e-6)), axis=0)
     weights = inv / inv.sum(axis=0, keepdims=True)
+    scenario_report = {}
+    if "nuisance" in d:
+        scenarios = d["nuisance"][:, 0].astype(int)
+        for scenario in np.unique(scenarios[val_idx]):
+            mask = scenarios[val_idx] == scenario
+            scenario_report[str(scenario)] = {
+                "examples": int(mask.sum()),
+                "deep_rmse_latent": np.sqrt(
+                    np.mean(np.square(deep_pred[mask] - y_raw[val_idx][mask]), axis=0)
+                ).tolist(),
+                "reference_rmse_latent": np.sqrt(
+                    np.mean(np.square(ref_pred[mask] - y_raw[val_idx][mask]), axis=0)
+                ).tolist(),
+            }
     joblib.dump(
         {"model": ref, "weights": weights, "deep_mse": deep_mse, "reference_mse": ref_mse},
         out_dir / "reference.joblib",
@@ -144,5 +158,6 @@ def train_ensemble(
         "heldout_reference_rmse_latent": np.sqrt(ref_mse).tolist(),
         "blend_weights_deep_reference": weights.T.tolist(),
         "validation_examples": int(len(val_idx)),
+        "validation_by_nuisance_scenario": scenario_report,
     }
     (out_dir / "metrics.json").write_text(json.dumps(report, indent=2) + "\n")

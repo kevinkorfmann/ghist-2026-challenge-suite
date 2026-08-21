@@ -13,3 +13,9 @@ Linkage summaries use distance-stratified streaming reservoirs over true local
 variant pairs from 100 bp to 1 Mb. The identical sampler is applied to observed
 and simulated records, avoiding short-range linkage loss from genome-wide SNP
 subsampling.
+
+Half of the training simulations remain exactly on the announced mutation and
+recombination rates. The other half form labeled robustness strata spanning
+global rate error, piecewise recombination heterogeneity, missing calls, and
+smooth low-diversity tracts. Validation reports the nominal and perturbed strata
+separately so robustness cannot conceal a loss of nominal precision.
