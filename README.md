@@ -21,6 +21,38 @@ training and selection, and reserved for one-time audits after choices are froze
 See [the challenge registry](configs/challenges.yaml), [validation protocol](docs/validation_protocol.md),
 and [method comparison](docs/method_comparison.md).
 
+## Current status
+
+| Area | State | Evidence / next gate |
+|---|---|---|
+| Repository | ready | private remote, neutral branch naming, isolated challenge directories |
+| Data intake | waiting for sign-in | authenticated downloader, checksums, and forensic VCF audit are ready |
+| Scheduled compute | CPU verified | environment bootstrap and end-to-end bottleneck smoke completed through SLURM |
+| GPU runtime | verifying | CUDA 12.8 wheel pinned; scheduled B200 gate must pass before full fitting |
+| Bottleneck model | prototype verified | SFS, 19-bin LD, window context, genealogical hazards, mixture posterior, tree reference |
+| Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
+
+The recent coalescent time-stratification result from
+[Deng, Pritchard, and Spence (2026)](https://doi.org/10.64898/2026.08.11.744210)
+is implemented as conditional coalescence-hazard features. These are corrupted and
+masked during training to represent inferred-genealogy uncertainty. The posterior
+design follows the genome-scale SFS+LD findings of
+[Smith et al. (2026)](https://doi.org/10.1093/genetics/iyag107), while retaining
+raw spatial context and independent mechanistic references.
+
+## Repository layout
+
+```text
+benchmarks/holdout/     public testing answers, isolated from selection
+challenges/             one directory for each demographic, sweep, and relatedness task
+configs/                dataset/entity registry and frozen task metadata
+docs/                   method comparison, validation, input audit, and data access
+scripts/                intake, audits, merging, smoke gates, and remote synchronization
+slurm/                  scheduled CPU/GPU workflows for betty
+src/                    reusable inference implementations
+tests/                  deterministic unit and contract checks
+```
+
 ## Setup
 
 The checked-out workspace already uses `.venv`. To recreate it:
