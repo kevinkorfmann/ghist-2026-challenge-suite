@@ -3,7 +3,7 @@
 #SBATCH --partition=genoa-std-mem
 #SBATCH --array=0-99
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=24G
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=12:00:00
 #SBATCH --output=logs/%x-%A_%a.out
 #SBATCH --error=logs/%x-%A_%a.err
@@ -17,4 +17,3 @@ SEED=$((2026082100 + SLURM_ARRAY_TASK_ID))
   --out "data/simulations/bottleneck/part_${SLURM_ARRAY_TASK_ID}.npz" \
   --n-sims 1000 \
   --seed "$SEED"
-
