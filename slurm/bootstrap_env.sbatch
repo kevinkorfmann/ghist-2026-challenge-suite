@@ -12,5 +12,6 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 python -m venv .venv
 .venv/bin/pip install --upgrade pip wheel setuptools
-.venv/bin/pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e .
+.venv/bin/pip install --force-reinstall torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+.venv/bin/pip install -e .
 .venv/bin/python -c 'import torch, msprime, pysam; print(torch.__version__, torch.cuda.is_available())'
