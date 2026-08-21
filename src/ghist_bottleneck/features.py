@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import bisect
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -21,6 +22,71 @@ WINDOW_FEATURES = (
     "heterozygosity",
 )
 LD_BINS = 19
+LD_EDGES = np.geomspace(100.0, 1_000_000.0, LD_BINS + 1)
+
+
+class LDAccumulator:
+    """Bounded-memory, distance-stratified reservoir of observed dosage r²."""
+
+    def __init__(self, *, pairs_per_bin: int = 512, seed: int = 7081):
+        self.pairs_per_bin = pairs_per_bin
+        self.rng = np.random.default_rng(seed)
+        self.values: list[list[float]] = [[] for _ in range(LD_BINS)]
+        self.seen = np.zeros(LD_BINS, dtype=np.int64)
+        self.positions: list[float] = []
+        self.genotypes: list[np.ndarray] = []
+        self.start = 0
+        self.records = 0
+
+    @staticmethod
+    def _r2(a: np.ndarray, b: np.ndarray) -> float | None:
+        valid = np.isfinite(a) & np.isfinite(b)
+        if valid.sum() < 4:
+            return None
+        aa, bb = a[valid].astype(np.float64), b[valid].astype(np.float64)
+        aa, bb = aa - aa.mean(), bb - bb.mean()
+        denom = np.sqrt(np.sum(aa * aa) * np.sum(bb * bb))
+        if denom <= EPS:
+            return None
+        return float(np.square(np.sum(aa * bb) / denom))
+
+    def add(self, position: float, genotype: np.ndarray) -> None:
+        # Four balanced strata per record limit work on very dense VCFs while
+        # retaining true local pairs; a genome-wide variant reservoir does not.
+        for offset in range(4):
+            k = (self.records * 4 + offset) % LD_BINS
+            lo, hi = LD_EDGES[k], LD_EDGES[k + 1]
+            left = bisect.bisect_right(self.positions, position - hi, lo=self.start)
+            right = bisect.bisect_right(self.positions, position - lo, lo=left)
+            if right <= left:
+                continue
+            partner = int(self.rng.integers(left, right))
+            value = self._r2(self.genotypes[partner], genotype)
+            if value is None:
+                continue
+            self.seen[k] += 1
+            if len(self.values[k]) < self.pairs_per_bin:
+                self.values[k].append(value)
+            else:
+                replacement = int(self.rng.integers(0, self.seen[k]))
+                if replacement < self.pairs_per_bin:
+                    self.values[k][replacement] = value
+        self.positions.append(float(position))
+        self.genotypes.append(np.asarray(genotype, dtype=np.float32))
+        self.records += 1
+        self.start = bisect.bisect_right(
+            self.positions, position - LD_EDGES[-1], lo=self.start
+        )
+        if self.start >= 10_000:
+            self.positions = self.positions[self.start :]
+            self.genotypes = self.genotypes[self.start :]
+            self.start = 0
+
+    def result(self) -> np.ndarray:
+        return np.asarray(
+            [np.mean(values) if values else 0.0 for values in self.values],
+            dtype=np.float64,
+        )
 
 
 @dataclass(frozen=True)
@@ -81,6 +147,7 @@ def summarize_variants(
     sfs_bins: int = 64,
     ld_positions: np.ndarray | None = None,
     ld_genotypes: np.ndarray | None = None,
+    ld_decay: np.ndarray | None = None,
     arg_hazards: np.ndarray | None = None,
 ) -> FeatureBundle:
     """Make fixed-shape, polarization-free summaries from variant arrays."""
@@ -97,7 +164,12 @@ def summarize_variants(
     spectrum = hist.astype(np.float64)
     spectrum = np.log1p(spectrum)
     spectrum /= np.linalg.norm(spectrum) + EPS
-    ld = _ld_decay(ld_positions, ld_genotypes, sequence_length)
+    if ld_decay is None:
+        ld = _ld_decay(ld_positions, ld_genotypes, sequence_length)
+    else:
+        ld = np.asarray(ld_decay, dtype=np.float64)
+        if ld.shape != (LD_BINS,):
+            raise ValueError(f"ld_decay must have shape ({LD_BINS},)")
     if arg_hazards is None:
         arg_context = np.zeros(ARG_TIME_BINS + 1, dtype=np.float64)
     else:
@@ -147,43 +219,19 @@ def _ld_decay(
     n_bins: int = LD_BINS,
     pairs_per_bin: int = 512,
 ) -> np.ndarray:
-    """Estimate dosage r² in log-spaced distance bins deterministically."""
+    """Estimate dosage r² with the same streaming sampler used for VCFs."""
     if positions is None or genotypes is None or len(positions) < 3:
         return np.zeros(n_bins, dtype=np.float64)
+    if n_bins != LD_BINS:
+        raise ValueError(f"n_bins must equal the fixed LD_BINS={LD_BINS}")
     positions = np.asarray(positions, dtype=np.float64)
     genotypes = np.asarray(genotypes, dtype=np.float64)
     order = np.argsort(positions)
     positions, genotypes = positions[order], genotypes[order]
-    # Fixed semantics across short training simulations and the 100 Mb target.
-    # These match the 10^2--10^6 bp regime used by recent posterior-estimation work.
-    edges = np.geomspace(100.0, 1_000_000.0, n_bins + 1)
-    rng = np.random.default_rng(7081)
-    result = np.zeros(n_bins, dtype=np.float64)
-    for k, (lo, hi) in enumerate(zip(edges[:-1], edges[1:])):
-        values = []
-        for _ in range(pairs_per_bin * 3):
-            i = int(rng.integers(0, len(positions) - 1))
-            target = positions[i] + np.exp(rng.uniform(np.log(lo), np.log(hi)))
-            j = int(np.searchsorted(positions, target))
-            if j >= len(positions):
-                continue
-            distance = positions[j] - positions[i]
-            if not (lo <= distance < hi):
-                continue
-            a, b = genotypes[i], genotypes[j]
-            valid = np.isfinite(a) & np.isfinite(b)
-            if valid.sum() < 4:
-                continue
-            aa, bb = a[valid], b[valid]
-            aa, bb = aa - aa.mean(), bb - bb.mean()
-            denom = np.sqrt(np.sum(aa * aa) * np.sum(bb * bb))
-            if denom > EPS:
-                values.append(float(np.square(np.sum(aa * bb) / denom)))
-            if len(values) >= pairs_per_bin:
-                break
-        if values:
-            result[k] = np.mean(values)
-    return result
+    accumulator = LDAccumulator(pairs_per_bin=pairs_per_bin)
+    for position, genotype in zip(positions, genotypes):
+        accumulator.add(float(position), genotype)
+    return accumulator.result()
 
 
 def extract_vcf(
@@ -201,12 +249,7 @@ def extract_vcf(
     heterozygosity: list[float] = []
     max_pos = 0
     inferred_ploidy = 2
-    # Bounded deterministic reservoir for LD; avoids retaining the full matrix.
-    ld_capacity = 5000
-    ld_positions: list[float] = []
-    ld_genotypes: list[np.ndarray] = []
-    rng = np.random.default_rng(7081)
-    eligible_seen = 0
+    ld_accumulator = LDAccumulator()
     for rec in vcf:
         max_pos = max(max_pos, rec.pos)
         if len(rec.alleles or ()) != 2 or len(rec.ref) != 1 or len(rec.alts[0]) != 1:
@@ -232,15 +275,7 @@ def extract_vcf(
             allele_counts.append(ac)
             called_haplotypes.append(called)
             heterozygosity.append(het / max(called_genotypes, 1))
-            eligible_seen += 1
-            if len(ld_positions) < ld_capacity:
-                ld_positions.append(rec.pos - 1)
-                ld_genotypes.append(dosages)
-            else:
-                replace = int(rng.integers(0, eligible_seen))
-                if replace < ld_capacity:
-                    ld_positions[replace] = rec.pos - 1
-                    ld_genotypes[replace] = dosages
+            ld_accumulator.add(rec.pos - 1, dosages)
     seq_len = max(float(max_pos), 100_000_000.0)
     arg_hazards = None
     if tree_sequence is not None:
@@ -262,7 +297,6 @@ def extract_vcf(
         n_haplotypes=len(samples) * inferred_ploidy,
         n_windows=n_windows,
         sfs_bins=sfs_bins,
-        ld_positions=np.asarray(ld_positions),
-        ld_genotypes=np.asarray(ld_genotypes),
+        ld_decay=ld_accumulator.result(),
         arg_hazards=arg_hazards,
     )

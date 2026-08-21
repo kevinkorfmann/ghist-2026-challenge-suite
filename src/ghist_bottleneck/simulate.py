@@ -7,7 +7,7 @@ import msprime
 import numpy as np
 from tqdm import tqdm
 
-from .features import FeatureBundle, summarize_variants
+from .features import FeatureBundle, LDAccumulator, summarize_variants
 from .arg_features import coalescence_hazard_features
 
 
@@ -73,7 +73,8 @@ def simulate_one(
         random_seed=seed,
     )
     ts = msprime.sim_mutations(ancestry, rate=cfg.mutation_rate, random_seed=seed + 1)
-    positions, ac, called, het, ld_genotypes = [], [], [], [], []
+    positions, ac, called, het = [], [], [], []
+    ld_accumulator = LDAccumulator()
     for variant in ts.variants():
         g = variant.genotypes
         alt = int(np.sum(g == 1))
@@ -84,15 +85,15 @@ def simulate_one(
             # Random pairing is sufficient for a polarization-free heterozygosity summary.
             pairs = g[: (n_haplotypes // 2) * 2].reshape(-1, 2)
             het.append(float(np.mean(pairs[:, 0] != pairs[:, 1])))
-            ld_genotypes.append(pairs.sum(axis=1).astype(np.float32))
+            dosage = pairs.sum(axis=1).astype(np.float32)
+            ld_accumulator.add(variant.site.position, dosage)
     return summarize_variants(
         np.asarray(positions), np.asarray(ac), np.asarray(called), np.asarray(het),
         sequence_length=cfg.sequence_length,
         n_haplotypes=n_haplotypes,
         n_windows=cfg.n_windows,
         sfs_bins=cfg.sfs_bins,
-        ld_positions=np.asarray(positions),
-        ld_genotypes=np.asarray(ld_genotypes),
+        ld_decay=ld_accumulator.result(),
         arg_hazards=coalescence_hazard_features(ts),
     )
 

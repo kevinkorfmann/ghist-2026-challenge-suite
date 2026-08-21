@@ -17,7 +17,8 @@
 
 - Synthetic parameter recovery across the full prior and boundary strata.
 - Recovery under misspecified mutation/recombination rates and missingness.
+- Matched physical window size and blockwise aggregation across the 100 Mb target.
+- Linkage-bin occupancy and recovery after streaming extraction.
 - Held-out chromosome or family performance.
 - Agreement analysis between mechanistic and learned estimators.
 - One-time testing-answer audit after all choices are frozen.
-
