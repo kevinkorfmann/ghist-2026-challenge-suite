@@ -15,6 +15,7 @@ def main() -> None:
     ex = sub.add_parser("extract")
     ex.add_argument("--vcf", required=True)
     ex.add_argument("--out", required=True)
+    ex.add_argument("--trees", help="Optional inferred tree sequence")
     sim = sub.add_parser("simulate")
     sim.add_argument("--observed", required=True)
     sim.add_argument("--out", required=True)
@@ -31,7 +32,7 @@ def main() -> None:
     inf.add_argument("--out", required=True)
     args = p.parse_args()
     if args.command == "extract":
-        b = extract_vcf(args.vcf)
+        b = extract_vcf(args.vcf, tree_sequence=args.trees)
         b.save(args.out)
         print(json.dumps({"n_haplotypes": b.n_haplotypes, "n_variants": b.n_variants, "sequence_length": b.sequence_length}, indent=2))
     elif args.command == "simulate":

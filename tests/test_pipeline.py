@@ -20,7 +20,7 @@ class PipelineTests(unittest.TestCase):
             n_haplotypes=10,
         )
         self.assertEqual(b.windows.shape, (64, 8))
-        self.assertEqual(b.sfs.shape, (109,))
+        self.assertEqual(b.sfs.shape, (116,))
         self.assertTrue(np.isfinite(b.windows).all())
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "bundle.npz"
@@ -33,7 +33,7 @@ class PipelineTests(unittest.TestCase):
             12, 3000, 0.5, 10_000,
             SimulationConfig(sequence_length=50_000), seed=123,
         )
-        self.assertEqual(b.sfs.shape, (109,))
+        self.assertEqual(b.sfs.shape, (116,))
         self.assertEqual(b.sfs[-1], 1.0)
         self.assertTrue(np.isfinite(b.sfs).all())
         model = BottleneckNet()

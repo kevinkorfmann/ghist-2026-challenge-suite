@@ -25,7 +25,7 @@ class BottleneckNet(nn.Module):
     def __init__(
         self,
         window_features: int = 8,
-        sfs_bins: int = 109,
+        sfs_bins: int = 116,
         width: int = 96,
         mixture_components: int = 8,
     ):

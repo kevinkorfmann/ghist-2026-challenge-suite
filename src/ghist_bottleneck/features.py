@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import pysam
 
-from .arg_features import ARG_TIME_BINS
+from .arg_features import ARG_TIME_BINS, coalescence_hazard_features
 
 
 EPS = 1e-8
@@ -20,7 +20,7 @@ WINDOW_FEATURES = (
     "mean_folded_frequency",
     "heterozygosity",
 )
-LD_BINS = 12
+LD_BINS = 19
 
 
 @dataclass(frozen=True)
@@ -154,8 +154,9 @@ def _ld_decay(
     genotypes = np.asarray(genotypes, dtype=np.float64)
     order = np.argsort(positions)
     positions, genotypes = positions[order], genotypes[order]
-    max_distance = max(200.0, min(sequence_length / 2, 5_000_000.0))
-    edges = np.geomspace(50.0, max_distance, n_bins + 1)
+    # Fixed semantics across short training simulations and the 100 Mb target.
+    # These match the 10^2--10^6 bp regime used by recent posterior-estimation work.
+    edges = np.geomspace(100.0, 1_000_000.0, n_bins + 1)
     rng = np.random.default_rng(7081)
     result = np.zeros(n_bins, dtype=np.float64)
     for k, (lo, hi) in enumerate(zip(edges[:-1], edges[1:])):
@@ -185,7 +186,13 @@ def _ld_decay(
     return result
 
 
-def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) -> FeatureBundle:
+def extract_vcf(
+    path: str | Path,
+    *,
+    n_windows: int = 64,
+    sfs_bins: int = 64,
+    tree_sequence: str | Path | None = None,
+) -> FeatureBundle:
     vcf = pysam.VariantFile(str(path))
     samples = list(vcf.header.samples)
     positions: list[float] = []
@@ -235,6 +242,17 @@ def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) ->
                     ld_positions[replace] = rec.pos - 1
                     ld_genotypes[replace] = dosages
     seq_len = max(float(max_pos), 100_000_000.0)
+    arg_hazards = None
+    if tree_sequence is not None:
+        import tskit
+
+        ts = tskit.load(str(tree_sequence))
+        if ts.num_samples != len(samples) * inferred_ploidy:
+            raise ValueError(
+                f"tree sequence has {ts.num_samples} samples, expected "
+                f"{len(samples) * inferred_ploidy} VCF haplotypes"
+            )
+        arg_hazards = coalescence_hazard_features(ts)
     return summarize_variants(
         np.asarray(positions),
         np.asarray(allele_counts),
@@ -246,4 +264,5 @@ def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) ->
         sfs_bins=sfs_bins,
         ld_positions=np.asarray(ld_positions),
         ld_genotypes=np.asarray(ld_genotypes),
+        arg_hazards=arg_hazards,
     )

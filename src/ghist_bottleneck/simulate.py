@@ -33,6 +33,24 @@ def _draw_prior(rng: np.random.Generator, cfg: SimulationConfig) -> tuple[float,
     return float(generations), float(fraction), float(ancestral_ne)
 
 
+def _degrade_arg_context(context: np.ndarray, rng: np.random.Generator) -> None:
+    """Mimic smoothing, time error, and uncertainty from genealogy inference."""
+    hazards = context[-33:-1]
+    if rng.random() < 0.7:
+        sigma = rng.uniform(0.5, 2.0)
+        radius = max(1, int(np.ceil(3 * sigma)))
+        x = np.arange(-radius, radius + 1)
+        kernel = np.exp(-0.5 * np.square(x / sigma))
+        kernel /= kernel.sum()
+        padded = np.pad(hazards, radius, mode="edge")
+        hazards[:] = np.convolve(padded, kernel, mode="valid")
+        shift = rng.uniform(-1.5, 1.5)
+        grid = np.arange(len(hazards), dtype=float)
+        hazards[:] = np.interp(grid + shift, grid, hazards, left=hazards[0], right=hazards[-1])
+        logit = np.log(np.clip(hazards, 1e-5, 1 - 1e-5) / np.clip(1 - hazards, 1e-5, 1))
+        hazards[:] = 1 / (1 + np.exp(-(logit + rng.normal(0, 0.15, len(logit)))))
+
+
 def simulate_one(
     n_haplotypes: int,
     generations: float,
@@ -94,6 +112,7 @@ def generate_dataset(
         generations, fraction, ancestral_ne = _draw_prior(rng, cfg)
         sim_seed = int(rng.integers(1, 2**31 - 2))
         b = simulate_one(observed.n_haplotypes, generations, fraction, ancestral_ne, cfg, sim_seed)
+        _degrade_arg_context(b.sfs, rng)
         # Train for graceful degradation when genealogical inference is absent or
         # unreliable. The final element is the ARG-availability mask.
         if rng.random() < 0.2:
