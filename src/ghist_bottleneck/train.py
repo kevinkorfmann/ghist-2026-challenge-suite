@@ -11,7 +11,7 @@ from sklearn.ensemble import ExtraTreesRegressor
 from sklearn.model_selection import GroupShuffleSplit
 from torch.utils.data import DataLoader, TensorDataset
 
-from .model import BottleneckNet, gaussian_nll
+from .model import BottleneckNet, mixture_nll
 
 
 def _seed_everything(seed: int) -> None:
@@ -81,8 +81,8 @@ def train_ensemble(
             for bw, bs, by in loader:
                 bw, bs, by = bw.to(device), bs.to(device), by.to(device)
                 opt.zero_grad(set_to_none=True)
-                mean, log_var = model(bw, bs)
-                loss = gaussian_nll(mean, log_var, by)
+                logits, means, scale = model.mixture_parameters(bw, bs)
+                loss = mixture_nll(logits, means, scale, by)
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
                 opt.step()
@@ -92,8 +92,8 @@ def train_ensemble(
                 vw = torch.from_numpy(xw[val_idx]).float().to(device)
                 vs = torch.from_numpy(xs[val_idx]).float().to(device)
                 vy = torch.from_numpy(y[val_idx]).float().to(device)
-                vm, vlv = model(vw, vs)
-                val = float(gaussian_nll(vm, vlv, vy).cpu())
+                logits, means, scale = model.mixture_parameters(vw, vs)
+                val = float(mixture_nll(logits, means, scale, vy).cpu())
             if val < best:
                 best = val
                 model_path = out_dir / f"model_{seed}.pt"

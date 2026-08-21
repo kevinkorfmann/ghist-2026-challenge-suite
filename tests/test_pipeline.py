@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 
 from ghist_bottleneck.features import FeatureBundle, summarize_variants
-from ghist_bottleneck.model import BottleneckNet
+from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 
 
@@ -44,6 +44,13 @@ class PipelineTests(unittest.TestCase):
         )
         self.assertEqual(tuple(mean.shape), (1, 2))
         self.assertEqual(tuple(log_var.shape), (1, 2))
+        logits, means, scale = model.mixture_parameters(
+            torch.from_numpy(b.windows[None]).float(),
+            torch.from_numpy(b.sfs[None]).float(),
+        )
+        loss = mixture_nll(logits, means, scale, torch.zeros((1, 2)))
+        self.assertTrue(torch.isfinite(loss))
+        loss.backward()
 
 
 if __name__ == "__main__":
