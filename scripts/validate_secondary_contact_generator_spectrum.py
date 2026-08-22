@@ -104,6 +104,21 @@ def main() -> None:
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
+    np.savez_compressed(
+        args.out.with_suffix(".sfs.npz"),
+        spectrum=spectrum,
+        truth=np.asarray(
+            (
+                parameters.population1_size,
+                parameters.population2_size,
+                parameters.split_time,
+                parameters.contact_time,
+                parameters.migration_rate,
+            )
+        ),
+        ancestral_size=parameters.ancestral_size,
+        sequence_length=args.replicates * args.sequence_length,
+    )
     print(json.dumps(result, indent=2))
 
 
