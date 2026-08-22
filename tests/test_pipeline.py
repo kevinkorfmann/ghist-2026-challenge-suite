@@ -244,6 +244,11 @@ class PipelineTests(unittest.TestCase):
         spectrum, metadata = projected_sfs_from_vcf("tests/fixtures/tiny.vcf")
         self.assertEqual(metadata["projection"], 4)
         self.assertAlmostEqual(float(spectrum.sum()), 2.0, places=8)
+        polarized, polarized_metadata = projected_sfs_from_vcf(
+            "tests/fixtures/tiny.vcf", polarized=True
+        )
+        self.assertAlmostEqual(float(polarized.sum()), 2.0, places=8)
+        self.assertEqual(polarized_metadata["ancestral_reference_records"], 2)
 
     def test_summary_is_fixed_shape_and_finite(self):
         b = summarize_variants(

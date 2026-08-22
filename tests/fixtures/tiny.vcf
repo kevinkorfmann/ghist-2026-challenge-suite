@@ -1,7 +1,8 @@
 ##fileformat=VCFv4.2
 ##contig=<ID=1,length=1000>
 ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##INFO=<ID=AA,Number=1,Type=String,Description="Ancestral allele">
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	s1	s2
-1	100	.	A	G	60	PASS	.	GT	0|1	0|0
-1	250	.	C	T	60	PASS	.	GT	1|1	0|1
-1	700	.	G	A,C	40	PASS	.	GT	1|2	0|0
+1	100	.	A	G	60	PASS	AA=A	GT	0|1	0|0
+1	250	.	C	T	60	PASS	AA=C	GT	1|1	0|1
+1	700	.	G	A,C	40	PASS	AA=G	GT	1|2	0|0

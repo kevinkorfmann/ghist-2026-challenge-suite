@@ -12,11 +12,13 @@ def projected_sfs_from_vcf(
     path: str | Path,
     *,
     projection: int | None = None,
+    polarized: bool = False,
 ) -> tuple[np.ndarray, dict]:
     """Build an allele-count spectrum with exact missing-data projection."""
     vcf = pysam.VariantFile(str(path))
     counts: list[tuple[int, int]] = []
     max_called = 0
+    ancestral_reference = ancestral_alternate = 0
     for rec in vcf:
         if len(rec.alleles or ()) != 2 or any(len(a) != 1 for a in rec.alleles):
             continue
@@ -28,8 +30,22 @@ def projected_sfs_from_vcf(
             vals = [a for a in gt if a is not None and a >= 0]
             called += len(vals)
             alt += sum(a == 1 for a in vals)
-        if 0 < alt < called:
-            counts.append((alt, called))
+        derived = alt
+        if polarized:
+            ancestral = rec.info.get("AA")
+            if isinstance(ancestral, tuple):
+                ancestral = ancestral[0]
+            if ancestral == rec.ref:
+                ancestral_reference += 1
+            elif ancestral == rec.alts[0]:
+                ancestral_alternate += 1
+                derived = called - alt
+            else:
+                raise ValueError(
+                    f"record {rec.contig}:{rec.pos} has invalid ancestral allele {ancestral!r}"
+                )
+        if 0 < derived < called:
+            counts.append((derived, called))
             max_called = max(max_called, called)
     if not counts:
         raise ValueError("No segregating biallelic SNPs found")
@@ -53,6 +69,9 @@ def projected_sfs_from_vcf(
         "segregating_records": len(counts),
         "projected_records": kept,
         "maximum_called_haplotypes": max_called,
+        "polarized": polarized,
+        "ancestral_reference_records": ancestral_reference,
+        "ancestral_alternate_records": ancestral_alternate,
     }
     return spectrum, metadata
 
@@ -64,15 +83,20 @@ def fit_two_epoch(
     sequence_length: float = 100_000_000,
     restarts: int = 24,
     seed: int = 4721,
+    polarized: bool = True,
+    folded: bool = False,
 ) -> dict:
     """Fit the mechanistic two-epoch SFS reference with moments."""
     import moments
 
-    spectrum, metadata = projected_sfs_from_vcf(path)
-    data = moments.Spectrum(spectrum).fold()
+    spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
+    data = moments.Spectrum(spectrum)
+    if folded:
+        data = data.fold()
 
     def model(params, ns):
-        return moments.Demographics1D.two_epoch(params, ns).fold()
+        expectation = moments.Demographics1D.two_epoch(params, ns)
+        return expectation.fold() if folded else expectation
 
     lower = [0.02, 1e-4]
     upper = [2.0, 5.0]
@@ -105,6 +129,8 @@ def fit_two_epoch(
         "theta": theta,
         "multinomial_log_likelihood": likelihood,
         "restarts": restarts,
+        "polarized": polarized,
+        "folded": folded,
         "sfs": metadata,
     }
 
@@ -113,4 +139,3 @@ def write_fit(result: dict, path: str | Path) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(result, indent=2) + "\n")
-

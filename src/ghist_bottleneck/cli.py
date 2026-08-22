@@ -49,6 +49,8 @@ def main() -> None:
     base.add_argument("--vcf", required=True)
     base.add_argument("--out", required=True)
     base.add_argument("--restarts", type=int, default=24)
+    base.add_argument("--unpolarized", action="store_true")
+    base.add_argument("--folded", action="store_true")
     args = p.parse_args()
     if args.command == "extract":
         b = extract_vcf(args.vcf, tree_sequence=args.trees)
@@ -107,7 +109,12 @@ def main() -> None:
             )
         )
     else:
-        result = fit_two_epoch(args.vcf, restarts=args.restarts)
+        result = fit_two_epoch(
+            args.vcf,
+            restarts=args.restarts,
+            polarized=not args.unpolarized,
+            folded=args.folded,
+        )
         write_fit(result, args.out)
         print(json.dumps(result, indent=2))
 
