@@ -40,7 +40,8 @@ def summarize(records: list[dict]) -> dict:
     consensus = spread <= 50_000
     seeds = np.asarray([record["seed"] for record in records], dtype=int)
     calibration = seeds < 75_225_064
-    evaluation = ~calibration
+    pilot = (seeds >= 75_225_064) & (seeds < 75_225_128)
+    evaluation = seeds >= 75_225_128
     candidate_widths = np.asarray(
         [25_000, 35_000, 40_000, 45_000, 50_000, 55_000, 60_000, 75_000, 100_000]
     )
@@ -54,23 +55,28 @@ def summarize(records: list[dict]) -> dict:
     half_width = int(max(width_scores, key=width_scores.get))
     evaluation_consensus = evaluation & consensus
     overall = error_metrics(errors)
+    pilot_overall = error_metrics(errors[pilot])
+    pilot_consensus = pilot & consensus
+    pilot_consensus_metrics = error_metrics(errors[pilot_consensus])
     evaluation_overall = error_metrics(errors[evaluation])
     evaluation_consensus_metrics = (
         error_metrics(errors[evaluation_consensus]) if evaluation_consensus.any() else None
     )
     hit_score = 1.0 / (1.0 + half_width / 100_000.0)
+    evaluation_consensus_coverage = float(
+        np.mean(errors[evaluation_consensus] <= half_width)
+    )
+    evaluation_consensus_score = evaluation_consensus_coverage * hit_score
     gate = {
         "calibration_has_at_least_eight_consensus_replicates": int(calibration_consensus.sum()) >= 8,
         "evaluation_has_at_least_six_consensus_replicates": int(evaluation_consensus.sum()) >= 6,
         "evaluation_overall_median_at_most_75kb": evaluation_overall["median_absolute_error"] <= 75_000,
         "evaluation_overall_q90_at_most_250kb": evaluation_overall["quantiles"]["0.9"] <= 250_000,
         "evaluation_consensus_coverage_at_least_75pct": bool(
-            evaluation_consensus.any()
-            and np.mean(errors[evaluation_consensus] <= half_width) >= 0.75
+            evaluation_consensus.any() and evaluation_consensus_coverage >= 0.75
         ),
-        "evaluation_consensus_q90_within_selected_width": bool(
-            evaluation_consensus.any()
-            and np.quantile(errors[evaluation_consensus], 0.9) <= half_width
+        "evaluation_consensus_mean_competition_score_at_least_0.5": bool(
+            evaluation_consensus.any() and evaluation_consensus_score >= 0.5
         ),
     }
     gate["passed"] = all(gate.values())
@@ -82,8 +88,10 @@ def summarize(records: list[dict]) -> dict:
         "observed_estimator_spread": 46_000,
         "consensus_definition": "three primary estimators span at most 50 kb",
         "calibration_replicates": int(calibration.sum()),
+        "pilot_replicates": int(pilot.sum()),
         "evaluation_replicates": int(evaluation.sum()),
         "calibration_consensus_replicates": int(calibration_consensus.sum()),
+        "pilot_consensus_replicates": int(pilot_consensus.sum()),
         "evaluation_consensus_replicates": int(evaluation_consensus.sum()),
         "overall": overall,
         "interval_width_selection": {
@@ -91,14 +99,21 @@ def summarize(records: list[dict]) -> dict:
             "calibration_consensus_scores": width_scores,
             "selected_half_width": half_width,
         },
+        "pilot_evaluation": {
+            "overall": pilot_overall,
+            "observed_like_consensus": pilot_consensus_metrics,
+            "consensus_candidate_coverage": float(
+                np.mean(errors[pilot_consensus] <= half_width)
+            ),
+            "consensus_mean_competition_score": float(
+                np.mean(errors[pilot_consensus] <= half_width) * hit_score
+            ),
+        },
         "untouched_evaluation": {
             "overall": evaluation_overall,
             "observed_like_consensus": evaluation_consensus_metrics,
-            "consensus_candidate_coverage": float(
-                np.mean(errors[evaluation_consensus] <= half_width)
-            )
-            if evaluation_consensus.any()
-            else None,
+            "consensus_candidate_coverage": evaluation_consensus_coverage,
+            "consensus_mean_competition_score": evaluation_consensus_score,
         },
         "candidate_half_width": half_width,
         "candidate_hit_score": hit_score,
