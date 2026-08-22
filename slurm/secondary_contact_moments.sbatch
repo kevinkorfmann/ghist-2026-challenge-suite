@@ -22,6 +22,7 @@ elif [[ -n "${PROJECTION:-}" ]]; then
   read -r PROJECTION1 PROJECTION2 <<< "$PROJECTION"
   EXTRA+=(--projection "$PROJECTION1" "$PROJECTION2")
 fi
+if [[ "${ADAPT_DT:-0}" == "1" ]]; then EXTRA+=(--adaptive-integration); fi
 .venv/bin/python scripts/run_secondary_contact_moments.py \
   --vcf data/raw/demography/secondary_contact/testing/secondary_contact.testing.vcf.gz \
   --out "artifacts/task2_secondary_contact/moments_${MODE}.json" \
@@ -29,4 +30,5 @@ fi
   --workers "${SLURM_CPUS_PER_TASK}" \
   --maxiter "${MAXITER:-750}" \
   --convention "${CONVENTION:-simple}" \
+  --integration-dt-fac "${DT_FAC:-0.02}" \
   "${EXTRA[@]}"

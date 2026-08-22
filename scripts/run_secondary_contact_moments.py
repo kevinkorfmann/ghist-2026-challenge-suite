@@ -24,6 +24,8 @@ def main() -> None:
     )
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
+    parser.add_argument("--integration-dt-fac", type=float, default=0.02)
+    parser.add_argument("--adaptive-integration", action="store_true")
     args = parser.parse_args()
     spectrum, scan_metadata = scan_secondary_contact_vcf(args.vcf)
     result = fit_secondary_contact_spectrum(
@@ -37,6 +39,8 @@ def main() -> None:
         seed=args.seed,
         folded=args.folded,
         convention=args.convention,
+        integration_dt_fac=args.integration_dt_fac,
+        adaptive_integration=args.adaptive_integration,
     )
     result["sfs"] = scan_metadata
     args.out.parent.mkdir(parents=True, exist_ok=True)

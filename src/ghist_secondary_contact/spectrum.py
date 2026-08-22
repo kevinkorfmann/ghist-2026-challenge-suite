@@ -32,6 +32,8 @@ def secondary_contact_spectrum(
     sample_sizes: Sequence[int],
     *,
     folded: bool = False,
+    dt_fac: float = 0.02,
+    adapt_dt: bool = False,
 ):
     """Expected joint SFS for isolation followed by symmetric migration.
 
@@ -49,12 +51,16 @@ def secondary_contact_spectrum(
         moments.LinearSystem_1D.steady_state_1D(n1 + n2)
     )
     spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
-    spectrum.integrate([nu1, nu2], isolation_duration)
+    spectrum.integrate(
+        [nu1, nu2], isolation_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
+    )
     migration_matrix = np.asarray([[0.0, migration], [migration, 0.0]])
     spectrum.integrate(
         [nu1, nu2],
         contact_duration,
         m=migration_matrix,
+        dt_fac=dt_fac,
+        adapt_dt=adapt_dt,
     )
     return spectrum.fold() if folded else spectrum
 
@@ -64,6 +70,8 @@ def generator_matched_secondary_contact_spectrum(
     sample_sizes: Sequence[int],
     *,
     folded: bool = False,
+    dt_fac: float = 0.02,
+    adapt_dt: bool = False,
 ):
     """Expected SFS under the pinned hidden-epoch generator convention.
 
@@ -81,9 +89,15 @@ def generator_matched_secondary_contact_spectrum(
         0.5 * moments.LinearSystem_1D.steady_state_1D(n1 + n2)
     )
     # Forward through the three unreported ancestral epochs.
-    spectrum.integrate([1.5], 0.10 * split_duration)
-    spectrum.integrate([2.0], 0.05 * split_duration)
-    spectrum.integrate([1.0], 0.05 * split_duration)
+    spectrum.integrate(
+        [1.5], 0.10 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
+    )
+    spectrum.integrate(
+        [2.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
+    )
+    spectrum.integrate(
+        [1.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
+    )
     spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
     # Integrate toward the present across every derived-population boundary.
     boundaries = sorted(
@@ -123,12 +137,25 @@ def generator_matched_secondary_contact_spectrum(
             [mainland_size, island_size],
             duration,
             m=migration_matrix,
+            dt_fac=dt_fac,
+            adapt_dt=adapt_dt,
         )
     return spectrum.fold() if folded else spectrum
 
 
 def _fit_restart(arguments: tuple) -> dict:
-    spectrum, start, lower, upper, folded, restart, maxiter, convention = arguments
+    (
+        spectrum,
+        start,
+        lower,
+        upper,
+        folded,
+        restart,
+        maxiter,
+        convention,
+        integration_dt_fac,
+        adaptive_integration,
+    ) = arguments
     import moments
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=float))
@@ -138,9 +165,19 @@ def _fit_restart(arguments: tuple) -> dict:
     def model(parameters, sample_sizes):
         if convention == "generator_matched":
             return generator_matched_secondary_contact_spectrum(
-                parameters, sample_sizes, folded=folded
+                parameters,
+                sample_sizes,
+                folded=folded,
+                dt_fac=integration_dt_fac,
+                adapt_dt=adaptive_integration,
             )
-        return secondary_contact_spectrum(parameters, sample_sizes, folded=folded)
+        return secondary_contact_spectrum(
+            parameters,
+            sample_sizes,
+            folded=folded,
+            dt_fac=integration_dt_fac,
+            adapt_dt=adaptive_integration,
+        )
 
     try:
         estimate = np.asarray(
@@ -187,6 +224,8 @@ def fit_secondary_contact_spectrum(
     seed: int = 74031,
     folded: bool = False,
     convention: str = "simple",
+    integration_dt_fac: float = 0.02,
+    adaptive_integration: bool = False,
 ) -> dict:
     """Fit the five-parameter joint-SFS reference with independent restarts."""
     fitting_spectrum = np.asarray(spectrum, dtype=float)
@@ -198,6 +237,8 @@ def fit_secondary_contact_spectrum(
         )
     if convention not in {"simple", "generator_matched"}:
         raise ValueError(f"unknown spectrum convention: {convention}")
+    if integration_dt_fac <= 0:
+        raise ValueError("integration_dt_fac must be positive")
     if convention == "generator_matched":
         lower = np.asarray([0.01, 0.01, 1e-5, 0.002, 1e-6])
         upper = np.asarray([100.0, 100.0, 10.0, 0.98, 100.0])
@@ -207,7 +248,18 @@ def fit_secondary_contact_spectrum(
     rng = np.random.default_rng(seed)
     starts = [np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)]
     work = [
-        (fitting_spectrum, start, lower, upper, folded, restart, maxiter, convention)
+        (
+            fitting_spectrum,
+            start,
+            lower,
+            upper,
+            folded,
+            restart,
+            maxiter,
+            convention,
+            integration_dt_fac,
+            adaptive_integration,
+        )
         for restart, start in enumerate(starts)
     ]
     if workers > 1:
@@ -271,6 +323,8 @@ def fit_secondary_contact_spectrum(
         "maxiter": maxiter,
         "folded": folded,
         "convention": convention,
+        "integration_dt_fac": integration_dt_fac,
+        "adaptive_integration": adaptive_integration,
     }
 
 
