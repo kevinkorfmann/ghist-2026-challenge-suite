@@ -21,8 +21,12 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     device = _device()
     preds, aleatoric = [], []
     for path in sorted(checkpoint_dir.glob("model_*.pt")):
-        model = BottleneckNet(b.windows.shape[1], b.sfs.shape[0]).to(device)
         state = torch.load(path, map_location=device)
+        model_config = state.get(
+            "model_config",
+            {"window_features": b.windows.shape[1], "sfs_bins": b.sfs.shape[0]},
+        )
+        model = BottleneckNet(**model_config).to(device)
         model.load_state_dict(state["state_dict"])
         model.eval()
         with torch.no_grad():

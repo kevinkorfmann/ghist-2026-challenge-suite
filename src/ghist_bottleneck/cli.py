@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
+
+import yaml
 
 from .features import FeatureBundle, extract_vcf
 from .infer import predict
@@ -27,6 +30,7 @@ def main() -> None:
     tr.add_argument("--dataset", required=True)
     tr.add_argument("--out-dir", required=True)
     tr.add_argument("--quick", action="store_true")
+    tr.add_argument("--config", help="YAML model and training configuration")
     inf = sub.add_parser("infer")
     inf.add_argument("--observed", required=True)
     inf.add_argument("--checkpoint-dir", required=True)
@@ -46,7 +50,19 @@ def main() -> None:
             n_sims=args.n_sims, seed=args.seed, quick=args.quick,
         )
     elif args.command == "train":
-        train_ensemble(args.dataset, args.out_dir, quick=args.quick)
+        configuration = yaml.safe_load(Path(args.config).read_text()) if args.config else {}
+        training = configuration.get("training", {})
+        train_ensemble(
+            args.dataset,
+            args.out_dir,
+            quick=args.quick,
+            model_config=configuration.get("model", {}),
+            seeds=tuple(training.get("seeds", (17, 29, 43, 71, 101))),
+            epochs=int(training.get("epochs", 80)),
+            learning_rate=float(training.get("learning_rate", 2e-4)),
+            weight_decay=float(training.get("weight_decay", 2e-3)),
+            batch_size=int(training.get("batch_size", 64)),
+        )
     elif args.command == "infer":
         print(json.dumps(predict(args.observed, args.checkpoint_dir, args.out), indent=2))
     else:

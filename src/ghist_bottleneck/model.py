@@ -28,19 +28,25 @@ class BottleneckNet(nn.Module):
         sfs_bins: int = 116,
         width: int = 96,
         mixture_components: int = 8,
+        dilations: tuple[int, ...] = (1, 2, 4, 8),
+        context_layers: int = 2,
+        attention_heads: int = 8,
+        dropout: float = 0.12,
     ):
         super().__init__()
+        if width % 8 or width % attention_heads:
+            raise ValueError("width must be divisible by 8 and attention_heads")
         self.mixture_components = mixture_components
         self.window_in = nn.Linear(window_features, width)
-        self.local = nn.Sequential(*[ResidualConv(width, d) for d in (1, 2, 4, 8)])
+        self.local = nn.Sequential(*[ResidualConv(width, d) for d in dilations])
         layer = nn.TransformerEncoderLayer(
-            d_model=width, nhead=8, dim_feedforward=width * 3,
-            dropout=0.12, activation="gelu", batch_first=True, norm_first=True,
+            d_model=width, nhead=attention_heads, dim_feedforward=width * 3,
+            dropout=dropout, activation="gelu", batch_first=True, norm_first=True,
         )
-        self.context = nn.TransformerEncoder(layer, num_layers=2)
+        self.context = nn.TransformerEncoder(layer, num_layers=context_layers)
         self.sfs = nn.Sequential(nn.Linear(sfs_bins, width), nn.GELU(), nn.LayerNorm(width))
         self.head = nn.Sequential(
-            nn.Linear(width * 3, width * 2), nn.GELU(), nn.Dropout(0.12),
+            nn.Linear(width * 3, width * 2), nn.GELU(), nn.Dropout(dropout),
             # mixture logits + two means + three Cholesky parameters
             nn.Linear(width * 2, mixture_components * 6),
         )
