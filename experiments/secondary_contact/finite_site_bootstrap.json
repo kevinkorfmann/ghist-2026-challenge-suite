@@ -1,0 +1,91 @@
+{
+  "replicates": 32,
+  "parameter_names": [
+    "mainland_population_size",
+    "island_population_size",
+    "generations_since_split",
+    "generations_since_migration",
+    "migration_rate"
+  ],
+  "median_estimate_to_truth_ratio": [
+    0.9515206364957094,
+    0.9582498116847407,
+    0.9542194993277828,
+    0.9560410126076223,
+    1.0403885752971205
+  ],
+  "mean_relative_error": [
+    -0.0482615676433544,
+    -0.04211876611674074,
+    -0.04479661060243553,
+    -0.04182569605257119,
+    0.03937133757896524
+  ],
+  "median_absolute_relative_error": [
+    0.048479135407940466,
+    0.041750032191523845,
+    0.045780492196905775,
+    0.045397017844914844,
+    0.04038874871856801
+  ],
+  "ratio_interval_95": [
+    [
+      0.9404958885181883,
+      0.9246336641165728,
+      0.9458256719117552,
+      0.9120005724220335,
+      1.0018631657664663
+    ],
+    [
+      0.9646500591344149,
+      0.9898087182795624,
+      0.9674722914685495,
+      1.015926953054775,
+      1.0775387952205184
+    ]
+  ],
+  "competition_rrmse": {
+    "mean": 0.10603488795005878,
+    "median": 0.10248103024526231,
+    "interval_95": [
+      0.08654448594950181,
+      0.13527062258113656
+    ]
+  },
+  "observed_raw_fit": {
+    "mainland_population_size": 20127.674,
+    "island_population_size": 79105.691,
+    "generations_since_split": 4346.354,
+    "generations_since_migration": 1395.763,
+    "migration_rate": 0.00020724
+  },
+  "observed_bias_corrected": {
+    "mainland_population_size": 21153.166024992206,
+    "island_population_size": 82552.26354902262,
+    "generations_since_split": 4554.878623903482,
+    "generations_since_migration": 1459.9405063105257,
+    "migration_rate": 0.00019919480559541433
+  },
+  "observed_sampling_interval_95": {
+    "mainland_population_size": [
+      20865.259696413283,
+      21401.12917634594
+    ],
+    "island_population_size": [
+      79920.18007024397,
+      85553.54847000985
+    ],
+    "generations_since_split": [
+      4492.484217199197,
+      4595.301363743817
+    ],
+    "generations_since_migration": [
+      1373.8812577056863,
+      1530.440925374883
+    ],
+    "migration_rate": [
+      0.00019232718201815492,
+      0.000206854595598844
+    ]
+  }
+}
