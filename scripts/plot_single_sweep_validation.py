@@ -135,7 +135,7 @@ def main() -> None:
     ax.axvline(center / 1e6, color=RED, lw=1.0, ls="--")
     ax.set_yticks(range(len(labels)), labels)
     ax.set(xlabel="Position (Mb)", title="Fine localization and candidate interval")
-    ax.set_xlim(38.20, 38.30)
+    ax.set_xlim((start - 10_000) / 1e6, (end + 10_000) / 1e6)
     panel_label(ax, "c")
 
     # d: untouched localization recovery.
@@ -146,7 +146,14 @@ def main() -> None:
     ]:
         ex, ey = ecdf(errors)
         ax.step(ex, ey, where="post", color=color, lw=1.8, label=f"{label} (n={errors.size})")
-    ax.axvline(interval["interval_selection"]["final_half_width"] / 1_000, color=RED, ls="--", lw=1.1, label="35 kb candidate half-width")
+    final_half_width_kb = interval["interval_selection"]["final_half_width"] / 1_000
+    ax.axvline(
+        final_half_width_kb,
+        color=RED,
+        ls="--",
+        lw=1.1,
+        label=f"{final_half_width_kb:g} kb candidate half-width",
+    )
     ax.set(xlabel="Absolute localization error (kb)", ylabel="Cumulative fraction", title="Untouched recovery after method lock")
     ax.set_xlim(0, 150)
     ax.set_ylim(0, 1.02)
@@ -157,7 +164,10 @@ def main() -> None:
     ax = axes[2, 0]
     exact_errors = []
     exact_spreads = []
-    for record in exact["records"]:
+    evaluation_records = [
+        record for record in exact["records"] if record["seed"] >= 75_225_128
+    ]
+    for record in evaluation_records:
         values = np.asarray(
             [
                 record["estimates"]["largest_gap_midpoint"],
@@ -170,12 +180,12 @@ def main() -> None:
     exact_errors = np.asarray(exact_errors)
     exact_spreads = np.asarray(exact_spreads)
     for errors, label, color in [
-        (exact_errors, "All exact-scale cells", BLUE),
+        (exact_errors, "All untouched cells", BLUE),
         (exact_errors[exact_spreads <= 50_000], "Observed-like agreement", ORANGE),
     ]:
         ex, ey = ecdf(errors)
         ax.step(ex, ey, where="post", color=color, lw=1.8, label=f"{label} (n={errors.size})")
-    ax.axvline(35, color=RED, ls="--", lw=1.1)
+    ax.axvline(final_half_width_kb, color=RED, ls="--", lw=1.1)
     ax.set(xlabel="Absolute localization error (kb)", ylabel="Cumulative fraction", title="Untouched unaccelerated recovery")
     ax.set_xlim(0, 250)
     ax.set_ylim(0, 1.02)

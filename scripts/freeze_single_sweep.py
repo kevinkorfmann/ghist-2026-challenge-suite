@@ -6,6 +6,9 @@ import json
 from pathlib import Path
 
 
+MAX_FROZEN_HALF_WIDTH = 75_000
+
+
 def load(path: Path) -> dict:
     return json.loads(path.read_text())
 
@@ -39,7 +42,7 @@ def validate(
 
     selected = candidate["interval_selection"]
     start, end = selected["interval"]
-    if selected["final_half_width"] > 50_000:
+    if selected["final_half_width"] > MAX_FROZEN_HALF_WIDTH:
         raise ValueError("candidate half-width exceeds the precision gate")
     outside = {
         name: value

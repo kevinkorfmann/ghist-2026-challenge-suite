@@ -13,9 +13,12 @@ def _recovery(q90: float) -> dict:
     }
 
 
-def _candidate() -> dict:
+def _candidate(half_width: int = 35_000) -> dict:
     return {
-        "interval_selection": {"interval": [965_000, 1_035_000], "final_half_width": 35_000},
+        "interval_selection": {
+            "interval": [1_000_000 - half_width, 1_000_000 + half_width],
+            "final_half_width": half_width,
+        },
         "observed_estimates": {"gap": 1_000_000, "composite": 1_020_000},
     }
 
@@ -45,5 +48,27 @@ def test_freeze_gate_rejects_scale_failure() -> None:
             _recovery(70_000),
             {"robustness_gate": {"passed": False}},
             _candidate(),
+            _raisd(),
+        )
+
+
+def test_freeze_gate_accepts_calibrated_60kb_half_width() -> None:
+    result = validate(
+        _recovery(60_000),
+        _recovery(70_000),
+        {"robustness_gate": {"passed": True}},
+        _candidate(60_000),
+        _raisd(),
+    )
+    assert result["candidate_hit_score"] == pytest.approx(1 / 1.6)
+
+
+def test_freeze_gate_rejects_half_width_above_75kb() -> None:
+    with pytest.raises(ValueError, match="precision gate"):
+        validate(
+            _recovery(60_000),
+            _recovery(70_000),
+            {"robustness_gate": {"passed": True}},
+            _candidate(76_000),
             _raisd(),
         )
