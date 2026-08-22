@@ -226,6 +226,7 @@ def fit_secondary_contact_spectrum(
     convention: str = "simple",
     integration_dt_fac: float = 0.02,
     adaptive_integration: bool = False,
+    initial_scaled: Sequence[float] | None = None,
 ) -> dict:
     """Fit the five-parameter joint-SFS reference with independent restarts."""
     fitting_spectrum = np.asarray(spectrum, dtype=float)
@@ -246,7 +247,24 @@ def fit_secondary_contact_spectrum(
         lower = np.asarray([0.01, 0.01, 1e-5, 1e-5, 1e-6])
         upper = np.asarray([100.0, 100.0, 10.0, 10.0, 100.0])
     rng = np.random.default_rng(seed)
-    starts = [np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)]
+    if initial_scaled is None:
+        starts = [
+            np.exp(rng.uniform(np.log(lower), np.log(upper)))
+            for _ in range(restarts)
+        ]
+    else:
+        initial = np.asarray(initial_scaled, dtype=np.float64)
+        if initial.shape != lower.shape or np.any(initial <= lower) or np.any(initial >= upper):
+            raise ValueError("initial_scaled must lie strictly within parameter bounds")
+        starts = [initial]
+        starts.extend(
+            np.clip(
+                np.exp(np.log(initial) + rng.normal(0.0, 0.35, len(initial))),
+                lower * 1.001,
+                upper / 1.001,
+            )
+            for _ in range(restarts - 1)
+        )
     work = [
         (
             fitting_spectrum,
@@ -325,6 +343,7 @@ def fit_secondary_contact_spectrum(
         "convention": convention,
         "integration_dt_fac": integration_dt_fac,
         "adaptive_integration": adaptive_integration,
+        "initial_scaled": None if initial_scaled is None else list(initial_scaled),
     }
 
 

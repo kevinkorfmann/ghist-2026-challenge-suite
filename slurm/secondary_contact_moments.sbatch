@@ -23,6 +23,10 @@ elif [[ -n "${PROJECTION:-}" ]]; then
   EXTRA+=(--projection "$PROJECTION1" "$PROJECTION2")
 fi
 if [[ "${ADAPT_DT:-0}" == "1" ]]; then EXTRA+=(--adaptive-integration); fi
+if [[ -n "${INITIAL_SCALED:-}" ]]; then
+  read -r -a INITIAL_VALUES <<< "$INITIAL_SCALED"
+  EXTRA+=(--initial-scaled "${INITIAL_VALUES[@]}")
+fi
 .venv/bin/python scripts/run_secondary_contact_moments.py \
   --vcf data/raw/demography/secondary_contact/testing/secondary_contact.testing.vcf.gz \
   --out "artifacts/task2_secondary_contact/moments_${MODE}.json" \
