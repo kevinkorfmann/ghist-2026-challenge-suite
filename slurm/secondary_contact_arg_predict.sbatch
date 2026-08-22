@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=sc-arg-predict
-#SBATCH --partition=genoa-std-mem
-#SBATCH --cpus-per-task=2
+#SBATCH --partition=b200-mig45
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=6
 #SBATCH --mem-per-cpu=5632M
 #SBATCH --time=02:00:00
 #SBATCH --output=logs/%x-%j.out
@@ -15,4 +16,5 @@ cd "$PROJECT_ROOT"
   --features artifacts/task2_secondary_contact/tiled_arg_features.npz \
   --checkpoints 'artifacts/task2_secondary_contact/model_arg_*_*.pt' \
   --out artifacts/task2_secondary_contact/arg_ensemble_testing_prediction.json \
-  --tiles-per-block 20
+  --tiles-per-block 20 \
+  --device cuda

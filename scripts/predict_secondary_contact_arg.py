@@ -28,7 +28,18 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--tiles-per-block", type=int, default=20)
     parser.add_argument("--batch-size", type=int, default=128)
+    parser.add_argument(
+        "--device",
+        default="auto",
+        choices=("auto", "cpu", "cuda"),
+        help="Inference device; auto uses CUDA when it is available.",
+    )
     args = parser.parse_args()
+    device = torch.device(
+        "cuda" if args.device == "auto" and torch.cuda.is_available() else args.device
+    )
+    if args.device == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA was requested but is not available")
     paths = [Path(path) for path in sorted(glob.glob(args.checkpoints))]
     if not paths:
         raise FileNotFoundError(f"no checkpoints match {args.checkpoints!r}")
@@ -52,7 +63,7 @@ def main() -> None:
         checkpoint = torch.load(path, map_location="cpu", weights_only=False)
         model = SecondaryContactNet(**checkpoint["model_configuration"])
         model.load_state_dict(checkpoint["model"])
-        model.eval()
+        model.to(device).eval()
         normalization = checkpoint["normalization"]
         window_mean = np.asarray(normalization["window_mean"])
         window_scale = np.asarray(normalization["window_scale"])
@@ -72,12 +83,22 @@ def main() -> None:
             for start in range(0, tiles, args.batch_size):
                 stop = min(start + args.batch_size, tiles)
                 mean, log_variance = model(
-                    torch.as_tensor(windows[start:stop], dtype=torch.float32),
-                    torch.as_tensor(spectra[start:stop], dtype=torch.float32),
-                    torch.as_tensor(globals_normalized[start:stop], dtype=torch.float32),
+                    torch.as_tensor(
+                        windows[start:stop], dtype=torch.float32, device=device
+                    ),
+                    torch.as_tensor(
+                        spectra[start:stop], dtype=torch.float32, device=device
+                    ),
+                    torch.as_tensor(
+                        globals_normalized[start:stop],
+                        dtype=torch.float32,
+                        device=device,
+                    ),
                 )
-                transformed.append(mean.numpy() * target_scale + target_mean)
-                log_variances.append(log_variance.numpy())
+                transformed.append(
+                    mean.detach().cpu().numpy() * target_scale + target_mean
+                )
+                log_variances.append(log_variance.detach().cpu().numpy())
         transformed = np.concatenate(transformed)
         log_variances = np.concatenate(log_variances)
         block_prediction = transformed.reshape(
@@ -102,6 +123,7 @@ def main() -> None:
     physical_blocks = inverse_transform_targets(ensemble_blocks)
     result = {
         "policy": "local_prediction_only",
+        "device": str(device),
         "tiles": tiles,
         "tiles_per_block": args.tiles_per_block,
         "blocks": len(ensemble_blocks),
