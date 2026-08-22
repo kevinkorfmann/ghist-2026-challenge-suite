@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 from concurrent.futures import ProcessPoolExecutor
+import hashlib
 import json
 from pathlib import Path
 
@@ -9,6 +10,14 @@ import numpy as np
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
 from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(8 * 1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def recover_folded_histogram(encoded: np.ndarray, total: int) -> np.ndarray:
@@ -177,7 +186,11 @@ def main() -> None:
     observed_fraction = float(1 / (1 + np.exp(-observed_chosen[1])))
     serializable = {
         "dataset": str(args.dataset),
+        "dataset_sha256": sha256(args.dataset),
         "split_record": str(args.split_record),
+        "split_record_sha256": sha256(args.split_record),
+        "observed_fit_sha256": sha256(args.observed_fit),
+        "evaluator_sha256": sha256(Path(__file__)),
         "nominal_cells": len(ordered_cells),
         "split_sizes": {name: len(values) for name, values in split_cells.items()},
         "restarts_per_cell": args.restarts,
