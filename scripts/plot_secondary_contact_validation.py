@@ -80,7 +80,7 @@ def main() -> None:
 
     # a: individual fixed-center scores, retaining their matched-replicate identity.
     label, fixed, _ = comparisons[0]
-    resolutions = fixed["ranking"]
+    resolutions = list(fixed["summaries"])
     score_vectors = [
         np.asarray(list(fixed["summaries"][name]["replicate_scores"].values()))
         for name in resolutions
@@ -95,6 +95,24 @@ def main() -> None:
         whiskerprops={"color": "#555555", "linewidth": 0.8},
         capprops={"color": "#555555", "linewidth": 0.8},
     )
+    common_replicates = set.intersection(
+        *(
+            set(fixed["summaries"][name]["replicate_scores"])
+            for name in resolutions
+        )
+    )
+    for replicate in sorted(common_replicates, key=int):
+        axes[0].plot(
+            np.arange(len(resolutions)),
+            [
+                fixed["summaries"][name]["replicate_scores"][replicate]
+                for name in resolutions
+            ],
+            color="#A7A7A7",
+            linewidth=0.45,
+            alpha=0.48,
+            zorder=1,
+        )
     for index, (box, values) in enumerate(zip(boxes["boxes"], score_vectors)):
         box.set(facecolor=COLORS[index % len(COLORS)], alpha=0.42, edgecolor="#333333")
         offsets = np.linspace(-0.16, 0.16, len(values))
@@ -145,7 +163,7 @@ def main() -> None:
 
     # c: parameter-resolved natural-scale error for the broadest comparison.
     _, broad, _ = comparisons[-1]
-    heatmap_labels = broad["ranking"]
+    heatmap_labels = list(broad["summaries"])
     matrix = np.asarray(
         [
             list(broad["summaries"][name]["median_absolute_relative_error"].values())
