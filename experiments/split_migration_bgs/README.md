@@ -54,3 +54,17 @@ to bracket the leading generator: AFR 15,349–16,339, EUR 21,827–23,887, spli
 4,248–4,687 generations, and migration 0.0001406–0.0001585. This argues for
 whole-genome aggregation with chromosome-aware uncertainty rather than choosing
 the most convenient arm.
+
+The chromosome-stratified 1 Mb bootstrap contains 108 complete blocks and 64
+successful replicates. Its 95% intervals are 14,520–17,037 AFR individuals,
+20,937–24,109 EUR individuals, 4,108–4,737 generations, and
+0.00013896–0.00016216 migration. The leading 16,000 / 24,000 / 4,500 /
+0.00015 candidate lies inside all four intervals.
+
+The leading testing prediction is
+16,000 AFR individuals, 24,000 EUR individuals, a 4,500-generation split, and
+0.00015 symmetric migration. The aggregation is the median of three stable
+1–100 kb noncoding projections followed by generator-level rounding. Identity
+mapping wins the six-point held-out calibration, so no correction is applied.
+A stricter numerical-integration convergence check is the last gate before the
+freeze record is written. Nothing has been submitted.

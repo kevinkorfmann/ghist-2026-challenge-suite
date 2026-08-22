@@ -43,7 +43,7 @@ and [method comparison](docs/method_comparison.md).
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
 | Secondary Contact | Task 2 frozen, not submitted | corrected 40-by-30 hidden-epoch SFS estimate: 21,139 and 82,967 individuals, split 4,544 generations, contact 1,455 generations, migration 0.000199006 |
 | Growth with background selection | Task 3 frozen, not submitted | 5,000 generations and two-fold exponential growth; projection, linked-block, broad recovery, and selection-strength stress gates pass |
-| Split migration with background selection | active | three projections agree on raw 16,192 / 22,949 individuals, 4,388-generation split, and 0.000146697 migration; matched selection recovery running |
+| Split migration with background selection | final numerical gate running | leading candidate 16,000 / 24,000 individuals, 4,500-generation split, and 0.00015 symmetric migration; projection, recovery, arm-holdout, and linked-block gates pass |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
@@ -213,3 +213,20 @@ The accepted prediction, source hashes, job identifiers, and all gates are in
 with publication figures in
 [`figures/task2_secondary_contact/`](figures/task2_secondary_contact/). No result
 has been uploaded or submitted.
+
+## Task 4 leading result
+
+The leading Split Migration with background selection estimate is 16,000 AFR and
+24,000 EUR individuals, a split 4,500 generations ago, and symmetric migration
+of 0.00015 per generation. The raw median across three joint-spectrum
+projections is 16,192 / 22,949 individuals, 4,388 generations, and 0.000146697.
+The accepted values are generator-level rounding supported by a matched
+four-arm selection simulation, not a fitted correction.
+
+Across six held-out truth points, the uncorrected estimator beats every tested
+calibration. A chromosome-stratified 64-replicate 1 Mb block bootstrap contains
+the accepted candidate in all four 95% intervals, while leave-one-arm-out fits
+remain compatible with the whole-genome estimate. The final dataset stays
+sealed and nothing has been uploaded or submitted. One stricter numerical-
+integration gate remains before the result is frozen. The validation figure is in
+[`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/).
