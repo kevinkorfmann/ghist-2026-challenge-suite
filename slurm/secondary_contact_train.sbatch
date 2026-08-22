@@ -12,9 +12,14 @@ set -euo pipefail
 module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
+if [[ "${DATASET:-chromosome}" == "sfs" ]]; then
+  CHUNKS='data/processed/secondary_contact/sfs_chunks/chunk_*.npz'
+else
+  CHUNKS='data/processed/secondary_contact/chunks/chunk_*.npz'
+fi
 .venv/bin/python scripts/train_secondary_contact.py \
-  --chunks 'data/processed/secondary_contact/chunks/chunk_*.npz' \
-  --out "artifacts/task2_secondary_contact/model_${BACKEND:-transformer}_${SEED:-7701}.pt" \
+  --chunks "$CHUNKS" \
+  --out "artifacts/task2_secondary_contact/model_${DATASET:-chromosome}_${BACKEND:-transformer}_${SEED:-7701}.pt" \
   --context-backend "${BACKEND:-transformer}" \
   --seed "${SEED:-7701}" \
   --epochs "${EPOCHS:-120}"

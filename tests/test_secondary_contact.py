@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import gzip
 import tempfile
 import unittest
 
@@ -23,6 +24,7 @@ from ghist_secondary_contact.simulate import (
     parameter_design,
     simulate_block,
 )
+from ghist_secondary_contact.vcf_fast import scan_secondary_contact_vcf
 from ghist_secondary_contact.features import (
     inverse_transform_targets,
     population_pair_hazards,
@@ -202,6 +204,40 @@ chr1\t20\t.\tC\tT\t.\tPASS\tAA=T\tGT\t0|0\t0|1
         )
         self.assertEqual(bundle.windows.shape, (1, 12))
         self.assertEqual(bundle.joint_sfs.shape, (9, 7))
+
+    def test_fast_registered_layout_scanner_orients_ancestral_alleles(self):
+        names = [f"mainland_{index}" for index in range(1, 44)] + [
+            f"island_{index}" for index in range(1, 25)
+        ]
+        header = (
+            "##fileformat=VCFv4.2\n"
+            "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t"
+            + "\t".join(names)
+            + "\n"
+        )
+        genotypes1 = ["0|0"] * 67
+        genotypes1[0] = "0|1"
+        genotypes1[43] = "1|1"
+        genotypes2 = ["0|0"] * 67
+        genotypes2[0] = "0|0"
+        genotypes2[43] = "0|1"
+        records = (
+            "1\t10\t.\tA\tG\t.\tPASS\tAA=A\tGT\t"
+            + "\t".join(genotypes1)
+            + "\n"
+            + "1\t20\t.\tC\tT\t.\tPASS\tAA=T\tGT\t"
+            + "\t".join(genotypes2)
+            + "\n"
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "tiny.vcf.gz"
+            with gzip.open(path, "wt") as handle:
+                handle.write(header + records)
+            spectrum, metadata = scan_secondary_contact_vcf(path)
+        self.assertEqual(spectrum[1, 2], 1)
+        self.assertEqual(spectrum[86, 47], 1)
+        self.assertEqual(metadata["records"], 2)
+        self.assertEqual(metadata["ancestral_alternate_records"], 1)
 
 
 if __name__ == "__main__":

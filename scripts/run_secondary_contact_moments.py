@@ -5,12 +5,8 @@ import json
 from pathlib import Path
 
 import numpy as np
-import pysam
-
-from ghist_secondary_contact.spectrum import (
-    fit_secondary_contact_spectrum,
-    joint_spectrum_from_vcf,
-)
+from ghist_secondary_contact.spectrum import fit_secondary_contact_spectrum
+from ghist_secondary_contact.vcf_fast import scan_secondary_contact_vcf
 
 
 def main() -> None:
@@ -23,17 +19,7 @@ def main() -> None:
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
     args = parser.parse_args()
-    vcf = pysam.VariantFile(str(args.vcf))
-    samples = list(vcf.header.samples)
-    populations = {
-        "mainland": [sample for sample in samples if sample.startswith("mainland_")],
-        "island": [sample for sample in samples if sample.startswith("island_")],
-    }
-    spectrum, metadata = joint_spectrum_from_vcf(
-        args.vcf,
-        populations,
-        polarized=not args.folded,
-    )
+    spectrum, metadata = scan_secondary_contact_vcf(args.vcf)
     result = fit_secondary_contact_spectrum(
         spectrum,
         mutation_rate=args.mutation_rate,
