@@ -11,9 +11,20 @@ from ghist_growth_bgs.audit import (
     load_recombination_map,
 )
 from ghist_growth_bgs.spectrum import combine_spectra, spectrum_from_counts
+from ghist_growth_bgs.blocks import distance_stratum_segments
 
 
 class GrowthBackgroundSelectionTests(unittest.TestCase):
+    def test_distance_stratum_segments_have_exact_exposure(self):
+        intervals = [(100_000, 110_000)]
+        segments = distance_stratum_segments(
+            intervals,
+            300_000,
+            {"noncoding_1kb_10kb", "noncoding_10kb_100kb"},
+        )
+        self.assertEqual(segments, [(0, 99_000), (111_000, 210_000)])
+        self.assertEqual(sum(end - start for start, end in segments), 198_000)
+
     def test_serialized_spectrum_helpers(self):
         first = spectrum_from_counts({"1": 4, "3": 2}, 4)
         second = spectrum_from_counts({"2": 5}, 4)
