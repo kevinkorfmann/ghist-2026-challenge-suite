@@ -29,6 +29,8 @@ git -C "$FASTCXT_ROOT" checkout --detach "$FASTCXT_REVISION"
   "apache-tvm-ffi==0.1.9" \
   "nvidia-cutlass-dsl==4.4.2" \
   "quack-kernels==0.3.4"
+"$PROJECT_ROOT/.venv/bin/pip" uninstall -y \
+  nvidia-cutlass-dsl-libs-cu12 nvidia-cutlass-dsl-libs-core
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps --no-build-isolation \
   "causal-conv1d==1.6.2.post1"
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps --no-build-isolation \
