@@ -15,6 +15,8 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--restarts", type=int, default=64)
     parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--projection", type=int, nargs=2)
+    parser.add_argument("--maxiter", type=int, default=750)
     parser.add_argument("--seed", type=int, default=74031)
     parser.add_argument("--folded", action="store_true")
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
@@ -27,6 +29,8 @@ def main() -> None:
         sequence_length=args.sequence_length,
         restarts=args.restarts,
         workers=args.workers,
+        projection=None if args.projection is None else tuple(args.projection),
+        maxiter=args.maxiter,
         seed=args.seed,
         folded=args.folded,
     )

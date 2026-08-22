@@ -15,11 +15,15 @@ REFERENCE_PYTHON="$REFERENCE_ROOT/.venv-cluster/bin/python"
 POLEGON="$REFERENCE_ROOT/references/POLEGON/POLEGON/POLEGON/polegon_master"
 WINDOW_INDEX="${WINDOW_INDEX:-500}"
 DRAW="${DRAW:-8}"
+VERSION="${VERSION:-v2}"
 RUN_ROOT="$PROJECT_ROOT/artifacts/task2_secondary_contact/singer/window_${WINDOW_INDEX}"
-INPUT_PREFIX="$RUN_ROOT/topology_${DRAW}"
-OUTPUT_PREFIX="$RUN_ROOT/polegon_${DRAW}"
+TOPOLOGY="$RUN_ROOT/topology_${DRAW}.trees"
+INPUT_PREFIX="$RUN_ROOT/polegon_input_${DRAW}_${VERSION}"
+OUTPUT_PREFIX="$RUN_ROOT/polegon_${DRAW}_${VERSION}"
 cd "$PROJECT_ROOT"
-test -s "$INPUT_PREFIX.trees"
+test -s "$TOPOLOGY"
+.venv/bin/python scripts/prepare_polegon_tree_sequence.py \
+  --input "$TOPOLOGY" --output "$INPUT_PREFIX.trees"
 "$REFERENCE_PYTHON" "$POLEGON" \
   -m 8.4e-8 \
   -input "$INPUT_PREFIX" -output "$OUTPUT_PREFIX" \
@@ -30,4 +34,4 @@ test -s "$INPUT_PREFIX.trees"
   -seed "${SEED:-68001}" -write_samples
 .venv/bin/python scripts/extract_secondary_contact_arg_features.py \
   --trees "$OUTPUT_PREFIX.trees" \
-  --out "$RUN_ROOT/polegon_${DRAW}_coalescence_hazards.npz"
+  --out "$RUN_ROOT/polegon_${DRAW}_${VERSION}_coalescence_hazards.npz"

@@ -43,7 +43,7 @@ def secondary_contact_spectrum(
 
 
 def _fit_restart(arguments: tuple) -> dict:
-    spectrum, start, lower, upper, folded, restart = arguments
+    spectrum, start, lower, upper, folded, restart, maxiter = arguments
     import moments
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=float))
@@ -61,7 +61,7 @@ def _fit_restart(arguments: tuple) -> dict:
                 model,
                 lower_bound=lower,
                 upper_bound=upper,
-                maxiter=750,
+                maxiter=maxiter,
                 verbose=0,
             ),
             dtype=float,
@@ -93,16 +93,25 @@ def fit_secondary_contact_spectrum(
     sequence_length: float = 100_000_000,
     restarts: int = 32,
     workers: int = 1,
+    projection: tuple[int, int] | None = None,
+    maxiter: int = 750,
     seed: int = 74031,
     folded: bool = False,
 ) -> dict:
     """Fit the five-parameter joint-SFS reference with independent restarts."""
+    fitting_spectrum = np.asarray(spectrum, dtype=float)
+    if projection is not None:
+        import moments
+
+        fitting_spectrum = np.asarray(
+            moments.Spectrum(fitting_spectrum).project(list(projection)), dtype=float
+        )
     lower = np.asarray([0.01, 0.01, 1e-5, 1e-5, 1e-6])
     upper = np.asarray([100.0, 100.0, 10.0, 10.0, 100.0])
     rng = np.random.default_rng(seed)
     starts = [np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)]
     work = [
-        (np.asarray(spectrum, dtype=float), start, lower, upper, folded, restart)
+        (fitting_spectrum, start, lower, upper, folded, restart, maxiter)
         for restart, start in enumerate(starts)
     ]
     if workers > 1:
@@ -149,6 +158,8 @@ def fit_secondary_contact_spectrum(
         "failed_restarts": failures,
         "restarts": restarts,
         "workers": workers,
+        "projection": None if projection is None else list(projection),
+        "maxiter": maxiter,
         "folded": folded,
     }
 
