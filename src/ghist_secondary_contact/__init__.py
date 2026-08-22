@@ -10,6 +10,7 @@ from .spectrum import (
     fit_secondary_contact_spectrum,
     generator_matched_secondary_contact_spectrum,
     secondary_contact_spectrum,
+    transform_spectrum_counts,
 )
 from .model import SecondaryContactNet
 from .simulate import SimulationNuisance, parameter_design, simulate_block
@@ -40,4 +41,5 @@ __all__ = [
     "summarize_tree_sequence",
     "simulate_block",
     "transform_targets",
+    "transform_spectrum_counts",
 ]

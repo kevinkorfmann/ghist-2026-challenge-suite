@@ -39,4 +39,5 @@ fi
   --width "${WIDTH:-128}" \
   --score-weight "${SCORE_WEIGHT:-0.15}" \
   --objective "${OBJECTIVE:-posterior}" \
+  --spectrum-transform "${SPECTRUM_TRANSFORM:-log_l2}" \
   "${EXTRA_ARGS[@]}"

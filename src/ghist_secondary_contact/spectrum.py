@@ -10,6 +10,23 @@ import pysam
 from scipy.stats import hypergeom
 
 
+def transform_spectrum_counts(
+    spectrum: np.ndarray,
+    method: str = "log_l2",
+) -> np.ndarray:
+    """Map nonnegative SFS counts to a stable unit-norm representation."""
+    values = np.asarray(spectrum, dtype=np.float64)
+    if np.any(values < 0) or not np.all(np.isfinite(values)):
+        raise ValueError("spectrum counts must be finite and nonnegative")
+    if method == "log_l2":
+        transformed = np.log1p(values)
+    elif method == "sqrt_proportion":
+        transformed = np.sqrt(values / (values.sum() + 1e-12))
+    else:
+        raise ValueError(f"unknown spectrum transform: {method}")
+    return transformed / (np.linalg.norm(transformed) + 1e-12)
+
+
 def secondary_contact_spectrum(
     parameters: Sequence[float],
     sample_sizes: Sequence[int],

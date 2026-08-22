@@ -22,6 +22,7 @@ from ghist_secondary_contact.spectrum import (
     generator_matched_secondary_contact_spectrum,
     joint_spectrum_from_vcf,
     secondary_contact_spectrum,
+    transform_spectrum_counts,
 )
 from ghist_secondary_contact.model import SecondaryContactNet, mixture_nll
 from ghist_secondary_contact.simulate import (
@@ -146,6 +147,13 @@ class SecondaryContactTests(unittest.TestCase):
         self.assertEqual(spectrum.shape, (9, 7))
         self.assertTrue(np.isfinite(spectrum).all())
         self.assertGreater(spectrum.S(), 0)
+
+    def test_spectrum_count_transforms_are_unit_norm(self):
+        counts = np.asarray([[0.0, 3.0], [5.0, 11.0]])
+        for method in ("log_l2", "sqrt_proportion"):
+            transformed = transform_spectrum_counts(counts, method)
+            self.assertAlmostEqual(float(np.linalg.norm(transformed)), 1.0)
+            self.assertTrue(np.all(transformed >= 0))
 
     def test_joint_spectrum_respects_ancestral_allele(self):
         text = """##fileformat=VCFv4.2

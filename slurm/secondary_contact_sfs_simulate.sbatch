@@ -34,4 +34,5 @@ fi
   --workers "${SLURM_CPUS_PER_TASK}" \
   --design "$DESIGN" \
   --convention "${CONVENTION:-simple}" \
+  --spectrum-transform "${SPECTRUM_TRANSFORM:-log_l2}" \
   "${EXTRA_ARGS[@]}"

@@ -12,6 +12,7 @@ from ghist_secondary_contact.simulate import focused_parameter_design, parameter
 from ghist_secondary_contact.spectrum import (
     generator_matched_secondary_contact_spectrum,
     secondary_contact_spectrum,
+    transform_spectrum_counts,
 )
 
 
@@ -24,9 +25,18 @@ def _sha256(path: Path) -> str:
 
 
 def _one_point(
-    arguments: tuple[int, np.ndarray, int, float, float, int, str],
+    arguments: tuple[int, np.ndarray, int, float, float, int, str, str],
 ) -> dict:
-    point_id, point, replicates, mutation_rate, sequence_length, seed, convention = arguments
+    (
+        point_id,
+        point,
+        replicates,
+        mutation_rate,
+        sequence_length,
+        seed,
+        convention,
+        spectrum_transform,
+    ) = arguments
     ancestral, size1, size2, split, contact, migration = point
     if convention == "generator_matched":
         scaled = (
@@ -63,9 +73,7 @@ def _one_point(
         theta = 4 * ancestral * mutation_rate * mutation_multiplier * sequence_length
         observed = rng.poisson(theta * oriented).astype(np.float64)
         counts.append(int(observed.sum()))
-        transformed = np.log1p(observed)
-        transformed /= np.linalg.norm(transformed) + 1e-12
-        spectra.append(transformed)
+        spectra.append(transform_spectrum_counts(observed, spectrum_transform))
         nuisance.append((mutation_multiplier, orientation_error))
     return {
         "point_id": point_id,
@@ -93,6 +101,11 @@ def main() -> None:
         "--convention",
         choices=("simple", "generator_matched"),
         default="simple",
+    )
+    parser.add_argument(
+        "--spectrum-transform",
+        choices=("log_l2", "sqrt_proportion"),
+        default="log_l2",
     )
     parser.add_argument("--center", type=float, nargs=6)
     parser.add_argument("--point-id-offset", type=int, default=0)
@@ -122,6 +135,7 @@ def main() -> None:
             args.sequence_length,
             args.seed,
             args.convention,
+            args.spectrum_transform,
         )
         for point_id in range(args.point_start, stop)
     ]
@@ -163,6 +177,7 @@ def main() -> None:
         "seed": args.seed,
         "design": args.design,
         "convention": args.convention,
+        "spectrum_transform": args.spectrum_transform,
         "center": args.center,
         "point_id_offset": args.point_id_offset,
         "domain_labels": {"0": "core", "1": "guard", "2": "broad"},

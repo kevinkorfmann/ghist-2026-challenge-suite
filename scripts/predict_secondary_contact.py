@@ -10,6 +10,7 @@ import torch
 
 from ghist_secondary_contact.features import inverse_transform_targets
 from ghist_secondary_contact.model import SecondaryContactNet
+from ghist_secondary_contact.spectrum import transform_spectrum_counts
 from ghist_secondary_contact.vcf_fast import scan_secondary_contact_vcf
 
 
@@ -65,13 +66,15 @@ def main() -> None:
     weights = np.power(np.maximum(selection_scores, 1e-8), -args.score_power)
     weights /= weights.sum()
     spectrum, metadata = scan_secondary_contact_vcf(args.vcf)
-    transformed_spectrum = np.log1p(spectrum.astype(np.float64))
-    transformed_spectrum /= np.linalg.norm(transformed_spectrum) + 1e-12
     predictions = []
     uncertainty = []
     records = []
     for (path, report), weight in zip(candidates, weights):
         checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+        spectrum_transform = checkpoint.get("spectrum_transform", "log_l2")
+        transformed_spectrum = transform_spectrum_counts(
+            spectrum, spectrum_transform
+        )
         configuration = checkpoint["model_configuration"]
         model = SecondaryContactNet(**configuration)
         model.load_state_dict(checkpoint["model"])
@@ -102,6 +105,7 @@ def main() -> None:
                 "best_epoch": checkpoint["epoch"],
                 "selection_rrmse": checkpoint["selection_rrmse"],
                 "domain_filter": report.get("domain_filter"),
+                "spectrum_transform": spectrum_transform,
                 "ensemble_weight": float(weight),
                 "prediction": dict(zip(OUTPUT_NAMES, predictions[-1].tolist())),
                 "transformed_standard_deviation": uncertainty[-1].tolist(),

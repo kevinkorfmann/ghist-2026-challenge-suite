@@ -132,6 +132,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=7701)
     parser.add_argument("--domain-filter", type=str)
     parser.add_argument("--objective", choices=("posterior", "direct"), default="posterior")
+    parser.add_argument(
+        "--spectrum-transform",
+        choices=("log_l2", "sqrt_proportion"),
+        default="log_l2",
+    )
     args = parser.parse_args()
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
@@ -275,6 +280,7 @@ def main() -> None:
                     },
                     "epoch": epoch + 1,
                     "selection_rrmse": best_score,
+                    "spectrum_transform": args.spectrum_transform,
                 },
                 args.out,
             )
@@ -309,6 +315,7 @@ def main() -> None:
         "context_backend": args.context_backend,
         "domain_filter": args.domain_filter,
         "objective": args.objective,
+        "spectrum_transform": args.spectrum_transform,
         "history": history,
     }
     evaluation_domains = data["design_domain"][evaluation_indices]
