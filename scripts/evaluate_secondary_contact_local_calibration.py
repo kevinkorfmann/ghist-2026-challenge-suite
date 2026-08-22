@@ -53,6 +53,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--design", type=Path, required=True)
     parser.add_argument("--inputs", required=True)
+    parser.add_argument("--extra-calibration", action="append", default=[])
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--observed", type=float, nargs=5)
     args = parser.parse_args()
@@ -93,6 +94,27 @@ def main() -> None:
     if boundary_tasks:
         raise ValueError(f"optimizer-boundary results require retry: {boundary_tasks}")
 
+    extra_records = []
+    for pattern in args.extra_calibration:
+        for path in sorted(Path(value) for value in glob.glob(pattern)):
+            record = json.loads(path.read_text())
+            scaled = np.asarray(
+                [record["scaled_parameters"][key] for key in SCALED_PARAMETER_KEYS]
+            )
+            near_boundary = (scaled <= LOWER_BOUNDS * 1.001) | (
+                scaled >= UPPER_BOUNDS / 1.001
+            )
+            if np.any(near_boundary):
+                raise ValueError(f"extra calibration result is on a boundary: {path}")
+            extra_records.append(record)
+    extra_estimates = np.asarray(
+        [[record[key] for key in ESTIMATE_KEYS] for record in extra_records],
+        dtype=np.float64,
+    ).reshape((-1, len(ESTIMATE_KEYS)))
+    extra_truth = np.asarray(
+        [record["truth"] for record in extra_records], dtype=np.float64
+    ).reshape((-1, len(ESTIMATE_KEYS)))
+
     rows = sorted(design["rows"], key=lambda row: int(row["task_index"]))
     estimates = np.asarray(
         [[records[index][key] for key in ESTIMATE_KEYS] for index in range(len(rows))],
@@ -108,10 +130,16 @@ def main() -> None:
         raise ValueError("all three point-grouped partitions must be present")
 
     methods = ("identity", "median_ratio", *(f"ridge_{value:g}" for value in RIDGE_VALUES))
+    calibration_estimates = np.concatenate(
+        (estimates[masks["calibration"]], extra_estimates), axis=0
+    )
+    calibration_truth = np.concatenate(
+        (truth[masks["calibration"]], extra_truth), axis=0
+    )
     selection_results = {}
     for method in methods:
         correction = fit_log_correction(
-            method, estimates[masks["calibration"]], truth[masks["calibration"]]
+            method, calibration_estimates, calibration_truth
         )
         predictions = apply_log_correction(correction, estimates[masks["selection"]])
         selection_results[method] = score_summary(predictions, truth[masks["selection"]])
@@ -125,7 +153,9 @@ def main() -> None:
 
     development_mask = masks["calibration"] | masks["selection"]
     final_correction = fit_log_correction(
-        selected, estimates[development_mask], truth[development_mask]
+        selected,
+        np.concatenate((estimates[development_mask], extra_estimates), axis=0),
+        np.concatenate((truth[development_mask], extra_truth), axis=0),
     )
     evaluation_predictions = apply_log_correction(
         final_correction, estimates[masks["evaluation"]]
@@ -153,6 +183,8 @@ def main() -> None:
     result = {
         "design": str(args.design),
         "inputs": args.inputs,
+        "extra_calibration_patterns": args.extra_calibration,
+        "extra_calibration_replicates": len(extra_records),
         "point_grouped_partitions": design["partition_point_counts"],
         "selection_rule": "lowest selection mean competition RRMSE, then lowest median",
         "selection_results": selection_results,
