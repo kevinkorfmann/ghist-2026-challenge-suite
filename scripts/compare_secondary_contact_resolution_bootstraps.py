@@ -139,14 +139,20 @@ def main() -> None:
                 "replicate_differences": dict(zip(map(str, replicate_ids), delta.tolist())),
             }
 
-    ranking = sorted(labels, key=lambda label: (summaries[label]["median_competition_rrmse"], summaries[label]["mean_competition_rrmse"]))
+    ranking = sorted(
+        labels,
+        key=lambda label: (
+            summaries[label]["mean_competition_rrmse"],
+            summaries[label]["median_competition_rrmse"],
+        ),
+    )
     selection_valid = not any(
         summary["boundary_replicates"] for summary in summaries.values()
     )
     result = {
         "replicates": replicate_ids,
         "parameter_keys": PARAMETER_KEYS,
-        "selection_rule": "lowest median competition RRMSE, then lowest mean competition RRMSE",
+        "selection_rule": "lowest mean competition RRMSE, then lowest median competition RRMSE",
         "ranking": ranking,
         "selection_valid": selection_valid,
         "selected_resolution": ranking[0] if selection_valid else None,

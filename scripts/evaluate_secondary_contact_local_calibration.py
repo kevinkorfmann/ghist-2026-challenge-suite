@@ -118,8 +118,8 @@ def main() -> None:
     selected = min(
         methods,
         key=lambda method: (
-            selection_results[method]["median_competition_rrmse"],
             selection_results[method]["mean_competition_rrmse"],
+            selection_results[method]["median_competition_rrmse"],
         ),
     )
 
@@ -154,7 +154,7 @@ def main() -> None:
         "design": str(args.design),
         "inputs": args.inputs,
         "point_grouped_partitions": design["partition_point_counts"],
-        "selection_rule": "lowest selection median competition RRMSE, then lowest mean",
+        "selection_rule": "lowest selection mean competition RRMSE, then lowest median",
         "selection_results": selection_results,
         "selected_method": selected,
         "untouched_evaluation": {
