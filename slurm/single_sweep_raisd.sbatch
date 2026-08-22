@@ -18,7 +18,23 @@ if [[ ! -d "$REFERENCE_ROOT/.git" ]]; then
 fi
 cd "$REFERENCE_ROOT"
 if [[ ! -x RAiSD ]]; then
-  ./install-RAiSD-GSL.sh
+  if [[ ! -f gsl/lib/libgsl.so ]]; then
+    if [[ ! -f gsl-latest.tar.gz ]]; then
+      wget https://ftp.gnu.org/gnu/gsl/gsl-latest.tar.gz
+    fi
+    if [[ -z "$(find . -maxdepth 1 -type d -name 'gsl-*' -print -quit)" ]]; then
+      tar -xzf gsl-latest.tar.gz
+    fi
+    GSL_SOURCE="$(find . -maxdepth 1 -type d -name 'gsl-*' | sort -V | tail -1)"
+    cd "$GSL_SOURCE"
+    ./configure --prefix="$REFERENCE_ROOT/gsl"
+    make -j "$SLURM_CPUS_PER_TASK"
+    make install
+    cd "$REFERENCE_ROOT"
+  fi
+  cp makefiles/Makefile.GSL Makefile
+  make clean || true
+  make -j "$SLURM_CPUS_PER_TASK"
 fi
 
 export LD_LIBRARY_PATH="$REFERENCE_ROOT/gsl/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
