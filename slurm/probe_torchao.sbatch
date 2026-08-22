@@ -11,12 +11,13 @@ set -euo pipefail
 
 module load python/3.11.11
 
+PROJECT_PYTHON="/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python"
 PROBE_ROOT="$(mktemp -d /tmp/ghist-torchao-probe.XXXXXX)"
 trap 'rm -rf "$PROBE_ROOT"' EXIT
 
 for VERSION in 0.10.0 0.11.0 0.12.0 0.13.0 0.14.0 0.15.0 0.16.0 0.17.0; do
   rm -f "$PROBE_ROOT"/*.whl
-  if ! python -m pip download \
+  if ! "$PROJECT_PYTHON" -m pip download \
     --disable-pip-version-check \
     --no-deps \
     --only-binary=:all: \
