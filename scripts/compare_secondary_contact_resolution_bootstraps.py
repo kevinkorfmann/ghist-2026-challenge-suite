@@ -15,6 +15,15 @@ PARAMETER_KEYS = (
     "generations_since_contact",
     "migration_rate",
 )
+SCALED_PARAMETER_KEYS = (
+    "population1_size_ratio",
+    "population2_size_ratio",
+    "split_duration_2N",
+    "contact_fraction",
+    "migration_2N",
+)
+LOWER_BOUNDS = np.asarray((0.01, 0.01, 1e-5, 0.002, 1e-6))
+UPPER_BOUNDS = np.asarray((100.0, 100.0, 10.0, 0.98, 100.0))
 
 
 def labelled_pattern(value: str) -> tuple[str, str]:
@@ -82,6 +91,25 @@ def main() -> None:
         score = np.sqrt(np.sum(errors**2, axis=1))
         relative_errors[label] = errors
         scores[label] = score
+        boundary_replicates = []
+        for index in replicate_ids:
+            scaled = np.asarray(
+                [records[index]["scaled_parameters"][key] for key in SCALED_PARAMETER_KEYS]
+            )
+            near_boundary = (scaled <= LOWER_BOUNDS * 1.001) | (
+                scaled >= UPPER_BOUNDS / 1.001
+            )
+            if np.any(near_boundary):
+                boundary_replicates.append(
+                    {
+                        "replicate": index,
+                        "parameters": [
+                            key
+                            for key, flagged in zip(SCALED_PARAMETER_KEYS, near_boundary)
+                            if flagged
+                        ],
+                    }
+                )
         summaries[label] = {
             "mean_competition_rrmse": float(score.mean()),
             "median_competition_rrmse": float(np.median(score)),
@@ -90,6 +118,7 @@ def main() -> None:
                 zip(PARAMETER_KEYS, np.median(np.abs(errors), axis=0).tolist())
             ),
             "replicate_scores": dict(zip(map(str, replicate_ids), score.tolist())),
+            "boundary_replicates": boundary_replicates,
         }
 
     rng = np.random.default_rng(args.seed)
@@ -111,12 +140,16 @@ def main() -> None:
             }
 
     ranking = sorted(labels, key=lambda label: (summaries[label]["median_competition_rrmse"], summaries[label]["mean_competition_rrmse"]))
+    selection_valid = not any(
+        summary["boundary_replicates"] for summary in summaries.values()
+    )
     result = {
         "replicates": replicate_ids,
         "parameter_keys": PARAMETER_KEYS,
         "selection_rule": "lowest median competition RRMSE, then lowest mean competition RRMSE",
         "ranking": ranking,
-        "selected_resolution": ranking[0],
+        "selection_valid": selection_valid,
+        "selected_resolution": ranking[0] if selection_valid else None,
         "summaries": summaries,
         "paired_comparisons": pairwise,
         "bootstrap_draws": args.bootstrap_draws,
