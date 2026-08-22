@@ -63,6 +63,13 @@ surrogate so that its untouched recovery score measures the correction rather
 than averaging incompatible generators. The earlier branch remains a negative
 control until the generator-matched selection and guard results are complete.
 
+A separate full-chromosome parametric bootstrap matches the observed finite-site
+mutation process with discrete genomic positions and JC69 mutations before
+filtering multiallelic records. Its smoke replicate produced a `1.67%`
+multiallelic fraction, compared with `1.70%` in the testing VCF. Thirty-two
+independent 100 Mb replicates are used to estimate local finite-genome bias and
+sampling intervals for the five reported parameters.
+
 In addition to learned genealogy features, a continuous-time three-state
 coalescent reference now propagates mainland/mainland, cross-population, and
 island/island lineage-pair states through contact, isolation, and the ancestral
