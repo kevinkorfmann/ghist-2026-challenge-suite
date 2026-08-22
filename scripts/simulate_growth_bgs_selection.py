@@ -132,6 +132,17 @@ def main() -> None:
         maxiter=500,
         seed=args.seed + 1,
     )
+    sudden_fit = fit_growth_spectrum(
+        spectrum,
+        sequence_length=exposure,
+        mutation_rate=args.mutation_rate,
+        projection=len(sample_nodes),
+        restarts=args.fit_restarts,
+        workers=1,
+        maxiter=500,
+        seed=args.seed + 2,
+        convention="sudden",
+    )
     payload = {
         "truth_in_analysis_units": {
             "ancestral_effective_size": args.ancestral_size,
@@ -157,6 +168,11 @@ def main() -> None:
             "physical_exposure_bp": exposure,
         },
         "fit": fit,
+        "sudden_fit": sudden_fit,
+        "log_likelihood_exponential_minus_sudden": (
+            fit["multinomial_log_likelihood"]
+            - sudden_fit["multinomial_log_likelihood"]
+        ),
         "relative_error": {
             "generations": fit["generations"] / args.generations - 1,
             "post_growth_scaling": fit["post_growth_scaling"] / args.scaling - 1,
