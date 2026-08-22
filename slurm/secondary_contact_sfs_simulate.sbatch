@@ -33,4 +33,5 @@ fi
   --replicates "${REPLICATES:-6}" \
   --workers "${SLURM_CPUS_PER_TASK}" \
   --design "$DESIGN" \
+  --convention "${CONVENTION:-simple}" \
   "${EXTRA_ARGS[@]}"

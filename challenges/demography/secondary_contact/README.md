@@ -57,6 +57,12 @@ five reported targets plus the ancestral scale inferred from theta. Folded and
 correctly polarized searches at three projections are compared to the simple
 model before either can be promoted.
 
+The same exact epoch convention is also used by a dedicated score-aligned SFS
+training campaign. This campaign is isolated from the earlier simple-model
+surrogate so that its untouched recovery score measures the correction rather
+than averaging incompatible generators. The earlier branch remains a negative
+control until the generator-matched selection and guard results are complete.
+
 In addition to learned genealogy features, a continuous-time three-state
 coalescent reference now propagates mainland/mainland, cross-population, and
 island/island lineage-pair states through contact, isolation, and the ancestral

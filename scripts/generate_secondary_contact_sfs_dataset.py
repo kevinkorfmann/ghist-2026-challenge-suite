@@ -9,7 +9,10 @@ from pathlib import Path
 import numpy as np
 
 from ghist_secondary_contact.simulate import focused_parameter_design, parameter_design
-from ghist_secondary_contact.spectrum import secondary_contact_spectrum
+from ghist_secondary_contact.spectrum import (
+    generator_matched_secondary_contact_spectrum,
+    secondary_contact_spectrum,
+)
 
 
 def _sha256(path: Path) -> str:
@@ -20,17 +23,30 @@ def _sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _one_point(arguments: tuple[int, np.ndarray, int, float, float, int]) -> dict:
-    point_id, point, replicates, mutation_rate, sequence_length, seed = arguments
+def _one_point(
+    arguments: tuple[int, np.ndarray, int, float, float, int, str],
+) -> dict:
+    point_id, point, replicates, mutation_rate, sequence_length, seed, convention = arguments
     ancestral, size1, size2, split, contact, migration = point
-    scaled = (
-        size1 / ancestral,
-        size2 / ancestral,
-        (split - contact) / (2 * ancestral),
-        contact / (2 * ancestral),
-        2 * ancestral * migration,
-    )
-    expected = np.asarray(secondary_contact_spectrum(scaled, (86, 48)), dtype=np.float64)
+    if convention == "generator_matched":
+        scaled = (
+            size1 / ancestral,
+            size2 / ancestral,
+            split / (2 * ancestral),
+            contact / split,
+            2 * ancestral * migration,
+        )
+        expected_model = generator_matched_secondary_contact_spectrum
+    else:
+        scaled = (
+            size1 / ancestral,
+            size2 / ancestral,
+            (split - contact) / (2 * ancestral),
+            contact / (2 * ancestral),
+            2 * ancestral * migration,
+        )
+        expected_model = secondary_contact_spectrum
+    expected = np.asarray(expected_model(scaled, (86, 48)), dtype=np.float64)
     expected = np.clip(expected, 0.0, None)
     rng = np.random.default_rng(seed + point_id * 1_000_003)
     spectra, nuisance, counts = [], [], []
@@ -73,6 +89,11 @@ def main() -> None:
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
     parser.add_argument("--seed", type=int, default=20260822)
     parser.add_argument("--design", choices=("broad", "focused"), default="broad")
+    parser.add_argument(
+        "--convention",
+        choices=("simple", "generator_matched"),
+        default="simple",
+    )
     parser.add_argument("--center", type=float, nargs=6)
     parser.add_argument("--point-id-offset", type=int, default=0)
     args = parser.parse_args()
@@ -100,6 +121,7 @@ def main() -> None:
             args.mutation_rate,
             args.sequence_length,
             args.seed,
+            args.convention,
         )
         for point_id in range(args.point_start, stop)
     ]
@@ -140,6 +162,7 @@ def main() -> None:
         "mutation_rate": args.mutation_rate,
         "seed": args.seed,
         "design": args.design,
+        "convention": args.convention,
         "center": args.center,
         "point_id_offset": args.point_id_offset,
         "domain_labels": {"0": "core", "1": "guard", "2": "broad"},
