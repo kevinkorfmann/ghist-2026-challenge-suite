@@ -42,6 +42,14 @@ Forward-selection validation is pinned to stdpopsim 0.3.0, its Drosophila
 and SLiM 4.3 commit `f872f3d`. The stack was built and verified in job
 `7745934`.
 
+`growth_convention_comparison.json` tests exponential growth against an
+instantaneous size jump with equal parameter counts on the same middle-distance
+spectra. The sudden model has higher multinomial likelihood at all three
+projections, by 14.05, 18.81, and 22.43 log-likelihood units at 40, 60, and 84
+haplotypes. It returns approximately 2,825 generations and 1.817-fold growth.
+This is not promoted because linked selection can change model preference; the
+same comparison is running on known exponential forward simulations.
+
 `figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
 distance-band bias, middle-distance projection stability, and all 128 linked
 block replicates. It is a validation figure rather than a frozen-result figure
