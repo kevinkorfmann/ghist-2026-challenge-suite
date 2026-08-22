@@ -135,8 +135,10 @@ def train_ensemble(
     inv = np.stack((1 / (deep_mse + 1e-6), 1 / (ref_mse + 1e-6)), axis=0)
     weights = inv / inv.sum(axis=0, keepdims=True)
     scenario_report = {}
+    validation_scenarios = np.zeros(len(val_idx), dtype=np.int16)
     if "nuisance" in d:
         scenarios = d["nuisance"][:, 0].astype(int)
+        validation_scenarios = scenarios[val_idx].astype(np.int16)
         for scenario in np.unique(scenarios[val_idx]):
             mask = scenarios[val_idx] == scenario
             scenario_report[str(scenario)] = {
@@ -148,6 +150,15 @@ def train_ensemble(
                     np.mean(np.square(ref_pred[mask] - y_raw[val_idx][mask]), axis=0)
                 ).tolist(),
             }
+    np.savez_compressed(
+        out_dir / "validation_predictions.npz",
+        target_latent=y_raw[val_idx],
+        deep_members_latent=np.asarray(deep_preds),
+        deep_mean_latent=deep_pred,
+        reference_latent=ref_pred,
+        nuisance_scenario=validation_scenarios,
+        validation_indices=val_idx,
+    )
     joblib.dump(
         {"model": ref, "weights": weights, "deep_mse": deep_mse, "reference_mse": ref_mse},
         out_dir / "reference.joblib",

@@ -15,6 +15,40 @@ from ghist_bottleneck.train import _device
 
 
 class PipelineTests(unittest.TestCase):
+    def test_validation_figure_exports_regular_weight_vector_and_raster(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            rng = np.random.default_rng(7)
+            target = np.column_stack(
+                (rng.uniform(np.log(200), np.log(30_000), 40), rng.normal(0, 1, 40))
+            )
+            deep = target + rng.normal(0, 0.12, target.shape)
+            reference = target + rng.normal(0, 0.18, target.shape)
+            input_path = root / "validation.npz"
+            np.savez(
+                input_path,
+                target_latent=target,
+                deep_mean_latent=deep,
+                reference_latent=reference,
+                nuisance_scenario=np.repeat(np.arange(4), 10),
+            )
+            stem = root / "figure"
+            subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/plot_bottleneck_validation.py",
+                    "--input",
+                    str(input_path),
+                    "--output-stem",
+                    str(stem),
+                ],
+                check=True,
+            )
+            for suffix in (".pdf", ".svg", ".png"):
+                self.assertGreater(stem.with_suffix(suffix).stat().st_size, 1000)
+            svg = stem.with_suffix(".svg").read_text()
+            self.assertNotIn("font-weight: bold", svg.lower())
+
     def test_simulation_merge_preserves_nuisance_provenance(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
