@@ -29,3 +29,15 @@ generations and 2.010-fold growth. The near-symmetry around 5,000 generations
 and close agreement around two-fold growth make 5,000/2.0 the leading testing
 hypothesis, but it remains provisional until linked-block and generator-matched
 selection recovery pass.
+
+The 128-replicate, chromosome-aware 5 Mb block bootstrap in job `7745935`
+places 5,000 generations inside its 95% interval of 3,983–5,445 and 2.0 inside
+its growth-ratio interval of 1.738–2.204. The bootstrap used 20 complete blocks;
+terminal partial blocks were excluded from resampling, which shifted its center
+relative to the all-base point estimate. A 1 Mb repeat is therefore required to
+reduce this edge imbalance while remaining conservative for linkage.
+
+Forward-selection validation is pinned to stdpopsim 0.3.0, its Drosophila
+`Gamma_H17` deleterious DFE, the `ComeronCrossoverV2_dm6` map, pyslim 1.0.4,
+and SLiM 4.3 commit `f872f3d`. The stack was built and verified in job
+`7745934`.

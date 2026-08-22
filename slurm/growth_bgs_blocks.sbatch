@@ -12,8 +12,11 @@ module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 
+BLOCK_SIZE="${BLOCK_SIZE:-5000000}"
+OUTPUT="${OUTPUT:-artifacts/task3_growth_bgs/middle_distance_blocks_5mb.npz}"
+
 PYTHONPATH=src .venv/bin/python scripts/extract_growth_bgs_blocks.py \
   --vcf data/raw/demography/growth_background_selection/testing/growth.testing.vcf.gz \
   --coding-bed data/raw/shared/demography/BGS_demography_challenge_coding_regions.bed \
-  --block-size 5000000 \
-  --out artifacts/task3_growth_bgs/middle_distance_blocks_5mb.npz
+  --block-size "$BLOCK_SIZE" \
+  --out "$OUTPUT"

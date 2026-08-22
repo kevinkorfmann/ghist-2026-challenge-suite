@@ -14,10 +14,12 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 
 REPLICATES_PER_TASK="${REPLICATES_PER_TASK:-4}"
+BLOCKS="${BLOCKS:-artifacts/task3_growth_bgs/middle_distance_blocks_5mb.npz}"
+OUTPUT_DIR="${OUTPUT_DIR:-artifacts/task3_growth_bgs/block_bootstrap}"
 START=$((SLURM_ARRAY_TASK_ID * REPLICATES_PER_TASK))
 PYTHONPATH=src .venv/bin/python scripts/bootstrap_growth_bgs_blocks.py \
-  --blocks artifacts/task3_growth_bgs/middle_distance_blocks_5mb.npz \
-  --out "artifacts/task3_growth_bgs/block_bootstrap/task_${SLURM_ARRAY_TASK_ID}.json" \
+  --blocks "$BLOCKS" \
+  --out "$OUTPUT_DIR/task_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate-start "$START" \
   --replicates "$REPLICATES_PER_TASK" \
   --projection 84 \
