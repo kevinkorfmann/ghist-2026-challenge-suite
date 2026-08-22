@@ -13,11 +13,14 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 .venv/bin/python scripts/train_secondary_contact_arg_tabular.py \
   --dataset data/processed/secondary_contact/arg_training.npz \
-  --out artifacts/task2_secondary_contact/model_arg_tabular_core.joblib \
+  --out "${OUT:-artifacts/task2_secondary_contact/model_arg_tabular_core.joblib}" \
   --domain-filter 0 \
+  --feature-key "${FEATURE_KEY:-global_summary}" \
   --workers "$SLURM_CPUS_PER_TASK"
-.venv/bin/python scripts/predict_secondary_contact_arg_tabular.py \
-  --features artifacts/task2_secondary_contact/tiled_arg_features.npz \
-  --model artifacts/task2_secondary_contact/model_arg_tabular_core.joblib \
-  --out artifacts/task2_secondary_contact/arg_tabular_core_testing_prediction.json \
-  --tiles-per-block 20
+if [[ "${PREDICT:-1}" == "1" ]]; then
+  .venv/bin/python scripts/predict_secondary_contact_arg_tabular.py \
+    --features artifacts/task2_secondary_contact/tiled_arg_features.npz \
+    --model "${OUT:-artifacts/task2_secondary_contact/model_arg_tabular_core.joblib}" \
+    --out "${PREDICTION_OUT:-artifacts/task2_secondary_contact/arg_tabular_core_testing_prediction.json}" \
+    --tiles-per-block 20
+fi

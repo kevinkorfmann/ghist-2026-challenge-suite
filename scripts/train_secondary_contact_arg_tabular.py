@@ -32,6 +32,11 @@ def main() -> None:
     parser.add_argument("--dataset", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--domain-filter", required=True)
+    parser.add_argument(
+        "--feature-key",
+        choices=("global_summary", "truth_hazards"),
+        default="global_summary",
+    )
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--seed", type=int, default=20260929)
     args = parser.parse_args()
@@ -43,7 +48,7 @@ def main() -> None:
     keep = np.isin(source["design_domain"], domains)
     data = {
         key: source[key][keep]
-        for key in ("partition", "truth", "point_id", "global_summary")
+        for key in ("partition", "truth", "point_id", args.feature_key)
     }
     calibration = data["partition"] == 0
     selection = data["partition"] == 1
@@ -51,7 +56,9 @@ def main() -> None:
     if not all(np.any(values) for values in (calibration, selection, evaluation)):
         raise ValueError("all three grouped partitions must be present")
 
-    features = np.nan_to_num(data["global_summary"].astype(np.float32))
+    features = np.nan_to_num(
+        data[args.feature_key].reshape(len(data["truth"]), -1).astype(np.float32)
+    )
     transformed = transform_targets(data["truth"])
     target_mean = transformed[calibration].mean(axis=0)
     target_scale = transformed[calibration].std(axis=0).clip(1e-8)
@@ -115,6 +122,7 @@ def main() -> None:
         "selection_rrmse": best_score,
         "untouched_evaluation_rrmse": evaluation_score,
         "domain_filter": args.domain_filter,
+        "feature_key": args.feature_key,
         "features": int(features.shape[1]),
         "calibration_rows": int(calibration.sum()),
         "selection_rows": int(selection.sum()),
