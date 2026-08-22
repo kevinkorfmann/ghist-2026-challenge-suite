@@ -21,6 +21,15 @@ ESTIMATE_KEYS = (
     "generations_since_contact",
     "migration_rate",
 )
+SCALED_PARAMETER_KEYS = (
+    "population1_size_ratio",
+    "population2_size_ratio",
+    "split_duration_2N",
+    "contact_fraction",
+    "migration_2N",
+)
+LOWER_BOUNDS = np.asarray((0.01, 0.01, 1e-5, 0.002, 1e-6))
+UPPER_BOUNDS = np.asarray((100.0, 100.0, 10.0, 0.98, 100.0))
 
 
 def labelled_pattern(value: str) -> tuple[str, str]:
@@ -69,6 +78,33 @@ def main() -> None:
         if not paths:
             raise FileNotFoundError(f"no results match {pattern!r}")
         records = [json.loads(path.read_text()) for path in paths]
+        boundary_replicates = []
+        for record in records:
+            scaled = np.asarray(
+                [record["scaled_parameters"][key] for key in SCALED_PARAMETER_KEYS],
+                dtype=np.float64,
+            )
+            near_boundary = (scaled <= LOWER_BOUNDS * 1.001) | (
+                scaled >= UPPER_BOUNDS / 1.001
+            )
+            if np.any(near_boundary):
+                boundary_replicates.append(
+                    {
+                        "replicate": int(record["replicate"]),
+                        "parameters": [
+                            key
+                            for key, flagged in zip(
+                                SCALED_PARAMETER_KEYS, near_boundary
+                            )
+                            if flagged
+                        ],
+                    }
+                )
+        if boundary_replicates:
+            raise ValueError(
+                f"{label} contains optimizer-boundary results: "
+                f"{boundary_replicates}"
+            )
         estimates = np.asarray(
             [[record[key] for key in ESTIMATE_KEYS] for record in records],
             dtype=np.float64,
@@ -81,6 +117,7 @@ def main() -> None:
         conditions[label] = {
             "pattern": pattern,
             "replicates": len(records),
+            "boundary_replicates": boundary_replicates,
             "raw": summary(estimates, truth),
             "corrected": summary(corrected, truth),
             "corrected_minus_raw": {
