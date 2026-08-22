@@ -52,6 +52,7 @@ def main() -> None:
     infb.add_argument("--observed", required=True)
     infb.add_argument("--checkpoint-dir", required=True)
     infb.add_argument("--out", required=True)
+    infb.add_argument("--calibration")
     base = sub.add_parser("sfs-reference")
     base.add_argument("--vcf", required=True)
     base.add_argument("--out", required=True)
@@ -128,7 +129,13 @@ def main() -> None:
     elif args.command == "infer-blocks":
         print(
             json.dumps(
-                predict_blocks(args.observed, args.checkpoint_dir, args.out), indent=2
+                predict_blocks(
+                    args.observed,
+                    args.checkpoint_dir,
+                    args.out,
+                    calibration=args.calibration,
+                ),
+                indent=2,
             )
         )
     else:

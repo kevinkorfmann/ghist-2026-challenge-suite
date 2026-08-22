@@ -13,6 +13,31 @@ from .model import BottleneckNet
 from .train import _device, reference_features
 
 
+def apply_chromosome_calibration(
+    latent: np.ndarray,
+    calibration: str | Path | dict,
+) -> tuple[np.ndarray, dict]:
+    """Apply a calibration frozen by the chromosome-level validation gate."""
+    record = (
+        json.loads(Path(calibration).read_text())
+        if not isinstance(calibration, dict)
+        else calibration
+    )
+    branch_name = record["chosen_branch"]
+    branch = record["branches"][branch_name]
+    matrix = np.asarray(branch["matrix"], dtype=float)
+    intercept = np.asarray(branch["intercept"], dtype=float)
+    latent = np.asarray(latent, dtype=float)
+    if latent.shape != (2,) or matrix.shape != (2, 2) or intercept.shape != (2,):
+        raise ValueError("chromosome calibration must map one two-parameter latent vector")
+    return latent @ matrix + intercept, {
+        "source": str(calibration) if not isinstance(calibration, dict) else "in-memory",
+        "branch": branch_name,
+        "matrix": matrix.tolist(),
+        "intercept": intercept.tolist(),
+    }
+
+
 def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -> dict:
     b = FeatureBundle.load(observed)
     checkpoint_dir = Path(checkpoint_dir)
@@ -111,6 +136,7 @@ def predict_blocks(
     observed: str | Path,
     checkpoint_dir: str | Path,
     out: str | Path,
+    calibration: str | Path | dict | None = None,
 ) -> dict:
     collection = FeatureCollection.load(observed)
     checkpoint_dir = Path(checkpoint_dir)
@@ -165,6 +191,11 @@ def predict_blocks(
         mean = blend[0] * deep_mean + blend[1] * reference_mean
         components["reference_block_latent"] = reference_mean.tolist()
         components["blend_weights_deep_reference"] = blend.T.tolist()
+    calibration_record = None
+    components["pre_calibration_latent"] = np.asarray(mean).tolist()
+    if calibration is not None:
+        mean, calibration_record = apply_chromosome_calibration(mean, calibration)
+        components["calibrated_latent"] = np.asarray(mean).tolist()
     generations = float(np.exp(mean[0]))
     fraction = float(1 / (1 + np.exp(-mean[1])))
     out = Path(out)
@@ -200,6 +231,7 @@ def predict_blocks(
             "latent_sd": np.sqrt(total_variance).tolist(),
             "median_member_block_scale": np.median(block_scales, axis=0).tolist(),
             "components": components,
+            "chromosome_calibration": calibration_record,
             "block_artifact": str(diagnostics_path),
         },
     }

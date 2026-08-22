@@ -19,6 +19,7 @@ from ghist_bottleneck.features import (
     summarize_variants,
 )
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
+from ghist_bottleneck.infer import apply_chromosome_calibration
 from ghist_bottleneck.arg_features import (
     gaussian_tmrca_hazard_features,
     tmrca_hazard_features,
@@ -46,6 +47,26 @@ from scripts.evaluate_bottleneck_chromosomes import (
 
 
 class PipelineTests(unittest.TestCase):
+    def test_chromosome_calibration_applies_only_the_chosen_frozen_branch(self):
+        calibration = {
+            "chosen_branch": "summary",
+            "branches": {
+                "summary": {
+                    "matrix": [[1.2, 0.1], [-0.3, 0.8]],
+                    "intercept": [0.4, -0.2],
+                },
+                "genealogy_proxy": {
+                    "matrix": [[99, 0], [0, 99]],
+                    "intercept": [99, 99],
+                },
+            },
+        }
+        latent = np.array([2.0, -1.0])
+        calibrated, provenance = apply_chromosome_calibration(latent, calibration)
+        expected = latent @ calibration["branches"]["summary"]["matrix"] + [0.4, -0.2]
+        np.testing.assert_allclose(calibrated, expected)
+        self.assertEqual(provenance["branch"], "summary")
+
     def test_chromosome_calibration_is_fit_before_final_evaluation(self):
         cells = np.arange(40)
         scenarios = np.repeat(np.arange(4), 10)

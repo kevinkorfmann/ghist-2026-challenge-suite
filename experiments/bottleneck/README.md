@@ -16,6 +16,14 @@ nuisance stratum. A screen winner is provisional: promotion requires a fresh
 simulation shard, five training seeds, ablations, and bootstrap confidence
 intervals. Public testing answers remain sealed until the design is frozen.
 
+Promotion also has a chromosome-level gate. Two hundred held-out parameter cells
+are each simulated as fifty independent 2 Mb blocks, matching the observed 100 Mb
+aggregation exactly. Parameter cells are divided into disjoint calibration,
+selection, and final-evaluation sets. An affine latent calibration is fit only on
+the calibration cells; the final set is untouched by both fitting and selection.
+The inferred-genealogy proxy is diagnostic only until it has a matched translation
+validation set, so it cannot displace the summary branch on optimistic tree input.
+
 The initial screen varies width, local receptive field, context depth, posterior
 mixture size, and regularization. Subsequent screens may vary feature groups,
 optimizer settings, genealogy corruption, and nominal-to-robust simulation ratios,
