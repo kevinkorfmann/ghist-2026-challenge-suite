@@ -22,12 +22,18 @@ fi
 git -C "$FASTCXT_ROOT" fetch origin "$FASTCXT_REVISION"
 git -C "$FASTCXT_ROOT" checkout --detach "$FASTCXT_REVISION"
 
-"$PROJECT_ROOT/.venv/bin/pip" install packaging ninja einops lightning
+"$PROJECT_ROOT/.venv/bin/pip" install \
+  packaging ninja einops lightning \
+  "transformers==4.57.6" \
+  "tilelang==0.1.8" \
+  "apache-tvm-ffi==0.1.9" \
+  "quack-kernels==0.3.4"
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps --no-build-isolation \
   "causal-conv1d==1.6.2.post1"
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps --no-build-isolation \
   "mamba-ssm==2.3.2.post1"
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps -e "$FASTCXT_ROOT"
+"$PROJECT_ROOT/.venv/bin/pip" check
 
 "$PROJECT_ROOT/.venv/bin/python" - <<'PY'
 import importlib.metadata
@@ -69,6 +75,10 @@ print(json.dumps({
     "torch": torch.__version__,
     "causal_conv1d": importlib.metadata.version("causal-conv1d"),
     "mamba_ssm": importlib.metadata.version("mamba-ssm"),
+    "transformers": importlib.metadata.version("transformers"),
+    "tilelang": importlib.metadata.version("tilelang"),
+    "apache_tvm_ffi": importlib.metadata.version("apache-tvm-ffi"),
+    "quack_kernels": importlib.metadata.version("quack-kernels"),
     "gpu": torch.cuda.get_device_name(0),
     "parameters": sum(parameter.numel() for parameter in model.parameters()),
     "output_shape": list(output.shape),
