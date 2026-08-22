@@ -61,7 +61,7 @@ def main() -> None:
             ancestry,
             rate=8.4e-8,
             model=msprime.JC69(),
-            discrete_genome=False,
+            discrete_genome=True,
             random_seed=int(rng.integers(1, 2**31 - 2)),
         )
         for variant in mutated.variants():
@@ -112,6 +112,7 @@ def main() -> None:
             "blocks": args.blocks,
             "block_length": args.block_length,
             "mutation_model": "JC69",
+            "discrete_genome": True,
         }
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
