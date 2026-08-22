@@ -40,7 +40,7 @@ and [method comparison](docs/method_comparison.md).
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
-| Bottleneck model | promotion evaluated | five-seed fresh-shard score improved to 0.5347, but whole-chromosome error keeps the learned estimate secondary; mechanistic cross-check in progress |
+| Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
 | Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
 
 The recent coalescent time-stratification result from
@@ -123,3 +123,32 @@ The context model consumes all fifty contiguous 2 Mb blocks, matching the
 physical scale of full simulations. A robust precision aggregation limits the
 leverage of localized recombination, accessibility, or diversity anomalies,
 while the whole 100 Mb VCF independently feeds the mechanistic SFS fit.
+
+## Task 1 frozen result
+
+The frozen local estimate is 4,587.06 generations and a post-decline fraction of
+0.5224206. A 200-replicate bootstrap over the fifty physical 2 Mb blocks gives
+95% intervals of 4,183.89–4,982.07 generations and 0.51306–0.53080. Nothing has
+been uploaded or submitted.
+
+A separate score-aligned contingency was trained on 900 full 100 Mb simulations:
+100 space-filling points across the complete prior and 50 denser points near the
+observed fit, with six genomic replicates per point and parameter-point-isolated
+calibration, selection, and untouched evaluation. Its selected two-layer
+calibrator predicts 4,338.37 and 0.49587. It cut untouched broad-prior RRMSE from
+4.093 to 0.635 and focused RRMSE from 0.358 to 0.146, but worsened typical focused
+natural errors and point-mean biases. It is therefore retained for extreme
+held-out estimates rather than replacing the mechanistic primary for this VCF.
+
+On 29 untouched nominal whole-chromosome cells, the raw moments estimator had a
+13.28% median absolute relative generation error and a 0.01132 median absolute
+fraction error. dadi recovered 13.70% and 0.01173; the learned context ensemble
+recovered 23.44% and 0.03014 and remains secondary. A selection-chosen blend was
+rejected because it worsened both natural-scale medians on untouched evaluation.
+
+Observed cross-checks are tightly grouped: dadi folded gives 4,643.18 and
+0.52144, joint SFS+LD gives 4,514.50 and 0.52070, and LD alone gives 4,314.16 and
+0.54242. The exact SFS result remains primary because it won the frozen recovery
+gate. Full hashes, job identifiers, and gate decisions are recorded in
+[`experiments/bottleneck/task1_freeze.json`](experiments/bottleneck/task1_freeze.json).
+The publication figure is in [`figures/task1_bottleneck/`](figures/task1_bottleneck/).

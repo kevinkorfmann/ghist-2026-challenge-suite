@@ -95,3 +95,26 @@ out by pedigree or family; pairwise random splits are prohibited.
    applicable reference method.
 4. Retain ensembles only when disagreement is calibrated and predictive of error.
 5. Record all negative results; complexity is kept only when it earns its cost.
+
+## Task 1 decision
+
+Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
+at 4,587.06 generations and a 0.5224206 post-decline fraction. It had the lowest
+natural-scale medians on the untouched nominal chromosome cells. Independent
+dadi and joint momentsLD fits were within 1.3% and 1.6% of its observed decline
+time, respectively, and within 0.0018 in fraction.
+
+The five-seed context ensemble, the FastCXT-enriched branch, affine SFS
+calibration, and a selection-chosen learned–mechanistic blend were all retained as
+diagnostics but rejected for primary use. Each failed either exchangeable input
+translation or the frozen natural-error guard. The complete decision record is
+[`experiments/bottleneck/task1_freeze.json`](../experiments/bottleneck/task1_freeze.json).
+
+The final precision pass deliberately covered the full held-out prior rather than
+only the observed neighborhood. It used 900 complete 100 Mb simulations at 150
+parameter points, with all six replicates of each point confined to one split.
+The score-aligned two-layer calibrator passed the untouched RRMSE gate, reducing
+broad-prior RRMSE from 4.093 to 0.635 and focused RRMSE from 0.358 to 0.146. Its
+observed prediction is 4,338.37 and 0.49587. Because it increased typical focused
+natural errors and point-mean bias, it is a held-out extreme-value contingency;
+the mutually agreeing mechanistic fits remain primary for the present VCF.

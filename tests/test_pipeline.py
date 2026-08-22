@@ -55,9 +55,27 @@ from scripts.evaluate_moments_chromosomes import (
     histogram_to_folded_sfs,
     recover_folded_histogram,
 )
+from scripts.run_multiscale_sfs_recovery import (
+    REPLICATES_PER_POINT,
+    TOTAL_CELLS,
+    TOTAL_POINTS,
+    multiscale_parameters,
+    parameter_design,
+)
 
 
 class PipelineTests(unittest.TestCase):
+    def test_multiscale_precision_design_holds_out_entire_parameter_points(self):
+        points, domain, split = parameter_design()
+        self.assertEqual(points.shape, (TOTAL_POINTS, 3))
+        self.assertEqual(TOTAL_CELLS, TOTAL_POINTS * REPLICATES_PER_POINT)
+        np.testing.assert_array_equal(np.bincount(split), [100, 25, 25])
+        np.testing.assert_array_equal(np.bincount(domain), [100, 50])
+        first = multiscale_parameters(0)
+        last_replicate = multiscale_parameters(REPLICATES_PER_POINT - 1)
+        self.assertEqual(first[0], last_replicate[0])
+        self.assertEqual(first[2:], last_replicate[2:])
+
     def test_folded_summary_encoding_is_exactly_invertible_for_complete_calls(self):
         histogram = np.zeros(64, dtype=np.int64)
         count_bins = []
