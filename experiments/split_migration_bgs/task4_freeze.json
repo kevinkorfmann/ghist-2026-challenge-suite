@@ -1,0 +1,1181 @@
+{
+  "challenge": "Split migration with background selection",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "selected_method": {
+    "model": "two-population isolation with continuous symmetric migration",
+    "spectrum": "unfolded 1\u2013100 kb noncoding joint frequency spectrum",
+    "projections": [
+      [
+        50,
+        40
+      ],
+      [
+        70,
+        50
+      ],
+      [
+        94,
+        68
+      ]
+    ],
+    "aggregation": "projection median followed by generator-level rounding",
+    "calibration": "identity; no correction"
+  },
+  "testing_prediction": {
+    "AFR_population_size": 16000.0,
+    "EUR_population_size": 24000.0,
+    "generations_since_split": 4500.0,
+    "migration_rate": 0.00015
+  },
+  "raw_projection_median": {
+    "AFR_population_size": 16192.112585485422,
+    "EUR_population_size": 22948.927508568508,
+    "generations_since_split": 4387.502837543589,
+    "migration_rate": 0.0001466972893697369
+  },
+  "linked_block_interval_95": {
+    "AFR_population_size": [
+      14519.92450123279,
+      17036.686245136854
+    ],
+    "EUR_population_size": [
+      20937.12422670272,
+      24109.184508030932
+    ],
+    "generations_since_split": [
+      4108.4061732476075,
+      4736.823842522181
+    ],
+    "migration_rate": [
+      0.00013895954149631631,
+      0.000162159027479293
+    ]
+  },
+  "validation": {
+    "projection_fits": {
+      "50x40": {
+        "AFR_population_size": 16018.264464347605,
+        "EUR_population_size": 22878.38385982271,
+        "generations_since_split": 4402.45840569606,
+        "migration_rate": 0.0001470004411428418,
+        "ancestral_population_size": 12882.746055150192,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.2433889790091697,
+          "EUR_size_ratio": 1.7758934129324482,
+          "split_duration_2N": 0.17086645917141519,
+          "migration_2N": 3.787538706476566
+        },
+        "theta": 32410.176508486024,
+        "multinomial_log_likelihood": -4710.098021135893,
+        "best_restart": 38,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 64,
+        "workers": 8,
+        "sequence_length": 61965066,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      },
+      "70x50": {
+        "AFR_population_size": 16192.112585485422,
+        "EUR_population_size": 22948.927508568508,
+        "generations_since_split": 4387.502837543589,
+        "migration_rate": 0.0001466972893697369,
+        "ancestral_population_size": 12889.048554936773,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.2562690346358814,
+          "EUR_size_ratio": 1.7804981811305685,
+          "split_duration_2N": 0.17020274300476135,
+          "migration_2N": 3.781576971128298
+        },
+        "theta": 32426.032221984788,
+        "multinomial_log_likelihood": -7231.036908859025,
+        "best_restart": 47,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 64,
+        "workers": 8,
+        "sequence_length": 61965066,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      },
+      "94x68": {
+        "AFR_population_size": 16365.543259270029,
+        "EUR_population_size": 23140.034136336548,
+        "generations_since_split": 4360.114403046827,
+        "migration_rate": 0.0001459693245257709,
+        "ancestral_population_size": 12898.05713865727,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.2688378632019097,
+          "EUR_size_ratio": 1.7940712998535764,
+          "split_duration_2N": 0.16902213861260382,
+          "migration_2N": 3.7654413764491976
+        },
+        "theta": 32448.695851867957,
+        "multinomial_log_likelihood": -19714.63787789276,
+        "best_restart": 3,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 64,
+        "workers": 8,
+        "sequence_length": 61965066,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    "matched_selection_recovery": {
+      "truth": {
+        "ancestral_population_size": 13000.0,
+        "AFR_population_size": 16000.0,
+        "EUR_population_size": 24000.0,
+        "generations_since_split": 4500.0,
+        "migration_rate": 0.00015
+      },
+      "fit": {
+        "AFR_population_size": 16304.762133965281,
+        "EUR_population_size": 23673.5464233716,
+        "generations_since_split": 4598.04253234744,
+        "migration_rate": 0.00016609135625853083,
+        "ancestral_population_size": 12536.775912916968,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.3005546439707882,
+          "EUR_size_ratio": 1.8883281146454989,
+          "split_duration_2N": 0.18338217753457478,
+          "migration_2N": 4.16450022897132
+        },
+        "theta": 1128.4998044352908,
+        "multinomial_log_likelihood": -2064.465370175345,
+        "best_restart": 62,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "projection": [
+          60,
+          50
+        ],
+        "restarts": 64,
+        "workers": 8,
+        "sequence_length": 2217122,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false,
+        "initial_scaled": [
+          1.2307692307692308,
+          1.8461538461538463,
+          0.17307692307692307,
+          3.8999999999999995
+        ]
+      },
+      "relative_error": {
+        "AFR_population_size": 0.019047633372829997,
+        "EUR_population_size": -0.01360223235951663,
+        "generations_since_split": 0.02178722941054234,
+        "migration_rate": 0.10727570839020562
+      },
+      "chromosome_arms": [
+        "2L",
+        "2R",
+        "3L",
+        "3R"
+      ],
+      "physical_exposure_bp": 2217122,
+      "accepted_sites": 10569,
+      "submission_count": 0
+    },
+    "held_out_calibration": {
+      "validation": "leave_one_truth_point_out",
+      "truth_points": 6,
+      "selected_model": "identity",
+      "evaluations": {
+        "identity": {
+          "mean_competition_rrmse": 0.04352072535503251,
+          "median_competition_rrmse": 0.04229608218168536,
+          "maximum_competition_rrmse": 0.06837236693562875,
+          "parameter_rmse": {
+            "AFR_population_size": 0.032999276423432804,
+            "EUR_population_size": 0.03319139918179716,
+            "generations_since_split": 0.024645258835189015,
+            "migration_rate": 0.07605743498202933
+          },
+          "predictions": [
+            [
+              20687.435359693343,
+              29260.422813022564,
+              4804.339551574398,
+              0.00015889021806887225
+            ],
+            [
+              16304.762133965287,
+              23673.5464233716,
+              4598.042532347442,
+              0.00016609135625853097
+            ],
+            [
+              12278.913613495177,
+              18941.39455602579,
+              2462.48147402615,
+              7.013745227033067e-05
+            ],
+            [
+              23907.13716239664,
+              15898.673537919063,
+              7715.271083841009,
+              0.00025030351565554534
+            ],
+            [
+              14798.022443959202,
+              28358.238139916313,
+              3467.3404691556016,
+              0.00011220216071694186
+            ],
+            [
+              28043.55540828942,
+              22150.841843452978,
+              6449.943233327293,
+              0.00020325616695556826
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        },
+        "median_log_bias": {
+          "mean_competition_rrmse": 0.047713744007306935,
+          "median_competition_rrmse": 0.04649085814738451,
+          "maximum_competition_rrmse": 0.07761436474136289,
+          "parameter_rmse": {
+            "AFR_population_size": 0.043020742332315634,
+            "EUR_population_size": 0.035854708847430215,
+            "generations_since_split": 0.022818115090472955,
+            "migration_rate": 0.081937575479377
+          },
+          "predictions": [
+            [
+              20767.7918631587,
+              29446.90724617761,
+              4849.592527786974,
+              0.000158697549306028
+            ],
+            [
+              16368.094956625006,
+              23824.42421190333,
+              4668.098603834018,
+              0.00016588995546420654
+            ],
+            [
+              12326.608774697037,
+              19202.592683613442,
+              2485.6760493411894,
+              6.901384919421672e-05
+            ],
+            [
+              23460.27445573777,
+              16117.913137566742,
+              7787.9426706601025,
+              0.000246293649442146
+            ],
+            [
+              14521.423689470634,
+              28538.97271093025,
+              3520.169091350066,
+              0.00011040468035734348
+            ],
+            [
+              27519.376415674735,
+              22456.29762163693,
+              6548.214982894525,
+              0.0002030097004662919
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        },
+        "diagonal_affine": {
+          "mean_competition_rrmse": 0.05120344958390425,
+          "median_competition_rrmse": 0.05013513898789762,
+          "maximum_competition_rrmse": 0.07052638374838884,
+          "parameter_rmse": {
+            "AFR_population_size": 0.04202096109101979,
+            "EUR_population_size": 0.044879279735615965,
+            "generations_since_split": 0.027159667078546286,
+            "migration_rate": 0.08145996282279891
+          },
+          "predictions": [
+            [
+              21088.08379267463,
+              30399.295177269323,
+              4852.633741225527,
+              0.00015967713084692666
+            ],
+            [
+              16227.329114436337,
+              23951.999709469874,
+              4698.88651611384,
+              0.00016742024735206666
+            ],
+            [
+              11887.670228802917,
+              19056.314071275407,
+              2442.6724514279426,
+              7.280930935851592e-05
+            ],
+            [
+              24530.58864705674,
+              14701.75933192205,
+              7771.7110121449305,
+              0.0002226034799057846
+            ],
+            [
+              14433.804044738034,
+              28780.9790113754,
+              3506.7695962435614,
+              0.00011593011934742204
+            ],
+            [
+              27788.996109605807,
+              22330.066181608094,
+              6604.800157333217,
+              0.0001939123499038444
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        },
+        "joint_ridge_0.1": {
+          "mean_competition_rrmse": 0.10389522852284715,
+          "median_competition_rrmse": 0.07545069299987787,
+          "maximum_competition_rrmse": 0.2560786146213507,
+          "parameter_rmse": {
+            "AFR_population_size": 0.08990218360403299,
+            "EUR_population_size": 0.1206473057739966,
+            "generations_since_split": 0.0908180838574871,
+            "migration_rate": 0.180677187626076
+          },
+          "predictions": [
+            [
+              21505.062874576997,
+              30296.71547357895,
+              4749.749251525786,
+              0.00015722312068467537
+            ],
+            [
+              16440.986741128232,
+              24821.832652564633,
+              4847.188421415871,
+              0.00015907392137417197
+            ],
+            [
+              13444.392701473855,
+              23097.299874717155,
+              2658.136490009363,
+              0.00011236028174768986
+            ],
+            [
+              26277.705154153016,
+              15200.65359063115,
+              6812.473925305567,
+              0.00021842702318187714
+            ],
+            [
+              14377.678257776313,
+              28352.722145295582,
+              3410.9587648428874,
+              0.00010836559341595015
+            ],
+            [
+              26105.121719559887,
+              22417.7029132287,
+              7278.561399597269,
+              0.00020604837598678466
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        },
+        "joint_ridge_1.0": {
+          "mean_competition_rrmse": 0.13090781836244164,
+          "median_competition_rrmse": 0.09302308110990551,
+          "maximum_competition_rrmse": 0.33569634291109907,
+          "parameter_rmse": {
+            "AFR_population_size": 0.1186877443485359,
+            "EUR_population_size": 0.22199864698649957,
+            "generations_since_split": 0.11230982359041197,
+            "migration_rate": 0.17832077750983785
+          },
+          "predictions": [
+            [
+              20485.830800469055,
+              28656.394739059004,
+              4747.700539224627,
+              0.00015717902295609107
+            ],
+            [
+              18037.501962366307,
+              23843.702142433984,
+              4638.520414342051,
+              0.0001486532940227133
+            ],
+            [
+              11504.649375506227,
+              27548.010384060864,
+              2928.592313919423,
+              0.00010975114110826739
+            ],
+            [
+              27618.92332178727,
+              16670.26351886146,
+              6512.904301801491,
+              0.00020187931729145125
+            ],
+            [
+              15069.03001201428,
+              27063.515406896706,
+              3464.0636297197693,
+              0.00010960321755073711
+            ],
+            [
+              23760.87787797406,
+              22676.0341015308,
+              7086.342616175371,
+              0.00021491429945543348
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        },
+        "joint_ridge_10.0": {
+          "mean_competition_rrmse": 0.21390118693054264,
+          "median_competition_rrmse": 0.153011577708605,
+          "maximum_competition_rrmse": 0.4830855939149654,
+          "parameter_rmse": {
+            "AFR_population_size": 0.17880979353690396,
+            "EUR_population_size": 0.3177976901553864,
+            "generations_since_split": 0.23871622578603485,
+            "migration_rate": 0.2600297436910227
+          },
+          "predictions": [
+            [
+              19011.380445266692,
+              23917.604222857874,
+              4658.196138677643,
+              0.00015201078155693574
+            ],
+            [
+              18816.36717412971,
+              22920.599186366697,
+              4604.865523268985,
+              0.00014603401204558785
+            ],
+            [
+              14551.6359827935,
+              29234.64564113652,
+              3634.473875538308,
+              0.00012328792134108394
+            ],
+            [
+              23035.97477839307,
+              21689.322013890473,
+              5392.314037781245,
+              0.00016852906574390432
+            ],
+            [
+              16667.39797274569,
+              23529.701079661692,
+              3958.819702827605,
+              0.00012496966232767364
+            ],
+            [
+              20549.953193488538,
+              22398.71515102505,
+              5943.269439461207,
+              0.00018717724926888395
+            ]
+          ],
+          "truth": [
+            [
+              20000.0,
+              30000.0,
+              5000.0,
+              0.00015
+            ],
+            [
+              16000.0,
+              24000.0,
+              4500.0,
+              0.00015
+            ],
+            [
+              12000.0,
+              18000.0,
+              2500.0,
+              8e-05
+            ],
+            [
+              24000.0,
+              16000.0,
+              8000.0,
+              0.00025
+            ],
+            [
+              15000.0,
+              30000.0,
+              3500.0,
+              0.00012
+            ],
+            [
+              30000.0,
+              22000.0,
+              6500.0,
+              0.0002
+            ]
+          ]
+        }
+      }
+    },
+    "linked_block_replicates": 64,
+    "chromosome_arm_fits": [
+      {
+        "state": "COMPLETED",
+        "arm": "2L",
+        "mode": "arm_only",
+        "blocks": 23,
+        "physical_exposure_bp": 13001831,
+        "fit": {
+          "AFR_population_size": 18153.405318033678,
+          "EUR_population_size": 26227.444580371226,
+          "generations_since_split": 5272.379794231566,
+          "migration_rate": 0.00011838524431127986,
+          "ancestral_population_size": 15015.867085347722,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2089481889292644,
+            "EUR_size_ratio": 1.7466486904351737,
+            "split_duration_2N": 0.17556028447322508,
+            "migration_2N": 3.5553141868891918
+          },
+          "theta": 7926.490906183438,
+          "multinomial_log_likelihood": -3139.003192653284,
+          "best_restart": 4,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 13001831.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "2R",
+        "mode": "arm_only",
+        "blocks": 25,
+        "physical_exposure_bp": 13707537,
+        "fit": {
+          "AFR_population_size": 14839.573227387235,
+          "EUR_population_size": 18815.473412863932,
+          "generations_since_split": 3769.50110580056,
+          "migration_rate": 0.0001803274542144259,
+          "ancestral_population_size": 11830.085088782505,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2543927719893053,
+            "EUR_size_ratio": 1.5904765918129442,
+            "split_duration_2N": 0.15931842744626018,
+            "migration_2N": 4.26657825440038
+          },
+          "theta": 6583.74996014596,
+          "multinomial_log_likelihood": -3002.825691210043,
+          "best_restart": 19,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 13707537.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "3L",
+        "mode": "arm_only",
+        "blocks": 28,
+        "physical_exposure_bp": 16409652,
+        "fit": {
+          "AFR_population_size": 16168.115445605901,
+          "EUR_population_size": 24599.372774526677,
+          "generations_since_split": 5013.481008364051,
+          "migration_rate": 0.00013983860685722128,
+          "ancestral_population_size": 12630.25419030444,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2801100597023047,
+            "EUR_size_ratio": 1.9476546080450448,
+            "split_duration_2N": 0.19847110488926772,
+            "migration_2N": 3.5323943004495084
+          },
+          "theta": 8414.67788293817,
+          "multinomial_log_likelihood": -3782.048822088621,
+          "best_restart": 17,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 16409652.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "3R",
+        "mode": "arm_only",
+        "blocks": 32,
+        "physical_exposure_bp": 18085187,
+        "fit": {
+          "AFR_population_size": 14981.094056517037,
+          "EUR_population_size": 21517.206454361185,
+          "generations_since_split": 3965.7117468192964,
+          "migration_rate": 0.0001637916629935893,
+          "ancestral_population_size": 11953.032155435143,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2533300221822803,
+            "EUR_size_ratio": 1.8001462871140301,
+            "split_duration_2N": 0.16588727007716006,
+            "migration_2N": 3.915614029109139
+          },
+          "theta": 8776.61656297114,
+          "multinomial_log_likelihood": -3214.9232667917813,
+          "best_restart": 0,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 18085187.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "2L",
+        "mode": "leave_one_out",
+        "blocks": 85,
+        "physical_exposure_bp": 48202376,
+        "fit": {
+          "AFR_population_size": 15348.806685657684,
+          "EUR_population_size": 21827.039549829417,
+          "generations_since_split": 4248.177543321861,
+          "migration_rate": 0.00015850574529055768,
+          "ancestral_population_size": 12157.480184349066,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2624990090805965,
+            "EUR_size_ratio": 1.7953588423634415,
+            "split_duration_2N": 0.17471455757710191,
+            "migration_2N": 3.85406091495087
+          },
+          "theta": 23792.388900976846,
+          "multinomial_log_likelihood": -4456.748361858757,
+          "best_restart": 7,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 48202376.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "2R",
+        "mode": "leave_one_out",
+        "blocks": 83,
+        "physical_exposure_bp": 47496670,
+        "fit": {
+          "AFR_population_size": 16260.973641831648,
+          "EUR_population_size": 23887.303033933276,
+          "generations_since_split": 4672.249741170979,
+          "migration_rate": 0.00014059750130888553,
+          "ancestral_population_size": 13033.014823136053,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2476755273051146,
+            "EUR_size_ratio": 1.8328301899518153,
+            "split_duration_2N": 0.17924669788899714,
+            "migration_2N": 3.6648186373091916
+          },
+          "theta": 25132.407048879817,
+          "multinomial_log_likelihood": -4450.889425756145,
+          "best_restart": 29,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 47496670.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "3L",
+        "mode": "leave_one_out",
+        "blocks": 80,
+        "physical_exposure_bp": 44794555,
+        "fit": {
+          "AFR_population_size": 15849.487230177156,
+          "EUR_population_size": 22044.209209037315,
+          "generations_since_split": 4280.69525081854,
+          "migration_rate": 0.0001512842106600579,
+          "ancestral_population_size": 12807.358579321763,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.2375297476067462,
+            "EUR_size_ratio": 1.7212143372505393,
+            "split_duration_2N": 0.16711858359810336,
+            "migration_2N": 3.8751022666260266
+          },
+          "theta": 23292.217088417714,
+          "multinomial_log_likelihood": -4064.185724216878,
+          "best_restart": 14,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 44794555.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      },
+      {
+        "state": "COMPLETED",
+        "arm": "3R",
+        "mode": "leave_one_out",
+        "blocks": 76,
+        "physical_exposure_bp": 43119020,
+        "fit": {
+          "AFR_population_size": 16339.445585076586,
+          "EUR_population_size": 23272.484199803588,
+          "generations_since_split": 4687.070734454492,
+          "migration_rate": 0.00014221477818541361,
+          "ancestral_population_size": 13098.922223372449,
+          "scaled_parameters": {
+            "AFR_size_ratio": 1.247388548954208,
+            "EUR_size_ratio": 1.776671683589236,
+            "split_duration_2N": 0.17891054907140896,
+            "migration_2N": 3.7257206369297955
+          },
+          "theta": 22931.395186718466,
+          "multinomial_log_likelihood": -4377.915649325867,
+          "best_restart": 15,
+          "successful_restarts": 32,
+          "failed_restarts": [],
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 32,
+          "workers": 8,
+          "sequence_length": 43119020.0,
+          "mutation_rate": 1.015e-08,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false,
+          "initial_scaled": [
+            1.2433889790091697,
+            1.7758934129324482,
+            0.17086645917141519,
+            3.787538706476566
+          ]
+        },
+        "submission_count": 0
+      }
+    ],
+    "numerical_refinement_relative_change": {
+      "AFR_population_size": 5.914202254153622e-06,
+      "EUR_population_size": 5.914201362200444e-06,
+      "generations_since_split": 5.914208909940655e-06,
+      "migration_rate": -5.914216587021848e-06
+    }
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "a4ef620c761c6dcd3b10720643e3c8ce5d6ea25b46071044b331ed2f8d16c531",
+    "coding_bed_sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057",
+    "recombination_map_sha256": "8fd66697338340a6a73e47f7e0de97879d84c7ea3e403fa07ddae532f0d78ad7",
+    "final_vcf_sealed_sha256": "130475793f8f453bd3c90a0ac36525dce221e26fa96ad248bb960d09396e425a",
+    "segregating_biallelic_sites": 513470,
+    "haplotypes": {
+      "AFR": 94,
+      "EUR": 68
+    },
+    "middle_distance_exposure_bp": 61965066
+  },
+  "betty_job_ids": [
+    "7751165",
+    "7754282",
+    "7763222",
+    "7763498",
+    "7763499",
+    "7766696",
+    "7766697",
+    "7766698",
+    "7766730",
+    "7769215",
+    "7771427",
+    "7771776"
+  ],
+  "source_artifacts": {
+    "baseline": {
+      "path": "experiments/split_migration_bgs/baseline_summary.json",
+      "sha256": "2e3790ba1db2dd7c474b0d9e9932a04516d7497e1aa2c0ac31612b30d0aa8342"
+    },
+    "refined": {
+      "path": "experiments/split_migration_bgs/refined_middle_p50_40.json",
+      "sha256": "59a853d0241ecc2fbad3e76432f58bf9245896d16fa2cd62906996788a4c1ae7"
+    },
+    "bootstrap": {
+      "path": "experiments/split_migration_bgs/bootstrap_1mb_summary.json",
+      "sha256": "cc740da25d75127d80361a4ab7c3fb87b81ecb95617303c229fbc78ac80421f9"
+    },
+    "calibration": {
+      "path": "experiments/split_migration_bgs/selection_calibration.json",
+      "sha256": "df5b64e5e58869c4600abdff2eae2b6cc9e11225f00c119a7eb1a328dce383a6"
+    },
+    "near_recovery": {
+      "path": "experiments/split_migration_bgs/selection_near_observed_aggregate.json",
+      "sha256": "ef12b53c2ae1522e7694c75a446a944c9b2a485faada830042c09ad872adb2d6"
+    },
+    "distance_0": {
+      "path": "experiments/split_migration_bgs/distance_all_noncoding_p50_40.json",
+      "sha256": "47e145e12256e5fdb17503c5acf426f9565c18ec7b863aff736ab4ba99b26b61"
+    },
+    "distance_1": {
+      "path": "experiments/split_migration_bgs/distance_coding_p50_40.json",
+      "sha256": "f49cf0cb0d8f0ef12ad5ea1659bf6fa982c5d87e2b1cd161a9a5afa244745e26"
+    },
+    "distance_2": {
+      "path": "experiments/split_migration_bgs/distance_far_p50_40.json",
+      "sha256": "95ba3ec928e84417f43767aa13fde6a92d0fe233f9e21294a943a4a0d60d070d"
+    },
+    "distance_3": {
+      "path": "experiments/split_migration_bgs/distance_near_p50_40.json",
+      "sha256": "f646867c7b1e2096d16c677e928af9acccec962d3e17a5a98dac2f2a146c39c3"
+    },
+    "arm_0": {
+      "path": "experiments/split_migration_bgs/arm_arm_only_2L.json",
+      "sha256": "f6e8e71f83d8a2916905d9618a100bfe248c23e937e0154a233a9b8a470a5686"
+    },
+    "arm_1": {
+      "path": "experiments/split_migration_bgs/arm_arm_only_2R.json",
+      "sha256": "7bdbe2e8bdd6969df72783f70a7c6464eac4797ef058505eec90128aa498aec1"
+    },
+    "arm_2": {
+      "path": "experiments/split_migration_bgs/arm_arm_only_3L.json",
+      "sha256": "d7950dcbc652aeadbf257e475fa0468a3c28c89abb63e246629e17d7e9461593"
+    },
+    "arm_3": {
+      "path": "experiments/split_migration_bgs/arm_arm_only_3R.json",
+      "sha256": "57d8eb9ceefccaf5d3e06f09806a82682028773a3f17b4171865455928f0c6bc"
+    },
+    "arm_4": {
+      "path": "experiments/split_migration_bgs/arm_leave_one_out_2L.json",
+      "sha256": "d79b75b1f4bbb1177481a4b0756625437a02b322b49a4d38db5e5b60f5a084f4"
+    },
+    "arm_5": {
+      "path": "experiments/split_migration_bgs/arm_leave_one_out_2R.json",
+      "sha256": "3d3638be2ab5f811a16042a57fcfb3546e761cc6437be68f4e5a85b37b5868ea"
+    },
+    "arm_6": {
+      "path": "experiments/split_migration_bgs/arm_leave_one_out_3L.json",
+      "sha256": "aa6099f70b6f6fc942553d17897e8e6d9d1fa5309fc0573adbb5222f1fe7ab9c"
+    },
+    "arm_7": {
+      "path": "experiments/split_migration_bgs/arm_leave_one_out_3R.json",
+      "sha256": "52cbd8238e881bf1813e5bd7d6aa9586b0451f5b013c76ca02459924399b2aa4"
+    }
+  },
+  "figures": [
+    {
+      "path": "figures/task4_split_migration_bgs/task4_validation.pdf",
+      "sha256": "4fc59987ba46cd3a9c2d4d6d003b216f1595020a1700d9a5824292aba0b0ee42"
+    },
+    {
+      "path": "figures/task4_split_migration_bgs/task4_validation.png",
+      "sha256": "e31f624aef5adc9a6196f5db87fd105049faacb0a4b3d2e84c0d22d86c7dd828"
+    }
+  ]
+}

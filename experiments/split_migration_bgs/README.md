@@ -66,5 +66,7 @@ The leading testing prediction is
 0.00015 symmetric migration. The aggregation is the median of three stable
 1–100 kb noncoding projections followed by generator-level rounding. Identity
 mapping wins the six-point held-out calibration, so no correction is applied.
-A stricter numerical-integration convergence check is the last gate before the
-freeze record is written. Nothing has been submitted.
+A stricter adaptive numerical integration with one-quarter the original time
+step changes every reported parameter by less than 0.0006%. All predeclared
+gates therefore pass. The method is frozen in `task4_freeze.json`; nothing has
+been submitted.

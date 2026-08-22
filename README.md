@@ -43,7 +43,7 @@ and [method comparison](docs/method_comparison.md).
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
 | Secondary Contact | Task 2 frozen, not submitted | corrected 40-by-30 hidden-epoch SFS estimate: 21,139 and 82,967 individuals, split 4,544 generations, contact 1,455 generations, migration 0.000199006 |
 | Growth with background selection | Task 3 frozen, not submitted | 5,000 generations and two-fold exponential growth; projection, linked-block, broad recovery, and selection-strength stress gates pass |
-| Split migration with background selection | final numerical gate running | leading candidate 16,000 / 24,000 individuals, 4,500-generation split, and 0.00015 symmetric migration; projection, recovery, arm-holdout, and linked-block gates pass |
+| Split migration with background selection | Task 4 frozen, not submitted | 16,000 / 24,000 individuals, 4,500-generation split, and 0.00015 symmetric migration; projection, recovery, arm-holdout, linked-block, and strict-integration gates pass |
 | Single hard sweep | active | multiscale scan, split-flank LD, and RAiSD converge near 38.25 Mb; matched selection recovery running |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
@@ -229,5 +229,6 @@ calibration. A chromosome-stratified 64-replicate 1 Mb block bootstrap contains
 the accepted candidate in all four 95% intervals, while leave-one-arm-out fits
 remain compatible with the whole-genome estimate. The final dataset stays
 sealed and nothing has been uploaded or submitted. One stricter numerical-
-integration gate remains before the result is frozen. The validation figure is in
+integration refinement changes every reported parameter by less than 0.0006%,
+and the result is now frozen. The validation figure is in
 [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/).
