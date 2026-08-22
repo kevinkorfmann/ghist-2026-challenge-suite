@@ -4,10 +4,11 @@ import argparse
 import json
 from pathlib import Path
 
+import numpy as np
 import yaml
 
-from .features import FeatureBundle, extract_vcf
-from .infer import predict
+from .features import FeatureBundle, FeatureCollection, extract_vcf, extract_vcf_blocks
+from .infer import predict, predict_blocks
 from .simulate import generate_dataset
 from .train import train_ensemble
 from .sfs_baseline import fit_two_epoch, write_fit
@@ -20,6 +21,11 @@ def main() -> None:
     ex.add_argument("--vcf", required=True)
     ex.add_argument("--out", required=True)
     ex.add_argument("--trees", help="Optional inferred tree sequence")
+    exb = sub.add_parser("extract-blocks")
+    exb.add_argument("--vcf", required=True)
+    exb.add_argument("--out", required=True)
+    exb.add_argument("--sequence-length", type=float, default=100_000_000)
+    exb.add_argument("--block-length", type=float, default=2_000_000)
     sim = sub.add_parser("simulate")
     sim.add_argument("--observed", required=True)
     sim.add_argument("--out", required=True)
@@ -35,6 +41,10 @@ def main() -> None:
     inf.add_argument("--observed", required=True)
     inf.add_argument("--checkpoint-dir", required=True)
     inf.add_argument("--out", required=True)
+    infb = sub.add_parser("infer-blocks")
+    infb.add_argument("--observed", required=True)
+    infb.add_argument("--checkpoint-dir", required=True)
+    infb.add_argument("--out", required=True)
     base = sub.add_parser("sfs-reference")
     base.add_argument("--vcf", required=True)
     base.add_argument("--out", required=True)
@@ -44,9 +54,34 @@ def main() -> None:
         b = extract_vcf(args.vcf, tree_sequence=args.trees)
         b.save(args.out)
         print(json.dumps({"n_haplotypes": b.n_haplotypes, "n_variants": b.n_variants, "sequence_length": b.sequence_length}, indent=2))
+    elif args.command == "extract-blocks":
+        collection = extract_vcf_blocks(
+            args.vcf,
+            sequence_length=args.sequence_length,
+            block_length=args.block_length,
+        )
+        collection.save(args.out)
+        print(
+            json.dumps(
+                {
+                    "n_haplotypes": collection.n_haplotypes,
+                    "n_variants": int(collection.n_variants.sum()),
+                    "blocks": len(collection.n_variants),
+                    "block_length": collection.block_length,
+                },
+                indent=2,
+            )
+        )
     elif args.command == "simulate":
+        stored = np.load(args.observed)
+        observed = (
+            FeatureCollection.load(args.observed)
+            if stored["windows"].ndim == 3
+            else FeatureBundle.load(args.observed)
+        )
+        stored.close()
         generate_dataset(
-            FeatureBundle.load(args.observed), args.out,
+            observed, args.out,
             n_sims=args.n_sims, seed=args.seed, quick=args.quick,
         )
     elif args.command == "train":
@@ -65,6 +100,12 @@ def main() -> None:
         )
     elif args.command == "infer":
         print(json.dumps(predict(args.observed, args.checkpoint_dir, args.out), indent=2))
+    elif args.command == "infer-blocks":
+        print(
+            json.dumps(
+                predict_blocks(args.observed, args.checkpoint_dir, args.out), indent=2
+            )
+        )
     else:
         result = fit_two_epoch(args.vcf, restarts=args.restarts)
         write_fit(result, args.out)

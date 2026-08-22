@@ -83,13 +83,13 @@ mkdir -p data
   --vcf data/bottleneck.testing.vcf.gz \
   --out artifacts/bottleneck.sfs-reference.json
 
-.venv/bin/python -m ghist_bottleneck.cli extract \
+.venv/bin/python -m ghist_bottleneck.cli extract-blocks \
   --vcf data/bottleneck.testing.vcf.gz \
-  --out artifacts/observed.npz
+  --out artifacts/observed.blocks.npz
 
 # 3. Generate simulations matched to the observed sample count.
 .venv/bin/python -m ghist_bottleneck.cli simulate \
-  --observed artifacts/observed.npz \
+  --observed artifacts/observed.blocks.npz \
   --out artifacts/simulations.npz \
   --n-sims 5000
 
@@ -99,8 +99,8 @@ mkdir -p data
   --out-dir checkpoints
 
 # 5. Produce a local prediction and YAML (no upload/submission).
-.venv/bin/python -m ghist_bottleneck.cli infer \
-  --observed artifacts/observed.npz \
+.venv/bin/python -m ghist_bottleneck.cli infer-blocks \
+  --observed artifacts/observed.blocks.npz \
   --checkpoint-dir checkpoints \
   --out artifacts/bottleneck.prediction.yaml
 ```
@@ -108,3 +108,8 @@ mkdir -p data
 Use `--quick` on `simulate` and `train` for smoke tests. The full run uses
 chromosome-held-out parameter blocks and reports RMSE, median absolute error,
 90% interval coverage, and ensemble disagreement.
+
+The context model consumes all fifty contiguous 2 Mb blocks, matching the
+physical scale of full simulations. A robust precision aggregation limits the
+leverage of localized recombination, accessibility, or diversity anomalies,
+while the whole 100 Mb VCF independently feeds the mechanistic SFS fit.

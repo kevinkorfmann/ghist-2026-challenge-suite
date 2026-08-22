@@ -8,7 +8,13 @@ import sys
 
 import numpy as np
 
-from ghist_bottleneck.features import LDAccumulator, FeatureBundle, summarize_variants
+from ghist_bottleneck.features import (
+    LDAccumulator,
+    FeatureBundle,
+    FeatureCollection,
+    extract_vcf_blocks,
+    summarize_variants,
+)
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
@@ -16,6 +22,20 @@ from ghist_bottleneck.train import _device
 
 
 class PipelineTests(unittest.TestCase):
+    def test_block_extraction_matches_training_scale_and_keeps_empty_blocks(self):
+        collection = extract_vcf_blocks(
+            "tests/fixtures/tiny.vcf", sequence_length=1000, block_length=500
+        )
+        self.assertEqual(collection.windows.shape, (2, 64, 8))
+        self.assertEqual(collection.sfs.shape, (2, 116))
+        np.testing.assert_array_equal(collection.n_variants, [2, 0])
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "blocks.npz"
+            collection.save(path)
+            loaded = FeatureCollection.load(path)
+            np.testing.assert_allclose(loaded.windows, collection.windows)
+            np.testing.assert_array_equal(loaded.block_starts, [0, 500])
+
     def test_validation_figure_exports_regular_weight_vector_and_raster(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

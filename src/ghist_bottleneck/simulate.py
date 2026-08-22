@@ -7,7 +7,7 @@ import msprime
 import numpy as np
 from tqdm import tqdm
 
-from .features import FeatureBundle, LDAccumulator, summarize_variants
+from .features import FeatureBundle, FeatureCollection, LDAccumulator, summarize_variants
 from .arg_features import coalescence_hazard_features
 
 
@@ -170,7 +170,7 @@ def simulate_one(
 
 
 def generate_dataset(
-    observed: FeatureBundle,
+    observed: FeatureBundle | FeatureCollection,
     out: str | Path,
     *,
     n_sims: int,
