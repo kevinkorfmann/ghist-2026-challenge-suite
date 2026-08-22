@@ -9,7 +9,7 @@ import joblib
 import numpy as np
 import torch
 
-from ghist_bottleneck.infer import _robust_block_average
+from ghist_bottleneck.infer import _robust_block_average, predict_blocks
 from ghist_bottleneck.model import BottleneckNet
 from ghist_bottleneck.train import reference_features
 
@@ -165,6 +165,11 @@ def main() -> None:
     parser.add_argument("--dataset", type=Path, required=True)
     parser.add_argument("--checkpoint-dir", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--observed-summary",
+        type=Path,
+        default=Path("data/processed/task1_bottleneck/observed.blocks.npz"),
+    )
     args = parser.parse_args()
     data = np.load(args.dataset)
     cell_ids = np.unique(data["cell_id"])
@@ -270,6 +275,21 @@ def main() -> None:
         **{f"{name}_raw_latent": branch["raw"] for name, branch in branches.items()},
         **{f"{name}_calibrated_latent": branch["calibrated"] for name, branch in branches.items()},
     )
+    promotion_id = args.checkpoint_dir.parent.name.removeprefix("fresh_")
+    observed_out = args.out.parent / f"promotion_{promotion_id}_summary_calibrated.yaml"
+    observed_result = predict_blocks(
+        args.observed_summary,
+        args.checkpoint_dir,
+        observed_out,
+        calibration=args.out,
+    )
+    serializable["observed_summary"] = {
+        "input": str(args.observed_summary),
+        "output": str(observed_out),
+        "generations": observed_result["generations"],
+        "post_decline_fraction": observed_result["post_decline_fraction"],
+    }
+    args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     print(json.dumps(serializable, indent=2))
 
 
