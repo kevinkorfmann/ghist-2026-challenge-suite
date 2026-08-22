@@ -13,7 +13,7 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 SEED=$((2026082100 + SLURM_ARRAY_TASK_ID))
 .venv/bin/python -m ghist_bottleneck.cli simulate \
-  --observed data/processed/bottleneck/observed.blocks.npz \
+  --observed data/processed/task1_bottleneck/observed.blocks.npz \
   --out "data/simulations/bottleneck/part_${SLURM_ARRAY_TASK_ID}.npz" \
   --n-sims 1000 \
   --seed "$SEED"
