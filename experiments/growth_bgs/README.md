@@ -50,6 +50,15 @@ haplotypes. It returns approximately 2,825 generations and 1.817-fold growth.
 This is not promoted because linked selection can change model preference; the
 same comparison is running on known exponential forward simulations.
 
+The matched smoke comparison in job `7749383` resolves the apparent conflict.
+Data generated under exponential 5,000-generation, two-fold growth recover
+5,371/1.986 with the correct model. When intentionally fit as a sudden jump,
+the same data yield 2,879/1.808, closely matching the observed sudden fit near
+2,825/1.817. Thus the alternative parameters are the expected misspecified
+representation of the leading exponential history. The correct exponential
+model also has the higher likelihood on the known-truth simulation, although
+the 462 kb smoke provides only a 0.24 log-likelihood separation.
+
 `figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
 distance-band bias, middle-distance projection stability, and all 128 linked
 block replicates. It is a validation figure rather than a frozen-result figure
