@@ -2,6 +2,7 @@ import tempfile
 import unittest
 import json
 import os
+import gzip
 from unittest.mock import patch
 from pathlib import Path
 import subprocess
@@ -24,9 +25,39 @@ from ghist_bottleneck.arg_features import (
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 from ghist_bottleneck.train import _device
+from ghist_bottleneck.vcf_normalize import normalize_vcf
 
 
 class PipelineTests(unittest.TestCase):
+    def test_vcf_normalization_repairs_only_the_header(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "malformed.vcf.gz"
+            destination = root / "normalized.vcf.gz"
+            report_path = root / "normalization.json"
+            body = (
+                "1\t2\t.\tA\tG\t.\tPASS\tAA=A\tGT\t0|1\n"
+                "1\t8\t.\tC\tT\t.\tPASS\tAA=C\tGT\t1|0\n"
+            )
+            malformed = (
+                "##fileformat=VCFv4.2\n"
+                "##contig=<ID=1,length=10>\n"
+                "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
+                "##INFO=<ID=AA,Number=1,Type=String,Description=\"Ancestral allele\n"
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tsample_1\n"
+                + body
+            )
+            with gzip.open(source, "wt") as handle:
+                handle.write(malformed)
+            report = normalize_vcf(source, destination, report_path)
+            self.assertEqual(report["records"], 2)
+            self.assertEqual(report["samples"], 1)
+            self.assertTrue(Path(str(destination) + ".tbi").exists())
+            with gzip.open(destination, "rt") as handle:
+                normalized = handle.read()
+            self.assertIn('Description="Ancestral Allele.', normalized)
+            self.assertTrue(normalized.endswith(body))
+
     def test_tmrca_posterior_becomes_conditional_hazards(self):
         hazards = tmrca_hazard_features(np.log([30.0, 30.0, 100.0]))
         self.assertEqual(hazards.shape, (32,))
