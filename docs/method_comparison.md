@@ -8,8 +8,8 @@ calibration or robustness under misspecification.
 
 | Family | Representative method | Signal | Role here |
 |---|---|---|---|
-| Diffusion/composite likelihood | [dadi](https://doi.org/10.1371/journal.pgen.1000695) | one- or multi-population SFS | primary mechanistic reference |
-| Moment equations | [moments](https://doi.org/10.1534/genetics.117.200493) | SFS moments | fast likelihood reference |
+| Diffusion/composite likelihood | [dadi](https://doi.org/10.1371/journal.pgen.1000695) | one- or multi-population SFS | independent diffusion cross-check |
+| Moment equations | [moments](https://doi.org/10.1534/genetics.117.200493) | SFS moments | primary mechanistic reference |
 | Linkage moments | [momentsLD](https://doi.org/10.1093/molbev/msz237) | LD statistics through distance | timing-sensitive reference |
 | Simulation composite likelihood | [fastsimcoal2](https://doi.org/10.1371/journal.pgen.1003905) | simulated expected SFS | flexible complex-model reference |
 | Sequence-position embedding | [SPIDNA/dnadna](https://doi.org/10.1093/bioinformatics/btac765) | genotype matrix and SNP positions | raw-input comparison |

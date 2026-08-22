@@ -96,4 +96,34 @@ architecture_screen:
   winner_score: 0.5895101246220711
   baseline_score: 0.6010188181907548
   relative_improvement_over_baseline: 0.01914864097488371
-  promotion_status: fresh 20000-simulation, five-seed gate running
+  promotion_status: fresh 20000-simulation, five-seed gate completed
+
+learned_promotion:
+  simulation_job: 7732376
+  merge_job: 7732377
+  training_job: 7732378
+  simulations: 20000
+  dataset_sha256: 9575ae199120a271bcd5169e6cd0e3b692011315119ae0dacd4a8708a047ba90
+  seeds: [17, 29, 43, 71, 101]
+  selection_score: 0.5347422221378036
+  heldout_coverage_90: [0.9283208020050125, 0.9258145363408521]
+  chromosome_gate:
+    simulation_job: 7732400
+    merge_job: 7732401
+    evaluation_job: 7732422
+    dataset_sha256: c94737c19cab18158125d33bc1026f4e4722bc06ae86a96b8cbcfdfde1f7c4b3
+    cells: 200
+    blocks_per_cell: 50
+    split_sizes:
+      calibration: 80
+      selection: 59
+      evaluation: 61
+    final_evaluation_median_generation_relative_error: 0.2343580081144142
+    final_evaluation_median_fraction_absolute_error: 0.030136220462057717
+  observed_summary_uncalibrated:
+    generations: 3777
+    post_decline_fraction: 0.515734
+  observed_summary_calibrated:
+    generations: 4423
+    post_decline_fraction: 0.542348
+  decision: secondary diagnostic; whole-chromosome error is too large for primary use

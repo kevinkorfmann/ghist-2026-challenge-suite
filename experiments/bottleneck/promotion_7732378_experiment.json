@@ -1,0 +1,59 @@
+{
+  "candidate": "deeper_context",
+  "configuration": {
+    "model": {
+      "width": 128,
+      "mixture_components": 8,
+      "dilations": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "context_layers": 4,
+      "attention_heads": 8,
+      "dropout": 0.12
+    },
+    "training": {
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ],
+      "epochs": 80,
+      "learning_rate": 0.0002,
+      "weight_decay": 0.002,
+      "batch_size": 64
+    }
+  },
+  "protocol": {
+    "split_seed": 991,
+    "selection_target": "fresh grouped synthetic validation only",
+    "nominal_weight": 1.0,
+    "overall_weight": 0.2,
+    "calibration_weight": 0.1,
+    "robustness_guard_weight": 0.05
+  },
+  "dataset": "/vast/projects/smathi/cohort/korfmann/ghist2026/data/simulations/bottleneck/promotion.npz",
+  "dataset_sha256": "9575ae199120a271bcd5169e6cd0e3b692011315119ae0dacd4a8708a047ba90",
+  "dataset_bytes": 41257386,
+  "git_revision": "aac30d7f4bdfa98e6ec622b5a49ba48ad47d0136",
+  "elapsed_seconds": 972.0207941532135,
+  "selection_score": 0.5347422221378036,
+  "nominal_normalized_rmse": [
+    0.5256363084724966,
+    0.3587287798414236
+  ],
+  "overall_normalized_rmse": [
+    0.5272146380043619,
+    0.3655260110585271
+  ],
+  "worst_scenario_mean_normalized_rmse": 0.4537594673021896,
+  "coverage_90": [
+    0.9283208020050125,
+    0.9258145363408521
+  ],
+  "calibration_gap": 0.027067669172932296
+}

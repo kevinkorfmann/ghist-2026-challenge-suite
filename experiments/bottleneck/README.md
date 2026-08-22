@@ -24,6 +24,16 @@ the calibration cells; the final set is untouched by both fitting and selection.
 The inferred-genealogy proxy is diagnostic only until it has a matched translation
 validation set, so it cannot displace the summary branch on optimistic tree input.
 
+The fresh promotion used 20,000 new simulations and five seeds. Its grouped
+validation score improved from 0.5895 in the architecture screen to 0.5347, with
+90% latent coverage of 0.928 and 0.926. The stricter 200-cell chromosome gate did
+not justify primary use: on 61 untouched parameter cells, the calibrated summary
+branch had median generation relative error 0.234 and median fraction absolute
+error 0.030. Its calibrated observed estimate is retained as a diagnostic, while
+the final estimator remains mechanistic-dominated pending an independent dadi
+cross-check. FastCXT remains ineligible because inferred-genealogy translation
+error is not represented by the simulated-tree proxy.
+
 The initial screen varies width, local receptive field, context depth, posterior
 mixture size, and regularization. Subsequent screens may vary feature groups,
 optimizer settings, genealogy corruption, and nominal-to-robust simulation ratios,

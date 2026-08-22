@@ -40,7 +40,7 @@ and [method comparison](docs/method_comparison.md).
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
-| Bottleneck model | promotion running | deeper context won the 12,000-simulation screen; fresh 20,000-simulation, five-seed gate queued |
+| Bottleneck model | promotion evaluated | five-seed fresh-shard score improved to 0.5347, but whole-chromosome error keeps the learned estimate secondary; mechanistic cross-check in progress |
 | Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
 
 The recent coalescent time-stratification result from

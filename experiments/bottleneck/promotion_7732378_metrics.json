@@ -1,0 +1,139 @@
+{
+  "members": [
+    {
+      "seed": 17,
+      "validation_nll": 0.843762218952179
+    },
+    {
+      "seed": 29,
+      "validation_nll": 0.9106528759002686
+    },
+    {
+      "seed": 43,
+      "validation_nll": 0.8672375679016113
+    },
+    {
+      "seed": 71,
+      "validation_nll": 0.8231605887413025
+    },
+    {
+      "seed": 101,
+      "validation_nll": 0.8396528363227844
+    }
+  ],
+  "heldout_deep_rmse_latent": [
+    0.7722467184066772,
+    0.452419251203537
+  ],
+  "heldout_reference_rmse_latent": [
+    0.8024842370617172,
+    0.4975063372617449
+  ],
+  "blend_weights_deep_reference": [
+    [
+      0.5191945999822724,
+      0.48080540001772754
+    ],
+    [
+      0.5473569282394204,
+      0.45264307176057955
+    ]
+  ],
+  "validation_examples": 3990,
+  "heldout_deep_coverage_90": [
+    0.9283208020050125,
+    0.9258145363408521
+  ],
+  "validation_by_nuisance_scenario": {
+    "0": {
+      "examples": 1959,
+      "deep_rmse_latent": [
+        0.7699348330497742,
+        0.44400617480278015
+      ],
+      "reference_rmse_latent": [
+        0.792813825030305,
+        0.4875638580811623
+      ],
+      "deep_coverage_90": [
+        0.9321082184788158,
+        0.925472179683512
+      ]
+    },
+    "1": {
+      "examples": 1015,
+      "deep_rmse_latent": [
+        0.7913813591003418,
+        0.44737088680267334
+      ],
+      "reference_rmse_latent": [
+        0.8151941368467892,
+        0.48806718310811487
+      ],
+      "deep_coverage_90": [
+        0.9133004926108375,
+        0.9300492610837439
+      ]
+    },
+    "2": {
+      "examples": 610,
+      "deep_rmse_latent": [
+        0.7514854669570923,
+        0.48825380206108093
+      ],
+      "reference_rmse_latent": [
+        0.7971168423630695,
+        0.5259993419500943
+      ],
+      "deep_coverage_90": [
+        0.9491803278688524,
+        0.921311475409836
+      ]
+    },
+    "3": {
+      "examples": 406,
+      "deep_rmse_latent": [
+        0.7656969428062439,
+        0.449205219745636
+      ],
+      "reference_rmse_latent": [
+        0.8245710386819441,
+        0.5236520769511402
+      ],
+      "deep_coverage_90": [
+        0.916256157635468,
+        0.9236453201970444
+      ]
+    }
+  },
+  "configuration": {
+    "model": {
+      "window_features": 8,
+      "sfs_bins": 116,
+      "width": 128,
+      "mixture_components": 8,
+      "dilations": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "context_layers": 4,
+      "attention_heads": 8,
+      "dropout": 0.12
+    },
+    "training": {
+      "epochs": 80,
+      "learning_rate": 0.0002,
+      "weight_decay": 0.002,
+      "batch_size": 64,
+      "seeds": [
+        17,
+        29,
+        43,
+        71,
+        101
+      ]
+    }
+  }
+}
