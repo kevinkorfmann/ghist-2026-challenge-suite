@@ -40,7 +40,7 @@ def fit_two_epoch_dadi_spectrum(
     grids = [sample_size + offset for offset in (20, 30, 40)]
     model_function = dadi.Numerics.make_extrap_log_func(dadi.Demographics1D.two_epoch)
     lower = np.array([0.02, 1e-4])
-    upper = np.array([2.0, 5.0])
+    upper = np.array([0.999, 5.0])
     rng = np.random.default_rng(seed)
     fits = []
     failures = []

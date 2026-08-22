@@ -111,7 +111,7 @@ def fit_regions(
         model_functions.append(moments.Demographics1D.two_epoch)
 
     lower = np.array([0.02, 1e-4, 5_000.0])
-    upper = np.array([2.0, 5.0, 50_000.0])
+    upper = np.array([0.999, 5.0, 50_000.0])
     rng = np.random.default_rng(seed)
     fits = []
     failures = []

@@ -2,7 +2,7 @@
 #SBATCH --job-name=bn-dadi
 #SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=16G
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err

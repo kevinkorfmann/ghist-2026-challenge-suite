@@ -121,7 +121,7 @@ def fit_two_epoch_spectrum(
         return expectation.fold() if folded else expectation
 
     lower = [0.02, 1e-4]
-    upper = [2.0, 5.0]
+    upper = [0.999, 5.0]
     rng = np.random.default_rng(seed)
     fits = []
     for restart in range(restarts):

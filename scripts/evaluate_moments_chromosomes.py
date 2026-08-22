@@ -9,7 +9,10 @@ from pathlib import Path
 import numpy as np
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
-from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
+try:
+    from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
+except ModuleNotFoundError:
+    from evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
 
 
 def sha256(path: Path) -> str:
