@@ -6,7 +6,19 @@ from pathlib import Path
 
 import numpy as np
 
-from scripts.summarize_single_sweep_scale_stress import error_metrics
+
+def error_metrics(errors: np.ndarray) -> dict:
+    return {
+        "replicates": int(errors.size),
+        "median_absolute_error": float(np.median(errors)),
+        "quantiles": {
+            "0.9": float(np.quantile(errors, 0.9)),
+            "0.95": float(np.quantile(errors, 0.95)),
+            "1.0": float(np.max(errors)),
+        },
+        "within_50kb": float(np.mean(errors <= 50_000)),
+        "within_100kb": float(np.mean(errors <= 100_000)),
+    }
 
 
 def summarize(records: list[dict], half_width: int = 35_000) -> dict:
