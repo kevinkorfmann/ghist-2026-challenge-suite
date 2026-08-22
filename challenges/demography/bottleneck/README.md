@@ -33,3 +33,9 @@ coordinates. A scheduled normalization repairs only that header and proves the
 SHA-256 of every record byte is unchanged. Summary and FastCXT inputs retain the
 original coordinates. Genealogy inputs retain every record while assigning
 stable sub-base order inside repeated-coordinate groups.
+
+The repeated-coordinate rate is consistent with continuous msprime mutation
+positions rounded for VCF output, and the organizers' published historical
+generator explicitly used continuous mutation coordinates. Simulation therefore
+sets `discrete_genome=False`; using msprime's discrete default would create a
+detectable generator mismatch despite identical demographic parameters.

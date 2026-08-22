@@ -30,6 +30,9 @@ from ghist_bottleneck.vcf_normalize import normalize_vcf
 
 
 class PipelineTests(unittest.TestCase):
+    def test_simulations_use_continuous_mutation_coordinates(self):
+        self.assertFalse(SimulationConfig().discrete_genome)
+
     def test_repeated_vcf_positions_receive_stable_sub_base_order(self):
         adjusted, groups, records = strict_positions(
             np.array([1, 2, 2, 2, 3, 8, 8, 10], dtype=float)

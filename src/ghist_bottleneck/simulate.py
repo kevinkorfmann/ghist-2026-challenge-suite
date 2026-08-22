@@ -24,6 +24,7 @@ class SimulationConfig:
     fraction_max: float = 0.95
     ancestral_ne_min: float = 5_000
     ancestral_ne_max: float = 50_000
+    discrete_genome: bool = False
 
 
 def _recombination_model(
@@ -128,7 +129,10 @@ def simulate_one(
         random_seed=seed,
     )
     ts = msprime.sim_mutations(
-        ancestry, rate=cfg.mutation_rate * mutation_multiplier, random_seed=seed + 1
+        ancestry,
+        rate=cfg.mutation_rate * mutation_multiplier,
+        random_seed=seed + 1,
+        discrete_genome=cfg.discrete_genome,
     )
     positions, ac, called, het = [], [], [], []
     ld_accumulator = LDAccumulator()
