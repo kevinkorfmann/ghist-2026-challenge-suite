@@ -19,6 +19,15 @@ PARAMETER_LABELS = (
 BLUE = "#0072B2"
 ORANGE = "#E69F00"
 GREEN = "#009E73"
+MAGENTA = "#CC79A7"
+CONDITION_LABELS = {
+    "nominal": "Nominal",
+    "recombination": "Recombination",
+    "mutation": "Mutation",
+    "local_size": "Local size",
+    "migration_asymmetry": "Asymmetric\nmigration",
+    "polarization": "Polarization",
+}
 
 
 def main() -> None:
@@ -106,12 +115,13 @@ def main() -> None:
             conditions[label]["corrected_minus_raw"]["replicate_differences"],
             dtype=float,
         )
+        improves = differences.mean() < 0
         offsets = np.linspace(-0.13, 0.13, len(differences))
         axes[2].scatter(
             index + offsets,
             differences,
-            color=GREEN,
-            marker="o",
+            color=GREEN if improves else MAGENTA,
+            marker="o" if improves else "^",
             s=14,
             alpha=0.68,
             linewidth=0,
@@ -127,12 +137,12 @@ def main() -> None:
     axes[2].axhline(0, color="#777777", linewidth=0.8, linestyle="--")
     axes[2].set_xticks(
         np.arange(len(labels)),
-        [label.replace("_", " ") for label in labels],
-        rotation=32,
+        [CONDITION_LABELS.get(label, label.replace("_", " ").title()) for label in labels],
+        rotation=24,
         ha="right",
     )
     axes[2].set_ylabel("Corrected − raw RRMSE")
-    axes[2].set_title("Correction transfer (points and mean)")
+    axes[2].set_title("Transfer under generator perturbations")
 
     for panel, axis in zip(("a", "b", "c"), axes):
         axis.text(-0.14, 1.04, panel, transform=axis.transAxes, fontsize=10, va="bottom")
