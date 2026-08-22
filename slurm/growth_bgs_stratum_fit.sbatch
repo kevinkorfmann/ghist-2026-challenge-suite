@@ -16,6 +16,13 @@ PROJECTION="${PROJECTION:-84}"
 RESTARTS="${RESTARTS:-64}"
 MAXITER="${MAXITER:-600}"
 OUTPUT="${OUTPUT:-artifacts/task3_growth_bgs/stratum_fit_p${PROJECTION}.json}"
+INCLUDE="${INCLUDE:-}"
+
+EXTRA_ARGS=()
+if [[ -n "$INCLUDE" ]]; then
+  read -r -a INCLUDE_LABELS <<< "$INCLUDE"
+  EXTRA_ARGS+=(--include "${INCLUDE_LABELS[@]}")
+fi
 
 PYTHONPATH=src .venv/bin/python scripts/fit_growth_bgs_strata.py \
   --audit artifacts/task3_growth_bgs/observed_resource_audit.json \
@@ -23,4 +30,5 @@ PYTHONPATH=src .venv/bin/python scripts/fit_growth_bgs_strata.py \
   --projection "$PROJECTION" \
   --restarts "$RESTARTS" \
   --workers "$SLURM_CPUS_PER_TASK" \
-  --maxiter "$MAXITER"
+  --maxiter "$MAXITER" \
+  "${EXTRA_ARGS[@]}"
