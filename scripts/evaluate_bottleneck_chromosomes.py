@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -11,6 +12,14 @@ import torch
 from ghist_bottleneck.infer import _robust_block_average
 from ghist_bottleneck.model import BottleneckNet
 from ghist_bottleneck.train import reference_features
+
+
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(8 * 1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def stratified_cell_split(
@@ -219,13 +228,30 @@ def main() -> None:
     chosen = "summary"
     serializable = {
         "dataset": str(args.dataset),
+        "dataset_sha256": sha256(args.dataset),
         "checkpoint_dir": str(args.checkpoint_dir),
+        "checkpoint_sha256": {
+            path.name: sha256(path)
+            for path in sorted(args.checkpoint_dir.glob("model_*.pt"))
+        }
+        | {
+            name: sha256(args.checkpoint_dir / name)
+            for name in ("normalization.npz", "reference.joblib", "experiment.json")
+        },
+        "evaluator_sha256": sha256(Path(__file__)),
         "cells": len(cell_ids),
         "split_seed": 4421,
         "split_cells": {name: values.tolist() for name, values in zip(
             ("calibration", "selection", "evaluation"),
             (calibration_cells, selection_cells, evaluation_cells),
         )},
+        "split_sizes": {
+            name: int(len(values))
+            for name, values in zip(
+                ("calibration", "selection", "evaluation"),
+                (calibration_cells, selection_cells, evaluation_cells),
+            )
+        },
         "target_scale": scale.tolist(),
         "chosen_branch": chosen,
         "genealogy_proxy_eligible_for_observed_selection": False,
