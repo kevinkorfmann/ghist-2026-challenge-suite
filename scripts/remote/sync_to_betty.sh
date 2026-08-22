@@ -8,7 +8,7 @@ fi
 ssh betty "mkdir -p '$REMOTE_ROOT'/logs '$REMOTE_ROOT'/data/processed '$REMOTE_ROOT'/data/simulations"
 rsync -az \
   --exclude '.git/' --exclude '.venv/' --exclude 'artifacts/' --exclude 'checkpoints/' \
-  --exclude 'data/' --exclude 'logs/' \
+  --exclude 'data/' --exclude 'logs/' --exclude 'external/' \
   ./ "betty:$REMOTE_ROOT/"
 REVISION="$(git rev-parse HEAD)"
 ssh betty "printf '%s\\n' '$REVISION' > '$REMOTE_ROOT/.source-revision'"
