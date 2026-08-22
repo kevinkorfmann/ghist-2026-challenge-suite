@@ -41,7 +41,8 @@ and [method comparison](docs/method_comparison.md).
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
-| Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
+| Secondary Contact | active | exact SFS fit stable across polarization and projection; full 100 Mb SINGER/POLEGON extraction and grouped focused simulations running |
+| Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
 [Deng, Pritchard, and Spence (2026)](https://doi.org/10.64898/2026.08.11.744210)

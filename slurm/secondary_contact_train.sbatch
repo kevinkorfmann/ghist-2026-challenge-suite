@@ -16,6 +16,8 @@ if [[ -n "${CHUNKS_OVERRIDE:-}" ]]; then
   CHUNKS="$CHUNKS_OVERRIDE"
 elif [[ "${DATASET:-chromosome}" == "mixed_sfs" ]]; then
   CHUNKS='data/processed/secondary_contact/sfs_chunks/chunk_*.npz,data/processed/secondary_contact/focused_sfs_chunks/chunk_*.npz'
+elif [[ "${DATASET:-chromosome}" == "arg" ]]; then
+  CHUNKS='data/processed/secondary_contact/arg_training.npz'
 elif [[ "${DATASET:-chromosome}" == "sfs" ]]; then
   CHUNKS='data/processed/secondary_contact/sfs_chunks/chunk_*.npz'
 else

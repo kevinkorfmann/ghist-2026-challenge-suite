@@ -57,6 +57,15 @@ calibration, POLEGON improved the global hazard RMSE from `0.0444` to `0.0400`
 and raised all pair-class correlations above `0.994`, so the redated branch is
 promoted for chromosome-wide extraction.
 
+The inference-error calibration is not based on one favorable example. A
+separate grouped campaign simulates 768 parameter points with three independent
+100 kb replicates each, runs the same SINGER and POLEGON settings used for the
+testing chromosome, and trains only on the resulting inferred hazards. Core,
+guard-shell, and broad-prior points remain labeled through untouched evaluation.
+The observed chromosome is divided into 1,000 non-overlapping tiles and is
+aggregated through fifty 2 Mb blocks, preserving block uncertainty and preventing
+any single inferred genealogy from dominating the result.
+
 The pinned historical GHIST generator is used only as a convention and
 misspecification audit. Its secondary-contact data included unreported ancestral
 and population-specific size epochs around the split and contact. Validation
