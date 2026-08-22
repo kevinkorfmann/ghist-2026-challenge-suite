@@ -107,7 +107,7 @@ def fit_isolation_with_migration_spectrum(
     if projection is not None:
         data = data.project(list(projection))
     lower = np.asarray([0.01, 0.01, 1e-5, 1e-7], dtype=np.float64)
-    upper = np.asarray([100.0, 100.0, 20.0, 200.0], dtype=np.float64)
+    upper = np.asarray([100.0, 100.0, 20.0, 50.0], dtype=np.float64)
     rng = np.random.default_rng(seed)
     starts = [
         np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)
@@ -150,10 +150,10 @@ def fit_isolation_with_migration_spectrum(
         },
         "theta": best["theta"],
         "multinomial_log_likelihood": best["likelihood"],
-        "best_restart": best["restart"],
+        "best_restart": int(best["restart"]),
         "successful_restarts": len(valid),
         "failed_restarts": [row for row in results if not row["ok"]],
-        "projection": list(data.sample_sizes),
+        "projection": [int(value) for value in data.sample_sizes],
         "restarts": restarts,
         "workers": workers,
         "sequence_length": sequence_length,
@@ -259,4 +259,3 @@ def project_joint_spectrum(
         right = hypergeom.pmf(np.arange(projection[1] + 1), n2, j, projection[1])
         result += float(spectrum[i, j]) * np.outer(left, right)
     return result
-
