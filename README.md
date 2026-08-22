@@ -44,6 +44,7 @@ and [method comparison](docs/method_comparison.md).
 | Secondary Contact | Task 2 frozen, not submitted | corrected 40-by-30 hidden-epoch SFS estimate: 21,139 and 82,967 individuals, split 4,544 generations, contact 1,455 generations, migration 0.000199006 |
 | Growth with background selection | Task 3 frozen, not submitted | 5,000 generations and two-fold exponential growth; projection, linked-block, broad recovery, and selection-strength stress gates pass |
 | Split migration with background selection | final numerical gate running | leading candidate 16,000 / 24,000 individuals, 4,500-generation split, and 0.00015 symmetric migration; projection, recovery, arm-holdout, and linked-block gates pass |
+| Single hard sweep | active | multiscale scan, split-flank LD, and RAiSD converge near 38.25 Mb; matched selection recovery running |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
