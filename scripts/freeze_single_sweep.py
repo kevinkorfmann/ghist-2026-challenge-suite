@@ -21,7 +21,7 @@ def sha256(path: Path) -> str:
 def validate(
     generic: dict,
     chromosome: dict,
-    scale: dict,
+    exact: dict,
     candidate: dict,
     raisd: dict,
 ) -> dict:
@@ -34,8 +34,8 @@ def validate(
         raise ValueError("generic held-out 90th-percentile error exceeds 75 kb")
     if chromosome_eval["quantiles"]["0.9"] > 75_000:
         raise ValueError("chromosome-map held-out 90th-percentile error exceeds 75 kb")
-    if not scale["robustness_gate"]["passed"]:
-        raise ValueError("forward-simulation scale stress did not pass")
+    if not exact["robustness_gate"]["passed"]:
+        raise ValueError("untouched exact-scale recovery did not pass")
 
     selected = candidate["interval_selection"]
     start, end = selected["interval"]
@@ -58,7 +58,7 @@ def validate(
     return {
         "generic_held_out": generic_eval,
         "chromosome_map_held_out": chromosome_eval,
-        "scale_stress": scale["robustness_gate"],
+        "exact_scale_recovery": exact["robustness_gate"],
         "reference_first_to_second_peak_ratio": reference_ratio,
         "candidate_hit_score": maximum_hit_score,
     }
@@ -68,7 +68,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--generic-recovery", type=Path, required=True)
     parser.add_argument("--chromosome-recovery", type=Path, required=True)
-    parser.add_argument("--scale-stress", type=Path, required=True)
+    parser.add_argument("--exact-recovery", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
     parser.add_argument("--audit", type=Path, required=True)
     parser.add_argument("--localization", type=Path, required=True)
@@ -83,7 +83,7 @@ def main() -> None:
     paths = {
         "generic_recovery": args.generic_recovery,
         "chromosome_recovery": args.chromosome_recovery,
-        "scale_stress": args.scale_stress,
+        "exact_recovery": args.exact_recovery,
         "candidate": args.candidate,
         "audit": args.audit,
         "localization": args.localization,
@@ -93,7 +93,7 @@ def main() -> None:
     gates = validate(
         loaded["generic_recovery"],
         loaded["chromosome_recovery"],
-        loaded["scale_stress"],
+        loaded["exact_recovery"],
         loaded["candidate"],
         loaded["raisd"],
     )

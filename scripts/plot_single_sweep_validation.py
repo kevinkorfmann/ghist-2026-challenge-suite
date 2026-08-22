@@ -60,7 +60,7 @@ def main() -> None:
     parser.add_argument("--raisd", type=Path, required=True)
     parser.add_argument("--generic-recovery", type=Path, required=True)
     parser.add_argument("--chromosome-recovery", type=Path, required=True)
-    parser.add_argument("--scale-stress", type=Path, required=True)
+    parser.add_argument("--exact-recovery", type=Path, required=True)
     parser.add_argument("--interval", type=Path, required=True)
     parser.add_argument("--pdf", type=Path, required=True)
     parser.add_argument("--png", type=Path, required=True)
@@ -72,7 +72,7 @@ def main() -> None:
     raisd = load(args.raisd)
     generic = load(args.generic_recovery)
     chromosome = load(args.chromosome_recovery)
-    scale = load(args.scale_stress)
+    exact = load(args.exact_recovery)
     interval = load(args.interval)
 
     mpl.rcParams.update(
@@ -153,17 +153,33 @@ def main() -> None:
     ax.legend(frameon=False, fontsize=8, loc="lower right")
     panel_label(ax, "d")
 
-    # e: exact and accelerated forward simulations.
+    # e: untouched unaccelerated forward simulations.
     ax = axes[2, 0]
-    scales = np.asarray(sorted(int(key) for key in scale["by_scale"]))
-    median = np.asarray([scale["by_scale"][str(key)]["median_all_three"]["median_absolute_error"] for key in scales]) / 1_000
-    q90 = np.asarray([scale["by_scale"][str(key)]["median_all_three"]["quantiles"]["0.9"] for key in scales]) / 1_000
-    ax.plot(scales, median, marker="o", color=BLUE, lw=1.5, label="Median")
-    ax.plot(scales, q90, marker="s", color=ORANGE, lw=1.5, label="90th percentile")
-    ax.axhline(100, color=GRAY, lw=0.9, ls=":")
-    ax.set_xticks(scales)
-    ax.set(xlabel="Forward-simulation scale factor", ylabel="Absolute error (kb)", title="Localization survives simulation scaling")
-    ax.legend(frameon=False, fontsize=8)
+    exact_errors = []
+    exact_spreads = []
+    for record in exact["records"]:
+        values = np.asarray(
+            [
+                record["estimates"]["largest_gap_midpoint"],
+                record["estimates"]["composite"],
+                record["estimates"]["flank_ld_100kb"],
+            ]
+        )
+        exact_errors.append(abs(np.median(values) - record["truth"]["position"]))
+        exact_spreads.append(np.ptp(values))
+    exact_errors = np.asarray(exact_errors)
+    exact_spreads = np.asarray(exact_spreads)
+    for errors, label, color in [
+        (exact_errors, "All exact-scale cells", BLUE),
+        (exact_errors[exact_spreads <= 50_000], "Observed-like agreement", ORANGE),
+    ]:
+        ex, ey = ecdf(errors)
+        ax.step(ex, ey, where="post", color=color, lw=1.8, label=f"{label} (n={errors.size})")
+    ax.axvline(35, color=RED, ls="--", lw=1.1)
+    ax.set(xlabel="Absolute localization error (kb)", ylabel="Cumulative fraction", title="Untouched unaccelerated recovery")
+    ax.set_xlim(0, 250)
+    ax.set_ylim(0, 1.02)
+    ax.legend(frameon=False, fontsize=8, loc="lower right")
     panel_label(ax, "e")
 
     # f: interval length is chosen using the published challenge objective.

@@ -39,7 +39,7 @@ def test_freeze_gate_accepts_precise_robust_recovery() -> None:
 
 
 def test_freeze_gate_rejects_scale_failure() -> None:
-    with pytest.raises(ValueError, match="scale stress"):
+    with pytest.raises(ValueError, match="exact-scale recovery"):
         validate(
             _recovery(60_000),
             _recovery(70_000),

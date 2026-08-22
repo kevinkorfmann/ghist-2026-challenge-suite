@@ -39,8 +39,10 @@ varied as nuisance parameters. A chromosome-7 recovery campaign using the
 HapMapII GRCh38 map selected the median of the gap, composite, and split-flank
 estimates without access to its ten evaluation cells. On those untouched cells
 it has 7.1 kb median absolute error, 45.2 kb 90th-percentile error, and 90%
-recovery within 50 kb. A matched scale-factor stress test at factors 1, 2, 5,
-and 10 is the remaining simulation-fidelity gate.
+recovery within 50 kb. An exploratory scale-factor campaign exposed long-tail
+errors in weak synthetic sweeps instead of passing its deliberately strict gate.
+A new 32-cell, unaccelerated chromosome-map campaign is therefore the remaining
+simulation-fidelity gate; its method and thresholds were locked before launch.
 
 Interval width is optimized against the published GHIST sweep evaluator rather
 than chosen visually. Its length penalty selects a 25 kb half-width on the
