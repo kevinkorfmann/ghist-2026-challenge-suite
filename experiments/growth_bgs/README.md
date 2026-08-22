@@ -83,4 +83,19 @@ while 5,000/2.0 remains the leading generator-level hypothesis.
 `figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
 distance-band bias, middle-distance projection stability, and all 128 one-Mb
 linked-block replicates. It is a validation figure rather than a frozen-result
-figure and will be regenerated after the forward-selection recovery grid.
+figure.
+
+The final forward-selection stress gate comprises four-arm aggregates at the
+exact 5,000-generation, two-fold truth. Deleterious-selection scaling of 5, 10,
+and 20 recovers 5,201/1.987, 5,118/2.001, and 4,190/2.044, respectively. A
+fivefold longer burn-in at scale 10 recovers 4,840/2.039. Thus the maximum
+absolute error is 16.2% for timing and 2.22% for growth magnitude, within the
+conservative 20% and 5% freeze thresholds recorded for these four-Mb simulations.
+
+All freeze gates now pass. The accepted testing prediction is 5,000 generations
+and 2.0-fold exponential growth. This uses generator-level rounding supported by
+the projection median of 5,052/2.010, the linked-block median of 4,956/1.985,
+and exact-truth recovery of 5,118/2.001 under the standard forward model. The
+held-out calibration selected the identity mapping, so no data-specific
+correction is applied. `task3_freeze.json` records the final hashes, validation
+results, and zero submissions.

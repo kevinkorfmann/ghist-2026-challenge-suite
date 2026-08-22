@@ -70,6 +70,22 @@ def main() -> None:
     payload = {
         "truth": {"generations": 5000, "post_growth_scaling": 2.0},
         "results": results,
+        "maximum_absolute_relative_error": {
+            key: max(abs(row["relative_error"][key]) for row in results.values())
+            for key in ("generations", "post_growth_scaling")
+        },
+        "freeze_gate_threshold": {
+            "generations": 0.20,
+            "post_growth_scaling": 0.05,
+        },
+        "freeze_gate_passed": all(
+            max(abs(row["relative_error"][key]) for row in results.values())
+            < threshold
+            for key, threshold in {
+                "generations": 0.20,
+                "post_growth_scaling": 0.05,
+            }.items()
+        ),
         "submission_count": 0,
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
