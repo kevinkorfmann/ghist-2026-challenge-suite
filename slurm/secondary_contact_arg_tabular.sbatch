@@ -15,6 +15,9 @@ EXTRA_ARGS=()
 if [[ "${AVERAGE_BY_POINT:-0}" == "1" ]]; then
   EXTRA_ARGS+=(--average-by-point)
 fi
+if [[ -n "${NUISANCE_FILTER:-}" ]]; then
+  EXTRA_ARGS+=(--nuisance-filter "$NUISANCE_FILTER")
+fi
 .venv/bin/python scripts/train_secondary_contact_arg_tabular.py \
   --dataset data/processed/secondary_contact/arg_training.npz \
   --out "${OUT:-artifacts/task2_secondary_contact/model_arg_tabular_core.joblib}" \

@@ -47,6 +47,8 @@ def _load(pattern: str) -> dict[str, np.ndarray]:
     else:
         counts = np.concatenate([chunk["n_variants"] for chunk in loaded])
         result["global_summary"] = np.log1p(counts.astype(np.float64))[:, None]
+    if "nuisance" in available:
+        result["nuisance"] = np.concatenate([chunk["nuisance"] for chunk in loaded])
     result["design_domain"] = np.concatenate(
         [
             chunk["design_domain"]
@@ -131,6 +133,7 @@ def main() -> None:
     parser.add_argument("--context-backend", choices=("transformer", "mamba"), default="transformer")
     parser.add_argument("--seed", type=int, default=7701)
     parser.add_argument("--domain-filter", type=str)
+    parser.add_argument("--nuisance-filter", choices=("all", "historical"), default="all")
     parser.add_argument("--objective", choices=("posterior", "direct"), default="posterior")
     parser.add_argument(
         "--spectrum-transform",
@@ -142,6 +145,16 @@ def main() -> None:
     np.random.seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = _load(args.chunks)
+    if args.nuisance_filter == "historical":
+        if "nuisance" not in data:
+            raise ValueError("historical nuisance filtering requires nuisance metadata")
+        expected_epochs = np.asarray((0.5, 1.5, 2.0, 0.8, 0.5, 1.5, 1.0 / 3.0))
+        keep = np.isclose(
+            data["nuisance"][:, 3:], expected_epochs[None], rtol=1e-6, atol=1e-8
+        ).all(axis=1)
+        if not np.any(keep):
+            raise ValueError("historical nuisance filter retained no rows")
+        data = {key: value[keep] for key, value in data.items()}
     if args.domain_filter:
         domains = np.asarray(
             [
@@ -314,6 +327,7 @@ def main() -> None:
         "seed": args.seed,
         "context_backend": args.context_backend,
         "domain_filter": args.domain_filter,
+        "nuisance_filter": args.nuisance_filter,
         "objective": args.objective,
         "spectrum_transform": args.spectrum_transform,
         "history": history,

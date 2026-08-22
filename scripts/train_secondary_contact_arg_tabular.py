@@ -40,6 +40,7 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--seed", type=int, default=20260929)
     parser.add_argument("--average-by-point", action="store_true")
+    parser.add_argument("--nuisance-filter", choices=("all", "historical"), default="all")
     args = parser.parse_args()
 
     source = np.load(args.dataset)
@@ -47,6 +48,14 @@ def main() -> None:
         [int(value) for value in args.domain_filter.replace(":", ",").split(",")]
     )
     keep = np.isin(source["design_domain"], domains)
+    if args.nuisance_filter == "historical":
+        expected_epochs = np.asarray((0.5, 1.5, 2.0, 0.8, 0.5, 1.5, 1.0 / 3.0))
+        keep &= np.isclose(
+            source["nuisance"][:, 3:],
+            expected_epochs[None],
+            rtol=1e-6,
+            atol=1e-8,
+        ).all(axis=1)
     data = {
         key: source[key][keep]
         for key in ("partition", "truth", "point_id", args.feature_key)
@@ -143,6 +152,7 @@ def main() -> None:
         "domain_filter": args.domain_filter,
         "feature_key": args.feature_key,
         "average_by_point": args.average_by_point,
+        "nuisance_filter": args.nuisance_filter,
         "features": int(features.shape[1]),
         "calibration_rows": int(calibration.sum()),
         "selection_rows": int(selection.sum()),
