@@ -206,3 +206,58 @@ def scan_windows(
         "composite_score": score,
     }
 
+
+def flank_ld_scan(
+    variants: VariantMatrix,
+    candidate_positions: np.ndarray,
+    flank_width: int,
+    maximum_sites_per_flank: int = 128,
+) -> dict[str, np.ndarray]:
+    sample_size = variants.haplotypes.shape[1]
+    scores = np.full(candidate_positions.size, np.nan)
+    within_left = np.full(candidate_positions.size, np.nan)
+    within_right = np.full(candidate_positions.size, np.nan)
+    between = np.full(candidate_positions.size, np.nan)
+
+    for index, center in enumerate(candidate_positions):
+        bounds = [center - flank_width, center, center + flank_width]
+        lo = int(np.searchsorted(variants.positions, bounds[0], side="left"))
+        mid = int(np.searchsorted(variants.positions, bounds[1], side="left"))
+        hi = int(np.searchsorted(variants.positions, bounds[2], side="left"))
+        left = variants.haplotypes[lo:mid]
+        right = variants.haplotypes[mid:hi]
+        prepared: list[np.ndarray] = []
+        for values in (left, right):
+            allele_counts = values.sum(axis=1)
+            keep = (allele_counts >= 2) & (allele_counts <= sample_size - 2)
+            values = values[keep].astype(float)
+            if values.shape[0] > maximum_sites_per_flank:
+                selected = np.linspace(0, values.shape[0] - 1, maximum_sites_per_flank)
+                values = values[np.rint(selected).astype(int)]
+            if values.shape[0] < 4:
+                prepared = []
+                break
+            values -= values.mean(axis=1, keepdims=True)
+            values /= np.maximum(np.sqrt(np.sum(values**2, axis=1, keepdims=True)), 1e-12)
+            prepared.append(values)
+        if len(prepared) != 2:
+            continue
+        left_std, right_std = prepared
+        left_corr = left_std @ left_std.T
+        right_corr = right_std @ right_std.T
+        cross_corr = left_std @ right_std.T
+        left_r2 = float(np.mean(left_corr[np.triu_indices(left_corr.shape[0], 1)] ** 2))
+        right_r2 = float(np.mean(right_corr[np.triu_indices(right_corr.shape[0], 1)] ** 2))
+        cross_r2 = float(np.mean(cross_corr**2))
+        within_left[index] = left_r2
+        within_right[index] = right_r2
+        between[index] = cross_r2
+        scores[index] = np.sqrt(left_r2 * right_r2) / max(cross_r2, 1e-12)
+    return {
+        "candidate_position": candidate_positions,
+        "flank_width": np.full(candidate_positions.size, flank_width),
+        "within_left_r2": within_left,
+        "within_right_r2": within_right,
+        "between_r2": between,
+        "flank_ld_ratio": scores,
+    }
