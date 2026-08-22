@@ -17,19 +17,33 @@ def _load(pattern: str) -> dict[str, np.ndarray]:
     paths = [Path(path) for path in sorted(glob.glob(pattern))]
     if not paths:
         raise FileNotFoundError(f"no dataset chunks match {pattern!r}")
-    keys = (
+    required = (
         "cell_id",
         "point_id",
         "partition",
         "truth",
-        "windows",
         "joint_sfs",
-        "global_summary",
     )
     loaded = [np.load(path) for path in paths]
-    result = {key: np.concatenate([chunk[key] for chunk in loaded]) for key in keys}
-    if len(np.unique(result["cell_id"])) != len(result["cell_id"]):
+    # Spectrum-surrogate chunks use point/replicate identifiers instead of a
+    # cell identifier and intentionally omit chromosome-context features.
+    available = set(loaded[0].files)
+    if "cell_id" not in available:
+        required = tuple(key for key in required if key != "cell_id")
+    result = {key: np.concatenate([chunk[key] for chunk in loaded]) for key in required}
+    if "cell_id" in result and len(np.unique(result["cell_id"])) != len(result["cell_id"]):
         raise ValueError("dataset chunks contain duplicate cell identifiers")
+    if "windows" in available:
+        result["windows"] = np.concatenate([chunk["windows"] for chunk in loaded])
+    else:
+        result["windows"] = np.zeros((len(result["truth"]), 1, 1), dtype=np.float32)
+    if "global_summary" in available:
+        result["global_summary"] = np.concatenate(
+            [chunk["global_summary"] for chunk in loaded]
+        )
+    else:
+        counts = np.concatenate([chunk["n_variants"] for chunk in loaded])
+        result["global_summary"] = np.log1p(counts.astype(np.float64))[:, None]
     return result
 
 
