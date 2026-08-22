@@ -19,6 +19,9 @@ def main() -> None:
     parser.add_argument("--slim-path", type=Path, required=True)
     parser.add_argument("--length", type=int, default=5_000_000)
     parser.add_argument("--position", type=int, default=2_500_000)
+    parser.add_argument("--chromosome")
+    parser.add_argument("--left", type=int, default=0)
+    parser.add_argument("--genetic-map")
     parser.add_argument("--mutation-generation", type=float, default=1000.0)
     parser.add_argument("--selection-coefficient", type=float, default=0.05)
     parser.add_argument("--minimum-end-frequency", type=float, default=0.95)
@@ -30,11 +33,22 @@ def main() -> None:
 
     species = stdpopsim.get_species("HomSap")
     model = species.get_demographic_model("Zigzag_1S14")
-    contig = species.get_contig(
-        length=args.length,
-        mutation_rate=species.genome.mean_mutation_rate,
-        recombination_rate=species.genome.mean_recombination_rate,
-    )
+    if args.chromosome is None:
+        if args.left != 0 or args.genetic_map is not None:
+            raise ValueError("left and genetic map require a named chromosome")
+        contig = species.get_contig(
+            length=args.length,
+            mutation_rate=species.genome.mean_mutation_rate,
+            recombination_rate=species.genome.mean_recombination_rate,
+        )
+    else:
+        contig = species.get_contig(
+            args.chromosome,
+            genetic_map=args.genetic_map,
+            left=args.left,
+            right=args.left + args.length,
+            mutation_rate=species.genome.mean_mutation_rate,
+        )
     locus_id = "single_hard_sweep"
     contig.add_single_site(id=locus_id, coordinate=args.position)
     extended_events = stdpopsim.selective_sweep(
@@ -59,7 +73,9 @@ def main() -> None:
     tree_sequence.dump(args.trees)
 
     matrix = tree_sequence.genotype_matrix()
-    positions = np.asarray([site.position for site in tree_sequence.sites()], dtype=np.int32)
+    positions = np.asarray(
+        [site.position - args.left for site in tree_sequence.sites()], dtype=np.int32
+    )
     keep = (
         np.all((matrix == 0) | (matrix == 1), axis=1)
         & (matrix.sum(axis=1) > 0)
@@ -87,7 +103,8 @@ def main() -> None:
 
     valid = np.isfinite(windows["composite_score"])
     composite_index = np.flatnonzero(valid)[np.argmax(windows["composite_score"][valid])]
-    local_region = [max(0, args.position - 750_000), min(args.length, args.position + 750_000)]
+    truth_local = args.position - args.left
+    local_region = [max(0, truth_local - 750_000), min(args.length, truth_local + 750_000)]
     candidates = np.arange(local_region[0], local_region[1] + 1, 1000, dtype=np.int64)
     ld = flank_ld_scan(variants, candidates, flank_width=100_000)
     ld_valid = np.isfinite(ld["flank_ld_ratio"])
@@ -98,10 +115,11 @@ def main() -> None:
     gaps = np.diff(local_positions.astype(np.int64))
     gap_index = int(np.argmax(gaps))
     estimates = {
-        "composite": int(windows["center"][composite_index]),
-        "flank_ld_100kb": int(ld["candidate_position"][ld_index]),
+        "composite": int(windows["center"][composite_index] + args.left),
+        "flank_ld_100kb": int(ld["candidate_position"][ld_index] + args.left),
         "largest_gap_midpoint": float(
             (int(local_positions[gap_index]) + int(local_positions[gap_index + 1])) / 2
+            + args.left
         ),
     }
     payload = {
@@ -119,6 +137,9 @@ def main() -> None:
         "accepted_biallelic_sites": int(variants.positions.size),
         "skipped_sites": variants.skipped_records,
         "sequence_length": args.length,
+        "chromosome": args.chromosome,
+        "left": args.left,
+        "genetic_map": args.genetic_map,
         "seed": args.seed,
         "slim_scaling_factor": args.slim_scaling_factor,
         "slim_burn_in": args.slim_burn_in,
@@ -131,4 +152,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
