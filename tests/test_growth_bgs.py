@@ -49,6 +49,7 @@ class GrowthBackgroundSelectionTests(unittest.TestCase):
         self.assertEqual(report["samples"], 2)
         self.assertEqual(report["sequence_length"], 200)
         self.assertEqual(report["biallelic_sites"], 3)
+        self.assertEqual(report["segregating_biallelic_sites"], 3)
         self.assertEqual(report["ancestral_orientation"], {"reference": 2, "alternate": 1})
         self.assertFalse(report["nonsynonymous_annotation_present"])
         self.assertEqual(report["distance_strata"]["coding_overlap"]["biallelic_sites"], 2)

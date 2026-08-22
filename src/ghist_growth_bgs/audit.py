@@ -204,7 +204,8 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
     )
     ancestral = collections.Counter()
     called_haplotypes = collections.Counter()
-    records = biallelic = multiallelic = 0
+    records = biallelic = segregating = multiallelic = 0
+    nonsegregating = collections.Counter()
     for record in vcf:
         records += 1
         if len(record.alleles or ()) != 2 or any(
@@ -222,8 +223,16 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
                 )
         called = len(alleles)
         alternate = int(sum(alleles))
-        if called == 0 or alternate in (0, called):
+        if called == 0:
+            nonsegregating["no_called_haplotypes"] += 1
             continue
+        if alternate == 0:
+            nonsegregating["fixed_reference"] += 1
+            continue
+        if alternate == called:
+            nonsegregating["fixed_alternate"] += 1
+            continue
+        segregating += 1
         called_haplotypes[called] += 1
         aa = record.info.get("AA")
         if isinstance(aa, tuple):
@@ -324,6 +333,8 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
         "sequence_length": sum(contig_lengths.values()),
         "records": records,
         "biallelic_sites": biallelic,
+        "segregating_biallelic_sites": segregating,
+        "nonsegregating_biallelic_sites": dict(nonsegregating),
         "multiallelic_sites": multiallelic,
         "ancestral_orientation": dict(ancestral),
         "called_haplotype_histogram": {
