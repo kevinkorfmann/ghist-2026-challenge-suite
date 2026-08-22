@@ -41,7 +41,7 @@ and [method comparison](docs/method_comparison.md).
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
-| Secondary Contact | active | exact hidden-epoch SFS fit stable across polarization and projection; matched score-aligned SFS and full 100 Mb SINGER/POLEGON campaigns running |
+| Secondary Contact | active | exact hidden-epoch SFS strongly preferred; projected finite-site bootstrap complete, full-resolution and numerical-convergence gates running |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
@@ -153,3 +153,32 @@ Observed cross-checks are tightly grouped: dadi folded gives 4,643.18 and
 gate. Full hashes, job identifiers, and gate decisions are recorded in
 [`experiments/bottleneck/task1_freeze.json`](experiments/bottleneck/task1_freeze.json).
 The publication figure is in [`figures/task1_bottleneck/`](figures/task1_bottleneck/).
+
+## Task 2 active evidence
+
+The Secondary Contact generator-matched spectrum is now the mechanistic
+reference. On a known-parameter simulation it reduced competition RRMSE from
+3.195 for the constant-size approximation to 0.309. On the observed unfolded
+spectrum it improves multinomial log likelihood by about 3,851 units relative
+to that approximation. Folded and unfolded fits agree closely within each
+resolution.
+
+Resolution remains an open gate. The unfolded 40-by-30 projection gives raw
+estimates of 20,128 and 79,106 for the current population sizes, 4,346
+generations for the split, 1,396 generations for contact, and 0.0002072 for
+migration. Thirty-two exact finite-site replicates show a median competition
+RRMSE of 0.102 and give bias-corrected provisional values of 21,153, 82,552,
+4,555, 1,460, and 0.0001992. The full sample spectrum shifts mainly the island
+size and contact time, so intermediate projections, a full-resolution
+bootstrap, and tighter adaptive integration are being completed before any
+estimate is frozen.
+
+Two learned spectrum representations improved untouched synthetic evaluation,
+including a variance-stabilized ensemble with RRMSE 0.507 and median absolute
+relative errors of 3.9–11.9% across parameters. Both produced observed
+predictions inconsistent with the mechanistic fit and are therefore rejected
+as primary estimators. The complete 100 Mb SINGER and POLEGON time-sliced
+genealogy campaign is retained as an independent check. Its current held-out
+results support population-size and split-time scale but show that marginal
+coalescence hazards alone are too weak to identify the contact–migration pair.
+No result has been uploaded or submitted.
