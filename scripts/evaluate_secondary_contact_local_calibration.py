@@ -46,6 +46,7 @@ def score_summary(predictions: np.ndarray, truth: np.ndarray) -> dict:
             zip(ESTIMATE_KEYS, np.median(np.abs(relative), axis=0).tolist())
         ),
         "mean_relative_error": dict(zip(ESTIMATE_KEYS, relative.mean(axis=0).tolist())),
+        "replicate_scores": scores.tolist(),
     }
 
 

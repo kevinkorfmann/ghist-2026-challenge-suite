@@ -90,6 +90,7 @@ def main() -> None:
                 "corrected_wins": int(np.sum(difference < 0)),
                 "ties": int(np.sum(difference == 0)),
                 "raw_wins": int(np.sum(difference > 0)),
+                "replicate_differences": difference.tolist(),
             },
         }
     result = {
