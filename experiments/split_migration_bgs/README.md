@@ -45,3 +45,12 @@ mapping with mean competition RRMSE 0.0435 and maximum 0.0684. Median-log-bias,
 diagonal-affine, and joint-ridge corrections all worsen mean held-out error.
 Accordingly, the observed projection median remains unchanged. A 64-replicate,
 chromosome-stratified 1 Mb block bootstrap is the next uncertainty gate.
+
+Chromosome-arm job `7766730` fits each arm separately and then repeats the fit
+while withholding each arm. Individual arms are heterogeneous, as expected
+under the half-scaled recombination map: split estimates range from 3,770 to
+5,272 generations. The more relevant leave-one-arm-out fits are stable enough
+to bracket the leading generator: AFR 15,349–16,339, EUR 21,827–23,887, split
+4,248–4,687 generations, and migration 0.0001406–0.0001585. This argues for
+whole-genome aggregation with chromosome-aware uncertainty rather than choosing
+the most convenient arm.
