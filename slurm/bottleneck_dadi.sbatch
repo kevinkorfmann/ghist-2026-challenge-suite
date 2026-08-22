@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=bn-dadi
-#SBATCH --partition=cpu
+#SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=16G
 #SBATCH --time=08:00:00
