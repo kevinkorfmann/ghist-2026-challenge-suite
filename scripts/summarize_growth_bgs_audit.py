@@ -31,6 +31,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--generic-audit", type=Path, required=True)
     parser.add_argument("--resource-audit", type=Path, required=True)
+    parser.add_argument("--generic-job", required=True)
+    parser.add_argument("--resource-job", required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     generic = json.loads(args.generic_audit.read_text())
@@ -52,7 +54,10 @@ def main() -> None:
             "median_diversity_per_bp": float(np.median(diversity[mask])),
         }
     result = {
-        "jobs": {"generic_audit": "7745884", "resource_audit": "7745889"},
+        "jobs": {
+            "generic_audit": args.generic_job,
+            "resource_audit": args.resource_job,
+        },
         "source_audits": {
             "generic": {
                 "path": str(args.generic_audit),

@@ -15,4 +15,6 @@ cd "$PROJECT_ROOT"
 PYTHONPATH=src .venv/bin/python scripts/summarize_growth_bgs_audit.py \
   --generic-audit artifacts/task3_growth_bgs/observed_vcf_audit.json \
   --resource-audit artifacts/task3_growth_bgs/observed_resource_audit.json \
+  --generic-job "${GENERIC_JOB_ID:?set GENERIC_JOB_ID}" \
+  --resource-job "${RESOURCE_JOB_ID:?set RESOURCE_JOB_ID}" \
   --out artifacts/task3_growth_bgs/observed_audit_summary.json
