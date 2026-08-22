@@ -46,6 +46,13 @@ def main() -> None:
         workers=args.workers,
         maxiter=750,
         seed=75194999,
+        initial_scaled=(
+            truth["AFR_population_size"] / truth["ancestral_population_size"],
+            truth["EUR_population_size"] / truth["ancestral_population_size"],
+            truth["generations_since_split"]
+            / (2 * truth["ancestral_population_size"]),
+            2 * truth["ancestral_population_size"] * truth["migration_rate"],
+        ),
     )
     payload = {
         "truth": truth,
@@ -63,4 +70,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

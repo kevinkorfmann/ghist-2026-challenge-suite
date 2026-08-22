@@ -160,6 +160,12 @@ def main() -> None:
         workers=1,
         maxiter=600,
         seed=args.seed + 1,
+        initial_scaled=(
+            args.afr_size / args.ancestral_size,
+            args.eur_size / args.ancestral_size,
+            args.generations / (2 * args.ancestral_size),
+            2 * args.ancestral_size * args.migration_rate,
+        ),
     )
     truth = {
         "ancestral_population_size": args.ancestral_size,
