@@ -25,6 +25,9 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--maxiter", type=int, default=400)
     parser.add_argument("--seed", type=int, default=20260919)
+    parser.add_argument("--integration-dt-fac", type=float, default=0.02)
+    parser.add_argument("--adaptive-integration", action="store_true")
+    parser.add_argument("--initial-scaled", type=float, nargs=5)
     args = parser.parse_args()
 
     ancestral, size1, size2, split, contact, migration = args.truth
@@ -88,6 +91,9 @@ def main() -> None:
         seed=args.seed + args.replicate * 7_919,
         folded=False,
         convention="generator_matched",
+        integration_dt_fac=args.integration_dt_fac,
+        adaptive_integration=args.adaptive_integration,
+        initial_scaled=args.initial_scaled,
     )
     truth = np.asarray((size1, size2, split, contact, migration))
     estimate = np.asarray(

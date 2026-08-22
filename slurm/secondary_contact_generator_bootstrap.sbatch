@@ -16,6 +16,13 @@ EXTRA_ARGS=()
 if [[ "${FULL_PROJECTION:-0}" == "1" ]]; then
   EXTRA_ARGS+=(--full-projection)
 fi
+if [[ "${ADAPT_DT:-0}" == "1" ]]; then
+  EXTRA_ARGS+=(--adaptive-integration)
+fi
+if [[ -n "${INITIAL_SCALED:-}" ]]; then
+  read -r -a INITIAL_VALUES <<< "$INITIAL_SCALED"
+  EXTRA_ARGS+=(--initial-scaled "${INITIAL_VALUES[@]}")
+fi
 .venv/bin/python scripts/bootstrap_secondary_contact_generator_fit.py \
   --out "$OUTPUT_ROOT/replicate_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate "$SLURM_ARRAY_TASK_ID" \
@@ -29,4 +36,5 @@ fi
   --workers "$SLURM_CPUS_PER_TASK" \
   --maxiter "${MAXITER:-400}" \
   --seed "${SEED:-20260919}" \
+  --integration-dt-fac "${DT_FAC:-0.02}" \
   "${EXTRA_ARGS[@]}"
