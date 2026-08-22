@@ -19,3 +19,13 @@ increases. Over the same quartiles, inferred ancestral size rises from 6,682 to
 11,945 while inferred modern size remains much more stable. This is diagnostic
 evidence of linked-selection bias, not a frozen prediction. Chromosome-arm
 consistency and simulation recovery remain required gates.
+
+The refined middle-distance spectrum combines the 1–10 kb and 10–100 kb
+noncoding bands, retaining 61,965,066 physical bases while excluding coding,
+the most tightly linked 1 kb flanks, and the sparse 2.44 Mb extreme-distance
+tail. Jobs `7745927`–`7745929` estimate, respectively, 5,157/1.995 at 84,
+5,052/2.010 at 60, and 4,899/2.033 at 40 haplotypes. Their medians are 5,052
+generations and 2.010-fold growth. The near-symmetry around 5,000 generations
+and close agreement around two-fold growth make 5,000/2.0 the leading testing
+hypothesis, but it remains provisional until linked-block and generator-matched
+selection recovery pass.

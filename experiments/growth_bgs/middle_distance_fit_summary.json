@@ -1,0 +1,77 @@
+{
+  "jobs": [
+    {
+      "job_id": 7745927,
+      "projection": 84,
+      "state": "COMPLETED"
+    },
+    {
+      "job_id": 7745928,
+      "projection": 60,
+      "state": "COMPLETED"
+    },
+    {
+      "job_id": 7745929,
+      "projection": 40,
+      "state": "COMPLETED"
+    }
+  ],
+  "source_files": [
+    "artifacts/task3_growth_bgs/middle_distance_fit_p84.json",
+    "artifacts/task3_growth_bgs/middle_distance_fit_p60.json",
+    "artifacts/task3_growth_bgs/middle_distance_fit_p40.json"
+  ],
+  "strata": {
+    "noncoding_1kb_100kb": {
+      "by_projection": {
+        "84": {
+          "generations": 5157.376072816142,
+          "post_growth_scaling": 1.9949978098832049,
+          "ancestral_effective_size": 8167.382322702343,
+          "modern_effective_size": 16293.909846269977
+        },
+        "60": {
+          "generations": 5051.7512592096455,
+          "post_growth_scaling": 2.0100523757516067,
+          "ancestral_effective_size": 8168.682893121575,
+          "modern_effective_size": 16419.480456080528
+        },
+        "40": {
+          "generations": 4899.419263689549,
+          "post_growth_scaling": 2.033133144811776,
+          "ancestral_effective_size": 8172.6336549560865,
+          "modern_effective_size": 16616.05236429543
+        }
+      },
+      "median": {
+        "generations": 5051.7512592096455,
+        "post_growth_scaling": 2.0100523757516067,
+        "ancestral_effective_size": 8168.682893121575,
+        "modern_effective_size": 16419.480456080528
+      },
+      "projection_range": {
+        "generations": [
+          4899.419263689549,
+          5157.376072816142
+        ],
+        "post_growth_scaling": [
+          1.9949978098832049,
+          2.033133144811776
+        ],
+        "ancestral_effective_size": [
+          8167.382322702343,
+          8172.6336549560865
+        ],
+        "modern_effective_size": [
+          16293.909846269977,
+          16616.05236429543
+        ]
+      }
+    }
+  },
+  "interpretation": {
+    "status": "diagnostic_not_frozen",
+    "primary_signal": "The inferred ancestral size rises and the growth ratio falls with recombination, while modern size is comparatively stable.",
+    "submission_count": 0
+  }
+}

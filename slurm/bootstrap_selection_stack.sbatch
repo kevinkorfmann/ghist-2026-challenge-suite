@@ -8,7 +8,7 @@
 #SBATCH --error=logs/%x-%j.err
 
 set -euo pipefail
-module load python/3.11.11 cmake/3.31.11
+module load gcc/13.3.0 cmake/3.31.6 python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 EXTERNAL_ROOT="$PROJECT_ROOT/external"
 SLIM_ROOT="$EXTERNAL_ROOT/SLiM-v4.3"
