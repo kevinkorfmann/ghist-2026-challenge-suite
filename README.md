@@ -41,7 +41,7 @@ and [method comparison](docs/method_comparison.md).
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
-| Secondary Contact | active | exact hidden-epoch SFS strongly preferred; projected finite-site bootstrap complete, full-resolution and numerical-convergence gates running |
+| Secondary Contact | active | 40-by-30 hidden-epoch SFS selected on 32 matched chromosomes; dual-anchor correction passed untouched transfer, final stress and artifact freeze running |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
@@ -163,15 +163,28 @@ spectrum it improves multinomial log likelihood by about 3,851 units relative
 to that approximation. Folded and unfolded fits agree closely within each
 resolution.
 
-Resolution remains an open gate. The unfolded 40-by-30 projection gives raw
-estimates of 20,128 and 79,106 for the current population sizes, 4,346
-generations for the split, 1,396 generations for contact, and 0.0002072 for
-migration. Thirty-two exact finite-site replicates show a median competition
-RRMSE of 0.102 and give bias-corrected provisional values of 21,153, 82,552,
-4,555, 1,460, and 0.0001992. The full sample spectrum shifts mainly the island
-size and contact time, so intermediate projections, a full-resolution
-bootstrap, and tighter adaptive integration are being completed before any
-estimate is frozen.
+The resolution gate is closed. On 32 matched finite-site chromosomes, the
+unfolded 40-by-30 projection has mean and median competition RRMSE of 0.1050 and
+0.0989, compared with 0.1091 and 0.1030 at 50-by-35. It wins 26 of 32 paired
+replicates; its mean score advantage is 0.00408 with a paired bootstrap interval
+of 0.00187–0.00620. Eight-replicate comparisons also place it ahead of 60-by-40
+and the full sample spectrum. The refined raw fit is 20,127.66 and 79,105.52 for
+the current population sizes, 4,346.33 generations for the split, 1,395.75
+generations for contact, and 0.000207236 for migration. Tighter adaptive
+integration changes every raw parameter by far below 0.01%, and independent
+refined finite-site cells remain within 0.1% of the standard integration.
+
+A point-grouped transfer gate spans 24 nearby demographic settings with two
+100 Mb chromosomes per setting: 14 settings for calibration, five for method
+selection, and five untouched for evaluation. A score-selected log-ridge
+correction, anchored by two independent 32-chromosome center campaigns, lowers
+untouched mean RRMSE from 0.1172 to 0.0478 and median RRMSE from 0.1073 to
+0.0397. All five parameter-wise median errors improve and fall between 0.81%
+and 1.81%. Its current accepted estimate is 21,138.89 and 82,967.40 for the
+population sizes, 4,544.20 and 1,455.04 generations for split and contact, and
+0.000199006 for migration. Recombination, mutation, local-size, directional
+migration, and polarization perturbations are being completed before the
+artifact is frozen.
 
 Two learned spectrum representations improved untouched synthetic evaluation,
 including a variance-stabilized ensemble with RRMSE 0.507 and median absolute
