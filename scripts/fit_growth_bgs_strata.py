@@ -21,12 +21,18 @@ def main() -> None:
     parser.add_argument("--maxiter", type=int, default=500)
     parser.add_argument("--mutation-rate", type=float, default=3.36e-8)
     parser.add_argument("--seed", type=int, default=75193299)
+    parser.add_argument(
+        "--include",
+        nargs="+",
+        help="fit only these candidate labels after constructing the full catalog",
+    )
     args = parser.parse_args()
 
     audit = json.loads(args.audit.read_text())
     haplotypes = int(audit["expected_haplotypes"])
     distance = audit["distance_strata"]
     joint = audit["joint_strata"]
+    contigs = audit["contig_strata"]
     distance_bp = audit["physical_bp_by_distance_stratum"]
     joint_bp = audit["physical_bp_by_joint_stratum"]
 
@@ -44,6 +50,13 @@ def main() -> None:
             sum(int(value) for key, value in distance_bp.items() if key.startswith("noncoding_")),
         ),
     }
+    for key, row in distance.items():
+        candidates[f"distance_{key}"] = ([dense(row)], int(distance_bp[key]))
+    for contig, row in contigs.items():
+        candidates[f"contig_{contig}"] = (
+            [dense(row)],
+            int(audit["contig_lengths"][contig]),
+        )
     for quartile in range(1, 5):
         suffix = f"positive_q{quartile}"
         keys = [
@@ -65,6 +78,11 @@ def main() -> None:
         [dense(joint[key]) for key in far_keys],
         sum(int(joint_bp[key]) for key in far_keys),
     )
+    if args.include is not None:
+        missing = sorted(set(args.include) - set(candidates))
+        if missing:
+            raise ValueError(f"unknown candidate labels: {missing}")
+        candidates = {key: candidates[key] for key in args.include}
 
     results = {}
     for index, (label, (parts, length)) in enumerate(candidates.items()):
