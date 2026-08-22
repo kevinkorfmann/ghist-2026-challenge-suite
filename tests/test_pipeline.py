@@ -24,7 +24,10 @@ from ghist_bottleneck.arg_features import (
     tmrca_hazard_features,
 )
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
-from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
+from ghist_bottleneck.sfs_baseline import (
+    complete_block_spectra_from_vcf,
+    projected_sfs_from_vcf,
+)
 from ghist_bottleneck.train import _device
 from ghist_bottleneck.genotype_matrix import export_genotype_matrix, strict_positions
 from ghist_bottleneck.vcf_normalize import normalize_vcf
@@ -34,6 +37,15 @@ from scripts.select_bottleneck_candidate import EXPECTED_CANDIDATES, select_cand
 
 
 class PipelineTests(unittest.TestCase):
+    def test_complete_block_spectra_preserve_physical_blocks(self):
+        spectra, metadata = complete_block_spectra_from_vcf(
+            "tests/fixtures/tiny.vcf", sequence_length=1000, block_length=500
+        )
+        self.assertEqual(spectra.shape, (2, 5))
+        self.assertEqual(spectra[0].sum(), 2)
+        self.assertEqual(spectra[1].sum(), 0)
+        self.assertEqual(metadata["records_per_block"], [2, 0])
+
     def test_screen_selection_requires_one_complete_fixed_protocol(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

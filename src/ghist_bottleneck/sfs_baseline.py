@@ -87,9 +87,31 @@ def fit_two_epoch(
     folded: bool = False,
 ) -> dict:
     """Fit the mechanistic two-epoch SFS reference with moments."""
+    spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
+    result = fit_two_epoch_spectrum(
+        spectrum,
+        mutation_rate=mutation_rate,
+        sequence_length=sequence_length,
+        restarts=restarts,
+        seed=seed,
+        folded=folded,
+    )
+    return {**result, "polarized": polarized, "folded": folded, "sfs": metadata}
+
+
+def fit_two_epoch_spectrum(
+    spectrum: np.ndarray,
+    *,
+    mutation_rate: float = 3.42e-8,
+    sequence_length: float = 100_000_000,
+    restarts: int = 24,
+    seed: int = 4721,
+    folded: bool = False,
+    initial: tuple[float, float] | None = None,
+) -> dict:
+    """Fit a two-epoch model to an already projected allele-count spectrum."""
     import moments
 
-    spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
     data = moments.Spectrum(spectrum)
     if folded:
         data = data.fold()
@@ -102,10 +124,13 @@ def fit_two_epoch(
     upper = [2.0, 5.0]
     rng = np.random.default_rng(seed)
     fits = []
-    for _ in range(restarts):
-        initial = np.exp(rng.uniform(np.log(lower), np.log(upper)))
+    for restart in range(restarts):
+        if restart == 0 and initial is not None:
+            start = np.asarray(initial, dtype=float)
+        else:
+            start = np.exp(rng.uniform(np.log(lower), np.log(upper)))
         estimate = moments.Inference.optimize_log_lbfgsb(
-            initial,
+            start,
             data,
             model,
             lower_bound=lower,
@@ -129,9 +154,61 @@ def fit_two_epoch(
         "theta": theta,
         "multinomial_log_likelihood": likelihood,
         "restarts": restarts,
+    }
+
+
+def complete_block_spectra_from_vcf(
+    path: str | Path,
+    *,
+    sequence_length: int = 100_000_000,
+    block_length: int = 2_000_000,
+    polarized: bool = True,
+) -> tuple[np.ndarray, dict]:
+    """Extract exact per-block spectra from a complete biallelic challenge VCF."""
+    if sequence_length <= 0 or block_length <= 0 or sequence_length % block_length:
+        raise ValueError("positive, evenly dividing sequence and block lengths are required")
+    vcf = pysam.VariantFile(str(path))
+    samples = list(vcf.header.samples)
+    projection = None
+    spectra = None
+    records = np.zeros(sequence_length // block_length, dtype=np.int64)
+    for rec in vcf:
+        if len(rec.alleles or ()) != 2 or any(len(allele) != 1 for allele in rec.alleles):
+            continue
+        alt = called = 0
+        for sample in samples:
+            gt = rec.samples[sample].get("GT")
+            values = [] if gt is None else [allele for allele in gt if allele is not None and allele >= 0]
+            called += len(values)
+            alt += sum(allele == 1 for allele in values)
+        if projection is None:
+            projection = called
+            spectra = np.zeros((len(records), projection + 1), dtype=np.float64)
+        if called != projection:
+            raise ValueError("block bootstrap requires the audited complete call matrix")
+        derived = alt
+        if polarized:
+            ancestral = rec.info.get("AA")
+            if isinstance(ancestral, tuple):
+                ancestral = ancestral[0]
+            if ancestral == rec.alts[0]:
+                derived = called - alt
+            elif ancestral != rec.ref:
+                raise ValueError(f"invalid ancestral allele at {rec.contig}:{rec.pos}")
+        if 0 < derived < called:
+            block = (rec.pos - 1) // block_length
+            if block >= len(records):
+                raise ValueError(f"record {rec.contig}:{rec.pos} exceeds the sequence length")
+            spectra[block, derived] += 1
+            records[block] += 1
+    if projection is None or spectra is None:
+        raise ValueError("no usable variants found")
+    return spectra, {
+        "projection": int(projection),
+        "blocks": int(len(records)),
+        "block_length": int(block_length),
+        "records_per_block": records.tolist(),
         "polarized": polarized,
-        "folded": folded,
-        "sfs": metadata,
     }
 
 
