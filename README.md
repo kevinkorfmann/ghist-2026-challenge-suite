@@ -41,7 +41,7 @@ and [method comparison](docs/method_comparison.md).
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
 | FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
-| Secondary Contact | active | 40-by-30 hidden-epoch SFS selected on 32 matched chromosomes; dual-anchor correction passed untouched transfer, final stress and artifact freeze running |
+| Secondary Contact | Task 2 frozen, not submitted | corrected 40-by-30 hidden-epoch SFS estimate: 21,139 and 82,967 individuals, split 4,544 generations, contact 1,455 generations, migration 0.000199006 |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
@@ -154,7 +154,7 @@ gate. Full hashes, job identifiers, and gate decisions are recorded in
 [`experiments/bottleneck/task1_freeze.json`](experiments/bottleneck/task1_freeze.json).
 The publication figure is in [`figures/task1_bottleneck/`](figures/task1_bottleneck/).
 
-## Task 2 active evidence
+## Task 2 frozen result
 
 The Secondary Contact generator-matched spectrum is now the mechanistic
 reference. On a known-parameter simulation it reduced competition RRMSE from
@@ -168,7 +168,10 @@ unfolded 40-by-30 projection has mean and median competition RRMSE of 0.1050 and
 0.0989, compared with 0.1091 and 0.1030 at 50-by-35. It wins 26 of 32 paired
 replicates; its mean score advantage is 0.00408 with a paired bootstrap interval
 of 0.00187–0.00620. Eight-replicate comparisons also place it ahead of 60-by-40
-and the full sample spectrum. The refined raw fit is 20,127.66 and 79,105.52 for
+and the full sample spectrum. An independent 48-chromosome comparison across 24
+varying demographic settings also selects 40-by-30: it wins 38 of 48 pairs,
+with mean RRMSE 0.1106 versus 0.1143 and a paired mean-difference interval of
+−0.00514 to −0.00214. The refined raw fit is 20,127.66 and 79,105.52 for
 the current population sizes, 4,346.33 generations for the split, 1,395.75
 generations for contact, and 0.000207236 for migration. Tighter adaptive
 integration changes every raw parameter by far below 0.01%, and independent
@@ -182,9 +185,18 @@ untouched mean RRMSE from 0.1172 to 0.0478 and median RRMSE from 0.1073 to
 0.0397. All five parameter-wise median errors improve and fall between 0.81%
 and 1.81%. Its current accepted estimate is 21,138.89 and 82,967.40 for the
 population sizes, 4,544.20 and 1,455.04 generations for split and contact, and
-0.000199006 for migration. Recombination, mutation, local-size, directional
-migration, and polarization perturbations are being completed before the
-artifact is frozen.
+0.000199006 for migration.
+
+The full-length stress gate contains eight replicates each under nominal,
+alternating 0.25×/4× recombination, 0.8×/1.2× mutation rate,
+0.9×/1.0× local size, 2:1 directional migration, and 0.1% polarization
+error. No optimizer boundaries occurred. The correction wins all 40 replicates
+across nominal, recombination, mutation, local-size, and polarization conditions,
+reducing mean RRMSE to 0.033–0.083. Under deliberately extreme directional
+migration, both symmetric-model estimates are poor and correction changes mean
+RRMSE from 0.321 to 0.330; this limitation is retained rather than hidden. The
+challenge generator specifies symmetric migration, so the primary estimate is
+unchanged.
 
 Two learned spectrum representations improved untouched synthetic evaluation,
 including a variance-stabilized ensemble with RRMSE 0.507 and median absolute
@@ -194,4 +206,8 @@ as primary estimators. The complete 100 Mb SINGER and POLEGON time-sliced
 genealogy campaign is retained as an independent check. Its current held-out
 results support population-size and split-time scale but show that marginal
 coalescence hazards alone are too weak to identify the contact–migration pair.
-No result has been uploaded or submitted.
+The accepted prediction, source hashes, job identifiers, and all gates are in
+[`experiments/secondary_contact/task2_freeze.json`](experiments/secondary_contact/task2_freeze.json),
+with publication figures in
+[`figures/task2_secondary_contact/`](figures/task2_secondary_contact/). No result
+has been uploaded or submitted.

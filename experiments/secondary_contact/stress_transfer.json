@@ -1,0 +1,546 @@
+{
+  "correction": "artifacts/task2_secondary_contact/local_calibration_p40_dual_anchored_evaluation.json",
+  "accepted_prediction_method": "ridge_100",
+  "conditions": {
+    "nominal": {
+      "pattern": "artifacts/task2_secondary_contact/paired_resolution_p40/replicate_[0-7].json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.10679183012473278,
+        "median_competition_rrmse": 0.10415678913081966,
+        "competition_rrmse_interval_95": [
+          0.0931263335378503,
+          0.12641042204423192
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.04291035953476974,
+          "population2_effective_size": 0.05167010462912358,
+          "generations_since_split": 0.041028386550413076,
+          "generations_since_contact": 0.051225723524971734,
+          "migration_rate": 0.03548072943518554
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.04317256078896271,
+          "population2_effective_size": -0.05741105955460289,
+          "generations_since_split": -0.04051939864550218,
+          "generations_since_contact": -0.03258109083041247,
+          "migration_rate": 0.03641305508505177
+        },
+        "replicate_scores": [
+          0.09719324131217345,
+          0.0922636561311757,
+          0.09891226151632372,
+          0.11536282884912046,
+          0.11359729923008924,
+          0.128753850903801,
+          0.09885018630986306,
+          0.1094013167453156
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.04264801184686696,
+        "median_competition_rrmse": 0.03657136314371938,
+        "competition_rrmse_interval_95": [
+          0.022061676763603905,
+          0.08409851970782278
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.005116979344146677,
+          "population2_effective_size": 0.015206594573855092,
+          "generations_since_split": 0.0036424677552794327,
+          "generations_since_contact": 0.022974876003173772,
+          "migration_rate": 0.02046747257214765
+        },
+        "mean_relative_error": {
+          "population1_effective_size": 0.004409938939847383,
+          "population2_effective_size": -0.006917293915271225,
+          "generations_since_split": 0.001464303986436738,
+          "generations_since_contact": -0.000220994006827388,
+          "migration_rate": -0.0009216042338993646
+        },
+        "replicate_scores": [
+          0.020433118890418673,
+          0.029739163880048568,
+          0.03479507393779839,
+          0.034498973165273804,
+          0.038347652349640375,
+          0.045850324276854815,
+          0.0453080149908123,
+          0.09221177328408871
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": -0.06414381827786583,
+        "median": -0.0696834172294871,
+        "interval_95": [
+          -0.08254658421190378,
+          -0.023551253336346063
+        ],
+        "corrected_wins": 8,
+        "ties": 0,
+        "raw_wins": 0,
+        "replicate_differences": [
+          -0.07676012242175478,
+          -0.06252449225112713,
+          -0.06411718757852533,
+          -0.08086385568384666,
+          -0.07524964688044886,
+          -0.0829035266269462,
+          -0.05354217131905076,
+          -0.01718954346122689
+        ]
+      }
+    },
+    "recombination": {
+      "pattern": "artifacts/task2_secondary_contact/stress_recombination/replicate_*.json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.10213629156541038,
+        "median_competition_rrmse": 0.0985787859113764,
+        "competition_rrmse_interval_95": [
+          0.09036955887032172,
+          0.13717954136720267
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.04911459950792907,
+          "population2_effective_size": 0.049104413675481406,
+          "generations_since_split": 0.04351243399240523,
+          "generations_since_contact": 0.026749745455523166,
+          "migration_rate": 0.03531030959639847
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.04958318033382944,
+          "population2_effective_size": -0.048007933313361034,
+          "generations_since_split": -0.04088463231734417,
+          "generations_since_contact": -0.03132824916386903,
+          "migration_rate": 0.03874441056245587
+        },
+        "replicate_scores": [
+          0.09260533938799555,
+          0.0984883624860684,
+          0.08989530239687575,
+          0.09954853979536545,
+          0.09383966891642985,
+          0.09888203516990755,
+          0.0986692093366844,
+          0.14516187503395603
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.0334122339848193,
+        "median_competition_rrmse": 0.02470519549235901,
+        "competition_rrmse_interval_95": [
+          0.012156261236158488,
+          0.08216441000256301
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.004950051497011665,
+          "population2_effective_size": 0.013262543087229073,
+          "generations_since_split": 0.0033211211696597687,
+          "generations_since_contact": 0.014472191077519736,
+          "migration_rate": 0.007880995782124978
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.0022932938977106992,
+          "population2_effective_size": 0.0027715976506915707,
+          "generations_since_split": 0.0011911883918356708,
+          "generations_since_contact": 0.0013611989650605394,
+          "migration_rate": 0.0012117330210530963
+        },
+        "replicate_scores": [
+          0.013838289636920985,
+          0.011799467332966444,
+          0.04704630131001067,
+          0.021664015892120483,
+          0.020399584601854988,
+          0.03519013222625164,
+          0.027746375092597537,
+          0.08961370578583168
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": -0.06872405758059107,
+        "median": -0.07218145927933085,
+        "interval_95": [
+          -0.08530257220774717,
+          -0.045071355515085454
+        ],
+        "corrected_wins": 8,
+        "ties": 0,
+        "raw_wins": 0,
+        "replicate_differences": [
+          -0.07876704975107457,
+          -0.08668889515310196,
+          -0.04284900108686508,
+          -0.07788452390324496,
+          -0.07344008431457485,
+          -0.06369190294365591,
+          -0.07092283424408685,
+          -0.05554816924812435
+        ]
+      }
+    },
+    "mutation": {
+      "pattern": "artifacts/task2_secondary_contact/stress_mutation/replicate_*.json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.10715869296377047,
+        "median_competition_rrmse": 0.10722017523366445,
+        "competition_rrmse_interval_95": [
+          0.09568821191864027,
+          0.12255020206329433
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.0447993652079845,
+          "population2_effective_size": 0.058516095987781624,
+          "generations_since_split": 0.0434903665123339,
+          "generations_since_contact": 0.043033645148660926,
+          "migration_rate": 0.04857133913737255
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.044998555521771205,
+          "population2_effective_size": -0.059091554540024474,
+          "generations_since_split": -0.042609122318337064,
+          "generations_since_contact": -0.034296025577847375,
+          "migration_rate": 0.037653419216430326
+        },
+        "replicate_scores": [
+          0.09506002290303155,
+          0.09864967442079567,
+          0.10575606138005812,
+          0.11519841633727952,
+          0.10868428908727076,
+          0.124109671762752,
+          0.10026968522638563,
+          0.10954172259259054
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.03522432450070977,
+        "median_competition_rrmse": 0.029294820579223443,
+        "competition_rrmse_interval_95": [
+          0.0207817105059979,
+          0.07477695565556461
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.004323453399073474,
+          "population2_effective_size": 0.009801650747580215,
+          "generations_since_split": 0.005515676541350267,
+          "generations_since_contact": 0.015988293761467265,
+          "migration_rate": 0.018163963837954156
+        },
+        "mean_relative_error": {
+          "population1_effective_size": 0.0024621419097101,
+          "population2_effective_size": -0.008732202259594257,
+          "generations_since_split": -0.0007234327027516863,
+          "generations_since_contact": -0.001970458474759851,
+          "migration_rate": 0.00031562424445982784
+        },
+        "replicate_scores": [
+          0.023156868508268206,
+          0.028841869364987466,
+          0.02027788911157693,
+          0.02974777179345942,
+          0.02591791808171821,
+          0.03894170250035413,
+          0.032532203653795444,
+          0.08237837299151834
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": -0.07193436846306071,
+        "median": -0.07733476270015795,
+        "interval_95": [
+          -0.08547335491666551,
+          -0.03426382269608784
+        ],
+        "corrected_wins": 8,
+        "ties": 0,
+        "raw_wins": 0,
+        "replicate_differences": [
+          -0.07190315439476334,
+          -0.0698078050558082,
+          -0.0854781722684812,
+          -0.0854506445438201,
+          -0.08276637100555255,
+          -0.08516796926239788,
+          -0.06773748157259019,
+          -0.027163349601072195
+        ]
+      }
+    },
+    "local_size": {
+      "pattern": "artifacts/task2_secondary_contact/stress_local_size/replicate_*.json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.15943574875108454,
+        "median_competition_rrmse": 0.15849261001971043,
+        "competition_rrmse_interval_95": [
+          0.14424172074545577,
+          0.1736351300185961
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.09281396282201565,
+          "population2_effective_size": 0.09170643776496562,
+          "generations_since_split": 0.04144120721317951,
+          "generations_since_contact": 0.04194765261307393,
+          "migration_rate": 0.044238856294014695
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.09320980433647036,
+          "population2_effective_size": -0.09667897138628358,
+          "generations_since_split": -0.04050460973768409,
+          "generations_since_contact": -0.03802272382878323,
+          "migration_rate": 0.041820417190813364
+        },
+        "replicate_scores": [
+          0.14253554253725925,
+          0.15868788248182839,
+          0.15829733755759248,
+          0.17406346332063916,
+          0.15228513229838217,
+          0.16489367071781005,
+          0.15310711664334314,
+          0.1716158444518217
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.08255399253161316,
+        "median_competition_rrmse": 0.07815490940344008,
+        "competition_rrmse_interval_95": [
+          0.06578186357303178,
+          0.11834403052936533
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.04812180783653014,
+          "population2_effective_size": 0.04229181863941778,
+          "generations_since_split": 0.007658358159697953,
+          "generations_since_contact": 0.017159274426247484,
+          "migration_rate": 0.02227391683619062
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.04862747884339076,
+          "population2_effective_size": -0.047352358366575795,
+          "generations_since_split": 0.0007778803998937656,
+          "generations_since_contact": -0.009116062862870561,
+          "migration_rate": 0.005684953631179504
+        },
+        "replicate_scores": [
+          0.06642420176756125,
+          0.07263730335022553,
+          0.08641510017158928,
+          0.08827829544024857,
+          0.06564561001661645,
+          0.08157299328702707,
+          0.07473682551985311,
+          0.12472161069978403
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": -0.07688175621947138,
+        "median": -0.0808454842771365,
+        "interval_95": [
+          -0.08653645723048722,
+          -0.05126713438798164
+        ],
+        "corrected_wins": 8,
+        "ties": 0,
+        "raw_wins": 0,
+        "replicate_differences": [
+          -0.076111340769698,
+          -0.08605057913160286,
+          -0.0718822373860032,
+          -0.08578516788039059,
+          -0.08663952228176572,
+          -0.08332067743078299,
+          -0.07837029112349003,
+          -0.046894233752037676
+        ]
+      }
+    },
+    "migration_asymmetry": {
+      "pattern": "artifacts/task2_secondary_contact/stress_asymmetry/replicate_*.json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.3206415107981829,
+        "median_competition_rrmse": 0.3211390500898666,
+        "competition_rrmse_interval_95": [
+          0.2867027594029489,
+          0.35195197161067293
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.11920014507204946,
+          "population2_effective_size": 0.23941833623443376,
+          "generations_since_split": 0.011916073519300685,
+          "generations_since_contact": 0.17118016446731388,
+          "migration_rate": 0.028864165784275364
+        },
+        "mean_relative_error": {
+          "population1_effective_size": 0.11994596638562882,
+          "population2_effective_size": -0.23747932470009986,
+          "generations_since_split": -0.01152748374702138,
+          "generations_since_contact": 0.1736203247740589,
+          "migration_rate": -0.03151518048293439
+        },
+        "replicate_scores": [
+          0.2980610195491857,
+          0.3177688926605493,
+          0.3124509114328847,
+          0.34792715994725754,
+          0.3245092075191839,
+          0.2842934314931411,
+          0.32731574424398485,
+          0.3528057195392762
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.3300609231639407,
+        "median_competition_rrmse": 0.3303887423714462,
+        "competition_rrmse_interval_95": [
+          0.2960284278205616,
+          0.36115267412003976
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.17476192590242168,
+          "population2_effective_size": 0.19009205897918113,
+          "generations_since_split": 0.02818182500261779,
+          "generations_since_contact": 0.1914858779924139,
+          "migration_rate": 0.05705821978280945
+        },
+        "mean_relative_error": {
+          "population1_effective_size": 0.17553067368935682,
+          "population2_effective_size": -0.18824619810812898,
+          "generations_since_split": 0.028438107606355928,
+          "generations_since_contact": 0.19405603122191922,
+          "migration_rate": -0.05968827214982034
+        },
+        "replicate_scores": [
+          0.30760093649149894,
+          0.32719245712363665,
+          0.3217628651478004,
+          0.36131710285089597,
+          0.33358502761925574,
+          0.29357365325399915,
+          0.3350778327212926,
+          0.36037751010314634
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": 0.009419412365757808,
+        "median": 0.009296087737886843,
+        "interval_95": [
+          0.007605092698721722,
+          0.012716188360406527
+        ],
+        "corrected_wins": 0,
+        "ties": 0,
+        "raw_wins": 8,
+        "replicate_differences": [
+          0.009539916942313265,
+          0.009423564463087342,
+          0.009311953714915666,
+          0.01338994290363843,
+          0.009075820100071852,
+          0.00928022176085802,
+          0.007762088477307749,
+          0.00757179056387014
+        ]
+      }
+    },
+    "polarization": {
+      "pattern": "artifacts/task2_secondary_contact/stress_polarization/replicate_*.json",
+      "replicates": 8,
+      "boundary_replicates": [],
+      "raw": {
+        "mean_competition_rrmse": 0.11604785769587216,
+        "median_competition_rrmse": 0.11262076282717459,
+        "competition_rrmse_interval_95": [
+          0.09808252486463767,
+          0.1413644627840025
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.04308483064576951,
+          "population2_effective_size": 0.03997571769244701,
+          "generations_since_split": 0.04946357137455154,
+          "generations_since_contact": 0.07470195312851419,
+          "migration_rate": 0.044949408325754336
+        },
+        "mean_relative_error": {
+          "population1_effective_size": -0.043622910656649416,
+          "population2_effective_size": -0.04508328358939016,
+          "generations_since_split": -0.04897384934187124,
+          "generations_since_contact": -0.05521532283903814,
+          "migration_rate": 0.044834657221991564
+        },
+        "replicate_scores": [
+          0.1143344252699909,
+          0.11090710038435829,
+          0.10200546625514367,
+          0.1302854573841093,
+          0.13070701075106889,
+          0.14362513442735206,
+          0.09853083921338386,
+          0.09798742788157029
+        ]
+      },
+      "corrected": {
+        "mean_competition_rrmse": 0.04910604948442057,
+        "median_competition_rrmse": 0.05471257368945228,
+        "competition_rrmse_interval_95": [
+          0.017386880128422367,
+          0.06941767793785712
+        ],
+        "median_absolute_relative_error": {
+          "population1_effective_size": 0.005440619348295095,
+          "population2_effective_size": 0.018622271390035194,
+          "generations_since_split": 0.007475420971116087,
+          "generations_since_contact": 0.040060161269884265,
+          "migration_rate": 0.020371401262036515
+        },
+        "mean_relative_error": {
+          "population1_effective_size": 0.003939700348897859,
+          "population2_effective_size": 0.004933303509528739,
+          "generations_since_split": -0.007050631617108921,
+          "generations_since_contact": -0.021780118497722212,
+          "migration_rate": 0.006454528237504004
+        },
+        "replicate_scores": [
+          0.045461518477340285,
+          0.05330905678786174,
+          0.016056984850150422,
+          0.05611609059104282,
+          0.06224804107201332,
+          0.06581936019831386,
+          0.02365638644027582,
+          0.0701809574583663
+        ]
+      },
+      "corrected_minus_raw": {
+        "mean": -0.06694180821145158,
+        "median": -0.07152113679285854,
+        "interval_95": [
+          -0.08452350764920112,
+          -0.03301999572853018
+        ],
+        "corrected_wins": 8,
+        "ties": 0,
+        "raw_wins": 0,
+        "replicate_differences": [
+          -0.06887290679265061,
+          -0.05759804359649655,
+          -0.08594848140499325,
+          -0.07416936679306647,
+          -0.06845896967905557,
+          -0.0778057742290382,
+          -0.07487445277310804,
+          -0.027806470423203986
+        ]
+      }
+    }
+  }
+}
