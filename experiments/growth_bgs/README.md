@@ -37,6 +37,12 @@ terminal partial blocks were excluded from resampling, which shifted its center
 relative to the all-base point estimate. A 1 Mb repeat is therefore required to
 reduce this edge imbalance while remaining conservative for linkage.
 
+The completed 1 Mb repeat in job `7746623` uses 108 complete blocks. Its 128
+replicates are correctly centered: medians are 4,956 generations and 1.985-fold
+growth, and means are 4,963 and 1.987. The respective 95% intervals are
+3,984–5,913 and 1.851–2.122. This removes the edge-driven center shift while
+retaining linked-block uncertainty.
+
 Forward-selection validation is pinned to stdpopsim 0.3.0, its Drosophila
 `Gamma_H17` deleterious DFE, the `ComeronCrossoverV2_dm6` map, pyslim 1.0.4,
 and SLiM 4.3 commit `f872f3d`. The stack was built and verified in job
@@ -60,6 +66,6 @@ model also has the higher likelihood on the known-truth simulation, although
 the 462 kb smoke provides only a 0.24 log-likelihood separation.
 
 `figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
-distance-band bias, middle-distance projection stability, and all 128 linked
-block replicates. It is a validation figure rather than a frozen-result figure
-and will be regenerated after the 1 Mb repeat and forward-selection recovery.
+distance-band bias, middle-distance projection stability, and all 128 one-Mb
+linked-block replicates. It is a validation figure rather than a frozen-result
+figure and will be regenerated after the forward-selection recovery grid.

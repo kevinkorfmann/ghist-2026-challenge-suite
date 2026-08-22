@@ -51,6 +51,7 @@ def main() -> None:
     parser.add_argument("--middle-summary", type=Path, required=True)
     parser.add_argument("--audit-summary", type=Path, required=True)
     parser.add_argument("--bootstrap-dir", type=Path, required=True)
+    parser.add_argument("--block-label", default="5 Mb blocks")
     parser.add_argument("--out-prefix", type=Path, required=True)
     args = parser.parse_args()
     style()
@@ -170,7 +171,7 @@ def main() -> None:
     ax_d.text(
         0.98,
         0.03,
-        "n = 128; 5 Mb blocks",
+        f"n = 128; {args.block_label}",
         transform=ax_d.transAxes,
         ha="right",
         va="bottom",
