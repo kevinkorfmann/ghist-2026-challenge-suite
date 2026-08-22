@@ -1,0 +1,34 @@
+audit:
+  slurm_job: 7731234
+  records: 1194350
+  contig: "1"
+  sequence_length_bp: 100000000
+  individuals: 57
+  haplotypes: 114
+  ploidy: 2
+  phased_call_fraction: 1.0
+  missing_call_fraction: 0.0
+  biallelic_snp_fraction: 1.0
+  pass_filter_fraction: 1.0
+  format_fields: [GT]
+  info_fields: [AA]
+  duplicate_adjacent_positions: 7715
+  nonmonotone_positions: 0
+  one_mb_variant_count:
+    minimum: 11247
+    mean: 11943.5
+    maximum: 12709
+
+normalization:
+  slurm_job: 7731236
+  repair: canonicalized one malformed AA metadata line
+  record_body_sha256: 1bd6e3676fca1a2615037eb4bb40ce3424252a9ed6f64f1dc2c4512216cc187a
+  normalized_vcf_sha256: ad808891111d32505b0e1180ad05054c07bc709941b232971939a73fc05362bd
+  tabix_sha256: 9baefbe0fc0e2e64b7de4977f5aefc6eaca06f69f5251bcce78a159772b846c0
+  invariant: every non-header VCF byte is unchanged
+
+representation_policy:
+  summary_and_fastcxt_positions: original integer coordinates, including repeats
+  genealogy_positions: stable sub-base ordering within repeated coordinates
+  genealogy_offset_range_bp: [-0.25, 0.25]
+  site_retention_target: 1.0

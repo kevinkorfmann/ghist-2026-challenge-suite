@@ -25,10 +25,20 @@ from ghist_bottleneck.arg_features import (
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 from ghist_bottleneck.train import _device
+from ghist_bottleneck.genotype_matrix import export_genotype_matrix, strict_positions
 from ghist_bottleneck.vcf_normalize import normalize_vcf
 
 
 class PipelineTests(unittest.TestCase):
+    def test_repeated_vcf_positions_receive_stable_sub_base_order(self):
+        adjusted, groups, records = strict_positions(
+            np.array([1, 2, 2, 2, 3, 8, 8, 10], dtype=float)
+        )
+        self.assertTrue(np.all(np.diff(adjusted) > 0))
+        self.assertEqual(groups, 2)
+        self.assertEqual(records, 5)
+        np.testing.assert_allclose(adjusted[[0, 4, 7]], [1, 3, 10])
+
     def test_vcf_normalization_repairs_only_the_header(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -57,6 +67,12 @@ class PipelineTests(unittest.TestCase):
                 normalized = handle.read()
             self.assertIn('Description="Ancestral Allele.', normalized)
             self.assertTrue(normalized.endswith(body))
+            matrix_metadata = export_genotype_matrix(
+                destination, root / "matrix", expected_records=2
+            )
+            self.assertEqual(matrix_metadata["haplotypes"], 2)
+            matrix = np.load(root / "matrix" / "genotypes.npy")
+            np.testing.assert_array_equal(matrix, [[0, 1], [1, 0]])
 
     def test_tmrca_posterior_becomes_conditional_hazards(self):
         hazards = tmrca_hazard_features(np.log([30.0, 30.0, 100.0]))

@@ -25,3 +25,11 @@ represented by fifty contiguous 2 Mb blocks, each with 64 local windows. Every
 nonempty block contributes to a robust precision aggregate and is retained in a
 diagnostic artifact. The whole chromosome is also fit directly by the projected
 SFS reference, leaving both local and global information available.
+
+The testing VCF contains 57 diploid individuals, 1,194,350 fully phased and
+complete biallelic SNP records, and correct ancestral-allele annotations. The
+downloaded header has one malformed metadata line and 7,715 adjacent repeated
+coordinates. A scheduled normalization repairs only that header and proves the
+SHA-256 of every record byte is unchanged. Summary and FastCXT inputs retain the
+original coordinates. Genealogy inputs retain every record while assigning
+stable sub-base order inside repeated-coordinate groups.
