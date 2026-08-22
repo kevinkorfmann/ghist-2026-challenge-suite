@@ -8,7 +8,7 @@ from pathlib import Path
 
 import numpy as np
 
-from ghist_secondary_contact.simulate import parameter_design
+from ghist_secondary_contact.simulate import focused_parameter_design, parameter_design
 from ghist_secondary_contact.spectrum import secondary_contact_spectrum
 
 
@@ -72,11 +72,26 @@ def main() -> None:
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
     parser.add_argument("--seed", type=int, default=20260822)
+    parser.add_argument("--design", choices=("broad", "focused"), default="broad")
+    parser.add_argument("--center", type=float, nargs=6)
+    parser.add_argument("--point-id-offset", type=int, default=0)
     args = parser.parse_args()
     stop = args.point_start + args.point_count
     if args.point_start < 0 or stop > args.points:
         raise ValueError(f"requested points must lie within [0, {args.points})")
-    points, partitions = parameter_design(args.points, seed=args.seed)
+    if args.design == "focused":
+        if args.center is None:
+            raise ValueError("--center is required for a focused design")
+        points, partitions, domains = focused_parameter_design(
+            args.points,
+            np.asarray(args.center),
+            seed=args.seed,
+        )
+    else:
+        if args.center is not None:
+            raise ValueError("--center is valid only for a focused design")
+        points, partitions = parameter_design(args.points, seed=args.seed)
+        domains = np.full(args.points, 2, dtype=np.int8)
     work = [
         (
             point_id,
@@ -93,10 +108,16 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         args.out,
-        point_id=np.repeat([record["point_id"] for record in records], args.replicates),
+        point_id=np.repeat(
+            [record["point_id"] + args.point_id_offset for record in records],
+            args.replicates,
+        ),
         replicate=np.tile(np.arange(args.replicates), len(records)),
         partition=np.repeat(
             [partitions[record["point_id"]] for record in records], args.replicates
+        ).astype(np.int8),
+        design_domain=np.repeat(
+            [domains[record["point_id"]] for record in records], args.replicates
         ).astype(np.int8),
         truth=np.repeat(
             np.asarray([record["truth"] for record in records]), args.replicates, axis=0
@@ -118,6 +139,10 @@ def main() -> None:
         "sequence_length": args.sequence_length,
         "mutation_rate": args.mutation_rate,
         "seed": args.seed,
+        "design": args.design,
+        "center": args.center,
+        "point_id_offset": args.point_id_offset,
+        "domain_labels": {"0": "core", "1": "guard", "2": "broad"},
     }
     args.out.with_suffix(args.out.suffix + ".json").write_text(
         json.dumps(metadata, indent=2) + "\n"

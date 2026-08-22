@@ -20,6 +20,16 @@ class SimulationNuisance:
     population2_epoch_factor: float | None = None
 
 
+def _grouped_partition(n_points: int, seed: int) -> np.ndarray:
+    partition = np.full(n_points, 2, dtype=np.int8)
+    shuffled = np.random.default_rng(seed + 1).permutation(n_points)
+    calibration_end = round(0.70 * n_points)
+    selection_end = calibration_end + round(0.15 * n_points)
+    partition[shuffled[:calibration_end]] = 0
+    partition[shuffled[calibration_end:selection_end]] = 1
+    return partition
+
+
 def parameter_design(n_points: int, *, seed: int = 20260822) -> tuple[np.ndarray, np.ndarray]:
     """Create point-grouped, space-filling targets and validation partitions."""
     if n_points < 20:
@@ -43,13 +53,58 @@ def parameter_design(n_points: int, *, seed: int = 20260822) -> tuple[np.ndarray
     fraction_logit = lower_logit + unit[:, 4] * (upper_logit - lower_logit)
     fraction = 1.0 / (1.0 + np.exp(-fraction_logit))
     values[:, 4] = values[:, 3] * fraction
-    partition = np.full(n_points, 2, dtype=np.int8)
-    shuffled = np.random.default_rng(seed + 1).permutation(n_points)
-    calibration_end = round(0.70 * n_points)
-    selection_end = calibration_end + round(0.15 * n_points)
-    partition[shuffled[:calibration_end]] = 0
-    partition[shuffled[calibration_end:selection_end]] = 1
-    return values, partition
+    return values, _grouped_partition(n_points, seed)
+
+
+def focused_parameter_design(
+    n_points: int,
+    center: np.ndarray,
+    *,
+    seed: int = 20260822,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Create core, guard-shell, and broad points around a mechanistic fit.
+
+    Columns follow ancestral size, mainland size, island size, split time,
+    contact time, and migration rate. Domain labels 0, 1, and 2 denote core,
+    guard, and broad points respectively.
+    """
+    if n_points < 40:
+        raise ValueError("at least forty points are required for focused validation")
+    center = np.asarray(center, dtype=np.float64)
+    if center.shape != (6,) or np.any(center <= 0) or center[4] >= center[3]:
+        raise ValueError("invalid six-parameter focused-design center")
+    unit = qmc.LatinHypercube(6, seed=seed).random(n_points)
+    domain = np.full(n_points, 2, dtype=np.int8)
+    order = np.random.default_rng(seed + 2).permutation(n_points)
+    core_end = round(0.70 * n_points)
+    guard_end = core_end + round(0.20 * n_points)
+    domain[order[:core_end]] = 0
+    domain[order[core_end:guard_end]] = 1
+    values = np.empty((n_points, 6), dtype=np.float64)
+    log_center = np.log(center[[0, 1, 2, 3, 5]])
+    center_fraction = center[4] / center[3]
+    center_logit = np.log(center_fraction) - np.log1p(-center_fraction)
+    # Dense precision region, followed by a deliberately much wider shell.
+    half_widths = {
+        0: np.log(np.asarray((2.5, 3.0, 3.0, 3.0, 15.0))),
+        1: np.log(np.asarray((8.0, 10.0, 10.0, 8.0, 100.0))),
+    }
+    fraction_widths = {0: 2.0, 1: 4.0}
+    coordinates = (0, 1, 2, 3, 5)
+    broad_values, _ = parameter_design(n_points, seed=seed + 10_000)
+    for row in range(n_points):
+        if domain[row] == 2:
+            values[row] = broad_values[row]
+            continue
+        width = half_widths[int(domain[row])]
+        logged = log_center + (2.0 * unit[row, coordinates] - 1.0) * width
+        values[row, coordinates] = np.exp(logged)
+        contact_logit = center_logit + (2.0 * unit[row, 4] - 1.0) * fraction_widths[
+            int(domain[row])
+        ]
+        fraction = 1.0 / (1.0 + np.exp(-contact_logit))
+        values[row, 4] = values[row, 3] * fraction
+    return values, _grouped_partition(n_points, seed), domain
 
 
 def draw_nuisance(rng: np.random.Generator) -> SimulationNuisance:

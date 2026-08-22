@@ -25,6 +25,7 @@ from ghist_secondary_contact.spectrum import (
 from ghist_secondary_contact.model import SecondaryContactNet, mixture_nll
 from ghist_secondary_contact.simulate import (
     SimulationNuisance,
+    focused_parameter_design,
     parameter_design,
     simulate_block,
 )
@@ -203,6 +204,17 @@ chr1\t20\t.\tC\tT\t.\tPASS\tAA=T\tGT\t0|0\t0|1
         second, split2 = parameter_design(40, seed=991)
         np.testing.assert_array_equal(first, second)
         np.testing.assert_array_equal(split1, split2)
+        self.assertTrue(np.all(first[:, 4] < first[:, 3]))
+        self.assertEqual(set(split1), {0, 1, 2})
+
+    def test_focused_design_has_core_guard_and_broad_domains(self):
+        center = np.asarray((16_585, 18_880, 51_090, 4_622, 1_188, 2.43e-4))
+        first, split1, domain1 = focused_parameter_design(100, center, seed=813)
+        second, split2, domain2 = focused_parameter_design(100, center, seed=813)
+        np.testing.assert_array_equal(first, second)
+        np.testing.assert_array_equal(split1, split2)
+        np.testing.assert_array_equal(domain1, domain2)
+        self.assertEqual(dict(zip(*np.unique(domain1, return_counts=True))), {0: 70, 1: 20, 2: 10})
         self.assertTrue(np.all(first[:, 4] < first[:, 3]))
         self.assertEqual(set(split1), {0, 1, 2})
 
