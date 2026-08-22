@@ -1,0 +1,249 @@
+{
+  "jobs": {
+    "generic_audit": "7745884",
+    "resource_audit": "7745889"
+  },
+  "source_audits": {
+    "generic": {
+      "path": "artifacts/task3_growth_bgs/observed_vcf_audit.json",
+      "sha256": "14b54786cb6eef005cda382a75e223dcbc85212ee8f19b958ac70c88d9cc62b1"
+    },
+    "resource": {
+      "path": "artifacts/task3_growth_bgs/observed_resource_audit.json",
+      "sha256": "d4fcdf4f7befcb759b7f9346185a73a4f25229c88d47caa3ca3f8faaa748103d"
+    }
+  },
+  "files": {
+    "vcf": {
+      "path": "data/raw/demography/growth_background_selection/testing/growth.testing.vcf.gz",
+      "sha256": "10795eaa5aac7f4f0a3d14067453ca74f84c9d2ad3e5ee44f84ae31757fc3881"
+    },
+    "coding_bed": {
+      "path": "data/raw/shared/demography/BGS_demography_challenge_coding_regions.bed",
+      "sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057"
+    },
+    "recombination_map": {
+      "path": "data/raw/shared/demography/comeron2012v2_combined_map_dm6.txt",
+      "sha256": "f5347b65891237196cc5fab5f32327c250ea6570145798bc2554ff08cb903560"
+    }
+  },
+  "samples": 42,
+  "expected_haplotypes": 84,
+  "sequence_length": 108990206,
+  "contig_lengths": {
+    "2L": 23513712,
+    "2R": 25286936,
+    "3L": 28110227,
+    "3R": 32079331
+  },
+  "records": 759057,
+  "biallelic_sites": 756966,
+  "segregating_biallelic_sites": 738421,
+  "nonsegregating_biallelic_sites": {
+    "fixed_alternate": 18493,
+    "fixed_reference": 52
+  },
+  "multiallelic_sites": 2091,
+  "ancestral_orientation": {
+    "reference": 738421
+  },
+  "phased_call_fraction": 1.0,
+  "sample_missingness_quantiles": {
+    "0": 0.0,
+    "0.01": 0.0,
+    "0.1": 0.0,
+    "0.5": 0.0,
+    "0.9": 0.0,
+    "0.99": 0.0,
+    "1": 0.0
+  },
+  "vcf_info_fields": [
+    "AA"
+  ],
+  "vcf_format_fields": [
+    "GT"
+  ],
+  "nonsynonymous_annotation_present": false,
+  "coding_bed": {
+    "2L": {
+      "merged_intervals": 10298,
+      "union_bp": 4245256,
+      "fraction_of_contig": 0.18054384607585566
+    },
+    "2R": {
+      "merged_intervals": 12304,
+      "union_bp": 4470179,
+      "fraction_of_contig": 0.17677819882962492
+    },
+    "3L": {
+      "merged_intervals": 10969,
+      "union_bp": 4453274,
+      "fraction_of_contig": 0.15842184412100266
+    },
+    "3R": {
+      "merged_intervals": 14441,
+      "union_bp": 5495961,
+      "fraction_of_contig": 0.17132405286132682
+    }
+  },
+  "coding_union_bp": 18664670,
+  "coding_fraction": 0.171250892029693,
+  "recombination_map": {
+    "2L": {
+      "points": 230,
+      "first_position": 0,
+      "last_position": 23007268,
+      "zero_rate_fraction": 0.06521739130434782,
+      "rate_cm_per_mb_quantiles": {
+        "0": 0.0,
+        "0.25": 0.732925,
+        "0.5": 1.9936,
+        "0.75": 3.5182,
+        "1": 10.2029
+      }
+    },
+    "2R": {
+      "points": 213,
+      "first_position": 4112495,
+      "last_position": 25259185,
+      "zero_rate_fraction": 0.07511737089201878,
+      "rate_cm_per_mb_quantiles": {
+        "0": 0.0,
+        "0.25": 1.0846,
+        "0.5": 2.3862,
+        "0.75": 3.5793,
+        "1": 8.894
+      }
+    },
+    "3L": {
+      "points": 247,
+      "first_position": 0,
+      "last_position": 24550457,
+      "zero_rate_fraction": 0.09716599190283401,
+      "rate_cm_per_mb_quantiles": {
+        "0": 0.0,
+        "0.25": 0.4845,
+        "0.5": 1.4537,
+        "0.75": 2.66515,
+        "1": 7.8225
+      }
+    },
+    "3R": {
+      "points": 281,
+      "first_position": 4174278,
+      "last_position": 32079331,
+      "zero_rate_fraction": 0.12099644128113879,
+      "rate_cm_per_mb_quantiles": {
+        "0": 0.0,
+        "0.25": 0.6528,
+        "0.5": 1.5233,
+        "0.75": 2.8291,
+        "1": 14.7987
+      }
+    }
+  },
+  "positive_map_rate_quartiles_cm_per_mb": [
+    0.9793,
+    1.9586,
+    3.2644
+  ],
+  "distance_strata": {
+    "coding_overlap": {
+      "segregating_biallelic_sites": 103355,
+      "oriented_sites": 103355,
+      "singleton_fraction": 0.3342460451840743,
+      "doubleton_fraction": 0.1385225678486769
+    },
+    "noncoding_10kb_100kb": {
+      "segregating_biallelic_sites": 120856,
+      "oriented_sites": 120856,
+      "singleton_fraction": 0.2613109816641292,
+      "doubleton_fraction": 0.1256453961739591
+    },
+    "noncoding_1bp_1kb": {
+      "segregating_biallelic_sites": 197250,
+      "oriented_sites": 197250,
+      "singleton_fraction": 0.2743320659062104,
+      "doubleton_fraction": 0.12429911280101394
+    },
+    "noncoding_1kb_10kb": {
+      "segregating_biallelic_sites": 312364,
+      "oriented_sites": 312364,
+      "singleton_fraction": 0.26703781485702577,
+      "doubleton_fraction": 0.12320882047867232
+    },
+    "noncoding_gt100kb": {
+      "segregating_biallelic_sites": 4596,
+      "oriented_sites": 4596,
+      "singleton_fraction": 0.28959965187119235,
+      "doubleton_fraction": 0.1612271540469974
+    }
+  },
+  "recombination_strata": {
+    "positive_q1": {
+      "segregating_biallelic_sites": 142138,
+      "oriented_sites": 142138,
+      "singleton_fraction": 0.3058365813505185,
+      "doubleton_fraction": 0.13530512600430566
+    },
+    "positive_q2": {
+      "segregating_biallelic_sites": 171269,
+      "oriented_sites": 171269,
+      "singleton_fraction": 0.2737156169534475,
+      "doubleton_fraction": 0.12207696664311697
+    },
+    "positive_q3": {
+      "segregating_biallelic_sites": 176460,
+      "oriented_sites": 176460,
+      "singleton_fraction": 0.26196871812308736,
+      "doubleton_fraction": 0.11843477275303185
+    },
+    "positive_q4": {
+      "segregating_biallelic_sites": 190159,
+      "oriented_sites": 190159,
+      "singleton_fraction": 0.25154213053286983,
+      "doubleton_fraction": 0.11949473861347609
+    },
+    "zero": {
+      "segregating_biallelic_sites": 58395,
+      "oriented_sites": 58395,
+      "singleton_fraction": 0.3523075605788167,
+      "doubleton_fraction": 0.1624282900933299
+    }
+  },
+  "windows_100kb": {
+    "total": 1092,
+    "nonempty": 1010,
+    "diversity_per_bp_quantiles": {
+      "0": 5.994549627079745e-05,
+      "0.25": 0.0009164967010900708,
+      "0.5": 0.0012714127940332692,
+      "0.75": 0.0015237349397590355,
+      "1": 0.0021152352266207665
+    },
+    "diversity_coding_fraction_correlation": -0.12620061035168656,
+    "diversity_recombination_correlation": 0.631589157714625,
+    "by_contig": {
+      "2L": {
+        "nonempty_windows": 236,
+        "mean_diversity_per_bp": 0.0012832572995426599,
+        "median_diversity_per_bp": 0.0013458232931726872
+      },
+      "2R": {
+        "nonempty_windows": 212,
+        "mean_diversity_per_bp": 0.0012774466149524089,
+        "median_diversity_per_bp": 0.001313037865748704
+      },
+      "3L": {
+        "nonempty_windows": 282,
+        "mean_diversity_per_bp": 0.001089185108778678,
+        "median_diversity_per_bp": 0.001176339644291445
+      },
+      "3R": {
+        "nonempty_windows": 280,
+        "mean_diversity_per_bp": 0.0011722451281032716,
+        "median_diversity_per_bp": 0.0012236947791164623
+      }
+    }
+  }
+}
