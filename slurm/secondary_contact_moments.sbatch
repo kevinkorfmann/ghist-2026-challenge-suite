@@ -9,8 +9,8 @@
 
 set -euo pipefail
 module load python/3.11.11
-export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK}"
-export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK}"
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 MODE="${MODE:-folded}"
@@ -20,4 +20,5 @@ if [[ "$MODE" == "folded" ]]; then EXTRA+=(--folded); fi
   --vcf data/raw/demography/secondary_contact/testing/secondary_contact.testing.vcf.gz \
   --out "artifacts/task2_secondary_contact/moments_${MODE}.json" \
   --restarts "${RESTARTS:-64}" \
+  --workers "${SLURM_CPUS_PER_TASK}" \
   "${EXTRA[@]}"

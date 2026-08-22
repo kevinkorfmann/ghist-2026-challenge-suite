@@ -30,6 +30,19 @@ mechanistic_references:
   moments_popgen: 1.6.0
   dadi: 2.4.4
 
+singer:
+  repository: https://github.com/popgenmethods/SINGER
+  revision: f88d68737962246d20f693c36978deba90ccd7ff
+  binary_sha256: 475e6bce7ce3eda847aa1906ce77127dd31e23a5f992dcd4284b1f82bec70d9f
+  converter_sha256: abf3dcf5bb23dcb9c1102e8443e3caba182c7c4723bc5482a6eeb2d6b204f366
+  role: posterior genealogy sampling
+
+polegon:
+  repository: https://github.com/YunDeng98/POLEGON
+  revision: 0c088b339a0636edde1cf569f0d7c4eea6a07af5
+  master_sha256: 91eb84705401a2d965ad70b99e062340cfccbb236176c762d0c909705ed7b316
+  role: prior-oblivious branch-length estimation
+
 historical_ghist_generator:
   repository: https://github.com/tjstruck/GHIST-2024-paper
   revision: f3d7d117d5fc1831d9462730af99ea904861f9c1

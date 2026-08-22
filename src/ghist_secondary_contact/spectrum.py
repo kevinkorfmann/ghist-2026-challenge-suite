@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from concurrent.futures import ProcessPoolExecutor
 import json
 from pathlib import Path
 from typing import Mapping, Sequence
@@ -41,16 +42,8 @@ def secondary_contact_spectrum(
     return spectrum.fold() if folded else spectrum
 
 
-def fit_secondary_contact_spectrum(
-    spectrum: np.ndarray,
-    *,
-    mutation_rate: float = 8.4e-8,
-    sequence_length: float = 100_000_000,
-    restarts: int = 32,
-    seed: int = 74031,
-    folded: bool = False,
-) -> dict:
-    """Fit the five-parameter joint-SFS reference with independent restarts."""
+def _fit_restart(arguments: tuple) -> dict:
+    spectrum, start, lower, upper, folded, restart = arguments
     import moments
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=float))
@@ -60,37 +53,73 @@ def fit_secondary_contact_spectrum(
     def model(parameters, sample_sizes):
         return secondary_contact_spectrum(parameters, sample_sizes, folded=folded)
 
+    try:
+        estimate = np.asarray(
+            moments.Inference.optimize_log_lbfgsb(
+                start,
+                data,
+                model,
+                lower_bound=lower,
+                upper_bound=upper,
+                maxiter=750,
+                verbose=0,
+            ),
+            dtype=float,
+        )
+        expected = model(estimate, data.sample_sizes)
+        likelihood = float(moments.Inference.ll_multinom(expected, data))
+        theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
+        if np.isfinite([*estimate, likelihood, theta]).all():
+            return {
+                "ok": True,
+                "restart": restart,
+                "estimate": estimate,
+                "likelihood": likelihood,
+                "theta": theta,
+            }
+        return {"ok": False, "restart": restart, "reason": "nonfinite result"}
+    except Exception as error:
+        return {
+            "ok": False,
+            "restart": restart,
+            "reason": f"{type(error).__name__}: {error}",
+        }
+
+
+def fit_secondary_contact_spectrum(
+    spectrum: np.ndarray,
+    *,
+    mutation_rate: float = 8.4e-8,
+    sequence_length: float = 100_000_000,
+    restarts: int = 32,
+    workers: int = 1,
+    seed: int = 74031,
+    folded: bool = False,
+) -> dict:
+    """Fit the five-parameter joint-SFS reference with independent restarts."""
     lower = np.asarray([0.01, 0.01, 1e-5, 1e-5, 1e-6])
     upper = np.asarray([100.0, 100.0, 10.0, 10.0, 100.0])
     rng = np.random.default_rng(seed)
-    fits = []
-    failures = []
-    for restart in range(restarts):
-        start = np.exp(rng.uniform(np.log(lower), np.log(upper)))
-        try:
-            estimate = np.asarray(
-                moments.Inference.optimize_log_lbfgsb(
-                    start,
-                    data,
-                    model,
-                    lower_bound=lower,
-                    upper_bound=upper,
-                    maxiter=750,
-                    verbose=0,
-                ),
-                dtype=float,
-            )
-            expected = model(estimate, data.sample_sizes)
-            likelihood = float(moments.Inference.ll_multinom(expected, data))
-            theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
-            if np.isfinite([*estimate, likelihood, theta]).all():
-                fits.append((likelihood, estimate, theta, restart))
-            else:
-                failures.append({"restart": restart, "reason": "nonfinite result"})
-        except Exception as error:
-            failures.append(
-                {"restart": restart, "reason": f"{type(error).__name__}: {error}"}
-            )
+    starts = [np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)]
+    work = [
+        (np.asarray(spectrum, dtype=float), start, lower, upper, folded, restart)
+        for restart, start in enumerate(starts)
+    ]
+    if workers > 1:
+        with ProcessPoolExecutor(max_workers=workers) as executor:
+            results = list(executor.map(_fit_restart, work))
+    else:
+        results = [_fit_restart(arguments) for arguments in work]
+    fits = [
+        (result["likelihood"], result["estimate"], result["theta"], result["restart"])
+        for result in results
+        if result["ok"]
+    ]
+    failures = [
+        {"restart": result["restart"], "reason": result["reason"]}
+        for result in results
+        if not result["ok"]
+    ]
     if not fits:
         raise RuntimeError(f"all moments restarts failed: {failures[:3]}")
     likelihood, estimate, theta, best_restart = max(fits, key=lambda item: item[0])
@@ -119,6 +148,7 @@ def fit_secondary_contact_spectrum(
         "successful_restarts": len(fits),
         "failed_restarts": failures,
         "restarts": restarts,
+        "workers": workers,
         "folded": folded,
     }
 

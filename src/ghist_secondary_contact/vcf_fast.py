@@ -48,6 +48,10 @@ def scan_secondary_contact_vcf(path: str | Path) -> tuple[np.ndarray, dict]:
             if len(fields) != 10 or fields[8] != b"GT":
                 layout_errors += 1
                 continue
+            ref, alt, info = fields[3], fields[4], fields[7]
+            if len(ref) != 1 or len(alt) != 1 or b"," in alt:
+                skipped_non_biallelic += 1
+                continue
             genotypes = fields[9]
             if (
                 len(genotypes) != 4 * (POPULATION1_DIPLOIDS + POPULATION2_DIPLOIDS) - 1
@@ -63,10 +67,6 @@ def scan_secondary_contact_vcf(path: str | Path) -> tuple[np.ndarray, dict]:
                 nonmonotone += int(position < previous_position)
                 duplicate += int(position == previous_position)
             previous_position = last_position = position
-            ref, alt, info = fields[3], fields[4], fields[7]
-            if len(ref) != 1 or len(alt) != 1 or b"," in alt:
-                skipped_non_biallelic += 1
-                continue
             marker = info.find(b"AA=")
             ancestral = (
                 info[marker + 3 :].split(b";", 1)[0] if marker >= 0 else b""

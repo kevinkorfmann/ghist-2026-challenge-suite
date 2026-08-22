@@ -14,6 +14,7 @@ def main() -> None:
     parser.add_argument("--vcf", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--restarts", type=int, default=64)
+    parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--seed", type=int, default=74031)
     parser.add_argument("--folded", action="store_true")
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
@@ -25,6 +26,7 @@ def main() -> None:
         mutation_rate=args.mutation_rate,
         sequence_length=args.sequence_length,
         restarts=args.restarts,
+        workers=args.workers,
         seed=args.seed,
         folded=args.folded,
     )
