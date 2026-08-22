@@ -38,4 +38,5 @@ fi
   --patience "${PATIENCE:-20}" \
   --width "${WIDTH:-128}" \
   --score-weight "${SCORE_WEIGHT:-0.15}" \
+  --objective "${OBJECTIVE:-posterior}" \
   "${EXTRA_ARGS[@]}"

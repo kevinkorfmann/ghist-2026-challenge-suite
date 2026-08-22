@@ -131,6 +131,7 @@ def main() -> None:
     parser.add_argument("--context-backend", choices=("transformer", "mamba"), default="transformer")
     parser.add_argument("--seed", type=int, default=7701)
     parser.add_argument("--domain-filter", type=str)
+    parser.add_argument("--objective", choices=("posterior", "direct"), default="posterior")
     args = parser.parse_args()
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
@@ -206,20 +207,32 @@ def main() -> None:
         epoch_loss = 0.0
         for (rows_cpu,) in loader:
             rows = rows_cpu.to(device)
-            logits, means, scale = model.mixture_parameters(
-                arrays["windows"][rows],
-                arrays["joint_sfs"][rows, None],
-                arrays["global_summary"][rows],
-            )
-            posterior_loss = mixture_nll(logits, means, scale, arrays["target"][rows])
-            weights = torch.softmax(logits, dim=1)
-            transformed_mean = torch.sum(weights[..., None] * means, dim=1)
+            if args.objective == "posterior":
+                logits, means, scale = model.mixture_parameters(
+                    arrays["windows"][rows],
+                    arrays["joint_sfs"][rows, None],
+                    arrays["global_summary"][rows],
+                )
+                primary_loss = mixture_nll(
+                    logits, means, scale, arrays["target"][rows]
+                )
+                weights = torch.softmax(logits, dim=1)
+                transformed_mean = torch.sum(weights[..., None] * means, dim=1)
+            else:
+                transformed_mean, _ = model(
+                    arrays["windows"][rows],
+                    arrays["joint_sfs"][rows, None],
+                    arrays["global_summary"][rows],
+                )
+                primary_loss = torch.mean(
+                    (transformed_mean - arrays["target"][rows]).square()
+                )
             physical = _physical(transformed_mean, target_mean, target_scale)
             # Preserve the competition geometry while capping extreme random-
             # initialization ratios that would otherwise dominate posterior learning.
             relative = (physical / arrays["truth"][rows] - 1.0).clamp(-3.0, 3.0)
             relative_loss = torch.mean(torch.sum(relative.square(), dim=1))
-            loss = posterior_loss + args.score_weight * relative_loss
+            loss = primary_loss + args.score_weight * relative_loss
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
@@ -295,6 +308,7 @@ def main() -> None:
         "seed": args.seed,
         "context_backend": args.context_backend,
         "domain_filter": args.domain_filter,
+        "objective": args.objective,
         "history": history,
     }
     evaluation_domains = data["design_domain"][evaluation_indices]
