@@ -70,6 +70,12 @@ multiallelic fraction, compared with `1.70%` in the testing VCF. Thirty-two
 independent 100 Mb replicates are used to estimate local finite-genome bias and
 sampling intervals for the five reported parameters.
 
+On an independent known-parameter 10 Mb recovery case, the exact hidden-epoch
+model achieved competition RRMSE `0.309`, versus `3.195` for the simple model.
+The matched fit reduced the error by more than tenfold, while retaining a
+contact-time/migration tradeoff that the full-chromosome bootstrap must quantify
+before any testing estimate is frozen.
+
 In addition to learned genealogy features, a continuous-time three-state
 coalescent reference now propagates mainland/mainland, cross-population, and
 island/island lineage-pair states through contact, isolation, and the ancestral
