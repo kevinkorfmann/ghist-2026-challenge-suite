@@ -10,9 +10,19 @@ from ghist_growth_bgs.audit import (
     load_coding_intervals,
     load_recombination_map,
 )
+from ghist_growth_bgs.spectrum import combine_spectra, spectrum_from_counts
 
 
 class GrowthBackgroundSelectionTests(unittest.TestCase):
+    def test_serialized_spectrum_helpers(self):
+        first = spectrum_from_counts({"1": 4, "3": 2}, 4)
+        second = spectrum_from_counts({"2": 5}, 4)
+        self.assertEqual(first.tolist(), [0.0, 4.0, 0.0, 2.0, 0.0])
+        self.assertEqual(
+            combine_spectra([first, second]).tolist(),
+            [0.0, 4.0, 5.0, 2.0, 0.0],
+        )
+
     def test_resource_loaders_and_joint_audit(self):
         vcf_text = """##fileformat=VCFv4.2
 ##contig=<ID=2L,length=100>
