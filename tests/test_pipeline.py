@@ -38,9 +38,27 @@ from ghist_bottleneck.vcf_normalize import normalize_vcf
 from ghist_bottleneck.fastcxt_dataset import grouped_splits, windowed_tmrca
 from scripts.run_fastcxt_observed import select_checkpoint
 from scripts.select_bottleneck_candidate import EXPECTED_CANDIDATES, select_candidate
+from scripts.evaluate_bottleneck_chromosomes import (
+    apply_affine,
+    fit_affine,
+    stratified_cell_split,
+)
 
 
 class PipelineTests(unittest.TestCase):
+    def test_chromosome_calibration_is_fit_before_final_evaluation(self):
+        cells = np.arange(40)
+        scenarios = np.repeat(np.arange(4), 10)
+        calibration, selection, evaluation = stratified_cell_split(cells, scenarios, seed=9)
+        self.assertFalse(set(calibration) & set(selection))
+        self.assertFalse(set(calibration) & set(evaluation))
+        self.assertFalse(set(selection) & set(evaluation))
+        self.assertEqual(set(np.concatenate((calibration, selection, evaluation))), set(cells))
+        prediction = np.column_stack((np.arange(20), np.arange(20) ** 0.5))
+        target = prediction @ np.array([[1.2, 0.1], [-0.3, 0.8]]) + [0.4, -0.2]
+        matrix, intercept = fit_affine(prediction, target, ridge=1e-9)
+        np.testing.assert_allclose(apply_affine(prediction, matrix, intercept), target, atol=1e-7)
+
     def test_chromosome_validation_repeats_parameters_within_cells(self):
         observed = FeatureBundle(
             windows=np.zeros((64, 8)),
