@@ -27,6 +27,7 @@ from ghist_secondary_contact.model import SecondaryContactNet, mixture_nll
 from ghist_secondary_contact.simulate import (
     SimulationNuisance,
     focused_parameter_design,
+    nuisance_size_changes,
     parameter_design,
     simulate_block,
 )
@@ -103,6 +104,30 @@ class SecondaryContactTests(unittest.TestCase):
         self.assertEqual(event_times, sorted(event_times))
         self.assertIn(1_000, event_times)
         self.assertIn(5_000, event_times)
+
+    def test_generator_matched_hidden_size_epochs(self):
+        parameters = SecondaryContactParameters(
+            ancestral_size=12_000,
+            population1_size=24_000,
+            population2_size=3_600,
+            split_time=5_000,
+            contact_time=700,
+            migration_rate=1e-4,
+        )
+        nuisance = SimulationNuisance(
+            ancestral_epoch_factors=(0.5, 1.5, 2.0),
+            population1_epoch_factors=(0.8, 0.5),
+            population2_epoch_factor=1.5,
+            population2_contact_factor=1 / 3,
+        )
+        changes = nuisance_size_changes(parameters, nuisance)
+        island = {
+            change.time: change.size
+            for change in changes
+            if change.population == "population2"
+        }
+        self.assertAlmostEqual(island[315], 5_400)
+        self.assertAlmostEqual(island[700], 1_200)
 
     def test_joint_spectrum_model_has_expected_dimensions(self):
         spectrum = secondary_contact_spectrum(

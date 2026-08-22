@@ -97,6 +97,9 @@ def main() -> None:
             np.nan
             if nuisance.population2_epoch_factor is None
             else nuisance.population2_epoch_factor,
+            np.nan
+            if nuisance.population2_contact_factor is None
+            else nuisance.population2_contact_factor,
         ),
         dtype=np.float64,
     )

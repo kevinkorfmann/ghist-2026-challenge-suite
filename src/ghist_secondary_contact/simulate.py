@@ -18,6 +18,7 @@ class SimulationNuisance:
     ancestral_epoch_factors: tuple[float, float, float] = ()
     population1_epoch_factors: tuple[float, float] = ()
     population2_epoch_factor: float | None = None
+    population2_contact_factor: float | None = None
 
 
 def _grouped_partition(n_points: int, seed: int) -> np.ndarray:
@@ -132,6 +133,9 @@ def draw_nuisance(rng: np.random.Generator) -> SimulationNuisance:
         population2_epoch_factor=1.5
         if historical_epochs
         else float(np.exp(rng.normal(0, 0.4))),
+        population2_contact_factor=1.0 / 3.0
+        if historical_epochs
+        else float(np.exp(rng.normal(0, 0.5))),
     )
 
 
@@ -157,6 +161,14 @@ def nuisance_size_changes(
                 "population2",
                 parameters.contact_time * 0.45,
                 parameters.population2_size * nuisance.population2_epoch_factor,
+            )
+        )
+    if nuisance.population2_contact_factor is not None:
+        changes.append(
+            SizeChange(
+                "population2",
+                parameters.contact_time,
+                parameters.population2_size * nuisance.population2_contact_factor,
             )
         )
     return changes
