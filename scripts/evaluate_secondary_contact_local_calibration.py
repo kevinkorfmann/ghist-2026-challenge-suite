@@ -54,6 +54,7 @@ def main() -> None:
     parser.add_argument("--design", type=Path, required=True)
     parser.add_argument("--inputs", required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--observed", type=float, nargs=5)
     args = parser.parse_args()
 
     design = json.loads(args.design.read_text())
@@ -174,6 +175,18 @@ def main() -> None:
             "coefficients": final_correction.coefficients.tolist(),
         },
     }
+    if args.observed is not None:
+        observed_raw = np.asarray(args.observed, dtype=np.float64)[None, :]
+        observed_corrected = apply_log_correction(final_correction, observed_raw)[0]
+        result["observed_raw"] = dict(zip(ESTIMATE_KEYS, observed_raw[0].tolist()))
+        result["observed_corrected"] = dict(
+            zip(ESTIMATE_KEYS, observed_corrected.tolist())
+        )
+        result["observed_accepted"] = (
+            result["observed_corrected"]
+            if correction_accepted
+            else result["observed_raw"]
+        )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
