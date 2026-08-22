@@ -36,3 +36,12 @@ a 4,500-generation split, and migration 0.00015. It recovers
 median of 16,192/22,949/4,388/0.0001467 and is now the leading generator-level
 hypothesis. A separate four-point broad recovery grid is running before any
 decision about identity mapping, calibration, or freezing.
+
+The four broad truth points and the two candidate points now form a six-point
+held-out calibration gate. Across four-arm aggregates, raw recovery errors stay
+within 6.6% for either population size, 3.6% for split time, and 12.4% for
+migration. Leave-one-truth-point-out comparison selects the uncorrected identity
+mapping with mean competition RRMSE 0.0435 and maximum 0.0684. Median-log-bias,
+diagonal-affine, and joint-ridge corrections all worsen mean held-out error.
+Accordingly, the observed projection median remains unchanged. A 64-replicate,
+chromosome-stratified 1 Mb block bootstrap is the next uncertainty gate.
