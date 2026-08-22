@@ -41,3 +41,8 @@ Forward-selection validation is pinned to stdpopsim 0.3.0, its Drosophila
 `Gamma_H17` deleterious DFE, the `ComeronCrossoverV2_dm6` map, pyslim 1.0.4,
 and SLiM 4.3 commit `f872f3d`. The stack was built and verified in job
 `7745934`.
+
+`figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
+distance-band bias, middle-distance projection stability, and all 128 linked
+block replicates. It is a validation figure rather than a frozen-result figure
+and will be regenerated after the 1 Mb repeat and forward-selection recovery.
