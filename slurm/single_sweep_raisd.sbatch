@@ -38,13 +38,15 @@ if [[ ! -x RAiSD ]]; then
 fi
 
 export LD_LIBRARY_PATH="$REFERENCE_ROOT/gsl/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+TASK_SCRATCH="$(mktemp -d /tmp/single-sweep-raisd.XXXXXX)"
+trap 'rm -rf -- "$TASK_SCRATCH"' EXIT
 gzip -dc \
   "$PROJECT_ROOT/data/raw/sweeps/single_sweep/testing/onesweep.testing.vcf.gz" \
-  > "$SLURM_TMPDIR/onesweep.testing.vcf"
+  > "$TASK_SCRATCH/onesweep.testing.vcf"
 cd "$RESULT_ROOT"
 "$REFERENCE_ROOT/RAiSD" \
   -n task5_w50 \
-  -I "$SLURM_TMPDIR/onesweep.testing.vcf" \
+  -I "$TASK_SCRATCH/onesweep.testing.vcf" \
   -w 50 \
   -R \
   -D \
