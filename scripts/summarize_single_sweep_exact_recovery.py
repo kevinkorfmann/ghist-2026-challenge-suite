@@ -43,7 +43,7 @@ def summarize(records: list[dict], half_width: int = 35_000) -> dict:
     gate["passed"] = all(gate.values())
     return {
         "state": "COMPLETED",
-        "design": "32 untouched exact-scale chromosome-7 map simulations across eight parameter cells",
+        "design": f"{len(records)} untouched exact-scale chromosome-7 map simulations across eight parameter cells",
         "replicates": len(records),
         "selected_method_locked_before_campaign": "median_all_three",
         "observed_estimator_spread": 46_000,
