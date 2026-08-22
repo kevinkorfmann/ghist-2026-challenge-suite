@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=bn-vcf-audit
-#SBATCH --partition=short
+#SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=16G
 #SBATCH --time=00:30:00
