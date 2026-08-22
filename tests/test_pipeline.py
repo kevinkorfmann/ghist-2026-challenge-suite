@@ -9,6 +9,7 @@ import subprocess
 import sys
 
 import numpy as np
+import msprime
 
 from ghist_bottleneck.features import (
     LDAccumulator,
@@ -27,9 +28,29 @@ from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 from ghist_bottleneck.train import _device
 from ghist_bottleneck.genotype_matrix import export_genotype_matrix, strict_positions
 from ghist_bottleneck.vcf_normalize import normalize_vcf
+from ghist_bottleneck.fastcxt_dataset import grouped_splits, windowed_tmrca
 
 
 class PipelineTests(unittest.TestCase):
+    def test_fastcxt_cells_are_grouped_across_replicas(self):
+        first = grouped_splits(25, 0.2, 71)
+        second = grouped_splits(25, 0.2, 71)
+        np.testing.assert_array_equal(first, second)
+        self.assertEqual(np.sum(first == "test"), 5)
+
+    def test_windowed_tmrca_is_span_weighted(self):
+        ts = msprime.sim_ancestry(
+            samples=4,
+            ploidy=1,
+            population_size=10_000,
+            sequence_length=10_000,
+            recombination_rate=0,
+            random_seed=19,
+        )
+        values = windowed_tmrca(ts, 0, 1, 2_000)
+        self.assertEqual(values.shape, (5,))
+        np.testing.assert_allclose(values, values[0])
+
     def test_simulations_use_continuous_mutation_coordinates(self):
         self.assertFalse(SimulationConfig().discrete_genome)
 
