@@ -33,15 +33,19 @@ The neutral chromosome background, excluding 35–41 Mb, has diversity
 0.0008163, singleton fraction 0.2947, and intermediate-frequency fraction
 0.2331. Among nine published human histories simulated under the species-wide
 mutation and recombination rates, `Zigzag_1S14` is the closest by folded-spectrum
-and diversity distance. This background will anchor selection recovery while
-population size, mutation rate, recombination rate, sweep age, strength, and
-completion are varied as nuisance parameters.
+and diversity distance. This background anchors selection recovery while
+population history, recombination, sweep age, strength, and completion are
+varied as nuisance parameters. A chromosome-7 recovery campaign using the
+HapMapII GRCh38 map selected the median of the gap, composite, and split-flank
+estimates without access to its ten evaluation cells. On those untouched cells
+it has 7.1 kb median absolute error, 45.2 kb 90th-percentile error, and 90%
+recovery within 50 kb. A matched scale-factor stress test at factors 1, 2, 5,
+and 10 is the remaining simulation-fidelity gate.
 
 The validation strategy follows the multi-signature logic of
 [RAiSD](https://doi.org/10.1038/s42003-018-0085-8), the spatial-statistic design
 of [diploS/HIC](https://doi.org/10.1093/molbev/msy006), and the nested-window,
 confounder-aware principles of
-[Flex-sweep](https://doi.org/10.1093/molbev/msad139). A forward-time matched
-selection smoke test and parameter-cell-isolated localization campaign are the
-next gates. No BED interval has been frozen.
-
+[Flex-sweep](https://doi.org/10.1093/molbev/msad139). The forward-time matched
+selection smoke test and parameter-cell-isolated localization campaign have
+passed. No BED interval has been frozen.
