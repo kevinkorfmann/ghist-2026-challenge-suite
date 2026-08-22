@@ -35,7 +35,7 @@ and [method comparison](docs/method_comparison.md).
 | Area | State | Evidence / next gate |
 |---|---|---|
 | Repository | ready | private remote, neutral branch naming, isolated challenge directories |
-| Data intake | waiting for Terms acceptance | signed-in browser is ready; checksums and forensic VCF audit follow immediately after acceptance |
+| Data intake | testing data verified | testing VCF and submission template downloaded; Synapse MD5 values match; forensic VCF audit is next |
 | Scheduled compute | CPU and GPU verified | CPU end-to-end job `7731188`; B200 forward/backward gate `7731200` |
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
