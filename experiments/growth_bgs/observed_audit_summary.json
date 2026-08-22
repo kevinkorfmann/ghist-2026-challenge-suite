@@ -1,7 +1,7 @@
 {
   "jobs": {
     "generic_audit": "7745884",
-    "resource_audit": "7745889"
+    "resource_audit": "7745895"
   },
   "source_audits": {
     "generic": {
@@ -10,7 +10,7 @@
     },
     "resource": {
       "path": "artifacts/task3_growth_bgs/observed_resource_audit.json",
-      "sha256": "d4fcdf4f7befcb759b7f9346185a73a4f25229c88d47caa3ca3f8faaa748103d"
+      "sha256": "79fabdb8c45880a7a63cdd7572ecea602efb46107a91c0fe38c2bdff68b372e2"
     }
   },
   "files": {
@@ -147,30 +147,74 @@
     1.9586,
     3.2644
   ],
+  "physical_bp_by_distance_stratum": {
+    "noncoding_10kb_100kb": 20740375,
+    "noncoding_1kb_10kb": 41224691,
+    "noncoding_1bp_1kb": 25925351,
+    "coding_overlap": 18664670,
+    "noncoding_gt100kb": 2435119
+  },
+  "physical_bp_by_recombination_stratum": {
+    "zero": 12389283,
+    "positive_q1": 22507268,
+    "positive_q3": 21599982,
+    "positive_q2": 22206900,
+    "positive_q4": 22000000,
+    "outside_map": 8286773
+  },
+  "physical_bp_by_joint_stratum": {
+    "noncoding_10kb_100kb|zero": 4065370,
+    "noncoding_1kb_10kb|zero": 4181935,
+    "noncoding_1bp_1kb|zero": 1989643,
+    "coding_overlap|zero": 1232381,
+    "noncoding_1bp_1kb|positive_q1": 5641538,
+    "noncoding_1kb_10kb|positive_q1": 8989572,
+    "coding_overlap|positive_q1": 3974912,
+    "noncoding_10kb_100kb|positive_q1": 3853154,
+    "noncoding_1kb_10kb|positive_q3": 8580664,
+    "noncoding_10kb_100kb|positive_q3": 2706987,
+    "noncoding_1bp_1kb|positive_q3": 5950764,
+    "coding_overlap|positive_q3": 4361567,
+    "noncoding_1kb_10kb|positive_q2": 8728383,
+    "noncoding_1bp_1kb|positive_q2": 6165208,
+    "coding_overlap|positive_q2": 4772537,
+    "noncoding_10kb_100kb|positive_q2": 2540772,
+    "noncoding_10kb_100kb|positive_q4": 2636855,
+    "noncoding_1kb_10kb|positive_q4": 9156320,
+    "noncoding_1bp_1kb|positive_q4": 5935136,
+    "coding_overlap|positive_q4": 4271689,
+    "noncoding_gt100kb|zero": 919954,
+    "noncoding_gt100kb|outside_map": 1467073,
+    "noncoding_10kb_100kb|outside_map": 4937237,
+    "noncoding_1kb_10kb|outside_map": 1587817,
+    "noncoding_1bp_1kb|outside_map": 243062,
+    "coding_overlap|outside_map": 51584,
+    "noncoding_gt100kb|positive_q1": 48092
+  },
   "distance_strata": {
     "coding_overlap": {
-      "segregating_biallelic_sites": 103355,
-      "oriented_sites": 103355,
-      "singleton_fraction": 0.3342460451840743,
-      "doubleton_fraction": 0.1385225678486769
+      "segregating_biallelic_sites": 102967,
+      "oriented_sites": 102967,
+      "singleton_fraction": 0.3346411957229015,
+      "doubleton_fraction": 0.13855895578194954
     },
     "noncoding_10kb_100kb": {
-      "segregating_biallelic_sites": 120856,
-      "oriented_sites": 120856,
-      "singleton_fraction": 0.2613109816641292,
-      "doubleton_fraction": 0.1256453961739591
+      "segregating_biallelic_sites": 120863,
+      "oriented_sites": 120863,
+      "singleton_fraction": 0.26131239502577297,
+      "doubleton_fraction": 0.12566294068490771
     },
     "noncoding_1bp_1kb": {
-      "segregating_biallelic_sites": 197250,
-      "oriented_sites": 197250,
-      "singleton_fraction": 0.2743320659062104,
-      "doubleton_fraction": 0.12429911280101394
+      "segregating_biallelic_sites": 197583,
+      "oriented_sites": 197583,
+      "singleton_fraction": 0.2742189358396218,
+      "doubleton_fraction": 0.12430219199020158
     },
     "noncoding_1kb_10kb": {
-      "segregating_biallelic_sites": 312364,
-      "oriented_sites": 312364,
-      "singleton_fraction": 0.26703781485702577,
-      "doubleton_fraction": 0.12320882047867232
+      "segregating_biallelic_sites": 312412,
+      "oriented_sites": 312412,
+      "singleton_fraction": 0.26705440251974955,
+      "doubleton_fraction": 0.12320589477997004
     },
     "noncoding_gt100kb": {
       "segregating_biallelic_sites": 4596,

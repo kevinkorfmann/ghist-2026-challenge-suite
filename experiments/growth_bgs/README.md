@@ -7,5 +7,5 @@ record classes, ancestral orientation, coding and recombination strata, and
 remains on Betty under `artifacts/task3_growth_bgs/`.
 
 The generic VCF audit ran in job `7745884`, the joint resource audit in job
-`7745889`, and the compact summary in job `7745893`. The final VCF remains sealed,
+`7745895`, and the compact summary in job `7745897`. The final VCF remains sealed,
 and nothing has been submitted.
