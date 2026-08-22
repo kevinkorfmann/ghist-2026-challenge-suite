@@ -16,12 +16,19 @@ from ghist_bottleneck.features import (
     summarize_variants,
 )
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
+from ghist_bottleneck.arg_features import tmrca_hazard_features
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 from ghist_bottleneck.train import _device
 
 
 class PipelineTests(unittest.TestCase):
+    def test_tmrca_posterior_becomes_conditional_hazards(self):
+        hazards = tmrca_hazard_features(np.log([30.0, 30.0, 100.0]))
+        self.assertEqual(hazards.shape, (32,))
+        self.assertAlmostEqual(hazards[0], 0.0)
+        self.assertAlmostEqual(hazards.sum(), 5 / 3, places=7)
+
     def test_block_extraction_matches_training_scale_and_keeps_empty_blocks(self):
         collection = extract_vcf_blocks(
             "tests/fixtures/tiny.vcf", sequence_length=1000, block_length=500

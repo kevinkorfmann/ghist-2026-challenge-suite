@@ -46,3 +46,25 @@ def coalescence_hazard_features(
         raise ValueError(f"expected {ARG_TIME_BINS} hazard bins, got {len(hazard)}")
     return hazard
 
+
+def tmrca_hazard_features(
+    log_tmrca: np.ndarray,
+    *,
+    time_edges: np.ndarray | None = None,
+) -> np.ndarray:
+    """Convert posterior log-TMRCA samples into conditional time hazards."""
+    values = np.exp(np.asarray(log_tmrca, dtype=np.float64).reshape(-1))
+    values = values[np.isfinite(values) & (values >= 0)]
+    if not len(values):
+        return np.zeros(ARG_TIME_BINS, dtype=np.float64)
+    edges = default_time_edges() if time_edges is None else np.asarray(time_edges, dtype=float)
+    if edges[0] != 0 or np.any(np.diff(edges) <= 0) or not np.all(np.isfinite(edges)):
+        raise ValueError("time_edges must start at zero and increase with finite values")
+    counts, _ = np.histogram(values, bins=np.concatenate((edges, [np.inf])))
+    counts = counts.astype(np.float64)
+    remaining = np.cumsum(counts[::-1])[::-1]
+    hazard = np.divide(counts, remaining, out=np.zeros_like(counts), where=remaining > 0)
+    hazard = hazard[:-1]
+    if len(hazard) != ARG_TIME_BINS:
+        raise ValueError(f"expected {ARG_TIME_BINS} hazard bins, got {len(hazard)}")
+    return hazard

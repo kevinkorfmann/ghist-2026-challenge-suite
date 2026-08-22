@@ -49,6 +49,10 @@ design follows the genome-scale SFS+LD findings of
 [Smith et al. (2026)](https://doi.org/10.1093/genetics/iyag107), while retaining
 raw spatial context and independent mechanistic references.
 
+An optional [CXT](https://github.com/kr-colab/cxt) bridge converts posterior
+pairwise TMRCA trajectories into the same conditional hazard basis, enabling a
+blockwise genealogy ensemble without treating any single inferred tree as truth.
+
 ## Repository layout
 
 ```text

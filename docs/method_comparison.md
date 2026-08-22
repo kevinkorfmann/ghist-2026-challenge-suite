@@ -15,6 +15,7 @@ calibration or robustness under misspecification.
 | Sequence-position embedding | [SPIDNA/dnadna](https://doi.org/10.1093/bioinformatics/btac765) | genotype matrix and SNP positions | raw-input comparison |
 | Posterior estimation | [Smith et al. 2026](https://doi.org/10.1093/genetics/iyag107) | raw genotypes or SFS+LD | calibrated posterior target |
 | Genealogical hazards | [Deng et al. 2026](https://doi.org/10.64898/2026.08.11.744210) | interval-conditional coalescence | temporally localized extension |
+| Coalescence translation | [CXT](https://github.com/kr-colab/cxt) | genotype-conditioned TMRCA posterior | independent genealogy channel |
 
 ### Extension adopted here
 
@@ -28,6 +29,13 @@ hazard curve should expose the population-size transition directly. For secondar
 contact it will be computed within and between populations, where the contrast is
 expected to localize split and renewed migration. Genealogical channels are
 randomly masked during training and benchmarked under inferred-tree error.
+
+CXT integration uses the pinned upstream revision
+`294b0c27226accbac830c9c922de6b2f92f83fe8`. Posterior log-TMRCA samples are
+converted to the same conditional hazard bins used for simulated tree sequences,
+block by block. This permits a direct comparison among CXT, tsinfer/tsdate, and
+mutation/LD-only predictions, while retaining CXT posterior uncertainty instead
+of collapsing it to one genealogy.
 
 The production posterior combines:
 
@@ -69,4 +77,3 @@ out by pedigree or family; pairwise random splits are prohibited.
    applicable reference method.
 4. Retain ensembles only when disagreement is calibrated and predictive of error.
 5. Record all negative results; complexity is kept only when it earns its cost.
-
