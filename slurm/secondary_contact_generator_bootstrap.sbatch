@@ -12,6 +12,10 @@ module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 OUTPUT_ROOT="${OUTPUT_ROOT:-artifacts/task2_secondary_contact/generator_bootstrap}"
+EXTRA_ARGS=()
+if [[ "${FULL_PROJECTION:-0}" == "1" ]]; then
+  EXTRA_ARGS+=(--full-projection)
+fi
 .venv/bin/python scripts/bootstrap_secondary_contact_generator_fit.py \
   --out "$OUTPUT_ROOT/replicate_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate "$SLURM_ARRAY_TASK_ID" \
@@ -24,4 +28,5 @@ OUTPUT_ROOT="${OUTPUT_ROOT:-artifacts/task2_secondary_contact/generator_bootstra
   --restarts "${RESTARTS:-12}" \
   --workers "$SLURM_CPUS_PER_TASK" \
   --maxiter "${MAXITER:-400}" \
-  --seed "${SEED:-20260919}"
+  --seed "${SEED:-20260919}" \
+  "${EXTRA_ARGS[@]}"

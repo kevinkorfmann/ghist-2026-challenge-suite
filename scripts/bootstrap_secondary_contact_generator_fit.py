@@ -20,6 +20,7 @@ def main() -> None:
     parser.add_argument("--blocks", type=int, default=10)
     parser.add_argument("--block-length", type=float, default=10_000_000)
     parser.add_argument("--projection", type=int, nargs=2, default=(40, 30))
+    parser.add_argument("--full-projection", action="store_true")
     parser.add_argument("--restarts", type=int, default=12)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--maxiter", type=int, default=400)
@@ -82,7 +83,7 @@ def main() -> None:
         sequence_length=args.blocks * args.block_length,
         restarts=args.restarts,
         workers=args.workers,
-        projection=tuple(args.projection),
+        projection=None if args.full_projection else tuple(args.projection),
         maxiter=args.maxiter,
         seed=args.seed + args.replicate * 7_919,
         folded=False,
