@@ -26,6 +26,7 @@ def error_metrics(errors: np.ndarray) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-dir", type=Path, required=True)
+    parser.add_argument("--raisd-dir", type=Path)
     parser.add_argument("--expected", type=int, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
@@ -40,6 +41,16 @@ def main() -> None:
     gap = candidate_estimates["largest_gap_midpoint"]
     composite = candidate_estimates["composite"]
     linkage = candidate_estimates["flank_ld_100kb"]
+    reference = None
+    if args.raisd_dir is not None:
+        reference_records = [
+            json.loads((args.raisd_dir / f"task_{task_index}.json").read_text())
+            for task_index in range(args.expected)
+        ]
+        reference = np.asarray(
+            [record["maximum"]["position"] for record in reference_records], dtype=float
+        )
+        candidate_estimates["raisd"] = reference
     candidate_estimates.update(
         {
             "median_all_three": np.median(np.vstack([gap, composite, linkage]), axis=0),
@@ -53,6 +64,17 @@ def main() -> None:
             ),
         }
     )
+    if reference is not None:
+        candidate_estimates.update(
+            {
+                "median_with_raisd": np.median(
+                    np.vstack([gap, composite, linkage, reference]), axis=0
+                ),
+                "median_gap_composite_raisd": np.median(
+                    np.vstack([gap, composite, reference]), axis=0
+                ),
+            }
+        )
     truth = np.asarray([record["truth"]["position"] for record in records], dtype=float)
     task_indices = np.asarray([record["seed"] - 75_222_000 for record in records])
     partition_code = (task_indices * 17 + 3) % 5

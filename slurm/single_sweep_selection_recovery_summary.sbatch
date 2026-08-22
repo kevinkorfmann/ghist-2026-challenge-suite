@@ -14,6 +14,6 @@ cd "$PROJECT_ROOT"
 
 PYTHONPATH=src .venv/bin/python scripts/summarize_single_sweep_selection_recovery.py \
   --input-dir artifacts/task5_single_sweep/selection_recovery \
+  --raisd-dir artifacts/task5_single_sweep/selection_recovery_raisd \
   --expected 64 \
   --out artifacts/task5_single_sweep/selection_recovery_summary.json
-
