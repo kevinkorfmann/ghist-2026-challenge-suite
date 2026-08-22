@@ -17,4 +17,6 @@ cd "$PROJECT_ROOT"
   --checkpoints 'artifacts/task2_secondary_contact/model_arg_*_*.pt' \
   --out artifacts/task2_secondary_contact/arg_ensemble_testing_prediction.json \
   --tiles-per-block 20 \
-  --device cuda
+  --device cuda \
+  --relative-selection-cutoff 1.25 \
+  --score-power 2

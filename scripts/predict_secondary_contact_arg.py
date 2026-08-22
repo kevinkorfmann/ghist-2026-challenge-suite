@@ -28,6 +28,8 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--tiles-per-block", type=int, default=20)
     parser.add_argument("--batch-size", type=int, default=128)
+    parser.add_argument("--relative-selection-cutoff", type=float, default=1.25)
+    parser.add_argument("--score-power", type=float, default=2.0)
     parser.add_argument(
         "--device",
         default="auto",
@@ -43,6 +45,19 @@ def main() -> None:
     paths = [Path(path) for path in sorted(glob.glob(args.checkpoints))]
     if not paths:
         raise FileNotFoundError(f"no checkpoints match {args.checkpoints!r}")
+    loaded = [
+        (path, torch.load(path, map_location="cpu", weights_only=False))
+        for path in paths
+    ]
+    selection_scores = np.asarray(
+        [float(checkpoint["selection_rrmse"]) for _, checkpoint in loaded]
+    )
+    best_selection = float(selection_scores.min())
+    selected_mask = selection_scores <= best_selection * args.relative_selection_cutoff
+    selected = [item for item, keep in zip(loaded, selected_mask) if keep]
+    selected_scores = selection_scores[selected_mask]
+    model_weights = np.power(selected_scores, -args.score_power)
+    model_weights /= model_weights.sum()
     data = np.load(args.features)
     global_summary = np.concatenate(
         (
@@ -59,8 +74,7 @@ def main() -> None:
         raise ValueError("tile count must be divisible by tiles per block")
     model_records = []
     model_block_predictions = []
-    for path in paths:
-        checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+    for (path, checkpoint), model_weight in zip(selected, model_weights):
         model = SecondaryContactNet(**checkpoint["model_configuration"])
         model.load_state_dict(checkpoint["model"])
         model.to(device).eval()
@@ -111,6 +125,7 @@ def main() -> None:
                 "checkpoint": str(path),
                 "best_epoch": checkpoint["epoch"],
                 "selection_rrmse": checkpoint["selection_rrmse"],
+                "ensemble_weight": float(model_weight),
                 "prediction": dict(
                     zip(OUTPUT_NAMES, inverse_transform_targets(model_center).tolist())
                 ),
@@ -118,12 +133,27 @@ def main() -> None:
             }
         )
     block_predictions = np.asarray(model_block_predictions)
-    ensemble_blocks = block_predictions.mean(axis=0)
+    ensemble_blocks = np.tensordot(model_weights, block_predictions, axes=(0, 0))
     center = np.median(ensemble_blocks, axis=0)
     physical_blocks = inverse_transform_targets(ensemble_blocks)
     result = {
         "policy": "local_prediction_only",
         "device": str(device),
+        "selection_policy": {
+            "relative_cutoff": args.relative_selection_cutoff,
+            "score_power": args.score_power,
+            "best_selection_rrmse": best_selection,
+            "candidates": [
+                {
+                    "checkpoint": str(path),
+                    "selection_rrmse": float(score),
+                    "selected": bool(keep),
+                }
+                for (path, _), score, keep in zip(
+                    loaded, selection_scores, selected_mask
+                )
+            ],
+        },
         "tiles": tiles,
         "tiles_per_block": args.tiles_per_block,
         "blocks": len(ensemble_blocks),
