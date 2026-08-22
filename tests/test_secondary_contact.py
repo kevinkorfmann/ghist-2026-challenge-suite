@@ -14,6 +14,10 @@ from ghist_secondary_contact.demography import (
     SizeChange,
     build_demography,
 )
+from ghist_secondary_contact.coalescent import (
+    secondary_contact_interval_probabilities,
+    secondary_contact_pair_hazards,
+)
 from ghist_secondary_contact.spectrum import (
     joint_spectrum_from_vcf,
     secondary_contact_spectrum,
@@ -34,6 +38,24 @@ from ghist_secondary_contact.features import (
 
 
 class SecondaryContactTests(unittest.TestCase):
+    def test_analytic_pair_coalescent_is_normalized_and_ordered(self):
+        parameters = SecondaryContactParameters(
+            ancestral_size=16_000,
+            population1_size=10_000,
+            population2_size=50_000,
+            split_time=5_000,
+            contact_time=1_000,
+            migration_rate=2e-4,
+        )
+        probabilities = secondary_contact_interval_probabilities(parameters)
+        hazards = secondary_contact_pair_hazards(parameters)
+        self.assertEqual(probabilities.shape, (3, 33))
+        self.assertEqual(hazards.shape, (3, 32))
+        np.testing.assert_allclose(probabilities.sum(axis=1), 1.0, rtol=1e-12)
+        self.assertTrue(np.all(probabilities >= 0))
+        self.assertTrue(np.all((hazards >= 0) & (hazards <= 1)))
+        self.assertGreater(hazards[0, 0], hazards[1, 0])
+
     def test_multimodal_posterior_contract(self):
         model = SecondaryContactNet(
             window_features=18,

@@ -22,7 +22,7 @@ def main() -> None:
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
     args = parser.parse_args()
-    spectrum, metadata = scan_secondary_contact_vcf(args.vcf)
+    spectrum, scan_metadata = scan_secondary_contact_vcf(args.vcf)
     result = fit_secondary_contact_spectrum(
         spectrum,
         mutation_rate=args.mutation_rate,
@@ -34,14 +34,14 @@ def main() -> None:
         seed=args.seed,
         folded=args.folded,
     )
-    result["sfs"] = metadata
+    result["sfs"] = scan_metadata
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
     np.savez_compressed(
         args.out.with_suffix(".sfs.npz"),
         spectrum=spectrum,
-        population_names=np.asarray(metadata["population_names"]),
-        projection=np.asarray(metadata["projection"]),
+        population_names=np.asarray(["mainland", "island"]),
+        projection=np.asarray(spectrum.shape, dtype=np.int64) - 1,
     )
     print(json.dumps(result, indent=2))
 

@@ -8,7 +8,10 @@ from pathlib import Path
 import numpy as np
 import tskit
 
-from ghist_secondary_contact.features import population_pair_hazards
+from ghist_secondary_contact.features import (
+    population_pair_hazards,
+    population_pair_interval_counts,
+)
 
 
 def main() -> None:
@@ -20,6 +23,7 @@ def main() -> None:
     if not paths:
         raise FileNotFoundError(f"no tree sequences match {args.trees!r}")
     hazards = []
+    interval_counts = []
     summaries = []
     for path in paths:
         tree_sequence = tskit.load(path)
@@ -32,6 +36,13 @@ def main() -> None:
             samples[86:],
         )
         hazards.append(value)
+        interval_counts.append(
+            population_pair_interval_counts(
+                tree_sequence,
+                samples[:86],
+                samples[86:],
+            )
+        )
         summaries.append(
             {
                 "path": str(path),
@@ -42,12 +53,15 @@ def main() -> None:
             }
         )
     array = np.asarray(hazards)
+    count_array = np.asarray(interval_counts)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         args.out,
         hazards=array,
         mean=array.mean(axis=0),
         standard_deviation=array.std(axis=0),
+        interval_counts=count_array,
+        total_interval_counts=count_array.sum(axis=0),
     )
     report = {
         "draws": len(paths),

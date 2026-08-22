@@ -107,6 +107,7 @@ def main() -> None:
     parser.add_argument("--learning-rate", type=float, default=2e-4)
     parser.add_argument("--weight-decay", type=float, default=2e-4)
     parser.add_argument("--score-weight", type=float, default=0.15)
+    parser.add_argument("--patience", type=int, default=20)
     parser.add_argument("--width", type=int, default=128)
     parser.add_argument("--context-backend", choices=("transformer", "mamba"), default="transformer")
     parser.add_argument("--seed", type=int, default=7701)
@@ -166,6 +167,7 @@ def main() -> None:
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     best_score = np.inf
+    best_epoch = 0
     history = []
     for epoch in range(args.epochs):
         model.train()
@@ -208,6 +210,7 @@ def main() -> None:
         history.append(record)
         if selection_score < best_score:
             best_score = selection_score
+            best_epoch = epoch + 1
             torch.save(
                 {
                     "model": model.state_dict(),
@@ -231,6 +234,18 @@ def main() -> None:
                 args.out,
             )
         print(json.dumps(record), flush=True)
+        if epoch + 1 - best_epoch >= args.patience:
+            print(
+                json.dumps(
+                    {
+                        "early_stop_epoch": epoch + 1,
+                        "best_epoch": best_epoch,
+                        "patience": args.patience,
+                    }
+                ),
+                flush=True,
+            )
+            break
     checkpoint = torch.load(args.out, map_location=device, weights_only=False)
     model.load_state_dict(checkpoint["model"])
     evaluation_score, evaluation_prediction = _evaluate(

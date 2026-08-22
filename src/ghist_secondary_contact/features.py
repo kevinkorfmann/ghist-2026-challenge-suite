@@ -47,6 +47,28 @@ def population_pair_hazards(
     Rows represent population1-with-population1, population2-with-population2,
     and cross-population pairs. Columns are finite time intervals.
     """
+    counts = population_pair_interval_counts(
+        ts,
+        population1_samples,
+        population2_samples,
+        time_edges=time_edges,
+    )
+    remaining = np.cumsum(counts[:, ::-1], axis=1)[:, ::-1]
+    hazards = np.divide(counts, remaining, out=np.zeros_like(counts), where=remaining > 0)
+    hazards = hazards[:, :-1]
+    if hazards.shape != (len(PAIR_CLASSES), ARG_TIME_BINS):
+        raise ValueError(f"unexpected hazard shape {hazards.shape}")
+    return np.clip(hazards, 0.0, 1.0)
+
+
+def population_pair_interval_counts(
+    ts: tskit.TreeSequence,
+    population1_samples: np.ndarray,
+    population2_samples: np.ndarray,
+    *,
+    time_edges: np.ndarray | None = None,
+) -> np.ndarray:
+    """Return span-weighted coalescence counts, including the ancient tail."""
     sample_sets = [
         np.asarray(population1_samples, dtype=np.int32),
         np.asarray(population2_samples, dtype=np.int32),
@@ -66,12 +88,7 @@ def population_pair_hazards(
     )
     if counts.shape != (len(PAIR_CLASSES), len(edges)):
         raise ValueError(f"unexpected pair-count shape {counts.shape}")
-    remaining = np.cumsum(counts[:, ::-1], axis=1)[:, ::-1]
-    hazards = np.divide(counts, remaining, out=np.zeros_like(counts), where=remaining > 0)
-    hazards = hazards[:, :-1]
-    if hazards.shape != (len(PAIR_CLASSES), ARG_TIME_BINS):
-        raise ValueError(f"unexpected hazard shape {hazards.shape}")
-    return np.clip(hazards, 0.0, 1.0)
+    return counts
 
 
 def transform_targets(values: np.ndarray) -> np.ndarray:

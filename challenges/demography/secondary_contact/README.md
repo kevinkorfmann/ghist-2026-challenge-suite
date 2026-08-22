@@ -40,6 +40,23 @@ coalescence hazards on a fixed log-time grid. Posterior draws are averaged only
 after calibration against known simulated trees; topology-only SINGER,
 SINGER+POLEGON, and truth-tree hazards remain separate ablations.
 
+The exact full-resolution SFS fits are stable to polarization. Folded and
+unfolded estimates respectively give mainland sizes of `18,725` and `19,041`,
+island sizes of `51,450` and `50,733`, ancestral sizes of `16,578` and `16,593`,
+split times of `4,638` and `4,607` generations, migration-start times of `1,183`
+and `1,193` generations, and migration rates of `2.45e-4` and `2.40e-4`.
+Projections to 40×30 and 20×15 chromosomes land in the same local basin and are
+used as sensitivity checks rather than independent estimates.
+
+In addition to learned genealogy features, a continuous-time three-state
+coalescent reference now propagates mainland/mainland, cross-population, and
+island/island lineage-pair states through contact, isolation, and the ancestral
+epoch. It fits span-weighted POLEGON interval counts directly and provides an
+interpretable guard for the learned posterior. On the first known-parameter
+calibration, POLEGON improved the global hazard RMSE from `0.0444` to `0.0400`
+and raised all pair-class correlations above `0.994`, so the redated branch is
+promoted for chromosome-wide extraction.
+
 The pinned historical GHIST generator is used only as a convention and
 misspecification audit. Its secondary-contact data included unreported ancestral
 and population-specific size epochs around the split and contact. Validation
