@@ -28,7 +28,23 @@ def main() -> None:
     parser.add_argument("--integration-dt-fac", type=float, default=0.02)
     parser.add_argument("--adaptive-integration", action="store_true")
     parser.add_argument("--initial-scaled", type=float, nargs=5)
+    parser.add_argument("--recombination-multipliers", type=float, nargs="+", default=(1.0,))
+    parser.add_argument("--mutation-rate-multipliers", type=float, nargs="+", default=(1.0,))
+    parser.add_argument("--local-size-multipliers", type=float, nargs="+", default=(1.0,))
+    parser.add_argument("--migration-asymmetry", type=float, default=1.0)
+    parser.add_argument("--polarization-error", type=float, default=0.0)
     args = parser.parse_args()
+    multiplier_groups = (
+        args.recombination_multipliers,
+        args.mutation_rate_multipliers,
+        args.local_size_multipliers,
+    )
+    if any(any(value <= 0 for value in group) for group in multiplier_groups):
+        parser.error("rate and local-size multipliers must be positive")
+    if args.migration_asymmetry <= 0:
+        parser.error("migration asymmetry must be positive")
+    if not 0 <= args.polarization_error < 0.5:
+        parser.error("polarization error must be in [0, 0.5)")
 
     ancestral, size1, size2, split, contact, migration = args.truth
     parameters = SecondaryContactParameters(
@@ -45,28 +61,49 @@ def main() -> None:
         population2_epoch_factor=1.5,
         population2_contact_factor=1 / 3,
     )
-    demography = build_demography(
-        parameters,
-        size_changes=nuisance_size_changes(parameters, nuisance),
-    )
     spectrum = np.zeros((87, 49), dtype=np.float64)
     retained = multiallelic = 0
     rng = np.random.default_rng(args.seed + args.replicate * 1_000_003)
-    for _ in range(args.blocks):
+    for block in range(args.blocks):
+        local_size = args.local_size_multipliers[
+            block % len(args.local_size_multipliers)
+        ]
+        local_parameters = SecondaryContactParameters(
+            ancestral_size=parameters.ancestral_size * local_size,
+            population1_size=parameters.population1_size * local_size,
+            population2_size=parameters.population2_size * local_size,
+            split_time=parameters.split_time,
+            contact_time=parameters.contact_time,
+            migration_rate=parameters.migration_rate,
+        )
+        demography = build_demography(
+            local_parameters,
+            size_changes=nuisance_size_changes(local_parameters, nuisance),
+            migration_asymmetry=args.migration_asymmetry,
+        )
+        recombination_multiplier = args.recombination_multipliers[
+            block % len(args.recombination_multipliers)
+        ]
+        mutation_multiplier = args.mutation_rate_multipliers[
+            block % len(args.mutation_rate_multipliers)
+        ]
         ancestry = msprime.sim_ancestry(
             samples={"population1": 43, "population2": 24},
             ploidy=2,
             demography=demography,
             sequence_length=args.block_length,
-            recombination_rate=5.39e-8,
+            recombination_rate=5.39e-8 * recombination_multiplier,
             random_seed=int(rng.integers(1, 2**31 - 2)),
         )
         mutated = msprime.sim_mutations(
             ancestry,
-            rate=8.4e-8,
+            rate=8.4e-8 * mutation_multiplier,
             model=msprime.JC69(),
             discrete_genome=True,
             random_seed=int(rng.integers(1, 2**31 - 2)),
+        )
+        polarization_rng = np.random.default_rng(
+            args.seed + args.replicate * 1_000_003 + block * 65_537 + 17
         )
         for variant in mutated.variants():
             if len(variant.alleles) != 2:
@@ -75,6 +112,9 @@ def main() -> None:
             genotypes = variant.genotypes
             count1 = int(genotypes[:86].sum())
             count2 = int(genotypes[86:].sum())
+            if args.polarization_error and polarization_rng.random() < args.polarization_error:
+                count1 = 86 - count1
+                count2 = 48 - count2
             if count1 in (0, 86) and count2 in (0, 48):
                 continue
             spectrum[count1, count2] += 1
@@ -120,6 +160,11 @@ def main() -> None:
             "block_length": args.block_length,
             "mutation_model": "JC69",
             "discrete_genome": True,
+            "recombination_multipliers": list(args.recombination_multipliers),
+            "mutation_rate_multipliers": list(args.mutation_rate_multipliers),
+            "local_size_multipliers": list(args.local_size_multipliers),
+            "migration_asymmetry": args.migration_asymmetry,
+            "polarization_error": args.polarization_error,
         }
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)

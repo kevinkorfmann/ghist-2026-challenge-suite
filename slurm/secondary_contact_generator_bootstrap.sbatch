@@ -23,6 +23,18 @@ if [[ -n "${INITIAL_SCALED:-}" ]]; then
   read -r -a INITIAL_VALUES <<< "$INITIAL_SCALED"
   EXTRA_ARGS+=(--initial-scaled "${INITIAL_VALUES[@]}")
 fi
+if [[ -n "${RECOMBINATION_MULTIPLIERS:-}" ]]; then
+  read -r -a RECOMBINATION_VALUES <<< "$RECOMBINATION_MULTIPLIERS"
+  EXTRA_ARGS+=(--recombination-multipliers "${RECOMBINATION_VALUES[@]}")
+fi
+if [[ -n "${MUTATION_RATE_MULTIPLIERS:-}" ]]; then
+  read -r -a MUTATION_VALUES <<< "$MUTATION_RATE_MULTIPLIERS"
+  EXTRA_ARGS+=(--mutation-rate-multipliers "${MUTATION_VALUES[@]}")
+fi
+if [[ -n "${LOCAL_SIZE_MULTIPLIERS:-}" ]]; then
+  read -r -a LOCAL_SIZE_VALUES <<< "$LOCAL_SIZE_MULTIPLIERS"
+  EXTRA_ARGS+=(--local-size-multipliers "${LOCAL_SIZE_VALUES[@]}")
+fi
 .venv/bin/python scripts/bootstrap_secondary_contact_generator_fit.py \
   --out "$OUTPUT_ROOT/replicate_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate "$SLURM_ARRAY_TASK_ID" \
@@ -37,4 +49,6 @@ fi
   --maxiter "${MAXITER:-400}" \
   --seed "${SEED:-20260919}" \
   --integration-dt-fac "${DT_FAC:-0.02}" \
+  --migration-asymmetry "${MIGRATION_ASYMMETRY:-1.0}" \
+  --polarization-error "${POLARIZATION_ERROR:-0.0}" \
   "${EXTRA_ARGS[@]}"
