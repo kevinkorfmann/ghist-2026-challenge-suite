@@ -14,10 +14,13 @@ from ghist_bottleneck.train import train_ensemble
 def main() -> None:
     root = Path("artifacts/scheduled_smoke")
     root.mkdir(parents=True, exist_ok=True)
+    # Deliberately unrelated to the sealed public testing answer.
+    smoke_generations = 11_000
+    smoke_fraction = 0.31
     observed = simulate_one(
         n_haplotypes=40,
-        generations=4757,
-        fraction=0.52,
+        generations=smoke_generations,
+        fraction=smoke_fraction,
         ancestral_ne=15_000,
         cfg=SimulationConfig(sequence_length=250_000),
         seed=8317,
@@ -32,8 +35,8 @@ def main() -> None:
     observed_blocks = [
         simulate_one(
             n_haplotypes=40,
-            generations=4757,
-            fraction=0.52,
+            generations=smoke_generations,
+            fraction=smoke_fraction,
             ancestral_ne=15_000,
             cfg=SimulationConfig(sequence_length=250_000),
             seed=8317 + index,
