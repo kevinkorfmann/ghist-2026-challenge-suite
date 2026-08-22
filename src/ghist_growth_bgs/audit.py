@@ -84,7 +84,7 @@ def coding_distance(
         return 0
     distances = []
     if index >= 0:
-        distances.append(position - intervals[index][1])
+        distances.append(position - intervals[index][1] + 1)
     if index + 1 < len(intervals):
         distances.append(intervals[index + 1][0] - position)
     return max(0, min(distances)) if distances else None
@@ -124,6 +124,40 @@ def overlap_length(intervals: list[tuple[int, int]], start: int, end: int) -> in
         if right > start:
             total += max(0, min(right, end) - max(left, start))
     return total
+
+
+def physical_stratum_lengths(
+    contig_lengths: dict[str, int],
+    coding: dict[str, list[tuple[int, int]]],
+    recombination: dict[str, tuple[np.ndarray, np.ndarray]],
+    rate_label,
+) -> tuple[dict[str, int], dict[str, int], dict[str, int]]:
+    distance_bp: collections.Counter[str] = collections.Counter()
+    rate_bp: collections.Counter[str] = collections.Counter()
+    joint_bp: collections.Counter[str] = collections.Counter()
+    thresholds = (1_000, 10_000, 100_000)
+    for contig, length in contig_lengths.items():
+        intervals = coding[contig]
+        starts = [interval[0] for interval in intervals]
+        breakpoints = {0, length}
+        for start, end in intervals:
+            breakpoints.update((start, end))
+            for threshold in thresholds:
+                breakpoints.add(max(0, start - threshold))
+                breakpoints.add(min(length, end + threshold))
+        positions, _ = recombination[contig]
+        breakpoints.update(int(position) for position in positions if 0 < position < length)
+        ordered = sorted(breakpoints)
+        for left, right in zip(ordered[:-1], ordered[1:]):
+            if right <= left:
+                continue
+            dlabel = distance_label(coding_distance(intervals, left, starts))
+            rlabel = rate_label(local_recombination_rate(recombination[contig], left))
+            span = right - left
+            distance_bp[dlabel] += span
+            rate_bp[rlabel] += span
+            joint_bp[f"{dlabel}|{rlabel}"] += span
+    return dict(distance_bp), dict(rate_bp), dict(joint_bp)
 
 
 def _empty_stratum() -> dict:
@@ -187,6 +221,10 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
         if rate == 0:
             return "zero"
         return f"positive_q{int(np.searchsorted(rate_quartiles, rate, side='left')) + 1}"
+
+    physical_distance_bp, physical_rate_bp, physical_joint_bp = physical_stratum_lengths(
+        contig_lengths, coding, recombination, rate_label
+    )
 
     distance_strata: dict[str, dict] = collections.defaultdict(_empty_stratum)
     rate_strata: dict[str, dict] = collections.defaultdict(_empty_stratum)
@@ -347,6 +385,9 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
             for field in vcf.header.info.keys()
         ),
         "positive_map_rate_quartiles_cm_per_mb": rate_quartiles.tolist(),
+        "physical_bp_by_distance_stratum": physical_distance_bp,
+        "physical_bp_by_recombination_stratum": physical_rate_bp,
+        "physical_bp_by_joint_stratum": physical_joint_bp,
         "coding_bed": bed_summary,
         "recombination_map": map_summary,
         "distance_strata": {

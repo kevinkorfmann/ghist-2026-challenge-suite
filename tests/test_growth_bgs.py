@@ -44,7 +44,8 @@ class GrowthBackgroundSelectionTests(unittest.TestCase):
 
         self.assertEqual(coding["2L"], [(10, 25)])
         self.assertEqual(coding_distance(coding["2L"], 10), 0)
-        self.assertEqual(coding_distance(coding["2L"], 30), 5)
+        self.assertEqual(coding_distance(coding["2L"], 25), 1)
+        self.assertEqual(coding_distance(coding["2L"], 30), 6)
         self.assertEqual(recombination["2R"][1].tolist(), [0.5, 2.0])
         self.assertEqual(report["samples"], 2)
         self.assertEqual(report["sequence_length"], 200)
@@ -53,6 +54,9 @@ class GrowthBackgroundSelectionTests(unittest.TestCase):
         self.assertEqual(report["ancestral_orientation"], {"reference": 2, "alternate": 1})
         self.assertFalse(report["nonsynonymous_annotation_present"])
         self.assertEqual(report["distance_strata"]["coding_overlap"]["biallelic_sites"], 2)
+        self.assertEqual(sum(report["physical_bp_by_distance_stratum"].values()), 200)
+        self.assertEqual(sum(report["physical_bp_by_recombination_stratum"].values()), 200)
+        self.assertEqual(sum(report["physical_bp_by_joint_stratum"].values()), 200)
 
 
 if __name__ == "__main__":

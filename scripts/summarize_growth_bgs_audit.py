@@ -95,6 +95,15 @@ def main() -> None:
         "positive_map_rate_quartiles_cm_per_mb": resource[
             "positive_map_rate_quartiles_cm_per_mb"
         ],
+        "physical_bp_by_distance_stratum": resource[
+            "physical_bp_by_distance_stratum"
+        ],
+        "physical_bp_by_recombination_stratum": resource[
+            "physical_bp_by_recombination_stratum"
+        ],
+        "physical_bp_by_joint_stratum": resource[
+            "physical_bp_by_joint_stratum"
+        ],
         "distance_strata": {
             key: stratum_summary(value)
             for key, value in resource["distance_strata"].items()
