@@ -39,6 +39,7 @@ def main() -> None:
     )
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--seed", type=int, default=20260929)
+    parser.add_argument("--average-by-point", action="store_true")
     args = parser.parse_args()
 
     source = np.load(args.dataset)
@@ -50,6 +51,24 @@ def main() -> None:
         key: source[key][keep]
         for key in ("partition", "truth", "point_id", args.feature_key)
     }
+    if args.average_by_point:
+        grouped = []
+        for identifier in np.unique(data["point_id"]):
+            selected = data["point_id"] == identifier
+            grouped.append(
+                (
+                    int(identifier),
+                    int(data["partition"][selected][0]),
+                    data["truth"][selected][0],
+                    data[args.feature_key][selected].mean(axis=0),
+                )
+            )
+        data = {
+            "point_id": np.asarray([row[0] for row in grouped]),
+            "partition": np.asarray([row[1] for row in grouped]),
+            "truth": np.asarray([row[2] for row in grouped]),
+            args.feature_key: np.asarray([row[3] for row in grouped]),
+        }
     calibration = data["partition"] == 0
     selection = data["partition"] == 1
     evaluation = data["partition"] == 2
@@ -123,6 +142,7 @@ def main() -> None:
         "untouched_evaluation_rrmse": evaluation_score,
         "domain_filter": args.domain_filter,
         "feature_key": args.feature_key,
+        "average_by_point": args.average_by_point,
         "features": int(features.shape[1]),
         "calibration_rows": int(calibration.sum()),
         "selection_rows": int(selection.sum()),

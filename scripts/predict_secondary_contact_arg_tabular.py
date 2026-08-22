@@ -42,13 +42,23 @@ def main() -> None:
     if len(features) % args.tiles_per_block:
         raise ValueError("tile count must be divisible by tiles per block")
     checkpoint = joblib.load(args.model)
+    averaged_input = bool(checkpoint["report"].get("average_by_point", False))
+    model_features = (
+        features.reshape(-1, args.tiles_per_block, features.shape[1]).mean(axis=1)
+        if averaged_input
+        else features
+    )
     transformed = (
-        checkpoint["model"].predict(features) * checkpoint["target_scale"]
+        checkpoint["model"].predict(model_features) * checkpoint["target_scale"]
         + checkpoint["target_mean"]
     )
-    block_transformed = transformed.reshape(
-        -1, args.tiles_per_block, transformed.shape[1]
-    ).mean(axis=1)
+    block_transformed = (
+        transformed
+        if averaged_input
+        else transformed.reshape(-1, args.tiles_per_block, transformed.shape[1]).mean(
+            axis=1
+        )
+    )
     center = np.median(block_transformed, axis=0)
     block_prediction = inverse_transform_targets(block_transformed)
     result = {
@@ -57,6 +67,7 @@ def main() -> None:
         "selection_report": checkpoint["report"],
         "tiles": len(features),
         "tiles_per_block": args.tiles_per_block,
+        "averaged_before_prediction": averaged_input,
         "blocks": len(block_prediction),
         "prediction": dict(zip(OUTPUT_NAMES, inverse_transform_targets(center).tolist())),
         "block_percentile_05": dict(
