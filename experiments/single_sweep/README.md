@@ -42,6 +42,13 @@ it has 7.1 kb median absolute error, 45.2 kb 90th-percentile error, and 90%
 recovery within 50 kb. A matched scale-factor stress test at factors 1, 2, 5,
 and 10 is the remaining simulation-fidelity gate.
 
+Interval width is optimized against the published GHIST sweep evaluator rather
+than chosen visually. Its length penalty selects a 25 kb half-width on the
+calibration cells. A predeclared consensus guard expands that to 35 kb so the
+candidate interval contains the gap, fine composite, split-flank, and RAiSD
+localizations. The resulting candidate is chr7:38,221,951–38,291,951; it remains
+unfrozen until the scale-factor gate passes.
+
 The validation strategy follows the multi-signature logic of
 [RAiSD](https://doi.org/10.1038/s42003-018-0085-8), the spatial-statistic design
 of [diploS/HIC](https://doi.org/10.1093/molbev/msy006), and the nested-window,
