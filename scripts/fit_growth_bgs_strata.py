@@ -78,6 +78,11 @@ def main() -> None:
         [dense(joint[key]) for key in far_keys],
         sum(int(joint_bp[key]) for key in far_keys),
     )
+    middle_distance = ("noncoding_1kb_10kb", "noncoding_10kb_100kb")
+    candidates["noncoding_1kb_100kb"] = (
+        [dense(distance[key]) for key in middle_distance],
+        sum(int(distance_bp[key]) for key in middle_distance),
+    )
     if args.include is not None:
         missing = sorted(set(args.include) - set(candidates))
         if missing:
