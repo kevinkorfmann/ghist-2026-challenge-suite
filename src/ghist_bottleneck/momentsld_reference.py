@@ -20,6 +20,14 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def normalize_bootstrap_covariances(bootstrapped: dict) -> dict:
+    """Keep single-statistic covariance entries two-dimensional."""
+    bootstrapped["varcovs"] = [
+        np.atleast_2d(varcov) for varcov in bootstrapped["varcovs"]
+    ]
+    return bootstrapped
+
+
 def prepare_hdf5(vcf: str | Path) -> Path:
     import allel
 
@@ -98,6 +106,10 @@ def fit_regions(
     all_data = {index: record["statistics"] for index, record in zip(indices, records)}
     np.random.seed(seed)
     bootstrapped = LD.Parsing.bootstrap_data(all_data)
+    # A single normalized heterozygosity statistic has exactly zero bootstrap
+    # variance and momentsLD 1.6 serializes that covariance as a scalar. Its
+    # subset helper expects every covariance entry to remain two-dimensional.
+    bootstrapped = normalize_bootstrap_covariances(bootstrapped)
     raw_edges, means, varcovs, statistics = LD.Parsing.subset_data(
         bootstrapped, ["ALL"]
     )

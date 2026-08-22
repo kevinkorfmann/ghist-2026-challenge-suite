@@ -21,7 +21,10 @@ from ghist_bottleneck.features import (
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.infer import apply_chromosome_calibration
 from ghist_bottleneck.dadi_reference import physical_parameters
-from ghist_bottleneck.momentsld_reference import compute_region
+from ghist_bottleneck.momentsld_reference import (
+    compute_region,
+    normalize_bootstrap_covariances,
+)
 from ghist_bottleneck.arg_features import (
     gaussian_tmrca_hazard_features,
     tmrca_hazard_features,
@@ -74,6 +77,14 @@ class PipelineTests(unittest.TestCase):
     def test_momentsld_regions_reject_out_of_range_blocks_before_import(self):
         with self.assertRaisesRegex(ValueError, "block_index"):
             compute_region("unused.vcf", "unused.joblib", block_index=50)
+
+    def test_momentsld_scalar_bootstrap_covariance_is_promoted_to_matrix(self):
+        bootstrapped = {
+            "varcovs": [np.eye(2), np.asarray(0.0)],
+        }
+        normalized = normalize_bootstrap_covariances(bootstrapped)
+        self.assertEqual(normalized["varcovs"][0].shape, (2, 2))
+        self.assertEqual(normalized["varcovs"][1].shape, (1, 1))
 
     def test_dadi_reference_converts_scaled_time_with_ancestral_size(self):
         generations, fraction, ancestral_ne = physical_parameters(
