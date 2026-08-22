@@ -49,6 +49,7 @@ def main() -> None:
     parser.add_argument("--resolution", type=Path, required=True)
     parser.add_argument("--broad-resolution", type=Path, required=True)
     parser.add_argument("--varying-resolution", type=Path, required=True)
+    parser.add_argument("--stress-comparison", type=Path, required=True)
     parser.add_argument("--stress-transfer", type=Path, required=True)
     parser.add_argument("--bootstrap", type=Path, required=True)
     parser.add_argument("--vcf-audit", type=Path, required=True)
@@ -63,6 +64,7 @@ def main() -> None:
         "resolution": args.resolution,
         "broad_resolution": args.broad_resolution,
         "varying_resolution": args.varying_resolution,
+        "stress_comparison": args.stress_comparison,
         "stress_transfer": args.stress_transfer,
         "bootstrap": args.bootstrap,
         "vcf_audit": args.vcf_audit,
@@ -74,6 +76,7 @@ def main() -> None:
     resolution = sources["resolution"]
     broad_resolution = sources["broad_resolution"]
     varying_resolution = sources["varying_resolution"]
+    stress_comparison = sources["stress_comparison"]
     transfer = sources["stress_transfer"]
     bootstrap = sources["bootstrap"]
     audit = sources["vcf_audit"]
@@ -93,6 +96,8 @@ def main() -> None:
         require_resolution_gate(comparison, label)
     if not calibration["untouched_evaluation"].get("correction_accepted"):
         raise ValueError("point-grouped transfer correction did not pass its acceptance gate")
+    if not stress_comparison.get("selection_valid"):
+        raise ValueError("raw stress comparison contains optimizer-boundary results")
     if max(abs(value) for value in numerical_relative_change.values()) >= 0.01:
         raise ValueError("refined integration changed at least one parameter by 1% or more")
     nominal = transfer.get("conditions", {}).get("nominal")
@@ -151,6 +156,7 @@ def main() -> None:
                 "refined_minus_standard_relative": numerical_relative_change,
             },
             "stress_transfer": transfer["conditions"],
+            "raw_stress": stress_comparison["summaries"],
         },
         "data_provenance": {
             "testing_vcf_sha256": audit["population"]["file_sha256"],
