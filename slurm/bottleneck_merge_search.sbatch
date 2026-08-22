@@ -10,6 +10,8 @@ set -euo pipefail
 module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
+INPUT_GLOB="${INPUT_GLOB:-data/simulations/bottleneck/part_*.npz}"
+OUTPUT_PATH="${OUTPUT_PATH:-data/simulations/bottleneck/search.npz}"
 .venv/bin/python scripts/merge_simulations.py \
-  --input 'data/simulations/bottleneck/part_*.npz' \
-  --output data/simulations/bottleneck/search.npz
+  --input "$INPUT_GLOB" \
+  --output "$OUTPUT_PATH"
