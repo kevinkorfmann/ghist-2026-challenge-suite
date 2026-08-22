@@ -43,12 +43,24 @@ def main() -> None:
     parser.add_argument("--stratum", choices=sorted(STRATA), default="middle")
     parser.add_argument("--restarts", type=int, default=64)
     parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--integration-dt-fac", type=float, default=0.02)
+    parser.add_argument("--adaptive-integration", action="store_true")
+    parser.add_argument("--initial-fit", type=Path)
     args = parser.parse_args()
 
     spectra, metadata = stratified_joint_spectra_from_vcf(args.vcf, args.coding_bed)
     included = STRATA[args.stratum]
     selected = np.sum([spectra[label] for label in included], axis=0)
     exposure = sum(DISTANCE_EXPOSURE_BP[label] for label in included)
+    initial_scaled = None
+    if args.initial_fit is not None:
+        scaled = json.loads(args.initial_fit.read_text())["fit"]["scaled_parameters"]
+        initial_scaled = (
+            scaled["AFR_size_ratio"],
+            scaled["EUR_size_ratio"],
+            scaled["split_duration_2N"],
+            scaled["migration_2N"],
+        )
     fit = fit_isolation_with_migration_spectrum(
         selected,
         mutation_rate=1.015e-8,
@@ -56,6 +68,9 @@ def main() -> None:
         projection=tuple(args.projection),
         restarts=args.restarts,
         workers=args.workers,
+        integration_dt_fac=args.integration_dt_fac,
+        adaptive_integration=args.adaptive_integration,
+        initial_scaled=initial_scaled,
     )
     payload = {
         "state": "COMPLETED",
