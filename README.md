@@ -35,7 +35,7 @@ and [method comparison](docs/method_comparison.md).
 | Area | State | Evidence / next gate |
 |---|---|---|
 | Repository | ready | private remote, neutral branch naming, isolated challenge directories |
-| Data intake | waiting for sign-in | authenticated downloader, checksums, and forensic VCF audit are ready |
+| Data intake | waiting for Terms acceptance | signed-in browser is ready; checksums and forensic VCF audit follow immediately after acceptance |
 | Scheduled compute | CPU and GPU verified | CPU end-to-end job `7731188`; B200 forward/backward gate `7731200` |
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | Bottleneck model | prototype verified | SFS, 19-bin LD, window context, genealogical hazards, mixture posterior, tree reference |
@@ -49,9 +49,13 @@ design follows the genome-scale SFS+LD findings of
 [Smith et al. (2026)](https://doi.org/10.1093/genetics/iyag107), while retaining
 raw spatial context and independent mechanistic references.
 
-An optional [CXT](https://github.com/kr-colab/cxt) bridge converts posterior
-pairwise TMRCA trajectories into the same conditional hazard basis, enabling a
-blockwise genealogy ensemble without treating any single inferred tree as truth.
+Two independent translation branches are supported. The autoregressive
+[CXT](https://github.com/kr-colab/cxt) bridge converts posterior pairwise TMRCA
+samples into conditional hazards. The bidirectional Mamba
+[FastCXT](https://github.com/kevinkorfmann/fastcxt) bridge analytically integrates
+its Gaussian log-TMRCA means and variances over each time interval before the
+same hazard transform. Both retain blockwise uncertainty and can be evaluated
+alone, masked, or ensembled without treating one inferred genealogy as truth.
 
 ## Repository layout
 

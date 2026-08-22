@@ -1,6 +1,7 @@
 import tempfile
 import unittest
 import json
+import os
 from unittest.mock import patch
 from pathlib import Path
 import subprocess
@@ -16,7 +17,10 @@ from ghist_bottleneck.features import (
     summarize_variants,
 )
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
-from ghist_bottleneck.arg_features import tmrca_hazard_features
+from ghist_bottleneck.arg_features import (
+    gaussian_tmrca_hazard_features,
+    tmrca_hazard_features,
+)
 from ghist_bottleneck.simulate import SimulationConfig, simulate_one
 from ghist_bottleneck.sfs_baseline import projected_sfs_from_vcf
 from ghist_bottleneck.train import _device
@@ -28,6 +32,69 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(hazards.shape, (32,))
         self.assertAlmostEqual(hazards[0], 0.0)
         self.assertAlmostEqual(hazards.sum(), 5 / 3, places=7)
+
+    def test_gaussian_tmrca_posterior_is_integrated_exactly(self):
+        values = np.log([30.0, 30.0, 100.0])
+        sampled = tmrca_hazard_features(values)
+        integrated = gaussian_tmrca_hazard_features(values, np.zeros_like(values))
+        np.testing.assert_allclose(integrated, sampled, atol=1e-12)
+
+        uncertain = gaussian_tmrca_hazard_features(
+            np.full(20, np.log(3000.0)), np.full(20, 0.5)
+        )
+        self.assertEqual(uncertain.shape, (32,))
+        self.assertTrue(np.isfinite(uncertain).all())
+        self.assertTrue(np.all((uncertain >= 0) & (uncertain <= 1)))
+
+    def test_fastcxt_bridge_maps_finer_translation_blocks(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            collection = FeatureCollection(
+                windows=np.zeros((2, 64, 8), dtype=np.float32),
+                sfs=np.zeros((2, 116), dtype=np.float32),
+                n_haplotypes=12,
+                sequence_length=4000.0,
+                block_length=2000.0,
+                block_starts=np.array([0.0, 2000.0]),
+                block_ends=np.array([2000.0, 4000.0]),
+                n_variants=np.array([10, 10]),
+            )
+            collection_path = root / "collection.npz"
+            translation_path = root / "translation.npz"
+            output_path = root / "enriched.npz"
+            collection.save(collection_path)
+            np.savez(
+                translation_path,
+                means=np.array(
+                    [
+                        [np.log(100.0)],
+                        [np.log(120.0)],
+                        [np.log(10_000.0)],
+                        [np.log(12_000.0)],
+                    ]
+                ),
+                variances=np.zeros((4, 1)),
+                index_map=np.column_stack((np.arange(4), np.zeros(4, dtype=int))),
+                block_starts=np.array([0.0, 1000.0, 2000.0, 3000.0]),
+                block_ends=np.array([1000.0, 2000.0, 3000.0, 4000.0]),
+            )
+            subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/inject_fastcxt_hazards.py",
+                    "--collection",
+                    str(collection_path),
+                    "--translation",
+                    str(translation_path),
+                    "--out",
+                    str(output_path),
+                ],
+                check=True,
+                env={**os.environ, "PYTHONPATH": "src"},
+            )
+            enriched = FeatureCollection.load(output_path)
+            np.testing.assert_array_equal(enriched.sfs[:, -1], [1.0, 1.0])
+            self.assertFalse(np.allclose(enriched.sfs[0, -33:-1], enriched.sfs[1, -33:-1]))
 
     def test_block_extraction_matches_training_scale_and_keeps_empty_blocks(self):
         collection = extract_vcf_blocks(

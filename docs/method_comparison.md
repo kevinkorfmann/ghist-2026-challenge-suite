@@ -16,6 +16,7 @@ calibration or robustness under misspecification.
 | Posterior estimation | [Smith et al. 2026](https://doi.org/10.1093/genetics/iyag107) | raw genotypes or SFS+LD | calibrated posterior target |
 | Genealogical hazards | [Deng et al. 2026](https://doi.org/10.64898/2026.08.11.744210) | interval-conditional coalescence | temporally localized extension |
 | Coalescence translation | [CXT](https://github.com/kr-colab/cxt) | genotype-conditioned TMRCA posterior | independent genealogy channel |
+| State-space translation | [FastCXT](https://github.com/kevinkorfmann/fastcxt) | bidirectional Mamba log-TMRCA mean and variance | fast sample-size-flexible genealogy channel |
 
 ### Extension adopted here
 
@@ -36,6 +37,16 @@ converted to the same conditional hazard bins used for simulated tree sequences,
 block by block. This permits a direct comparison among CXT, tsinfer/tsdate, and
 mutation/LD-only predictions, while retaining CXT posterior uncertainty instead
 of collapsing it to one genealogy.
+
+FastCXT integration uses pinned revision
+`7fb89f451cca734e03bb974bca7faffe9a94e194`. For every pair/window Gaussian in
+log time, its probability mass in each finite interval is evaluated by the normal
+CDF. These masses are averaged and divided by the posterior mass surviving to the
+interval start. This is an exact posterior hazard under the model and avoids
+Monte Carlo noise. One-megabase translation blocks may be combined into the
+two-megabase feature blocks through explicit genomic coordinates. FastCXT is
+trained on the challenge prior and nuisance domain before comparison; an
+untrained upstream model is never treated as evidence.
 
 The production posterior combines:
 

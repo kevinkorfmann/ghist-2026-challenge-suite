@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import tskit
+from scipy.special import ndtr
 
 
 ARG_TIME_BINS = 32
@@ -68,3 +69,69 @@ def tmrca_hazard_features(
     if len(hazard) != ARG_TIME_BINS:
         raise ValueError(f"expected {ARG_TIME_BINS} hazard bins, got {len(hazard)}")
     return hazard
+
+
+def gaussian_tmrca_hazard_features(
+    log_mean: np.ndarray,
+    log_variance: np.ndarray,
+    *,
+    time_edges: np.ndarray | None = None,
+) -> np.ndarray:
+    """Integrate Gaussian log-TMRCA posteriors into conditional hazards.
+
+    Each pair/window prediction defines a Gaussian distribution in log time.
+    Interval probabilities are evaluated analytically and averaged before the
+    conditional-hazard transform, avoiding posterior Monte Carlo noise.
+    """
+    means = np.asarray(log_mean, dtype=np.float64)
+    variances = np.asarray(log_variance, dtype=np.float64)
+    if means.shape != variances.shape:
+        raise ValueError(
+            f"log_mean and log_variance must have the same shape, got "
+            f"{means.shape} and {variances.shape}"
+        )
+    means = means.reshape(-1)
+    variances = variances.reshape(-1)
+    keep = np.isfinite(means) & np.isfinite(variances) & (variances >= 0)
+    means, variances = means[keep], variances[keep]
+    if not len(means):
+        return np.zeros(ARG_TIME_BINS, dtype=np.float64)
+
+    edges = default_time_edges() if time_edges is None else np.asarray(time_edges, dtype=float)
+    if edges[0] != 0 or np.any(np.diff(edges) <= 0) or not np.all(np.isfinite(edges)):
+        raise ValueError("time_edges must start at zero and increase with finite values")
+
+    # CDF values at the finite positive edges. The lower support boundary is
+    # exactly zero (log boundary -infinity), and the final tail ends at infinity.
+    log_bounds = np.log(edges[1:])
+    sigma = np.sqrt(variances)
+    cdf = np.empty((len(means), len(log_bounds)), dtype=np.float64)
+    uncertain = sigma > 1e-8
+    if np.any(uncertain):
+        z = (log_bounds[None, :] - means[uncertain, None]) / sigma[uncertain, None]
+        cdf[uncertain] = ndtr(z)
+    if np.any(~uncertain):
+        cdf[~uncertain] = means[~uncertain, None] <= log_bounds[None, :]
+
+    interval_mass = np.diff(
+        np.concatenate(
+            (
+                np.zeros((len(means), 1), dtype=np.float64),
+                cdf,
+                np.ones((len(means), 1), dtype=np.float64),
+            ),
+            axis=1,
+        ),
+        axis=1,
+    ).mean(axis=0)
+    interval_mass = np.clip(interval_mass, 0.0, 1.0)
+    remaining = np.cumsum(interval_mass[::-1])[::-1]
+    hazard = np.divide(
+        interval_mass,
+        remaining,
+        out=np.zeros_like(interval_mass),
+        where=remaining > 0,
+    )[:-1]
+    if len(hazard) != ARG_TIME_BINS:
+        raise ValueError(f"expected {ARG_TIME_BINS} hazard bins, got {len(hazard)}")
+    return np.clip(hazard, 0.0, 1.0)
