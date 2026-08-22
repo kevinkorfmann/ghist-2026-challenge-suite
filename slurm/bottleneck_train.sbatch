@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=bn-fit
 #SBATCH --partition=dgx-b200
-#SBATCH --gres=gpu:B200:1
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=128G
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=28
 #SBATCH --time=24:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
@@ -17,4 +16,3 @@ cd "$PROJECT_ROOT"
 .venv/bin/python -m ghist_bottleneck.cli train \
   --dataset data/simulations/bottleneck/all.npz \
   --out-dir checkpoints/bottleneck
-

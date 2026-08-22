@@ -1,0 +1,73 @@
+protocol:
+  split_seed: 991
+  selection_target: grouped synthetic validation only
+  nominal_weight: 1.0
+  overall_weight: 0.2
+  calibration_weight: 0.1
+  robustness_guard_weight: 0.05
+
+candidates:
+  baseline:
+    model:
+      width: 96
+      mixture_components: 8
+      dilations: [1, 2, 4, 8]
+      context_layers: 2
+      attention_heads: 8
+      dropout: 0.12
+    training: &screen_training
+      seeds: [17]
+      epochs: 30
+      learning_rate: 0.0002
+      weight_decay: 0.002
+      batch_size: 64
+  wider:
+    model:
+      width: 160
+      mixture_components: 8
+      dilations: [1, 2, 4, 8]
+      context_layers: 2
+      attention_heads: 8
+      dropout: 0.12
+    training: *screen_training
+  deeper_context:
+    model:
+      width: 128
+      mixture_components: 8
+      dilations: [1, 2, 4, 8]
+      context_layers: 4
+      attention_heads: 8
+      dropout: 0.12
+    training: *screen_training
+  extended_local:
+    model:
+      width: 128
+      mixture_components: 12
+      dilations: [1, 2, 4, 8, 16, 32]
+      context_layers: 2
+      attention_heads: 8
+      dropout: 0.10
+    training: *screen_training
+  compact:
+    model:
+      width: 64
+      mixture_components: 6
+      dilations: [1, 2, 4, 8]
+      context_layers: 2
+      attention_heads: 8
+      dropout: 0.10
+    training: *screen_training
+  mamba_context:
+    model:
+      width: 128
+      mixture_components: 8
+      dilations: [1, 2, 4, 8]
+      context_layers: 4
+      attention_heads: 8
+      dropout: 0.12
+      context_backend: mamba
+      mamba_state: 64
+      mamba_convolution: 4
+      mamba_expand: 2
+      max_windows: 64
+    training: *screen_training

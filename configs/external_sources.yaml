@@ -1,0 +1,51 @@
+cxt:
+  repository: https://github.com/kr-colab/cxt
+  revision: 294b0c27226accbac830c9c922de6b2f92f83fe8
+  model: w200_wmissing
+  role: posterior log-TMRCA samples
+  checkpoint_sha256: d9f220f69cbbe2f87b680dcc9aca9372bf80378a5cb08aa4b59271a5f48128b6
+
+fastcxt:
+  repository: https://github.com/kevinkorfmann/fastcxt
+  revision: 7fb89f451cca734e03bb974bca7faffe9a94e194
+  mamba_ssm: 2.3.2.post1
+  causal_conv1d: 1.6.2.post1
+  transformers: 4.57.6
+  tilelang: 0.1.8
+  apache_tvm_ffi: 0.1.9
+  nvidia_cutlass_dsl: 4.4.2
+  quack_kernels: 0.3.4
+  runtime_gate:
+    slurm_job: 7731249
+    gpu: NVIDIA B200 MIG 2g.45gb
+    torch: 2.11.0+cu128
+    parameters: 224426
+    output_shape: [2, 32, 2]
+    loss: 8.738156611798331e-05
+  model: bottleneck-specific training required
+  role: Gaussian log-TMRCA means and variances
+  checkpoint_sha256: null
+
+mechanistic_references:
+  moments_popgen: 1.6.0
+  dadi: 2.4.4
+
+singer:
+  repository: https://github.com/popgenmethods/SINGER
+  revision: f88d68737962246d20f693c36978deba90ccd7ff
+  binary_sha256: 475e6bce7ce3eda847aa1906ce77127dd31e23a5f992dcd4284b1f82bec70d9f
+  converter_sha256: abf3dcf5bb23dcb9c1102e8443e3caba182c7c4723bc5482a6eeb2d6b204f366
+  role: posterior genealogy sampling
+
+polegon:
+  repository: https://github.com/YunDeng98/POLEGON
+  revision: 0c088b339a0636edde1cf569f0d7c4eea6a07af5
+  master_sha256: 91eb84705401a2d965ad70b99e062340cfccbb236176c762d0c909705ed7b316
+  role: prior-oblivious branch-length estimation
+
+historical_ghist_generator:
+  repository: https://github.com/tjstruck/GHIST-2024-paper
+  revision: f3d7d117d5fc1831d9462730af99ea904861f9c1
+  role: simulator convention audit only
+  score_sha256: 6f47ac6f837b7f6a3ce8c04f881b5b9332abb99bc7e89ea6a8812029150e5169
+  secondary_contact_generator_sha256: 48642333b97a097c0f558027a94be257e2353926d83d39caa27f5560a458d72c

@@ -1,0 +1,129 @@
+audit:
+  slurm_job: 7731234
+  records: 1194350
+  contig: "1"
+  sequence_length_bp: 100000000
+  individuals: 57
+  haplotypes: 114
+  ploidy: 2
+  phased_call_fraction: 1.0
+  missing_call_fraction: 0.0
+  biallelic_snp_fraction: 1.0
+  pass_filter_fraction: 1.0
+  format_fields: [GT]
+  info_fields: [AA]
+  duplicate_adjacent_positions: 7715
+  nonmonotone_positions: 0
+  one_mb_variant_count:
+    minimum: 11247
+    mean: 11943.5
+    maximum: 12709
+
+normalization:
+  slurm_job: 7731236
+  repair: canonicalized one malformed AA metadata line
+  record_body_sha256: 1bd6e3676fca1a2615037eb4bb40ce3424252a9ed6f64f1dc2c4512216cc187a
+  normalized_vcf_sha256: ad808891111d32505b0e1180ad05054c07bc709941b232971939a73fc05362bd
+  tabix_sha256: 9baefbe0fc0e2e64b7de4977f5aefc6eaca06f69f5251bcce78a159772b846c0
+  invariant: every non-header VCF byte is unchanged
+
+representation_policy:
+  summary_and_fastcxt_positions: original integer coordinates, including repeats
+  genealogy_positions: stable sub-base ordering within repeated coordinates
+  genealogy_offset_range_bp: [-0.25, 0.25]
+  site_retention_target: 1.0
+
+phased_matrix:
+  slurm_job: 7731240
+  shape: [114, 1194350]
+  dtype: uint8
+  ancestral_is_reference_records: 1194350
+  duplicate_position_groups: 7678
+  records_at_duplicate_positions: 15393
+  genotypes_sha256: 8d71ea3f3aad918fe754fbfeeaef189edaa09137b0aa243b6855119d75341ea4
+  positions_sha256: f0b36f536ea5c88fef10cf0203305332576cbef3b4a0cc412be24f8fc6112b08
+  strict_positions_sha256: 8bfd4caadaa81305f442476d8d38124b779192bde7135034afd48c13d2958964
+
+observed_features:
+  slurm_job: 7731251
+  blocks: 50
+  block_length_bp: 2000000
+  artifact_sha256: a55cdd36fc8fb2c641665df1a8f29beaf343d396f385fd1f7d4f451f4c8ddd94
+
+mechanistic_reference:
+  slurm_job: 7731251
+  restarts: 64
+  unfolded:
+    generations: 4585.666245434924
+    post_decline_fraction: 0.5221935644148588
+    ancestral_effective_size: 21403.707397187845
+    artifact_sha256: e83af8974df53f0d166134db6cad3d315b62eb3278cebd4db2540dfd97c61cbe
+  folded:
+    generations: 4587.059039972118
+    post_decline_fraction: 0.5224205941511895
+    ancestral_effective_size: 21400.667627769486
+    artifact_sha256: 6b7aaa555b2b3a9c5f37d1725fc514fed4806764a639f94490f494345074e591
+  interpretation: folded and unfolded fits agree independently of allele orientation
+  physical_block_bootstrap:
+    blocks: 50
+    replicates: 200
+    unfolded:
+      slurm_job: 7732373
+      generations_interval_95: [4260.635556585424, 4922.867104613651]
+      fraction_interval_95: [0.513434701128342, 0.5299875074295215]
+    folded:
+      slurm_job: 7732374
+      generations_interval_95: [4183.892522636071, 4982.066247799088]
+      fraction_interval_95: [0.5130583882991222, 0.5308015706389116]
+
+fastcxt_reference:
+  training_job: 7731776
+  grouped_training_pairs: 41000
+  grouped_validation_pairs: 10200
+  selected_epoch: 9
+  validation_log_tmrca_rmse: 1.260095477104187
+  validation_coverage_95: 0.9528140425682068
+  checkpoint_sha256: 46e67a11881d64c2221652d66c4aadc5a1451584114f7539c5ddfe289c79dcee
+  observed_translation_job: 7731790
+  observed_translation_sha256: e419d630fb2da4d2a361bbf88915f1982e9f950f5162d54df1feb12685034950
+
+architecture_screen:
+  simulation_job: 7731771
+  simulations: 12000
+  dataset_sha256: 9118c75a6172d5fe939471324636246243df646fb8f534a28628e596d4b7835b
+  screen_job: 7731774
+  provisional_winner: deeper_context
+  winner_score: 0.5895101246220711
+  baseline_score: 0.6010188181907548
+  relative_improvement_over_baseline: 0.01914864097488371
+  promotion_status: fresh 20000-simulation, five-seed gate completed
+
+learned_promotion:
+  simulation_job: 7732376
+  merge_job: 7732377
+  training_job: 7732378
+  simulations: 20000
+  dataset_sha256: 9575ae199120a271bcd5169e6cd0e3b692011315119ae0dacd4a8708a047ba90
+  seeds: [17, 29, 43, 71, 101]
+  selection_score: 0.5347422221378036
+  heldout_coverage_90: [0.9283208020050125, 0.9258145363408521]
+  chromosome_gate:
+    simulation_job: 7732400
+    merge_job: 7732401
+    evaluation_job: 7732422
+    dataset_sha256: c94737c19cab18158125d33bc1026f4e4722bc06ae86a96b8cbcfdfde1f7c4b3
+    cells: 200
+    blocks_per_cell: 50
+    split_sizes:
+      calibration: 80
+      selection: 59
+      evaluation: 61
+    final_evaluation_median_generation_relative_error: 0.2343580081144142
+    final_evaluation_median_fraction_absolute_error: 0.030136220462057717
+  observed_summary_uncalibrated:
+    generations: 3777
+    post_decline_fraction: 0.515734
+  observed_summary_calibrated:
+    generations: 4423
+    post_decline_fraction: 0.542348
+  decision: secondary diagnostic; whole-chromosome error is too large for primary use

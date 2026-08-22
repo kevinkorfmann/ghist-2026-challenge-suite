@@ -2,11 +2,16 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 
-from .features import FeatureBundle, extract_vcf
-from .infer import predict
-from .simulate import generate_dataset
+import numpy as np
+import yaml
+
+from .features import FeatureBundle, FeatureCollection, extract_vcf, extract_vcf_blocks
+from .infer import predict, predict_blocks
+from .simulate import generate_chromosome_dataset, generate_dataset
 from .train import train_ensemble
+from .sfs_baseline import fit_two_epoch, write_fit
 
 
 def main() -> None:
@@ -15,34 +20,133 @@ def main() -> None:
     ex = sub.add_parser("extract")
     ex.add_argument("--vcf", required=True)
     ex.add_argument("--out", required=True)
+    ex.add_argument("--trees", help="Optional inferred tree sequence")
+    exb = sub.add_parser("extract-blocks")
+    exb.add_argument("--vcf", required=True)
+    exb.add_argument("--out", required=True)
+    exb.add_argument("--sequence-length", type=float, default=100_000_000)
+    exb.add_argument("--block-length", type=float, default=2_000_000)
     sim = sub.add_parser("simulate")
     sim.add_argument("--observed", required=True)
     sim.add_argument("--out", required=True)
     sim.add_argument("--n-sims", type=int, default=5000)
     sim.add_argument("--seed", type=int, default=20260821)
     sim.add_argument("--quick", action="store_true")
+    simc = sub.add_parser("simulate-chromosomes")
+    simc.add_argument("--observed", required=True)
+    simc.add_argument("--out", required=True)
+    simc.add_argument("--cells", type=int, default=10)
+    simc.add_argument("--blocks-per-cell", type=int, default=50)
+    simc.add_argument("--cell-start", type=int, default=0)
+    simc.add_argument("--seed", type=int, default=20261001)
     tr = sub.add_parser("train")
     tr.add_argument("--dataset", required=True)
     tr.add_argument("--out-dir", required=True)
     tr.add_argument("--quick", action="store_true")
+    tr.add_argument("--config", help="YAML model and training configuration")
     inf = sub.add_parser("infer")
     inf.add_argument("--observed", required=True)
     inf.add_argument("--checkpoint-dir", required=True)
     inf.add_argument("--out", required=True)
+    infb = sub.add_parser("infer-blocks")
+    infb.add_argument("--observed", required=True)
+    infb.add_argument("--checkpoint-dir", required=True)
+    infb.add_argument("--out", required=True)
+    infb.add_argument("--calibration")
+    base = sub.add_parser("sfs-reference")
+    base.add_argument("--vcf", required=True)
+    base.add_argument("--out", required=True)
+    base.add_argument("--restarts", type=int, default=24)
+    base.add_argument("--unpolarized", action="store_true")
+    base.add_argument("--folded", action="store_true")
     args = p.parse_args()
     if args.command == "extract":
-        b = extract_vcf(args.vcf)
+        b = extract_vcf(args.vcf, tree_sequence=args.trees)
         b.save(args.out)
         print(json.dumps({"n_haplotypes": b.n_haplotypes, "n_variants": b.n_variants, "sequence_length": b.sequence_length}, indent=2))
+    elif args.command == "extract-blocks":
+        collection = extract_vcf_blocks(
+            args.vcf,
+            sequence_length=args.sequence_length,
+            block_length=args.block_length,
+        )
+        collection.save(args.out)
+        print(
+            json.dumps(
+                {
+                    "n_haplotypes": collection.n_haplotypes,
+                    "n_variants": int(collection.n_variants.sum()),
+                    "blocks": len(collection.n_variants),
+                    "block_length": collection.block_length,
+                },
+                indent=2,
+            )
+        )
     elif args.command == "simulate":
+        stored = np.load(args.observed)
+        observed = (
+            FeatureCollection.load(args.observed)
+            if stored["windows"].ndim == 3
+            else FeatureBundle.load(args.observed)
+        )
+        stored.close()
         generate_dataset(
-            FeatureBundle.load(args.observed), args.out,
+            observed, args.out,
             n_sims=args.n_sims, seed=args.seed, quick=args.quick,
         )
+    elif args.command == "simulate-chromosomes":
+        stored = np.load(args.observed)
+        observed = (
+            FeatureCollection.load(args.observed)
+            if stored["windows"].ndim == 3
+            else FeatureBundle.load(args.observed)
+        )
+        stored.close()
+        generate_chromosome_dataset(
+            observed,
+            args.out,
+            n_cells=args.cells,
+            blocks_per_cell=args.blocks_per_cell,
+            cell_start=args.cell_start,
+            seed=args.seed,
+        )
     elif args.command == "train":
-        train_ensemble(args.dataset, args.out_dir, quick=args.quick)
-    else:
+        configuration = yaml.safe_load(Path(args.config).read_text()) if args.config else {}
+        training = configuration.get("training", {})
+        train_ensemble(
+            args.dataset,
+            args.out_dir,
+            quick=args.quick,
+            model_config=configuration.get("model", {}),
+            seeds=tuple(training.get("seeds", (17, 29, 43, 71, 101))),
+            epochs=int(training.get("epochs", 80)),
+            learning_rate=float(training.get("learning_rate", 2e-4)),
+            weight_decay=float(training.get("weight_decay", 2e-3)),
+            batch_size=int(training.get("batch_size", 64)),
+        )
+    elif args.command == "infer":
         print(json.dumps(predict(args.observed, args.checkpoint_dir, args.out), indent=2))
+    elif args.command == "infer-blocks":
+        print(
+            json.dumps(
+                predict_blocks(
+                    args.observed,
+                    args.checkpoint_dir,
+                    args.out,
+                    calibration=args.calibration,
+                ),
+                indent=2,
+            )
+        )
+    else:
+        result = fit_two_epoch(
+            args.vcf,
+            restarts=args.restarts,
+            polarized=not args.unpolarized,
+            folded=args.folded,
+        )
+        write_fit(result, args.out)
+        print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":

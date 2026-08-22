@@ -1,0 +1,966 @@
+{
+  "challenge": "Growth with background selection",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "selected_method": {
+    "model": "exponential growth",
+    "spectrum": "unfolded middle-distance noncoding frequency spectrum",
+    "distance_from_coding_bp": [
+      1000,
+      100000
+    ],
+    "projections": [
+      84,
+      60,
+      40
+    ],
+    "aggregation": "projection median followed by generator-level rounding",
+    "calibration": "identity; no correction"
+  },
+  "testing_prediction": {
+    "generations": 5000.0,
+    "post_growth_scaling": 2.0
+  },
+  "raw_projection_median": {
+    "generations": 5051.7512592096455,
+    "post_growth_scaling": 2.0100523757516067
+  },
+  "linked_block_interval_95": {
+    "generations": [
+      3983.9562176939653,
+      5913.367363445421
+    ],
+    "post_growth_scaling": [
+      1.8508633179555667,
+      2.12158421761766
+    ]
+  },
+  "validation": {
+    "projection_fits": {
+      "84": {
+        "generations": 5157.376072816142,
+        "post_growth_scaling": 1.9949978098832049,
+        "ancestral_effective_size": 8167.382322702343,
+        "modern_effective_size": 16293.909846269977
+      },
+      "60": {
+        "generations": 5051.7512592096455,
+        "post_growth_scaling": 2.0100523757516067,
+        "ancestral_effective_size": 8168.682893121575,
+        "modern_effective_size": 16419.480456080528
+      },
+      "40": {
+        "generations": 4899.419263689549,
+        "post_growth_scaling": 2.033133144811776,
+        "ancestral_effective_size": 8172.6336549560865,
+        "modern_effective_size": 16616.05236429543
+      }
+    },
+    "linked_block_replicates": 128,
+    "known_truth_smoke": {
+      "truth": {
+        "ancestral_effective_size": 10000.0,
+        "generations": 5000.0,
+        "post_growth_scaling": 2.0,
+        "mutation_rate": 3.36e-08
+      },
+      "exponential": {
+        "generations": 5371.328459595798,
+        "post_growth_scaling": 1.9863020026083842,
+        "ancestral_effective_size": 9857.467671064576,
+        "modern_effective_size": 19579.907775682972,
+        "scaled_duration_2N": 0.2724497121792595,
+        "theta": 612.6527507521447,
+        "multinomial_log_likelihood": -242.2638912700779,
+        "best_restart": 19,
+        "successful_restarts": 32,
+        "failed_restarts": [],
+        "restarts": 32,
+        "workers": 1,
+        "projection": 84,
+        "observed_haplotypes": 84,
+        "sequence_length": 462434.0,
+        "mutation_rate": 3.36e-08,
+        "bounds": {
+          "lower": [
+            1.001,
+            1e-05
+          ],
+          "upper": [
+            200.0,
+            10.0
+          ]
+        }
+      },
+      "sudden": {
+        "generations": 2879.17023094576,
+        "post_growth_scaling": 1.8078484967703563,
+        "ancestral_effective_size": 9953.372316415009,
+        "modern_effective_size": 17994.18918002655,
+        "scaled_duration_2N": 0.14463290126289455,
+        "theta": 618.6133327945615,
+        "multinomial_log_likelihood": -242.50530134654494,
+        "best_restart": 31,
+        "successful_restarts": 32,
+        "failed_restarts": [],
+        "restarts": 32,
+        "workers": 1,
+        "projection": 84,
+        "observed_haplotypes": 84,
+        "sequence_length": 462434.0,
+        "mutation_rate": 3.36e-08,
+        "convention": "sudden",
+        "bounds": {
+          "lower": [
+            1.001,
+            1e-05
+          ],
+          "upper": [
+            200.0,
+            10.0
+          ]
+        }
+      },
+      "log_likelihood_exponential_minus_sudden": 0.24141007646704793,
+      "preferred": "exponential"
+    },
+    "target_grid_recovery": {
+      "truth": {
+        "generations": 5000.0,
+        "post_growth_scaling": 2.0
+      },
+      "chromosome_arms": [
+        "2L",
+        "2R",
+        "3L",
+        "3R"
+      ],
+      "physical_exposure_bp": 2217122,
+      "accepted_sites": 18524,
+      "exponential": {
+        "generations": 5119.217067487631,
+        "post_growth_scaling": 2.0006162794738596,
+        "ancestral_effective_size": 9969.668828601163,
+        "modern_effective_size": 19945.48175946257,
+        "scaled_duration_2N": 0.2567395745785221,
+        "theta": 2970.7738492462286,
+        "multinomial_log_likelihood": -316.5910697235018,
+        "best_restart": 41,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "restarts": 64,
+        "workers": 8,
+        "projection": 84,
+        "observed_haplotypes": 84,
+        "sequence_length": 2217122.0,
+        "mutation_rate": 3.36e-08,
+        "convention": "exponential",
+        "bounds": {
+          "lower": [
+            1.001,
+            1e-05
+          ],
+          "upper": [
+            200.0,
+            10.0
+          ]
+        }
+      },
+      "sudden": {
+        "generations": 2598.1509369880177,
+        "post_growth_scaling": 1.827268590596203,
+        "ancestral_effective_size": 10112.573580144086,
+        "modern_effective_size": 18478.388073090282,
+        "scaled_duration_2N": 0.12846141075746806,
+        "theta": 3013.3567781393954,
+        "multinomial_log_likelihood": -319.10045779739096,
+        "best_restart": 63,
+        "successful_restarts": 64,
+        "failed_restarts": [],
+        "restarts": 64,
+        "workers": 8,
+        "projection": 84,
+        "observed_haplotypes": 84,
+        "sequence_length": 2217122.0,
+        "mutation_rate": 3.36e-08,
+        "convention": "sudden",
+        "bounds": {
+          "lower": [
+            1.001,
+            1e-05
+          ],
+          "upper": [
+            200.0,
+            10.0
+          ]
+        }
+      },
+      "relative_error": {
+        "generations": 0.023843413497526056,
+        "post_growth_scaling": 0.00030813973692978003
+      },
+      "log_likelihood_exponential_minus_sudden": 2.50938807388917
+    },
+    "held_out_calibration": {
+      "validation": "leave_one_truth_point_out",
+      "selected_model": "identity",
+      "evaluations": {
+        "identity": {
+          "mean_competition_rrmse": 0.08963332386646561,
+          "median_competition_rrmse": 0.05703446053252335,
+          "maximum_competition_rrmse": 0.2028638054003229,
+          "generation_rmse": 0.15501634660813957,
+          "scaling_rmse": 0.041569293470075784,
+          "predictions": [
+            [
+              2691.4464575283578,
+              1.534214070926346
+            ],
+            [
+              2540.3935366289556,
+              2.0436953151318242
+            ],
+            [
+              1994.5149771815647,
+              3.16509913268923
+            ],
+            [
+              3669.4814523334867,
+              1.6099448304757276
+            ],
+            [
+              5119.217067487629,
+              2.0006162794738596
+            ],
+            [
+              5050.256703308985,
+              2.883423163785419
+            ],
+            [
+              7135.528235552896,
+              1.5239747768950929
+            ],
+            [
+              9193.464978248463,
+              2.001867579561262
+            ],
+            [
+              10960.476774336705,
+              2.8012967041526293
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        },
+        "median_log_bias": {
+          "mean_competition_rrmse": 0.10707914785629684,
+          "median_competition_rrmse": 0.0834902549980001,
+          "maximum_competition_rrmse": 0.2090981137136649,
+          "generation_rmse": 0.1695159433121564,
+          "scaling_rmse": 0.044117412267778496,
+          "predictions": [
+            [
+              2793.022323513112,
+              1.5213881394845754
+            ],
+            [
+              2636.2686274015687,
+              2.0266101530957843
+            ],
+            [
+              1968.7251163716705,
+              3.138639106509331
+            ],
+            [
+              3622.03361815683,
+              1.5964857947309652
+            ],
+            [
+              5312.417606677074,
+              1.9634844290573767
+            ],
+            [
+              5225.0848283629,
+              2.829906235675017
+            ],
+            [
+              7043.263057248734,
+              1.506891652166211
+            ],
+            [
+              9074.589870835278,
+              1.9647125047573
+            ],
+            [
+              11374.127923459473,
+              2.7493040600569123
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        },
+        "diagonal_affine": {
+          "mean_competition_rrmse": 0.13171329146516184,
+          "median_competition_rrmse": 0.14731177611808113,
+          "maximum_competition_rrmse": 0.19767895782301306,
+          "generation_rmse": 0.19487890175193512,
+          "scaling_rmse": 0.05423122829758985,
+          "predictions": [
+            [
+              3113.2151576960873,
+              1.4859973659976347
+            ],
+            [
+              2912.486155563685,
+              2.0255388156907075
+            ],
+            [
+              2080.9409843726326,
+              3.3711261356223696
+            ],
+            [
+              3883.6325925998567,
+              1.5883877074587147
+            ],
+            [
+              5615.480899949743,
+              1.9742832851970062
+            ],
+            [
+              5532.075658975891,
+              2.8905066582197794
+            ],
+            [
+              7210.938032184977,
+              1.4713317808376267
+            ],
+            [
+              9687.142711590686,
+              1.9757735805340906
+            ],
+            [
+              12668.681653675716,
+              2.778861398330591
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        },
+        "joint_ridge_0.1": {
+          "mean_competition_rrmse": 0.15304867193765526,
+          "median_competition_rrmse": 0.1470047691147424,
+          "maximum_competition_rrmse": 0.31124574355690926,
+          "generation_rmse": 0.24765938413164443,
+          "scaling_rmse": 0.04037355671743001,
+          "predictions": [
+            [
+              3594.406320123335,
+              1.4310685971345707
+            ],
+            [
+              2952.250561654151,
+              1.95426777700817
+            ],
+            [
+              1554.0158086823803,
+              3.224336087801111
+            ],
+            [
+              3981.49794751628,
+              1.5736081769020767
+            ],
+            [
+              5660.64758735267,
+              1.9873050076784693
+            ],
+            [
+              5250.569672848903,
+              2.8944973548067154
+            ],
+            [
+              7167.501958791978,
+              1.5252940656137548
+            ],
+            [
+              9702.15024279708,
+              2.067711245225716
+            ],
+            [
+              12046.772309735885,
+              2.8906733396948585
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        },
+        "joint_ridge_1.0": {
+          "mean_competition_rrmse": 0.1538328099073189,
+          "median_competition_rrmse": 0.1422792679205852,
+          "maximum_competition_rrmse": 0.36318155857770107,
+          "generation_rmse": 0.24826224655753873,
+          "scaling_rmse": 0.05206015608235862,
+          "predictions": [
+            [
+              3784.0403144039733,
+              1.500608082149969
+            ],
+            [
+              3139.052675531651,
+              1.9682435533045053
+            ],
+            [
+              1897.7369898574,
+              2.9916004429279734
+            ],
+            [
+              4085.8096718240326,
+              1.6260091239090886
+            ],
+            [
+              5590.474658212736,
+              1.9974311446468833
+            ],
+            [
+              5215.524247570939,
+              2.787036577450523
+            ],
+            [
+              6787.257912082831,
+              1.5843124259073662
+            ],
+            [
+              8996.72959664209,
+              2.072474282075215
+            ],
+            [
+              10707.918260648055,
+              2.7391245967517253
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        },
+        "joint_ridge_10.0": {
+          "mean_competition_rrmse": 0.3041674829477289,
+          "median_competition_rrmse": 0.2885040985463987,
+          "maximum_competition_rrmse": 0.6230868534086684,
+          "generation_rmse": 0.449209149653745,
+          "scaling_rmse": 0.19116240343147275,
+          "predictions": [
+            [
+              4635.361520036577,
+              1.8248857420035058
+            ],
+            [
+              4137.101500774287,
+              2.030167583055661
+            ],
+            [
+              3635.094365920622,
+              2.3356324543746716
+            ],
+            [
+              4550.942896529087,
+              1.8801048227610224
+            ],
+            [
+              5286.240948482775,
+              2.0434786099958466
+            ],
+            [
+              5085.931167628476,
+              2.3521960497976533
+            ],
+            [
+              5463.143665462886,
+              1.8632466517145023
+            ],
+            [
+              6415.513818738234,
+              2.087060558842529
+            ],
+            [
+              6750.1482513835845,
+              2.2599427097267424
+            ]
+          ],
+          "truth": [
+            [
+              2500.0,
+              1.5
+            ],
+            [
+              2500.0,
+              2.0
+            ],
+            [
+              2500.0,
+              3.0
+            ],
+            [
+              5000.0,
+              1.5
+            ],
+            [
+              5000.0,
+              2.0
+            ],
+            [
+              5000.0,
+              3.0
+            ],
+            [
+              10000.0,
+              1.5
+            ],
+            [
+              10000.0,
+              2.0
+            ],
+            [
+              10000.0,
+              3.0
+            ]
+          ]
+        }
+      }
+    },
+    "selection_strength_and_burnin_stress": {
+      "truth": {
+        "generations": 5000,
+        "post_growth_scaling": 2.0
+      },
+      "results": {
+        "scale_5|burnin_0.1": {
+          "fit": {
+            "generations": 5201.175932541087,
+            "post_growth_scaling": 1.986832763551766,
+            "ancestral_effective_size": 9795.769225382264,
+            "modern_effective_size": 19462.555241181584,
+            "scaled_duration_2N": 0.2654807301433808,
+            "theta": 2918.955037356016,
+            "multinomial_log_likelihood": -309.1319854162218,
+            "best_restart": 4,
+            "successful_restarts": 64,
+            "failed_restarts": [],
+            "restarts": 64,
+            "workers": 8,
+            "projection": 84,
+            "observed_haplotypes": 84,
+            "sequence_length": 2217122.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "relative_error": {
+            "generations": 0.040235186508217335,
+            "post_growth_scaling": -0.006583618224117016
+          },
+          "chromosome_arms": [
+            "2L",
+            "2R",
+            "3L",
+            "3R"
+          ],
+          "physical_exposure_bp": 2217122,
+          "accepted_sites": 18228
+        },
+        "scale_20|burnin_0.1": {
+          "fit": {
+            "generations": 4190.082539690017,
+            "post_growth_scaling": 2.044390759641098,
+            "ancestral_effective_size": 9992.732033872475,
+            "modern_effective_size": 20429.04903361848,
+            "scaled_duration_2N": 0.2096565046219016,
+            "theta": 2977.646250755018,
+            "multinomial_log_likelihood": -304.0622579881229,
+            "best_restart": 63,
+            "successful_restarts": 64,
+            "failed_restarts": [],
+            "restarts": 64,
+            "workers": 8,
+            "projection": 84,
+            "observed_haplotypes": 84,
+            "sequence_length": 2217122.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "relative_error": {
+            "generations": -0.16198349206199658,
+            "post_growth_scaling": 0.022195379820548977
+          },
+          "chromosome_arms": [
+            "2L",
+            "2R",
+            "3L",
+            "3R"
+          ],
+          "physical_exposure_bp": 2217122,
+          "accepted_sites": 18285
+        },
+        "scale_10|burnin_0.5": {
+          "fit": {
+            "generations": 4839.873337603056,
+            "post_growth_scaling": 2.039047183365167,
+            "ancestral_effective_size": 9680.598352612355,
+            "modern_effective_size": 19739.1968041837,
+            "scaled_duration_2N": 0.24997800555876765,
+            "theta": 2884.636282851538,
+            "multinomial_log_likelihood": -297.3051518429363,
+            "best_restart": 0,
+            "successful_restarts": 64,
+            "failed_restarts": [],
+            "restarts": 64,
+            "workers": 8,
+            "projection": 84,
+            "observed_haplotypes": 84,
+            "sequence_length": 2217122.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "relative_error": {
+            "generations": -0.03202533247938877,
+            "post_growth_scaling": 0.019523591682583552
+          },
+          "chromosome_arms": [
+            "2L",
+            "2R",
+            "3L",
+            "3R"
+          ],
+          "physical_exposure_bp": 2217122,
+          "accepted_sites": 18035
+        },
+        "scale_10|burnin_0.1": {
+          "fit": {
+            "generations": 5118.070770546356,
+            "post_growth_scaling": 2.0005945207905476,
+            "ancestral_effective_size": 9969.968108674631,
+            "modern_effective_size": 19945.863570670965,
+            "scaled_duration_2N": 0.2566743802366451,
+            "theta": 2970.863029080699,
+            "multinomial_log_likelihood": -316.5910685897574,
+            "best_restart": 16,
+            "successful_restarts": 64,
+            "failed_restarts": [],
+            "restarts": 64,
+            "workers": 8,
+            "projection": 84,
+            "observed_haplotypes": 84,
+            "sequence_length": 2217122.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "relative_error": {
+            "generations": 0.023614154109271146,
+            "post_growth_scaling": 0.00029726039527377957
+          },
+          "chromosome_arms": [
+            "2L",
+            "2R",
+            "3L",
+            "3R"
+          ],
+          "physical_exposure_bp": 2217122,
+          "accepted_sites": 18524
+        }
+      },
+      "maximum_absolute_relative_error": {
+        "generations": 0.16198349206199658,
+        "post_growth_scaling": 0.022195379820548977
+      },
+      "freeze_gate_threshold": {
+        "generations": 0.2,
+        "post_growth_scaling": 0.05
+      },
+      "freeze_gate_passed": true,
+      "submission_count": 0
+    }
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "10795eaa5aac7f4f0a3d14067453ca74f84c9d2ad3e5ee44f84ae31757fc3881",
+    "coding_bed_sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057",
+    "recombination_map_sha256": "f5347b65891237196cc5fab5f32327c250ea6570145798bc2554ff08cb903560",
+    "final_vcf_sealed_sha256": "f52124335b64bcb0365807b5465f7562c2836b190f163938c9f8f65ffe6cc05c",
+    "segregating_biallelic_sites": 738421,
+    "haplotypes": 84,
+    "middle_distance_exposure_bp": 61965066
+  },
+  "betty_job_ids": [
+    "7745884",
+    "7745895",
+    "7745897",
+    "7745903",
+    "7745904",
+    "7745905",
+    "7746623",
+    "7749221",
+    "7749383",
+    "7749497",
+    "7750404",
+    "7750405"
+  ],
+  "source_artifacts": {
+    "audit": {
+      "path": "experiments/growth_bgs/observed_audit_summary.json",
+      "sha256": "88c55260962d0c62592ac5337a94fdc1522b2d6db7b2dc4e741d448a46e30b1a"
+    },
+    "middle_fit": {
+      "path": "experiments/growth_bgs/middle_distance_fit_summary.json",
+      "sha256": "ac641fc2c80a6de36515bcd1c853e65bf440b01f5fb7a16775e4fb6c67774781"
+    },
+    "bootstrap": {
+      "path": "experiments/growth_bgs/block_bootstrap_1mb_summary.json",
+      "sha256": "821da306f31185ba319fb225eff47b4351aa29198606e381fb5198ea6c23d067"
+    },
+    "convention": {
+      "path": "experiments/growth_bgs/growth_convention_comparison.json",
+      "sha256": "d956e454da78c47097b99359ea566820d665e8436f8e14edcb1cf6e9c9b68de4"
+    },
+    "smoke": {
+      "path": "experiments/growth_bgs/selection_smoke_convention_comparison.json",
+      "sha256": "e52ed30da8d581243a03565f1de64f4590929da5904f5be35707ba001fab71b9"
+    },
+    "grid": {
+      "path": "experiments/growth_bgs/selection_grid_aggregate.json",
+      "sha256": "a735c6fe1dcb4b69f98515c3bfa571e1bda7757c50f842356982aa6026c2caac"
+    },
+    "calibration": {
+      "path": "experiments/growth_bgs/selection_calibration.json",
+      "sha256": "5fd4c70a32b3fac8cb9b33ae5233bafc0a6b536165ebe5029addbcc11a68850a"
+    },
+    "stress": {
+      "path": "experiments/growth_bgs/selection_stress_aggregate.json",
+      "sha256": "092e455f51b5ed287835df871622538005535e863b74cc03239624949359a8ff"
+    }
+  },
+  "figures": [
+    {
+      "path": "figures/task3_growth_bgs/task3_validation.pdf",
+      "sha256": "f61a7dea37a2f54464f71c19aecb134360b945e790d03c6d601dde769d01643c"
+    },
+    {
+      "path": "figures/task3_growth_bgs/task3_validation.png",
+      "sha256": "47f167aa086125645de73823746845af7ae8d5208e940b9efc8cf87c52a44812"
+    }
+  ]
+}

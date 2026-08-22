@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+import bisect
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 import pysam
 
-from .arg_features import ARG_TIME_BINS
+from .arg_features import ARG_TIME_BINS, coalescence_hazard_features
 
 
 EPS = 1e-8
@@ -20,7 +21,72 @@ WINDOW_FEATURES = (
     "mean_folded_frequency",
     "heterozygosity",
 )
-LD_BINS = 12
+LD_BINS = 19
+LD_EDGES = np.geomspace(100.0, 1_000_000.0, LD_BINS + 1)
+
+
+class LDAccumulator:
+    """Bounded-memory, distance-stratified reservoir of observed dosage r²."""
+
+    def __init__(self, *, pairs_per_bin: int = 512, seed: int = 7081):
+        self.pairs_per_bin = pairs_per_bin
+        self.rng = np.random.default_rng(seed)
+        self.values: list[list[float]] = [[] for _ in range(LD_BINS)]
+        self.seen = np.zeros(LD_BINS, dtype=np.int64)
+        self.positions: list[float] = []
+        self.genotypes: list[np.ndarray] = []
+        self.start = 0
+        self.records = 0
+
+    @staticmethod
+    def _r2(a: np.ndarray, b: np.ndarray) -> float | None:
+        valid = np.isfinite(a) & np.isfinite(b)
+        if valid.sum() < 4:
+            return None
+        aa, bb = a[valid].astype(np.float64), b[valid].astype(np.float64)
+        aa, bb = aa - aa.mean(), bb - bb.mean()
+        denom = np.sqrt(np.sum(aa * aa) * np.sum(bb * bb))
+        if denom <= EPS:
+            return None
+        return float(np.square(np.sum(aa * bb) / denom))
+
+    def add(self, position: float, genotype: np.ndarray) -> None:
+        # Four balanced strata per record limit work on very dense VCFs while
+        # retaining true local pairs; a genome-wide variant reservoir does not.
+        for offset in range(4):
+            k = (self.records * 4 + offset) % LD_BINS
+            lo, hi = LD_EDGES[k], LD_EDGES[k + 1]
+            left = bisect.bisect_right(self.positions, position - hi, lo=self.start)
+            right = bisect.bisect_right(self.positions, position - lo, lo=left)
+            if right <= left:
+                continue
+            partner = int(self.rng.integers(left, right))
+            value = self._r2(self.genotypes[partner], genotype)
+            if value is None:
+                continue
+            self.seen[k] += 1
+            if len(self.values[k]) < self.pairs_per_bin:
+                self.values[k].append(value)
+            else:
+                replacement = int(self.rng.integers(0, self.seen[k]))
+                if replacement < self.pairs_per_bin:
+                    self.values[k][replacement] = value
+        self.positions.append(float(position))
+        self.genotypes.append(np.asarray(genotype, dtype=np.float32))
+        self.records += 1
+        self.start = bisect.bisect_right(
+            self.positions, position - LD_EDGES[-1], lo=self.start
+        )
+        if self.start >= 10_000:
+            self.positions = self.positions[self.start :]
+            self.genotypes = self.genotypes[self.start :]
+            self.start = 0
+
+    def result(self) -> np.ndarray:
+        return np.asarray(
+            [np.mean(values) if values else 0.0 for values in self.values],
+            dtype=np.float64,
+        )
 
 
 @dataclass(frozen=True)
@@ -45,15 +111,55 @@ class FeatureBundle:
 
     @classmethod
     def load(cls, path: str | Path) -> "FeatureBundle":
-        d = np.load(path)
+        data = np.load(path)
         return cls(
-            windows=d["windows"],
-            sfs=d["sfs"],
-            n_haplotypes=int(d["n_haplotypes"]),
-            sequence_length=float(d["sequence_length"]),
-            n_variants=int(d["n_variants"]),
+            windows=data["windows"],
+            sfs=data["sfs"],
+            n_haplotypes=int(data["n_haplotypes"]),
+            sequence_length=float(data["sequence_length"]),
+            n_variants=int(data["n_variants"]),
         )
 
+
+@dataclass(frozen=True)
+class FeatureCollection:
+    windows: np.ndarray
+    sfs: np.ndarray
+    n_haplotypes: int
+    sequence_length: float
+    block_length: float
+    block_starts: np.ndarray
+    block_ends: np.ndarray
+    n_variants: np.ndarray
+
+    def save(self, path: str | Path) -> None:
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(
+            path,
+            windows=self.windows.astype(np.float32),
+            sfs=self.sfs.astype(np.float32),
+            n_haplotypes=np.int64(self.n_haplotypes),
+            sequence_length=np.float64(self.sequence_length),
+            block_length=np.float64(self.block_length),
+            block_starts=self.block_starts.astype(np.float64),
+            block_ends=self.block_ends.astype(np.float64),
+            n_variants=self.n_variants.astype(np.int64),
+        )
+
+    @classmethod
+    def load(cls, path: str | Path) -> "FeatureCollection":
+        data = np.load(path)
+        return cls(
+            windows=data["windows"],
+            sfs=data["sfs"],
+            n_haplotypes=int(data["n_haplotypes"]),
+            sequence_length=float(data["sequence_length"]),
+            block_length=float(data["block_length"]),
+            block_starts=data["block_starts"],
+            block_ends=data["block_ends"],
+            n_variants=data["n_variants"],
+        )
 
 def _tajima_constants(n: int) -> tuple[float, float, float]:
     if n < 3:
@@ -81,6 +187,7 @@ def summarize_variants(
     sfs_bins: int = 64,
     ld_positions: np.ndarray | None = None,
     ld_genotypes: np.ndarray | None = None,
+    ld_decay: np.ndarray | None = None,
     arg_hazards: np.ndarray | None = None,
 ) -> FeatureBundle:
     """Make fixed-shape, polarization-free summaries from variant arrays."""
@@ -97,7 +204,12 @@ def summarize_variants(
     spectrum = hist.astype(np.float64)
     spectrum = np.log1p(spectrum)
     spectrum /= np.linalg.norm(spectrum) + EPS
-    ld = _ld_decay(ld_positions, ld_genotypes, sequence_length)
+    if ld_decay is None:
+        ld = _ld_decay(ld_positions, ld_genotypes, sequence_length)
+    else:
+        ld = np.asarray(ld_decay, dtype=np.float64)
+        if ld.shape != (LD_BINS,):
+            raise ValueError(f"ld_decay must have shape ({LD_BINS},)")
     if arg_hazards is None:
         arg_context = np.zeros(ARG_TIME_BINS + 1, dtype=np.float64)
     else:
@@ -147,45 +259,28 @@ def _ld_decay(
     n_bins: int = LD_BINS,
     pairs_per_bin: int = 512,
 ) -> np.ndarray:
-    """Estimate dosage r² in log-spaced distance bins deterministically."""
+    """Estimate dosage r² with the same streaming sampler used for VCFs."""
     if positions is None or genotypes is None or len(positions) < 3:
         return np.zeros(n_bins, dtype=np.float64)
+    if n_bins != LD_BINS:
+        raise ValueError(f"n_bins must equal the fixed LD_BINS={LD_BINS}")
     positions = np.asarray(positions, dtype=np.float64)
     genotypes = np.asarray(genotypes, dtype=np.float64)
     order = np.argsort(positions)
     positions, genotypes = positions[order], genotypes[order]
-    max_distance = max(200.0, min(sequence_length / 2, 5_000_000.0))
-    edges = np.geomspace(50.0, max_distance, n_bins + 1)
-    rng = np.random.default_rng(7081)
-    result = np.zeros(n_bins, dtype=np.float64)
-    for k, (lo, hi) in enumerate(zip(edges[:-1], edges[1:])):
-        values = []
-        for _ in range(pairs_per_bin * 3):
-            i = int(rng.integers(0, len(positions) - 1))
-            target = positions[i] + np.exp(rng.uniform(np.log(lo), np.log(hi)))
-            j = int(np.searchsorted(positions, target))
-            if j >= len(positions):
-                continue
-            distance = positions[j] - positions[i]
-            if not (lo <= distance < hi):
-                continue
-            a, b = genotypes[i], genotypes[j]
-            valid = np.isfinite(a) & np.isfinite(b)
-            if valid.sum() < 4:
-                continue
-            aa, bb = a[valid], b[valid]
-            aa, bb = aa - aa.mean(), bb - bb.mean()
-            denom = np.sqrt(np.sum(aa * aa) * np.sum(bb * bb))
-            if denom > EPS:
-                values.append(float(np.square(np.sum(aa * bb) / denom)))
-            if len(values) >= pairs_per_bin:
-                break
-        if values:
-            result[k] = np.mean(values)
-    return result
+    accumulator = LDAccumulator(pairs_per_bin=pairs_per_bin)
+    for position, genotype in zip(positions, genotypes):
+        accumulator.add(float(position), genotype)
+    return accumulator.result()
 
 
-def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) -> FeatureBundle:
+def extract_vcf(
+    path: str | Path,
+    *,
+    n_windows: int = 64,
+    sfs_bins: int = 64,
+    tree_sequence: str | Path | None = None,
+) -> FeatureBundle:
     vcf = pysam.VariantFile(str(path))
     samples = list(vcf.header.samples)
     positions: list[float] = []
@@ -194,12 +289,7 @@ def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) ->
     heterozygosity: list[float] = []
     max_pos = 0
     inferred_ploidy = 2
-    # Bounded deterministic reservoir for LD; avoids retaining the full matrix.
-    ld_capacity = 5000
-    ld_positions: list[float] = []
-    ld_genotypes: list[np.ndarray] = []
-    rng = np.random.default_rng(7081)
-    eligible_seen = 0
+    ld_accumulator = LDAccumulator()
     for rec in vcf:
         max_pos = max(max_pos, rec.pos)
         if len(rec.alleles or ()) != 2 or len(rec.ref) != 1 or len(rec.alts[0]) != 1:
@@ -225,16 +315,19 @@ def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) ->
             allele_counts.append(ac)
             called_haplotypes.append(called)
             heterozygosity.append(het / max(called_genotypes, 1))
-            eligible_seen += 1
-            if len(ld_positions) < ld_capacity:
-                ld_positions.append(rec.pos - 1)
-                ld_genotypes.append(dosages)
-            else:
-                replace = int(rng.integers(0, eligible_seen))
-                if replace < ld_capacity:
-                    ld_positions[replace] = rec.pos - 1
-                    ld_genotypes[replace] = dosages
+            ld_accumulator.add(rec.pos - 1, dosages)
     seq_len = max(float(max_pos), 100_000_000.0)
+    arg_hazards = None
+    if tree_sequence is not None:
+        import tskit
+
+        ts = tskit.load(str(tree_sequence))
+        if ts.num_samples != len(samples) * inferred_ploidy:
+            raise ValueError(
+                f"tree sequence has {ts.num_samples} samples, expected "
+                f"{len(samples) * inferred_ploidy} VCF haplotypes"
+            )
+        arg_hazards = coalescence_hazard_features(ts)
     return summarize_variants(
         np.asarray(positions),
         np.asarray(allele_counts),
@@ -244,6 +337,103 @@ def extract_vcf(path: str | Path, *, n_windows: int = 64, sfs_bins: int = 64) ->
         n_haplotypes=len(samples) * inferred_ploidy,
         n_windows=n_windows,
         sfs_bins=sfs_bins,
-        ld_positions=np.asarray(ld_positions),
-        ld_genotypes=np.asarray(ld_genotypes),
+        ld_decay=ld_accumulator.result(),
+        arg_hazards=arg_hazards,
+    )
+
+
+def extract_vcf_blocks(
+    path: str | Path,
+    *,
+    sequence_length: float = 100_000_000,
+    block_length: float = 2_000_000,
+    n_windows: int = 64,
+    sfs_bins: int = 64,
+) -> FeatureCollection:
+    """Extract contiguous blocks with the exact physical scale used in training."""
+    if sequence_length <= 0 or block_length <= 0:
+        raise ValueError("sequence_length and block_length must be positive")
+    n_blocks = int(np.ceil(sequence_length / block_length))
+    vcf = pysam.VariantFile(str(path))
+    samples = list(vcf.header.samples)
+    inferred_ploidy = 2
+    current_block = 0
+    last_position = -1.0
+    positions: list[float] = []
+    allele_counts: list[int] = []
+    called_haplotypes: list[int] = []
+    heterozygosity: list[float] = []
+    linkage = LDAccumulator()
+    bundles: list[FeatureBundle] = []
+
+    def finish_block() -> None:
+        nonlocal positions, allele_counts, called_haplotypes, heterozygosity, linkage
+        bundles.append(
+            summarize_variants(
+                np.asarray(positions),
+                np.asarray(allele_counts),
+                np.asarray(called_haplotypes),
+                np.asarray(heterozygosity),
+                sequence_length=block_length,
+                n_haplotypes=len(samples) * inferred_ploidy,
+                n_windows=n_windows,
+                sfs_bins=sfs_bins,
+                ld_decay=linkage.result(),
+            )
+        )
+        positions, allele_counts, called_haplotypes, heterozygosity = [], [], [], []
+        linkage = LDAccumulator()
+
+    for rec in vcf:
+        genome_position = float(rec.pos - 1)
+        if genome_position < last_position:
+            raise ValueError("VCF records are not monotone on one challenge contig")
+        last_position = genome_position
+        block = int(genome_position // block_length)
+        if block >= n_blocks:
+            raise ValueError(
+                f"VCF position {rec.pos} exceeds configured sequence length {sequence_length:g}"
+            )
+        while current_block < block:
+            finish_block()
+            current_block += 1
+        if len(rec.alleles or ()) != 2 or len(rec.ref) != 1 or len(rec.alts[0]) != 1:
+            continue
+        alt = called = het = called_genotypes = 0
+        dosages = np.full(len(samples), np.nan, dtype=np.float32)
+        for sample_i, sample in enumerate(samples):
+            gt = rec.samples[sample].get("GT")
+            if gt is None:
+                continue
+            vals = [allele for allele in gt if allele is not None and allele >= 0]
+            if not vals:
+                continue
+            inferred_ploidy = max(inferred_ploidy, len(vals))
+            called += len(vals)
+            alt += sum(allele == 1 for allele in vals)
+            dosages[sample_i] = sum(allele == 1 for allele in vals)
+            if len(vals) == 2:
+                het += vals[0] != vals[1]
+                called_genotypes += 1
+        if 0 < alt < called:
+            local_position = genome_position - block * block_length
+            positions.append(local_position)
+            allele_counts.append(alt)
+            called_haplotypes.append(called)
+            heterozygosity.append(het / max(called_genotypes, 1))
+            linkage.add(local_position, dosages)
+    while len(bundles) < n_blocks:
+        finish_block()
+        current_block += 1
+    starts = np.arange(n_blocks, dtype=float) * block_length
+    ends = np.minimum(starts + block_length, sequence_length)
+    return FeatureCollection(
+        windows=np.asarray([bundle.windows for bundle in bundles], dtype=np.float32),
+        sfs=np.asarray([bundle.sfs for bundle in bundles], dtype=np.float32),
+        n_haplotypes=len(samples) * inferred_ploidy,
+        sequence_length=sequence_length,
+        block_length=block_length,
+        block_starts=starts,
+        block_ends=ends,
+        n_variants=np.asarray([bundle.n_variants for bundle in bundles], dtype=np.int64),
     )

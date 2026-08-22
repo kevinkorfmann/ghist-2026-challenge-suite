@@ -1,0 +1,32 @@
+challenge: growth_background_selection
+policy: local_predictions_only
+
+observed:
+  vcf: data/raw/demography/growth_background_selection/testing/growth.testing.vcf.gz
+  coding_regions: data/raw/shared/demography/BGS_demography_challenge_coding_regions.bed
+  recombination_map: data/raw/shared/demography/comeron2012v2_combined_map_dm6.txt
+  sequence_length: 108990206
+  diploid_samples: 42
+  mutation_rate: 3.36e-8
+  chromosome_arms: [2L, 2R, 3L, 3R]
+
+outputs:
+  generations: growth_start_time
+  post_growth_scaling: modern_to_ancient_size_ratio
+
+validation:
+  grouping_unit: whole_chromosome_arm
+  required_strata:
+    - neutral_far_from_coding
+    - neutral_near_coding
+    - coding
+    - low_recombination
+    - high_recombination
+  required_perturbations:
+    - selection_strength
+    - coding_annotation
+    - recombination_map
+    - mutation_rate
+    - polarization
+  primary_metric: competition_rrmse
+  submission_count: 0

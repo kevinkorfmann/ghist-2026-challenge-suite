@@ -21,7 +21,7 @@ demography:
     mutation_rate: 8.4e-8
     recombination_rate: 5.39e-8
     sequence_length: 100000000
-    outputs: [generations_since_split, generations_since_contact, population_sizes, migration_rate]
+    outputs: [mainland_population_size, island_population_size, generations_since_split, generations_since_migration, migration_rate]
   growth_background_selection:
     path: challenges/demography/growth_background_selection
     testing: syn75193299
@@ -82,4 +82,3 @@ relatedness:
     path: challenges/relatedness/large_family_background_relatedness
     testing: syn75203673
     final: syn75203676
-

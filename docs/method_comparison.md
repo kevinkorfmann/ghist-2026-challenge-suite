@@ -8,13 +8,15 @@ calibration or robustness under misspecification.
 
 | Family | Representative method | Signal | Role here |
 |---|---|---|---|
-| Diffusion/composite likelihood | [dadi](https://doi.org/10.1371/journal.pgen.1000695) | one- or multi-population SFS | primary mechanistic reference |
-| Moment equations | [moments](https://doi.org/10.1534/genetics.117.200493) | SFS moments | fast likelihood reference |
+| Diffusion/composite likelihood | [dadi](https://doi.org/10.1371/journal.pgen.1000695) | one- or multi-population SFS | independent diffusion cross-check |
+| Moment equations | [moments](https://doi.org/10.1534/genetics.117.200493) | SFS moments | primary mechanistic reference |
 | Linkage moments | [momentsLD](https://doi.org/10.1093/molbev/msz237) | LD statistics through distance | timing-sensitive reference |
 | Simulation composite likelihood | [fastsimcoal2](https://doi.org/10.1371/journal.pgen.1003905) | simulated expected SFS | flexible complex-model reference |
 | Sequence-position embedding | [SPIDNA/dnadna](https://doi.org/10.1093/bioinformatics/btac765) | genotype matrix and SNP positions | raw-input comparison |
 | Posterior estimation | [Smith et al. 2026](https://doi.org/10.1093/genetics/iyag107) | raw genotypes or SFS+LD | calibrated posterior target |
 | Genealogical hazards | [Deng et al. 2026](https://doi.org/10.64898/2026.08.11.744210) | interval-conditional coalescence | temporally localized extension |
+| Coalescence translation | [CXT](https://github.com/kr-colab/cxt) | genotype-conditioned TMRCA posterior | independent genealogy channel |
+| State-space translation | [FastCXT](https://github.com/kevinkorfmann/fastcxt) | bidirectional Mamba log-TMRCA mean and variance | fast sample-size-flexible genealogy channel |
 
 ### Extension adopted here
 
@@ -29,6 +31,23 @@ contact it will be computed within and between populations, where the contrast i
 expected to localize split and renewed migration. Genealogical channels are
 randomly masked during training and benchmarked under inferred-tree error.
 
+CXT integration uses the pinned upstream revision
+`294b0c27226accbac830c9c922de6b2f92f83fe8`. Posterior log-TMRCA samples are
+converted to the same conditional hazard bins used for simulated tree sequences,
+block by block. This permits a direct comparison among CXT, tsinfer/tsdate, and
+mutation/LD-only predictions, while retaining CXT posterior uncertainty instead
+of collapsing it to one genealogy.
+
+FastCXT integration uses pinned revision
+`7fb89f451cca734e03bb974bca7faffe9a94e194`. For every pair/window Gaussian in
+log time, its probability mass in each finite interval is evaluated by the normal
+CDF. These masses are averaged and divided by the posterior mass surviving to the
+interval start. This is an exact posterior hazard under the model and avoids
+Monte Carlo noise. One-megabase translation blocks may be combined into the
+two-megabase feature blocks through explicit genomic coordinates. FastCXT is
+trained on the challenge prior and nuisance domain before comparison; an
+untrained upstream model is never treated as evidence.
+
 The production posterior combines:
 
 - folded SFS and logarithmic LD decay over the full sequence;
@@ -36,6 +55,13 @@ The production posterior combines:
 - optional conditional coalescence hazards;
 - a permutation-aware context encoder;
 - a flexible conditional density head and independent simulation-reference trees.
+
+The architecture screen also contains a direct FastCXT-inspired candidate. It
+replaces only the global transformer with stacked bidirectional Mamba-2 blocks;
+the local dilated convolutions, inputs, mixture-density head, split, training
+budget, and promotion metric remain fixed. This isolates the value of state-space
+context instead of confounding it with a different feature set or validation
+protocol.
 
 ## Sweep detection
 
@@ -70,3 +96,25 @@ out by pedigree or family; pairwise random splits are prohibited.
 4. Retain ensembles only when disagreement is calibrated and predictive of error.
 5. Record all negative results; complexity is kept only when it earns its cost.
 
+## Task 1 decision
+
+Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
+at 4,587.06 generations and a 0.5224206 post-decline fraction. It had the lowest
+natural-scale medians on the untouched nominal chromosome cells. Independent
+dadi and joint momentsLD fits were within 1.3% and 1.6% of its observed decline
+time, respectively, and within 0.0018 in fraction.
+
+The five-seed context ensemble, the FastCXT-enriched branch, affine SFS
+calibration, and a selection-chosen learned–mechanistic blend were all retained as
+diagnostics but rejected for primary use. Each failed either exchangeable input
+translation or the frozen natural-error guard. The complete decision record is
+[`experiments/bottleneck/task1_freeze.json`](../experiments/bottleneck/task1_freeze.json).
+
+The final precision pass deliberately covered the full held-out prior rather than
+only the observed neighborhood. It used 900 complete 100 Mb simulations at 150
+parameter points, with all six replicates of each point confined to one split.
+The score-aligned two-layer calibrator passed the untouched RRMSE gate, reducing
+broad-prior RRMSE from 5.789 to 0.898 and focused RRMSE from 0.506 to 0.206. Its
+observed prediction is 4,338.37 and 0.49587. Because it increased typical focused
+natural errors and point-mean bias, it is a held-out extreme-value contingency;
+the mutually agreeing mechanistic fits remain primary for the present VCF.

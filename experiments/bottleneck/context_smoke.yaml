@@ -1,0 +1,34 @@
+purpose: matched context-backend viability screen
+status: mamba_context_not_promoted
+dataset:
+  sha256: c4a7a4f672dcabffb92c64bb3bd38516a1b5be4cc533ed1d9c3d95ad85ac1052
+  bytes: 149537
+controls:
+  width: 128
+  mixture_components: 8
+  dilations: [1, 2, 4, 8]
+  context_layers: 4
+  dropout: 0.12
+  training_seed: 17
+  epochs: 30
+  learning_rate: 0.0002
+  weight_decay: 0.002
+  batch_size: 64
+results:
+  transformer:
+    slurm_job: 7731260
+    selection_score: 1.349647419355193
+    elapsed_seconds: 6.554714918136597
+    nominal_normalized_rmse: [1.346068543525826, 0.90117339634008]
+    overall_normalized_rmse: [1.2307886384712456, 0.9612940375693374]
+  mamba:
+    slurm_job: 7731252
+    selection_score: 1.4214435030712458
+    elapsed_seconds: 103.74768304824829
+    nominal_normalized_rmse: [1.3210731631957617, 1.008256700334593]
+    overall_normalized_rmse: [1.232034519710094, 1.1595272407687032]
+decision: >-
+  Retain the Transformer context for the next full screen. The controlled Mamba
+  candidate had a higher selection score and much longer elapsed time on this
+  small viability shard. This does not reject the separate FastCXT genealogy
+  branch, whose pairwise-time representation is a different experiment.

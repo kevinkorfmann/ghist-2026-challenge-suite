@@ -1,0 +1,63 @@
+challenge: demography.secondary_contact
+policy: local_predictions_only
+observed:
+  sequence_length: 100000000
+  mutation_rate: 8.4e-8
+  recombination_rate: 5.39e-8
+  mainland_diploids: 43
+  island_diploids: 24
+  ancestral_allele_field: AA
+targets:
+  - mainland_population_size
+  - island_population_size
+  - generations_since_split
+  - generations_since_migration
+  - migration_rate
+score:
+  name: relative_root_mean_squared_error
+  formula: sqrt_sum_squared_relative_parameter_errors
+simulation_prior:
+  ancestral_size: [1000, 1000000]
+  mainland_size: [1000, 1000000]
+  island_size: [1000, 1000000]
+  split_time_generations: [100, 300000]
+  contact_fraction_of_split: [0.002, 0.98]
+  migration_rate_per_generation: [1.0e-8, 0.05]
+  sampling: log_space_filling_parameter_points
+  replicates_per_parameter_point: 6
+validation:
+  split_unit: parameter_point
+  partitions: [calibration, selection, untouched_evaluation]
+  chromosome_length: 100000000
+  physical_blocks: 50
+  block_length: 2000000
+nuisance_domains:
+  nominal_fraction: 0.5
+  mutation_rate_multiplier: [0.85, 1.15]
+  recombination_rate_multiplier: [0.75, 1.25]
+  local_recombination_cv: [0.0, 1.2]
+  missing_call_fraction: [0.0, 0.08]
+  ancestral_state_error_fraction: [0.0, 0.03]
+  migration_direction_ratio: [0.25, 4.0]
+  linked_selection_suppression: [0.0, 0.5]
+  hidden_size_epochs: historical_generator_matched_and_randomized
+comparisons:
+  - moments_joint_sfs_folded_and_unfolded
+  - dadi_joint_sfs_folded_and_unfolded
+  - gadma_global_then_local_search
+  - momentsld_joint_sfs_ld
+  - singer_topology_posterior_hazards
+  - singer_polegon_dated_posterior_hazards
+  - truth_tree_hazard_calibration
+  - multiresolution_context_posterior
+  - cross_population_coalescence_hazards
+  - score_aligned_stacking
+promotion_gate:
+  primary: untouched_full_prior_rrmse
+  guards:
+    - nominal_rrmse
+    - boundary_rrmse
+    - nuisance_strata
+    - parameter_point_bias
+    - interval_coverage
+    - mechanistic_agreement

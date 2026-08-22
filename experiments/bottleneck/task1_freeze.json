@@ -1,0 +1,125 @@
+{
+  "challenge": "Task 1 Bottleneck",
+  "status": "frozen_two_track_not_submitted",
+  "frozen_date": "2026-08-22",
+  "public_testing_answer_used_for_selection": false,
+  "primary": {
+    "method": "moments folded SFS",
+    "generations": 4587.059039972118,
+    "post_decline_fraction": 0.5224205941511895,
+    "ancestral_effective_size": 21400.667627769486,
+    "interval_95_physical_block_bootstrap": {
+      "generations": [4183.892522636071, 4982.066247799088],
+      "post_decline_fraction": [0.5130583882991222, 0.5308015706389116],
+      "replicates": 200,
+      "blocks": 50
+    }
+  },
+  "untouched_nominal_chromosome_evaluation": {
+    "cells": 29,
+    "moments": {
+      "generation_median_absolute_relative_error": 0.13279038206033156,
+      "fraction_median_absolute_error": 0.011319171670044342,
+      "normalized_rmse": [0.6204824612537202, 1.306630412064811]
+    },
+    "dadi": {
+      "generation_median_absolute_relative_error": 0.13704280628784327,
+      "fraction_median_absolute_error": 0.011728769383049231,
+      "normalized_rmse": [0.6295211841868064, 1.2256737570652778]
+    },
+    "learned_context_ensemble": {
+      "generation_median_absolute_relative_error": 0.2343580081144142,
+      "fraction_median_absolute_error": 0.030136220462057717,
+      "role": "secondary"
+    }
+  },
+  "multiscale_score_gate": {
+    "design": {
+      "chromosome_cells": 900,
+      "parameter_points": 150,
+      "replicates_per_point": 6,
+      "broad_points": 100,
+      "focused_points": 50,
+      "calibration_cells": 600,
+      "selection_cells": 150,
+      "untouched_evaluation_cells": 150
+    },
+    "selected_calibrator": "two-layer perceptron on latent moments estimates",
+    "score_aligned_prediction": {
+      "generations": 4338.367348948287,
+      "post_decline_fraction": 0.49587272086693684,
+      "ancestral_effective_size": 36873.12789912728
+    },
+    "untouched_evaluation_rrmse": {
+      "broad_raw": 5.788811415932223,
+      "broad_calibrated": 0.8984538592341654,
+      "focused_raw": 0.5058516655348575,
+      "focused_calibrated": 0.2060640696710472
+    },
+    "role": "held-out broad-prior contingency; not promoted over the mechanistic estimate for this observed VCF because typical focused natural errors and point-mean biases increased"
+  },
+  "observed_cross_checks": {
+    "moments_unfolded": {
+      "generations": 4585.666245434924,
+      "post_decline_fraction": 0.5221935644148588
+    },
+    "dadi_folded": {
+      "generations": 4643.179297278748,
+      "post_decline_fraction": 0.5214358237216139
+    },
+    "dadi_unfolded": {
+      "generations": 4625.170479444033,
+      "post_decline_fraction": 0.5212122289950549
+    },
+    "momentsld_joint": {
+      "generations": 4514.504342219643,
+      "post_decline_fraction": 0.5206975297622576,
+      "successful_restarts": 32
+    },
+    "momentsld_ld_only": {
+      "generations": 4314.157206326331,
+      "post_decline_fraction": 0.5424181349131302,
+      "successful_restarts": 32
+    },
+    "learned_context_ensemble": {
+      "generations": 4423,
+      "post_decline_fraction": 0.542348
+    },
+    "fastcxt_diagnostic": {
+      "generations": 3526,
+      "post_decline_fraction": 0.538705,
+      "eligible_for_selection": false
+    }
+  },
+  "decisions": {
+    "affine_sfs_calibration": "rejected_on_selection_natural_error_guard",
+    "learned_mechanistic_blend": "rejected_on_untouched_evaluation_natural_error_guard",
+    "dadi_moments_consensus": "rejected_because_it_did_not_improve_natural_medians",
+    "multiscale_score_calibration": "qualified_for_the_rrmse_aligned_broad_prior_contingency_but_not_for_the_observed_vcf_primary",
+    "primary_reason": "moments had the lowest untouched natural-scale medians, remained inside its physical-block interval, and all independent mechanistic fits agreed closely on the observed VCF"
+  },
+  "slurm_jobs": {
+    "dadi_unfolded": 7732521,
+    "dadi_folded": 7732522,
+    "moments_chromosome_constrained": 7732638,
+    "dadi_chromosome": 7732691,
+    "momentsld_prepare": 7732583,
+    "momentsld_region_smoke": 7732584,
+    "momentsld_regions": 7732585,
+    "momentsld_ld_only": 7732700,
+    "momentsld_joint": 7733010,
+    "multiscale_recovery_array": 7733177,
+    "multiscale_score_gate": 7733384
+  },
+  "sha256": {
+    "moments_folded": "6b7aaa555b2b3a9c5f37d1725fc514fed4806764a639f94490f494345074e591",
+    "moments_folded_bootstrap": "b3da2810e9987f2c52820eed3d6bc3c4d30b30e5edf0e78006216879d3838ac7",
+    "moments_chromosome_validation": "673d1d793e1e1d57532ba31b1b1288ad02dc9514993030a597f8788faded6782",
+    "dadi_folded": "2ae59c5730a8532a429d30985355b91d467bd87c1923510230841d913b68d331",
+    "dadi_chromosome_validation": "e027783d6c29e520578b904eab9b8d777de965ec15af2d0c4789a26d3aeaea79",
+    "momentsld_joint": "0fc2a71d4a5f502108232a83ef284e47cfcdd2bc80d3f3c3eb918970f470c561",
+    "momentsld_ld_only": "82f77915d741f3368d0f1bdb7a390a46ac4b34b5a02554ed3d5deb134a3a773a",
+    "learned_mechanistic_ensemble_gate": "8983383b7e10b44b263a7a9b0c636e35d7cd1d016556f0d7f9424124eddc0f43",
+    "multiscale_score_gate": "f369d65434a4ea0d09652183a5726ab25585493478f0a4db981003192df34c1e"
+  }
+}

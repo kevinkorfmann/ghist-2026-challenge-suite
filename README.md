@@ -1,69 +1,85 @@
 <p align="center">
-  <img src="assets/ghist-2026-logo.png" alt="GHIST 2026 logo" width="280">
+  <img src="assets/ghist-2026-logo.png" alt="GHIST 2026 logo" width="240">
 </p>
 
 # GHIST 2026 challenge suite
 
-This private workspace develops and benchmarks methods for every available GHIST
-2026 demographic-history, sweep-detection, and relatedness challenge. It does
-**not** submit anything to Synapse. Each challenge has an isolated directory,
-registered datasets, reference methods, validation protocol, and frozen holdout.
+Private, reproducible work on all 12 GHIST 2026 challenges. Four methods are
+frozen, one is under final validation, and the remaining inputs are secured.
+Nothing has been submitted. Final holdouts remain sealed.
 
-The first end-to-end target is demographic-history Task 1 (Bottleneck).
+[Challenge registry](configs/challenges.yaml) ·
+[Validation protocol](docs/validation_protocol.md) ·
+[Method comparison](docs/method_comparison.md)
 
-Its estimator deliberately combines four signals:
+## Results
 
-1. a folded site-frequency spectrum (SFS) plus log-distance LD decay,
-2. spatial/window summaries of diversity and the SFS, and
-3. conditional coalescence hazards from available or inferred genealogies, and
-4. an ensemble of convolutional-transformer posterior models trained on coalescent
-   simulations with nuisance-parameter randomization.
+“Closeness” below always refers to held-out simulations or numerical checks,
+never to a revealed testing answer.
 
-Public testing answers are isolated under `benchmarks/holdout/`, excluded from
-training and selection, and reserved for one-time audits after choices are frozen.
+| # | Challenge | State | Local result | Closeness on validation |
+|---:|---|---|---|---|
+| 1 | Bottleneck | frozen | 4,587 generations; post-decline fraction 0.52242 | 13.3% median time error and 0.0113 median fraction error on 29 untouched chromosomes; physical-block 95% intervals: 4,184–4,982 and 0.5131–0.5308 |
+| 2 | Secondary contact | frozen | N₁ 21,139; N₂ 82,967; split 4,544 generations; contact 1,455 generations; migration 0.000199006 | 4.78% mean error score on untouched demographic settings; parameter-wise median errors 0.81–1.81% |
+| 3 | Growth with background selection | frozen | 5,000 generations; growth factor 2.0 | matched recovery errors 2.38% and 0.03%; 128-block 95% intervals: 3,984–5,913 and 1.851–2.122 |
+| 4 | Split migration with background selection | frozen | AFR 16,000; EUR 24,000; split 4,500 generations; migration 0.00015 | matched recovery errors 1.36–2.18% for sizes/time and 10.7% for migration; strict integration changed every parameter by <0.0006% |
+| 5 | Single hard sweep | validating | chr7 center near 38,256,951 bp; interval width still under lock | chromosome-map recovery: 7.1 kb median, 45.2 kb 90th percentile, and 90% within 50 kb; final exact-scale tranche running |
+| 6–12 | Remaining sweep and relatedness challenges | queued | testing inputs, masks, maps, templates, and sealed finals secured | method development not yet frozen |
 
-See [the challenge registry](configs/challenges.yaml), [validation protocol](docs/validation_protocol.md),
-and [method comparison](docs/method_comparison.md).
+Frozen means that the estimator, prediction, and validation gates are locked
+locally. It does not mean submitted.
 
-## Setup
+## How each result was obtained
 
-The checked-out workspace already uses `.venv`. To recreate it:
+1. Bottleneck — folded frequency-spectrum inference was selected as primary.
+   Linkage decay, independent spectrum software, genealogy summaries, and a
+   chromosome-held-out context model were used as cross-checks. Physical-block
+   bootstrap intervals quantify spatial uncertainty.
 
-```bash
-python3.12 -m venv .venv
-.venv/bin/pip install numpy scipy scikit-learn msprime tskit pysam pyyaml pandas matplotlib tqdm torch
+2. Secondary contact — a generator-matched two-population spectrum was fitted
+   at resolution selected on independent chromosomes. A point-grouped held-out
+   calibration reduced the error score from 11.7% to 4.78%, followed by
+   recombination, mutation, polarization, and migration-direction stress tests.
+
+3. Growth with background selection — distance-stratified unfolded spectra used
+   the supplied coding annotation and recombination map. Projection stability,
+   linked-block bootstrap, known-truth forward simulations, and selection-strength
+   perturbations all support the rounded generator-level result.
+
+4. Split migration with background selection — three joint-spectrum projections
+   were combined over the well-powered noncoding distance band. Six held-out
+   truth points favored no calibration. Arm holdouts, a 64-replicate linked-block
+   bootstrap, matched linked-selection recovery, and stricter integration all pass.
+
+5. Single hard sweep — nested diversity, frequency-spectrum, haplotype, linkage,
+   and variant-gap scans converge on the same region; RAiSD provides an independent
+   reference scan. The candidate center is the median of three fine localizers.
+   Interval width is selected against the published scoring rule and must clear
+   the untouched exact-scale recovery gate before freezing.
+
+## Evidence
+
+| Challenge | Frozen record | Figure |
+|---|---|---|
+| Bottleneck | [`task1_freeze.json`](experiments/bottleneck/task1_freeze.json) | [`figures/task1_bottleneck/`](figures/task1_bottleneck/) |
+| Secondary contact | [`task2_freeze.json`](experiments/secondary_contact/task2_freeze.json) | [`figures/task2_secondary_contact/`](figures/task2_secondary_contact/) |
+| Growth with background selection | [`task3_freeze.json`](experiments/growth_bgs/task3_freeze.json) | [`figures/task3_growth_bgs/`](figures/task3_growth_bgs/) |
+| Split migration with background selection | [`task4_freeze.json`](experiments/split_migration_bgs/task4_freeze.json) | [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/) |
+| Single hard sweep | pending | [`experiments/single_sweep/`](experiments/single_sweep/) |
+
+## Layout
+
+```text
+challenges/   task definitions and submission schemas
+configs/      dataset registry and frozen metadata
+experiments/  concise evidence and freeze records
+figures/      publication-quality validation figures
+scripts/      audits, fitting, simulation, validation, and freezing
+slurm/        Betty compute workflows
+src/          reusable inference code
+tests/        deterministic unit and contract checks
 ```
 
-## Workflow
-
-```bash
-# 1. Put the authenticated Synapse download here:
-mkdir -p data
-# data/bottleneck.testing.vcf.gz
-
-# 2. Inspect and extract the observed feature tensor.
-.venv/bin/python -m ghist_bottleneck.cli extract \
-  --vcf data/bottleneck.testing.vcf.gz \
-  --out artifacts/observed.npz
-
-# 3. Generate simulations matched to the observed sample count.
-.venv/bin/python -m ghist_bottleneck.cli simulate \
-  --observed artifacts/observed.npz \
-  --out artifacts/simulations.npz \
-  --n-sims 5000
-
-# 4. Train five independently seeded models and evaluate held-out coverage.
-.venv/bin/python -m ghist_bottleneck.cli train \
-  --dataset artifacts/simulations.npz \
-  --out-dir checkpoints
-
-# 5. Produce a local prediction and YAML (no upload/submission).
-.venv/bin/python -m ghist_bottleneck.cli infer \
-  --observed artifacts/observed.npz \
-  --checkpoint-dir checkpoints \
-  --out artifacts/bottleneck.prediction.yaml
-```
-
-Use `--quick` on `simulate` and `train` for smoke tests. The full run uses
-chromosome-held-out parameter blocks and reports RMSE, median absolute error,
-90% interval coverage, and ensemble disagreement.
+Heavy computation runs on Betty through SLURM. Source revisions, dataset hashes,
+job identifiers, validation decisions, and submission count are recorded in each
+freeze file.
