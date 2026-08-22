@@ -114,7 +114,7 @@ The final precision pass deliberately covered the full held-out prior rather tha
 only the observed neighborhood. It used 900 complete 100 Mb simulations at 150
 parameter points, with all six replicates of each point confined to one split.
 The score-aligned two-layer calibrator passed the untouched RRMSE gate, reducing
-broad-prior RRMSE from 4.093 to 0.635 and focused RRMSE from 0.358 to 0.146. Its
+broad-prior RRMSE from 5.789 to 0.898 and focused RRMSE from 0.506 to 0.206. Its
 observed prediction is 4,338.37 and 0.49587. Because it increased typical focused
 natural errors and point-mean bias, it is a held-out extreme-value contingency;
 the mutually agreeing mechanistic fits remain primary for the present VCF.

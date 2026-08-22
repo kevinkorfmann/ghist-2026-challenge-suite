@@ -136,7 +136,7 @@ A separate score-aligned contingency was trained on 900 full 100 Mb simulations:
 observed fit, with six genomic replicates per point and parameter-point-isolated
 calibration, selection, and untouched evaluation. Its selected two-layer
 calibrator predicts 4,338.37 and 0.49587. It cut untouched broad-prior RRMSE from
-4.093 to 0.635 and focused RRMSE from 0.358 to 0.146, but worsened typical focused
+5.789 to 0.898 and focused RRMSE from 0.506 to 0.206, but worsened typical focused
 natural errors and point-mean biases. It is therefore retained for extreme
 held-out estimates rather than replacing the mechanistic primary for this VCF.
 

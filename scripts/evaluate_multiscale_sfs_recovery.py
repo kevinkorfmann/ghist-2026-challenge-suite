@@ -66,7 +66,7 @@ def metrics(
         "median_absolute_relative_error": np.median(relative, axis=0).tolist(),
         "mean_absolute_relative_error": relative.mean(axis=0).tolist(),
         "relative_rmse": relative_rmse.tolist(),
-        "rrmse": float(np.sqrt(np.mean(np.square(relative)))),
+        "rrmse": float(np.sqrt(np.mean(np.sum(np.square(relative), axis=1)))),
         "median_point_mean_absolute_relative_bias": np.median(point_bias, axis=0).tolist(),
         "maximum_point_mean_absolute_relative_bias": np.max(point_bias, axis=0).tolist(),
     }
