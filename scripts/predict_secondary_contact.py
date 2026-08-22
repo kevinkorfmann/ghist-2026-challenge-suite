@@ -27,17 +27,50 @@ def main() -> None:
     parser.add_argument("--vcf", type=Path, required=True)
     parser.add_argument("--checkpoints", required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--domain-filter", type=str)
+    parser.add_argument("--relative-selection-cutoff", type=float, default=1.25)
+    parser.add_argument("--score-power", type=float, default=2.0)
     args = parser.parse_args()
     checkpoints = [Path(path) for path in sorted(glob.glob(args.checkpoints))]
     if not checkpoints:
         raise FileNotFoundError(f"no checkpoints match {args.checkpoints!r}")
+    if args.relative_selection_cutoff < 1 or args.score_power < 0:
+        raise ValueError("invalid selection cutoff or score power")
+    candidates = []
+    for path in checkpoints:
+        report_path = path.with_suffix(".json")
+        report = json.loads(report_path.read_text()) if report_path.exists() else {}
+        if args.domain_filter is not None and report.get("domain_filter") != args.domain_filter:
+            continue
+        candidates.append((path, report))
+    if not candidates:
+        raise ValueError("no checkpoints satisfy the requested domain filter")
+    selection_scores = np.asarray(
+        [
+            float(
+                report.get(
+                    "selection_rrmse",
+                    torch.load(path, map_location="cpu", weights_only=False)[
+                        "selection_rrmse"
+                    ],
+                )
+            )
+            for path, report in candidates
+        ]
+    )
+    best_selection = float(selection_scores.min())
+    admitted = selection_scores <= best_selection * args.relative_selection_cutoff
+    candidates = [candidate for candidate, keep in zip(candidates, admitted) if keep]
+    selection_scores = selection_scores[admitted]
+    weights = np.power(np.maximum(selection_scores, 1e-8), -args.score_power)
+    weights /= weights.sum()
     spectrum, metadata = scan_secondary_contact_vcf(args.vcf)
     transformed_spectrum = np.log1p(spectrum.astype(np.float64))
     transformed_spectrum /= np.linalg.norm(transformed_spectrum) + 1e-12
     predictions = []
     uncertainty = []
     records = []
-    for path in checkpoints:
+    for (path, report), weight in zip(candidates, weights):
         checkpoint = torch.load(path, map_location="cpu", weights_only=False)
         configuration = checkpoint["model_configuration"]
         model = SecondaryContactNet(**configuration)
@@ -68,6 +101,8 @@ def main() -> None:
                 "checkpoint": str(path),
                 "best_epoch": checkpoint["epoch"],
                 "selection_rrmse": checkpoint["selection_rrmse"],
+                "domain_filter": report.get("domain_filter"),
+                "ensemble_weight": float(weight),
                 "prediction": dict(zip(OUTPUT_NAMES, predictions[-1].tolist())),
                 "transformed_standard_deviation": uncertainty[-1].tolist(),
             }
@@ -86,13 +121,31 @@ def main() -> None:
             for value in predictions
         ]
     )
-    ensemble = inverse_transform_targets(transformed_predictions.mean(axis=0))
+    ensemble = inverse_transform_targets(
+        np.average(transformed_predictions, axis=0, weights=weights)
+    )
     result = {
-        "policy": "local_prediction_only",
+        "policy": "selection_gated_local_prediction_only",
+        "selection_rule": {
+            "domain_filter": args.domain_filter,
+            "relative_cutoff": args.relative_selection_cutoff,
+            "inverse_score_power": args.score_power,
+            "best_selection_rrmse": best_selection,
+            "candidate_checkpoints": len(checkpoints),
+            "admitted_checkpoints": len(candidates),
+        },
         "observed_records": metadata["records"],
         "models": records,
         "transformed_coordinate_ensemble": dict(zip(OUTPUT_NAMES, ensemble.tolist())),
-        "model_spread_transformed": transformed_predictions.std(axis=0).tolist(),
+        "model_spread_transformed": np.sqrt(
+            np.average(
+                (transformed_predictions - np.average(
+                    transformed_predictions, axis=0, weights=weights
+                )) ** 2,
+                axis=0,
+                weights=weights,
+            )
+        ).tolist(),
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
