@@ -15,6 +15,13 @@ fastcxt:
   apache_tvm_ffi: 0.1.9
   nvidia_cutlass_dsl: 4.4.2
   quack_kernels: 0.3.4
+  runtime_gate:
+    slurm_job: 7731249
+    gpu: NVIDIA B200 MIG 2g.45gb
+    torch: 2.11.0+cu128
+    parameters: 224426
+    output_shape: [2, 32, 2]
+    loss: 8.738156611798331e-05
   model: bottleneck-specific training required
   role: Gaussian log-TMRCA means and variances
   checkpoint_sha256: null
