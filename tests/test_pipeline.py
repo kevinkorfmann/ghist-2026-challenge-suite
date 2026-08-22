@@ -47,9 +47,30 @@ from scripts.evaluate_bottleneck_chromosomes import (
     fit_affine,
     stratified_cell_split,
 )
+from scripts.evaluate_moments_chromosomes import (
+    histogram_to_folded_sfs,
+    recover_folded_histogram,
+)
 
 
 class PipelineTests(unittest.TestCase):
+    def test_folded_summary_encoding_is_exactly_invertible_for_complete_calls(self):
+        histogram = np.zeros(64, dtype=np.int64)
+        count_bins = []
+        edges = np.linspace(0, 0.5, 65)
+        for count in range(1, 58):
+            index = min(int(np.searchsorted(edges, count / 114, side="right") - 1), 63)
+            count_bins.append(index)
+            histogram[index] = (count * 17) % 101 + 1
+        self.assertEqual(len(set(count_bins)), 57)
+        encoded = np.log1p(histogram).astype(np.float64)
+        encoded /= np.linalg.norm(encoded)
+        recovered = recover_folded_histogram(encoded.astype(np.float32), int(histogram.sum()))
+        np.testing.assert_array_equal(recovered, histogram)
+        spectrum = histogram_to_folded_sfs(recovered, 114)
+        np.testing.assert_array_equal(spectrum[1:58], histogram[count_bins])
+        self.assertEqual(int(spectrum.sum()), int(histogram.sum()))
+
     def test_momentsld_regions_reject_out_of_range_blocks_before_import(self):
         with self.assertRaisesRegex(ValueError, "block_index"):
             compute_region("unused.vcf", "unused.joblib", block_index=50)
