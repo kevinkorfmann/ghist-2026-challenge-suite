@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
+from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
 try:
     from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
 except ModuleNotFoundError:
@@ -82,14 +83,10 @@ def histogram_to_folded_sfs(histogram: np.ndarray, n_haplotypes: int) -> np.ndar
     return spectrum
 
 
-def _fit_cell(arguments: tuple[int, np.ndarray, int]) -> tuple[int, dict]:
-    cell, spectrum, restarts = arguments
-    result = fit_two_epoch_spectrum(
-        spectrum,
-        restarts=restarts,
-        seed=910_000 + cell,
-        folded=True,
-    )
+def _fit_cell(arguments: tuple[int, np.ndarray, int, str]) -> tuple[int, dict]:
+    cell, spectrum, restarts, engine = arguments
+    fit = fit_two_epoch_spectrum if engine == "moments" else fit_two_epoch_dadi_spectrum
+    result = fit(spectrum, restarts=restarts, seed=910_000 + cell, folded=True)
     return cell, result
 
 
@@ -108,6 +105,7 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--restarts", type=int, default=12)
+    parser.add_argument("--engine", choices=("moments", "dadi"), default="moments")
     args = parser.parse_args()
 
     data = np.load(args.dataset)
@@ -134,7 +132,7 @@ def main() -> None:
         fitted = dict(
             executor.map(
                 _fit_cell,
-                [(cell, spectra[cell], args.restarts) for cell in sorted(spectra)],
+                [(cell, spectra[cell], args.restarts, args.engine) for cell in sorted(spectra)],
             )
         )
     split_record = json.loads(args.split_record.read_text())
@@ -197,6 +195,7 @@ def main() -> None:
         "nominal_cells": len(ordered_cells),
         "split_sizes": {name: len(values) for name, values in split_cells.items()},
         "restarts_per_cell": args.restarts,
+        "engine": args.engine,
         "affine_matrix": matrix.tolist(),
         "affine_intercept": intercept.tolist(),
         "selection_rule": "calibrated normalized RMSE improves at least 2% and both natural-scale medians remain within 5% of raw",
