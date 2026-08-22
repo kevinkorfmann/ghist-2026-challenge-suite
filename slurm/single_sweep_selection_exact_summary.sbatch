@@ -14,5 +14,5 @@ cd "$PROJECT_ROOT"
 
 PYTHONPATH=src .venv/bin/python scripts/summarize_single_sweep_exact_recovery.py \
   --input-dir artifacts/task5_single_sweep/selection_exact_recovery \
-  --expected 64 \
+  --expected 128 \
   --out artifacts/task5_single_sweep/selection_exact_recovery_summary.json
