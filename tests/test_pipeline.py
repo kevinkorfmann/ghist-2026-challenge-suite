@@ -20,6 +20,7 @@ from ghist_bottleneck.features import (
 )
 from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.infer import apply_chromosome_calibration
+from ghist_bottleneck.dadi_reference import physical_parameters
 from ghist_bottleneck.arg_features import (
     gaussian_tmrca_hazard_features,
     tmrca_hazard_features,
@@ -48,6 +49,18 @@ from scripts.evaluate_bottleneck_chromosomes import (
 
 
 class PipelineTests(unittest.TestCase):
+    def test_dadi_reference_converts_scaled_time_with_ancestral_size(self):
+        generations, fraction, ancestral_ne = physical_parameters(
+            0.52,
+            0.1,
+            292320.0,
+            mutation_rate=3.42e-8,
+            sequence_length=100_000_000,
+        )
+        self.assertAlmostEqual(ancestral_ne, 21368.42105263158)
+        self.assertAlmostEqual(generations, 4273.684210526316)
+        self.assertEqual(fraction, 0.52)
+
     def test_chromosome_metrics_report_natural_scale_bootstrap_intervals(self):
         target = np.array([[np.log(1000), 0.0], [np.log(2000), 1.0]])
         prediction = target + np.array([[np.log(1.1), 0.2], [np.log(0.9), -0.1]])
