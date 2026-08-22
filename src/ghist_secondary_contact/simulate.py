@@ -61,6 +61,7 @@ def focused_parameter_design(
     center: np.ndarray,
     *,
     seed: int = 20260822,
+    include_full_prior: bool = True,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Create core, guard-shell, and broad points around a mechanistic fit.
 
@@ -88,12 +89,13 @@ def focused_parameter_design(
     half_widths = {
         0: np.log(np.asarray((2.5, 3.0, 3.0, 3.0, 15.0))),
         1: np.log(np.asarray((8.0, 10.0, 10.0, 8.0, 100.0))),
+        2: np.log(np.asarray((10.0, 10.0, 4.0, 10.0, 1_000.0))),
     }
-    fraction_widths = {0: 2.0, 1: 4.0}
+    fraction_widths = {0: 2.0, 1: 4.0, 2: 6.0}
     coordinates = (0, 1, 2, 3, 5)
     broad_values, _ = parameter_design(n_points, seed=seed + 10_000)
     for row in range(n_points):
-        if domain[row] == 2:
+        if domain[row] == 2 and include_full_prior:
             values[row] = broad_values[row]
             continue
         width = half_widths[int(domain[row])]
@@ -104,6 +106,11 @@ def focused_parameter_design(
         ]
         fraction = 1.0 / (1.0 + np.exp(-contact_logit))
         values[row, 4] = values[row, 3] * fraction
+    if not include_full_prior:
+        values[:, :3] = np.clip(values[:, :3], 1_000.0, 250_000.0)
+        values[:, 3] = np.clip(values[:, 3], 100.0, 100_000.0)
+        values[:, 4] = np.minimum(values[:, 4], values[:, 3] * (1.0 - 1e-6))
+        values[:, 5] = np.clip(values[:, 5], 1e-8, 0.05)
     return values, _grouped_partition(n_points, seed), domain
 
 

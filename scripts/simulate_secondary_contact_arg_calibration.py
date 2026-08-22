@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import msprime
+import numpy as np
 
 from ghist_secondary_contact.demography import SecondaryContactParameters, build_demography
 
@@ -52,7 +53,11 @@ def main() -> None:
         f"island_{index}" for index in range(1, 25)
     ]
     with args.prefix.with_suffix(".vcf").open("w") as handle:
-        mutated.write_vcf(handle, individual_names=names)
+        mutated.write_vcf(
+            handle,
+            individual_names=names,
+            position_transform=lambda position: np.asarray(position) + 1,
+        )
     report = {
         "prefix": str(args.prefix),
         "parameters": vars(args) | {"prefix": str(args.prefix)},

@@ -16,12 +16,18 @@ if [[ -n "${CHUNKS_OVERRIDE:-}" ]]; then
   CHUNKS="$CHUNKS_OVERRIDE"
 elif [[ "${DATASET:-chromosome}" == "mixed_sfs" ]]; then
   CHUNKS='data/processed/secondary_contact/sfs_chunks/chunk_*.npz,data/processed/secondary_contact/focused_sfs_chunks/chunk_*.npz'
+elif [[ "${DATASET:-chromosome}" == "focused_sfs" ]]; then
+  CHUNKS='data/processed/secondary_contact/focused_sfs_chunks/chunk_*.npz'
 elif [[ "${DATASET:-chromosome}" == "arg" ]]; then
   CHUNKS='data/processed/secondary_contact/arg_training.npz'
 elif [[ "${DATASET:-chromosome}" == "sfs" ]]; then
   CHUNKS='data/processed/secondary_contact/sfs_chunks/chunk_*.npz'
 else
   CHUNKS='data/processed/secondary_contact/chunks/chunk_*.npz'
+fi
+EXTRA_ARGS=()
+if [[ -n "${DOMAIN_FILTER:-}" ]]; then
+  EXTRA_ARGS+=(--domain-filter "$DOMAIN_FILTER")
 fi
 .venv/bin/python scripts/train_secondary_contact.py \
   --chunks "$CHUNKS" \
@@ -31,4 +37,5 @@ fi
   --epochs "${EPOCHS:-120}" \
   --patience "${PATIENCE:-20}" \
   --width "${WIDTH:-128}" \
-  --score-weight "${SCORE_WEIGHT:-0.15}"
+  --score-weight "${SCORE_WEIGHT:-0.15}" \
+  "${EXTRA_ARGS[@]}"

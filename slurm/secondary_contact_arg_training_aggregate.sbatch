@@ -12,6 +12,6 @@ module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 .venv/bin/python scripts/aggregate_secondary_contact_arg_training.py \
-  --root artifacts/task2_secondary_contact/arg_training \
+  --root "${ARG_TRAINING_ROOT:-artifacts/task2_secondary_contact/arg_training_v2}" \
   --out data/processed/secondary_contact/arg_training.npz \
   --cells "${CELLS:-2304}"

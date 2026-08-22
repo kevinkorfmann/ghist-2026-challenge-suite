@@ -35,6 +35,7 @@ def main() -> None:
         args.points,
         np.asarray(args.center, dtype=np.float64),
         seed=args.seed,
+        include_full_prior=False,
     )
     point_id, replicate = divmod(args.cell_id, args.replicates)
     ancestral, mainland, island, split, contact, migration = points[point_id]
@@ -81,7 +82,11 @@ def main() -> None:
         f"island_{index}" for index in range(1, 25)
     ]
     with args.prefix.with_suffix(".vcf").open("w") as handle:
-        mutated.write_vcf(handle, individual_names=names)
+        mutated.write_vcf(
+            handle,
+            individual_names=names,
+            position_transform=lambda position: np.asarray(position) + 1,
+        )
     nuisance_values = np.asarray(
         (
             nuisance.mutation_multiplier,

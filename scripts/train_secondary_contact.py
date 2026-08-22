@@ -130,11 +130,24 @@ def main() -> None:
     parser.add_argument("--width", type=int, default=128)
     parser.add_argument("--context-backend", choices=("transformer", "mamba"), default="transformer")
     parser.add_argument("--seed", type=int, default=7701)
+    parser.add_argument("--domain-filter", type=str)
     args = parser.parse_args()
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = _load(args.chunks)
+    if args.domain_filter:
+        domains = np.asarray(
+            [
+                int(value)
+                for value in args.domain_filter.replace(":", ",").split(",")
+            ],
+            dtype=np.int8,
+        )
+        keep = np.isin(data["design_domain"], domains)
+        if not np.any(keep):
+            raise ValueError(f"domain filter retained no rows: {domains.tolist()}")
+        data = {key: value[keep] for key, value in data.items()}
     calibration = data["partition"] == 0
     if not np.any(calibration) or not np.any(data["partition"] == 1):
         raise ValueError("calibration and selection partitions must both be present")
@@ -281,6 +294,7 @@ def main() -> None:
         "untouched_evaluation_rrmse": evaluation_score,
         "seed": args.seed,
         "context_backend": args.context_backend,
+        "domain_filter": args.domain_filter,
         "history": history,
     }
     evaluation_domains = data["design_domain"][evaluation_indices]
