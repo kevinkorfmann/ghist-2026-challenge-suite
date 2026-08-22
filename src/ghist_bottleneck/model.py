@@ -19,6 +19,57 @@ class ResidualConv(nn.Module):
         return x + self.net(x)
 
 
+class BidirectionalMambaBlock(nn.Module):
+    """FastCXT-style forward/backward state-space mixing with an FFN."""
+
+    def __init__(
+        self,
+        width: int,
+        *,
+        state_size: int,
+        convolution_width: int,
+        expand: int,
+        dropout: float,
+    ):
+        super().__init__()
+        try:
+            from mamba_ssm import Mamba2
+        except ImportError as error:
+            raise RuntimeError(
+                "context_backend='mamba' requires the pinned mamba-ssm runtime"
+            ) from error
+        self.norm1 = nn.LayerNorm(width)
+        self.forward_mixer = Mamba2(
+            d_model=width,
+            d_state=state_size,
+            d_conv=convolution_width,
+            expand=expand,
+        )
+        self.backward_mixer = Mamba2(
+            d_model=width,
+            d_state=state_size,
+            d_conv=convolution_width,
+            expand=expand,
+        )
+        self.merge = nn.Linear(width * 2, width)
+        self.dropout = nn.Dropout(dropout)
+        self.norm2 = nn.LayerNorm(width)
+        self.ffn = nn.Sequential(
+            nn.Linear(width, width * 4),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(width * 4, width),
+            nn.Dropout(dropout),
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        normalized = self.norm1(x)
+        forward = self.forward_mixer(normalized)
+        backward = self.backward_mixer(normalized.flip(1)).flip(1)
+        x = x + self.dropout(self.merge(torch.cat((forward, backward), dim=-1)))
+        return x + self.ffn(self.norm2(x))
+
+
 class BottleneckNet(nn.Module):
     """Fast-context-style local convolutions plus global self-attention."""
 
@@ -32,18 +83,43 @@ class BottleneckNet(nn.Module):
         context_layers: int = 2,
         attention_heads: int = 8,
         dropout: float = 0.12,
+        context_backend: str = "transformer",
+        mamba_state: int = 64,
+        mamba_convolution: int = 4,
+        mamba_expand: int = 2,
+        max_windows: int = 64,
     ):
         super().__init__()
         if width % 8 or width % attention_heads:
             raise ValueError("width must be divisible by 8 and attention_heads")
         self.mixture_components = mixture_components
+        self.context_backend = context_backend
         self.window_in = nn.Linear(window_features, width)
         self.local = nn.Sequential(*[ResidualConv(width, d) for d in dilations])
-        layer = nn.TransformerEncoderLayer(
-            d_model=width, nhead=attention_heads, dim_feedforward=width * 3,
-            dropout=dropout, activation="gelu", batch_first=True, norm_first=True,
-        )
-        self.context = nn.TransformerEncoder(layer, num_layers=context_layers)
+        if context_backend == "transformer":
+            layer = nn.TransformerEncoderLayer(
+                d_model=width, nhead=attention_heads, dim_feedforward=width * 3,
+                dropout=dropout, activation="gelu", batch_first=True, norm_first=True,
+            )
+            self.position = None
+            self.context = nn.TransformerEncoder(layer, num_layers=context_layers)
+        elif context_backend == "mamba":
+            self.position = nn.Parameter(torch.zeros(1, max_windows, width))
+            nn.init.trunc_normal_(self.position, std=0.02)
+            self.context = nn.Sequential(
+                *[
+                    BidirectionalMambaBlock(
+                        width,
+                        state_size=mamba_state,
+                        convolution_width=mamba_convolution,
+                        expand=mamba_expand,
+                        dropout=dropout,
+                    )
+                    for _ in range(context_layers)
+                ]
+            )
+        else:
+            raise ValueError(f"unknown context_backend: {context_backend}")
         self.sfs = nn.Sequential(nn.Linear(sfs_bins, width), nn.GELU(), nn.LayerNorm(width))
         self.head = nn.Sequential(
             nn.Linear(width * 3, width * 2), nn.GELU(), nn.Dropout(dropout),
@@ -56,6 +132,12 @@ class BottleneckNet(nn.Module):
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         x = self.window_in(windows)
         x = self.local(x.transpose(1, 2)).transpose(1, 2)
+        if self.position is not None:
+            if x.shape[1] > self.position.shape[1]:
+                raise ValueError(
+                    f"received {x.shape[1]} windows, maximum is {self.position.shape[1]}"
+                )
+            x = x + self.position[:, : x.shape[1]]
         x = self.context(x)
         pooled = torch.cat((x.mean(1), x.amax(1), self.sfs(sfs)), dim=1)
         out = self.head(pooled)

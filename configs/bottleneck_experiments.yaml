@@ -57,3 +57,17 @@ candidates:
       attention_heads: 8
       dropout: 0.10
     training: *screen_training
+  mamba_context:
+    model:
+      width: 128
+      mixture_components: 8
+      dilations: [1, 2, 4, 8]
+      context_layers: 4
+      attention_heads: 8
+      dropout: 0.12
+      context_backend: mamba
+      mamba_state: 64
+      mamba_convolution: 4
+      mamba_expand: 2
+      max_windows: 64
+    training: *screen_training

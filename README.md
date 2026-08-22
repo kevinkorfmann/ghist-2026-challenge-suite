@@ -38,6 +38,8 @@ and [method comparison](docs/method_comparison.md).
 | Data intake | waiting for Terms acceptance | signed-in browser is ready; checksums and forensic VCF audit follow immediately after acceptance |
 | Scheduled compute | CPU and GPU verified | CPU end-to-end job `7731188`; B200 forward/backward gate `7731200` |
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
+| CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
+| FastCXT runtime | building | pinned Mamba kernels and B200 forward/backward gate in job `7731230` |
 | Bottleneck model | prototype verified | SFS, 19-bin LD, window context, genealogical hazards, mixture posterior, tree reference |
 | Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
 

@@ -56,6 +56,13 @@ The production posterior combines:
 - a permutation-aware context encoder;
 - a flexible conditional density head and independent simulation-reference trees.
 
+The architecture screen also contains a direct FastCXT-inspired candidate. It
+replaces only the global transformer with stacked bidirectional Mamba-2 blocks;
+the local dilated convolutions, inputs, mixture-density head, split, training
+budget, and promotion metric remain fixed. This isolates the value of state-space
+context instead of confounding it with a different feature set or validation
+protocol.
+
 ## Sweep detection
 
 | Family | Representative method | Role here |

@@ -240,6 +240,10 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(torch.isfinite(loss))
         loss.backward()
 
+    def test_unknown_context_backend_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "unknown context_backend"):
+            BottleneckNet(context_backend="unknown")
+
     def test_confounder_domain_is_finite(self):
         b = simulate_one(
             12,
