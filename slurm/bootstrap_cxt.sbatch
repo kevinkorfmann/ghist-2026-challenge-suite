@@ -20,7 +20,22 @@ git -C "$CXT_ROOT" checkout --detach "$CXT_REVISION"
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps \
   "torchtune==0.6.1" \
   "torchao==0.17.0"
-"$PROJECT_ROOT/.venv/bin/pip" install einops requests pandas
+"$PROJECT_ROOT/.venv/bin/pip" install \
+  "torchdata==0.11.0" \
+  datasets \
+  "huggingface_hub[hf_transfer]" \
+  safetensors \
+  kagglehub \
+  sentencepiece \
+  tiktoken \
+  "blobfile>=2" \
+  tokenizers \
+  omegaconf \
+  psutil \
+  "Pillow>=9.4.0" \
+  einops \
+  requests \
+  pandas
 "$PROJECT_ROOT/.venv/bin/pip" install --no-deps -e "$CXT_ROOT"
 export CXT_CHECKPOINT_CACHE="$PROJECT_ROOT/checkpoints/cxt"
 "$PROJECT_ROOT/.venv/bin/python" - <<'PY'
