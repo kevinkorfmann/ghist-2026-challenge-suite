@@ -43,6 +43,7 @@ and [method comparison](docs/method_comparison.md).
 | Bottleneck model | Task 1 frozen, not submitted | primary estimate 4,587 generations and 0.52242 post-decline fraction; exact chromosome recovery and three mechanistic engines agree |
 | Secondary Contact | Task 2 frozen, not submitted | corrected 40-by-30 hidden-epoch SFS estimate: 21,139 and 82,967 individuals, split 4,544 generations, contact 1,455 generations, migration 0.000199006 |
 | Growth with background selection | Task 3 frozen, not submitted | 5,000 generations and two-fold exponential growth; projection, linked-block, broad recovery, and selection-strength stress gates pass |
+| Split migration with background selection | active | three projections agree on raw 16,192 / 22,949 individuals, 4,388-generation split, and 0.000146697 migration; matched selection recovery running |
 | Remaining challenges | data secured | all registered inputs, templates, maps, accessibility masks, and sealed finals checksum-verified |
 
 The recent coalescent time-stratification result from
