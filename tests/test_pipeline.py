@@ -30,9 +30,32 @@ from ghist_bottleneck.genotype_matrix import export_genotype_matrix, strict_posi
 from ghist_bottleneck.vcf_normalize import normalize_vcf
 from ghist_bottleneck.fastcxt_dataset import grouped_splits, windowed_tmrca
 from scripts.run_fastcxt_observed import select_checkpoint
+from scripts.select_bottleneck_candidate import EXPECTED_CANDIDATES, select_candidate
 
 
 class PipelineTests(unittest.TestCase):
+    def test_screen_selection_requires_one_complete_fixed_protocol(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for index, candidate in enumerate(sorted(EXPECTED_CANDIDATES)):
+                target = root / candidate
+                target.mkdir()
+                record = {
+                    "candidate": candidate,
+                    "selection_score": 1.0 + index / 10,
+                    "elapsed_seconds": 10 + index,
+                    "dataset_sha256": "a" * 64,
+                    "dataset_bytes": 1234,
+                    "git_revision": "b" * 40,
+                    "protocol": {"split_seed": 991},
+                }
+                (target / "experiment.json").write_text(json.dumps(record))
+            selected = select_candidate(root)
+            self.assertEqual(selected["winner"], sorted(EXPECTED_CANDIDATES)[0])
+            (root / "baseline" / "experiment.json").unlink()
+            with self.assertRaisesRegex(ValueError, "incomplete screen"):
+                select_candidate(root)
+
     def test_fastcxt_checkpoint_selection_uses_validation_only(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
