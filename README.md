@@ -39,8 +39,8 @@ and [method comparison](docs/method_comparison.md).
 | Scheduled compute | CPU and GPU verified | CPU end-to-end job `7731188`; B200 forward/backward gate `7731200` |
 | GPU runtime | ready | PyTorch 2.11.0, CUDA 12.8, NVIDIA B200 MIG 2g.45gb |
 | CXT reference | ready | pinned 19,484,400-parameter checkpoint loaded in job `7731231`; SHA-256 recorded |
-| FastCXT runtime | ready | pinned stack passed a B200 forward/backward gate in job `7731249` |
-| Bottleneck model | prototype verified | SFS, 19-bin LD, phased whole-data matrix, window context, genealogical hazards, mixture posterior, tree reference |
+| FastCXT reference | translated | grouped-cell training job `7731776`; validation-selected checkpoint translated all 100 Mb in job `7731790` |
+| Bottleneck model | promotion running | deeper context won the 12,000-simulation screen; fresh 20,000-simulation, five-seed gate queued |
 | Other challenges | registered | specifications and data entities recorded; implementations proceed after Task 1 freeze |
 
 The recent coalescent time-stratification result from

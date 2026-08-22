@@ -1,0 +1,56 @@
+{
+  "status": "provisional_validation_winner",
+  "winner": "deeper_context",
+  "winner_score": 0.5895101246220711,
+  "baseline_score": 0.6010188181907548,
+  "relative_improvement_over_baseline": 0.01914864097488371,
+  "dataset_sha256": "9118c75a6172d5fe939471324636246243df646fb8f534a28628e596d4b7835b",
+  "dataset_bytes": 24763318,
+  "protocol": {
+    "split_seed": 991,
+    "selection_target": "grouped synthetic validation only",
+    "nominal_weight": 1.0,
+    "overall_weight": 0.2,
+    "calibration_weight": 0.1,
+    "robustness_guard_weight": 0.05
+  },
+  "ranking": [
+    {
+      "candidate": "deeper_context",
+      "selection_score": 0.5895101246220711,
+      "elapsed_seconds": 117.0211124420166,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    },
+    {
+      "candidate": "baseline",
+      "selection_score": 0.6010188181907548,
+      "elapsed_seconds": 49.110493183135986,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    },
+    {
+      "candidate": "wider",
+      "selection_score": 0.6017835178062476,
+      "elapsed_seconds": 56.15452790260315,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    },
+    {
+      "candidate": "extended_local",
+      "selection_score": 0.6182180562087375,
+      "elapsed_seconds": 50.69820976257324,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    },
+    {
+      "candidate": "compact",
+      "selection_score": 0.6191770273376604,
+      "elapsed_seconds": 49.558077573776245,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    },
+    {
+      "candidate": "mamba_context",
+      "selection_score": 0.633647736374276,
+      "elapsed_seconds": 188.374582529068,
+      "git_revision": "0a94d3e5405b5472f3146ae84d4028d5a5540583"
+    }
+  ],
+  "promotion_gate": "Fresh simulation shard, five seeds, ablations, and bootstrap intervals are still required."
+}

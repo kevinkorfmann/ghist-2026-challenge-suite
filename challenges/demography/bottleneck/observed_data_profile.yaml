@@ -64,3 +64,36 @@ mechanistic_reference:
     ancestral_effective_size: 21400.667627769486
     artifact_sha256: 6b7aaa555b2b3a9c5f37d1725fc514fed4806764a639f94490f494345074e591
   interpretation: folded and unfolded fits agree independently of allele orientation
+  physical_block_bootstrap:
+    blocks: 50
+    replicates: 200
+    unfolded:
+      slurm_job: 7732373
+      generations_interval_95: [4260.635556585424, 4922.867104613651]
+      fraction_interval_95: [0.513434701128342, 0.5299875074295215]
+    folded:
+      slurm_job: 7732374
+      generations_interval_95: [4183.892522636071, 4982.066247799088]
+      fraction_interval_95: [0.5130583882991222, 0.5308015706389116]
+
+fastcxt_reference:
+  training_job: 7731776
+  grouped_training_pairs: 41000
+  grouped_validation_pairs: 10200
+  selected_epoch: 9
+  validation_log_tmrca_rmse: 1.260095477104187
+  validation_coverage_95: 0.9528140425682068
+  checkpoint_sha256: 46e67a11881d64c2221652d66c4aadc5a1451584114f7539c5ddfe289c79dcee
+  observed_translation_job: 7731790
+  observed_translation_sha256: e419d630fb2da4d2a361bbf88915f1982e9f950f5162d54df1feb12685034950
+
+architecture_screen:
+  simulation_job: 7731771
+  simulations: 12000
+  dataset_sha256: 9118c75a6172d5fe939471324636246243df646fb8f534a28628e596d4b7835b
+  screen_job: 7731774
+  provisional_winner: deeper_context
+  winner_score: 0.5895101246220711
+  baseline_score: 0.6010188181907548
+  relative_improvement_over_baseline: 0.01914864097488371
+  promotion_status: fresh 20000-simulation, five-seed gate running
