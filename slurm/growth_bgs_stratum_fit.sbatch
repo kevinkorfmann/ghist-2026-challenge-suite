@@ -17,6 +17,7 @@ RESTARTS="${RESTARTS:-64}"
 MAXITER="${MAXITER:-600}"
 OUTPUT="${OUTPUT:-artifacts/task3_growth_bgs/stratum_fit_p${PROJECTION}.json}"
 INCLUDE="${INCLUDE:-}"
+CONVENTION="${CONVENTION:-exponential}"
 
 EXTRA_ARGS=()
 if [[ -n "$INCLUDE" ]]; then
@@ -31,4 +32,5 @@ PYTHONPATH=src .venv/bin/python scripts/fit_growth_bgs_strata.py \
   --restarts "$RESTARTS" \
   --workers "$SLURM_CPUS_PER_TASK" \
   --maxiter "$MAXITER" \
+  --convention "$CONVENTION" \
   "${EXTRA_ARGS[@]}"

@@ -42,17 +42,31 @@ def growth_spectrum(parameters: Sequence[float], sample_sizes: Sequence[int]):
     return moments.Demographics1D.growth((nu, duration), list(sample_sizes))
 
 
+def sudden_growth_spectrum(parameters: Sequence[float], sample_sizes: Sequence[int]):
+    """Expected unfolded SFS after an instantaneous population-size increase."""
+    import moments
+
+    nu, duration = (float(value) for value in parameters)
+    if nu <= 1 or duration <= 0:
+        raise ValueError("growth ratio must exceed one and duration must be positive")
+    sample_size = int(sample_sizes[0])
+    spectrum = moments.Spectrum(moments.LinearSystem_1D.steady_state_1D(sample_size))
+    spectrum.integrate([nu], duration)
+    return spectrum
+
+
 def _fit_restart(arguments: tuple) -> dict:
-    spectrum, start, lower, upper, restart, maxiter = arguments
+    spectrum, start, lower, upper, restart, maxiter, convention = arguments
     import moments
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     try:
+        model = growth_spectrum if convention == "exponential" else sudden_growth_spectrum
         estimate = np.asarray(
             moments.Inference.optimize_log_lbfgsb(
                 start,
                 data,
-                growth_spectrum,
+                model,
                 lower_bound=lower,
                 upper_bound=upper,
                 maxiter=maxiter,
@@ -60,7 +74,7 @@ def _fit_restart(arguments: tuple) -> dict:
             ),
             dtype=np.float64,
         )
-        expected = growth_spectrum(estimate, data.sample_sizes)
+        expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
         if np.isfinite([*estimate, likelihood, theta]).all() and theta > 0:
@@ -90,6 +104,7 @@ def fit_growth_spectrum(
     workers: int = 1,
     maxiter: int = 500,
     seed: int = 75193299,
+    convention: str = "exponential",
 ) -> dict:
     """Fit exponential growth and convert scaled estimates to challenge units."""
     import moments
@@ -98,6 +113,8 @@ def fit_growth_spectrum(
         raise ValueError("sequence length and mutation rate must be positive")
     if restarts < 1 or workers < 1:
         raise ValueError("restarts and workers must be positive")
+    if convention not in {"exponential", "sudden"}:
+        raise ValueError(f"unknown growth convention: {convention}")
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     original_projection = int(data.sample_sizes[0])
     if projection is not None:
@@ -111,7 +128,7 @@ def fit_growth_spectrum(
         np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)
     ]
     work = [
-        (np.asarray(data), start, lower, upper, restart, maxiter)
+        (np.asarray(data), start, lower, upper, restart, maxiter, convention)
         for restart, start in enumerate(starts)
     ]
     if workers > 1:
@@ -148,5 +165,6 @@ def fit_growth_spectrum(
         "observed_haplotypes": original_projection,
         "sequence_length": float(sequence_length),
         "mutation_rate": float(mutation_rate),
+        "convention": convention,
         "bounds": {"lower": lower.tolist(), "upper": upper.tolist()},
     }

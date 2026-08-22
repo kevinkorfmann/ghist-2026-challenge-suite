@@ -22,6 +22,9 @@ def main() -> None:
     parser.add_argument("--mutation-rate", type=float, default=3.36e-8)
     parser.add_argument("--seed", type=int, default=75193299)
     parser.add_argument(
+        "--convention", choices=("exponential", "sudden"), default="exponential"
+    )
+    parser.add_argument(
         "--include",
         nargs="+",
         help="fit only these candidate labels after constructing the full catalog",
@@ -100,6 +103,7 @@ def main() -> None:
             workers=args.workers,
             maxiter=args.maxiter,
             seed=args.seed + 1009 * index,
+            convention=args.convention,
         )
         result["stratum"] = label
         results[label] = result
@@ -109,6 +113,7 @@ def main() -> None:
         "source_audit": str(args.audit),
         "projection": args.projection,
         "mutation_rate": args.mutation_rate,
+        "convention": args.convention,
         "results": results,
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)

@@ -4,17 +4,31 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 from ghist_growth_bgs.audit import (
     audit_growth_resources,
     coding_distance,
     load_coding_intervals,
     load_recombination_map,
 )
-from ghist_growth_bgs.spectrum import combine_spectra, spectrum_from_counts
+from ghist_growth_bgs.spectrum import (
+    combine_spectra,
+    growth_spectrum,
+    spectrum_from_counts,
+    sudden_growth_spectrum,
+)
 from ghist_growth_bgs.blocks import distance_stratum_segments
 
 
 class GrowthBackgroundSelectionTests(unittest.TestCase):
+    def test_growth_conventions_produce_valid_distinct_spectra(self):
+        exponential = growth_spectrum((2.0, 0.2), [12])
+        sudden = sudden_growth_spectrum((2.0, 0.2), [12])
+        self.assertEqual(exponential.sample_sizes.tolist(), [12])
+        self.assertEqual(sudden.sample_sizes.tolist(), [12])
+        self.assertFalse(np.allclose(exponential, sudden))
+
     def test_distance_stratum_segments_have_exact_exposure(self):
         intervals = [(100_000, 110_000)]
         segments = distance_stratum_segments(
