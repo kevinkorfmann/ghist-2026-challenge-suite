@@ -122,6 +122,8 @@ def main() -> None:
             + args.left
         ),
     }
+    estimate_values = np.asarray(list(estimates.values()), dtype=float)
+    median_pi = float(np.nanmedian(windows["pi"]))
     payload = {
         "state": "COMPLETED",
         "truth": {
@@ -133,6 +135,15 @@ def main() -> None:
         "estimates": estimates,
         "absolute_error": {
             name: abs(float(value) - args.position) for name, value in estimates.items()
+        },
+        "diagnostics": {
+            "estimator_spread": float(np.ptp(estimate_values)),
+            "largest_gap_length": int(gaps[gap_index]),
+            "peak_composite_score": float(windows["composite_score"][composite_index]),
+            "peak_h12": float(windows["h12"][composite_index]),
+            "maximum_h12": float(np.nanmax(windows["h12"])),
+            "peak_pi_relative_median": float(windows["pi"][composite_index] / median_pi),
+            "peak_tajima_d": float(windows["tajima_d"][composite_index]),
         },
         "accepted_biallelic_sites": int(variants.positions.size),
         "skipped_sites": variants.skipped_records,
