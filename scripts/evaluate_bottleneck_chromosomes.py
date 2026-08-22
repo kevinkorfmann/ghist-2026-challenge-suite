@@ -110,13 +110,44 @@ def _aggregate_cells(
     return np.asarray(predictions), np.asarray(deep_variances)
 
 
-def _metrics(prediction: np.ndarray, target: np.ndarray, scale: np.ndarray) -> dict:
+def _natural_parameters(latent: np.ndarray) -> np.ndarray:
+    return np.column_stack((np.exp(latent[:, 0]), 1 / (1 + np.exp(-latent[:, 1]))))
+
+
+def _metrics(
+    prediction: np.ndarray,
+    target: np.ndarray,
+    scale: np.ndarray,
+    *,
+    bootstrap_seed: int,
+    bootstrap_replicates: int = 2000,
+) -> dict:
     residual = prediction - target
+    natural_prediction = _natural_parameters(prediction)
+    natural_target = _natural_parameters(target)
+    generation_relative_error = np.abs(
+        natural_prediction[:, 0] / natural_target[:, 0] - 1
+    )
+    fraction_absolute_error = np.abs(natural_prediction[:, 1] - natural_target[:, 1])
+    rng = np.random.default_rng(bootstrap_seed)
+    indices = rng.integers(0, len(target), size=(bootstrap_replicates, len(target)))
+    generation_bootstrap = generation_relative_error[indices].mean(axis=1)
+    fraction_bootstrap = fraction_absolute_error[indices].mean(axis=1)
     return {
         "examples": len(target),
         "rmse_latent": np.sqrt(np.mean(np.square(residual), axis=0)).tolist(),
         "normalized_rmse": (np.sqrt(np.mean(np.square(residual), axis=0)) / scale).tolist(),
         "bias_latent": residual.mean(axis=0).tolist(),
+        "generation_mean_absolute_relative_error": float(generation_relative_error.mean()),
+        "generation_median_absolute_relative_error": float(np.median(generation_relative_error)),
+        "generation_mean_absolute_relative_error_interval_95": np.quantile(
+            generation_bootstrap, [0.025, 0.975]
+        ).tolist(),
+        "fraction_mean_absolute_error": float(fraction_absolute_error.mean()),
+        "fraction_median_absolute_error": float(np.median(fraction_absolute_error)),
+        "fraction_mean_absolute_error_interval_95": np.quantile(
+            fraction_bootstrap, [0.025, 0.975]
+        ).tolist(),
     }
 
 
@@ -170,10 +201,16 @@ def main() -> None:
             "calibrated": calibrated,
             "deep_variance": deep_variance,
             "selection": _metrics(
-                calibrated[split_indices["selection"]], target[split_indices["selection"]], scale
+                calibrated[split_indices["selection"]],
+                target[split_indices["selection"]],
+                scale,
+                bootstrap_seed=5501,
             ),
             "evaluation": _metrics(
-                calibrated[split_indices["evaluation"]], target[split_indices["evaluation"]], scale
+                calibrated[split_indices["evaluation"]],
+                target[split_indices["evaluation"]],
+                scale,
+                bootstrap_seed=5502,
             ),
         }
     # The simulated genealogy channel is a useful upper-bound diagnostic, but it

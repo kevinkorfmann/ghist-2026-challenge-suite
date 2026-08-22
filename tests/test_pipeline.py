@@ -40,6 +40,7 @@ from ghist_bottleneck.fastcxt_dataset import grouped_splits, windowed_tmrca
 from scripts.run_fastcxt_observed import select_checkpoint
 from scripts.select_bottleneck_candidate import EXPECTED_CANDIDATES, select_candidate
 from scripts.evaluate_bottleneck_chromosomes import (
+    _metrics,
     apply_affine,
     fit_affine,
     stratified_cell_split,
@@ -47,6 +48,14 @@ from scripts.evaluate_bottleneck_chromosomes import (
 
 
 class PipelineTests(unittest.TestCase):
+    def test_chromosome_metrics_report_natural_scale_bootstrap_intervals(self):
+        target = np.array([[np.log(1000), 0.0], [np.log(2000), 1.0]])
+        prediction = target + np.array([[np.log(1.1), 0.2], [np.log(0.9), -0.1]])
+        metrics = _metrics(prediction, target, np.ones(2), bootstrap_seed=7, bootstrap_replicates=100)
+        self.assertAlmostEqual(metrics["generation_mean_absolute_relative_error"], 0.1)
+        self.assertEqual(len(metrics["generation_mean_absolute_relative_error_interval_95"]), 2)
+        self.assertGreater(metrics["fraction_mean_absolute_error"], 0)
+
     def test_chromosome_calibration_applies_only_the_chosen_frozen_branch(self):
         calibration = {
             "chosen_branch": "summary",
