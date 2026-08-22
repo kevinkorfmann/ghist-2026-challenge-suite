@@ -113,6 +113,7 @@ def main() -> None:
     parser.add_argument("--audit", type=Path, required=True)
     parser.add_argument("--localization", type=Path, required=True)
     parser.add_argument("--raisd", type=Path, required=True)
+    parser.add_argument("--exact-recovery", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--bed", type=Path, required=True)
     args = parser.parse_args()
@@ -123,8 +124,9 @@ def main() -> None:
         args.audit,
         args.localization,
         args.raisd,
+        args.exact_recovery,
     ]
-    generic, chromosome, audit, localization, raisd = [
+    generic, chromosome, audit, localization, raisd, exact = [
         json.loads(path.read_text()) for path in paths
     ]
     observed = {
@@ -141,6 +143,15 @@ def main() -> None:
         dtype=float,
     )
     interval = choose_interval([generic, chromosome], observed, half_widths)
+    interval["pre_exact_half_width"] = interval["final_half_width"]
+    interval["exact_calibration_half_width"] = exact["interval_width_selection"]["selected_half_width"]
+    interval["final_half_width"] = max(
+        interval["final_half_width"], interval["exact_calibration_half_width"]
+    )
+    interval["interval"] = [
+        interval["center"] - interval["final_half_width"],
+        interval["center"] + interval["final_half_width"],
+    ]
     result = {
         "state": "CANDIDATE; NOT FROZEN",
         "chromosome": audit["contig"],

@@ -1,8 +1,9 @@
 from scripts.summarize_single_sweep_exact_recovery import summarize
 
 
-def _record(truth: int, offsets: tuple[int, int, int]) -> dict:
+def _record(seed: int, truth: int, offsets: tuple[int, int, int]) -> dict:
     return {
+        "seed": seed,
         "truth": {"position": truth},
         "estimates": {
             "largest_gap_midpoint": truth + offsets[0],
@@ -14,19 +15,19 @@ def _record(truth: int, offsets: tuple[int, int, int]) -> dict:
 
 def test_exact_recovery_gate_passes_precise_consensus() -> None:
     records = [
-        _record(1_000_000 + index * 100_000, (-5_000, 5_000, 10_000))
-        for index in range(12)
+        _record(75_225_000 + index, 1_000_000 + index * 100_000, (-5_000, 5_000, 10_000))
+        for index in range(128)
     ]
     result = summarize(records)
-    assert result["consensus_replicates"] == 12
+    assert result["calibration_consensus_replicates"] == 64
+    assert result["evaluation_consensus_replicates"] == 64
     assert result["robustness_gate"]["passed"] is True
 
 
 def test_exact_recovery_gate_rejects_consistent_offset() -> None:
     records = [
-        _record(1_000_000 + index * 100_000, (70_000, 75_000, 80_000))
-        for index in range(12)
+        _record(75_225_000 + index, 1_000_000 + index * 100_000, (150_000, 155_000, 160_000))
+        for index in range(128)
     ]
     result = summarize(records)
-    assert result["consensus_replicates"] == 12
     assert result["robustness_gate"]["passed"] is False
