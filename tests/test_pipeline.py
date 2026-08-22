@@ -29,9 +29,28 @@ from ghist_bottleneck.train import _device
 from ghist_bottleneck.genotype_matrix import export_genotype_matrix, strict_positions
 from ghist_bottleneck.vcf_normalize import normalize_vcf
 from ghist_bottleneck.fastcxt_dataset import grouped_splits, windowed_tmrca
+from scripts.run_fastcxt_observed import select_checkpoint
 
 
 class PipelineTests(unittest.TestCase):
+    def test_fastcxt_checkpoint_selection_uses_validation_only(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            log = root / "csv_metrics" / "version_0"
+            checkpoints = log / "checkpoints"
+            checkpoints.mkdir(parents=True)
+            (log / "metrics.csv").write_text(
+                "epoch,step,train_loss,val_loss\n"
+                "0,10,3.0,2.0\n"
+                "1,20,2.0,1.5\n"
+                "2,30,1.0,1.8\n"
+            )
+            for epoch, step in enumerate((10, 20, 30)):
+                (checkpoints / f"epoch={epoch}-step={step}.ckpt").write_bytes(b"x")
+            selected, row = select_checkpoint(root)
+            self.assertEqual(selected.name, "epoch=1-step=20.ckpt")
+            self.assertEqual(float(row["val_loss"]), 1.5)
+
     def test_fastcxt_cells_are_grouped_across_replicas(self):
         first = grouped_splits(25, 0.2, 71)
         second = grouped_splits(25, 0.2, 71)
