@@ -31,6 +31,16 @@ def selected_values(source: dict) -> dict:
     return {key: source[key] for key in PARAMETER_KEYS}
 
 
+def require_resolution_gate(source: dict, label: str) -> None:
+    if not source.get("selection_valid"):
+        raise ValueError(f"{label} resolution comparison did not pass boundary checks")
+    if source.get("selected_resolution") != "p40":
+        raise ValueError(
+            f"{label} resolution comparison selected "
+            f"{source.get('selected_resolution')!r}, expected 'p40'"
+        )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-fit", type=Path, required=True)
@@ -38,6 +48,7 @@ def main() -> None:
     parser.add_argument("--calibration", type=Path, required=True)
     parser.add_argument("--resolution", type=Path, required=True)
     parser.add_argument("--broad-resolution", type=Path, required=True)
+    parser.add_argument("--varying-resolution", type=Path, required=True)
     parser.add_argument("--stress-transfer", type=Path, required=True)
     parser.add_argument("--bootstrap", type=Path, required=True)
     parser.add_argument("--vcf-audit", type=Path, required=True)
@@ -51,6 +62,7 @@ def main() -> None:
         "calibration": args.calibration,
         "resolution": args.resolution,
         "broad_resolution": args.broad_resolution,
+        "varying_resolution": args.varying_resolution,
         "stress_transfer": args.stress_transfer,
         "bootstrap": args.bootstrap,
         "vcf_audit": args.vcf_audit,
@@ -61,6 +73,7 @@ def main() -> None:
     calibration = sources["calibration"]
     resolution = sources["resolution"]
     broad_resolution = sources["broad_resolution"]
+    varying_resolution = sources["varying_resolution"]
     transfer = sources["stress_transfer"]
     bootstrap = sources["bootstrap"]
     audit = sources["vcf_audit"]
@@ -72,6 +85,23 @@ def main() -> None:
         for key in PARAMETER_KEYS
     }
     prediction = calibration["observed_accepted"]
+    for label, comparison in (
+        ("fixed-center", resolution),
+        ("broad", broad_resolution),
+        ("varying-demography", varying_resolution),
+    ):
+        require_resolution_gate(comparison, label)
+    if not calibration["untouched_evaluation"].get("correction_accepted"):
+        raise ValueError("point-grouped transfer correction did not pass its acceptance gate")
+    if max(abs(value) for value in numerical_relative_change.values()) >= 0.01:
+        raise ValueError("refined integration changed at least one parameter by 1% or more")
+    nominal = transfer.get("conditions", {}).get("nominal")
+    if nominal is None:
+        raise ValueError("stress transfer is missing the nominal condition")
+    if nominal["corrected"]["mean_competition_rrmse"] >= nominal["raw"][
+        "mean_competition_rrmse"
+    ]:
+        raise ValueError("correction did not improve mean nominal stress risk")
     result = {
         "challenge": "Secondary Contact",
         "status": "method frozen; no submission",
@@ -101,6 +131,14 @@ def main() -> None:
                 "replicates": len(broad_resolution["replicates"]),
                 "ranking": broad_resolution["ranking"],
                 "summaries": broad_resolution["summaries"],
+            },
+            "varying_demography_resolution": {
+                "selected": varying_resolution["selected_resolution"],
+                "replicates": len(varying_resolution["replicates"]),
+                "summaries": varying_resolution["summaries"],
+                "paired_comparisons": varying_resolution[
+                    "paired_comparisons"
+                ],
             },
             "point_grouped_transfer": {
                 "partition_point_counts": calibration["point_grouped_partitions"],
