@@ -65,6 +65,21 @@ representation of the leading exponential history. The correct exponential
 model also has the higher likelihood on the known-truth simulation, although
 the 462 kb smoke provides only a 0.24 log-likelihood separation.
 
+The 36-run forward-selection grid in job `7749221` spans four chromosome arms,
+growth starts of 2,500, 5,000, and 10,000 generations, and size ratios of 1.5,
+2, and 3. Individual one-Mb regions are deliberately noisy. After combining
+the four arms at each truth point in job `7749497`, generation RMSE is 0.155,
+size-ratio RMSE is 0.0416, and joint competition RRMSE is 0.1135. Most
+importantly, the independent 5,000/2.0 truth recovers as 5,119/2.0006, almost
+identical to the observed 5,157/1.995 full-projection fit.
+
+`selection_calibration.json` compares the raw fit against robust multiplicative,
+diagonal-affine, and joint-ridge corrections under leave-one-truth-point-out
+validation. The uncorrected identity mapping wins with mean competition RRMSE
+0.0896; every correction is worse. No learned correction is therefore applied.
+The projection-median estimate remains 5,052 generations and 2.010-fold growth,
+while 5,000/2.0 remains the leading generator-level hypothesis.
+
 `figures/task3_growth_bgs/task3_validation.{pdf,png}` visualizes the current
 distance-band bias, middle-distance projection stability, and all 128 one-Mb
 linked-block replicates. It is a validation figure rather than a frozen-result
