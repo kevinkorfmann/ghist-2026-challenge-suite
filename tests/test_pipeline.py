@@ -23,7 +23,11 @@ from ghist_bottleneck.arg_features import (
     gaussian_tmrca_hazard_features,
     tmrca_hazard_features,
 )
-from ghist_bottleneck.simulate import SimulationConfig, simulate_one
+from ghist_bottleneck.simulate import (
+    SimulationConfig,
+    generate_chromosome_dataset,
+    simulate_one,
+)
 from ghist_bottleneck.sfs_baseline import (
     complete_block_spectra_from_vcf,
     projected_sfs_from_vcf,
@@ -37,6 +41,42 @@ from scripts.select_bottleneck_candidate import EXPECTED_CANDIDATES, select_cand
 
 
 class PipelineTests(unittest.TestCase):
+    def test_chromosome_validation_repeats_parameters_within_cells(self):
+        observed = FeatureBundle(
+            windows=np.zeros((64, 8)),
+            sfs=np.zeros(116),
+            n_haplotypes=4,
+            sequence_length=2_000_000,
+            n_variants=1,
+        )
+
+        def fake_simulation(*args, **kwargs):
+            return FeatureBundle(
+                windows=np.zeros((64, 8)),
+                sfs=np.zeros(116),
+                n_haplotypes=4,
+                sequence_length=2_000_000,
+                n_variants=7,
+            )
+
+        with tempfile.TemporaryDirectory() as directory, patch(
+            "ghist_bottleneck.simulate.simulate_one", side_effect=fake_simulation
+        ):
+            output = Path(directory) / "chromosomes.npz"
+            generate_chromosome_dataset(
+                observed, output, n_cells=2, blocks_per_cell=3, cell_start=10, seed=51
+            )
+            data = np.load(output)
+            np.testing.assert_array_equal(data["cell_id"], [10, 10, 10, 11, 11, 11])
+            np.testing.assert_array_equal(data["n_variants"], np.full(6, 7))
+            np.testing.assert_allclose(
+                data["targets"][:3], np.repeat(data["targets"][0:1], 3, axis=0)
+            )
+            np.testing.assert_allclose(
+                data["targets"][3:], np.repeat(data["targets"][3:4], 3, axis=0)
+            )
+            self.assertTrue(np.isfinite(data["ancestral_ne"]).all())
+
     def test_complete_block_spectra_preserve_physical_blocks(self):
         spectra, metadata = complete_block_spectra_from_vcf(
             "tests/fixtures/tiny.vcf", sequence_length=1000, block_length=500

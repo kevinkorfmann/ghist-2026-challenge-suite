@@ -77,6 +77,21 @@ def _draw_prior(rng: np.random.Generator, cfg: SimulationConfig) -> tuple[float,
     return float(generations), float(fraction), float(ancestral_ne)
 
 
+def _draw_nuisance(rng: np.random.Generator) -> tuple[int, float, float, float, float, float]:
+    draw = rng.random()
+    if draw < 0.5:
+        return 0, 1.0, 1.0, 0.0, 0.0, 0.0
+    scenario = 1 if draw < 0.75 else 2 if draw < 0.9 else 3
+    return (
+        scenario,
+        float(np.exp(rng.normal(0, 0.08))),
+        float(np.exp(rng.normal(0, 0.15))),
+        float(rng.uniform(0.0, 0.8)) if scenario in (1, 3) else 0.0,
+        float(rng.uniform(0.0, 0.06)) if scenario in (2, 3) else 0.0,
+        float(rng.uniform(0.0, 0.4)) if scenario in (2, 3) else 0.0,
+    )
+
+
 def _degrade_arg_context(context: np.ndarray, rng: np.random.Generator) -> None:
     """Mimic smoothing, time error, and uncertainty from genealogy inference."""
     hazards = context[-33:-1]
@@ -188,18 +203,14 @@ def generate_dataset(
     for _ in tqdm(range(n_sims), desc="coalescent simulations"):
         generations, fraction, ancestral_ne = _draw_prior(rng, cfg)
         sim_seed = int(rng.integers(1, 2**31 - 2))
-        draw = rng.random()
-        if draw < 0.5:
-            scenario = 0
-            mutation_multiplier = recombination_multiplier = 1.0
-            recombination_cv = missingness = spatial_suppression = 0.0
-        else:
-            scenario = 1 if draw < 0.75 else 2 if draw < 0.9 else 3
-            mutation_multiplier = float(np.exp(rng.normal(0, 0.08)))
-            recombination_multiplier = float(np.exp(rng.normal(0, 0.15)))
-            recombination_cv = float(rng.uniform(0.0, 0.8)) if scenario in (1, 3) else 0.0
-            missingness = float(rng.uniform(0.0, 0.06)) if scenario in (2, 3) else 0.0
-            spatial_suppression = float(rng.uniform(0.0, 0.4)) if scenario in (2, 3) else 0.0
+        (
+            scenario,
+            mutation_multiplier,
+            recombination_multiplier,
+            recombination_cv,
+            missingness,
+            spatial_suppression,
+        ) = _draw_nuisance(rng)
         b = simulate_one(
             observed.n_haplotypes,
             generations,
@@ -252,5 +263,83 @@ def generate_dataset(
             ]
         ),
         n_haplotypes=np.int64(observed.n_haplotypes),
+        seed=np.int64(seed),
+    )
+
+
+def generate_chromosome_dataset(
+    observed: FeatureBundle | FeatureCollection,
+    out: str | Path,
+    *,
+    n_cells: int,
+    blocks_per_cell: int = 50,
+    cell_start: int = 0,
+    seed: int = 20261001,
+) -> None:
+    """Generate 2 Mb blocks grouped into synthetic 100 Mb parameter cells."""
+    cfg = SimulationConfig(sequence_length=2_000_000)
+    rng = np.random.default_rng(seed)
+    windows, spectra, targets, ancestral_sizes = [], [], [], []
+    nuisance, cell_ids, variant_counts = [], [], []
+    for local_cell in tqdm(range(n_cells), desc="chromosome parameter cells"):
+        cell_id = cell_start + local_cell
+        generations, fraction, ancestral_ne = _draw_prior(rng, cfg)
+        nuisance_draw = _draw_nuisance(rng)
+        for _ in range(blocks_per_cell):
+            sim_seed = int(rng.integers(1, 2**31 - 2))
+            (
+                scenario,
+                mutation_multiplier,
+                recombination_multiplier,
+                recombination_cv,
+                missingness,
+                spatial_suppression,
+            ) = nuisance_draw
+            bundle = simulate_one(
+                observed.n_haplotypes,
+                generations,
+                fraction,
+                ancestral_ne,
+                cfg,
+                sim_seed,
+                mutation_multiplier=mutation_multiplier,
+                recombination_multiplier=recombination_multiplier,
+                recombination_cv=recombination_cv,
+                missingness=missingness,
+                spatial_suppression=spatial_suppression,
+            )
+            _degrade_arg_context(bundle.sfs, rng)
+            if rng.random() < 0.2:
+                bundle.sfs[-33:] = 0
+            windows.append(bundle.windows)
+            spectra.append(bundle.sfs)
+            targets.append((np.log(generations), np.log(fraction / (1 - fraction))))
+            ancestral_sizes.append(ancestral_ne)
+            nuisance.append(nuisance_draw)
+            cell_ids.append(cell_id)
+            variant_counts.append(bundle.n_variants)
+    out = Path(out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(
+        out,
+        windows=np.asarray(windows, dtype=np.float32),
+        sfs=np.asarray(spectra, dtype=np.float32),
+        targets=np.asarray(targets, dtype=np.float32),
+        ancestral_ne=np.asarray(ancestral_sizes, dtype=np.float32),
+        nuisance=np.asarray(nuisance, dtype=np.float32),
+        nuisance_names=np.asarray(
+            [
+                "scenario",
+                "mutation_multiplier",
+                "recombination_multiplier",
+                "recombination_cv",
+                "missingness",
+                "spatial_suppression",
+            ]
+        ),
+        cell_id=np.asarray(cell_ids, dtype=np.int64),
+        n_variants=np.asarray(variant_counts, dtype=np.int64),
+        n_haplotypes=np.int64(observed.n_haplotypes),
+        blocks_per_cell=np.int64(blocks_per_cell),
         seed=np.int64(seed),
     )

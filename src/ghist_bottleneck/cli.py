@@ -9,7 +9,7 @@ import yaml
 
 from .features import FeatureBundle, FeatureCollection, extract_vcf, extract_vcf_blocks
 from .infer import predict, predict_blocks
-from .simulate import generate_dataset
+from .simulate import generate_chromosome_dataset, generate_dataset
 from .train import train_ensemble
 from .sfs_baseline import fit_two_epoch, write_fit
 
@@ -32,6 +32,13 @@ def main() -> None:
     sim.add_argument("--n-sims", type=int, default=5000)
     sim.add_argument("--seed", type=int, default=20260821)
     sim.add_argument("--quick", action="store_true")
+    simc = sub.add_parser("simulate-chromosomes")
+    simc.add_argument("--observed", required=True)
+    simc.add_argument("--out", required=True)
+    simc.add_argument("--cells", type=int, default=10)
+    simc.add_argument("--blocks-per-cell", type=int, default=50)
+    simc.add_argument("--cell-start", type=int, default=0)
+    simc.add_argument("--seed", type=int, default=20261001)
     tr = sub.add_parser("train")
     tr.add_argument("--dataset", required=True)
     tr.add_argument("--out-dir", required=True)
@@ -85,6 +92,22 @@ def main() -> None:
         generate_dataset(
             observed, args.out,
             n_sims=args.n_sims, seed=args.seed, quick=args.quick,
+        )
+    elif args.command == "simulate-chromosomes":
+        stored = np.load(args.observed)
+        observed = (
+            FeatureCollection.load(args.observed)
+            if stored["windows"].ndim == 3
+            else FeatureBundle.load(args.observed)
+        )
+        stored.close()
+        generate_chromosome_dataset(
+            observed,
+            args.out,
+            n_cells=args.cells,
+            blocks_per_cell=args.blocks_per_cell,
+            cell_start=args.cell_start,
+            seed=args.seed,
         )
     elif args.command == "train":
         configuration = yaml.safe_load(Path(args.config).read_text()) if args.config else {}

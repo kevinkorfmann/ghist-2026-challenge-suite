@@ -27,6 +27,12 @@ def main() -> None:
     if missing:
         raise ValueError(f"simulation chunks have incompatible schemas: {missing}")
     merged = {key: np.concatenate([chunk[key] for chunk in chunks]) for key in keys}
+    for key in ("cell_id", "n_variants"):
+        present = [key in chunk for chunk in chunks]
+        if any(present) and not all(present):
+            raise ValueError(f"simulation chunks disagree on optional field {key}")
+        if all(present):
+            merged[key] = np.concatenate([chunk[key] for chunk in chunks])
     merged["n_haplotypes"] = chunks[0]["n_haplotypes"]
     merged["nuisance_names"] = chunks[0]["nuisance_names"]
     merged["chunk_seeds"] = np.asarray([int(chunk["seed"]) for chunk in chunks])
@@ -52,6 +58,7 @@ def main() -> None:
         "n_haplotypes": int(merged["n_haplotypes"]),
         "chunk_seeds": merged["chunk_seeds"].tolist(),
         "nuisance_names": merged["nuisance_names"].tolist(),
+        "optional_fields": [key for key in ("cell_id", "n_variants") if key in merged],
     }
     output.with_suffix(output.suffix + ".manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n"

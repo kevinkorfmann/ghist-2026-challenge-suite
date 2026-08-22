@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 
 import numpy as np
 import torch
@@ -65,6 +66,7 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(yaml.safe_dump({k: result[k] for k in ("generations", "post_decline_fraction")}, sort_keys=False))
+    out.with_suffix(out.suffix + ".json").write_text(json.dumps(result, indent=2) + "\n")
     return result
 
 
@@ -188,7 +190,7 @@ def predict_blocks(
         block_ends=collection.block_ends,
         n_variants=collection.n_variants,
     )
-    return {
+    result = {
         "generations": int(round(generations)),
         "post_decline_fraction": round(fraction, 6),
         "diagnostics": {
@@ -201,3 +203,5 @@ def predict_blocks(
             "block_artifact": str(diagnostics_path),
         },
     }
+    out.with_suffix(out.suffix + ".json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
