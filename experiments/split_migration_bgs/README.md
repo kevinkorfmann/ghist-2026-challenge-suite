@@ -20,3 +20,13 @@ roughly 15–20% diversity suppression already measured under the same linked-
 selection design in Task 3. Four-arm forward-selection recovery, distance-band
 diagnostics, chromosome-arm holdouts, and linked-block uncertainty remain open
 gates before any result can be frozen.
+
+Distance-band job `7754282` confirms strong model misspecification in the
+selected and sparse extremes. Coding sites return 15,461/22,484 individuals,
+4,168 generations, and migration 0.0001606, with an ancestral-size scale of
+only 7,564. The 2.44 Mb >100 kb tail contains just 3,446 variants and is highly
+unstable, so it is excluded. In contrast, the well-powered 1 bp–1 kb noncoding
+band returns 18,010/25,918 individuals, 5,028 generations, and migration
+0.0001356. All noncoding sequence returns 16,313/23,358, 4,500, and 0.0001455.
+This heterogeneity makes known-truth linked-selection recovery essential; no
+single observed distance band is being chosen because it happens to look round.

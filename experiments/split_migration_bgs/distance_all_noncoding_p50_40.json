@@ -1,0 +1,60 @@
+{
+  "state": "COMPLETED",
+  "stratum": "all_noncoding",
+  "included_distance_labels": [
+    "noncoding_1bp_1kb",
+    "noncoding_1kb_10kb",
+    "noncoding_10kb_100kb",
+    "noncoding_gt100kb"
+  ],
+  "physical_exposure_bp": 90325536,
+  "metadata": {
+    "diploid_samples": {
+      "AFR": 47,
+      "EUR": 34
+    },
+    "haplotypes": {
+      "AFR": 94,
+      "EUR": 68
+    },
+    "ancestral_reference_records": 513470,
+    "ancestral_alternate_records": 0,
+    "skipped_records": 951,
+    "sites_by_distance_stratum": {
+      "coding_overlap": 77920,
+      "noncoding_1bp_1kb": 137300,
+      "noncoding_1kb_10kb": 213787,
+      "noncoding_10kb_100kb": 81017,
+      "noncoding_gt100kb": 3446
+    }
+  },
+  "fit": {
+    "AFR_population_size": 16312.701771755643,
+    "EUR_population_size": 23357.55318868056,
+    "generations_since_split": 4500.1675891489585,
+    "migration_rate": 0.000145515126464247,
+    "ancestral_population_size": 12946.653491776293,
+    "scaled_parameters": {
+      "AFR_size_ratio": 1.2599936950593034,
+      "EUR_size_ratio": 1.804138282029195,
+      "split_duration_2N": 0.1737965564617707,
+      "migration_2N": 3.7678678402892247
+    },
+    "theta": 47478.18469166919,
+    "multinomial_log_likelihood": -5105.728518299964,
+    "best_restart": 18,
+    "successful_restarts": 32,
+    "failed_restarts": [],
+    "projection": [
+      50,
+      40
+    ],
+    "restarts": 32,
+    "workers": 8,
+    "sequence_length": 90325536,
+    "mutation_rate": 1.015e-08,
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false
+  },
+  "submission_count": 0
+}
