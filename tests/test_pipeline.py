@@ -22,6 +22,7 @@ from ghist_bottleneck.model import BottleneckNet, mixture_nll
 from ghist_bottleneck.infer import apply_chromosome_calibration
 from ghist_bottleneck.dadi_reference import physical_parameters
 from ghist_bottleneck.momentsld_reference import (
+    compose_inference_data,
     compute_region,
     normalize_bootstrap_covariances,
 )
@@ -85,6 +86,16 @@ class PipelineTests(unittest.TestCase):
         normalized = normalize_bootstrap_covariances(bootstrapped)
         self.assertEqual(normalized["varcovs"][0].shape, (2, 2))
         self.assertEqual(normalized["varcovs"][1].shape, (1, 1))
+
+    def test_momentsld_joint_data_drops_single_locus_ld_entry(self):
+        means = [np.ones(2), np.ones(1)]
+        varcovs = [np.eye(2), np.eye(1)]
+        spectrum = np.arange(5)
+        ld_only = compose_inference_data(means, varcovs)
+        joint = compose_inference_data(means, varcovs, spectrum)
+        self.assertEqual([len(values) for values in ld_only], [2, 2])
+        self.assertEqual([len(values) for values in joint[:2]], [1, 1])
+        np.testing.assert_array_equal(joint[2], spectrum)
 
     def test_dadi_reference_converts_scaled_time_with_ancestral_size(self):
         generations, fraction, ancestral_ne = physical_parameters(

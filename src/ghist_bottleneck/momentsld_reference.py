@@ -28,6 +28,13 @@ def normalize_bootstrap_covariances(bootstrapped: dict) -> dict:
     return bootstrapped
 
 
+def compose_inference_data(means: list, varcovs: list, spectrum=None) -> list:
+    """Drop the single-locus LD entry when the spectrum supplies that signal."""
+    if spectrum is None:
+        return [means, varcovs]
+    return [means[:-1], varcovs[:-1], spectrum]
+
+
 def prepare_hdf5(vcf: str | Path) -> Path:
     import allel
 
@@ -115,11 +122,11 @@ def fit_regions(
     )
     recombination_edges = raw_edges * recombination_rate
     model_functions = [LD.Demographics1D.two_epoch]
-    data = [means, varcovs]
+    data = compose_inference_data(means, varcovs)
     spectrum_metadata = None
     if joint_sfs:
         spectrum, spectrum_metadata = projected_sfs_from_vcf(vcf, polarized=True)
-        data.append(moments.Spectrum(spectrum))
+        data = compose_inference_data(means, varcovs, moments.Spectrum(spectrum))
         model_functions.append(moments.Demographics1D.two_epoch)
 
     lower = np.array([0.02, 1e-4, 5_000.0])
