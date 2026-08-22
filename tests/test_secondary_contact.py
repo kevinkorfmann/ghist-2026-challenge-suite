@@ -19,6 +19,7 @@ from ghist_secondary_contact.coalescent import (
     secondary_contact_pair_hazards,
 )
 from ghist_secondary_contact.spectrum import (
+    generator_matched_secondary_contact_spectrum,
     joint_spectrum_from_vcf,
     secondary_contact_spectrum,
 )
@@ -106,6 +107,15 @@ class SecondaryContactTests(unittest.TestCase):
     def test_joint_spectrum_model_has_expected_dimensions(self):
         spectrum = secondary_contact_spectrum(
             [1.2, 0.7, 0.2, 0.05, 1.0],
+            [8, 6],
+        )
+        self.assertEqual(spectrum.shape, (9, 7))
+        self.assertTrue(np.isfinite(spectrum).all())
+        self.assertGreater(spectrum.S(), 0)
+
+    def test_generator_matched_spectrum_has_expected_dimensions(self):
+        spectrum = generator_matched_secondary_contact_spectrum(
+            [1.2, 0.7, 0.2, 0.25, 1.0],
             [8, 6],
         )
         self.assertEqual(spectrum.shape, (9, 7))

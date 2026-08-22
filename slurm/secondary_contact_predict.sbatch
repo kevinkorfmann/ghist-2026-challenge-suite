@@ -13,5 +13,5 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 .venv/bin/python scripts/predict_secondary_contact.py \
   --vcf data/raw/demography/secondary_contact/testing/secondary_contact.testing.vcf.gz \
-  --checkpoints 'artifacts/task2_secondary_contact/model_sfs_transformer_*.pt' \
-  --out artifacts/task2_secondary_contact/sfs_ensemble_testing_prediction.json
+  --checkpoints "${CHECKPOINTS:-artifacts/task2_secondary_contact/model_sfs_transformer_*.pt}" \
+  --out "${OUT:-artifacts/task2_secondary_contact/sfs_ensemble_testing_prediction.json}"

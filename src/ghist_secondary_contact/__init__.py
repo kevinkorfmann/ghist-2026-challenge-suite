@@ -6,7 +6,11 @@ from .coalescent import (
     secondary_contact_interval_probabilities,
     secondary_contact_pair_hazards,
 )
-from .spectrum import fit_secondary_contact_spectrum, secondary_contact_spectrum
+from .spectrum import (
+    fit_secondary_contact_spectrum,
+    generator_matched_secondary_contact_spectrum,
+    secondary_contact_spectrum,
+)
 from .model import SecondaryContactNet
 from .simulate import SimulationNuisance, parameter_design, simulate_block
 from .features import (
@@ -25,6 +29,7 @@ __all__ = [
     "SimulationNuisance",
     "build_demography",
     "fit_secondary_contact_spectrum",
+    "generator_matched_secondary_contact_spectrum",
     "fit_secondary_contact_interval_counts",
     "inverse_transform_targets",
     "population_pair_hazards",

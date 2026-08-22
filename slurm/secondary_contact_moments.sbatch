@@ -15,8 +15,10 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 MODE="${MODE:-folded}"
 EXTRA=()
-if [[ "$MODE" == *folded* ]]; then EXTRA+=(--folded); fi
-if [[ -n "${PROJECTION:-}" ]]; then
+if [[ "$MODE" != *unfolded* ]]; then EXTRA+=(--folded); fi
+if [[ -n "${PROJECTION1:-}" && -n "${PROJECTION2:-}" ]]; then
+  EXTRA+=(--projection "$PROJECTION1" "$PROJECTION2")
+elif [[ -n "${PROJECTION:-}" ]]; then
   read -r PROJECTION1 PROJECTION2 <<< "$PROJECTION"
   EXTRA+=(--projection "$PROJECTION1" "$PROJECTION2")
 fi
@@ -26,4 +28,5 @@ fi
   --restarts "${RESTARTS:-64}" \
   --workers "${SLURM_CPUS_PER_TASK}" \
   --maxiter "${MAXITER:-750}" \
+  --convention "${CONVENTION:-simple}" \
   "${EXTRA[@]}"

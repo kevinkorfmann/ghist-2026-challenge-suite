@@ -42,8 +42,76 @@ def secondary_contact_spectrum(
     return spectrum.fold() if folded else spectrum
 
 
+def generator_matched_secondary_contact_spectrum(
+    parameters: Sequence[float],
+    sample_sizes: Sequence[int],
+    *,
+    folded: bool = False,
+):
+    """Expected SFS under the pinned hidden-epoch generator convention.
+
+    Parameters are current population-size ratios, total split duration,
+    contact fraction of split time, and scaled symmetric migration.
+    """
+    import moments
+
+    nu1, nu2_current, split_duration, contact_fraction, migration = parameters
+    if split_duration <= 0 or not 0 < contact_fraction < 1:
+        raise ValueError("split duration and contact fraction are invalid")
+    n1, n2 = (int(value) for value in sample_sizes)
+    contact_duration = split_duration * contact_fraction
+    spectrum = moments.Spectrum(
+        0.5 * moments.LinearSystem_1D.steady_state_1D(n1 + n2)
+    )
+    # Forward through the three unreported ancestral epochs.
+    spectrum.integrate([1.5], 0.10 * split_duration)
+    spectrum.integrate([2.0], 0.05 * split_duration)
+    spectrum.integrate([1.0], 0.05 * split_duration)
+    spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
+    # Integrate toward the present across every derived-population boundary.
+    boundaries = sorted(
+        {
+            0.0,
+            0.45 * contact_duration,
+            contact_duration,
+            0.50 * split_duration,
+            0.80 * split_duration,
+            split_duration,
+        },
+        reverse=True,
+    )
+    for older, younger in zip(boundaries[:-1], boundaries[1:]):
+        duration = older - younger
+        if duration <= 0:
+            continue
+        midpoint = 0.5 * (older + younger)
+        if midpoint >= 0.80 * split_duration:
+            mainland_size = 0.8
+        elif midpoint >= 0.50 * split_duration:
+            mainland_size = 0.5
+        else:
+            mainland_size = nu1
+        if midpoint >= contact_duration:
+            island_size = nu2_current / 3.0
+        elif midpoint >= 0.45 * contact_duration:
+            island_size = 1.5 * nu2_current
+        else:
+            island_size = nu2_current
+        migration_matrix = None
+        if midpoint < contact_duration:
+            migration_matrix = np.asarray(
+                [[0.0, migration], [migration, 0.0]], dtype=np.float64
+            )
+        spectrum.integrate(
+            [mainland_size, island_size],
+            duration,
+            m=migration_matrix,
+        )
+    return spectrum.fold() if folded else spectrum
+
+
 def _fit_restart(arguments: tuple) -> dict:
-    spectrum, start, lower, upper, folded, restart, maxiter = arguments
+    spectrum, start, lower, upper, folded, restart, maxiter, convention = arguments
     import moments
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=float))
@@ -51,6 +119,10 @@ def _fit_restart(arguments: tuple) -> dict:
         data = data.fold()
 
     def model(parameters, sample_sizes):
+        if convention == "generator_matched":
+            return generator_matched_secondary_contact_spectrum(
+                parameters, sample_sizes, folded=folded
+            )
         return secondary_contact_spectrum(parameters, sample_sizes, folded=folded)
 
     try:
@@ -97,6 +169,7 @@ def fit_secondary_contact_spectrum(
     maxiter: int = 750,
     seed: int = 74031,
     folded: bool = False,
+    convention: str = "simple",
 ) -> dict:
     """Fit the five-parameter joint-SFS reference with independent restarts."""
     fitting_spectrum = np.asarray(spectrum, dtype=float)
@@ -106,12 +179,18 @@ def fit_secondary_contact_spectrum(
         fitting_spectrum = np.asarray(
             moments.Spectrum(fitting_spectrum).project(list(projection)), dtype=float
         )
-    lower = np.asarray([0.01, 0.01, 1e-5, 1e-5, 1e-6])
-    upper = np.asarray([100.0, 100.0, 10.0, 10.0, 100.0])
+    if convention not in {"simple", "generator_matched"}:
+        raise ValueError(f"unknown spectrum convention: {convention}")
+    if convention == "generator_matched":
+        lower = np.asarray([0.01, 0.01, 1e-5, 0.002, 1e-6])
+        upper = np.asarray([100.0, 100.0, 10.0, 0.98, 100.0])
+    else:
+        lower = np.asarray([0.01, 0.01, 1e-5, 1e-5, 1e-6])
+        upper = np.asarray([100.0, 100.0, 10.0, 10.0, 100.0])
     rng = np.random.default_rng(seed)
     starts = [np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)]
     work = [
-        (fitting_spectrum, start, lower, upper, folded, restart, maxiter)
+        (fitting_spectrum, start, lower, upper, folded, restart, maxiter, convention)
         for restart, start in enumerate(starts)
     ]
     if workers > 1:
@@ -132,10 +211,24 @@ def fit_secondary_contact_spectrum(
     if not fits:
         raise RuntimeError(f"all moments restarts failed: {failures[:3]}")
     likelihood, estimate, theta, best_restart = max(fits, key=lambda item: item[0])
-    nu1, nu2, isolation_duration, contact_duration, scaled_migration = estimate
+    nu1, nu2 = estimate[:2]
     ancestral_size = theta / (4 * mutation_rate * sequence_length)
-    contact_time = contact_duration * 2 * ancestral_size
-    split_time = (isolation_duration + contact_duration) * 2 * ancestral_size
+    if convention == "generator_matched":
+        split_duration, contact_fraction, scaled_migration = estimate[2:]
+        split_time = split_duration * 2 * ancestral_size
+        contact_time = split_time * contact_fraction
+        scaled_time = {
+            "split_duration_2N": float(split_duration),
+            "contact_fraction": float(contact_fraction),
+        }
+    else:
+        isolation_duration, contact_duration, scaled_migration = estimate[2:]
+        contact_time = contact_duration * 2 * ancestral_size
+        split_time = (isolation_duration + contact_duration) * 2 * ancestral_size
+        scaled_time = {
+            "isolation_duration_2N": float(isolation_duration),
+            "contact_duration_2N": float(contact_duration),
+        }
     migration_rate = scaled_migration / (2 * ancestral_size)
     return {
         "generations_since_split": float(split_time),
@@ -147,8 +240,7 @@ def fit_secondary_contact_spectrum(
         "scaled_parameters": {
             "population1_size_ratio": float(nu1),
             "population2_size_ratio": float(nu2),
-            "isolation_duration_2N": float(isolation_duration),
-            "contact_duration_2N": float(contact_duration),
+            **scaled_time,
             "migration_2N": float(scaled_migration),
         },
         "theta": theta,
@@ -161,6 +253,7 @@ def fit_secondary_contact_spectrum(
         "projection": None if projection is None else list(projection),
         "maxiter": maxiter,
         "folded": folded,
+        "convention": convention,
     }
 
 

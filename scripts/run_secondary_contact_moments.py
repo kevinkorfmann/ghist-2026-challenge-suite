@@ -19,6 +19,9 @@ def main() -> None:
     parser.add_argument("--maxiter", type=int, default=750)
     parser.add_argument("--seed", type=int, default=74031)
     parser.add_argument("--folded", action="store_true")
+    parser.add_argument(
+        "--convention", choices=("simple", "generator_matched"), default="simple"
+    )
     parser.add_argument("--mutation-rate", type=float, default=8.4e-8)
     parser.add_argument("--sequence-length", type=float, default=100_000_000)
     args = parser.parse_args()
@@ -33,6 +36,7 @@ def main() -> None:
         maxiter=args.maxiter,
         seed=args.seed,
         folded=args.folded,
+        convention=args.convention,
     )
     result["sfs"] = scan_metadata
     args.out.parent.mkdir(parents=True, exist_ok=True)

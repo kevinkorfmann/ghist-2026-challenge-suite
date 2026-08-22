@@ -40,13 +40,22 @@ coalescence hazards on a fixed log-time grid. Posterior draws are averaged only
 after calibration against known simulated trees; topology-only SINGER,
 SINGER+POLEGON, and truth-tree hazards remain separate ablations.
 
-The exact full-resolution SFS fits are stable to polarization. Folded and
-unfolded estimates respectively give mainland sizes of `18,725` and `19,041`,
-island sizes of `51,450` and `50,733`, ancestral sizes of `16,578` and `16,593`,
-split times of `4,638` and `4,607` generations, migration-start times of `1,183`
-and `1,193` generations, and migration rates of `2.45e-4` and `2.40e-4`.
-Projections to 40×30 and 20×15 chromosomes land in the same local basin and are
-used as sensitivity checks rather than independent estimates.
+Two independent full-resolution folded SFS searches give mainland sizes of
+`18,725` and `19,041`, island sizes of `51,450` and `50,733`, ancestral sizes of
+`16,578` and `16,593`, split times of `4,638` and `4,607` generations,
+migration-start times of `1,183` and `1,193` generations, and migration rates of
+`2.45e-4` and `2.40e-4`. Projections to 40×30 and 20×15 chromosomes land in the
+same local basin. A mode-label audit found that an earlier shell condition also
+folded the run labeled as unfolded; corrected polarized fits are therefore kept
+separate and are not claimed until their new jobs finish.
+
+The pinned historical generator exposes deterministic size epochs that a simple
+five-parameter SFS omits: three ancestral changes just before the split, two
+mainland changes after it, and two island changes around contact. A second
+mechanistic model now integrates those epochs exactly, parameterizing only the
+five reported targets plus the ancestral scale inferred from theta. Folded and
+correctly polarized searches at three projections are compared to the simple
+model before either can be promoted.
 
 In addition to learned genealogy features, a continuous-time three-state
 coalescent reference now propagates mainland/mainland, cross-population, and
