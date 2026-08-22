@@ -63,6 +63,7 @@ def main() -> None:
     parser.add_argument("--eur-samples", type=int, default=34)
     parser.add_argument("--seed", type=int, default=75194000)
     parser.add_argument("--fit-restarts", type=int, default=16)
+    parser.add_argument("--skip-fit", action="store_true")
     args = parser.parse_args()
     if not 0 <= args.left < args.right:
         raise ValueError("simulation coordinates are invalid")
@@ -151,22 +152,6 @@ def main() -> None:
         coding[args.chromosome], int(contig.length), MIDDLE_LABELS
     )
     exposure = overlap_length(selected_segments, args.left, args.right)
-    fit = fit_isolation_with_migration_spectrum(
-        spectrum,
-        mutation_rate=args.mutation_rate,
-        sequence_length=exposure,
-        projection=(60, 50),
-        restarts=args.fit_restarts,
-        workers=1,
-        maxiter=600,
-        seed=args.seed + 1,
-        initial_scaled=(
-            args.afr_size / args.ancestral_size,
-            args.eur_size / args.ancestral_size,
-            args.generations / (2 * args.ancestral_size),
-            2 * args.ancestral_size * args.migration_rate,
-        ),
-    )
     truth = {
         "ancestral_population_size": args.ancestral_size,
         "AFR_population_size": args.afr_size,
@@ -174,6 +159,24 @@ def main() -> None:
         "generations_since_split": args.generations,
         "migration_rate": args.migration_rate,
     }
+    fit = None
+    if not args.skip_fit:
+        fit = fit_isolation_with_migration_spectrum(
+            spectrum,
+            mutation_rate=args.mutation_rate,
+            sequence_length=exposure,
+            projection=(60, 50),
+            restarts=args.fit_restarts,
+            workers=1,
+            maxiter=600,
+            seed=args.seed + 1,
+            initial_scaled=(
+                args.afr_size / args.ancestral_size,
+                args.eur_size / args.ancestral_size,
+                args.generations / (2 * args.ancestral_size),
+                2 * args.ancestral_size * args.migration_rate,
+            ),
+        )
     payload = {
         "truth_in_analysis_units": truth,
         "generator": {
@@ -195,7 +198,9 @@ def main() -> None:
             "physical_exposure_bp": exposure,
         },
         "fit": fit,
-        "relative_error": {
+        "relative_error": None
+        if fit is None
+        else {
             key: fit[key] / truth[key] - 1
             for key in (
                 "AFR_population_size",
