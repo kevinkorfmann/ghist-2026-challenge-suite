@@ -18,6 +18,11 @@ from ghist_secondary_contact.coalescent import (
     secondary_contact_interval_probabilities,
     secondary_contact_pair_hazards,
 )
+from ghist_secondary_contact.calibration import (
+    apply_log_correction,
+    competition_scores,
+    fit_log_correction,
+)
 from ghist_secondary_contact.spectrum import (
     generator_matched_secondary_contact_spectrum,
     joint_spectrum_from_vcf,
@@ -42,6 +47,30 @@ from ghist_secondary_contact.features import (
 
 
 class SecondaryContactTests(unittest.TestCase):
+    def test_log_corrections_reduce_known_multiplicative_bias(self):
+        rng = np.random.default_rng(90210)
+        truth = np.exp(rng.normal(5.0, 0.5, (24, 5)))
+        ratios = np.asarray((0.9, 1.1, 0.95, 1.2, 0.8))
+        estimates = truth * ratios
+        raw = competition_scores(estimates, truth)
+        median = fit_log_correction("median_ratio", estimates, truth)
+        corrected = apply_log_correction(median, estimates)
+        self.assertLess(float(competition_scores(corrected, truth).max()), 1e-12)
+        self.assertGreater(float(raw.min()), 0.0)
+
+    def test_ridge_log_correction_is_positive_and_score_aligned(self):
+        rng = np.random.default_rng(19073)
+        truth = np.exp(rng.normal(5.0, 0.7, (40, 5)))
+        logged = np.log(truth)
+        estimates = truth * np.exp(0.12 + 0.04 * (logged - logged.mean(axis=0)))
+        correction = fit_log_correction("ridge_0.1", estimates, truth)
+        corrected = apply_log_correction(correction, estimates)
+        self.assertTrue(np.all(corrected > 0))
+        self.assertLess(
+            float(competition_scores(corrected, truth).mean()),
+            float(competition_scores(estimates, truth).mean()),
+        )
+
     def test_analytic_pair_coalescent_is_normalized_and_ordered(self):
         parameters = SecondaryContactParameters(
             ancestral_size=16_000,

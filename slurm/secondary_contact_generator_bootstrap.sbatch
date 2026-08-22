@@ -12,6 +12,18 @@ module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 OUTPUT_ROOT="${OUTPUT_ROOT:-artifacts/task2_secondary_contact/generator_bootstrap}"
+if [[ -n "${DESIGN:-}" ]]; then
+  mapfile -t TRUTH_VALUES < <(jq -r ".rows[${SLURM_ARRAY_TASK_ID}].truth[]" "$DESIGN")
+  if [[ "${#TRUTH_VALUES[@]}" -ne 6 ]]; then
+    echo "could not read six truth values for task ${SLURM_ARRAY_TASK_ID}" >&2
+    exit 2
+  fi
+else
+  TRUTH_VALUES=(
+    "${ANCESTRAL:-32865}" "${MAINLAND:-20100}" "${ISLAND:-79400}"
+    "${SPLIT:-4350}" "${CONTACT:-1390}" "${MIGRATION:-0.000208}"
+  )
+fi
 EXTRA_ARGS=()
 if [[ "${FULL_PROJECTION:-0}" == "1" ]]; then
   EXTRA_ARGS+=(--full-projection)
@@ -38,9 +50,7 @@ fi
 .venv/bin/python scripts/bootstrap_secondary_contact_generator_fit.py \
   --out "$OUTPUT_ROOT/replicate_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate "$SLURM_ARRAY_TASK_ID" \
-  --truth \
-  "${ANCESTRAL:-32865}" "${MAINLAND:-20100}" "${ISLAND:-79400}" \
-  "${SPLIT:-4350}" "${CONTACT:-1390}" "${MIGRATION:-0.000208}" \
+  --truth "${TRUTH_VALUES[@]}" \
   --blocks "${BLOCKS:-10}" \
   --block-length "${BLOCK_LENGTH:-10000000}" \
   --projection ${PROJECTION:-40 30} \
