@@ -21,6 +21,17 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def dataset_identity(path: Path) -> tuple[str, int]:
+    manifest_path = path.with_suffix(path.suffix + ".manifest.json")
+    size = path.stat().st_size
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
+        if int(manifest["bytes"]) != size:
+            raise ValueError("dataset size disagrees with its manifest")
+        return str(manifest["sha256"]), size
+    return sha256(path), size
+
+
 def selection_score(output: Path, weights: dict) -> dict:
     metrics = json.loads((output / "metrics.json").read_text())
     normalization = np.load(output / "normalization.npz")
@@ -82,15 +93,24 @@ def main() -> None:
         weight_decay=float(training["weight_decay"]),
         batch_size=int(training["batch_size"]),
     )
-    revision = subprocess.run(
-        ["git", "rev-parse", "HEAD"], check=True, capture_output=True, text=True
-    ).stdout.strip()
+    revision_result = subprocess.run(
+        ["git", "rev-parse", "HEAD"], capture_output=True, text=True
+    )
+    if revision_result.returncode == 0:
+        revision = revision_result.stdout.strip()
+    else:
+        marker = Path(".source-revision")
+        if not marker.exists():
+            raise RuntimeError("source revision is unavailable")
+        revision = marker.read_text().strip()
+    dataset_digest, dataset_bytes = dataset_identity(args.dataset)
     record = {
         "candidate": args.candidate,
         "configuration": configuration,
         "protocol": registry["protocol"],
         "dataset": str(args.dataset.resolve()),
-        "dataset_sha256": sha256(args.dataset),
+        "dataset_sha256": dataset_digest,
+        "dataset_bytes": dataset_bytes,
         "git_revision": revision,
         "elapsed_seconds": time.time() - started,
         **selection_score(output, registry["protocol"]),

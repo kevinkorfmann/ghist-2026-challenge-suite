@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import argparse
 import glob
+import hashlib
+import json
 from pathlib import Path
 
 import numpy as np
@@ -38,6 +40,22 @@ def main() -> None:
     np.savez_compressed(output, **merged)
     for chunk in chunks:
         chunk.close()
+    digest = hashlib.sha256()
+    with output.open("rb") as handle:
+        for block in iter(lambda: handle.read(8 * 1024 * 1024), b""):
+            digest.update(block)
+    manifest = {
+        "path": str(output),
+        "sha256": digest.hexdigest(),
+        "bytes": output.stat().st_size,
+        "simulations": int(len(merged["targets"])),
+        "n_haplotypes": int(merged["n_haplotypes"]),
+        "chunk_seeds": merged["chunk_seeds"].tolist(),
+        "nuisance_names": merged["nuisance_names"].tolist(),
+    }
+    output.with_suffix(output.suffix + ".manifest.json").write_text(
+        json.dumps(manifest, indent=2) + "\n"
+    )
 
 
 if __name__ == "__main__":

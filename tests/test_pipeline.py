@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+import json
 from unittest.mock import patch
 from pathlib import Path
 import subprocess
@@ -81,6 +82,9 @@ class PipelineTests(unittest.TestCase):
             np.testing.assert_array_equal(merged["chunk_seeds"], [100, 101])
             np.testing.assert_array_equal(merged["nuisance_names"], names)
             self.assertEqual(merged["nuisance"].shape, (2, 2))
+            manifest = json.loads(output.with_suffix(".npz.manifest.json").read_text())
+            self.assertEqual(manifest["simulations"], 2)
+            self.assertEqual(len(manifest["sha256"]), 64)
 
     def test_ld_accumulator_preserves_local_perfect_linkage(self):
         accumulator = LDAccumulator(pairs_per_bin=64)
