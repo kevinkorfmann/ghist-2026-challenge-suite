@@ -15,6 +15,10 @@ from ghist_relatedness.labels import HUMAN_LABELS, accepted_label
 MEIOSES = {label: up + down for (up, down, _), label in HUMAN_LABELS.items()}
 
 
+def is_accepted_pedigree_source(source: object) -> bool:
+    return "accepted pedigree tuple" in str(source)
+
+
 def pair_key(row: dict[str, object]) -> tuple[str, str]:
     return tuple(sorted((str(row["indID1"]), str(row["indID2"]))))
 
@@ -155,7 +159,7 @@ def main() -> None:
             parent[right_root] = left_root
 
     for row in rows:
-        if row["relation"] == "siblings" and "pedigree tuple" in row["source"]:
+        if row["relation"] == "siblings" and is_accepted_pedigree_source(row["source"]):
             union(str(row["indID1"]), str(row["indID2"]))
     components: dict[str, list[str]] = {}
     for sample in samples:
@@ -173,7 +177,7 @@ def main() -> None:
             accepted = {
                 (str(edge["relation"]), edge["topology_meioses"])
                 for edge in edges
-                if edge["source"] == "accepted pedigree tuple"
+                if is_accepted_pedigree_source(edge["source"])
             }
             if len(accepted) > 1:
                 conflicts += 1
@@ -183,7 +187,7 @@ def main() -> None:
             relation, meioses = next(iter(accepted))
             for edge in edges:
                 if (
-                    edge["source"] != "accepted pedigree tuple"
+                    not is_accepted_pedigree_source(edge["source"])
                     and edge["topology_meioses"] == meioses
                     and edge["relation"] != relation
                 ):
