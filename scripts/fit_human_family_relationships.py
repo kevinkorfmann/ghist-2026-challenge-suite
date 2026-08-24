@@ -131,6 +131,34 @@ def background_correct(
     return offsets
 
 
+def trim_shortest_background_shape(
+    observed: list[dict[str, object]], count_offset: float, minimum_cm: int
+) -> None:
+    remove_count = max(0, round(count_offset))
+    for row in observed:
+        ordered = [
+            float(row[f"ordered_length_{rank + 1}"])
+            for rank in range(ORDERED)
+            if float(row[f"ordered_length_{rank + 1}"]) > 0
+        ]
+        eligible = sorted(value for value in ordered if value >= minimum_cm)
+        removed = eligible[:remove_count]
+        for value in removed:
+            ordered.remove(value)
+        ordered.sort(reverse=True)
+        row["max_cm"] = ordered[0] if ordered else 0.0
+        removed_counts, _ = np.histogram(
+            np.asarray(removed), bins=np.asarray(BIN_EDGES)
+        )
+        for index, count in enumerate(removed_counts):
+            key = f"length_bin_{index}"
+            row[key] = max(0.0, float(row[key]) - float(count))
+        for rank in range(ORDERED):
+            row[f"ordered_length_{rank + 1}"] = (
+                ordered[rank] if rank < len(ordered) else 0.0
+            )
+
+
 def individual_background_correct(
     observed: list[dict[str, object]],
     reference: list[dict[str, object]],
@@ -279,6 +307,7 @@ def main() -> None:
     parser.add_argument("--background-reference", type=Path)
     parser.add_argument("--background-quantile", type=float, default=0.5)
     parser.add_argument("--individual-background", action="store_true")
+    parser.add_argument("--trim-background-shape", action="store_true")
     parser.add_argument("--minimum-cm", type=int, choices=THRESHOLDS, default=5)
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--out-dir", type=Path, required=True)
@@ -290,6 +319,7 @@ def main() -> None:
     validation = read_pedsim(args.validation, args.genome_cm)
     evaluation = read_pedsim(args.evaluation, args.genome_cm)
     observed = read_observed(args.observed)
+    names = feature_names(args.minimum_cm)
     offsets = {}
     if args.background_reference is not None:
         reference = read_observed(args.background_reference)
@@ -304,7 +334,12 @@ def main() -> None:
                 args.background_quantile,
                 args.genome_cm,
             )
-    names = feature_names(args.minimum_cm)
+            if args.trim_background_shape:
+                trim_shortest_background_shape(
+                    observed,
+                    float(offsets[f"segments_ge_{args.minimum_cm}"]),
+                    args.minimum_cm,
+                )
     train_x = matrix(train, names)
     train_y = np.asarray([record["label"] for record in train])
 
@@ -360,6 +395,7 @@ def main() -> None:
         if args.background_reference is not None
         else None,
         "individual_background": args.individual_background,
+        "trim_background_shape": args.trim_background_shape,
         "background_offsets": offsets,
         "feature_names": names,
         "labels": list(LABELS),

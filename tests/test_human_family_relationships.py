@@ -3,6 +3,7 @@ from scripts.fit_human_family_relationships import (
     individual_background_correct,
     relationship_label,
     summarize_raw_lengths,
+    trim_shortest_background_shape,
 )
 
 
@@ -47,3 +48,15 @@ def test_individual_background_correction_preserves_reference_level():
     individual_background_correct(observed, reference, genome_cm=100.0)
     corrected = [row["relatedness_ge_20"] for row in observed]
     assert max(corrected) <= 0.011
+
+
+def test_background_shape_trim_removes_shortest_eligible_segments():
+    row = summarize_raw_lengths(
+        [("1", 12.0), ("1", 22.0), ("1", 35.0), ("1", 80.0)],
+        genome_cm=100.0,
+    )
+    trim_shortest_background_shape([row], count_offset=2.0, minimum_cm=20)
+    assert row["max_cm"] == 80.0
+    assert row["ordered_length_1"] == 80.0
+    assert row["ordered_length_2"] == 12.0
+    assert row["length_bin_3"] == 0.0
