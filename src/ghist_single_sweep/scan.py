@@ -185,7 +185,8 @@ def scan_windows(
         features["h2_h1"][index] = h2_h1
         features["mean_r2"][index] = mean_pairwise_r2(haplotypes)
 
-    valid_exposure = exposure >= np.minimum(window_size, variants.contig_length - starts) * 0.8
+    span = ends - starts
+    valid_exposure = (span >= window_size * 0.8) & (exposure >= span * 0.8)
     components = {
         "low_pi": -robust_z(np.log(np.maximum(features["pi"], 1e-12))),
         "low_sites": -robust_z(np.log1p(features["site_count"] / np.maximum(exposure, 1))),

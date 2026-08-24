@@ -68,6 +68,8 @@ class SingleSweepTests(unittest.TestCase):
         result = scan_windows(variants, np.asarray([[0, 1_000]]), 200, 100)
         self.assertEqual(result["composite_score"].shape, result["soft_composite_score"].shape)
         self.assertIn("z_high_h2_h1", result)
+        self.assertTrue(np.isnan(result["composite_score"][-1]))
+        self.assertTrue(np.isnan(result["soft_composite_score"][-1]))
 
 
 if __name__ == "__main__":
