@@ -5,7 +5,11 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-from reconstruct_bonsai_pedigree import convert_segments, serializable_topology
+from reconstruct_bonsai_pedigree import (
+    convert_segments,
+    segment_summaries,
+    serializable_topology,
+)
 
 
 BONSAI_AUTOSOMAL_CM = 3544.57
@@ -39,6 +43,7 @@ def main() -> None:
         result = bonsai.build_pedigree(
             segments,
             bio_info,
+            ibd_stats=segment_summaries(segments, sorted(id_to_sample)),
             max_add_degree=4,
             max_rel_append_types=3,
             ibd_threshold=0,

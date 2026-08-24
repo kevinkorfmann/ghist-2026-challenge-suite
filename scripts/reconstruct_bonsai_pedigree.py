@@ -4,6 +4,7 @@ import argparse
 import gzip
 import json
 from collections import defaultdict
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -111,6 +112,27 @@ def serializable_topology(up_dict: dict[object, list[object]]) -> dict[str, list
     return {str(identifier): values for identifier, values in up_dict.items()}
 
 
+def segment_summaries(
+    segments: list[list[object]], identifiers: list[int]
+) -> dict[frozenset[int], dict[str, float]]:
+    summaries = {
+        frozenset((left, right)): {
+            "total_half": 0.0,
+            "total_full": 0.0,
+            "num_half": 0,
+            "max_seg_cm": 0.0,
+        }
+        for left, right in combinations(identifiers, 2)
+    }
+    for identifier1, identifier2, _, _, _, is_full, length_cm in segments:
+        summary = summaries[frozenset((int(identifier1), int(identifier2)))]
+        key = "total_full" if is_full else "total_half"
+        summary[key] += float(length_cm)
+        summary["num_half"] += int(not is_full)
+        summary["max_seg_cm"] = max(summary["max_seg_cm"], float(length_cm))
+    return summaries
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--ibd", type=Path, required=True)
@@ -135,6 +157,7 @@ def main() -> None:
     result = bonsai.build_pedigree(
         segments,
         bio_info,
+        ibd_stats=segment_summaries(segments, sorted(id_to_sample)),
         max_add_degree=args.max_add_degree,
         max_rel_append_types=args.max_rel_types,
         ibd_threshold=0,

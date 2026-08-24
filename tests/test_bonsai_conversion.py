@@ -5,6 +5,7 @@ from scripts.reconstruct_bonsai_pedigree import (
     numeric_id,
     read_haplotype_segments,
     read_map,
+    segment_summaries,
 )
 
 
@@ -39,3 +40,10 @@ def test_segment_reader_filters_to_family(tmp_path: Path) -> None:
     grouped, samples = read_haplotype_segments(path, {"id_0", "id_1"})
     assert set(grouped) == {("id_0", "id_1", "1")}
     assert samples == {"id_0", "id_1"}
+
+
+def test_segment_summaries_include_zero_pairs() -> None:
+    segments = [[1, 2, "24", 10, 20, False, 12.0]]
+    result = segment_summaries(segments, [1, 2, 3])
+    assert result[frozenset((1, 2))]["total_half"] == 12.0
+    assert result[frozenset((1, 3))]["total_half"] == 0.0
