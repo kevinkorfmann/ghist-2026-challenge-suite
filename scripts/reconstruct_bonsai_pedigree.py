@@ -31,12 +31,17 @@ def numeric_id(sample: str) -> int:
 
 def read_haplotype_segments(
     path: Path,
+    allowed_samples: set[str] | None = None,
 ) -> tuple[dict[tuple[str, str, str], list[tuple[int, int]]], set[str]]:
     grouped: dict[tuple[str, str, str], list[tuple[int, int]]] = defaultdict(list)
     samples: set[str] = set()
     with gzip.open(path, "rt") as handle:
         for line in handle:
             left, _, right, _, chromosome, start, end, _ = line.split()
+            if allowed_samples is not None and (
+                left not in allowed_samples or right not in allowed_samples
+            ):
+                continue
             individual1, individual2 = sorted((left, right))
             grouped[(individual1, individual2, chromosome)].append((int(start), int(end)))
             samples.update((left, right))
@@ -67,9 +72,13 @@ def convert_segments(
     path: Path,
     map_path: Path,
     threshold_cm: float,
+    allowed_samples: set[str] | None = None,
+    cm_scale: float = 1.0,
 ) -> tuple[list[list[object]], list[dict[str, object]], dict[int, str]]:
     genetic_map = read_map(map_path)
-    grouped, samples = read_haplotype_segments(path)
+    grouped, samples = read_haplotype_segments(path, allowed_samples)
+    if allowed_samples is not None:
+        samples.update(allowed_samples)
     id_to_sample = {numeric_id(sample): sample for sample in samples}
     if len(id_to_sample) != len(samples):
         raise ValueError("Sample identifiers are not uniquely mapped")
@@ -88,7 +97,7 @@ def convert_segments(
                         start,
                         end,
                         is_full,
-                        length_cm,
+                        length_cm * cm_scale,
                     ]
                 )
     bio_info = [
@@ -110,12 +119,13 @@ def main() -> None:
     parser.add_argument("--threshold-cm", type=float, default=10.0)
     parser.add_argument("--max-add-degree", type=int, default=4)
     parser.add_argument("--max-rel-types", type=int, default=3)
+    parser.add_argument("--cm-scale", type=float, default=1.0)
     args = parser.parse_args()
 
     from bonsaitree import bonsai
 
     segments, bio_info, id_to_sample = convert_segments(
-        args.ibd, args.map, args.threshold_cm
+        args.ibd, args.map, args.threshold_cm, cm_scale=args.cm_scale
     )
 
     # The challenge provides no ages or sexes. The implementation supports missing

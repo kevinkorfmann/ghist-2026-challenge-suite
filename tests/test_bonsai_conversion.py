@@ -1,6 +1,11 @@
 from pathlib import Path
 
-from scripts.reconstruct_bonsai_pedigree import coverage_intervals, numeric_id, read_map
+from scripts.reconstruct_bonsai_pedigree import (
+    coverage_intervals,
+    numeric_id,
+    read_haplotype_segments,
+    read_map,
+)
 
 
 def test_numeric_id() -> None:
@@ -22,3 +27,15 @@ def test_read_plink_map(tmp_path: Path) -> None:
     result = read_map(path)
     assert result["1"][0].tolist() == [10.0, 20.0]
     assert result["1"][1].tolist() == [0.0, 1.5]
+
+
+def test_segment_reader_filters_to_family(tmp_path: Path) -> None:
+    import gzip
+
+    path = tmp_path / "segments.ibd.gz"
+    with gzip.open(path, "wt") as handle:
+        handle.write("id_0 1 id_1 2 1 10 20 1.0\n")
+        handle.write("id_0 1 id_2 2 1 10 20 1.0\n")
+    grouped, samples = read_haplotype_segments(path, {"id_0", "id_1"})
+    assert set(grouped) == {("id_0", "id_1", "1")}
+    assert samples == {"id_0", "id_1"}
