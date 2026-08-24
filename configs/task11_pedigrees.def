@@ -1,0 +1,32 @@
+# Pairwise calibration structures matching the eight accepted dog labels.
+def siblings 500 2
+2 1
+
+def half_sibling 500 2
+2 1 2 1:1 2:1
+
+def avuncular 500 3
+2 1 2 1n
+3 1 1
+
+def avuncular_once_removed 500 4
+2 1 2 1n
+3 0 1
+4 1 1
+
+def avuncular_twice_removed 500 5
+2 1 2 1n
+3 0 1
+4 0 1
+5 1 1
+
+def full_1st_cousin 500 3
+3 1
+
+def half_1st_cousin 500 3
+2 0 2 1:1 2:1
+3 1
+
+def half_avuncular 500 3
+2 1 2 1:1 2:1 1n
+3 1 1
