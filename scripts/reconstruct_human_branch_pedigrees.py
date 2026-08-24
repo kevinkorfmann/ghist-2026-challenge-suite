@@ -18,6 +18,8 @@ def main() -> None:
     parser.add_argument("--map", type=Path, required=True)
     parser.add_argument("--clusters", type=Path, required=True)
     parser.add_argument("--threshold-cm", type=float, required=True)
+    parser.add_argument("--max-add-degree", type=int, default=4)
+    parser.add_argument("--max-rel-types", type=int, default=3)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
@@ -44,8 +46,8 @@ def main() -> None:
             segments,
             bio_info,
             ibd_stats=segment_summaries(segments, sorted(id_to_sample)),
-            max_add_degree=4,
-            max_rel_append_types=3,
+            max_add_degree=args.max_add_degree,
+            max_rel_append_types=args.max_rel_types,
             ibd_threshold=0,
             remove_distant_threshold=float("inf"),
         )
