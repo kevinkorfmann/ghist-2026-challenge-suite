@@ -9,7 +9,6 @@
 #SBATCH --error=logs/%x-%A_%a.err
 
 set -euo pipefail
-module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 PED_ROOT="$PROJECT_ROOT/external/ped-sim"
 MAP_ROOT="$PROJECT_ROOT/external/dog-recombination"
