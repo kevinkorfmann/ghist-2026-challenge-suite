@@ -132,9 +132,9 @@ def main() -> None:
     prediction_path = args.out_dir / "task9_testing_predictions.csv"
     with prediction_path.open("w", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(("indID1", "indID2", "relationship", "meioses", "confidence"))
-        for record, label, probability in zip(observed_records, predictions, confidence, strict=True):
-            writer.writerow((record["indID1"], record["indID2"], label, MEIOSES[str(label)], f"{probability:.8f}"))
+        writer.writerow(("indID1", "indID2", "meioses_count", "relation"))
+        for record, label in zip(observed_records, predictions, strict=True):
+            writer.writerow((record["indID1"], record["indID2"], MEIOSES[str(label)], label))
 
     joblib.dump({"model": selected, "features": feature_names}, args.out_dir / "task9_model.joblib")
     summary = {
