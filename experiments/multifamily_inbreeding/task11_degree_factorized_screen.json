@@ -1,0 +1,31 @@
+{
+  "challenge": "Relatedness in a multifamily cohort with close inbreeding",
+  "candidate": "degree-guarded histogram-gradient model with IBD-state and chromosome spectra",
+  "decision": "rejected; retain frozen method",
+  "development": {
+    "candidate_exact_accuracy": 0.6375,
+    "baseline_exact_accuracy": 0.63575,
+    "candidate_meioses_accuracy": 0.70225,
+    "baseline_meioses_accuracy": 0.70225
+  },
+  "untouched_primary_holdout": {
+    "replicates": 4,
+    "candidate_mean_exact_accuracy": 0.6226875,
+    "baseline_mean_exact_accuracy": 0.62125,
+    "mean_paired_exact_gain": 0.0014375,
+    "minimum_paired_exact_gain": -0.00325,
+    "positive_exact_replicates": 3,
+    "mean_paired_meioses_gain": 0.0,
+    "required_mean_exact_gain": 0.005,
+    "required_all_replicates_positive": true,
+    "gate_passed": false
+  },
+  "interpretation": "Degree guarding removed degree regression, but richer pairwise spectra did not generalize strongly enough. Remaining exact-label headroom requires validated family-topology evidence.",
+  "betty_job_ids": [
+    "7829280",
+    "7829281",
+    "7829330",
+    "7829358"
+  ],
+  "submission_count": 0
+}

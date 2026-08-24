@@ -115,6 +115,18 @@ meiosis-degree accuracy rose from 68.61% to 69.08%. Two independent pedigree
 reconstructions may change a call only when they agree exactly and preserve the
 pair model's meiosis degree; this refined 198 of 26,106 frozen testing pairs.
 
+## Task 11 decision
+
+Task 11 retains its frozen forest and pedigree consensus. A
+[PONDEROSA-inspired](https://doi.org/10.1093/genetics/iyaf094) screen added
+separate IBD1/IBD2 state spectra, chromosome-level sharing, and a factorized
+degree/exact classifier. A guard made its degree calls identical to the baseline.
+The candidate gained only 0.14 exact points over four untouched replicates, with
+one regression, and failed the precommitted 0.50-point/all-positive gate. The
+[negative result](../experiments/multifamily_inbreeding/task11_degree_factorized_screen.json)
+is retained; family-topology evidence must be validated before further calls are
+changed.
+
 ## Task 1 decision
 
 Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
