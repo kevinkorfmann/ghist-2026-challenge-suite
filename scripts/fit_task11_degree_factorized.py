@@ -204,6 +204,19 @@ def metrics(probabilities: np.ndarray, truth: np.ndarray) -> dict[str, float]:
     }
 
 
+def degree_guarded_probabilities(
+    candidate: np.ndarray, baseline: np.ndarray
+) -> np.ndarray:
+    baseline_labels = np.asarray(LABELS)[np.argmax(baseline, axis=1)]
+    output = np.zeros_like(candidate)
+    for row, baseline_label in enumerate(baseline_labels):
+        meioses = MEIOSES[str(baseline_label)]
+        allowed = np.asarray([MEIOSES[label] == meioses for label in LABELS])
+        conditional = candidate[row, allowed]
+        output[row, allowed] = conditional / max(float(conditional.sum()), 1e-12)
+    return output
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--baseline-model", type=Path, required=True)
@@ -237,6 +250,7 @@ def main() -> None:
             structured = factor_weight * factorized + (1.0 - factor_weight) * direct
             for candidate_weight in (0.5, 0.75, 1.0):
                 probabilities = candidate_weight * structured + (1.0 - candidate_weight) * baseline_probabilities
+                probabilities = degree_guarded_probabilities(probabilities, baseline_probabilities)
                 result = metrics(probabilities, selection_y)
                 result.update({"leaves": leaves, "minimum_leaf": minimum_leaf, "factor_weight": factor_weight, "candidate_weight": candidate_weight})
                 screens.append(result)
@@ -250,6 +264,7 @@ def main() -> None:
     baseline_development = aligned(np.asarray(baseline.classes_), baseline.predict_proba(development_x[:, : len(feature_names())]))
     structured = winner["factor_weight"] * factorized + (1.0 - winner["factor_weight"]) * direct
     development = winner["candidate_weight"] * structured + (1.0 - winner["candidate_weight"]) * baseline_development
+    development = degree_guarded_probabilities(development, baseline_development)
 
     observed_x, observed_pairs, family_indices = read_observed(
         args.observed_ibd, args.observed_hbd, args.map, args.clusters, args.hbd_threshold_cm, rich_summary
@@ -259,6 +274,7 @@ def main() -> None:
     baseline_observed = aligned(np.asarray(baseline.classes_), baseline.predict_proba(observed_x[:, : len(feature_names())]))
     structured = winner["factor_weight"] * factorized + (1.0 - winner["factor_weight"]) * direct
     observed_probabilities = winner["candidate_weight"] * structured + (1.0 - winner["candidate_weight"]) * baseline_observed
+    observed_probabilities = degree_guarded_probabilities(observed_probabilities, baseline_observed)
     predicted = np.asarray(LABELS)[np.argmax(observed_probabilities, axis=1)]
     rows = [
         {

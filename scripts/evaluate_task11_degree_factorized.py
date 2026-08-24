@@ -10,6 +10,7 @@ import numpy as np
 try:
     from scripts.fit_task11_degree_factorized import (
         aligned,
+        degree_guarded_probabilities,
         factorized_probabilities,
         metrics,
         read_pedsim_rich,
@@ -18,6 +19,7 @@ try:
 except ModuleNotFoundError:
     from fit_task11_degree_factorized import (
         aligned,
+        degree_guarded_probabilities,
         factorized_probabilities,
         metrics,
         read_pedsim_rich,
@@ -51,6 +53,7 @@ def main() -> None:
         )
         structured = winner["factor_weight"] * factorized + (1.0 - winner["factor_weight"]) * direct
         probabilities = winner["candidate_weight"] * structured + (1.0 - winner["candidate_weight"]) * baseline_probabilities
+        probabilities = degree_guarded_probabilities(probabilities, baseline_probabilities)
         candidate_metrics = metrics(probabilities, truth)
         baseline_metrics = metrics(baseline_probabilities, truth)
         runs.append(
