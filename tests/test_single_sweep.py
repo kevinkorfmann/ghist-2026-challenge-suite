@@ -68,6 +68,9 @@ class SingleSweepTests(unittest.TestCase):
         result = scan_windows(variants, np.asarray([[0, 1_000]]), 200, 100)
         self.assertEqual(result["composite_score"].shape, result["soft_composite_score"].shape)
         self.assertIn("z_high_h2_h1", result)
+        self.assertIn("z_conditioned_h2_h1", result)
+        inactive = result["z_high_h12"] <= 1.0
+        np.testing.assert_array_equal(result["z_conditioned_h2_h1"][inactive], 0.0)
         self.assertTrue(np.isnan(result["composite_score"][-1]))
         self.assertTrue(np.isnan(result["soft_composite_score"][-1]))
 

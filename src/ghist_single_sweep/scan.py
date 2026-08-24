@@ -195,6 +195,11 @@ def scan_windows(
         "high_h2_h1": robust_z(features["h2_h1"]),
         "high_r2": robust_z(np.log(np.maximum(features["mean_r2"], 1e-6))),
     }
+    components["conditioned_h2_h1"] = np.where(
+        components["high_h12"] > 1.0,
+        np.maximum(components["high_h2_h1"], 0.0),
+        0.0,
+    )
     hard_component_names = ["low_pi", "low_sites", "low_tajima_d", "high_h12", "high_r2"]
     stack = np.vstack(
         [np.clip(components[name], -5.0, 8.0) for name in hard_component_names]
@@ -205,7 +210,7 @@ def scan_windows(
         "low_pi": 0.5,
         "low_tajima_d": 0.75,
         "high_h12": 1.5,
-        "high_h2_h1": 0.5,
+        "conditioned_h2_h1": 0.5,
         "high_r2": 0.5,
     }
     soft_stack = np.vstack(
