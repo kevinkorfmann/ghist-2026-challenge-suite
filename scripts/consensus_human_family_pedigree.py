@@ -192,6 +192,10 @@ def main() -> None:
                     propagations += 1
 
     stable = [len(set(row["sensitivity_labels"])) == 1 for row in rows]
+    degree_stable = [
+        len({MEIOSES[label] for label in row["sensitivity_labels"]}) == 1
+        for row in rows
+    ]
     args.out_dir.mkdir(parents=True, exist_ok=True)
     with (args.out_dir / "candidate.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=("indID1", "indID2", "relation"))
@@ -204,6 +208,7 @@ def main() -> None:
         "label_counts": dict(Counter(row["relation"] for row in rows)),
         "sensitivity_runs": len(prediction_sets),
         "sensitivity_stability": float(np.mean(stable)),
+        "degree_sensitivity_stability": float(np.mean(degree_stable)),
         "unstable_pairs": int(len(stable) - sum(stable)),
         "topology_boost": args.topology_boost,
         "full_sibling_component_propagations": propagations,
