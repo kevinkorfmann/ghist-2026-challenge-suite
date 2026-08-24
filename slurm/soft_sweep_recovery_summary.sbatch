@@ -13,6 +13,6 @@ PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 
 PYTHONPATH=src .venv/bin/python scripts/summarize_soft_sweep_recovery.py \
-  --input-dir artifacts/task6_soft_sweep/recovery \
+  --input-dir artifacts/task6_soft_sweep/recovery_feasible \
   --expected 48 \
   --out artifacts/task6_soft_sweep/recovery_summary.json
