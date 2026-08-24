@@ -131,6 +131,69 @@ def background_correct(
     return offsets
 
 
+def individual_background_correct(
+    observed: list[dict[str, object]],
+    reference: list[dict[str, object]],
+    genome_cm: float,
+    iterations: int = 12,
+) -> dict[str, object]:
+    diagnostics: dict[str, object] = {}
+    for threshold in THRESHOLDS:
+        count_key = f"segments_ge_{threshold}"
+        rel_key = f"relatedness_ge_{threshold}"
+        for key in (count_key, rel_key):
+            samples = sorted(
+                {
+                    str(row[sample_key])
+                    for row in observed
+                    for sample_key in ("indID1", "indID2")
+                }
+            )
+            adjacency: dict[str, list[tuple[str, float]]] = defaultdict(list)
+            for row in observed:
+                left, right = str(row["indID1"]), str(row["indID2"])
+                value = float(row[key])
+                adjacency[left].append((right, value))
+                adjacency[right].append((left, value))
+            global_observed = float(np.median([float(row[key]) for row in observed]))
+            effects = {sample: 0.0 for sample in samples}
+            for _ in range(iterations):
+                updated = {
+                    sample: float(
+                        np.median(
+                            [
+                                value - global_observed - effects[partner]
+                                for partner, value in adjacency[sample]
+                            ]
+                        )
+                    )
+                    for sample in samples
+                }
+                center = float(np.median(list(updated.values())))
+                effects = {sample: value - center for sample, value in updated.items()}
+                global_observed += 2.0 * center
+            reference_level = float(np.median([float(row[key]) for row in reference]))
+            for row in observed:
+                predicted_background = (
+                    global_observed
+                    + effects[str(row["indID1"])]
+                    + effects[str(row["indID2"])]
+                )
+                correction = max(0.0, predicted_background - reference_level)
+                row[key] = max(0.0, float(row[key]) - correction)
+            diagnostics[key] = {
+                "observed_global": global_observed,
+                "reference_median": reference_level,
+                "effect_min": min(effects.values()),
+                "effect_max": max(effects.values()),
+            }
+        for row in observed:
+            row[f"total_cm_ge_{threshold}"] = (
+                float(row[rel_key]) * 2.0 * genome_cm
+            )
+    return diagnostics
+
+
 def feature_names(minimum_cm: int) -> list[str]:
     names = ["max_cm"]
     for threshold in THRESHOLDS:
@@ -215,6 +278,7 @@ def main() -> None:
     parser.add_argument("--observed", type=Path, required=True)
     parser.add_argument("--background-reference", type=Path)
     parser.add_argument("--background-quantile", type=float, default=0.5)
+    parser.add_argument("--individual-background", action="store_true")
     parser.add_argument("--minimum-cm", type=int, choices=THRESHOLDS, default=5)
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--out-dir", type=Path, required=True)
@@ -228,12 +292,18 @@ def main() -> None:
     observed = read_observed(args.observed)
     offsets = {}
     if args.background_reference is not None:
-        offsets = background_correct(
-            observed,
-            read_observed(args.background_reference),
-            args.background_quantile,
-            args.genome_cm,
-        )
+        reference = read_observed(args.background_reference)
+        if args.individual_background:
+            offsets = individual_background_correct(
+                observed, reference, args.genome_cm
+            )
+        else:
+            offsets = background_correct(
+                observed,
+                reference,
+                args.background_quantile,
+                args.genome_cm,
+            )
     names = feature_names(args.minimum_cm)
     train_x = matrix(train, names)
     train_y = np.asarray([record["label"] for record in train])
@@ -289,6 +359,7 @@ def main() -> None:
         "background_quantile": args.background_quantile
         if args.background_reference is not None
         else None,
+        "individual_background": args.individual_background,
         "background_offsets": offsets,
         "feature_names": names,
         "labels": list(LABELS),

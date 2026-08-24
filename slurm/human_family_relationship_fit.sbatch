@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=5632M
 #SBATCH --time=03:00:00
-#SBATCH --array=0-6
+#SBATCH --array=0-7
 #SBATCH --output=logs/%x-%A_%a.out
 #SBATCH --error=logs/%x-%A_%a.err
 
@@ -51,6 +51,15 @@ case "$SLURM_ARRAY_TASK_ID" in
     extra=(
       --background-reference artifacts/task10_large_family/hapibd/summary/pair_shape_features.csv
       --background-quantile 0.50
+    )
+    ;;
+  7)
+    minimum=20
+    observed="artifacts/task12_large_family_background/hapibd/summary/pair_shape_features.csv"
+    out="artifacts/task12_large_family_background/pair_model_min20_individual"
+    extra=(
+      --background-reference artifacts/task10_large_family/hapibd/summary/pair_shape_features.csv
+      --individual-background
     )
     ;;
 esac
