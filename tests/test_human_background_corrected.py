@@ -1,4 +1,7 @@
-from scripts.fit_human_background_corrected import correct_records
+from scripts.fit_human_background_corrected import (
+    correct_records,
+    corrected_feature_names,
+)
 from scripts.fit_human_family_relationships import summarize_raw_lengths
 
 
@@ -19,3 +22,12 @@ def test_corrected_domain_transform_reduces_added_background():
     corrected = correct_records(observed, reference, minimum_cm=20, genome_cm=100.0)
     assert corrected[0]["segments_ge_20"] == 1.0
     assert corrected[0]["ordered_length_1"] == 60.0
+
+
+def test_low_threshold_features_exclude_uncorrectable_ordered_shape():
+    names = corrected_feature_names(5)
+    assert "segments_ge_5" in names
+    assert "length_bin_1" in names
+    assert "max_cm" not in names
+    assert not any(name.startswith("ordered_length_") for name in names)
+    assert "ordered_length_1" in corrected_feature_names(20)

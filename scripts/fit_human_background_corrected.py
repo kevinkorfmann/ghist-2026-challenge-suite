@@ -74,6 +74,17 @@ def correct_records(
     return corrected
 
 
+def corrected_feature_names(minimum_cm: int) -> list[str]:
+    names = feature_names(minimum_cm)
+    if minimum_cm < 20:
+        names = [
+            name
+            for name in names
+            if name != "max_cm" and not name.startswith("ordered_length_")
+        ]
+    return names
+
+
 def corrected_training_set(
     paths: list[Path],
     augmentations: int,
@@ -237,7 +248,7 @@ def main() -> None:
     args = parser.parse_args()
 
     baseline = joblib.load(args.baseline_model)
-    names = feature_names(args.minimum_cm)
+    names = corrected_feature_names(args.minimum_cm)
     training, training_regimes = corrected_training_set(
         args.calibration,
         args.augmentations,
