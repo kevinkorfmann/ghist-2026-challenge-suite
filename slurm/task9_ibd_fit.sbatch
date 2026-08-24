@@ -17,7 +17,10 @@ PYTHONPATH=src .venv/bin/python scripts/fit_task9_ibd_classifier.py \
     artifacts/task9_ibd_segments/calibration/replicate_0.seg \
     artifacts/task9_ibd_segments/calibration/replicate_1.seg \
     artifacts/task9_ibd_segments/calibration/replicate_2.seg \
-  --validation artifacts/task9_ibd_segments/calibration/replicate_3.seg \
-  --evaluation artifacts/task9_ibd_segments/calibration/replicate_4.seg \
+    artifacts/task9_ibd_segments/calibration/replicate_3.seg \
+    artifacts/task9_ibd_segments/calibration/replicate_4.seg \
+  --validation artifacts/task9_ibd_segments/calibration/replicate_5.seg \
+  --evaluation artifacts/task9_ibd_segments/calibration/replicate_6.seg \
   --observed data/raw/relatedness/ibd_segments/testing/relatedness1.testing.csv \
-  --out-dir artifacts/task9_ibd_segments/model
+  --sex-map external/ped-sim-map/refined_mf.simmap \
+  --out-dir artifacts/task9_ibd_segments/model_v2

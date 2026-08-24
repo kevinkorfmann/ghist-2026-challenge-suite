@@ -10,7 +10,14 @@ import numpy as np
 from sklearn.ensemble import ExtraTreesClassifier, HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, confusion_matrix
 
-from ghist_relatedness.ibd import matrix, pair_features, read_segment_rows, relationship_from_sample
+from ghist_relatedness.ibd import (
+    SexMap,
+    matrix,
+    pair_features,
+    read_segment_rows,
+    read_sex_map,
+    relationship_from_sample,
+)
 
 
 MEIOSES = {
@@ -29,10 +36,12 @@ MEIOSES = {
 }
 
 
-def load_simulations(paths: list[Path], genome_cm: float) -> list[dict[str, object]]:
+def load_simulations(
+    paths: list[Path], genome_cm: float, sex_map: SexMap
+) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     for path in paths:
-        for record in pair_features(read_segment_rows(path), genome_cm):
+        for record in pair_features(read_segment_rows(path), genome_cm, sex_map):
             label1 = relationship_from_sample(str(record["indID1"]))
             label2 = relationship_from_sample(str(record["indID2"]))
             if label1 != label2:
@@ -62,13 +71,15 @@ def main() -> None:
     parser.add_argument("--validation", type=Path, required=True)
     parser.add_argument("--evaluation", type=Path, required=True)
     parser.add_argument("--observed", type=Path, required=True)
+    parser.add_argument("--sex-map", type=Path, required=True)
     parser.add_argument("--genome-cm", type=float, default=3350.933402)
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
 
-    calibration = load_simulations(args.calibration, args.genome_cm)
-    validation = load_simulations([args.validation], args.genome_cm)
-    evaluation = load_simulations([args.evaluation], args.genome_cm)
+    sex_map = read_sex_map(args.sex_map)
+    calibration = load_simulations(args.calibration, args.genome_cm, sex_map)
+    validation = load_simulations([args.validation], args.genome_cm, sex_map)
+    evaluation = load_simulations([args.evaluation], args.genome_cm, sex_map)
     train_x, feature_names = matrix(calibration)
     train_y = np.asarray([record["label"] for record in calibration])
     candidates = {
@@ -111,7 +122,7 @@ def main() -> None:
     selected = candidates[selected_name]
     evaluation_score = score(selected, evaluation, feature_names)
 
-    observed_records = pair_features(read_segment_rows(args.observed), args.genome_cm)
+    observed_records = pair_features(read_segment_rows(args.observed), args.genome_cm, sex_map)
     observed_x, _ = matrix(observed_records, feature_names)
     probabilities = selected.predict_proba(observed_x)
     predictions = selected.classes_[np.argmax(probabilities, axis=1)]
