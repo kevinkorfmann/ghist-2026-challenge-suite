@@ -4,7 +4,7 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Five methods are
+Private, reproducible work on all 12 GHIST 2026 challenges. Six methods are
 frozen and the remaining inputs are secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
@@ -24,7 +24,8 @@ never to a revealed testing answer.
 | 3 | Growth with background selection | frozen | 5,000 generations; growth factor 2.0 | matched recovery errors 2.38% and 0.03%; 128-block 95% intervals: 3,984–5,913 and 1.851–2.122 |
 | 4 | Split migration with background selection | frozen | AFR 16,000; EUR 24,000; split 4,500 generations; migration 0.00015 | matched recovery errors 1.36–2.18% for sizes/time and 10.7% for migration; strict integration changed every parameter by <0.0006% |
 | 5 | Single hard sweep | frozen | chr7:38,196,951–38,316,951; center 38,256,951 bp | untouched exact-scale recovery: 27.0 kb overall median error; all 12 observed-like cells hit the interval; mean challenge score 0.625 |
-| 6–12 | Remaining sweep and relatedness challenges | queued | testing inputs, masks, maps, templates, and sealed finals secured | method development not yet frozen |
+| 7 | Single sweep with background selection | frozen | chr7:106,416,500–106,576,500; center 106,496,500 bp | 10 localizers span 130.4 kb; independent peak is 5.04× background; transferred untouched observed-like recovery has 18.7 kb median and 45.7 kb maximum error |
+| 6, 8–12 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked validation and topology reconstruction in progress |
 
 Frozen means that the estimator, prediction, and validation gates are locked
 locally. It does not mean submitted.
@@ -57,6 +58,12 @@ locally. It does not mean submitted.
    Interval width is selected against the published scoring rule. The locked
    60 kb half-width passed the untouched exact-scale recovery gate.
 
+7. Single sweep with background selection — five nested composite scans, three
+   split-flank linkage scales, the largest variant gap, and RAiSD all converge.
+   The median center and 80 kb half-width contain all ten localizers. Exact-scale
+   hard-sweep recovery transfers cleanly, while the observed independent peak is
+   fivefold stronger than the best distant background-selection peak.
+
 ## Evidence
 
 | Challenge | Frozen record | Figure |
@@ -66,6 +73,7 @@ locally. It does not mean submitted.
 | Growth with background selection | [`task3_freeze.json`](experiments/growth_bgs/task3_freeze.json) | [`figures/task3_growth_bgs/`](figures/task3_growth_bgs/) |
 | Split migration with background selection | [`task4_freeze.json`](experiments/split_migration_bgs/task4_freeze.json) | [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/) |
 | Single hard sweep | [`task5_freeze.json`](experiments/single_sweep/task5_freeze.json) | [`figures/task5_single_sweep/`](figures/task5_single_sweep/) |
+| Single sweep with background selection | [`task7_freeze.json`](experiments/single_sweep_bgs/task7_freeze.json) | [`figures/task7_single_sweep_bgs/`](figures/task7_single_sweep_bgs/) |
 
 ## Layout
 

@@ -1,0 +1,70 @@
+{
+  "challenge": "Single sweep with background selection",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "chromosome": "7",
+    "start": 106416500,
+    "end": 106576500,
+    "center": 106496500
+  },
+  "selected_method": {
+    "localizer": "median of ten multiscale, independent, gap, and split-flank estimates",
+    "interval_policy": "80 kb half-width covering every accepted observed localizer"
+  },
+  "validation": {
+    "localizer_count": 10,
+    "localizer_span_bp": 130425.0,
+    "independent_peak_to_background_ratio": 5.0398582816651905,
+    "transferred_exact_scale_recovery": {
+      "replicates": 192,
+      "untouched_observed_like_replicates": 12,
+      "median_absolute_error": 18734.25,
+      "maximum_absolute_error": 45668.0,
+      "coverage_within_50kb": 1.0
+    },
+    "candidate_hit_score_if_truth_inside": 0.5555555555555556,
+    "robustness_gate": {
+      "exact_scale_hard_sweep_recovery_passed": true,
+      "all_observed_localizers_inside_interval": true,
+      "localizer_span_at_most_160kb": true,
+      "independent_peak_at_least_fourfold_background": true,
+      "recovery_observed_like_max_error_inside_interval": true,
+      "passed": true
+    }
+  },
+  "observed_estimates": {
+    "Composite 25 kb": 106527500.0,
+    "Composite 50 kb": 106505000.0,
+    "Composite 100 kb": 106530000.0,
+    "Composite 250 kb": 106475000.0,
+    "Composite 500 kb": 106550000.0,
+    "RAiSD": 106557425.0,
+    "Largest variant gap": 106429822.5,
+    "Split-flank linkage 50 kb": 106448000.0,
+    "Split-flank linkage 100 kb": 106427000.0,
+    "Split-flank linkage 250 kb": 106488000.0
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "21fc1352ccc7176cb7fcbe538ecfc051b77648629cdf3f75f92d6d2c8d863768",
+    "accessibility_bed_sha256": "d227d72cc8d99a3cabfe29b8f21ee1617bd91d436ca0a737f501844a52c1bc98",
+    "accepted_biallelic_sites": 686728,
+    "haplotypes": 50
+  },
+  "source_artifacts": {
+    "artifacts/task7_single_sweep_bgs/audit_summary.json": "6b92bc151b08374a92bca9c11f6c844f43b3d0cec308f432005d4bacd7b95f06",
+    "artifacts/task7_single_sweep_bgs/localization/summary.json": "6a541ba2f0eaa586aab9ce60e1bb483e4d1cca37714d97a5142fbfa9d1896c67",
+    "artifacts/task7_single_sweep_bgs/raisd_summary.json": "22e5d1e151909c32e1f7450f60c631c61c71825304c521541191b1d27626eb4e",
+    "artifacts/task5_single_sweep/selection_exact_recovery_summary.json": "df6d6ca878939dabea50eef1464ccb4e2a9189a60bbd3944ea13943cb9d291ce",
+    "artifacts/task7_single_sweep_bgs/task7_candidate.bed": "f0a93ab7cc12fad2754e4fc92a128c3f1bda995960699b8d528b6d031cc52e30"
+  },
+  "figures": {
+    "figures/task7_single_sweep_bgs/task7_localization.pdf": "7b83bb878c672eb495509e1894e0b5e188fbade051882379554e6074d032133e",
+    "figures/task7_single_sweep_bgs/task7_localization.png": "88e30bdd7d00d31a498a13cdf4e8a74be5d9a03dfd23298b26d20279cdd67028"
+  },
+  "betty_job_ids": [
+    "7824764",
+    "7824777",
+    "7824787"
+  ]
+}
