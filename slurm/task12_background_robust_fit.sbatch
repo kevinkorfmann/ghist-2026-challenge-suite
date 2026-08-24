@@ -8,7 +8,6 @@
 #SBATCH --error=logs/%x-%j.err
 
 set -euo pipefail
-module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 
