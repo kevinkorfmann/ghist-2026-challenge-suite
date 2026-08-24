@@ -15,5 +15,5 @@ cd "$PROJECT_ROOT"
 PYTHONPATH=src:scripts .venv/bin/python scripts/benchmark_bonsai_pair_topology.py \
   --segments artifacts/task10_human_calibration/replicate_6.seg \
   --threshold-cm 5 \
-  --pairs-per-label 20 \
+  --pairs-per-label 100 \
   --out artifacts/task10_human_calibration/bonsai_pair_benchmark/summary.json

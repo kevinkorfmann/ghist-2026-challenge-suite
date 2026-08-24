@@ -58,7 +58,12 @@ def main() -> None:
     selected = []
     for label in sorted({label for label, _ in grouped}):
         options = sorted(key for key in grouped if key[0] == label)
-        selected.extend(options[: args.pairs_per_label])
+        count = min(args.pairs_per_label, len(options))
+        if count == 1:
+            selected.append(options[0])
+        elif count > 1:
+            indices = [round(index * (len(options) - 1) / (count - 1)) for index in range(count)]
+            selected.extend(options[index] for index in indices)
 
     rows = []
     for label, replicate in selected:
