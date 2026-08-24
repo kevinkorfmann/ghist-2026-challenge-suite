@@ -88,8 +88,8 @@ def main() -> None:
             "ps.fonttype": 42,
         }
     )
-    fig, axes = plt.subplots(3, 2, figsize=(11.6, 11.4))
-    fig.subplots_adjust(left=0.09, right=0.98, top=0.94, bottom=0.07, hspace=0.42, wspace=0.27)
+    fig, axes = plt.subplots(3, 2, figsize=(12.6, 11.4))
+    fig.subplots_adjust(left=0.14, right=0.98, top=0.94, bottom=0.07, hspace=0.42, wspace=0.30)
     start, end = interval["interval_selection"]["interval"]
     center = interval["interval_selection"]["center"]
 

@@ -30,11 +30,24 @@ def _raisd() -> dict:
     }
 
 
+def _exact(passed: bool = True) -> dict:
+    return {
+        "replicates": 192,
+        "calibration_consensus_replicates": 10,
+        "pilot_consensus_replicates": 8,
+        "evaluation_consensus_replicates": 12,
+        "interval_width_selection": {"selected_half_width": 60_000},
+        "pilot_evaluation": {"consensus_candidate_coverage": 0.875},
+        "untouched_evaluation": {"consensus_candidate_coverage": 1.0},
+        "robustness_gate": {"passed": passed},
+    }
+
+
 def test_freeze_gate_accepts_precise_robust_recovery() -> None:
     result = validate(
         _recovery(60_000),
         _recovery(70_000),
-        {"robustness_gate": {"passed": True}},
+        _exact(),
         _candidate(),
         _raisd(),
     )
@@ -46,7 +59,7 @@ def test_freeze_gate_rejects_scale_failure() -> None:
         validate(
             _recovery(60_000),
             _recovery(70_000),
-            {"robustness_gate": {"passed": False}},
+            _exact(False),
             _candidate(),
             _raisd(),
         )
@@ -56,7 +69,7 @@ def test_freeze_gate_accepts_calibrated_60kb_half_width() -> None:
     result = validate(
         _recovery(60_000),
         _recovery(70_000),
-        {"robustness_gate": {"passed": True}},
+        _exact(),
         _candidate(60_000),
         _raisd(),
     )
@@ -68,7 +81,7 @@ def test_freeze_gate_rejects_half_width_above_75kb() -> None:
         validate(
             _recovery(60_000),
             _recovery(70_000),
-            {"robustness_gate": {"passed": True}},
+            _exact(),
             _candidate(76_000),
             _raisd(),
         )

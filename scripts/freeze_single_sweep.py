@@ -61,7 +61,16 @@ def validate(
     return {
         "generic_held_out": generic_eval,
         "chromosome_map_held_out": chromosome_eval,
-        "exact_scale_recovery": exact["robustness_gate"],
+        "exact_scale_recovery": {
+            "replicates": exact["replicates"],
+            "calibration_consensus_replicates": exact["calibration_consensus_replicates"],
+            "pilot_consensus_replicates": exact["pilot_consensus_replicates"],
+            "evaluation_consensus_replicates": exact["evaluation_consensus_replicates"],
+            "selected_half_width": exact["interval_width_selection"]["selected_half_width"],
+            "pilot_evaluation": exact["pilot_evaluation"],
+            "untouched_evaluation": exact["untouched_evaluation"],
+            "robustness_gate": exact["robustness_gate"],
+        },
         "reference_first_to_second_peak_ratio": reference_ratio,
         "candidate_hit_score": maximum_hit_score,
     }

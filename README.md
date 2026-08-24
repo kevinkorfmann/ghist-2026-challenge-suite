@@ -4,8 +4,8 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Four methods are
-frozen, one is under final validation, and the remaining inputs are secured.
+Private, reproducible work on all 12 GHIST 2026 challenges. Five methods are
+frozen and the remaining inputs are secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
 [Challenge registry](configs/challenges.yaml) ·
@@ -23,7 +23,7 @@ never to a revealed testing answer.
 | 2 | Secondary contact | frozen | N₁ 21,139; N₂ 82,967; split 4,544 generations; contact 1,455 generations; migration 0.000199006 | 4.78% mean error score on untouched demographic settings; parameter-wise median errors 0.81–1.81% |
 | 3 | Growth with background selection | frozen | 5,000 generations; growth factor 2.0 | matched recovery errors 2.38% and 0.03%; 128-block 95% intervals: 3,984–5,913 and 1.851–2.122 |
 | 4 | Split migration with background selection | frozen | AFR 16,000; EUR 24,000; split 4,500 generations; migration 0.00015 | matched recovery errors 1.36–2.18% for sizes/time and 10.7% for migration; strict integration changed every parameter by <0.0006% |
-| 5 | Single hard sweep | validating | chr7 center near 38,256,951 bp; interval width still under lock | chromosome-map recovery: 7.1 kb median, 45.2 kb 90th percentile, and 90% within 50 kb; final exact-scale tranche running |
+| 5 | Single hard sweep | frozen | chr7:38,196,951–38,316,951; center 38,256,951 bp | untouched exact-scale recovery: 27.0 kb overall median error; all 12 observed-like cells hit the interval; mean challenge score 0.625 |
 | 6–12 | Remaining sweep and relatedness challenges | queued | testing inputs, masks, maps, templates, and sealed finals secured | method development not yet frozen |
 
 Frozen means that the estimator, prediction, and validation gates are locked
@@ -54,8 +54,8 @@ locally. It does not mean submitted.
 5. Single hard sweep — nested diversity, frequency-spectrum, haplotype, linkage,
    and variant-gap scans converge on the same region; RAiSD provides an independent
    reference scan. The candidate center is the median of three fine localizers.
-   Interval width is selected against the published scoring rule and must clear
-   the untouched exact-scale recovery gate before freezing.
+   Interval width is selected against the published scoring rule. The locked
+   60 kb half-width passed the untouched exact-scale recovery gate.
 
 ## Evidence
 
@@ -65,7 +65,7 @@ locally. It does not mean submitted.
 | Secondary contact | [`task2_freeze.json`](experiments/secondary_contact/task2_freeze.json) | [`figures/task2_secondary_contact/`](figures/task2_secondary_contact/) |
 | Growth with background selection | [`task3_freeze.json`](experiments/growth_bgs/task3_freeze.json) | [`figures/task3_growth_bgs/`](figures/task3_growth_bgs/) |
 | Split migration with background selection | [`task4_freeze.json`](experiments/split_migration_bgs/task4_freeze.json) | [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/) |
-| Single hard sweep | pending | [`experiments/single_sweep/`](experiments/single_sweep/) |
+| Single hard sweep | [`task5_freeze.json`](experiments/single_sweep/task5_freeze.json) | [`figures/task5_single_sweep/`](figures/task5_single_sweep/) |
 
 ## Layout
 

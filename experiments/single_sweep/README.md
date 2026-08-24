@@ -41,20 +41,24 @@ estimates without access to its ten evaluation cells. On those untouched cells
 it has 7.1 kb median absolute error, 45.2 kb 90th-percentile error, and 90%
 recovery within 50 kb. An exploratory scale-factor campaign exposed long-tail
 errors in weak synthetic sweeps instead of passing its deliberately strict gate.
-A new 192-replicate, unaccelerated chromosome-map campaign is therefore the remaining
-simulation-fidelity gate; its method and thresholds were locked before launch.
+A 192-replicate, unaccelerated chromosome-map campaign then separated 64
+calibration, 64 pilot, and 64 untouched evaluation cells. On the untouched
+tranche, overall median error is 27.0 kb and the 90th percentile is 114.8 kb.
+Twelve cells match the observed estimator-agreement pattern; all twelve recover
+within 60 kb, for a mean challenge score of 0.625. Every predeclared gate passes.
 
 Interval width is optimized against the published GHIST sweep evaluator rather
 than chosen visually. Its length penalty selects a 25 kb half-width on the
-calibration cells. A predeclared consensus guard expands that to 35 kb so the
-candidate interval contains the gap, fine composite, split-flank, and RAiSD
-localizations. The resulting candidate is chr7:38,221,951–38,291,951; it remains
-unfrozen until the scale-factor gate passes.
+calibration cells. A predeclared consensus guard first expands that to 35 kb so
+the candidate contains the observed localizers. Independent exact-scale
+calibration selects a 60 kb half-width. The frozen testing interval is therefore
+chr7:38,196,951–38,316,951, centered at 38,256,951 bp.
 
 The validation strategy follows the multi-signature logic of
 [RAiSD](https://doi.org/10.1038/s42003-018-0085-8), the spatial-statistic design
 of [diploS/HIC](https://doi.org/10.1093/molbev/msy006), and the nested-window,
 confounder-aware principles of
 [Flex-sweep](https://doi.org/10.1093/molbev/msad139). The forward-time matched
-selection smoke test and parameter-cell-isolated localization campaign have
-passed. No BED interval has been frozen.
+selection smoke test, parameter-cell-isolated localization campaign, and
+untouched exact-scale gate have passed. The method and BED interval are frozen
+in `task5_freeze.json`; nothing has been submitted.
