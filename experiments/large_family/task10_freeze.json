@@ -1,0 +1,98 @@
+{
+  "challenge": "Relatedness in a large human family",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "pairs": 26106,
+    "individuals": 229,
+    "path": "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/candidate.csv",
+    "schema": [
+      "indID1",
+      "indID2",
+      "relation"
+    ],
+    "label_counts": {
+      "full_2nd_cousin_once_removed": 5914,
+      "full_1st_cousin": 1148,
+      "full_1st_cousin_thrice_removed": 4500,
+      "full_2nd_cousin": 5220,
+      "full_1st_cousin_twice_removed": 2901,
+      "full_3rd_cousin": 1438,
+      "full_2nd_cousin_twice_removed": 986,
+      "full_1st_cousin_once_removed": 1922,
+      "avuncular_once_removed": 332,
+      "avuncular": 147,
+      "siblings": 408,
+      "full_3rd_cousin_once_removed": 400,
+      "full_4th_cousin": 318,
+      "avuncular_twice_removed": 472
+    }
+  },
+  "selected_method": {
+    "pair_model": "human-map Ped-sim forest using long-segment totals, bins, and ordered segment shape",
+    "minimum_segment_cm": 5,
+    "topology_consensus": "exact intersection of fast and medium branch reconstructions, followed by pair-model meiosis-degree agreement",
+    "exact_score_policy": "preserve the calibrated pair call unless replicated topology resolves a same-degree relation ambiguity"
+  },
+  "validation": {
+    "fresh_evaluation_pairs": 6832,
+    "fresh_exact_accuracy": 0.45740632318501173,
+    "fresh_balanced_accuracy": 0.45584359996371077,
+    "fresh_meioses_accuracy": 0.6836943793911007,
+    "threshold_10cm_exact_accuracy": 0.44686768149882905,
+    "threshold_20cm_exact_accuracy": 0.4093969555035129,
+    "pedigree_tuple_benchmark_pairs": 1400,
+    "pedigree_tuple_accepted_fraction": 0.3585714285714286,
+    "pedigree_tuple_exact_accuracy_on_accepted": 0.4860557768924303,
+    "branch_groups": 16,
+    "fast_medium_candidate_agreement": 0.9811920631272505,
+    "overlapping_topology_relation_agreement": 0.6644518272425249,
+    "replicated_degree_guarded_topology_pairs": 200,
+    "testing_calls_changed_by_topology": 65,
+    "all_topology_changes_preserve_meiosis_degree": true,
+    "robustness_gate": {
+      "fresh_exact_accuracy_at_least_0.45": true,
+      "fresh_meioses_accuracy_at_least_0.68": true,
+      "five_cm_threshold_best_on_untouched_evaluation": true,
+      "independent_topology_searches_completed": true,
+      "topology_cannot_override_meiosis_degree": true,
+      "official_relation_only_schema": true,
+      "all_26106_pairs_present": true,
+      "pairs_unique": true,
+      "all_229_individuals_present": true,
+      "all_labels_accepted": true,
+      "passed": true
+    }
+  },
+  "numerical_diagnostics": {
+    "broad_branch_job": "7825106",
+    "whole_cohort_job": "7824896",
+    "state": "cancelled after the replicated fast-medium policy was frozen",
+    "reason": "unconstrained topology was not allowed to override the higher-scoring exact pair model"
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "7603a7527cd1b714367fb49fa0fb42d59de527b678b44ac9e6007969e916865a",
+    "final_vcf_sealed_sha256": "9e1a20af4907befce07ead7b80aa61331c0b9a3ea2c4c451fc4acc9f6a131bc4"
+  },
+  "source_artifacts": {
+    "artifacts/task10_large_family/pair_model_min5/summary.json": "4bee8cfb3725dd2253bae0cac921ec1dc45661e9abf61a436bdcd065b1fd0705",
+    "artifacts/task10_human_calibration/bonsai_pair_benchmark/summary.json": "9e0de7439994ee3bd32c628e38f0edacadd22568d25986f7c591f77bef02c187",
+    "artifacts/task10_large_family/hapibd/branch_bonsai_fast/summary.json": "55657ed1ddfce3e3217d7fc3fa1ce318a4da8f552788edf7c7ed08bb33e9014c",
+    "artifacts/task10_large_family/hapibd/branch_bonsai_medium/summary.json": "1b74aa357fa4b0ec19ee20617a8bd1c0d8dfc1cf39dd94c349e555cb0a8035df",
+    "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/summary.json": "85f144b3a50e8bc3b5e23adcf93ae7e9431eaab6b20027a8fb4b71a09dd44d0a",
+    "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/candidate.csv": "c6801b1ca7b89fd06f66f066bfecf8b2387d3c77652ce855e72aebb427b31202"
+  },
+  "figures": {
+    "figures/task10_large_family/task10_validation.pdf": "484627abbc2ebb2aabc209f73c9cdd3f6d983a3851b998ed3c8197df976de67a",
+    "figures/task10_large_family/task10_validation.png": "590432e85644bf2aa4391c022a12b596f30aeb6df5f6ca3c295f3e63eeff8f61"
+  },
+  "betty_job_ids": [
+    "7825061",
+    "7825065",
+    "7825092",
+    "7825218",
+    "7825239",
+    "7825245",
+    "7825300"
+  ]
+}

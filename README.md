@@ -4,7 +4,7 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Ten methods are
+Private, reproducible work on all 12 GHIST 2026 challenges. Eleven methods are
 frozen and the remaining inputs are secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
@@ -27,9 +27,10 @@ never to a revealed testing answer.
 | 7 | Single sweep with background selection | frozen | chr7:106,416,500–106,576,500; center 106,496,500 bp | 10 localizers span 130.4 kb; independent peak is 5.04× background; transferred untouched observed-like recovery has 18.7 kb median and 45.7 kb maximum error |
 | 8 | Multiple sweeps with background selection | frozen | six 120 kb intervals centered at 76,361,767; 88,298,355; 90,666,410; 130,070,549; 138,440,689; and 155,737,529 bp | exactly six peaks exceed the matched threshold; weakest selected μ 23.41 versus next μ 19.34; exon snaps ≤16.1 kb; transferred recovery maximum error 45.7 kb |
 | 9 | Relatedness from IBD segments | frozen | 989 testing pairs; official relation and meiosis-count schema | fresh untouched simulation: 82.34% exact-label, 77.81% balanced, and 85.35% meiosis-count accuracy across 12,032 pairs |
+| 10 | Large human family | frozen | 26,106 pairs across 229 individuals; official relation-only schema | untouched pair accuracy 45.74%, balanced accuracy 45.58%, and meiosis accuracy 68.37%; two topology searches agree on 98.12% of the candidate |
 | 11 | Multifamily cohort with close inbreeding | frozen | 275 within-family dog pairs across eight families; all eight accepted labels represented | family partition ARI 1.0 across 16 runs; untouched pair accuracy 63.58%; 98.18% HBD-threshold stability and zero sibling-component conflicts |
 | 12 | Large family with background relatedness | frozen | 50,086 human pairs across 317 individuals; official relation-only schema | 40.94% exact and 60.95% meiosis accuracy without added background; 37.18% exact and 55.20% meiosis accuracy across 12 structured-background holdouts |
-| 6, 10 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked recovery and topology reconstruction in progress |
+| 6 | Soft sweep | active | testing input, accessibility mask, and sealed final secured | locked 48-replicate recovery gate in progress |
 
 Frozen means that the estimator, prediction, and validation gates are locked
 locally. It does not mean submitted.
@@ -77,7 +78,12 @@ locally. It does not mean submitted.
    sex-specific map and crossover-interference model. The selected forest combines
    total sharing with ordered segment shape, binned IBD1/IBD2 spectra, chromosome
    sharing, and sex-map features. Model selection and the final evaluation use
-   separate simulation seeds; the candidate follows the official four-column schema.
+    separate simulation seeds; the candidate follows the official four-column schema.
+
+10. Large human family — eight human-map Ped-sim replicates separate training,
+    model selection, and untouched evaluation. The selected 5 cM forest uses
+    total sharing and ordered segment shape. Two constrained branch reconstructions
+    may change a call only when they agree exactly and preserve its meiosis degree.
 
 11. Multifamily cohort with close inbreeding — stable long-segment graph
     clustering recovers eight families. Dog-map simulations calibrate pairwise
@@ -103,6 +109,7 @@ locally. It does not mean submitted.
 | Single sweep with background selection | [`task7_freeze.json`](experiments/single_sweep_bgs/task7_freeze.json) | [`figures/task7_single_sweep_bgs/`](figures/task7_single_sweep_bgs/) |
 | Multiple sweeps with background selection | [`task8_freeze.json`](experiments/multiple_sweeps_bgs/task8_freeze.json) | [`figures/task8_multiple_sweeps_bgs/`](figures/task8_multiple_sweeps_bgs/) |
 | Relatedness from IBD segments | [`task9_freeze.json`](experiments/ibd_segments/task9_freeze.json) | [`figures/task9_ibd_segments/`](figures/task9_ibd_segments/) |
+| Large human family | [`task10_freeze.json`](experiments/large_family/task10_freeze.json) | [`figures/task10_large_family/`](figures/task10_large_family/) |
 | Multifamily cohort with close inbreeding | [`task11_freeze.json`](experiments/multifamily_inbreeding/task11_freeze.json) | [`figures/task11_multifamily_inbreeding/`](figures/task11_multifamily_inbreeding/) |
 | Large family with background relatedness | [`task12_freeze.json`](experiments/large_family_background/task12_freeze.json) | [`figures/task12_large_family_background/`](figures/task12_large_family_background/) |
 
