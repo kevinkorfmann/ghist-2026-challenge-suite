@@ -12,6 +12,10 @@ from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, confusion_matrix
 
 from ghist_relatedness.labels import HUMAN_LABELS
+try:
+    from scripts.summarize_hapibd_shape import BIN_EDGES, ORDERED
+except ModuleNotFoundError:
+    from summarize_hapibd_shape import BIN_EDGES, ORDERED
 
 
 LABELS = tuple(dict.fromkeys(HUMAN_LABELS.values()))
@@ -44,6 +48,19 @@ def summarize_raw_lengths(
         output[f"segments_ge_{threshold}"] = float(selected.size)
         output[f"total_cm_ge_{threshold}"] = total
         output[f"relatedness_ge_{threshold}"] = total / (2.0 * genome_cm)
+    counts, _ = np.histogram(lengths, bins=np.asarray(BIN_EDGES))
+    output.update(
+        {f"length_bin_{index}": float(count) for index, count in enumerate(counts)}
+    )
+    ordered = np.sort(lengths)[::-1][:ORDERED]
+    output.update(
+        {
+            f"ordered_length_{rank + 1}": float(ordered[rank])
+            if rank < ordered.size
+            else 0.0
+            for rank in range(ORDERED)
+        }
+    )
     return output
 
 
@@ -125,11 +142,30 @@ def feature_names(minimum_cm: int) -> list[str]:
                     f"relatedness_ge_{threshold}",
                 )
             )
+    for index, lower in enumerate(BIN_EDGES[:-1]):
+        if lower >= minimum_cm:
+            names.append(f"length_bin_{index}")
+    names.extend(f"ordered_length_{rank + 1}" for rank in range(ORDERED))
     return names
 
 
 def matrix(records: list[dict[str, object]], names: list[str]) -> np.ndarray:
-    return np.asarray([[float(record[name]) for name in names] for record in records])
+    minimums = [
+        int(name.rsplit("_", 1)[1])
+        for name in names
+        if name.startswith("segments_ge_")
+    ]
+    minimum = min(minimums) if minimums else 40
+    values = []
+    for record in records:
+        row = []
+        for name in names:
+            value = float(record[name])
+            if name.startswith("ordered_length_") and value < minimum:
+                value = 0.0
+            row.append(value)
+        values.append(row)
+    return np.asarray(values)
 
 
 def candidate_models(seed: int):

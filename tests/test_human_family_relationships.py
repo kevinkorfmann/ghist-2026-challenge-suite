@@ -17,12 +17,10 @@ def test_human_raw_length_summary():
     assert result["segments_ge_5"] == 2
     assert result["segments_ge_10"] == 1
     assert result["relatedness_ge_20"] == 0.125
-    assert feature_names(20) == [
-        "max_cm",
-        "segments_ge_20",
-        "total_cm_ge_20",
-        "relatedness_ge_20",
-        "segments_ge_40",
-        "total_cm_ge_40",
-        "relatedness_ge_40",
+    names = feature_names(20)
+    assert names[:7] == [
+        "max_cm", "segments_ge_20", "total_cm_ge_20", "relatedness_ge_20",
+        "segments_ge_40", "total_cm_ge_40", "relatedness_ge_40",
     ]
+    assert "length_bin_3" in names
+    assert names[-1] == "ordered_length_20"

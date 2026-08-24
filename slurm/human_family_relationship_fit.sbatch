@@ -29,7 +29,7 @@ case "$SLURM_ARRAY_TASK_ID" in
   0|1|2)
     minimums=(5 10 20)
     minimum="${minimums[$SLURM_ARRAY_TASK_ID]}"
-    observed="artifacts/task10_large_family/hapibd/summary/pair_features.csv"
+    observed="artifacts/task10_large_family/hapibd/summary/pair_shape_features.csv"
     out="artifacts/task10_large_family/pair_model_min${minimum}"
     extra=()
     ;;
@@ -37,19 +37,19 @@ case "$SLURM_ARRAY_TASK_ID" in
     quantiles=(0.25 0.50 0.75)
     quantile="${quantiles[$((SLURM_ARRAY_TASK_ID - 3))]}"
     minimum=20
-    observed="artifacts/task12_large_family_background/hapibd/summary/pair_features.csv"
+    observed="artifacts/task12_large_family_background/hapibd/summary/pair_shape_features.csv"
     out="artifacts/task12_large_family_background/pair_model_min20_q${quantile}"
     extra=(
-      --background-reference artifacts/task10_large_family/hapibd/summary/pair_features.csv
+      --background-reference artifacts/task10_large_family/hapibd/summary/pair_shape_features.csv
       --background-quantile "$quantile"
     )
     ;;
   6)
     minimum=40
-    observed="artifacts/task12_large_family_background/hapibd/summary/pair_features.csv"
+    observed="artifacts/task12_large_family_background/hapibd/summary/pair_shape_features.csv"
     out="artifacts/task12_large_family_background/pair_model_min40_q0.50"
     extra=(
-      --background-reference artifacts/task10_large_family/hapibd/summary/pair_features.csv
+      --background-reference artifacts/task10_large_family/hapibd/summary/pair_shape_features.csv
       --background-quantile 0.50
     )
     ;;
