@@ -13,7 +13,10 @@ from sklearn.metrics import balanced_accuracy_score
 from sklearn.utils.class_weight import compute_sample_weight
 
 from ghist_relatedness.ibd import matrix, pair_features, read_segment_rows, read_sex_map
-from scripts.fit_task9_ibd_classifier import MEIOSES, load_simulations
+try:
+    from scripts.fit_task9_ibd_classifier import MEIOSES, load_simulations
+except ModuleNotFoundError:
+    from fit_task9_ibd_classifier import MEIOSES, load_simulations
 
 
 LABELS = tuple(sorted(MEIOSES))
