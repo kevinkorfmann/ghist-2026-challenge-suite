@@ -29,6 +29,9 @@ class IbdRelatednessTests(unittest.TestCase):
         self.assertAlmostEqual(records[0]["total_male_map_cm"], 5.0)
         self.assertAlmostEqual(records[0]["total_female_map_cm"], 15.0)
         self.assertEqual(relationship_from_sample(str(records[0]["indID1"])), "siblings")
+        self.assertIn("ibd1_bin_0", records[0])
+        self.assertIn("ibd1_ordered_19", records[0])
+        self.assertIn("chromosome_total_ordered_21", records[0])
 
 
 if __name__ == "__main__":

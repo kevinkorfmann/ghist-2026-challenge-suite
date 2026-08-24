@@ -11,6 +11,9 @@ import numpy as np
 
 LABEL_PATTERN = re.compile(r"^(.+?)(\d+)_g")
 SexMap: TypeAlias = dict[str, tuple[np.ndarray, np.ndarray, np.ndarray]]
+LENGTH_BINS = np.asarray(
+    [0, 2, 4, 6, 8, 10, 15, 20, 30, 40, 60, 80, 120, np.inf], dtype=float
+)
 
 
 def read_sex_map(path: Path) -> SexMap:
@@ -86,6 +89,27 @@ def _summaries(values: list[float], prefix: str) -> dict[str, float]:
     }
 
 
+def _distribution_features(
+    values: list[float], prefix: str, ordered: int = 20
+) -> dict[str, float]:
+    array = np.asarray(values, dtype=float)
+    counts, _ = np.histogram(array, bins=LENGTH_BINS)
+    output = {
+        f"{prefix}_bin_{index}": float(count)
+        for index, count in enumerate(counts)
+    }
+    descending = np.sort(array)[::-1]
+    output.update(
+        {
+            f"{prefix}_ordered_{index}": float(descending[index])
+            if index < descending.size
+            else 0.0
+            for index in range(ordered)
+        }
+    )
+    return output
+
+
 def pair_features(
     rows: list[dict[str, str]], genome_cm: float, sex_map: SexMap | None = None
 ) -> list[dict[str, object]]:
@@ -136,11 +160,16 @@ def pair_features(
         }
         record.update(_summaries(lengths1, "ibd1"))
         record.update(_summaries(lengths2, "ibd2"))
+        record.update(_distribution_features(lengths1, "ibd1"))
+        record.update(_distribution_features(lengths2, "ibd2"))
+        record.update(_distribution_features(chromosome_values, "chromosome_total", ordered=22))
         if sex_map is not None:
             record.update(_summaries(male_lengths, "male_map"))
             record.update(_summaries(female_lengths, "female_map"))
             differences = [female - male for male, female in zip(male_lengths, female_lengths, strict=True)]
             record.update(_summaries(differences, "female_minus_male"))
+            record.update(_distribution_features(male_lengths, "male_map"))
+            record.update(_distribution_features(female_lengths, "female_map"))
             record["total_male_map_cm"] = float(sum(male_lengths))
             record["total_female_map_cm"] = float(sum(female_lengths))
             record["female_male_total_ratio"] = float(sum(female_lengths)) / max(
