@@ -10,46 +10,44 @@ import numpy as np
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pair-summaries", type=Path, nargs="+", required=True)
+    parser.add_argument("--holdout-summaries", type=Path, nargs="+", required=True)
     parser.add_argument("--candidate-summary", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
 
-    pair_summaries = [json.loads(path.read_text()) for path in args.pair_summaries]
-    pair_summaries.sort(key=lambda item: item["minimum_cm"])
+    holdouts = [json.loads(path.read_text()) for path in args.holdout_summaries]
+    runs = [run for summary in holdouts for run in summary["runs"]]
     candidate = json.loads(args.candidate_summary.read_text())
-    thresholds = [item["minimum_cm"] for item in pair_summaries]
-    colors = {
-        "accuracy": "#0072B2",
-        "balanced_accuracy": "#009E73",
-        "meioses_accuracy": "#D55E00",
-    }
-    labels = {
-        "accuracy": "Exact relation",
-        "balanced_accuracy": "Balanced exact",
-        "meioses_accuracy": "Meiosis degree",
-    }
+    exact = 100 * np.asarray([run["exact_difference"] for run in runs])
+    degree = 100 * np.asarray([run["meioses_difference"] for run in runs])
+
+    plt.rcParams.update(
+        {"font.family": "sans-serif", "font.size": 9, "axes.titleweight": "normal"}
+    )
 
     figure, axes = plt.subplots(1, 2, figsize=(11.5, 4.7))
     axis = axes[0]
-    for metric in colors:
-        values = [item["fresh_evaluation"][metric] for item in pair_summaries]
-        axis.plot(
-            thresholds,
-            values,
-            marker="o",
-            linewidth=2,
-            color=colors[metric],
-            label=labels[metric],
-        )
-    axis.axvline(5, color="#555555", linestyle=":", linewidth=1)
-    axis.set_xticks(thresholds)
-    axis.set_ylim(0.35, 0.72)
-    axis.set_xlabel("Minimum IBD segment (cM)")
-    axis.set_ylabel("Untouched held-out accuracy")
-    axis.set_title("A  Pair-model threshold selection")
+    positions = np.arange(1, len(runs) + 1)
+    axis.axhline(0, color="#666666", linewidth=1, linestyle=":")
+    axis.plot(positions, exact, marker="o", color="#0072B2", linewidth=1.8, label="Exact relation")
+    axis.plot(positions, degree, marker="s", color="#D55E00", linewidth=1.8, label="Meiosis degree")
+    axis.set_xticks(positions)
+    axis.set_xlabel("Untouched simulation replicate")
+    axis.set_ylabel("Paired accuracy gain (percentage points)")
+    axis.set_title("A  Independent holdout gains")
     axis.legend(frameon=False, fontsize=8)
     axis.spines[["top", "right"]].set_visible(False)
+    axis.text(
+        0.98,
+        0.04,
+        f"Mean exact gain: {exact.mean():+.2f} points\n{int(np.sum(exact > 0))}/{len(exact)} replicates improved",
+        transform=axis.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=8,
+        color="#333333",
+        bbox={"facecolor": "white", "edgecolor": "none", "alpha": 0.85, "pad": 1.5},
+    )
 
     axis = axes[1]
     counts = candidate["label_counts"]

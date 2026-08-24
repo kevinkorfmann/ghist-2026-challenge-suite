@@ -28,11 +28,11 @@ revealed testing answers. ↓ is better; ↑ is better.
 | 7 | [Sweep + background selection](experiments/single_sweep_bgs/task7_freeze.json) · [plots](figures/task7_single_sweep_bgs/) | chr7:106.417–106.577 Mb | ↓ 18.7 kb median; ↓ 45.7 kb max |
 | 8 | [Multiple sweeps + background selection](experiments/multiple_sweeps_bgs/task8_freeze.json) · [plots](figures/task8_multiple_sweeps_bgs/) | Six 120 kb intervals | ↑ 6/6 peaks; ↓ 45.7 kb max transferred error |
 | 9 | [IBD pairs](experiments/ibd_segments/task9_freeze.json) · [plots](figures/task9_ibd_segments/) | 989 pair labels | ↑ 82.34% exact; ↑ 85.35% degree |
-| 10 | [Large human family](experiments/large_family/task10_freeze.json) · [plots](figures/task10_large_family/) | 26,106 pairs; 229 people | ↑ 45.74% exact; ↑ 68.37% degree |
+| 10 | [Large human family](experiments/large_family/task10_freeze.json) · [plots](figures/task10_large_family/) | 26,106 pairs; 229 people | ↑ 47.20% exact; ↑ 69.08% degree; ↑ 0.70 points vs previous³ |
 | 11 | [Inbred multifamily cohort](experiments/multifamily_inbreeding/task11_freeze.json) · [plots](figures/task11_multifamily_inbreeding/) | 275 pairs; eight families | ↑ 63.58% exact; ↑ family ARI 1.00 |
 | 12 | [Family + background relatedness](experiments/large_family_background/task12_freeze.json) · [plots](figures/task12_large_family_background/) | 50,086 pairs; 317 people | ↑ 37.53% exact; ↑ 53.24% degree; ↑ 2.68 points vs previous² |
 
-¹ Signal-matched untouched recovery. ² Empirical short-segment background holdouts.
+¹ Signal-matched untouched recovery. ² Empirical short-segment background holdouts. ³ Eight untouched pedigree simulations; all eight improved.
 
 ## Frozen test values
 

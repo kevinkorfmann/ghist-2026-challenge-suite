@@ -5,57 +5,63 @@
   "testing_prediction": {
     "pairs": 26106,
     "individuals": 229,
-    "path": "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/candidate.csv",
+    "path": "artifacts/task10_large_family/clean_spectrum_v1_guarded/candidate.csv",
     "schema": [
       "indID1",
       "indID2",
       "relation"
     ],
     "label_counts": {
-      "full_2nd_cousin_once_removed": 5914,
-      "full_1st_cousin": 1148,
-      "full_1st_cousin_thrice_removed": 4500,
-      "full_2nd_cousin": 5220,
-      "full_1st_cousin_twice_removed": 2901,
-      "full_3rd_cousin": 1438,
-      "full_2nd_cousin_twice_removed": 986,
-      "full_1st_cousin_once_removed": 1922,
-      "avuncular_once_removed": 332,
-      "avuncular": 147,
-      "siblings": 408,
-      "full_3rd_cousin_once_removed": 400,
-      "full_4th_cousin": 318,
-      "avuncular_twice_removed": 472
+      "full_2nd_cousin": 5434,
+      "full_2nd_cousin_once_removed": 5969,
+      "full_1st_cousin": 1201,
+      "full_3rd_cousin": 2042,
+      "full_1st_cousin_thrice_removed": 3327,
+      "full_1st_cousin_twice_removed": 2718,
+      "full_2nd_cousin_twice_removed": 1168,
+      "full_1st_cousin_once_removed": 2204,
+      "avuncular_once_removed": 262,
+      "avuncular_twice_removed": 419,
+      "full_3rd_cousin_once_removed": 457,
+      "avuncular": 165,
+      "siblings": 404,
+      "full_4th_cousin": 336
     }
   },
   "selected_method": {
-    "pair_model": "human-map Ped-sim forest using long-segment totals, bins, and ordered segment shape",
+    "pair_model": "75% shallow histogram-gradient full-shape model and 25% calibrated forest",
     "minimum_segment_cm": 5,
+    "selected_configuration": {
+      "exact_accuracy": 0.4690265486725664,
+      "meioses_accuracy": 0.6899705014749262,
+      "name": "full_shape_leaves_15_min_20_l2_1.0",
+      "candidate_weight": 0.75,
+      "feature_set": "full_shape",
+      "parameters": {
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1.0
+      }
+    },
     "topology_consensus": "exact intersection of fast and medium branch reconstructions, followed by pair-model meiosis-degree agreement",
     "exact_score_policy": "preserve the calibrated pair call unless replicated topology resolves a same-degree relation ambiguity"
   },
   "validation": {
-    "fresh_evaluation_pairs": 6832,
-    "fresh_exact_accuracy": 0.45740632318501173,
-    "fresh_balanced_accuracy": 0.45584359996371077,
-    "fresh_meioses_accuracy": 0.6836943793911007,
-    "threshold_10cm_exact_accuracy": 0.44686768149882905,
-    "threshold_20cm_exact_accuracy": 0.4093969555035129,
-    "pedigree_tuple_benchmark_pairs": 1400,
-    "pedigree_tuple_accepted_fraction": 0.3585714285714286,
-    "pedigree_tuple_exact_accuracy_on_accepted": 0.4860557768924303,
-    "branch_groups": 16,
-    "fast_medium_candidate_agreement": 0.9811920631272505,
-    "overlapping_topology_relation_agreement": 0.6644518272425249,
-    "replicated_degree_guarded_topology_pairs": 200,
-    "testing_calls_changed_by_topology": 65,
+    "untouched_replicates": 8,
+    "candidate_mean_exact_accuracy": 0.4720384665574237,
+    "baseline_mean_exact_accuracy": 0.465063292272166,
+    "mean_paired_exact_gain": 0.006975174285257672,
+    "minimum_paired_exact_gain": 0.002936426369108791,
+    "positive_exact_replicates": 8,
+    "candidate_mean_meioses_accuracy": 0.6907685805203877,
+    "baseline_mean_meioses_accuracy": 0.6860780574646677,
+    "mean_paired_meioses_gain": 0.004690523055720042,
+    "testing_calls_changed_by_topology": 198,
     "all_topology_changes_preserve_meiosis_degree": true,
     "robustness_gate": {
-      "fresh_exact_accuracy_at_least_0.45": true,
-      "fresh_meioses_accuracy_at_least_0.68": true,
-      "five_cm_threshold_best_on_untouched_evaluation": true,
-      "independent_topology_searches_completed": true,
-      "topology_cannot_override_meiosis_degree": true,
+      "all_eight_exact_gains_positive": true,
+      "pooled_mean_exact_gain_above_0.006": true,
+      "pooled_meiosis_degree_non_regression": true,
       "official_relation_only_schema": true,
       "all_26106_pairs_present": true,
       "pairs_unique": true,
@@ -64,27 +70,23 @@
       "passed": true
     }
   },
-  "numerical_diagnostics": {
-    "broad_branch_job": "7825106",
-    "whole_cohort_job": "7824896",
-    "state": "cancelled after the replicated fast-medium policy was frozen",
-    "reason": "unconstrained topology was not allowed to override the higher-scoring exact pair model"
-  },
   "data_provenance": {
     "testing_vcf_sha256": "7603a7527cd1b714367fb49fa0fb42d59de527b678b44ac9e6007969e916865a",
     "final_vcf_sealed_sha256": "9e1a20af4907befce07ead7b80aa61331c0b9a3ea2c4c451fc4acc9f6a131bc4"
   },
   "source_artifacts": {
+    "artifacts/task10_large_family/clean_spectrum_v1/summary.json": "5d9e407d0b4ba2f7c4a039f33040e0ef22d43713944c487bdfaeeb0b8f5b90d7",
+    "artifacts/task10_large_family/clean_spectrum_v1/holdout_summary.json": "45fdb71c1f8d016ba07a2ee5168eaa60622b0b215f670679aad94b7676949492",
+    "artifacts/task10_large_family/clean_spectrum_v1/confirmation_summary.json": "9e2d228e8eeefc48faf5a99272bc5d500dea8ebdfd47cc39768a48a4fe555a6f",
+    "artifacts/task10_large_family/clean_spectrum_v1_guarded/summary.json": "a54020412318814da10816062d963abf55ece3a99ba525e57f9d236d6fb62130",
+    "artifacts/task10_large_family/clean_spectrum_v1_guarded/candidate.csv": "906a1fb2609ce239dc291e3f84c67289ba15e772b9cc3dbf5f11b5bcbf46270a",
     "artifacts/task10_large_family/pair_model_min5/summary.json": "4bee8cfb3725dd2253bae0cac921ec1dc45661e9abf61a436bdcd065b1fd0705",
-    "artifacts/task10_human_calibration/bonsai_pair_benchmark/summary.json": "9e0de7439994ee3bd32c628e38f0edacadd22568d25986f7c591f77bef02c187",
     "artifacts/task10_large_family/hapibd/branch_bonsai_fast/summary.json": "55657ed1ddfce3e3217d7fc3fa1ce318a4da8f552788edf7c7ed08bb33e9014c",
-    "artifacts/task10_large_family/hapibd/branch_bonsai_medium/summary.json": "1b74aa357fa4b0ec19ee20617a8bd1c0d8dfc1cf39dd94c349e555cb0a8035df",
-    "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/summary.json": "85f144b3a50e8bc3b5e23adcf93ae7e9431eaab6b20027a8fb4b71a09dd44d0a",
-    "artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/candidate.csv": "c6801b1ca7b89fd06f66f066bfecf8b2387d3c77652ce855e72aebb427b31202"
+    "artifacts/task10_large_family/hapibd/branch_bonsai_medium/summary.json": "1b74aa357fa4b0ec19ee20617a8bd1c0d8dfc1cf39dd94c349e555cb0a8035df"
   },
   "figures": {
-    "figures/task10_large_family/task10_validation.pdf": "484627abbc2ebb2aabc209f73c9cdd3f6d983a3851b998ed3c8197df976de67a",
-    "figures/task10_large_family/task10_validation.png": "590432e85644bf2aa4391c022a12b596f30aeb6df5f6ca3c295f3e63eeff8f61"
+    "figures/task10_large_family/task10_validation.pdf": "db57e87ac17fa6fc0d1cf9262e3cf69a11de610d68f16b392bb20b0c68d0de42",
+    "figures/task10_large_family/task10_validation.png": "964c4b0ba14751b038314d2ac34d7ae3881ada746ce7117355d3300179ea5f7b"
   },
   "betty_job_ids": [
     "7825061",
@@ -93,6 +95,9 @@
     "7825218",
     "7825239",
     "7825245",
-    "7825300"
+    "7825300",
+    "7829097",
+    "7829190",
+    "7829204"
   ]
 }

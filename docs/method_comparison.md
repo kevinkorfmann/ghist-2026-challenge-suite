@@ -106,6 +106,15 @@ accuracy from 51.91% to 53.24% over 20 untouched empirical-background comparison
 Every paired comparison improved. Degree-guarded pedigree topology refined 36 of
 50,086 frozen testing pairs.
 
+## Task 10 decision
+
+Task 10 uses a 75:25 blend of a shallow histogram-gradient full-shape model and
+the prior calibrated forest. The blend improved all eight untouched pedigree
+replicates: exact accuracy rose from 46.51% to 47.20% (+0.70 points), while
+meiosis-degree accuracy rose from 68.61% to 69.08%. Two independent pedigree
+reconstructions may change a call only when they agree exactly and preserve the
+pair model's meiosis degree; this refined 198 of 26,106 frozen testing pairs.
+
 ## Task 1 decision
 
 Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
