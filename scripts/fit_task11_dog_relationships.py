@@ -180,6 +180,7 @@ def read_observed(
     map_path: Path,
     cluster_path: Path,
     hbd_threshold_cm: float,
+    summary_function=summarize_segments,
 ) -> tuple[np.ndarray, list[tuple[str, str]], list[int]]:
     families = read_clusters(cluster_path)
     sample_to_family = {
@@ -236,7 +237,7 @@ def read_observed(
         pair_scales[pair] = genome_cm / max(genome_cm - masked_cm, 0.25 * genome_cm)
     matrix = np.vstack(
         [
-            summarize_segments(grouped[pair], exposure_scale=pair_scales[pair])
+            summary_function(grouped[pair], exposure_scale=pair_scales[pair])
             for pair in pairs
         ]
     )
