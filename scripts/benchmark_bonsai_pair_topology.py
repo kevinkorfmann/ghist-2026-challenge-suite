@@ -67,6 +67,16 @@ def main() -> None:
             for segment in grouped[(label, replicate)]
             if float(segment[-1]) >= args.threshold_cm
         ]
+        if not segments:
+            rows.append(
+                {
+                    "truth": label,
+                    "replicate": replicate,
+                    "relationship_tuple": None,
+                    "prediction": None,
+                }
+            )
+            continue
         total_half = sum(float(segment[-1]) for segment in segments if not segment[-2])
         total_full = sum(float(segment[-1]) for segment in segments if segment[-2])
         result = bonsai.build_pedigree(
