@@ -24,6 +24,11 @@ def main() -> None:
     parser.add_argument("--vcf", type=Path, required=True)
     parser.add_argument("--accessible-bed", type=Path, required=True)
     parser.add_argument("--window-size", type=int, action="append", default=[])
+    parser.add_argument(
+        "--score-field",
+        choices=["composite_score", "soft_composite_score"],
+        default="composite_score",
+    )
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--summary", type=Path, required=True)
     args = parser.parse_args()
@@ -42,8 +47,8 @@ def main() -> None:
             writer = csv.writer(handle)
             writer.writerow(names)
             writer.writerows(zip(*(scan[name] for name in names), strict=True))
-        valid = np.isfinite(scan["composite_score"])
-        order = np.flatnonzero(valid)[np.argsort(scan["composite_score"][valid])[::-1]]
+        valid = np.isfinite(scan[args.score_field])
+        order = np.flatnonzero(valid)[np.argsort(scan[args.score_field][valid])[::-1]]
         scale_summaries[str(window_size)] = {
             "step_size": step_size,
             "windows": int(valid.sum()),
@@ -53,9 +58,11 @@ def main() -> None:
                     "end": int(scan["end"][index]),
                     "center": int(scan["center"][index]),
                     "composite_score": float(scan["composite_score"][index]),
+                    "soft_composite_score": float(scan["soft_composite_score"][index]),
                     "pi": float(scan["pi"][index]),
                     "tajima_d": float(scan["tajima_d"][index]),
                     "h12": float(scan["h12"][index]),
+                    "h2_h1": float(scan["h2_h1"][index]),
                     "mean_r2": float(scan["mean_r2"][index]),
                 }
                 for index in order[:20]
@@ -79,6 +86,7 @@ def main() -> None:
             },
         },
         "scales": scale_summaries,
+        "ranking_score": args.score_field,
         "submission_count": 0,
     }
     args.summary.parent.mkdir(parents=True, exist_ok=True)
@@ -88,4 +96,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

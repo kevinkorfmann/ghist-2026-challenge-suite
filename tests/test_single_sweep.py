@@ -9,6 +9,7 @@ from ghist_single_sweep.scan import (
     flank_ld_scan,
     haplotype_homozygosity,
     mean_pairwise_r2,
+    scan_windows,
     tajima_d,
 )
 
@@ -53,6 +54,20 @@ class SingleSweepTests(unittest.TestCase):
         result = flank_ld_scan(variants, np.array([100]), 100)
         self.assertEqual(result["candidate_position"].tolist(), [100])
         self.assertTrue(np.isfinite(result["flank_ld_ratio"][0]))
+
+    def test_scan_exposes_hard_and_soft_scores(self) -> None:
+        from ghist_single_sweep.scan import VariantMatrix
+
+        positions = np.arange(0, 1_000, 20, dtype=np.int32)
+        patterns = np.asarray(
+            [[0, 0, 0, 1, 1, 1], [0, 0, 1, 0, 1, 1], [0, 1, 0, 1, 0, 1]],
+            dtype=np.uint8,
+        )
+        haplotypes = np.vstack([patterns[index % 3] for index in range(positions.size)])
+        variants = VariantMatrix("7", 1_000, positions, haplotypes, 0)
+        result = scan_windows(variants, np.asarray([[0, 1_000]]), 200, 100)
+        self.assertEqual(result["composite_score"].shape, result["soft_composite_score"].shape)
+        self.assertIn("z_high_h2_h1", result)
 
 
 if __name__ == "__main__":

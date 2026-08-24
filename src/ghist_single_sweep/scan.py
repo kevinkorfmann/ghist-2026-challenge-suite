@@ -191,11 +191,30 @@ def scan_windows(
         "low_sites": -robust_z(np.log1p(features["site_count"] / np.maximum(exposure, 1))),
         "low_tajima_d": -robust_z(features["tajima_d"]),
         "high_h12": robust_z(np.log(np.maximum(features["h12"], 1e-6))),
+        "high_h2_h1": robust_z(features["h2_h1"]),
         "high_r2": robust_z(np.log(np.maximum(features["mean_r2"], 1e-6))),
     }
-    stack = np.vstack([np.clip(value, -5.0, 8.0) for value in components.values()])
+    hard_component_names = ["low_pi", "low_sites", "low_tajima_d", "high_h12", "high_r2"]
+    stack = np.vstack(
+        [np.clip(components[name], -5.0, 8.0) for name in hard_component_names]
+    )
     score = np.nanmean(stack, axis=0)
     score[~valid_exposure] = np.nan
+    soft_weights = {
+        "low_pi": 0.5,
+        "low_tajima_d": 0.75,
+        "high_h12": 1.5,
+        "high_h2_h1": 0.5,
+        "high_r2": 0.5,
+    }
+    soft_stack = np.vstack(
+        [
+            weight * np.clip(components[name], -5.0, 8.0)
+            for name, weight in soft_weights.items()
+        ]
+    )
+    soft_score = np.nansum(soft_stack, axis=0) / sum(soft_weights.values())
+    soft_score[~valid_exposure] = np.nan
     return {
         "start": starts,
         "end": ends,
@@ -204,6 +223,7 @@ def scan_windows(
         **features,
         **{f"z_{key}": value for key, value in components.items()},
         "composite_score": score,
+        "soft_composite_score": soft_score,
     }
 
 
