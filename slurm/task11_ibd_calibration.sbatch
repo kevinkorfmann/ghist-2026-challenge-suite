@@ -28,5 +28,5 @@ seed=$((91126000 + SLURM_ARRAY_TASK_ID))
   -d "$PROJECT_ROOT/configs/task11_pedigrees.def" \
   -m "$MAP_ROOT/campbell2016_average.simmap" \
   -o "$OUT_ROOT/replicate_${SLURM_ARRAY_TASK_ID}" \
-  --intf "$PED_ROOT/interfere/nu_p_campbell.tsv" \
+  --pois \
   --seed "$seed"
