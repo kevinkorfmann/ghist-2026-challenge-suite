@@ -34,6 +34,28 @@ revealed testing answers. ↓ is better; ↑ is better.
 
 ¹ Signal-matched untouched recovery. ² Structured-background holdouts.
 
+## Frozen test values
+
+<details>
+<summary>Show exact locked outputs</summary>
+
+| # | Test value |
+|---:|---|
+| 1 | generations = 4587.059040; fraction = 0.522420594 |
+| 2 | N₁ = 21138.888967; N₂ = 82967.404032; split = 4544.198811; contact = 1455.041806; migration = 0.000199006115 |
+| 3 | generations = 5000; growth = 2.0 |
+| 4 | AFR = 16000; EUR = 24000; split = 4500; migration = 0.00015 |
+| 5 | chr7:38196951–38316951 ([BED](artifacts/task5_single_sweep/interval_candidate.bed)) |
+| 6 | chr7:16532298–16602298 ([BED](artifacts/task6_soft_sweep/task6_candidate.bed)) |
+| 7 | chr7:106416500–106576500 ([BED](artifacts/task7_single_sweep_bgs/task7_candidate.bed)) |
+| 8 | chr7:76301767–76421767; 88238355–88358355; 90606410–90726410; 130010549–130130549; 138380689–138500689; 155677529–155797529 ([BED](artifacts/background_sweeps/task8_candidate.bed)) |
+| 9 | 989 pair labels ([CSV](artifacts/task9_ibd_segments/model_v3_shape/task9_candidate.csv)) |
+| 10 | 26,106 pair labels ([CSV](artifacts/task10_large_family/consensus_branch_replicated_flat_guarded/candidate.csv)) |
+| 11 | 275 pair labels across eight families ([record](experiments/multifamily_inbreeding/task11_freeze.json)) |
+| 12 | 50,086 pair labels ([CSV](artifacts/task12_large_family_background/consensus_q025_trim_flat_guarded/candidate.csv)) |
+
+</details>
+
 ## Approach
 
 - **Demography (1–4):** frequency spectra, linked-block uncertainty, and held-out simulations.
