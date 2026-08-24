@@ -4,7 +4,7 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Nine methods are
+Private, reproducible work on all 12 GHIST 2026 challenges. Ten methods are
 frozen and the remaining inputs are secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
@@ -28,7 +28,8 @@ never to a revealed testing answer.
 | 8 | Multiple sweeps with background selection | frozen | six 120 kb intervals centered at 76,361,767; 88,298,355; 90,666,410; 130,070,549; 138,440,689; and 155,737,529 bp | exactly six peaks exceed the matched threshold; weakest selected μ 23.41 versus next μ 19.34; exon snaps ≤16.1 kb; transferred recovery maximum error 45.7 kb |
 | 9 | Relatedness from IBD segments | frozen | 989 testing pairs; official relation and meiosis-count schema | fresh untouched simulation: 82.34% exact-label, 77.81% balanced, and 85.35% meiosis-count accuracy across 12,032 pairs |
 | 11 | Multifamily cohort with close inbreeding | frozen | 275 within-family dog pairs across eight families; all eight accepted labels represented | family partition ARI 1.0 across 16 runs; untouched pair accuracy 63.58%; 98.18% HBD-threshold stability and zero sibling-component conflicts |
-| 6, 10, 12 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked validation and topology reconstruction in progress |
+| 12 | Large family with background relatedness | frozen | 50,086 human pairs across 317 individuals; official relation-only schema | 40.94% exact and 60.95% meiosis accuracy without added background; 37.18% exact and 55.20% meiosis accuracy across 12 structured-background holdouts |
+| 6, 10 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked recovery and topology reconstruction in progress |
 
 Frozen means that the estimator, prediction, and validation gates are locked
 locally. It does not mean submitted.
@@ -84,6 +85,12 @@ locally. It does not mean submitted.
     accepted pedigree tuples plus sibling-component consistency resolve the
     remaining same-degree ambiguities.
 
+12. Large family with background relatedness — human-map Ped-sim calibration
+    supplies pairwise long-segment and ordered-shape probabilities. A lower-quartile
+    background correction and shortest-background shape trim were selected on 12
+    structured holdouts. Branch topology may refine relation type only when its
+    meiosis degree agrees with the calibrated pair model.
+
 ## Evidence
 
 | Challenge | Frozen record | Figure |
@@ -97,6 +104,7 @@ locally. It does not mean submitted.
 | Multiple sweeps with background selection | [`task8_freeze.json`](experiments/multiple_sweeps_bgs/task8_freeze.json) | [`figures/task8_multiple_sweeps_bgs/`](figures/task8_multiple_sweeps_bgs/) |
 | Relatedness from IBD segments | [`task9_freeze.json`](experiments/ibd_segments/task9_freeze.json) | [`figures/task9_ibd_segments/`](figures/task9_ibd_segments/) |
 | Multifamily cohort with close inbreeding | [`task11_freeze.json`](experiments/multifamily_inbreeding/task11_freeze.json) | [`figures/task11_multifamily_inbreeding/`](figures/task11_multifamily_inbreeding/) |
+| Large family with background relatedness | [`task12_freeze.json`](experiments/large_family_background/task12_freeze.json) | [`figures/task12_large_family_background/`](figures/task12_large_family_background/) |
 
 ## Layout
 

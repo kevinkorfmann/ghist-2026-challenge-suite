@@ -1,0 +1,100 @@
+{
+  "challenge": "Relatedness in a large human family with background relatedness",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "pairs": 50086,
+    "individuals": 317,
+    "path": "artifacts/task12_large_family_background/consensus_q025_trim_guarded/candidate.csv",
+    "schema": [
+      "indID1",
+      "indID2",
+      "relation"
+    ],
+    "label_counts": {
+      "avuncular_twice_removed": 1982,
+      "full_2nd_cousin_twice_removed": 9997,
+      "avuncular": 249,
+      "full_1st_cousin_twice_removed": 6168,
+      "full_2nd_cousin_once_removed": 7304,
+      "full_3rd_cousin": 5928,
+      "full_1st_cousin_thrice_removed": 6621,
+      "full_3rd_cousin_once_removed": 1281,
+      "full_1st_cousin_once_removed": 1875,
+      "full_2nd_cousin": 5730,
+      "siblings": 442,
+      "avuncular_once_removed": 1190,
+      "full_4th_cousin": 896,
+      "full_1st_cousin": 423
+    }
+  },
+  "selected_method": {
+    "pair_model": "human-map Ped-sim forest using long-segment totals, bins, and ordered segment shape",
+    "background_control": "lower-quartile global correction with the shortest inferred background segments removed from shape features",
+    "selection_rule": "selected by exact accuracy across 12 heterogeneous structured-background holdouts",
+    "topology_consensus": "branch reconstruction may refine relation type only when its meiosis degree agrees with the calibrated pair model"
+  },
+  "validation": {
+    "fresh_pair_accuracy_without_added_background": 0.4093969555035129,
+    "fresh_pair_balanced_accuracy_without_added_background": 0.40809763739324195,
+    "fresh_pair_meioses_accuracy_without_added_background": 0.6094847775175644,
+    "structured_background_replicates": 12,
+    "structured_background_exact_accuracy": 0.37175546448087426,
+    "structured_background_meioses_accuracy": 0.5519613583138173,
+    "pedigree_tuple_benchmark_pairs": 1400,
+    "pedigree_tuple_accepted_fraction": 0.3585714285714286,
+    "pedigree_tuple_exact_accuracy_on_accepted": 0.4860557768924303,
+    "branch_reconstruction_groups": 17,
+    "branch_pedigree_tuples": 608,
+    "degree_guarded_topology_refinements": 40,
+    "background_quantile_exact_stability": 0.45871101705067285,
+    "background_quantile_degree_stability": 0.6428742562791998,
+    "robustness_gate": {
+      "fresh_exact_accuracy_at_least_0.40": true,
+      "fresh_meioses_accuracy_at_least_0.60": true,
+      "structured_background_exact_accuracy_at_least_0.35": true,
+      "structured_background_meioses_accuracy_at_least_0.55": true,
+      "selected_correction_best_on_structured_exact_accuracy": true,
+      "topology_cannot_override_meiosis_degree": true,
+      "official_relation_only_schema": true,
+      "all_50086_pairs_present": true,
+      "pairs_unique": true,
+      "all_317_individuals_present": true,
+      "all_labels_accepted": true,
+      "passed": true
+    }
+  },
+  "numerical_diagnostics": {
+    "whole_cohort_reconstruction": "not used; repeated internal numerical singularity at 20 and 40 cM",
+    "large_memory_repeat_job": "7825210",
+    "large_memory_repeat_state": "FAILED",
+    "fallback": "completed branch reconstruction plus degree-agreement guard"
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "efef295b86353160eab3e093f2f2134c8decfe740620ed12ec15992ae89fc10c",
+    "final_vcf_sealed_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121"
+  },
+  "source_artifacts": {
+    "artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/summary.json": "d6c70e31bf6d6e3aa4064b0626c0aa4c1b4fd61d9c6c209addf692f673d5a5ac",
+    "artifacts/task12_large_family_background/background_validation/summary.json": "59aefaaba6e8c1010a052ccddd43dbc9ed3fc939fd5fe0a461c28745b87bc3ac",
+    "artifacts/task10_human_calibration/bonsai_pair_benchmark/summary.json": "9e0de7439994ee3bd32c628e38f0edacadd22568d25986f7c591f77bef02c187",
+    "artifacts/task12_large_family_background/hapibd/branch_bonsai/summary.json": "8c27d1f20c311e1c7c9ff934f1200050c182182f3c45663055fca0bc01b6b2e1",
+    "artifacts/task12_large_family_background/consensus_q025_trim_guarded/summary.json": "7ff14a9c41b10b14698106f98878958eb7fd4afaca0af4d519ae6698f6c07e9e",
+    "artifacts/task12_large_family_background/consensus_q025_trim_guarded/candidate.csv": "eaea317842c85031008f3c42eae702f7173405ad466c37b868f60a837738c110"
+  },
+  "figures": {
+    "figures/task12_large_family_background/task12_validation.pdf": "e59c1605758acf0dc5c93498d39b01d3d6b4db11e177434fa003f4afbd58d663",
+    "figures/task12_large_family_background/task12_validation.png": "b777d01dbad2fda8aca9102ff32d77745cce0dec70d5f87106b9e37449f02f98"
+  },
+  "betty_job_ids": [
+    "7825061",
+    "7825065",
+    "7825092",
+    "7825106",
+    "7825210",
+    "7825239",
+    "7825245",
+    "7825266",
+    "7825273"
+  ]
+}
