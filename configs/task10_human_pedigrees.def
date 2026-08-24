@@ -1,0 +1,58 @@
+# Full-relationship structures spanning every accepted large-family label.
+def siblings 500 2
+2 1
+
+def avuncular 500 3
+2 1 2 1n
+3 1 1
+
+def avuncular_once_removed 500 4
+2 1 2 1n
+3 0 1
+4 1 1
+
+def avuncular_twice_removed 500 5
+2 1 2 1n
+3 0 1
+4 0 1
+5 1 1
+
+def full_1st_cousin 500 3
+3 1
+
+def full_1st_cousin_once_removed 500 4
+3 1 2 1n
+4 1 1
+
+def full_1st_cousin_twice_removed 500 5
+3 1 2 1n
+4 0 1
+5 1 1
+
+def full_1st_cousin_thrice_removed 500 6
+3 1 2 1n
+4 0 1
+5 0 1
+6 1 1
+
+def full_2nd_cousin 500 4
+4 1
+
+def full_2nd_cousin_once_removed 500 5
+4 1 2 1n
+5 1 1
+
+def full_2nd_cousin_twice_removed 500 6
+4 1 2 1n
+5 0 1
+6 1 1
+
+def full_3rd_cousin 500 5
+5 1
+
+def full_3rd_cousin_once_removed 500 6
+5 1 2 1n
+6 1 1
+
+def full_4th_cousin 500 6
+6 1
