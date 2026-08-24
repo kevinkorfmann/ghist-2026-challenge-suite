@@ -39,6 +39,7 @@ def choose_relation(
     topology_label: str | None,
     topology_meioses: int | None,
     topology_boost: float | None,
+    require_flat_degree_agreement: bool = False,
 ) -> tuple[str, float, str]:
     if topology_boost is None:
         if topology_label is not None:
@@ -56,6 +57,23 @@ def choose_relation(
             relation,
             probabilities[relation] / max(total, 1e-12),
             "pair model constrained by pedigree meioses",
+        )
+
+    flat_relation = max(probabilities, key=probabilities.__getitem__)
+    if require_flat_degree_agreement:
+        if (
+            topology_label is not None
+            and topology_meioses == MEIOSES[flat_relation]
+        ):
+            return (
+                topology_label,
+                probabilities[topology_label],
+                "background-guarded accepted pedigree tuple",
+            )
+        return (
+            flat_relation,
+            probabilities[flat_relation],
+            "calibrated pair prediction",
         )
 
     degree_scores = {
@@ -94,6 +112,7 @@ def main() -> None:
     parser.add_argument("--bonsai", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--topology-boost", type=float)
+    parser.add_argument("--require-flat-degree-agreement", action="store_true")
     args = parser.parse_args()
 
     prediction_sets = []
@@ -120,7 +139,11 @@ def main() -> None:
             for label in MEIOSES
         }
         relation, confidence, source = choose_relation(
-            averaged, topology_label, topology_meioses, args.topology_boost
+            averaged,
+            topology_label,
+            topology_meioses,
+            args.topology_boost,
+            args.require_flat_degree_agreement,
         )
         sensitivity = [
             choose_relation(
@@ -128,6 +151,7 @@ def main() -> None:
                 topology_label,
                 topology_meioses,
                 args.topology_boost,
+                args.require_flat_degree_agreement,
             )[0]
             for run in prediction_sets
         ]
@@ -215,6 +239,7 @@ def main() -> None:
         "degree_sensitivity_stability": float(np.mean(degree_stable)),
         "unstable_pairs": int(len(stable) - sum(stable)),
         "topology_boost": args.topology_boost,
+        "require_flat_degree_agreement": args.require_flat_degree_agreement,
         "full_sibling_component_propagations": propagations,
         "sibling_component_conflicts": conflicts,
         "source_counts": dict(Counter(row["source"] for row in rows)),

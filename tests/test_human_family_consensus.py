@@ -25,6 +25,16 @@ def test_primary_and_guarded_topology_policies():
         choose_relation(probabilities, "avuncular_once_removed", 4, 3.0)[0]
         == "avuncular_once_removed"
     )
+    assert (
+        choose_relation(
+            probabilities,
+            "avuncular_once_removed",
+            4,
+            1.0,
+            require_flat_degree_agreement=True,
+        )[0]
+        == "siblings"
+    )
 
 
 def test_guarded_pedigree_source_is_accepted_for_component_propagation():
