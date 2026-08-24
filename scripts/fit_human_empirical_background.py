@@ -54,6 +54,10 @@ class EmpiricalRegime:
     pair_heterogeneity: float
     within_bin_shape: float = 1.0
 
+    @property
+    def mean_segments(self) -> float:
+        return self.intensity
+
 
 SELECTION_REGIMES = (
     EmpiricalRegime(0.0, 0.0),
