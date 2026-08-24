@@ -12,12 +12,19 @@ module load gcc/13.3.0
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 PED_ROOT="$PROJECT_ROOT/external/ped-sim"
 MAP_ROOT="$PROJECT_ROOT/external/ped-sim-map"
+GSL_ROOT="$PROJECT_ROOT/external/raisd/gsl"
 mkdir -p "$PROJECT_ROOT/external" "$MAP_ROOT"
 
 if [[ ! -d "$PED_ROOT/.git" ]]; then
   git clone --depth 1 https://github.com/williamslab/ped-sim.git "$PED_ROOT"
 fi
-make -C "$PED_ROOT" -j "$SLURM_CPUS_PER_TASK"
+test -f "$GSL_ROOT/lib/libgsl.so"
+cp "$PED_ROOT/Makefile-gsl" "$PED_ROOT/Makefile"
+make -C "$PED_ROOT" clean
+make -C "$PED_ROOT" -j "$SLURM_CPUS_PER_TASK" \
+  CPPFLAGS="-std=c++11 -Wall -DUSEGSL -O2 -I$GSL_ROOT/include" \
+  CFLAGS="-Wall -DUSEGSL -O2 -I$GSL_ROOT/include" \
+  LIBS="-L$GSL_ROOT/lib -Wl,-rpath,$GSL_ROOT/lib -lz -lgsl -lgslcblas"
 
 if [[ ! -f "$MAP_ROOT/refined_mf.simmap" ]]; then
   wget -q \
