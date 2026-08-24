@@ -1,5 +1,6 @@
 from scripts.consensus_human_family_pedigree import (
     choose_relation,
+    is_accepted_pedigree_source,
     topology_evidence,
 )
 
@@ -24,3 +25,9 @@ def test_primary_and_guarded_topology_policies():
         choose_relation(probabilities, "avuncular_once_removed", 4, 3.0)[0]
         == "avuncular_once_removed"
     )
+
+
+def test_guarded_pedigree_source_is_accepted_for_component_propagation():
+    assert is_accepted_pedigree_source("accepted pedigree tuple")
+    assert is_accepted_pedigree_source("background-guarded accepted pedigree tuple")
+    assert not is_accepted_pedigree_source("background-corrected pair consensus")
