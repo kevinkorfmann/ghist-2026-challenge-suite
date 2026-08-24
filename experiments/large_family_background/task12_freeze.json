@@ -1,100 +1,98 @@
 {
   "challenge": "Relatedness in a large human family with background relatedness",
-  "status": "method frozen; no submission",
-  "submission_count": 0,
+  "status": "FROZEN",
+  "betty_job_ids": [
+    "7828946",
+    "7828972",
+    "7829025"
+  ],
+  "data_provenance": {
+    "testing_vcf_sha256": "efef295b86353160eab3e093f2f2134c8decfe740620ed12ec15992ae89fc10c",
+    "final_vcf_sealed_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121"
+  },
+  "figures": [
+    "figures/task12_large_family_background/task12_validation.pdf",
+    "figures/task12_large_family_background/task12_validation.png"
+  ],
+  "selected_method": {
+    "pair_model": "5 cM histogram-gradient classifier using corrected segment counts, total sharing, and length-bin features",
+    "background_control": "background length-bin rates estimated from unlabeled Task 12 versus Task 10 cohort distributions",
+    "selection_rule": "selected on empirical short-segment contamination regimes and promoted through 20 untouched paired comparisons",
+    "topology_consensus": "branch reconstruction may refine relation type only when its meiosis degree agrees with the calibrated pair model"
+  },
+  "source_artifacts": {
+    "artifacts/task12_large_family_background/empirical_background_v1/summary.json": "449d206fdb175e792b81505545ddac315c564ec76519bd06336dc59d1c8a4cf1",
+    "artifacts/task12_large_family_background/empirical_background_v1/holdout_summary.json": "53e60bd209261e080ab26167f3744bd7dbb16a6eaf6423c2aa9841f0b464b588",
+    "artifacts/task12_large_family_background/empirical_background_v1_guarded/summary.json": "67ac3c98c9cd841695ec4f4dd327a8f7cc837b11bb32160fa2370440a4698826",
+    "artifacts/task12_large_family_background/empirical_background_v1_guarded/candidate.csv": "6a975597c83c297ebe3d5b9ace11e3e16ea433a933489dbb0eb801623e192bd0"
+  },
+  "validation": {
+    "development_empirical_background_exact_accuracy": 0.39556498829039816,
+    "development_empirical_background_meioses_accuracy": 0.5658177205308352,
+    "untouched_empirical_background_replicates": 4,
+    "untouched_empirical_background_comparisons": 20,
+    "previous_exact_accuracy_on_untouched_empirical_background": 0.3484611043821272,
+    "frozen_exact_accuracy_on_untouched_empirical_background": 0.37528834920808335,
+    "mean_paired_exact_gain": 0.02682724482595611,
+    "minimum_paired_exact_gain": 0.006309611151870842,
+    "positive_exact_comparisons": 20,
+    "previous_meioses_accuracy_on_untouched_empirical_background": 0.5191127597612641,
+    "frozen_meioses_accuracy_on_untouched_empirical_background": 0.5323547972745643,
+    "mean_paired_meioses_gain": 0.013242037513300053,
+    "degree_guarded_topology_refinements": 36,
+    "robustness_gate": {
+      "empirical_background_holdout_gate": true,
+      "all_50086_pairs_present": true,
+      "pairs_unique": true,
+      "all_317_individuals_present": true,
+      "all_labels_accepted": true,
+      "official_relation_only_schema": true,
+      "topology_cannot_override_meiosis_degree": true,
+      "submission_count_zero": true,
+      "passed": true
+    }
+  },
+  "numerical_diagnostics": {
+    "rejected_background_augmented_raw_model": "failed development comparison",
+    "rejected_pairwise_segment_marginalization": "improved light contamination but regressed clean and heavy regimes",
+    "rejected_long_only_validation": "discarded after unlabeled cohort audit showed dominant 5-20 cM background",
+    "empirical_background_profile_by_length_bin": [
+      83.0,
+      49.0,
+      14.0,
+      3.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
   "testing_prediction": {
     "pairs": 50086,
     "individuals": 317,
-    "path": "artifacts/task12_large_family_background/consensus_q025_trim_flat_guarded/candidate.csv",
+    "path": "artifacts/task12_large_family_background/empirical_background_v1_guarded/candidate.csv",
     "schema": [
       "indID1",
       "indID2",
       "relation"
     ],
     "label_counts": {
-      "avuncular_twice_removed": 1987,
-      "full_2nd_cousin_twice_removed": 8847,
-      "avuncular": 255,
-      "full_1st_cousin_twice_removed": 6094,
-      "full_2nd_cousin_once_removed": 7249,
-      "full_3rd_cousin": 4951,
-      "full_1st_cousin_thrice_removed": 6548,
-      "full_3rd_cousin_once_removed": 2381,
-      "full_1st_cousin_once_removed": 1931,
-      "full_2nd_cousin": 6067,
-      "siblings": 442,
-      "avuncular_once_removed": 1185,
-      "full_4th_cousin": 1727,
-      "full_1st_cousin": 422
+      "avuncular_twice_removed": 2842,
+      "full_4th_cousin": 8237,
+      "avuncular": 312,
+      "full_1st_cousin_twice_removed": 8062,
+      "full_2nd_cousin": 6011,
+      "full_3rd_cousin_once_removed": 7133,
+      "full_2nd_cousin_twice_removed": 3467,
+      "full_1st_cousin_thrice_removed": 4146,
+      "full_2nd_cousin_once_removed": 3693,
+      "full_3rd_cousin": 1989,
+      "siblings": 415,
+      "full_1st_cousin_once_removed": 2155,
+      "full_1st_cousin": 544,
+      "avuncular_once_removed": 1080
     }
   },
-  "selected_method": {
-    "pair_model": "human-map Ped-sim forest using long-segment totals, bins, and ordered segment shape",
-    "background_control": "lower-quartile global correction with the shortest inferred background segments removed from shape features",
-    "selection_rule": "selected by exact accuracy across 12 heterogeneous structured-background holdouts",
-    "topology_consensus": "branch reconstruction may refine relation type only when its meiosis degree agrees with the calibrated pair model"
-  },
-  "validation": {
-    "fresh_pair_accuracy_without_added_background": 0.4093969555035129,
-    "fresh_pair_balanced_accuracy_without_added_background": 0.40809763739324195,
-    "fresh_pair_meioses_accuracy_without_added_background": 0.6094847775175644,
-    "structured_background_replicates": 12,
-    "structured_background_exact_accuracy": 0.37175546448087426,
-    "structured_background_meioses_accuracy": 0.5519613583138173,
-    "pedigree_tuple_benchmark_pairs": 1400,
-    "pedigree_tuple_accepted_fraction": 0.3585714285714286,
-    "pedigree_tuple_exact_accuracy_on_accepted": 0.4860557768924303,
-    "branch_reconstruction_groups": 17,
-    "branch_pedigree_tuples": 608,
-    "degree_guarded_topology_refinements": 40,
-    "background_quantile_exact_stability": 0.45871101705067285,
-    "background_quantile_degree_stability": 0.6428742562791998,
-    "robustness_gate": {
-      "fresh_exact_accuracy_at_least_0.40": true,
-      "fresh_meioses_accuracy_at_least_0.60": true,
-      "structured_background_exact_accuracy_at_least_0.35": true,
-      "structured_background_meioses_accuracy_at_least_0.55": true,
-      "selected_correction_best_on_structured_exact_accuracy": true,
-      "topology_cannot_override_meiosis_degree": true,
-      "official_relation_only_schema": true,
-      "all_50086_pairs_present": true,
-      "pairs_unique": true,
-      "all_317_individuals_present": true,
-      "all_labels_accepted": true,
-      "passed": true
-    }
-  },
-  "numerical_diagnostics": {
-    "whole_cohort_reconstruction": "not used; repeated internal numerical singularity at 20 and 40 cM",
-    "large_memory_repeat_job": "7825210",
-    "large_memory_repeat_state": "FAILED",
-    "fallback": "completed branch reconstruction plus degree-agreement guard"
-  },
-  "data_provenance": {
-    "testing_vcf_sha256": "efef295b86353160eab3e093f2f2134c8decfe740620ed12ec15992ae89fc10c",
-    "final_vcf_sealed_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121"
-  },
-  "source_artifacts": {
-    "artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/summary.json": "d6c70e31bf6d6e3aa4064b0626c0aa4c1b4fd61d9c6c209addf692f673d5a5ac",
-    "artifacts/task12_large_family_background/background_validation/summary.json": "59aefaaba6e8c1010a052ccddd43dbc9ed3fc939fd5fe0a461c28745b87bc3ac",
-    "artifacts/task10_human_calibration/bonsai_pair_benchmark/summary.json": "9e0de7439994ee3bd32c628e38f0edacadd22568d25986f7c591f77bef02c187",
-    "artifacts/task12_large_family_background/hapibd/branch_bonsai/summary.json": "8c27d1f20c311e1c7c9ff934f1200050c182182f3c45663055fca0bc01b6b2e1",
-    "artifacts/task12_large_family_background/consensus_q025_trim_flat_guarded/summary.json": "27bc7b0440a4f1e0559cc40cd27e97b9d6f7c10217f468760d302d4a8608b96b",
-    "artifacts/task12_large_family_background/consensus_q025_trim_flat_guarded/candidate.csv": "7a43e7f9589d66d891860f2e24e5adca66d5fe251bc8352c188eb276646f80b3"
-  },
-  "figures": {
-    "figures/task12_large_family_background/task12_validation.pdf": "7a09ff6965a42d0c06724eecaefc37b59a5d850b41a6c4701f5fd747b80cf165",
-    "figures/task12_large_family_background/task12_validation.png": "22086c0a25d96a67935a053afec1fd3824ee7a29aa5d222092f9ec5394ab4aae"
-  },
-  "betty_job_ids": [
-    "7825061",
-    "7825065",
-    "7825092",
-    "7825106",
-    "7825210",
-    "7825239",
-    "7825245",
-    "7825266",
-    "7825273"
-  ]
+  "submission_count": 0
 }

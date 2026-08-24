@@ -17,57 +17,76 @@ def main() -> None:
 
     validation = json.loads(args.validation.read_text())
     candidate = json.loads(args.candidate_summary.read_text())
-    entries = {
-        (entry["quantile"], entry["trim_shortest_shape"]): entry
-        for entry in validation["aggregates"]
-    }
-    quantiles = (0.25, 0.5, 0.75)
-    x = np.arange(len(quantiles))
-    width = 0.18
     colors = {"exact": "#0072B2", "meioses": "#D55E00"}
 
     figure, axes = plt.subplots(1, 2, figsize=(11.5, 4.7))
     axis = axes[0]
-    for offset, (metric, trim, hatch) in enumerate(
-        (
-            ("exact", False, ""),
-            ("exact", True, "///"),
-            ("meioses", False, ""),
-            ("meioses", True, "///"),
+    positions = {
+        ("exact", "baseline"): 0.0,
+        ("exact", "candidate"): 1.0,
+        ("meioses", "baseline"): 2.5,
+        ("meioses", "candidate"): 3.5,
+    }
+    for metric in ("exact", "meioses"):
+        key = f"{metric}_accuracy"
+        baseline = np.asarray([row[key] for row in validation["baseline_runs"]])
+        candidate_values = np.asarray(
+            [row[key] for row in validation["candidate_runs"]]
         )
-    ):
-        key = f"mean_{metric}_accuracy"
-        values = [entries[(quantile, trim)][key] for quantile in quantiles]
-        positions = x + (offset - 1.5) * width
-        axis.bar(
-            positions,
-            values,
-            width,
+        left = positions[(metric, "baseline")]
+        right = positions[(metric, "candidate")]
+        for baseline_value, candidate_value in zip(
+            baseline, candidate_values, strict=True
+        ):
+            axis.plot(
+                (left, right),
+                (baseline_value, candidate_value),
+                color="#999999",
+                alpha=0.32,
+                linewidth=0.65,
+                zorder=1,
+            )
+        axis.scatter(
+            np.full(baseline.size, left),
+            baseline,
             color=colors[metric],
-            alpha=0.9 if trim else 0.48,
-            hatch=hatch,
-            edgecolor="white" if not trim else colors[metric],
-            linewidth=0.7,
-            label=f"{metric.capitalize()}, {'trimmed' if trim else 'untrimmed'}",
+            facecolors="white",
+            linewidths=0.7,
+            s=15,
+            alpha=0.7,
+            zorder=2,
         )
-    axis.axhline(
-        validation["baseline_exact_accuracy"],
-        color=colors["exact"],
-        linestyle=":",
-        linewidth=1.2,
+        axis.scatter(
+            np.full(candidate_values.size, right),
+            candidate_values,
+            color=colors[metric],
+            s=15,
+            alpha=0.7,
+            zorder=2,
+        )
+        axis.plot(
+            (left - 0.17, left + 0.17),
+            (baseline.mean(), baseline.mean()),
+            color="#111111",
+            linewidth=2.0,
+            zorder=3,
+        )
+        axis.plot(
+            (right - 0.17, right + 0.17),
+            (candidate_values.mean(), candidate_values.mean()),
+            color="#111111",
+            linewidth=2.0,
+            zorder=3,
+        )
+    axis.set_xticks(
+        [0.0, 1.0, 2.5, 3.5],
+        ["Previous", "Frozen", "Previous", "Frozen"],
     )
-    axis.axhline(
-        validation["baseline_meioses_accuracy"],
-        color=colors["meioses"],
-        linestyle=":",
-        linewidth=1.2,
-    )
-    axis.set_xticks(x, ["Q25", "Q50", "Q75"])
-    axis.set_ylim(0.3, 0.65)
+    axis.text(0.5, -0.14, "Exact label", ha="center", transform=axis.get_xaxis_transform())
+    axis.text(3.0, -0.14, "Meiosis degree", ha="center", transform=axis.get_xaxis_transform())
+    axis.set_ylim(0.28, 0.62)
     axis.set_ylabel("Held-out accuracy")
-    axis.set_xlabel("Background correction")
-    axis.set_title("A  Structured-background stress test")
-    axis.legend(frameon=False, fontsize=8, ncol=2, loc="lower left")
+    axis.set_title("A  Empirical-background holdouts")
     axis.spines[["top", "right"]].set_visible(False)
 
     axis = axes[1]

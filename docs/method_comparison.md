@@ -96,6 +96,16 @@ out by pedigree or family; pairwise random splits are prohibited.
 4. Retain ensembles only when disagreement is calibrated and predictive of error.
 5. Record all negative results; complexity is kept only when it earns its cost.
 
+## Task 12 decision
+
+Task 12 uses a 5 cM corrected-domain histogram-gradient model. Background rates
+are estimated from unlabeled cohort-versus-reference length-bin differences, then
+varied across Ped-sim calibration without using testing labels. Against the prior
+20 cM model, exact accuracy increased from 34.85% to 37.53% and meiosis-degree
+accuracy from 51.91% to 53.24% over 20 untouched empirical-background comparisons.
+Every paired comparison improved. Degree-guarded pedigree topology refined 36 of
+50,086 frozen testing pairs.
+
 ## Task 1 decision
 
 Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
