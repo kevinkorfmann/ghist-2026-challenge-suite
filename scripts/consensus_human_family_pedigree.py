@@ -109,7 +109,7 @@ def choose_relation(
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--pair-predictions", type=Path, nargs="+", required=True)
-    parser.add_argument("--bonsai", type=Path, required=True)
+    parser.add_argument("--bonsai", type=Path, nargs="+", required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--topology-boost", type=float)
     parser.add_argument("--require-flat-degree-agreement", action="store_true")
@@ -122,16 +122,28 @@ def main() -> None:
     pair_keys = sorted(prediction_sets[0])
     if any(set(run) != set(pair_keys) for run in prediction_sets):
         raise ValueError("Sensitivity runs contain different pairs")
-    bonsai_payload = json.loads(args.bonsai.read_text())
-    bonsai = {pair_key(row): row for row in bonsai_payload["relationships"]}
-    if not set(bonsai).issubset(pair_keys):
-        raise ValueError("Pedigree reconstruction contains unknown pairs")
+    bonsai_runs = []
+    for path in args.bonsai:
+        payload = json.loads(path.read_text())
+        run = {pair_key(row): row for row in payload["relationships"]}
+        if not set(run).issubset(pair_keys):
+            raise ValueError("Pedigree reconstruction contains unknown pairs")
+        bonsai_runs.append(run)
 
     rows = []
     for pair in pair_keys:
-        topology_label, topology_meioses = topology_evidence(
-            bonsai.get(pair, {"relationship_tuple": [float("inf"), float("inf"), None]})
-        )
+        evidence = [
+            topology_evidence(
+                run.get(
+                    pair,
+                    {"relationship_tuple": [float("inf"), float("inf"), None]},
+                )
+            )
+            for run in bonsai_runs
+        ]
+        topology_label, topology_meioses = evidence[0]
+        if topology_label is None or any(item != evidence[0] for item in evidence[1:]):
+            topology_label, topology_meioses = None, None
         averaged = {
             label: float(
                 np.mean([run[pair]["probabilities"][label] for run in prediction_sets])
@@ -213,6 +225,7 @@ def main() -> None:
                 if (
                     not is_accepted_pedigree_source(edge["source"])
                     and edge["topology_meioses"] == meioses
+                    and MEIOSES[str(edge["relation"])] == meioses
                     and edge["relation"] != relation
                 ):
                     edge["relation"] = relation
@@ -239,6 +252,7 @@ def main() -> None:
         "degree_sensitivity_stability": float(np.mean(degree_stable)),
         "unstable_pairs": int(len(stable) - sum(stable)),
         "topology_boost": args.topology_boost,
+        "topology_runs": len(bonsai_runs),
         "require_flat_degree_agreement": args.require_flat_degree_agreement,
         "full_sibling_component_propagations": propagations,
         "sibling_component_conflicts": conflicts,
