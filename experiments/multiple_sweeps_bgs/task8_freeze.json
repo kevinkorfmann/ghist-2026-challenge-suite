@@ -1,0 +1,113 @@
+{
+  "challenge": "Multiple sweeps with background selection",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "regions": [
+      {
+        "chromosome": "7",
+        "start": 76301767,
+        "end": 76421767,
+        "center": 76361767
+      },
+      {
+        "chromosome": "7",
+        "start": 88238355,
+        "end": 88358355,
+        "center": 88298355
+      },
+      {
+        "chromosome": "7",
+        "start": 90606410,
+        "end": 90726410,
+        "center": 90666410
+      },
+      {
+        "chromosome": "7",
+        "start": 130010549,
+        "end": 130130549,
+        "center": 130070549
+      },
+      {
+        "chromosome": "7",
+        "start": 138380689,
+        "end": 138500689,
+        "center": 138440689
+      },
+      {
+        "chromosome": "7",
+        "start": 155677529,
+        "end": 155797529,
+        "center": 155737529
+      }
+    ],
+    "path": "artifacts/background_sweeps/task8_candidate.bed"
+  },
+  "selected_method": {
+    "detector": "one-megabase-separated RAiSD peaks exceeding twice the Task 7 background maximum",
+    "localizer": "median multiscale consensus snapped to the nearest Havana release 104 exon",
+    "interval_policy": "60 kb half-width transferred from exact-scale hard-sweep recovery"
+  },
+  "validation": {
+    "threshold_mu": 22.58,
+    "selected_peaks": 6,
+    "weakest_selected_mu": 23.41,
+    "strongest_rejected_mu": 19.34,
+    "weakest_to_strongest_rejected_ratio": 1.2104446742502586,
+    "candidate_to_background_ratios": [
+      7.636846767050487,
+      2.6226749335695305,
+      3.54472984942427,
+      2.1293179805137292,
+      2.0735163861824626,
+      2.4694419840566875
+    ],
+    "exon_snap_distances": [
+      14218,
+      395,
+      16090,
+      4578,
+      8089,
+      3984
+    ],
+    "transferred_untouched_observed_like": {
+      "replicates": 12,
+      "median_absolute_error": 18734.25,
+      "maximum_absolute_error": 45668.0,
+      "coverage_within_50kb": 1.0
+    },
+    "candidate_hit_score_if_each_truth_inside": 0.625,
+    "robustness_gate": {
+      "task7_background_null_calibrated": true,
+      "exactly_six_peaks_cross_threshold": true,
+      "weakest_selected_exceeds_next_peak": true,
+      "all_selected_peaks_at_least_twice_background": true,
+      "all_consensus_centers_are_exonic": true,
+      "all_exon_snaps_at_most_20kb": true,
+      "selected_centers_separated_by_at_least_1mb": true,
+      "transferred_recovery_passed": true,
+      "transferred_observed_like_max_error_inside_interval": true,
+      "passed": true
+    }
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "9b686087b7fc39cc7dab2f844c43af87b95932b9adebff982cf0e964da9db6e0",
+    "final_vcf_sealed_sha256": "cec3b5172e27f54354934ade9437913f97a9e6a5c578aed691c993ed02050714",
+    "exon_annotation_sha256": "440bc3a72cbe218f320bb0ef39163965c060156c050fb1650105479e32e7039c"
+  },
+  "source_artifacts": {
+    "artifacts/background_sweeps/provisional_candidates.json": "654939613ab71dbc67ab7e14f1c193e58e7df17f7dc869dd89653872c6189685",
+    "artifacts/task8_multiple_sweeps_bgs/raisd/RAiSD_Report.task8_w50": "8d1343530cf77490385b4c4da33899468a190532488e872d161ee3e48678956a",
+    "artifacts/task5_single_sweep/selection_exact_recovery_summary.json": "df6d6ca878939dabea50eef1464ccb4e2a9189a60bbd3944ea13943cb9d291ce",
+    "artifacts/background_sweeps/task8_candidate.bed": "bb1f85d96de04aa3a87b20e455a82a955e961d9b3255b62c56c1ea976a883b52"
+  },
+  "figures": {
+    "figures/task8_multiple_sweeps_bgs/task8_peak_threshold.pdf": "5edeead55e710cfa0e39436ac1975ca0a6bbf4759cd0964fe3c9f2ee3413eafb",
+    "figures/task8_multiple_sweeps_bgs/task8_peak_threshold.png": "f01e2fbfbbebbcac34a7e319caa1d4af9f868521f57bd28fd68f3ed34482165b"
+  },
+  "betty_job_ids": [
+    "7824764",
+    "7824777",
+    "7824787"
+  ]
+}

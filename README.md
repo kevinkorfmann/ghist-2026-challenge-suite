@@ -4,7 +4,7 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Seven methods are
+Private, reproducible work on all 12 GHIST 2026 challenges. Eight methods are
 frozen and the remaining inputs are secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
@@ -25,8 +25,9 @@ never to a revealed testing answer.
 | 4 | Split migration with background selection | frozen | AFR 16,000; EUR 24,000; split 4,500 generations; migration 0.00015 | matched recovery errors 1.36–2.18% for sizes/time and 10.7% for migration; strict integration changed every parameter by <0.0006% |
 | 5 | Single hard sweep | frozen | chr7:38,196,951–38,316,951; center 38,256,951 bp | untouched exact-scale recovery: 27.0 kb overall median error; all 12 observed-like cells hit the interval; mean challenge score 0.625 |
 | 7 | Single sweep with background selection | frozen | chr7:106,416,500–106,576,500; center 106,496,500 bp | 10 localizers span 130.4 kb; independent peak is 5.04× background; transferred untouched observed-like recovery has 18.7 kb median and 45.7 kb maximum error |
+| 8 | Multiple sweeps with background selection | frozen | six 120 kb intervals centered at 76,361,767; 88,298,355; 90,666,410; 130,070,549; 138,440,689; and 155,737,529 bp | exactly six peaks exceed the matched threshold; weakest selected μ 23.41 versus next μ 19.34; exon snaps ≤16.1 kb; transferred recovery maximum error 45.7 kb |
 | 9 | Relatedness from IBD segments | frozen | 989 testing pairs; official relation and meiosis-count schema | fresh untouched simulation: 82.34% exact-label, 77.81% balanced, and 85.35% meiosis-count accuracy across 12,032 pairs |
-| 6, 8, 10–12 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked validation and topology reconstruction in progress |
+| 6, 10–12 | Remaining sweep and relatedness challenges | active | testing inputs, masks, maps, templates, and sealed finals secured | locked validation and topology reconstruction in progress |
 
 Frozen means that the estimator, prediction, and validation gates are locked
 locally. It does not mean submitted.
@@ -65,6 +66,11 @@ locally. It does not mean submitted.
    hard-sweep recovery transfers cleanly, while the observed independent peak is
    fivefold stronger than the best distant background-selection peak.
 
+8. Multiple sweeps with background selection — one-megabase-separated RAiSD
+   peaks were required to exceed twice the matched Task 7 background maximum.
+   Consensus centers were snapped to Havana release 104 exons, and the 60 kb
+   half-width was transferred from untouched exact-scale sweep recovery.
+
 9. Relatedness from IBD segments — exact Ped-sim calibration uses the supplied
    sex-specific map and crossover-interference model. The selected forest combines
    total sharing with ordered segment shape, binned IBD1/IBD2 spectra, chromosome
@@ -81,6 +87,7 @@ locally. It does not mean submitted.
 | Split migration with background selection | [`task4_freeze.json`](experiments/split_migration_bgs/task4_freeze.json) | [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/) |
 | Single hard sweep | [`task5_freeze.json`](experiments/single_sweep/task5_freeze.json) | [`figures/task5_single_sweep/`](figures/task5_single_sweep/) |
 | Single sweep with background selection | [`task7_freeze.json`](experiments/single_sweep_bgs/task7_freeze.json) | [`figures/task7_single_sweep_bgs/`](figures/task7_single_sweep_bgs/) |
+| Multiple sweeps with background selection | [`task8_freeze.json`](experiments/multiple_sweeps_bgs/task8_freeze.json) | [`figures/task8_multiple_sweeps_bgs/`](figures/task8_multiple_sweeps_bgs/) |
 | Relatedness from IBD segments | [`task9_freeze.json`](experiments/ibd_segments/task9_freeze.json) | [`figures/task9_ibd_segments/`](figures/task9_ibd_segments/) |
 
 ## Layout
