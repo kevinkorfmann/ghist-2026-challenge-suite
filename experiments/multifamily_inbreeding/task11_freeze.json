@@ -1,0 +1,78 @@
+{
+  "challenge": "Relatedness in a multifamily cohort with close inbreeding",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "pairs": 275,
+    "families": 8,
+    "label_counts": {
+      "half_avuncular": 48,
+      "half_sibling": 72,
+      "avuncular": 50,
+      "siblings": 39,
+      "full_1st_cousin": 33,
+      "avuncular_twice_removed": 19,
+      "avuncular_once_removed": 8,
+      "half_1st_cousin": 6
+    },
+    "path": "artifacts/task11_multifamily_inbreeding/consensus/task11_candidate.csv",
+    "schema": [
+      "indID1",
+      "indID2",
+      "relation"
+    ]
+  },
+  "selected_method": {
+    "family_partition": "stable graph clustering over long-segment sharing",
+    "pair_model": "dog-map Ped-sim forest using IBD1/IBD2 totals and segment-length shape",
+    "inbreeding_control": "pairwise union-HBD masking at 2, 5, and 10 cM",
+    "topology_consensus": "accepted pedigree tuples, meiosis-constrained pair fallbacks, and full-sibling component consistency"
+  },
+  "validation": {
+    "fresh_pair_accuracy": 0.63575,
+    "fresh_pair_balanced_accuracy": 0.63575,
+    "fresh_pair_pairs": 4000,
+    "minimum_family_partition_ari": 1.0,
+    "family_partition_runs": 16,
+    "accepted_topology_pairs": 194,
+    "pair_model_fallbacks": 81,
+    "hbd_threshold_stability": 0.9818181818181818,
+    "fallback_hbd_threshold_stability": 0.9382716049382716,
+    "degree_two_relation_vector_refinements": 4,
+    "full_sibling_component_propagations": 5,
+    "robustness_gate": {
+      "eight_families": true,
+      "all_68_samples_partitioned": true,
+      "family_partition_stable": true,
+      "fresh_pair_evaluation_above_60_percent": true,
+      "official_relation_only_schema": true,
+      "all_within_family_pairs_present": true,
+      "pairs_unique": true,
+      "all_labels_accepted": true,
+      "hbd_threshold_stability": true,
+      "fallback_hbd_threshold_stability": true,
+      "sibling_components_consistent": true,
+      "passed": true
+    }
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "a4fc8a042664d04e05fe61868bd0592b143832f15e623b4ad2deb235c3ebff98",
+    "final_vcf_sealed_sha256": "5bbdd1a850f65308ed2376a159cbe63c7540e76eab9e91bb77b75c127a2fc553"
+  },
+  "source_artifacts": {
+    "artifacts/task11_multifamily_inbreeding/family_clusters/summary.json": "70c35ac212303cca1b5b62d5b6a38f1e65ff7896bf029408911cd038b5ea5f4e",
+    "artifacts/task11_multifamily_inbreeding/pair_model_hbd5/summary.json": "f6fc8eac2cc414115b2d12a880df26fd6fe96dd63771eb75232a05eb385f31b9",
+    "artifacts/task11_multifamily_inbreeding/consensus/summary.json": "62211b8ba5c895bb2c1c133a256b804c91c9781ace51b1d0f1ab1be51aea04d4",
+    "artifacts/task11_multifamily_inbreeding/consensus/task11_candidate.csv": "cb67503e46e0fdc55f4ee219ef6b68e698baa4d1509b1d609afcb705688f858c"
+  },
+  "figures": {
+    "figures/task11_multifamily_inbreeding/task11_validation.pdf": "0d11ebd374e36aee648061e3b1876941030b89dfe96830ec2c1b11ed4dcfd682",
+    "figures/task11_multifamily_inbreeding/task11_validation.png": "6457c61acae6842815c4a6588b4c8f289d2cf9d4af3640c41231b4a1cc5a55d2"
+  },
+  "betty_job_ids": [
+    "7824956",
+    "7824985",
+    "7824994",
+    "7825033"
+  ]
+}

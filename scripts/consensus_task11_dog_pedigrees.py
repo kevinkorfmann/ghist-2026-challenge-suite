@@ -112,7 +112,97 @@ def main() -> None:
             }
         )
 
+    by_pair = {pair_key(row): row for row in consensus_rows}
+    family_by_sample = {
+        sample: family_index
+        for family_index, family in enumerate(bonsai_payload["families"])
+        for sample in family["members"]
+    }
+    degree_two_refinements = 0
+    for row in consensus_rows:
+        if (
+            row["source"] == "accepted pedigree tuple"
+            or row["topology_meioses"] != 2
+        ):
+            continue
+        family = bonsai_payload["families"][family_by_sample[str(row["indID1"])]]
+        matches = []
+        for third in family["members"]:
+            if third in (row["indID1"], row["indID2"]):
+                continue
+            left = by_pair[pair_key({"indID1": row["indID1"], "indID2": third})]
+            right = by_pair[pair_key({"indID1": row["indID2"], "indID2": third})]
+            matches.append(left["relation"] == right["relation"])
+        match_fraction = float(np.mean(matches)) if matches else 0.0
+        row["sibling_relation_vector_match"] = match_fraction
+        if len(set(row["sensitivity_labels"])) > 1 and match_fraction < 0.5:
+            row["relation"] = "half_sibling"
+            row["source"] = "family relation-vector refinement"
+            degree_two_refinements += 1
+
+    sibling_propagations = 0
+    sibling_component_conflicts = 0
+    for family in bonsai_payload["families"]:
+        members = family["members"]
+        parent = {sample: sample for sample in members}
+
+        def find(sample: str) -> str:
+            while parent[sample] != sample:
+                parent[sample] = parent[parent[sample]]
+                sample = parent[sample]
+            return sample
+
+        def union(left: str, right: str) -> None:
+            left_root, right_root = find(left), find(right)
+            if left_root != right_root:
+                parent[right_root] = left_root
+
+        for row in consensus_rows:
+            if family_by_sample[str(row["indID1"])] != family["family"]:
+                continue
+            if row["relation"] == "siblings" and (
+                row["source"] == "accepted pedigree tuple"
+                or row.get("sibling_relation_vector_match", 0.0) >= 0.5
+            ):
+                union(str(row["indID1"]), str(row["indID2"]))
+        components: dict[str, list[str]] = {}
+        for sample in members:
+            components.setdefault(find(sample), []).append(sample)
+        for component in components.values():
+            if len(component) < 2:
+                continue
+            for third in set(members) - set(component):
+                edges = [
+                    by_pair[pair_key({"indID1": sample, "indID2": third})]
+                    for sample in component
+                ]
+                accepted = {
+                    (str(edge["relation"]), edge["topology_meioses"])
+                    for edge in edges
+                    if edge["source"] == "accepted pedigree tuple"
+                }
+                if len(accepted) > 1:
+                    sibling_component_conflicts += 1
+                    continue
+                if not accepted:
+                    continue
+                relation, meioses = next(iter(accepted))
+                for edge in edges:
+                    if (
+                        edge["source"] != "accepted pedigree tuple"
+                        and edge["topology_meioses"] == meioses
+                        and edge["relation"] != relation
+                    ):
+                        edge["relation"] = relation
+                        edge["source"] = "full-sibling component propagation"
+                        sibling_propagations += 1
+
     stable = [len(set(row["sensitivity_labels"])) == 1 for row in consensus_rows]
+    fallback_stable = [
+        is_stable
+        for row, is_stable in zip(consensus_rows, stable, strict=True)
+        if row["source"] != "accepted pedigree tuple"
+    ]
     args.out_dir.mkdir(parents=True, exist_ok=True)
     with (args.out_dir / "task11_candidate.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=("indID1", "indID2", "relation"))
@@ -135,7 +225,11 @@ def main() -> None:
         ),
         "hbd_threshold_runs": len(prediction_sets),
         "hbd_sensitivity_stability": float(np.mean(stable)),
+        "fallback_hbd_sensitivity_stability": float(np.mean(fallback_stable)),
         "unstable_pairs": int(len(stable) - sum(stable)),
+        "degree_two_relation_vector_refinements": degree_two_refinements,
+        "full_sibling_relation_vector_propagations": sibling_propagations,
+        "sibling_component_conflicts": sibling_component_conflicts,
         "submission_count": 0,
     }
     (args.out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
