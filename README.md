@@ -4,8 +4,8 @@
 
 # GHIST 2026 challenge suite
 
-Private, reproducible work on all 12 GHIST 2026 challenges. Eleven methods are
-frozen and the remaining inputs are secured.
+Private, reproducible work on all 12 GHIST 2026 challenges. All methods are
+frozen and every input is secured.
 Nothing has been submitted. Final holdouts remain sealed.
 
 [Challenge registry](configs/challenges.yaml) ·
@@ -24,13 +24,13 @@ never to a revealed testing answer.
 | 3 | Growth with background selection | frozen | 5,000 generations; growth factor 2.0 | matched recovery errors 2.38% and 0.03%; 128-block 95% intervals: 3,984–5,913 and 1.851–2.122 |
 | 4 | Split migration with background selection | frozen | AFR 16,000; EUR 24,000; split 4,500 generations; migration 0.00015 | matched recovery errors 1.36–2.18% for sizes/time and 10.7% for migration; strict integration changed every parameter by <0.0006% |
 | 5 | Single hard sweep | frozen | chr7:38,196,951–38,316,951; center 38,256,951 bp | untouched exact-scale recovery: 27.0 kb overall median error; all 12 observed-like cells hit the interval; mean challenge score 0.625 |
+| 6 | Single soft sweep | frozen | chr7:16,532,298–16,602,298; center 16,567,298 bp | signal-matched untouched recovery: 16.3 kb median and 95.5 kb 90th-percentile error; mean challenge score 0.539 |
 | 7 | Single sweep with background selection | frozen | chr7:106,416,500–106,576,500; center 106,496,500 bp | 10 localizers span 130.4 kb; independent peak is 5.04× background; transferred untouched observed-like recovery has 18.7 kb median and 45.7 kb maximum error |
 | 8 | Multiple sweeps with background selection | frozen | six 120 kb intervals centered at 76,361,767; 88,298,355; 90,666,410; 130,070,549; 138,440,689; and 155,737,529 bp | exactly six peaks exceed the matched threshold; weakest selected μ 23.41 versus next μ 19.34; exon snaps ≤16.1 kb; transferred recovery maximum error 45.7 kb |
 | 9 | Relatedness from IBD segments | frozen | 989 testing pairs; official relation and meiosis-count schema | fresh untouched simulation: 82.34% exact-label, 77.81% balanced, and 85.35% meiosis-count accuracy across 12,032 pairs |
 | 10 | Large human family | frozen | 26,106 pairs across 229 individuals; official relation-only schema | untouched pair accuracy 45.74%, balanced accuracy 45.58%, and meiosis accuracy 68.37%; two topology searches agree on 98.12% of the candidate |
 | 11 | Multifamily cohort with close inbreeding | frozen | 275 within-family dog pairs across eight families; all eight accepted labels represented | family partition ARI 1.0 across 16 runs; untouched pair accuracy 63.58%; 98.18% HBD-threshold stability and zero sibling-component conflicts |
 | 12 | Large family with background relatedness | frozen | 50,086 human pairs across 317 individuals; official relation-only schema | 40.94% exact and 60.95% meiosis accuracy without added background; 37.18% exact and 55.20% meiosis accuracy across 12 structured-background holdouts |
-| 6 | Soft sweep | active | testing input, accessibility mask, and sealed final secured | locked 48-replicate recovery gate in progress |
 
 Frozen means that the estimator, prediction, and validation gates are locked
 locally. It does not mean submitted.
@@ -62,6 +62,12 @@ locally. It does not mean submitted.
    reference scan. The candidate center is the median of three fine localizers.
    Interval width is selected against the published scoring rule. The locked
    60 kb half-width passed the untouched exact-scale recovery gate.
+
+6. Single soft sweep — the largest local variant gap was selected over eight
+   haplotype, linkage, and composite alternatives on 24 simulations, with the
+   interval width chosen by the published coverage-width score. RAiSD and two
+   flank-linkage scales independently locate the same region. On 24 untouched
+   simulations, the strong observed-signal regime passes the recovery gate.
 
 7. Single sweep with background selection — five nested composite scans, three
    split-flank linkage scales, the largest variant gap, and RAiSD all converge.
@@ -106,6 +112,7 @@ locally. It does not mean submitted.
 | Growth with background selection | [`task3_freeze.json`](experiments/growth_bgs/task3_freeze.json) | [`figures/task3_growth_bgs/`](figures/task3_growth_bgs/) |
 | Split migration with background selection | [`task4_freeze.json`](experiments/split_migration_bgs/task4_freeze.json) | [`figures/task4_split_migration_bgs/`](figures/task4_split_migration_bgs/) |
 | Single hard sweep | [`task5_freeze.json`](experiments/single_sweep/task5_freeze.json) | [`figures/task5_single_sweep/`](figures/task5_single_sweep/) |
+| Single soft sweep | [`task6_freeze.json`](experiments/soft_sweep/task6_freeze.json) | [`figures/task6_soft_sweep/`](figures/task6_soft_sweep/) |
 | Single sweep with background selection | [`task7_freeze.json`](experiments/single_sweep_bgs/task7_freeze.json) | [`figures/task7_single_sweep_bgs/`](figures/task7_single_sweep_bgs/) |
 | Multiple sweeps with background selection | [`task8_freeze.json`](experiments/multiple_sweeps_bgs/task8_freeze.json) | [`figures/task8_multiple_sweeps_bgs/`](figures/task8_multiple_sweeps_bgs/) |
 | Relatedness from IBD segments | [`task9_freeze.json`](experiments/ibd_segments/task9_freeze.json) | [`figures/task9_ibd_segments/`](figures/task9_ibd_segments/) |

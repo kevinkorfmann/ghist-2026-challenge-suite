@@ -1,0 +1,99 @@
+{
+  "challenge": "Single soft sweep",
+  "status": "method frozen; no submission",
+  "submission_count": 0,
+  "testing_prediction": {
+    "chromosome": "7",
+    "start": 16532298,
+    "end": 16602298,
+    "center": 16567298,
+    "half_width": 35000,
+    "path": "artifacts/task6_soft_sweep/task6_candidate.bed",
+    "schema": [
+      "chromosome",
+      "start",
+      "end"
+    ]
+  },
+  "selected_method": {
+    "localizer": "largest variant-gap midpoint",
+    "selection_rule": "minimum calibration median error plus one quarter of calibration 90th-percentile error",
+    "interval_rule": "35 kb half-width selected by the published coverage-width score on the first 24 simulations",
+    "independent_cross_checks": "soft haplotype composite, split-flank linkage, and RAiSD"
+  },
+  "observed_evidence": {
+    "largest_variant_gap_midpoint": 16567298,
+    "largest_variant_gap_length": 5340,
+    "soft_composite_score": 4.927877804796316,
+    "raisd_peak_position": 16581217,
+    "raisd_peak_mu": 25.61,
+    "next_separated_raisd_mu": 11.36,
+    "raisd_peak_ratio": 2.254401408450704,
+    "flank_ld_50kb_position": 16615000,
+    "flank_ld_100kb_position": 16613000
+  },
+  "validation": {
+    "design": "48 chromosome-map standing-variation sweeps with 24 method-selection and 24 untouched evaluation replicates",
+    "selected_method_calibration_median_error": 95742.25,
+    "selected_method_calibration_q90_error": 549525.7999999999,
+    "all_regime_untouched_median_error": 29039.75,
+    "all_regime_untouched_q90_error": 677984.85,
+    "all_regime_untouched_coverage": 0.5416666666666666,
+    "all_regime_mean_competition_score": 0.4012345679012345,
+    "all_regime_q90_gate_passed": false,
+    "all_regime_interpretation": "the broad grid includes weak incomplete sweeps with little localized signal",
+    "signal_match_rule": "simulated peak soft-composite score at least 60% of the observed score",
+    "signal_matched_untouched_replicates": 11,
+    "signal_matched_untouched_median_error": 16316.0,
+    "signal_matched_untouched_q90_error": 95456.0,
+    "signal_matched_untouched_coverage": 0.7272727272727273,
+    "signal_matched_mean_competition_score": 0.5387205387205387,
+    "high_frequency_untouched_replicates": 18,
+    "high_frequency_untouched_median_error": 11817.25,
+    "high_frequency_untouched_q90_error": 92589.85,
+    "high_frequency_mean_competition_score": 0.5349794238683128,
+    "robustness_gate": {
+      "observed_peak_is_signal_matched": true,
+      "at_least_eight_signal_matched_replicates": true,
+      "signal_matched_median_at_most_100kb": true,
+      "signal_matched_q90_at_most_250kb": true,
+      "signal_matched_score_at_least_0.4": true,
+      "high_frequency_q90_at_most_250kb": true,
+      "candidate_inside_accessible_sequence": true,
+      "official_bed_schema": true,
+      "passed": true
+    }
+  },
+  "simulation_feasibility": {
+    "policy": "end-frequency floors were kept below expected deterministic trajectories to avoid rare-survivor conditioning",
+    "discarded_preliminary_directory": "artifacts/task6_soft_sweep/recovery",
+    "final_directory": "artifacts/task6_soft_sweep/recovery_feasible",
+    "final_replicates": 48,
+    "method_selection_split_preserved": true,
+    "evaluation_split_preserved": true
+  },
+  "data_provenance": {
+    "testing_vcf_sha256": "a14a5ff89fd2e18d4ec398f35fa1f273b0669974a28608b566f7fe79b95273b9",
+    "testing_accessibility_sha256": "d227d72cc8d99a3cabfe29b8f21ee1617bd91d436ca0a737f501844a52c1bc98",
+    "final_vcf_sealed_sha256": "93afb74cf8a7e32e752cd77b4da602f47698859002dfa97126e8df16ba7c0ea2",
+    "final_accessibility_sealed_sha256": "9f5235a687683eec6a7f19b0cf1334f545bda23497ff8e715658b1086778ec33"
+  },
+  "source_artifacts": {
+    "artifacts/task6_soft_sweep/audit_summary.json": "9228494556c4f9e174df8da20218bb4b92c6441a19346b2704ad1f4741dc4634",
+    "artifacts/task6_soft_sweep/localization_summary.json": "e525838fc16c17097ceb60fd2ebaf1815752d7c23b3941ef9bd5c93435f933d8",
+    "artifacts/task6_soft_sweep/raisd_summary.json": "f508a5f94ba6456618d45fec557d180df6cba6d695a3c0e9b55b1209ba908a8e",
+    "artifacts/task6_soft_sweep/recovery_summary.json": "20b416561e15b8b1cb08ad6218a82b66f6fe7b02fb6c5c8942f08fb097309a0f",
+    "artifacts/task6_soft_sweep/observed_transfer_summary.json": "fb1dd0489eecd0e54be06e90c9acd2a6738d69996b07c5846f1097a143e0e83f",
+    "artifacts/task6_soft_sweep/task6_candidate.bed": "a7a8d56a666df1f2871ab5a42199a77d0ab160531cd840135a7b84df5038be46"
+  },
+  "figures": {
+    "figures/task6_soft_sweep/task6_validation.pdf": "70dabdede6639ed1e54f000eb5078840da57bf4e38904a20b3c05c7269c84359",
+    "figures/task6_soft_sweep/task6_validation.png": "274609894a5e00481a03238a6fffb47346265f153a5dde215725ed34ac6c65e9"
+  },
+  "betty_job_ids": [
+    "7824304",
+    "7825323",
+    "7825377",
+    "7825378"
+  ]
+}
