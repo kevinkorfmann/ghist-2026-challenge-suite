@@ -9,15 +9,26 @@ from pathlib import Path
 import joblib
 import numpy as np
 
-from fit_human_family_relationships import (
-    BIN_EDGES,
-    MEIOSES,
-    ORDERED,
-    background_correct,
-    matrix,
-    relationship_label,
-    summarize_raw_lengths,
-)
+try:
+    from scripts.fit_human_family_relationships import (
+        BIN_EDGES,
+        MEIOSES,
+        ORDERED,
+        background_correct,
+        matrix,
+        relationship_label,
+        summarize_raw_lengths,
+    )
+except ModuleNotFoundError:
+    from fit_human_family_relationships import (
+        BIN_EDGES,
+        MEIOSES,
+        ORDERED,
+        background_correct,
+        matrix,
+        relationship_label,
+        summarize_raw_lengths,
+    )
 
 
 def ordered_lengths(record: dict[str, object]) -> list[float]:
