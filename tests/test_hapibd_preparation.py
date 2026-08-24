@@ -18,6 +18,7 @@ class HapIbdPreparationTests(unittest.TestCase):
                 handle.write("##fileformat=VCFv4.2\n")
                 handle.write("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\ta\tb\n")
                 handle.write("1\t1\t.\tA\tG\t.\tPASS\t.\tGT\t1|1\t.|0\n")
+                handle.write("1\t2\t.\tA\tG,T\t.\tPASS\t.\tGT\t1|2\t0|0\n")
             subprocess.run(
                 [
                     sys.executable,
@@ -30,7 +31,9 @@ class HapIbdPreparationTests(unittest.TestCase):
                 check=True,
             )
             with gzip.open(output, "rt") as handle:
-                record = [line for line in handle if not line.startswith("#")][0]
+                records = [line for line in handle if not line.startswith("#")]
+                record = records[0]
+        self.assertEqual(len(records), 1)
         self.assertTrue(record.rstrip().endswith("1|1\t1|0"))
 
 

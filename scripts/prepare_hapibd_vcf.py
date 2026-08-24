@@ -19,6 +19,8 @@ def main() -> None:
                 destination.write(line)
                 continue
             fields = line.rstrip().split("\t")
+            if "," in fields[4]:
+                continue
             genotypes = [sample.split(":", 1)[0] for sample in fields[9:]]
             counts: Counter[str] = Counter(
                 allele for genotype in genotypes for allele in genotype.replace("/", "|").split("|") if allele != "."
