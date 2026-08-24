@@ -1,0 +1,37 @@
+{
+  "challenge": "Relatedness from identical-by-descent segments",
+  "candidate": "degree-factorized histogram-gradient and calibrated-forest blend",
+  "decision": "rejected; retain frozen method",
+  "development": {
+    "candidate_exact_accuracy": 0.8267121011,
+    "baseline_exact_accuracy": 0.823387633,
+    "candidate_balanced_accuracy": 0.7878804772,
+    "baseline_balanced_accuracy": 0.7780580783,
+    "candidate_meioses_accuracy": 0.8549700798,
+    "baseline_meioses_accuracy": 0.8534740691
+  },
+  "untouched_primary_holdout": {
+    "replicates": 4,
+    "mean_paired_exact_gain": 0.0010885603,
+    "positive_exact_replicates": 4,
+    "mean_paired_balanced_gain": 0.0098966349,
+    "mean_paired_meioses_gain": 0.000104942,
+    "primary_gate_passed": false
+  },
+  "untouched_confirmation": {
+    "replicates": 4,
+    "mean_paired_exact_gain": 0.0000210723,
+    "positive_exact_replicates": 2,
+    "mean_paired_balanced_gain": 0.0084602182,
+    "mean_paired_meioses_gain": -0.0010665411,
+    "confirmation_rule_passed": false
+  },
+  "pooled_interpretation": "Balanced accuracy improved, but the eight-replicate exact gain was only 0.06 percentage points and degree accuracy did not robustly improve.",
+  "betty_job_ids": [
+    "7829390",
+    "7829473",
+    "7829524",
+    "7829536"
+  ],
+  "submission_count": 0
+}

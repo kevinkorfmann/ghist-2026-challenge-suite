@@ -127,6 +127,17 @@ one regression, and failed the precommitted 0.50-point/all-positive gate. The
 is retained; family-topology evidence must be validated before further calls are
 changed.
 
+## Task 9 decision
+
+Task 9 retains its frozen forest. An
+[ERSA-inspired](https://doi.org/10.1101/gr.115972.110) degree-factorized model
+combined an explicit meiosis classifier with within-degree relationship models.
+Although balanced accuracy improved by roughly 0.9 points, independent
+confirmation showed only two of four exact gains and a small degree regression.
+The pooled eight-replicate exact gain was just 0.06 points. The
+[negative result](../experiments/ibd_segments/task9_degree_factorized_screen.json)
+is retained, and testing calls remain unchanged.
+
 ## Task 1 decision
 
 Task 1 is frozen locally without submission. Exact folded-SFS moments is primary
