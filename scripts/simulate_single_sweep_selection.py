@@ -23,6 +23,8 @@ def main() -> None:
     parser.add_argument("--left", type=int, default=0)
     parser.add_argument("--genetic-map")
     parser.add_argument("--mutation-generation", type=float, default=1000.0)
+    parser.add_argument("--selection-start-generation", type=float)
+    parser.add_argument("--minimum-start-frequency", type=float)
     parser.add_argument("--selection-coefficient", type=float, default=0.05)
     parser.add_argument("--minimum-end-frequency", type=float, default=0.95)
     parser.add_argument("--samples", type=int, default=25)
@@ -51,12 +53,19 @@ def main() -> None:
         )
     locus_id = "single_hard_sweep"
     contig.add_single_site(id=locus_id, coordinate=args.position)
+    sweep_options = {
+        "single_site_id": locus_id,
+        "population": "generic",
+        "mutation_generation_ago": args.mutation_generation,
+        "selection_coeff": args.selection_coefficient,
+        "min_freq_at_end": args.minimum_end_frequency,
+    }
+    if args.selection_start_generation is not None:
+        sweep_options["start_generation_ago"] = args.selection_start_generation
+    if args.minimum_start_frequency is not None:
+        sweep_options["min_freq_at_start"] = args.minimum_start_frequency
     extended_events = stdpopsim.selective_sweep(
-        single_site_id=locus_id,
-        population="generic",
-        mutation_generation_ago=args.mutation_generation,
-        selection_coeff=args.selection_coefficient,
-        min_freq_at_end=args.minimum_end_frequency,
+        **sweep_options,
     )
     engine = stdpopsim.get_engine("slim")
     tree_sequence = engine.simulate(
@@ -103,6 +112,17 @@ def main() -> None:
 
     valid = np.isfinite(windows["composite_score"])
     composite_index = np.flatnonzero(valid)[np.argmax(windows["composite_score"][valid])]
+    soft_valid = np.isfinite(windows["soft_composite_score"])
+    soft_index = np.flatnonzero(soft_valid)[
+        np.argmax(windows["soft_composite_score"][soft_valid])
+    ]
+    h12_valid = np.isfinite(windows["h12"])
+    h12_index = np.flatnonzero(h12_valid)[np.argmax(windows["h12"][h12_valid])]
+    h12_h2_score = windows["z_high_h12"] + 0.5 * np.maximum(
+        windows["z_high_h2_h1"], 0.0
+    )
+    joint_valid = np.isfinite(h12_h2_score)
+    joint_index = np.flatnonzero(joint_valid)[np.argmax(h12_h2_score[joint_valid])]
     truth_local = args.position - args.left
     local_region = [max(0, truth_local - 750_000), min(args.length, truth_local + 750_000)]
     candidates = np.arange(local_region[0], local_region[1] + 1, 1000, dtype=np.int64)
@@ -116,6 +136,9 @@ def main() -> None:
     gap_index = int(np.argmax(gaps))
     estimates = {
         "composite": int(windows["center"][composite_index] + args.left),
+        "soft_composite": int(windows["center"][soft_index] + args.left),
+        "h12": int(windows["center"][h12_index] + args.left),
+        "h12_h2": int(windows["center"][joint_index] + args.left),
         "flank_ld_100kb": int(ld["candidate_position"][ld_index] + args.left),
         "largest_gap_midpoint": float(
             (int(local_positions[gap_index]) + int(local_positions[gap_index + 1])) / 2
@@ -131,6 +154,8 @@ def main() -> None:
             "mutation_generation": args.mutation_generation,
             "selection_coefficient": args.selection_coefficient,
             "minimum_end_frequency": args.minimum_end_frequency,
+            "selection_start_generation": args.selection_start_generation,
+            "minimum_start_frequency": args.minimum_start_frequency,
         },
         "estimates": estimates,
         "absolute_error": {
@@ -142,6 +167,9 @@ def main() -> None:
             "peak_composite_score": float(windows["composite_score"][composite_index]),
             "peak_h12": float(windows["h12"][composite_index]),
             "maximum_h12": float(np.nanmax(windows["h12"])),
+            "soft_peak_h12": float(windows["h12"][soft_index]),
+            "soft_peak_h2_h1": float(windows["h2_h1"][soft_index]),
+            "peak_soft_composite_score": float(windows["soft_composite_score"][soft_index]),
             "peak_pi_relative_median": float(windows["pi"][composite_index] / median_pi),
             "peak_tajima_d": float(windows["tajima_d"][composite_index]),
         },
