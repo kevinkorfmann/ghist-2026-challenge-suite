@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #SBATCH --job-name=task12-bonsai-long
-#SBATCH --partition=genoa-std-mem
+#SBATCH --partition=genoa-lrg-mem
 #SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=5632M
+#SBATCH --mem-per-cpu=15872M
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
