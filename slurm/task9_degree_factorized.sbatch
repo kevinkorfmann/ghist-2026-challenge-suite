@@ -22,6 +22,6 @@ PYTHONPATH=src:scripts .venv/bin/python scripts/fit_task9_degree_factorized.py \
     artifacts/task9_ibd_segments/calibration/replicate_5.seg \
   --selection artifacts/task9_ibd_segments/calibration/replicate_6.seg \
   --development-evaluation artifacts/task9_ibd_segments/calibration/replicate_7.seg \
-  --observed data/raw/relatedness/ibd_segments/testing/relatedness1.testing.ibd \
+  --observed data/raw/relatedness/ibd_segments/testing/relatedness1.testing.csv \
   --sex-map external/ped-sim-map/refined_mf.simmap \
   --out-dir artifacts/task9_ibd_segments/degree_factorized_v1
