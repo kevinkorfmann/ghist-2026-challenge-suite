@@ -1,0 +1,14 @@
+Perform a bounded independent scientific code review of ONLY the listed files in this frozen source snapshot. Read them in at most 14 Read calls total, then return your final audit. Do not search for additional files or read other reviews, credentials, challenge answers, unrelated files, or data. Focus on mathematical units, retained-fit consistency, denominator accounting, source/runtime identity, numerical convergence versus biological accuracy, and invalid scientific claims. Distinguish reproducible code defects from untested biological assumptions. Give at most five concrete actionable findings with severity, file/line, cause, and a focused verification. A finding must have a traceable mechanism in the supplied code. End with unresolved scientific gates and scope limitations. No edits, commands, submissions, fitting, or public-answer tuning. Diploid population sizes and independent chromosome/pedigree units apply. Review files:
+src/ghist_inference/freeze.py
+src/ghist_inference/bootstrap.py
+src/ghist_inference/checkpoint.py
+scripts/freeze_growth_bgs.py
+scripts/freeze_split_migration_bgs.py
+scripts/bootstrap_growth_bgs_blocks.py
+scripts/bootstrap_split_migration_bgs_blocks.py
+scripts/summarize_growth_bgs_bootstrap.py
+scripts/summarize_split_migration_bgs_bootstrap.py
+slurm/growth_bgs_block_bootstrap.sbatch
+slurm/split_migration_bgs_block_bootstrap.sbatch
+tests/test_demography_freeze_integrity.py
+tests/test_demography_bootstrap_contract.py

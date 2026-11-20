@@ -1,0 +1,96 @@
+{
+  "schema": "ghist-task12-final-method-v2",
+  "created_utc": "2026-11-20T21:18:09.393600+00:00",
+  "task": 12,
+  "input_entity": "syn75203676",
+  "input_accessed_before_lock": true,
+  "choice": "historical empirical_background_v1; no fit or tuning; chosen from prior recorded comparisons before final data access",
+  "correction_version": "task12-top20-v1",
+  "minimum_cm": 5,
+  "background_quantile": 0.25,
+  "genome_cm": 3346.298892538,
+  "corrected_model_weight": 1.0,
+  "zero_segment_policy": "Compute legacy background correction on segment-present pairs only, then append all-zero feature records for missing unordered VCF pairs. If none have segments, all records are zero. No topology overrides.",
+  "tie_policy": "Historical observed_predictions argmax in fixed LABELS insertion order",
+  "detector": {
+    "min-seed": 1.0,
+    "min-extend": 0.2,
+    "min-output": 2.0,
+    "min-markers": 100,
+    "max-gap": 1000,
+    "nthreads": 8
+  },
+  "preparation": {
+    "missing_policy": "major",
+    "phase_policy": "Original prepare_hapibd_vcf phase guard retained; only missing alleles filled by observed per-site major allele, reference allele on exact tie. No phase inference."
+  },
+  "resources": {
+    "cpus": 8,
+    "memory_mib": 45056,
+    "wall_minutes": 60,
+    "java_max_heap_gib": 32
+  },
+  "packages": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.9.0",
+    "joblib": "1.5.3",
+    "pysam": "0.24.0",
+    "pandas": "3.0.5",
+    "PyYAML": "6.0.3"
+  },
+  "python": "3.11.11",
+  "assets": {
+    "model": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task12_large_family_background/empirical_background_v1/model.joblib",
+      "sha256": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077"
+    },
+    "baseline": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib",
+      "sha256": "742986c9fe0ae7738732c7350e63d5aaa8985237479c5a050e9b5c1cd797acef"
+    },
+    "reference": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_0.seg",
+      "sha256": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299"
+    },
+    "map": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+      "sha256": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba"
+    },
+    "jar": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+      "sha256": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c"
+    }
+  },
+  "scientific_limitations": [
+    "Full VCF-to-detector-to-family pipeline has not passed independent scientific validation.",
+    "Historical component accuracy approximately37.5%; not an estimate of final-data accuracy.",
+    "Historical correction retains documented top20 histogram truncation defect to preserve model feature semantics.",
+    "Zero-segment classification is forced to official supported labels, without an unrelated label; probabilities are uncalibrated.",
+    "Existing historical model outperformed both previous fixed refits on recorded comparisons; neither candidate was promoted.",
+    "Missing alleles are deterministically replaced with observed per-site major allele; this may bias IBD and is an unvalidated best-effort preprocessing adaptation."
+  ],
+  "submission_authority": "Other user chat central uploader only; this pipeline generates and validates a candidate and never submits.",
+  "java_version": "openjdk version \"21.0.13.1\" 2026-11-17\nOpenJDK Runtime Environment (build 21.0.13.1+2-1-24.04.1-Ubuntu)\nOpenJDK 64-Bit Server VM (build 21.0.13.1+2-1-24.04.1-Ubuntu, mixed mode, sharing)\n",
+  "supersedes": {
+    "method_lock_sha256": "d435fc770d7166cba633c9ce02f001660e43c8179600e3a18bf5decbc728004a",
+    "job": "10859426",
+    "reason": "Original strict missing-genotype policy failed before detector/model; explicit historical major-allele replacement authorized by root for best effort."
+  },
+  "method_choice_before_final_input": "Historical empirical v1 model, feature correction, detector and classification settings remain fixed before final input; only missingness handling adapts to observed input contract.",
+  "missingness_audit_sha256": "696daae5c172d3fe533940b1c497547d18ca328d47c99465a111598e94a4f6dc",
+  "missingness_summary": {
+    "records": 249065,
+    "missing_sites": 64321,
+    "missing_alleles": 148382,
+    "genotype_alleles": 147944610,
+    "unphased_heterozygotes": 0,
+    "biallelic_sites": 249062,
+    "biallelic_missing_sites": 64321,
+    "all_missing_sites": 0,
+    "samples": 297,
+    "input_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+    "created_utc": "2026-11-20T21:17:20.656350+00:00",
+    "scope": "Input genotype contract measurement only; no phenotype/truth/relationship inference."
+  }
+}

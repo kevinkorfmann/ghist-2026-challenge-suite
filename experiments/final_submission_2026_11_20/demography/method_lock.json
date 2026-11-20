@@ -1,0 +1,901 @@
+{
+  "schema": "best_effort_final_demography_v3_import_attestation",
+  "created_utc": "2026-11-20T21:04:37.752848+00:00",
+  "scope": "Authorized final challenge inference1\u20134; best effort only, scientific promotion gates remain unmet; no known answers or holdouts, no external submission by this runner.",
+  "source_commit": "0ced7ae72c73199da8fcc49996ddd2d079e67106",
+  "source_manifest_sha256": "cf0b1e98837d01ea296610ca6e9d0cd9ea576716fdd8a17f0c75e18b0f2229af",
+  "runner_sha256": "8153bb71578827aa5e3fd224aef6730c983aca97fe8c190679219c57f10df3c8",
+  "fits": [
+    {
+      "id": "task1_moments",
+      "task": 1,
+      "engine": "moments",
+      "settings": {
+        "mutation_rate": 3.42e-08,
+        "restarts": 16,
+        "seed": 202611901,
+        "folded": true,
+        "optimizer_strategy": "paired_coarse_fine_refine_v1"
+      }
+    },
+    {
+      "id": "task1_dadi",
+      "task": 1,
+      "engine": "dadi",
+      "settings": {
+        "mutation_rate": 3.42e-08,
+        "restarts": 8,
+        "seed": 202611902,
+        "folded": true,
+        "optimizer_strategy": "paired_coarse_fine_refine_v1"
+      }
+    },
+    {
+      "id": "task3_exponential_p84",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 84,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612384,
+        "convention": "exponential"
+      }
+    },
+    {
+      "id": "task3_exponential_p60",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 60,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612360,
+        "convention": "exponential"
+      }
+    },
+    {
+      "id": "task3_exponential_p40",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 40,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612340,
+        "convention": "exponential"
+      }
+    },
+    {
+      "id": "task3_sudden_p84",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 84,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612484,
+        "convention": "sudden"
+      }
+    },
+    {
+      "id": "task3_sudden_p60",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 60,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612460,
+        "convention": "sudden"
+      }
+    },
+    {
+      "id": "task3_sudden_p40",
+      "task": 3,
+      "settings": {
+        "mutation_rate": 3.36e-08,
+        "projection": 40,
+        "restarts": 8,
+        "workers": 1,
+        "maxiter": 500,
+        "seed": 202612440,
+        "convention": "sudden"
+      }
+    },
+    {
+      "id": "task2_simple_r00",
+      "task": 2,
+      "origin": 0,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612200,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r00",
+      "task": 2,
+      "origin": 0,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612300,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r00",
+      "task": 4,
+      "origin": 0,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612400,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r00",
+      "task": 4,
+      "origin": 0,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612500,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r00",
+      "task": 4,
+      "origin": 0,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612600,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r01",
+      "task": 2,
+      "origin": 1,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612201,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r01",
+      "task": 2,
+      "origin": 1,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612301,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r01",
+      "task": 4,
+      "origin": 1,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612401,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r01",
+      "task": 4,
+      "origin": 1,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612501,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r01",
+      "task": 4,
+      "origin": 1,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612601,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r02",
+      "task": 2,
+      "origin": 2,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612202,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r02",
+      "task": 2,
+      "origin": 2,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612302,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r02",
+      "task": 4,
+      "origin": 2,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612402,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r02",
+      "task": 4,
+      "origin": 2,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612502,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r02",
+      "task": 4,
+      "origin": 2,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612602,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r03",
+      "task": 2,
+      "origin": 3,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612203,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r03",
+      "task": 2,
+      "origin": 3,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612303,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r03",
+      "task": 4,
+      "origin": 3,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612403,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r03",
+      "task": 4,
+      "origin": 3,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612503,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r03",
+      "task": 4,
+      "origin": 3,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612603,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r04",
+      "task": 2,
+      "origin": 4,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612204,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r04",
+      "task": 2,
+      "origin": 4,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612304,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r04",
+      "task": 4,
+      "origin": 4,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612404,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r04",
+      "task": 4,
+      "origin": 4,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612504,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r04",
+      "task": 4,
+      "origin": 4,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612604,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r05",
+      "task": 2,
+      "origin": 5,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612205,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r05",
+      "task": 2,
+      "origin": 5,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612305,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r05",
+      "task": 4,
+      "origin": 5,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612405,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r05",
+      "task": 4,
+      "origin": 5,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612505,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r05",
+      "task": 4,
+      "origin": 5,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612605,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r06",
+      "task": 2,
+      "origin": 6,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612206,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r06",
+      "task": 2,
+      "origin": 6,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612306,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r06",
+      "task": 4,
+      "origin": 6,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612406,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r06",
+      "task": 4,
+      "origin": 6,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612506,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r06",
+      "task": 4,
+      "origin": 6,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612606,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_simple_r07",
+      "task": 2,
+      "origin": 7,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612207,
+        "folded": false,
+        "convention": "simple",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task2_generator_matched_r07",
+      "task": 2,
+      "origin": 7,
+      "settings": {
+        "mutation_rate": 8.4e-08,
+        "projection": [
+          40,
+          30
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612307,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p50x40_r07",
+      "task": 4,
+      "origin": 7,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612407,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p70x50_r07",
+      "task": 4,
+      "origin": 7,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612507,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    },
+    {
+      "id": "task4_p94x68_r07",
+      "task": 4,
+      "origin": 7,
+      "settings": {
+        "mutation_rate": 1.015e-08,
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "maxiter": 750,
+        "seed": 202612607,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false
+      }
+    }
+  ],
+  "allocation": {
+    "cpus_per_job": 1,
+    "memory_mib_per_job": 5632,
+    "extraction_walltime": "00:20:00",
+    "fit_walltime": "00:20:00",
+    "maximum_concurrent_fit_jobs": 12
+  },
+  "selection": {
+    "eligible_endpoint": "COMPLETED with postfit_identity_verified, finite positive physical parameters and fixed-domain finite likelihood; retain actual selected convergence and all failed/censored starts; no objective or convergence filtering within each fitter",
+    "task1": "moments primary; dadi sensitivity, only fallback if moments absent at deadline",
+    "task2": "maximum multinomial likelihood across simple and historical generator_matched, identical unfolded p40x30 SFS/mask and five free parameters, theta optimized in both; exact ties simple then origin ascending; historical hidden-epoch assumptions remain unverified",
+    "task3": "exponential primary; componentwise physical median of p84,p60,p40 when all three complete; sudden sensitivity only. Deadline fallback highest projection available from fixed order84,60,40; never describe partial set as complete median",
+    "task4": "per-projection maximum finite likelihood over8fixed original starts; exact ties origin ascending; componentwise physical median of50x40,70x50,94x68 if all three present. Deadline fallback fixed order50x40,70x50,94x68; no raw-likelihood comparison across projections",
+    "deadline_cutoff_utc": "2026-11-20T22:25:00Z",
+    "censored_policy": "Missing/RUNNING/TIMEOUT recorded against all48planned fits, never counted as completed or independent replicates; finite incomplete/unattested artifacts retained but ineligible",
+    "model_comparison_scope": "Existing scientifically imperfect proven models only; no old testing calibration applied and no simulated truth used."
+  },
+  "inputs": {
+    "identity": "Live Synapse version and MD5 plus SHA256/byte length from root authenticated browser handoff, verified again before/after extraction/fitting",
+    "exposure": "Actual positive header contig lengths; Tasks3/4 coding-distance exposure computed from exact BED and contig lengths, not stale hardcoded constants",
+    "missingness": "Task1 spectrum_exposure rejects missing calls without valid callable exposure; Tasks2/3/4 require complete biallelic genotypes via existing source extractors",
+    "ancestry": "Tasks2\u20134 require valid AA; Task1 folded",
+    "population_assignment": "Task2 mainland_/island_ header labels; Task4 AFR_/EUR_ header labels; all declared samples uniquely assigned",
+    "coordinates": "Preflight enforces positive header lengths and sorted nondecreasing in-range records. Preserve and count all original variant records at repeated POS; no deduplication, coordinate shift, relabeling or SFS alteration."
+  },
+  "uncertainty": "No intervals claimed; YAML point predictions only, as current output contract requires. All scientific qualification caveats remain in accompanying report.",
+  "handoff_deadline_utc": "2026-11-20T22:30:00Z",
+  "submission_owner": "Central uploader in separate user-authorized chat; this runner never submits.",
+  "harness_revision": {
+    "previous_lock_sha256": "945d2842fce359c81b89ced7629240d2bc40e0bb5bc9d8d683f77c240b2e2f1c",
+    "failed_extraction": "10859290_1",
+    "cancelled_dependency": "10859293",
+    "reason": "Overstrict coordinate audit rejected repeated valid VCF positions; numerical/model settings remain identical.",
+    "created_utc": "2026-11-20T21:09:07.799480+00:00"
+  },
+  "import_attestation": "Every imported ghist_ module __file__ must resolve within frozen source_snapshot and hash to source manifest; actual fitter path/hash recorded before and after fit; sequence_length passed exactly from extracted archive and returned value checked when present.",
+  "last_harness_amendment_utc": "2026-11-20T21:10:43.565372+00:00"
+}

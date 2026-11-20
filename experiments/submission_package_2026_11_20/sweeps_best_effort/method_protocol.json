@@ -1,0 +1,69 @@
+{
+  "schema": "tasks5to8_best_effort_final_method_lock_v1",
+  "purpose": "User-authorized deadline predictions only; no scientific qualification or external submission by this runner.",
+  "dataset": "final",
+  "chromosome": "9",
+  "scientifically_validated": false,
+  "release_ready": false,
+  "truth_or_answer_access_permitted": false,
+  "tasks": {
+    "5": {
+      "method": "blind_callable_median_three_v1",
+      "settings": "Use unchanged ghist_single_sweep.predict.predict_single_sweep",
+      "half_width": 60000
+    },
+    "6": {
+      "method": "h12_snps50_maf0",
+      "window_snps": 50,
+      "minimum_minor_frequency": 0,
+      "half_width": 75000,
+      "selection_source": "Pre-existing task6_development_v2.json selected_configuration; no held-out confirmation"
+    },
+    "7": {
+      "method": "blind_callable_median_ten_v1",
+      "settings": "Use unchanged ghist_single_sweep.background.SETTINGS and shared predict_task7_sweep_bgs.run",
+      "half_width": 80000
+    },
+    "8": {
+      "method": "provisional_legacy_raisd_transfer_v1",
+      "raisd_snp_window": 50,
+      "mask_policy": "Entire inclusive RAiSD SNP span must be callable",
+      "reference_background": "Maximum callable Task7 RAiSD score strictly farther than2000000bp from its own highest callable RAiSD peak; observed cross-task heuristic, NOT a matched or calibrated null",
+      "background_exclusion_radius": 2000000,
+      "threshold_multiplier": 2.0,
+      "peak_selection": "All strictly above-threshold peaks, ordered by decreasing score with genomic-position tie break, separated by at least1000000bp; never a fixed peak count",
+      "peak_separation": 1000000,
+      "max_exon_snap": 60000,
+      "half_width": 60000,
+      "exons": "Intersect final chr9 exons with callable mask before nearest-base snapping; ties choose smallest coordinate",
+      "zero_candidate_fallback": "Exactly one highest callable Task8 RAiSD peak; nearest callable exonic base within60000bp if available, otherwise unsnapped callable peak; explicitly unsupported best guess",
+      "missing_reference_background_fallback": "Same single highest callable Task8 peak; record reason; do not invent a null threshold",
+      "limitations": [
+        "Task7 and Task8 demographies are not matched.",
+        "Transferred threshold is a heuristic with no familywise-error, precision, recall, or coverage guarantee.",
+        "One-peak fallback does not infer the true count."
+      ]
+    }
+  },
+  "final_bed_geometry": {
+    "coordinate_system": "zero-based half-open",
+    "policy": "Keep each method raw candidate. For deadline BED only, move an inaccessible center to nearest callable base (ties lower coordinate), intersect its fixed-width interval with the containing callable component and [0,contig_length), then merge overlaps for Task8. Record every adjustment; no width/threshold tuning.",
+    "one_interval_tasks": [
+      5,
+      6,
+      7
+    ],
+    "minimum_task8_intervals": 1
+  },
+  "execution": {
+    "heavy_compute": "Slurm only",
+    "max_concurrent_cpus": 8,
+    "per_task_cpus": 2,
+    "per_task_memory_MiB": 11264,
+    "per_task_time_limit_minutes": 60,
+    "latest_output_goal_utc": "2026-11-20T23:30:00Z",
+    "new_biological_simulations": 0
+  },
+  "provenance": "Input/source/runtime hashes bound before inference and verified after; chr9, exact contig/mask/exon bounds, phased SNP contract and final BED validation required; originals and all failures retained.",
+  "submission_count": 0
+}

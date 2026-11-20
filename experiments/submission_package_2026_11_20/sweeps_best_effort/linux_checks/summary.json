@@ -1,0 +1,31 @@
+{
+  "schema": "deadline_linux_software_checks_v1",
+  "source_freeze_sha256": "1fdcaf559e3f6233001438f5680414ba4bbfef29f6b5da99484872fa9701aeaf",
+  "tests_passed": 12,
+  "biological_recovery_claim": false,
+  "attempts": [
+    {
+      "job_id": "10859387",
+      "state": "FAILED",
+      "elapsed_seconds": 10,
+      "exit_code": "2:0",
+      "reason": "pytest ancestor configuration injected old source path during collection; no inference"
+    },
+    {
+      "job_id": "10859401",
+      "state": "FAILED",
+      "elapsed_seconds": 10,
+      "exit_code": "2:0",
+      "reason": "rootdir/confcutdir did not override ancestor pytest pythonpath; no inference"
+    },
+    {
+      "job_id": "10859412",
+      "state": "COMPLETED",
+      "elapsed_seconds": 8,
+      "exit_code": "0:0",
+      "test_seconds": 1.23,
+      "fix": "-c /dev/null isolates pytest configuration; runner/source unchanged"
+    }
+  ],
+  "production_import_check": "Direct Python imports resolve exact frozen source paths; production wrapper asserts paths."
+}

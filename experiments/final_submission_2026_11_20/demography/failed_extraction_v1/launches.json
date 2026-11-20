@@ -1,0 +1,20 @@
+[
+  {
+    "label": "Task1 extraction",
+    "utc": "2026-11-20T21:05:36.942095+00:00",
+    "command": "sbatch --parsable --array=1 /vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/extract.sbatch",
+    "returncode": 0,
+    "stdout": "10859290\n",
+    "stderr": "\n--------------------------------------------------------------------------\nThe SLURM CLI FILTER is now enforcing resource constraints as of:\nAugust 3, 2026.\n\n| PARTITION       | CPUS/GPU | CPU MEMORY / CPU (or GPU )   | GPU MEMORY |\n|-----------------|----------|------------------------------|------------|\n| dgx-b200        |       28 |  8    GB / CPU, (224 GB/GPU) |     180 GB |\n| b200-mig90      |       14 |  8    GB / CPU, (112 GB/GPU) |      90 GB |\n| b200-mig45      |        6 |  8    GB / CPU, ( 56 GB/GPU) |      45 GB |\n| genoa-std-mem   |        - | 5632  MB / CPU               |          - |\n| genoa-lrg-mem   |        - | 15872 MB / CPU               |          - |\n\nFor further details, please review our guide (on campus or VPN):\nhttps://docs.parcc.upenn.edu/docs/notes/filter.html\n--------------------------------------------------------------------------\n\n# \u001b[96mSTATUS\u001b[0m                      : SLURM CLI FILTER\n#SBATCH -p genoa-std-mem      \u001b[90m# partition\u001b[0m\n#SBATCH -c 1                  \u001b[90m# CPUs / task\u001b[0m\n#SBATCH --memory=5632M        \u001b[90m# memory / node\u001b[0m\n# \u001b[96mSTATUS\u001b[0m                      : interpolated\n#SBATCH -p genoa-std-mem      \u001b[90m# partition\u001b[0m\n#SBATCH -n 1                  \u001b[90m# tasks, MPI ranks\u001b[0m\n#SBATCH -c 1                  \u001b[90m# CPUs / task\u001b[0m\n#SBATCH --memory=5632M        \u001b[90m# memory / node\u001b[0m\n\u001b[90m#SBATCH -N 1                  #   implicit nodes\u001b[0m\n\u001b[90m#SBATCH --ntasks-per-node=1   #   implicit tasks / node\u001b[0m\n\u001b[90m#SBATCH --mem-per-cpu=5632M   #   implicit memory / CPU\u001b[0m\n\n",
+    "job_id": "10859290"
+  },
+  {
+    "label": "Task1 primarymoments and dadicrosscheck",
+    "utc": "2026-11-20T21:05:40.862047+00:00",
+    "command": "sbatch --parsable --array=0-1%2 --dependency=afterok:10859290 /vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/fit.sbatch",
+    "returncode": 0,
+    "stdout": "10859293\n",
+    "stderr": "\n--------------------------------------------------------------------------\nThe SLURM CLI FILTER is now enforcing resource constraints as of:\nAugust 3, 2026.\n\n| PARTITION       | CPUS/GPU | CPU MEMORY / CPU (or GPU )   | GPU MEMORY |\n|-----------------|----------|------------------------------|------------|\n| dgx-b200        |       28 |  8    GB / CPU, (224 GB/GPU) |     180 GB |\n| b200-mig90      |       14 |  8    GB / CPU, (112 GB/GPU) |      90 GB |\n| b200-mig45      |        6 |  8    GB / CPU, ( 56 GB/GPU) |      45 GB |\n| genoa-std-mem   |        - | 5632  MB / CPU               |          - |\n| genoa-lrg-mem   |        - | 15872 MB / CPU               |          - |\n\nFor further details, please review our guide (on campus or VPN):\nhttps://docs.parcc.upenn.edu/docs/notes/filter.html\n--------------------------------------------------------------------------\n\n# \u001b[96mSTATUS\u001b[0m                      : SLURM CLI FILTER\n#SBATCH -p genoa-std-mem      \u001b[90m# partition\u001b[0m\n#SBATCH -c 1                  \u001b[90m# CPUs / task\u001b[0m\n#SBATCH --memory=5632M        \u001b[90m# memory / node\u001b[0m\n# \u001b[96mSTATUS\u001b[0m                      : interpolated\n#SBATCH -p genoa-std-mem      \u001b[90m# partition\u001b[0m\n#SBATCH -n 1                  \u001b[90m# tasks, MPI ranks\u001b[0m\n#SBATCH -c 1                  \u001b[90m# CPUs / task\u001b[0m\n#SBATCH --memory=5632M        \u001b[90m# memory / node\u001b[0m\n\u001b[90m#SBATCH -N 1                  #   implicit nodes\u001b[0m\n\u001b[90m#SBATCH --ntasks-per-node=1   #   implicit tasks / node\u001b[0m\n\u001b[90m#SBATCH --mem-per-cpu=5632M   #   implicit memory / CPU\u001b[0m\n\n",
+    "job_id": "10859293"
+  }
+]

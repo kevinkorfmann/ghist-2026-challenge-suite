@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-11-20T21:26:49.865797+00:00",
+  "scope": "Read-only saved-value arithmetic/selection and local byte identity review; no likelihood evaluation or inference rerun. Live metadata observation supplied by root.",
+  "candidate_sha256": "3ee0a388789a7969044456d82cec0bad9a49c17b04d227554f0308f12a408546",
+  "audit_sha256": "d80fbd0c15ae8f7a8947b8ff9b5f9fea7ec1283a6028a91ffb70a5946cf70e83",
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "source_input_current_vcf": {
+    "entity": "syn75193301",
+    "version": 5,
+    "sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe"
+  },
+  "live_reference_confirmation_sha256": "18f37318d09e378d977d05c1af97c22245e41dbd56aed530cff8e5b882b9ae74",
+  "current_references": [
+    {
+      "role": "coding",
+      "entity": "syn74933457",
+      "version": 1,
+      "sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057"
+    },
+    {
+      "role": "map",
+      "entity": "syn75318369",
+      "version": 1,
+      "sha256": "8fd66697338340a6a73e47f7e0de97879d84c7ea3e403fa07ddae532f0d78ad7"
+    }
+  ],
+  "planned_starts": 24,
+  "completed_finite": 13,
+  "numerical_failures_retained": 11,
+  "selected_cases": [
+    "task4_p50x40_r02",
+    "task4_p70x50_r05",
+    "task4_p94x68_r03"
+  ],
+  "selected_convergence": [
+    true,
+    false,
+    false
+  ],
+  "selection_matches_fixed_best_finite_per_projection": true,
+  "physical_scaling_verified": true,
+  "componentwise_median_verified": true,
+  "all_artifact_hashes_verified": true,
+  "schema_verified": true,
+  "prediction": {
+    "AFR_population_size": 15247.120714281818,
+    "EUR_population_size": 19135.421691466254,
+    "generations_since_split": 4981.438096154486,
+    "migration_rate": 0.00011636163915571935
+  },
+  "verdict": "No saved-value/output-contract blocker under authorized best-effort method.",
+  "limitations": [
+    "Two selected endpoints terminate ABNORMAL and are retained under fixed best-finite selection; no convergence claim for them.",
+    "Componentwise median is an aggregate of physical outputs, not a single fitted model parameter vector.",
+    "Scientific adequacy, uncertainty coverage and global optimum are not established.",
+    "Original input manifest pending-current-reference wording is closed by separately hash-bound live confirmation; original evidence unchanged."
+  ]
+}

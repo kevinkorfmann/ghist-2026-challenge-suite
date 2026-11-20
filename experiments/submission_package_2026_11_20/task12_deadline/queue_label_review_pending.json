@@ -1,0 +1,85 @@
+{
+  "schema": "task12_queue_label_review_pending_v1",
+  "created_utc": "2026-11-20T21:36:21.695486+00:00",
+  "status": "PENDING authoritative Task12 queue allowlist; original candidate unchanged; no submission",
+  "candidate_path": "/private/tmp/ghist-final-submissions-20261120/task12/task12.final.csv",
+  "candidate_sha256": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+  "rows": 43956,
+  "counts": {
+    "avuncular": 209,
+    "avuncular_once_removed": 821,
+    "avuncular_twice_removed": 3025,
+    "full_1st_cousin": 402,
+    "full_1st_cousin_once_removed": 2666,
+    "full_1st_cousin_thrice_removed": 4275,
+    "full_1st_cousin_twice_removed": 7997,
+    "full_2nd_cousin": 6489,
+    "full_2nd_cousin_once_removed": 2706,
+    "full_2nd_cousin_twice_removed": 2802,
+    "full_3rd_cousin": 1345,
+    "full_3rd_cousin_once_removed": 5908,
+    "full_4th_cousin": 4922,
+    "siblings": 389
+  },
+  "reported_external_observation": {
+    "source": "Root reports central uploader Task10 queue9619674 rejection; this agent did not query the server.",
+    "task": 10,
+    "queue": "9619674",
+    "status": "INVALID",
+    "reported_rejected_labels": [
+      "avuncular_twice_removed",
+      "full_1st_cousin_thrice_removed"
+    ],
+    "does_not_establish_task12_allowlist": true
+  },
+  "task12_authoritative_allowlist_verified": false,
+  "local_validator_scope": {
+    "path": "/Users/kevinkorfmann/.cache/ghist-2026/secondary-contact-interval-v2-integration-20261120/src/ghist_submission/validate.py",
+    "sha256": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "labels_source_sha256": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "finding": "relation_meioses uses HUMAN_LABELS for both Tasks10 and12;14 hardcoded labels originate in model taxonomy. This proves local validator acceptance only, not server acceptance. The prior schema-pass report must not be interpreted as authoritative queue readiness."
+  },
+  "repo_evidence_checked": [
+    {
+      "path": "challenges/relatedness/large_family_background_relatedness/README.md",
+      "finding": "Scientific pipeline/readiness narrative; no independently sourced Task12 accepted-label enumeration."
+    },
+    {
+      "path": "configs/challenges.yaml",
+      "finding": "Task12 entity mapping only, no label allowlist."
+    },
+    {
+      "path": "docs/submission_validator_review_2026_11_20.md",
+      "finding": "Local format robustness review explicitly leaves labels unchanged; no server allowlist verification."
+    }
+  ],
+  "conditional_minimal_mapping": [
+    {
+      "from": "avuncular_twice_removed",
+      "to": "full_1st_cousin_once_removed",
+      "rows_affected": 3025,
+      "meioses_before": 5,
+      "meioses_after": 5,
+      "condition": "ONLY if authoritative Task12 evidence confirms the exact12-label set excluding these two and retaining target."
+    },
+    {
+      "from": "full_1st_cousin_thrice_removed",
+      "to": "full_2nd_cousin_once_removed",
+      "rows_affected": 4275,
+      "meioses_before": 7,
+      "meioses_after": 7,
+      "condition": "ONLY if authoritative Task12 evidence confirms the exact12-label set excluding these two and retaining target."
+    }
+  ],
+  "conditional_rows_affected": 7300,
+  "conditional_fraction_affected": 0.16607516607516606,
+  "conditional_scope": "Two unique same-meioses destinations within the presumed12-label set. This would preserve pair IDs, row count and inferred meiosis degree but change relationship category. It is a schema-driven category collapse, not biological equivalence, retraining, a new fit, or improved-accuracy evidence. No mapping has been applied.",
+  "ownership": "Central uploader verifies Task12 authoritative schema and owns any schema-driven replacement and external submission. Original candidate/model/source/run evidence remain preserved.",
+  "prohibited_actions_not_performed": [
+    "candidate modification",
+    "model modification",
+    "new model evaluation",
+    "competition submission",
+    "public truth or answer access"
+  ]
+}

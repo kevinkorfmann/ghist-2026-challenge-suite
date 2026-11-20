@@ -1,0 +1,142 @@
+{
+  "state": "COMPLETED",
+  "case": {
+    "id": "task4_p70x50_r05",
+    "task": 4,
+    "origin": 5,
+    "settings": {
+      "mutation_rate": 1.015e-08,
+      "projection": [
+        70,
+        50
+      ],
+      "restarts": 1,
+      "workers": 1,
+      "maxiter": 750,
+      "seed": 202612505,
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false
+    }
+  },
+  "slurm_job_id": "10859549",
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "spectrum_sha256": "f256c1876e599d14ed96d7f5d27143c8594f9c42e2cad7590731bdca637b256f",
+  "input_vcf_sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe",
+  "scientifically_validated": false,
+  "submission_count": 0,
+  "software": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "pysam": "0.24.0"
+  },
+  "imported_fitter": {
+    "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/spectrum.py",
+    "relative_path": "src/ghist_split_migration_bgs/spectrum.py",
+    "sha256": "a62c732428a408898709d3856a93e12aee03191bb6c604593d5f237ad2d95bf0"
+  },
+  "fit_sequence_length_argument": 61965066.0,
+  "fit": {
+    "AFR_population_size": 15247.120714281818,
+    "EUR_population_size": 19099.05439061313,
+    "generations_since_split": 4981.438096154486,
+    "migration_rate": 0.00011636163915571935,
+    "ancestral_population_size": 11829.654804669144,
+    "scaled_parameters": {
+      "AFR_size_ratio": 1.288889740744067,
+      "EUR_size_ratio": 1.6145064844220787,
+      "split_duration_2N": 0.21054875135444867,
+      "migration_2N": 2.7530360474352653
+    },
+    "theta": 29760.828833578747,
+    "multinomial_log_likelihood": -7740.258993921171,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 1,
+      "numerically_supported": false,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 0,
+    "best_restart_converged": false,
+    "converged_restarts": 0,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -7740.258993921171,
+        "theta": 29760.828833578747,
+        "optimizer": {
+          "converged": false,
+          "warnflag": 2,
+          "iterations": 17,
+          "function_calls": 315,
+          "message": "ABNORMAL: "
+        }
+      }
+    ],
+    "integration_retry_policy": "bounded_whole_model_refinement_v1",
+    "successful_restarts": 1,
+    "failed_restarts": [],
+    "projection": [
+      70,
+      50
+    ],
+    "restarts": 1,
+    "workers": 1,
+    "sequence_length": 61965066.0,
+    "mutation_rate": 1.015e-08,
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": null
+  },
+  "imported_sources": {
+    "ghist_inference": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/__init__.py",
+      "relative_path": "src/ghist_inference/__init__.py",
+      "sha256": "2196b5034ca04e621c7673f18593c491f4553e75e4702318be2303f93cefa049"
+    },
+    "ghist_inference.checkpoint": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/checkpoint.py",
+      "relative_path": "src/ghist_inference/checkpoint.py",
+      "sha256": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d"
+    },
+    "ghist_split_migration_bgs": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/__init__.py",
+      "relative_path": "src/ghist_split_migration_bgs/__init__.py",
+      "sha256": "7ef12aee8d0bfe916f68ae859d1fcffe57808262bf3c01f066e7edf4155527ce"
+    },
+    "ghist_inference.validation": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/validation.py",
+      "relative_path": "src/ghist_inference/validation.py",
+      "sha256": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb"
+    },
+    "ghist_inference.integration": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/integration.py",
+      "relative_path": "src/ghist_inference/integration.py",
+      "sha256": "49b89af2c22f2c43daf490421b2e945b0d32fb973b59f8a9baa8c91414388738"
+    },
+    "ghist_inference.vcf": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/vcf.py",
+      "relative_path": "src/ghist_inference/vcf.py",
+      "sha256": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81"
+    },
+    "ghist_growth_bgs.audit": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_growth_bgs/audit.py",
+      "relative_path": "src/ghist_growth_bgs/audit.py",
+      "sha256": "9196e349b642d5c0a7f9d30f1163d4bdd85c0582cf6383d54616147b373e9311"
+    },
+    "ghist_growth_bgs": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_growth_bgs/__init__.py",
+      "relative_path": "src/ghist_growth_bgs/__init__.py",
+      "sha256": "e83213cfb4524f2c6997d53bbfc39446f6b5e5d39aacdb3ec2601b379b88d486"
+    },
+    "ghist_split_migration_bgs.spectrum": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/spectrum.py",
+      "relative_path": "src/ghist_split_migration_bgs/spectrum.py",
+      "sha256": "a62c732428a408898709d3856a93e12aee03191bb6c604593d5f237ad2d95bf0"
+    }
+  },
+  "postfit_identity_verified": true,
+  "elapsed_seconds": 76.99292077915743
+}

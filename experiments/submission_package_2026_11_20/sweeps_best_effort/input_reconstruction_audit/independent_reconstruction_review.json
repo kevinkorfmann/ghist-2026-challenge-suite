@@ -1,0 +1,55 @@
+{
+  "schema": "independent_task5_pos_reconstruction_review_v1",
+  "reviewed_utc": "2026-11-20T21:26:16.357782+00:00",
+  "reviewer": "sweeps_science independent paired read-only audit",
+  "review_script_path": "/tmp/independently_review_ghist_task5_reconstruction.py",
+  "review_script_sha256": "055e618fc461b55e0e28b660c282ddae9eb4c70e8c07ccbc90fca851852f53e5",
+  "bound_files_sha256": {
+    "/private/tmp/ghist-final-submissions-20261120/task5/onesweep.final.original_v1.vcf.gz": "4ffd4b17fde78c182fd79b73ea7ebb246acb077d0bdc75fc04ff65c905377a14",
+    "/private/tmp/ghist-final-submissions-20261120/task5/onesweep.final.reconstructed_pos1.vcf.gz": "cf5c655ba8716d6d6472f5c3b31a5411e62598a3762a113108b62b37fa019b45",
+    "/tmp/reconstruct_ghist_task5_pos1.py": "5901537766d468724de13875d2a112a2dad747db9cb7825dd55c6f5ceafe04e1",
+    "/private/tmp/ghist-final-submissions-20261120/task5/reconstructed_pos1_provenance.json": "99f24e7f3d265d7a1d883253be25519b9d18cc9d8e51ec7a938de60b17f3ed5b"
+  },
+  "source_entity": "syn75346852",
+  "source_version": 1,
+  "source_live_metadata_attestation": "Parent independently authenticated original download and supplied live MD5; this audit rechecks local MD5/SHA256, not browser state.",
+  "source_md5": "242445cad013f18cf7c661a869ccd2d1",
+  "derived_md5": "b5c9fa3323f0016ac63ea4d5c643042b",
+  "header_lines": 6,
+  "headers_identical": true,
+  "header_bytes_sha256": "c0ed6d52d4cc49e1bf2c4a3545d1ef934a17e06d5d1b0aa76564de6ccf5b2992",
+  "records": 629667,
+  "paired_record_count_equal": true,
+  "all_non_POS_fields_byte_identical": true,
+  "all_POS_exactly_plus_one": true,
+  "strictly_increasing_unique_positions": true,
+  "original_position_range": [
+    41216,
+    138394582
+  ],
+  "derived_position_range": [
+    41217,
+    138394583
+  ],
+  "contig_lengths": {
+    "9": 138394717
+  },
+  "diploid_sample_columns": 25,
+  "source_uncompressed_sha256": "938da0cfefa4b7d385de6e86836203e299a9980857c357a7c282e3ce28b54bed",
+  "derived_uncompressed_sha256": "11605f8f85b0b800802a417c4a65bb2d837863fc51a5a3069a6e743f8bd93f7c",
+  "scientific_parameters_changed": false,
+  "input_content_review": "PASS: exact documented POS-only transformation for every row",
+  "locked_pysam_reader_smoke": {
+    "compatible": false,
+    "pysam_version": "0.24.1",
+    "error_type": "NotImplementedError",
+    "error": "seek not implemented in files compressed by method 1"
+  },
+  "operational_verdict": "BLOCKED for direct use of ordinary gzip artifact; retain it, derive plain VCF or BGZF with identical uncompressed bytes, record separate hashes, and verify parser compatibility before inference.",
+  "current_release_version": 2,
+  "current_release_bytes_verified": false,
+  "current_release_content_equivalence": "INFERRED ONLY from parent-supplied official release note: Correct VCF POS to 1-based (+1); all other columns unchanged. This audit has no current-v2 bytes and does not prove release identity.",
+  "public_answer_or_truth_access": false,
+  "inference_or_jobs_launched": false,
+  "external_submission_performed": false
+}

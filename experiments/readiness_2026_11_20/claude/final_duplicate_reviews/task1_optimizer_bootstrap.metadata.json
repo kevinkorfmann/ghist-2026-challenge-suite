@@ -1,0 +1,45 @@
+{
+  "scope": "task1_optimizer_bootstrap",
+  "started_utc": "2026-11-20T21:01:37.870830+00:00",
+  "completed_review": true,
+  "elapsed_seconds": 332.9,
+  "exit_code": 0,
+  "source_sha256": {
+    "src/ghist_bottleneck/optimization.py": "5a1ec054f9b0406f7b8a5d47b79e259f14c2632089e0b08a922fd4c2ab447f22",
+    "src/ghist_bottleneck/sfs_baseline.py": "f665661e69548c624981d37dbf27de86ce54dc41dcc84b4d8c5f8f6641a2feef",
+    "src/ghist_bottleneck/dadi_reference.py": "b0476436bf93e8efecbf5768d822bb6a91081084ccf0f36028b66ff2317bd93d",
+    "scripts/bootstrap_bottleneck_sfs.py": "82ec5691c7e8c7dc1a421c1600dadda29473b2dd7a2eb860afc2b016bf7721c6",
+    "scripts/bottleneck_consumer_guard.py": "707d3e9cf9c9e1c4600eee62d8529bdb202631067b93f058352f01a1c7f4f542",
+    "scripts/summarize_bottleneck_readiness.py": "429494836b92022a0d2604dad503192f71f07d4ca26f507346d209bd8871730b",
+    "tests/test_bottleneck_optimization.py": "57905a6975259a0fde8d69a5c394b5c32fee28d164e5fb4a9976ca7327d072dc",
+    "tests/test_bottleneck_consumer_contract.py": "e581d5290ed1119621f782c81468987e0e69b9ef91ac2b4c49318a0aa549d45e"
+  },
+  "source_before_after_match": true,
+  "raw_stream_sha256": "c4dffd00c257342e484f0bf9b9877afd7467225eda5a188642487ce8b499b356",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "raw_stream_path": "/Users/kevinkorfmann/.cache/ghist-2026/claude-final-raw-20261120-2100/task1_optimizer_bootstrap.stream.jsonl",
+  "is_error": false,
+  "subtype": "success",
+  "num_turns": 9,
+  "total_cost_usd": 1.2920820000000002,
+  "modelUsage": {
+    "claude-opus-5": {
+      "inputTokens": 10,
+      "outputTokens": 25299,
+      "cacheReadInputTokens": 102614,
+      "cacheCreationInputTokens": 60825,
+      "webSearchRequests": 0,
+      "costUSD": 1.2920820000000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 20140,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 60825,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "api_error_status": null,
+  "terminal_reason": "completed"
+}

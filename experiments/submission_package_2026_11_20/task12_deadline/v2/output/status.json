@@ -1,0 +1,72 @@
+{
+  "status": "COMPLETE",
+  "started_utc": "2026-11-20T21:18:28.168488+00:00",
+  "lock_sha256": "fe3a4604a639079ec29c67113ef21b5fab88d181a0f3e036d84dccff82b444d1",
+  "source_manifest_sha256": "173997a37259d9385db88d9198f1c2fad7ac0ed8cb6522e667be7e662d4e3327",
+  "input_binding_sha256": "464458c73fe755b34e73a5443ddc699333ae997f00b825cca70daba69148c14f",
+  "input": {
+    "entity_id": "syn75203676",
+    "version": 1,
+    "bytes": 11839031,
+    "md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+    "sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+    "original_provenance_sha256": "394701a4bac54a4368eacf472dc3a8be85664d1d3bd948dc42e6a16fc6e59e7e",
+    "original_provenance": {
+      "task": "12",
+      "entity": "syn75203676",
+      "version": 1,
+      "current_version_confirmed": true,
+      "filename": "relatedness4.final.vcf.gz",
+      "downloaded_via": "authenticated Synapse browser Download File",
+      "metadata_url": "https://www.synapse.org/Synapse:syn75203676",
+      "metadata_md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+      "md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+      "sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+      "bytes": 11839031,
+      "checked_utc": "2026-11-20T21:12:31.272311+00:00",
+      "path": "/private/tmp/ghist-final-submissions-20261120/task12/relatedness4.final.vcf.gz"
+    }
+  },
+  "scientific_limitations": [
+    "Full VCF-to-detector-to-family pipeline has not passed independent scientific validation.",
+    "Historical component accuracy approximately37.5%; not an estimate of final-data accuracy.",
+    "Historical correction retains documented top20 histogram truncation defect to preserve model feature semantics.",
+    "Zero-segment classification is forced to official supported labels, without an unrelated label; probabilities are uncalibrated.",
+    "Existing historical model outperformed both previous fixed refits on recorded comparisons; neither candidate was promoted.",
+    "Missing alleles are deterministically replaced with observed per-site major allele; this may bias IBD and is an unvalidated best-effort preprocessing adaptation."
+  ],
+  "completed_utc": "2026-11-20T21:20:48.142190+00:00",
+  "output_sha256": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+  "output_bytes": 1718021,
+  "validation": {
+    "challenge": 12,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "pairs": 43956,
+    "individuals": 297,
+    "input_pair_coverage_verified": true
+  },
+  "segment_count": 8483405,
+  "segment_present_pairs": 43956,
+  "zero_segment_pairs": 0,
+  "all_pairs": 43956,
+  "sample_count": 297,
+  "relation_counts": {
+    "full_2nd_cousin": 6489,
+    "full_2nd_cousin_once_removed": 2706,
+    "full_1st_cousin_once_removed": 2666,
+    "full_1st_cousin_thrice_removed": 4275,
+    "full_1st_cousin_twice_removed": 7997,
+    "full_2nd_cousin_twice_removed": 2802,
+    "full_4th_cousin": 4922,
+    "full_3rd_cousin_once_removed": 5908,
+    "avuncular_twice_removed": 3025,
+    "full_3rd_cousin": 1345,
+    "avuncular_once_removed": 821,
+    "avuncular": 209,
+    "siblings": 389,
+    "full_1st_cousin": 402
+  },
+  "zero_segment_policy": "Compute legacy background correction on segment-present pairs only, then append all-zero feature records for missing unordered VCF pairs. If none have segments, all records are zero. No topology overrides."
+}

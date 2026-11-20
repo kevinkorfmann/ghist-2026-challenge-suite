@@ -70,8 +70,10 @@ All terminated at the account's five-hour usage limit before producing a final
 report. Their prompts and failure metadata are retained in
 [the attempt record](../experiments/scientific_2026_11_20/claude/attempts.json).
 These attempts do **not** count as completed independent reviews. Access
-restoration is pending; the parallel code and scientific checks above are
-independent of that limitation.
+was restored at 21:00 UTC; two later source-only reviews completed for the
+Task 1 optimizer/bootstrap and Task 3–4 export/bootstrap scopes. Their
+[records and triage](../experiments/readiness_2026_11_20/claude/final_duplicate_reviews/deadline_triage.json)
+are separate from the baseline attempts and the scientific evidence above.
 
 ## Before any submission
 
@@ -79,4 +81,9 @@ Regenerate invalidated training/calibration and pass each task's independent
 release gates before promoting new estimators. Once final runs resume, record
 current input versions and hashes, execute the complete pipelines, validate
 every submission schema, and inspect diagnostics. Competition submission is a
-separate action and has not been performed or scheduled.
+separate action; none was performed at the time of this initial report.
+Later, the user explicitly prioritized best-effort final entries before the
+deadline despite unmet scientific qualification gates. Current candidate and
+submission preparation are tracked in the
+[deadline handoff](deadline_submission_handoff_2026_11_20.md); that exception
+does not promote an estimator or invalidate any failure recorded here.

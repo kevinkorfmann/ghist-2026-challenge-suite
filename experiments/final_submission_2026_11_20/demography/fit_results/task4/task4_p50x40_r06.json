@@ -1,0 +1,43 @@
+{
+  "state": "FAILED",
+  "case": {
+    "id": "task4_p50x40_r06",
+    "task": 4,
+    "origin": 6,
+    "settings": {
+      "mutation_rate": 1.015e-08,
+      "projection": [
+        50,
+        40
+      ],
+      "restarts": 1,
+      "workers": 1,
+      "maxiter": 750,
+      "seed": 202612406,
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false
+    }
+  },
+  "slurm_job_id": "10859556",
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "spectrum_sha256": "f256c1876e599d14ed96d7f5d27143c8594f9c42e2cad7590731bdca637b256f",
+  "input_vcf_sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe",
+  "scientifically_validated": false,
+  "submission_count": 0,
+  "software": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "pysam": "0.24.0"
+  },
+  "imported_fitter": {
+    "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/spectrum.py",
+    "relative_path": "src/ghist_split_migration_bgs/spectrum.py",
+    "sha256": "a62c732428a408898709d3856a93e12aee03191bb6c604593d5f237ad2d95bf0"
+  },
+  "fit_sequence_length_argument": 61965066.0,
+  "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]",
+  "traceback": "Traceback (most recent call last):\n  File \"/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/run.py\", line 205, in fit\n    value = function(spectrum, sequence_length=length, **args)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/spectrum.py\", line 203, in fit_isolation_with_migration_spectrum\n    raise RuntimeError(f\"all moments restarts failed: {results[:3]}\")\nRuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]\n",
+  "elapsed_seconds": 12.123397612944245
+}

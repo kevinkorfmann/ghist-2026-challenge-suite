@@ -1,0 +1,186 @@
+{
+  "state": "COMPLETED",
+  "case": {
+    "id": "task2_generator_matched_r01",
+    "task": 2,
+    "origin": 1,
+    "settings": {
+      "mutation_rate": 8.4e-08,
+      "projection": [
+        40,
+        30
+      ],
+      "restarts": 1,
+      "workers": 1,
+      "maxiter": 750,
+      "seed": 202612301,
+      "folded": false,
+      "convention": "generator_matched",
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false
+    }
+  },
+  "slurm_job_id": "10859461",
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "spectrum_sha256": "29efe17d22d4981140506a50e7b81034bf15ac12bb40fc61c6308a1c97f9a41f",
+  "input_vcf_sha256": "f69039ac97aa8bc675488919d26c6035d9bacd2ea0e13bdce7509394dffa5388",
+  "scientifically_validated": false,
+  "submission_count": 0,
+  "software": {
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "pysam": "0.24.0"
+  },
+  "imported_fitter": {
+    "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/spectrum.py",
+    "relative_path": "src/ghist_secondary_contact/spectrum.py",
+    "sha256": "913dbc4fe91366589f925cd6b418d14051b6ebd6065d91425f9ac6caa38b4f85"
+  },
+  "fit_sequence_length_argument": 100000000.0,
+  "fit": {
+    "generations_since_split": 1892.2037209084813,
+    "generations_since_contact": 959.8284842055971,
+    "population1_effective_size": 3756535.9209211916,
+    "population2_effective_size": 13802.2309086168,
+    "ancestral_effective_size": 37565.3592092119,
+    "migration_rate": 3.9005455625911663e-10,
+    "scaled_parameters": {
+      "population1_size_ratio": 100.00000000000004,
+      "population2_size_ratio": 0.36741911162750635,
+      "split_duration_2N": 0.025185486851999395,
+      "contact_fraction": 0.5072543054427385,
+      "migration_2N": 2.9305079034126938e-05
+    },
+    "theta": 1262196.0694295198,
+    "multinomial_log_likelihood": -147162.7424879186,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [
+        0
+      ],
+      "restarts_within_0_1_log_likelihood": 1,
+      "numerically_supported": false,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 0,
+    "best_restart_converged": true,
+    "converged_restarts": 1,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -147162.7424879186,
+        "theta": 1262196.0694295198,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 22,
+          "function_calls": 312,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      }
+    ],
+    "integration_retry_policy": "bounded_whole_model_refinement_v1",
+    "successful_restarts": 1,
+    "failed_restarts": [],
+    "restarts": 1,
+    "workers": 1,
+    "projection": [
+      40,
+      30
+    ],
+    "maxiter": 750,
+    "folded": false,
+    "convention": "generator_matched",
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": null,
+    "sequence_length": 100000000.0,
+    "mutation_rate": 8.4e-08
+  },
+  "imported_sources": {
+    "ghist_inference": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/__init__.py",
+      "relative_path": "src/ghist_inference/__init__.py",
+      "sha256": "2196b5034ca04e621c7673f18593c491f4553e75e4702318be2303f93cefa049"
+    },
+    "ghist_inference.checkpoint": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/checkpoint.py",
+      "relative_path": "src/ghist_inference/checkpoint.py",
+      "sha256": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d"
+    },
+    "ghist_secondary_contact.demography": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/demography.py",
+      "relative_path": "src/ghist_secondary_contact/demography.py",
+      "sha256": "8112815a6367a1b30224ec8dea9cd850cddbf0e4f9897006fc984d984e11ac6b"
+    },
+    "ghist_bottleneck": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_bottleneck/__init__.py",
+      "relative_path": "src/ghist_bottleneck/__init__.py",
+      "sha256": "4aa65448750ddbd3833bd89dcfe30be1e05feb70cbbadbb5481424761ee9f11d"
+    },
+    "ghist_bottleneck.arg_features": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_bottleneck/arg_features.py",
+      "relative_path": "src/ghist_bottleneck/arg_features.py",
+      "sha256": "b152e9e841ab548111277387b54b9b59189571b3432705487dadc203aec82735"
+    },
+    "ghist_secondary_contact.coalescent": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/coalescent.py",
+      "relative_path": "src/ghist_secondary_contact/coalescent.py",
+      "sha256": "81d03487843ab6b63a27fb10d9e38e6ef94dd85db5da28b37b38d84bafe05e76"
+    },
+    "ghist_inference.validation": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/validation.py",
+      "relative_path": "src/ghist_inference/validation.py",
+      "sha256": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb"
+    },
+    "ghist_inference.integration": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/integration.py",
+      "relative_path": "src/ghist_inference/integration.py",
+      "sha256": "49b89af2c22f2c43daf490421b2e945b0d32fb973b59f8a9baa8c91414388738"
+    },
+    "ghist_inference.vcf": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_inference/vcf.py",
+      "relative_path": "src/ghist_inference/vcf.py",
+      "sha256": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81"
+    },
+    "ghist_secondary_contact.spectrum": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/spectrum.py",
+      "relative_path": "src/ghist_secondary_contact/spectrum.py",
+      "sha256": "913dbc4fe91366589f925cd6b418d14051b6ebd6065d91425f9ac6caa38b4f85"
+    },
+    "ghist_bottleneck.model": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_bottleneck/model.py",
+      "relative_path": "src/ghist_bottleneck/model.py",
+      "sha256": "6035303f84f445e3f2aafd905fb090e90a1bfbe5e9c899d7708e5e818c33d238"
+    },
+    "ghist_secondary_contact.model": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/model.py",
+      "relative_path": "src/ghist_secondary_contact/model.py",
+      "sha256": "ca8adf3880116fd559c191262c05278000ed4525124bff891912b9914c9842ab"
+    },
+    "ghist_bottleneck.features": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_bottleneck/features.py",
+      "relative_path": "src/ghist_bottleneck/features.py",
+      "sha256": "3987561b47d49c1ef52d7d367fa35285ae75d024a26211de933f152f32772fb3"
+    },
+    "ghist_secondary_contact.features": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/features.py",
+      "relative_path": "src/ghist_secondary_contact/features.py",
+      "sha256": "a98b951e6015ed56a4449e6fd9d6235991283f90ca1ef4318b2f3ff28f4c5e26"
+    },
+    "ghist_secondary_contact.simulate": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/simulate.py",
+      "relative_path": "src/ghist_secondary_contact/simulate.py",
+      "sha256": "b35217273464bddf7098b3b72ace53c2b3dcd10e2dab342923df9ece4ec42c39"
+    },
+    "ghist_secondary_contact": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_secondary_contact/__init__.py",
+      "relative_path": "src/ghist_secondary_contact/__init__.py",
+      "sha256": "bbf6a3a448da62f72bf504dbbf2feff286061ed4bcf917917ef19a63bff62037"
+    }
+  },
+  "postfit_identity_verified": true,
+  "elapsed_seconds": 114.1363172037527
+}
