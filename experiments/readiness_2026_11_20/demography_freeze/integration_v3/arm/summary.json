@@ -1,0 +1,51 @@
+{
+  "platform": "Linux-7.0.0-1019-nvidia-aarch64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "source_manifest_sha256": "a79c0f48d1a382daeadbbb743d51b1afa9de9e12afbad3988808487bcc42a3c3",
+  "fixture_manifest_sha256": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+  "steps": {
+    "source_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.115,
+      "log_sha256": "d54ccab10ecf528c2cfbb83781e4912fe5a84e39171557d8593c5377877e6429"
+    },
+    "fixtures_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.116,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    },
+    "ruff": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.066,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "elapsed_seconds": 59.826,
+      "log_sha256": "93c5fb1820c82ad9839da840e34ae33575254675d35d6a180ad189c010b57387"
+    },
+    "source_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.117,
+      "log_sha256": "d54ccab10ecf528c2cfbb83781e4912fe5a84e39171557d8593c5377877e6429"
+    },
+    "fixtures_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.117,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    }
+  },
+  "all_checks_passed": true,
+  "pytest_suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "1260",
+      "time": "55.119",
+      "timestamp": "2026-11-20T15:34:19.587168-05:00",
+      "hostname": "SAS-BIO11577-LD"
+    }
+  ]
+}

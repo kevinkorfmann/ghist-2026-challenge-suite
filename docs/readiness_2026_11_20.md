@@ -93,6 +93,27 @@ growth still has up to 71.6% timing error. See the
 [demographic report](readiness_demography_2026_11_20.md) for every denominator,
 failure stratum and numerical sensitivity check.
 
+**Tasks 3–4 — prediction and bootstrap integrity.** The freeze wrappers now
+recompute projection medians from every required converged fit, reject malformed
+or nonfinite intervals, and validate the available theta/scaled-to-physical
+arithmetic for each observed projection and the refined Task 4 fit. Componentwise
+medians remain aggregates and are not treated as individual model fits.
+Bootstrap producers declare the complete planned denominator before fitting;
+summaries require every unique planned replica, a converged selected optimum,
+consistent inputs/source/settings, and retained fit arithmetic. Freeze recomputes
+the interval statistics from those records. Historical summaries lacking this
+contract must be regenerated; failed replicas cannot be omitted to authorize an
+interval. Strict atomic output preserves existing artifacts on failure.
+
+Independent reviews reproduced two additional consistency gaps in intermediate
+patches: corrupted physical timing in retained bootstrap fits, then corrupted
+observed projection timing with a matching cached median. Both are fixed in the
+final source; the earlier passing test runs and failure reproductions remain
+preserved. These checks establish artifact consistency, not interval coverage,
+full selected-endpoint provenance, or recovery accuracy. See the
+[integrity report](demography_freeze_integrity_2026_11_20.md) and its
+[final independent review](../experiments/readiness_2026_11_20/demography_freeze/root_independent_reviews/observed_v3/review.json).
+
 **Task 1 — full-length recovery and input checks.** A prespecified 24-case panel
 uses 100 Mb chromosomes, 57 diploid individuals, six diagnostic parameter
 points, two independent replicates and matched versus perturbed ancestral
@@ -298,6 +319,17 @@ preserves an initial test-snapshot packaging failure: required pre-existing data
 fixtures were missing. Restoring those unchanged fixtures resolved the failures;
 production source was identical in the failed and successful snapshots. The
 prior 1,087-test integration record remains preserved as a separate version.
+
+The final Task 3–4 export/bootstrap integrity snapshot passes **1,260 tests**
+with no skips, failures or errors on macOS/Python 3.12, Linux ARM/Python 3.12,
+and Betty/Linux x86-64/Python 3.11. Ruff passes on all three. All 468 source/config
+files and 827 unchanged ancillary fixtures match before and after each run.
+The [integration record](../experiments/readiness_2026_11_20/demography_freeze/integration_v3/verification.json)
+links the preserved intermediate snapshots and independent reproductions.
+The first Betty harness failed before tests because Ruff was absent; installing
+it into an isolated lint directory fixed the harness without changing production
+dependencies. Separate Tasks 10–11/13–14 development and the later Task 2 interval
+domain repair are outside this snapshot. Scientific readiness is unchanged.
 
 Compact protocols, checkpoints, job scripts and verification records are under
 [`experiments/readiness_2026_11_20`](../experiments/readiness_2026_11_20/).

@@ -1,0 +1,80 @@
+{
+  "scope": "Independent read-only review of the immutable narrow Task3/4 freeze patch; no simulations, optimization, challenge inputs or source edits.",
+  "verdict": "No blocking regression found in the reviewed narrow scope.",
+  "baseline_commit": "471cd8d8be8b3c43cc67b1dc50e3d40add4e98a2",
+  "handoff_sha256": "1c1568dca80bfc14c42acdb9c8b150f6659cde667f7f044cb20f6b48006c828d",
+  "archive_sha256": "313f898fb4db5f1a6dd982511cabc13af79aed5647b836756cb518388493066d",
+  "reviewed_files": {
+    "src/ghist_inference/freeze.py": {
+      "sha256": "9a6eaf1c764f9349a400f61c2f8997e1a4a2b7f96abcd7320c776e73c8d1f1d9",
+      "bytes": 5485
+    },
+    "scripts/freeze_growth_bgs.py": {
+      "sha256": "4428d3a5e1fa05956fac226e59030f38a98a58ef413a0424e7a8c0f5d981688e",
+      "bytes": 7050
+    },
+    "scripts/freeze_split_migration_bgs.py": {
+      "sha256": "93bfb4fdea27f3f9f6ec991dd1e72f98c56e810f46dd07f654145a84c54f577e",
+      "bytes": 6380
+    },
+    "tests/test_demography_freeze_integrity.py": {
+      "sha256": "08afd5ea8f978d6cfd7649ba9dc88601c80cafb0c5b6c9aa598131670075edb2",
+      "bytes": 7768
+    }
+  },
+  "baseline_sha256_verified": {
+    "src/ghist_inference/freeze.py": "f7de33ec7a64ca71c8feeebdd2507e53521a6c0765386d6fabcdc0da38968631",
+    "scripts/freeze_growth_bgs.py": "ddd4b9bf2944b2f98d5a179f8146f720ada8440d0952f809608b8821c9b0df97",
+    "scripts/freeze_split_migration_bgs.py": "d9963fc9929943bc0ece9bcaf124b26d736a68c1cf44cb860e681d294610ba6c"
+  },
+  "validation": {
+    "isolated_root": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-narrow-freeze-independent-r7_a4eq4",
+    "focused_entrypoint_tests": "31 passed in 0.24 seconds using immutable patch plus exact baseline import closure",
+    "valid_output_comparisons": [
+      {
+        "task": 3,
+        "variant": "ordinary",
+        "identical_json": true,
+        "identical_bytes": true,
+        "sha256": "3e50da82e28d452da87ef0ffaacbf4aa18f80201b9b95172b36f7723ef9ff69d"
+      },
+      {
+        "task": 3,
+        "variant": "unequal_projections",
+        "identical_json": true,
+        "identical_bytes": true,
+        "sha256": "8e7397c6089228c6fbbc5a2fb6e3fb52c02abc507b7301e75b9d04c2ea8daf53"
+      },
+      {
+        "task": 4,
+        "variant": "ordinary",
+        "identical_json": true,
+        "identical_bytes": true,
+        "sha256": "75c7c3244b8c2082dbede2c86aad0bcc0091c99da1d50964b7e1863730a466cd"
+      },
+      {
+        "task": 4,
+        "variant": "unequal_projections",
+        "identical_json": true,
+        "identical_bytes": true,
+        "sha256": "451e090430a575d5f8e057b8708d3df49cc7378981363928de93932bc4817ce7"
+      },
+      {
+        "task": 4,
+        "variant": "zero_migration_interval",
+        "identical_json": true,
+        "identical_bytes": true,
+        "sha256": "02d95da05f7a450e53990fe1538c3d0242d8f17b419cea2c19133ed4aa15f4d6"
+      }
+    ],
+    "atomic_failure": "Strict JSON serialization occurs in a temporary file; failure cleans temporary state and preserves existing target. Entry-point tests verify embedded NaN evidence cannot replace an existing artifact.",
+    "median_binding": "Each required converged projection is finite/domain-valid; retained median is compared with the recomputed median and the recomputed values are exported.",
+    "physical_domains": "Growth ratios greater than one checked for every projection and interval lower bound; positive time/size bounds; zero migration interval boundary preserved."
+  },
+  "limitations": [
+    "This narrow patch validates interval structure/domain, not bootstrap planned IDs, missing fits, convergence provenance or statistical coverage. The separate pending bootstrap contract extension needs its own review.",
+    "The five old/new output comparisons use synthetic valid inputs. They establish unchanged behavior for those cases, not scientific readiness.",
+    "One initial unequal-projection comparison fixture was rejected by both old and new refined-fit gates because its reference projection was changed; the valid comparison retains that reference and varies the other two projections. No production behavior or gate was changed.",
+    "A broad baseline git archive timed out; the successful independent test used only required modules extracted from exact baseline objects and the four hash-verified patch files."
+  ]
+}

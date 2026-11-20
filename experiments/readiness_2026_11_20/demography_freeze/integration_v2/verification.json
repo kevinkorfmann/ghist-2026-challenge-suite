@@ -1,0 +1,75 @@
+{
+  "scope": "Preserved v2 bootstrap arithmetic correction; not mergeable because observed projection/refined arithmetic remains unchecked",
+  "source_manifest_sha256": "9f34ecb88c16bdb19ed64742b0353d289cc8f69ef575e220a4d8a24b52fc8591",
+  "fixture_manifest_sha256": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+  "source_overlay_sha256": "5d5ffc7c9e81737e540f703b751f718c624de6382b513ba6d5621599fedcc6f6",
+  "baseline_commit": "471cd8d8be8b3c43cc67b1dc50e3d40add4e98a2",
+  "integration_parent_commit": "0af82011653fbdb41f7fc560f4fcec8570a7c8af",
+  "source_files": 468,
+  "fixture_files": 827,
+  "tests_per_platform": 1248,
+  "platforms": {
+    "macos": {
+      "python": "3.12.11 (main, Jun  4 2025, 17:42:58) [Clang 20.1.4 ]",
+      "platform": "macOS-26.2-arm64-arm-64bit",
+      "pytest": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1248",
+          "time": "39.882",
+          "timestamp": "2026-11-20T21:23:42.666788+01:00",
+          "hostname": "ist-0781.vpn.private.upenn.edu"
+        }
+      ]
+    },
+    "arm": {
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "platform": "Linux-7.0.0-1019-nvidia-aarch64-with-glibc2.39",
+      "pytest": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1248",
+          "time": "52.453",
+          "timestamp": "2026-11-20T15:23:52.589450-05:00",
+          "hostname": "SAS-BIO11577-LD"
+        }
+      ]
+    },
+    "betty": {
+      "python": "3.11.11 (main, Jul  1 2025, 12:16:28) [GCC 13.3.0]",
+      "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+      "pytest": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1248",
+          "time": "173.913",
+          "timestamp": "2026-11-20T15:24:51.475744-05:00",
+          "hostname": "epyc-4-7"
+        }
+      ]
+    }
+  },
+  "betty_job": 10858162,
+  "independent_review": "../root_independent_reviews/bootstrap_v2/review.json",
+  "historical_failure_evidence": "../integration_v1/verification.json",
+  "blocking_review": "../root_independent_reviews/observed_v2/review.json",
+  "scientifically_validated": false,
+  "limitations": [
+    "Software integrity and arithmetic checks do not establish biological recovery or interval coverage",
+    "Retained restart parameter arrays are absent, so full selected-endpoint provenance remains unverified",
+    "Separate unmerged Tasks10/11/13/14 development is excluded from this snapshot"
+  ],
+  "report_wording_corrections": [
+    "Task4 block summary is required auxiliary input",
+    "Each replica occurs once among task records; one growth task may contain several replicas"
+  ]
+}

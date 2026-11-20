@@ -1,0 +1,44 @@
+{
+  "scope": "Requested follow-up adversarial review of observed projection and refined point-fit arithmetic in frozen v2; synthetic actual entrypoints only.",
+  "verdict": "Blocking available-field arithmetic gap remains in observed point estimates. This follow-up supersedes the earlier v2 no-remaining-blocker conclusion for the complete freeze wrappers; the bootstrap arithmetic correction remains verified.",
+  "source_handoff_sha256": "bd4c5aa82503ea7cfc135371db7f7ba01d341229ea08334311ddabdbb4de0eac",
+  "source_archive_sha256": "5d5ffc7c9e81737e540f703b751f718c624de6382b513ba6d5621599fedcc6f6",
+  "reproduction": [
+    {
+      "task": 3,
+      "changed_projections": [
+        "84",
+        "60",
+        "40"
+      ],
+      "change": "Reported generations and matching cached median multiplied by10; theta/scaled values fixed.",
+      "original_frozen_point": 1000.0,
+      "corrupted_frozen_point": 10000.0,
+      "bootstrap_intervals_unchanged": true
+    },
+    {
+      "task": 4,
+      "changed_projections": [
+        "70x50",
+        "94x68"
+      ],
+      "change": "Reported generations_since_split and matching cached median multiplied by10; theta/scaled values,50x40 reference and refined fit fixed.",
+      "original_frozen_point": 1000.0,
+      "corrupted_frozen_point": 10000.0,
+      "bootstrap_intervals_unchanged": true
+    }
+  ],
+  "mechanism": "verified_projection_median checks convergence/domain and consistency with reported projection values. require_summary checks observed projection/mutation/convention identity. Neither validates the already-retained theta/scaled-to-physical arithmetic of those individual observed fits. Task4 refinement gate compares only50x40, so two other projections can move the median without affecting that gate.",
+  "proposed_minimal_repair": [
+    "Move shared arithmetic validation to freeze.py or another dependency-neutral helper to avoid bootstrap/freeze circular import.",
+    "Validate all individual observed projection fits and the Task4 refined fit before deriving/releasing points; keep flat and nested refined layouts via refined.get(\"fit\",refined).",
+    "Retain bootstrap selected-restart theta binding; do not require omitted restart endpoint arrays.",
+    "Do not apply nonlinear arithmetic identities to cached/componentwise projection medians; validate their contributing individual fits and keep the existing median consistency gate.",
+    "Use the existing fitted theta, ancestral size, sequence_length and scaled fields. If compatibility with reduced historical schemas is needed, establish its exact field layout explicitly; do not silently skip inconsistent partially supplied metadata."
+  ],
+  "limits": [
+    "No model evaluation, simulation, challenge inputs, truth, production edits or new fitting.",
+    "No evidence existing fitted outputs are wrong; this is an invariant rejection gap under inconsistent retained records."
+  ],
+  "reproducer": "reproduce_observed_mismatch.py takes the immutable isolated v2 source tree as its sole argument."
+}

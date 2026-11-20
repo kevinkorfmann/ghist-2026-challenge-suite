@@ -16,12 +16,19 @@ cd "$PROJECT_ROOT"
 REPLICATES_PER_TASK="${REPLICATES_PER_TASK:-4}"
 BLOCKS="${BLOCKS:-artifacts/task3_growth_bgs/middle_distance_blocks_5mb.npz}"
 OUTPUT_DIR="${OUTPUT_DIR:-artifacts/task3_growth_bgs/block_bootstrap}"
+# The complete denominator comes from this submitted array, never output files.
+if (( SLURM_ARRAY_TASK_MIN != 0 || SLURM_ARRAY_TASK_MAX + 1 != SLURM_ARRAY_TASK_COUNT )); then
+  echo "Bootstrap requires a contiguous zero-based declared array" >&2
+  exit 2
+fi
+PLANNED_REPLICATES=$((SLURM_ARRAY_TASK_COUNT * REPLICATES_PER_TASK))
 START=$((SLURM_ARRAY_TASK_ID * REPLICATES_PER_TASK))
 PYTHONPATH=src .venv/bin/python scripts/bootstrap_growth_bgs_blocks.py \
   --blocks "$BLOCKS" \
   --out "$OUTPUT_DIR/task_${SLURM_ARRAY_TASK_ID}.json" \
   --replicate-start "$START" \
   --replicates "$REPLICATES_PER_TASK" \
+  --planned-replicates "$PLANNED_REPLICATES" \
   --projection 84 \
   --restarts 12 \
   --maxiter 400

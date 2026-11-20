@@ -1,0 +1,51 @@
+{
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.11 (main, Jun  4 2025, 17:42:58) [Clang 20.1.4 ]",
+  "source_manifest_sha256": "a79c0f48d1a382daeadbbb743d51b1afa9de9e12afbad3988808487bcc42a3c3",
+  "fixture_manifest_sha256": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+  "steps": {
+    "source_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.09,
+      "log_sha256": "bdf216b24ea8beed951e27bc32a43cfc07fec98a540603f47ac848962cbeb62f"
+    },
+    "fixtures_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.085,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    },
+    "ruff": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.083,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "elapsed_seconds": 40.179,
+      "log_sha256": "0074497d7aaec0df388a7f2bb036600af6482ced99621ba10b955ad9af7a3d1c"
+    },
+    "source_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.09,
+      "log_sha256": "bdf216b24ea8beed951e27bc32a43cfc07fec98a540603f47ac848962cbeb62f"
+    },
+    "fixtures_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.09,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    }
+  },
+  "all_checks_passed": true,
+  "pytest_suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "1260",
+      "time": "39.028",
+      "timestamp": "2026-11-20T21:34:10.783203+01:00",
+      "hostname": "ist-0781.vpn.private.upenn.edu"
+    }
+  ]
+}

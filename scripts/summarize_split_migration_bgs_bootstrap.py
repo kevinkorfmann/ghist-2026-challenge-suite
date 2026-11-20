@@ -4,56 +4,33 @@ import argparse
 import json
 from pathlib import Path
 
-import numpy as np
-
-
-PARAMETERS = (
-    "AFR_population_size",
-    "EUR_population_size",
-    "generations_since_split",
-    "migration_rate",
-)
+from ghist_inference.bootstrap import summarize_payloads
+from ghist_inference.checkpoint import atomic_json, file_digest
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task-dir", type=Path, required=True)
-    parser.add_argument("--block-summary", type=Path, required=True)
-    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument('--task-dir', type=Path, required=True)
+    parser.add_argument('--block-summary', type=Path, required=True)
+    parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
-    files = sorted(
-        args.task_dir.glob("task_*.json"),
-        key=lambda path: int(path.stem.rsplit("_", 1)[1]),
-    )
-    if len(files) != 64:
-        raise ValueError(f"expected 64 bootstrap tasks, found {len(files)}")
-    rows = [json.loads(path.read_text()) for path in files]
-    values = {key: np.asarray([row["fit"][key] for row in rows]) for key in PARAMETERS}
-    summary = {
-        key: {
-            "mean": float(np.mean(column)),
-            "standard_deviation": float(np.std(column, ddof=1)),
-            "quantiles": dict(
-                zip(
-                    ("0.025", "0.25", "0.5", "0.75", "0.975"),
-                    np.quantile(column, (0.025, 0.25, 0.5, 0.75, 0.975)).tolist(),
-                )
-            ),
-        }
-        for key, column in values.items()
-    }
-    payload = {
-        "state": "COMPLETED",
-        "replicates": len(rows),
-        "block_design": json.loads(args.block_summary.read_text()),
-        "parameters": summary,
-        "submission_count": 0,
-    }
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(payload, indent=2) + "\n")
-    print(json.dumps(payload, indent=2))
+    if args.out.exists():
+        raise FileExistsError('Preserve existing bootstrap summary; use a fresh output')
+    files = sorted(args.task_dir.glob('task_*.json'))
+    identities = {str(path): file_digest(path) for path in [*files, args.block_summary]}
+    payloads = [json.loads(path.read_text()) for path in files]
+    summary = summarize_payloads(payloads, 4)
+    summary.update(source_artifacts=identities,
+                   supplied_block_design=json.loads(args.block_summary.read_text()),
+                   supplied_block_design_scope='Descriptive auxiliary record; resampling input is bound by the block archive hash in the producer contract.')
+    for path in [*files, args.block_summary]:
+        if file_digest(path) != identities[str(path)]:
+            raise ValueError('Bootstrap source changed during aggregation')
+    atomic_json(args.out, summary)
+    if summary['state'] != 'COMPLETED':
+        raise RuntimeError('Incomplete or failed bootstrap plan retained; interval output suppressed')
+    print(json.dumps({'state': summary['state'], 'replicates': summary['replicates']}))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-
