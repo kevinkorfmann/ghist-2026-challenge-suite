@@ -12,7 +12,7 @@ are not yet scientifically validated.
 
 [Current readiness and follow-up validation](docs/readiness_2026_11_20.md) ·
 [Complete pedigree pipelines and input checks](docs/parallel_followup_2026_11_20.md) ·
-[Task 9 package and deferred final-run handoff](docs/task9_submission_handoff_2026_11_20.md) ·
+[Task 9 package and offline final-run handoff](docs/task9_submission_handoff_2026_11_20.md) ·
 [Parallel scientific validation and measured limitations](docs/scientific_validation_2026_11_20.md) ·
 [Latest reliability fixes and limitations](docs/reliability_2026_11_20.md) ·
 [Initial review and submission blockers](docs/review_2026_11_20.md) ·
@@ -24,8 +24,9 @@ found scaling, simulation/extraction mismatches and validation leakage that
 invalidate several historical promotion gates. Their archived metrics are not
 current evidence of submission readiness. The old Challenge 9 candidate uses
 two retired labels; its corrected candidate now passes the separately versioned
-[Task 9 release checks](docs/task9_readiness_2026_11_20.md). Final-data
-runs remain deferred, and no submissions have been made by this review.
+[Task 9 release checks](docs/task9_readiness_2026_11_20.md). This review covers
+code and scientific qualification; final-data runs and submission activity are
+managed separately and are not established by these validation reports.
 
 [Challenge registry](configs/challenges.yaml) ·
 [Validation protocol](docs/validation_protocol.md) ·

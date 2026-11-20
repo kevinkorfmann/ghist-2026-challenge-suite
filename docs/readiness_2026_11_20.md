@@ -5,7 +5,8 @@ its scientific and production checks in the tested exact-IBD input domain.
 This is the strongest working challenge pipeline. Tasks 1–8 and 10–12 still
 have scientific validation or accuracy gaps. The two later low-coverage
 challenges are being developed in a separate, unmerged continuation. No current
-final-data inference or competition submission has been performed in this follow-up.
+final-data inference or competition submission has been performed by this review;
+separate submission work is outside its frozen validation scope.
 
 The user authorized direct merging and parallel scientific review, while asking
 that final-data runs wait. Three reviewers cover demography, sweeps and
@@ -21,15 +22,24 @@ whose archived results and historical artifacts remain preserved.
 | 2 — secondary contact | All original cases now finish; hidden-history and contact-time errors remain | Runs, not scientifically ready |
 | 3 — growth/BGS | New 10 Mb neutral simulations recover strong growth; weak growth remains poorly identified | Runs, broader validation needed |
 | 4 — split/migration/BGS | Numerical stall fixed; Q1 fit finishes, but split-time error is +47% | Runs, accuracy/calibration gaps |
-| 5 — hard sweep | Three completed cases: 2/3 interval coverage, 0/3 agreement passes; same-seed 22 GiB retry also exhausted memory | Not ready; simulation feasibility and recovery gaps |
+| 5 — hard sweep | Three completed cases: 2/3 interval coverage, 0/3 agreement passes; default-policy retry exhausted 22 GiB and fixed-interval retry timed out | Not ready; simulation feasibility and recovery gaps |
 | 6 — soft sweep | Eight new development configurations fail recovery criteria | Not ready |
 | 7 — sweep/BGS | New masked full-input path passes real RAiSD software smoke; matching biological validation missing | Not ready |
 | 8 — multiple sweeps/BGS | Existing detection/localization failures remain | Not ready |
-| 9 — exact IBD relationships | Fixed candidate passes scientific and production gates | Validated candidate in tested domain |
+| 9 — exact IBD relationships | Fixed candidate passes scientific/production gates; separate submission has final weighted-Jaccard scores 0.834/0.842 | Validated candidate in tested domain; submitted |
 | 10 — human pedigrees | Complete pipeline produces all 153 pairs in one family; only 58 exact labels correct | Runs, accuracy inadequate |
 | 11 — dog pedigrees | Two cohorts: classifier 96/96 sibling pairs correct, final consensus 16/96 | Consensus fails; broader relationships unvalidated |
 | 12 — background-related families | Full-histogram repair passes software checks but fails fresh accuracy criteria | Not ready |
-| 13–14 — low-coverage BAM challenges | New implementation and synthetic validation in separate continuation | Development, not validated |
+| 13 — low-coverage bottleneck | Separate continuation reports a full-width BAM run, with optimizer, target-stability and fraction-recovery failures | Development, not ready |
+| 14 — low-coverage split | Development passed, but first fresh confirmation cohort failed seed stability; separate stabilization experiment registered | Current policy fails confirmation |
+
+The Tasks 13–14 rows summarize separate continuation evidence. That unmerged
+implementation is outside the frozen integration snapshots below. Task 14’s
+first confirmation cohort changed one target by 1.2769% across estimator seeds,
+exceeding the unchanged 1% stability limit. This prevents passage of the original
+all-six policy; its separate stabilization experiment does not erase that failure.
+The [external-work observation](../experiments/readiness_2026_11_20/followup_integration/continuation_observation.json)
+binds the reports used for this status, without claiming a new model evaluation.
 
 **Task 9 — exact IBD relationships.** The ten-label candidate passed eight
 executions of the real predictor and independent submission validator on two
@@ -45,7 +55,12 @@ download-manifest-compatible predictor reproduce every prediction CSV byte for
 byte. They reuse the same confirmation data and are compatibility evidence,
 not additional independent biological replicates. The offline
 [submission handoff](task9_submission_handoff_2026_11_20.md) keeps current final
-input and prediction fields explicitly pending.
+input and prediction fields explicitly pending in that historical offline handoff.
+Separately, submission 9785353 now has final scores of **0.834 for relation** and
+**0.842 for meioses count** on the [official dashboard](https://www.synapse.org/Synapse:syn74803798/wiki/640981).
+These are truth-class-size-weighted Jaccard scores, not ordinary accuracy.
+The separate submission record and its dashboard evidence hashes were checked;
+these results did not change the frozen model or its qualification.
 
 The official Task 9 input consists of exact IBD segments. Genotype simulation,
 phasing and IBD detector validation are therefore not prerequisites for this
@@ -121,6 +136,15 @@ passing the numerical gates. This single case was selected after its earlier
 poor recovery was known; it is development evidence, not fresh confirmation.
 No model, setting, or acceptance threshold was changed after this comparison.
 
+A subsequently frozen [four-point diagnostic](bottleneck_stress_fixed_points_2026_11_20.md)
+evaluated only the generating and selected shapes for each engine on that same
+existing spectrum. Selected likelihoods, theta and physical transforms reproduce
+exactly. Selected shapes score 9.802 and 7.556 likelihood units above the true
+shapes, while their current-size products are within 0.56–0.59% of truth. This
+excludes a physical-transform discrepancy in the checked values; it does not
+explain the likelihood preference, establish global optimality or identifiability,
+or provide independent recovery evidence. No optimizer or parameter search ran.
+
 Spectrum projection now groups repeated allele counts and directly counts sites
 at the requested sample size. This preserves exact hypergeometric projection
 while avoiding one distribution evaluation per variant. Unpolarized VCF input
@@ -160,6 +184,25 @@ initialization-syntax failure and corrected run are both retained. This tiny
 fixture provides no credible full-case memory-savings estimate or biological
 recovery evidence; production defaults remain unchanged. See the
 [fixture review](../experiments/readiness_2026_11_20/sweeps/task5_simplification_fixture_review.json).
+A separately frozen full-case attempt then used fixed interval 20 under the same
+4-CPU, 22-GiB, 45-minute bound, with the original case 5 seed, chromosome,
+demography, maps, scaling and acceptance conditions unchanged. Slurm job
+10855907 ended in **TIMEOUT** after 45 minutes 9 seconds. Its 270 resource samples
+record a 2.023 GiB high-water mark, no OOM or allocation-failure counters, and a
+maximum sampling gap of 10.002 seconds. The final sample precedes scheduler end
+by about 7.14 seconds; termination prevented the adapter's finalization, leaving
+a stale `RUNNING` record that does not indicate success. The last logged tick is
+27,200 with 43,410 diploids, still in the first growth phase; no checkpoint
+save/restore, final simulation, recapitation, neutral overlay, VCF export or
+scanner stage completed. Later population peaks of about 71,600 remain
+unobserved. The [terminal collection](../experiments/readiness_2026_11_20/sweeps/task5_interval20_feasibility/terminal/terminal_collection.json)
+binds the raw traces and checks all 22 frozen source files and 148 external
+locks. This censored run provides neither a full-case memory upper bound nor a
+matched-phase memory-saving estimate. The original OOM and this timeout both
+remain failures. A [prospective independent review](../experiments/readiness_2026_11_20/sweeps/root_independent_reviews/task5_interval100_prospective/review.json)
+sets explicit conditions for a separate interval-100 software fixture and
+bounded resource pilot; it is not evidence that either succeeds.
+
 The tiny completed subset cannot establish full-panel recovery. See the
 [sweep report](readiness_sweeps_2026_11_20.md) for failures and resource policy.
 
@@ -243,7 +286,9 @@ invalid sweep markers and mismatched download-manifest field names. Initial
 remote harness failures and their corrections are preserved in the verification
 records rather than omitted.
 
-The subsequent Task 1 optimizer and consumer snapshot passes **1,089 tests**
+The subsequent Task 1 optimizer and consumer snapshot merged in
+[PR #7](https://github.com/kevinkorfmann/ghist-2026-challenge-suite/pull/7) after
+GitHub Actions passed, and passes **1,089 tests**
 on the same three platforms, with Ruff passing. The final two regressions reject
 duplicate original starting vectors and inconsistent paired starts, so repeated
 copies of one start cannot create restart agreement. Source hashes for all 465

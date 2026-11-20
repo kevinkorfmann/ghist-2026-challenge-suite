@@ -1,0 +1,101 @@
+{
+  "schema": "task5_interval100_prospective_independent_review_v1",
+  "reviewed_utc": "2026-11-20T19:40:34.596583+00:00",
+  "reviewer": "relatedness_science",
+  "scope": "Prospective read-only resource/software assessment. Current interval20 job and45-minute limit unchanged; no new model/simulation run, production edit or accuracy-result inspection.",
+  "recommendation": "Conditionally defensible as one separately registered resource pilot only after terminal evidence and a new paired software fixture. The midpoint is insufficient to approve feasibility, extrapolate performance or change production defaults.",
+  "current_observation": {
+    "job_id": 10855907,
+    "record_state": "RUNNING_PARTIAL",
+    "recorded_utc": "2026-11-20T19:30:27.080315+00:00",
+    "elapsed_seconds_as_supplied_by_parent": 1332,
+    "tick": 20800,
+    "diploid_N": 24411,
+    "saves": 0,
+    "restores": 0,
+    "planned_end_tick_approximately": 41290,
+    "job_cgroup_peak_bytes": 1362784256,
+    "job_limit_bytes": 23622320128,
+    "observed_peak_GiB": 1.2691917419433594,
+    "failcnt": 0,
+    "oom_kill": 0,
+    "monitor_failure": false,
+    "phase_and_resource_prefix_hashes_recorded_in_midpoint": true,
+    "simple_linear_tick_arithmetic_seconds": 2644.148076923077,
+    "linear_arithmetic_scope": "Illustration only, not an ETA: about44.1minutes before allowing slower later populations, saves/restores, final simplification, recapitation/neutral overlay, export or analysis. No terminal state was inspected for this review."
+  },
+  "source_basis": [
+    "SLiM4.3 initializeTreeSeq with simplificationRatio omitted and explicit interval100 selects a fixed interval, not the adaptive ratio10 policy. With this single-species WF/Q1 configuration cycles/ticks correspond to the existing generation schedule; timeUnit itself is metadata.",
+    "CheckAutoSimplification invokes deterministic table sorting/simplification after the requested elapsed interval. The reviewed paths contain no RNG draw or intentional demographic/selection/conditioning change; live and remembered genomes remain retained. This source argument is not universal same-seed equivalence proof.",
+    "Larger intervals reduce simplification frequency but accumulate larger unsimplified tables; sorting plus input-table copies/maps can create transient peaks. Cost per simplification changes, so interval100 implies neither fivefold speedup nor fivefold memory.",
+    "The default-policy OOM is preserved; its unmatched simulation phase prevents claiming measured interval20 memory savings from the midpoint. The future maximum may occur in a later population phase, rejection loop or postprocessing."
+  ],
+  "existing_fixture": {
+    "protocol_sha256": "52fb8147aba90613e08823c84dc1cacfa2f440f0b4b162e1db1cebfaec9f4f33",
+    "verification_sha256": "52aa4a140c6d6fb844b2de5df53bf0eebfb0474ca17becd7798dc1508656e857",
+    "independently_verified": "All declared fixture source/output hashes; exactly one declaration difference default-to20; both saved canonical JSONs identical;362 trajectory rows identical; exactly one forced restore per arm.",
+    "limits": "One fixed small fixture, default versus20 only. No interval100 arm, neutral overlay or full-chromosome resource guarantee. Internal node/table IDs and downstream neutral-overlay byte identity are not asserted."
+  },
+  "fresh_fixture_required": {
+    "required": true,
+    "minimal_pair": "A new versioned run of interval20 and interval100 under the same archived binary/runtime, original fixed small fixture biology/seed2026112091 and identical checkpoint/save/restore selection. Existing default evidence remains historical; optionally rerun allthree arms within the same bounded software job.",
+    "bounds": "At most1CPU,5632MiB,5minutes, predeclared per-arm timeout; separate outputs and no automatic retries.",
+    "predeclared_checks": [
+      "Exactly one initialization delta; ordered Eidos arguments; ratio remains omitted; all other script statements/seed and RNG calls unchanged.",
+      "The fixture must traverse several100-tick intervals and its existing nonaligned checkpoint/forced-restore boundary.",
+      "Exact tick/population/selected-frequency/restore trajectories and sampled pedigree/genome identities.",
+      "Equal canonical marginal ancestry, selected-site genotypes, sequence length and sample count; retain raw different serializations without requiring byte equality.",
+      "Any mismatch/timeout/failure remains recorded and stops the proposed fullcase retry; do not search for another passing seed or relax tests."
+    ],
+    "claim": "Software compatibility evidence only; reuse of a known fixture is intentional and is not fresh biological confirmation."
+  },
+  "minimal_fullcase_launch_conditions": [
+    "Wait for current10855907 to end under its unchanged45-minute cap. Archive actual scheduler state, exit/status, complete resource/phase logs, source/protocol hashes and all attempted-stage records. Do not relabel censored/failed attempts as successes.",
+    "The proposed trigger is terminal TIMEOUT with no OOM/failcnt evidence, intact monitoring and substantial headroom through the entire observed trace. Investigate other failures instead. A midpoint peak is not a memory upper bound; a timeout dominated by downstream stages does not establish simplification as the bottleneck.",
+    "Complete the separately registered paired interval100 fixture and exact adapter-delta review before the fullcase attempt. Preserve original interval20 fixture, protocol and all OOM/timeout attempts.",
+    "Freeze a separate interval100 protocol/source/runtime/input manifest and output directory. Keep fullcase5 seed202612005, chromosome159345973bp, Q1, burn-in,25diploids, catalog demography, maps/masks, selection and acceptance criteria exactly unchanged; preserve original checkpoint/load behavior and stage coverage.",
+    "One attempt under the same4CPU,22GiB,45minute allocation, no automatic retries or resource escalation. Preserve passive phase/RSS/cgroup monitoring and failure exits; do not change the running interval20 job.",
+    "Judge only resource completion and software contracts; do not inspect recovery accuracy to select interval, cases, seeds or subsequent attempts. Do not truncate/skip rejection restores or shorten biological history to finish.",
+    "Report all attempts separately. A same-seed resource rerun adds no independent biological replicate; incomplete stages remain censored. Even successful full execution establishes feasibility for this case only, not scientific readiness or a new production default."
+  ],
+  "primary_sources": [
+    {
+      "file": "core/species.cpp",
+      "url": "https://github.com/MesserLab/SLiM/blob/v4.3/core/species.cpp",
+      "sha256": "e042d92c5b3b02cc7072fa51ba7999ce86c7d065d0bfdce710e72b6cf2ed0676"
+    },
+    {
+      "file": "core/species_eidos.cpp",
+      "url": "https://github.com/MesserLab/SLiM/blob/v4.3/core/species_eidos.cpp",
+      "sha256": "4d302466d14ee61f8498ab6e2a925b0f3bd1006a5802fc70c50730ac3cecff12"
+    },
+    {
+      "file": "treerec/tskit/tables.c",
+      "url": "https://github.com/MesserLab/SLiM/blob/v4.3/treerec/tskit/tables.c",
+      "sha256": "64084c9763d99d59f6c336fa22b0e7bf0dcdb5b4564d08b9a570aaaeb2261801"
+    },
+    {
+      "file": "QtSLiM/help/SLiMHelpFunctions.html",
+      "url": "https://github.com/MesserLab/SLiM/blob/v4.3/QtSLiM/help/SLiMHelpFunctions.html",
+      "sha256": "fc8f8933a1383886cd6e2c5ede7f9238b60973db4560a0253bda9421009be71a"
+    },
+    {
+      "file": "treerec/implementation.md",
+      "url": "https://github.com/MesserLab/SLiM/blob/v4.3/treerec/implementation.md",
+      "sha256": "485f9d18afbb7741df1c5460622f5e1638ada3aea68e81ee66246d4f5fb12419"
+    }
+  ],
+  "input_evidence_sha256": {
+    "task5_design_v4.json": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+    "task5_resource_source_audit.json": "bd0291609a7234853ec82f35cbdb486a27ddc3af1a6f09d3a2142a29e3651ff3",
+    "task5_simplification_fixture_review.json": "d0a278abafbc13d69fe8bc7921e35a0952974196ee94620c6bf3ced4e897b3c7",
+    "task5_interval20_feasibility/protocol.json": "c9a3c5a7597ac90e4b5354635f2aaf421f4538c438624da92f594c18c76cae1d",
+    "task5_interval20_feasibility/adapter.py": "b39e1ab194bbe478714a9e348e30898337dca2c3e155ca48b70062963a9f6bd9",
+    "task5_interval20_feasibility/snapshot.tar.gz": "04cdfbe46fa75fdf6005f46a1b81198d552a2a38015b98465477cd2f10293c59",
+    "task5_interval20_feasibility/midpoint_observation.json": "1dfaa4a5f85234951c527557049f8d381bde20d386e53e63f1e1068715ab44c0"
+  },
+  "new_runs_launched": 0,
+  "source_or_production_edits": false,
+  "scientifically_validated": false,
+  "release_ready": false
+}

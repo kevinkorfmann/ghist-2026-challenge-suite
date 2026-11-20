@@ -1,0 +1,22 @@
+{
+  "schema": "task5_interval20_feasibility_submission_v1",
+  "job_id": "10855907",
+  "submitted_utc": "2026-11-20T19:08:00.440059+00:00",
+  "remote_source": "betty:/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-sweeps-interval20-20261120",
+  "remote_output": "betty:/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/readiness_sweeps/task5_interval20_feasibility",
+  "protocol_sha256": "c9a3c5a7597ac90e4b5354635f2aaf421f4538c438624da92f594c18c76cae1d",
+  "resources": {
+    "cpus": 4,
+    "memory_MiB": 22528,
+    "walltime_minutes": 45
+  },
+  "retry_policy": "Exactly one attempt; no automatic retries or escalation.",
+  "interpretation": "Bookkeeping/resource feasibility only. Preserve original OOM and no scientific readiness promotion. Do not inspect accuracy for further-work decisions.",
+  "prelaunch_checks": {
+    "local_regressions_passed": 8,
+    "remote_regressions_passed": 8,
+    "ruff_passed": true,
+    "bash_syntax_passed": true,
+    "independent_review": "relatedness_science final closure passed; no concrete source blocker"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "task5_interval20_midpoint_observation_v1",
+  "observed_utc": "2026-11-20T19:30:27.080315+00:00",
+  "job_id": "10855907",
+  "state": "RUNNING_PARTIAL",
+  "resource_observations": 132,
+  "resources_prefix_bytes": 150494,
+  "resources_prefix_sha256": "c7c6eace6627b3f8db0c7903f601cad0ee3e91b9bdc4e46dbe56a919715b907b",
+  "phase_prefix_bytes": 3167,
+  "phase_prefix_sha256": "cd090a0e8d8b0a48a5e4aac7a550e8114aa03488c25a7091dd1742bc7975a597",
+  "last_resource": {
+    "unix_time": 1795203014.7140741,
+    "stage": "slim_running",
+    "cgroups": {
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10855907/step_batch/task_0": {
+        "memory.usage_in_bytes": "1343569920",
+        "memory.max_usage_in_bytes": "1361031168",
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      },
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10855907/step_batch": {
+        "memory.usage_in_bytes": "1344331776",
+        "memory.max_usage_in_bytes": "1361793024",
+        "memory.limit_in_bytes": "23622320128",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      },
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10855907": {
+        "memory.usage_in_bytes": "1345323008",
+        "memory.max_usage_in_bytes": "1362784256",
+        "memory.limit_in_bytes": "23622320128",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      }
+    },
+    "processes": [
+      {
+        "pid": 3858719,
+        "Name": "python",
+        "PPid": "3858308",
+        "VmHWM": "125556 kB",
+        "VmRSS": "116988 kB"
+      },
+      {
+        "pid": 3858801,
+        "Name": "slim",
+        "PPid": "3858719",
+        "VmHWM": "1221804 kB",
+        "VmRSS": "1204892 kB"
+      }
+    ]
+  },
+  "last_phase": "20800\t24411\t0\t0",
+  "monitor_failure": false,
+  "interpretation": "Contemporaneous partial resource observation only; no matched-phase memory savings or biological accuracy claim. Original45-minute cap remains unchanged."
+}

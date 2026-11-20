@@ -1,0 +1,64 @@
+{
+  "schema": "task5_interval20_same_seed_feasibility_plan_v1",
+  "prepared_utc": "2026-11-20T18:57:41.655475+00:00",
+  "state": "PROPOSED_NOT_IMPLEMENTED_NOT_SUBMITTED",
+  "objective": "Test whether fixed ancestry simplification interval20 improves same-seed Task5 case5 feasibility within a fixed resource budget; no biological accuracy or full-panel validation claim.",
+  "case": 5,
+  "seed": 202612005,
+  "resources": {
+    "maximum_cpus": 4,
+    "maximum_memory_GiB": 22,
+    "slurm_minutes": 45,
+    "additional_cases": 0,
+    "automatic_retries": 0
+  },
+  "unchanged_biology": "Use exact frozen v4 driver/design case5, Q1, full chr7, original HapMapII_GRCh38 map, original mask, sample25diploids, mutation rate1.44e-8, burn-in1, catalog history, target/event times and selected-frequency conditioning. No biological choices are retuned.",
+  "isolated_execution": {
+    "snapshot": "New isolated review directory containing the Python source dependency closure, with the nine v4 source files restored from source_snapshot_v4.tar.gz and their exact design hashes asserted. No production/default file is edited.",
+    "wrapper": "New separately hashed process-local adapter captures the existing bound SLiM engine _run_slim method, transforms the generated script once, then invokes the original method with unchanged binary/seed arguments. The original v4 main runs through its normal full pipeline.",
+    "bookkeeping_change": "Exact-once replace initializeTreeSeq(timeUnit=\"generations\"); with initializeTreeSeq(simplificationInterval=20, timeUnit=\"generations\");. Reject missing/duplicate declarations.",
+    "passive_diagnostics": "Retain original and modified generated scripts; append deterministic tick/population/restore-count logging to disk without RNG calls. Stream or preserve Python DEBUG output to a retained log; retain stdout/stderr/status. Monitor cgroup current/peak/limit/OOM counters every10seconds plus process PID/RSS where available.",
+    "checkpoint_retention": "Relocate only the generated trees_file output path to a retained raw SLiM tree path, preserving every save/restore event and the checkpoint data semantics; keep raw checkpoint/final trees if produced. The original simulation.trees/VCF/prediction/BED/reference artifacts remain in a new output directory.",
+    "hashes": "Hash source snapshot, adapter, generated original/modified scripts, binary, engine/catalog sources, map, accessibility, design and runtime versions before run. Reverify static inputs/source after run. Adapter hash and final dependency snapshot hash must be supplied to root before any launch."
+  },
+  "already_frozen_inputs": {
+    "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+    "v4_source_snapshot_sha256": "78a8ae4bd6b5214541fe6eadb340c05434e79037713465f02610ef7f5e6980ac",
+    "v4_source_sha256": {
+      "src/ghist_single_sweep/scan.py": "1a49e7be5aa4cf5769899bd7acfe9ff91e99cc1d24957f87b9d0f421f1111dce",
+      "src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+      "src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+      "src/ghist_single_sweep/peaks.py": "5d851a05d9199bb47e6725018801c36c0d7039e6f1e6b83810d8c327ed80b52a",
+      "scripts/predict_single_sweep.py": "f49fdad7a78cad2ac9470f37cefa2b0e70ec106d0bbba2b62f5cc9c42daa0f91",
+      "scripts/run_sweep_readiness_case.py": "e12a8af2873a712f10dc2c8c4dc2b581c31078b900dc4cff9226477c1c23e238",
+      "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc",
+      "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+      "src/ghist_single_sweep/export.py": "b8f24772f8548bb079c4dd8898e3a047f8ec664c5c7384d8e8c0652002ccad56"
+    },
+    "accessibility_sha256": "d227d72cc8d99a3cabfe29b8f21ee1617bd91d436ca0a737f501844a52c1bc98",
+    "map_sha256": "321870c6175105d1f6817bbf95430315c004db682a45be24458b0b9f7b017da8",
+    "slim_binary_sha256": "caaf10c365e4ae783251ab31f9d4b9d0425ba3417a7fbccbc76ce42eea94551e",
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307",
+    "stdpopsim_engine_sha256": "a58e4629196239970d0c593f71b324d3da831745a5e707fe83fdd214cea9a911",
+    "versions": {
+      "python": "3.11.11",
+      "numpy": "2.4.6",
+      "msprime": "1.4.2",
+      "pysam": "0.24.0",
+      "stdpopsim": "0.3.0",
+      "tskit": "1.0.3"
+    },
+    "paired_fixture_protocol_sha256": "52fb8147aba90613e08823c84dc1cacfa2f440f0b4b162e1db1cebfaec9f4f33",
+    "paired_fixture_result_sha256": "52aa4a140c6d6fb844b2de5df53bf0eebfb0474ca17becd7798dc1508656e857"
+  },
+  "prelaunch_verification_required": [
+    "Root assessment of this plan, then concrete adapter/snapshot/source hashes supplied before launch.",
+    "Text transformation regression checks exact one-call replacement, passive diagnostic insertion and preserved biological statements/event scheduling.",
+    "Existing paired fixture supports interval20 bookkeeping equality for one small seed including restore; it is not a full-chromosome guarantee."
+  ],
+  "time_budget_interpretation": "The previous same-seed22GiB run was OOM-killed after1774.56seconds (~29.6min). A45min cap is sufficient for a bounded mechanistic/resource observation but may not complete: more frequent simplification adds CPU cost, and the original failure tick was not retained. Failure to finish remains censored/incomplete feasibility evidence; no timeout extension, memory escalation or another case is implied.",
+  "reporting": "Preserve original OOM and all attempt denominators; record new completion/OOM/timeout independently with phase/progress logs. Do not inspect localization accuracy to decide retries or settings. No full48panel expansion.",
+  "production_default_changed": false,
+  "job_submitted": false,
+  "scientifically_validated": false
+}
