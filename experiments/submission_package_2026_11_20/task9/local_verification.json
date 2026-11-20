@@ -1,0 +1,33 @@
+{
+  "package_verified": true,
+  "pinned_files": 16,
+  "package_manifest_sha256": "017f91c139aeaa3e013cd4147e3e846b0ada14c6407497952114e6c75cc993b1",
+  "archive_sha256": "5f1d1bd71c2327de4af7ef17a50a09b287445656d66d51f1eac14d62d8ade697",
+  "archive_bytes": 23350,
+  "archive_extraction_verified": true,
+  "checkout_matches_package": true,
+  "tests_passed": 64,
+  "package_tests_passed": 47,
+  "existing_release_tests_passed": 17,
+  "ruff": "passed",
+  "test_command": ".venv/bin/python -m pytest tests/test_task9_submission_package.py tests/test_task9_release.py -q",
+  "ruff_command": ".venv/bin/ruff check scripts/prepare_task9_submission_package.py tests/test_task9_submission_package.py",
+  "synthetic_fixture_only": true,
+  "final_input_accessed": false,
+  "final_prediction_created": false,
+  "submission_count": 0,
+  "review_scope": "Inference reproducibility, package consistency and failure accounting; trusted code/runtime required. No security guarantee against malicious code or concurrent file replacement.",
+  "guards_reviewed": [
+    "Externally pinned manifest checksum required by preflight/run CLI",
+    "Metadata recomputed from release/evidence/runtime files",
+    "Exact package inventory; source/manifest symlinks and extra bytecode refused",
+    "Fresh output directories and dangling symlink refusal",
+    "Model/map/input/roster/package identity accounted before success report"
+  ],
+  "known_limits": [
+    "No Synapse authentication or latest-version lookup",
+    "Observed pairs only; no external zero-IBD roster",
+    "Frozen feature code accepts out-of-map endpoints, overlaps, fractional physical coordinates and zero-length segments",
+    "Package excludes simulation generators and calibration/confirmation segments; no retraining reproduction"
+  ]
+}

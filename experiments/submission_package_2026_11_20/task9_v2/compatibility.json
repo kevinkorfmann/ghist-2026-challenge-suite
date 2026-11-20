@@ -1,0 +1,39 @@
+{
+  "purpose": "Reproduce versioned release through updated manifest-compatible predictor and shared submission validator; same fixed simulations, not additional independent evidence",
+  "source_sha256": {
+    "src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "scripts/predict_task9_current.py": "a79e83250266ff43df166549e1865e1b78338a793baf711269e7327090efc671",
+    "scripts/validate_submission.py": "c88e3dbda34254996a070c13432237dc6bebbed7815749dcec1916668128602e",
+    "scripts/validate_task9_operationally.py": "844d96429a43540f6a044e3a5361837a363bfc4b788b9d314697f7f383ad3d70",
+    "configs/challenges.yaml": "eeddb039dd5ba0cd6dc68f23d8629e44e1e18a8046c196509b12c8c4827d7177",
+    "configs/task9_current_release.json": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6"
+  },
+  "remote_snapshot": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task9-compat-20261120",
+  "final_data_runs": false,
+  "submissions": 0,
+  "job": "10850916",
+  "attempts": [
+    {
+      "job": "10850854",
+      "state": "FAILED",
+      "reason": "Isolated snapshot omitted package __init__.py; import fell through to old installed checkout before prediction; no biological output"
+    }
+  ],
+  "passed": true,
+  "predictions_identical_to_frozen_release": true,
+  "production_runs": 4,
+  "unique_pairs": 20023,
+  "role": "Compatibility reproduction; not new independent scientific evidence",
+  "job_outcome": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "seconds": 129,
+    "cpus": 4,
+    "peak_rss_kib": 3528308
+  }
+}

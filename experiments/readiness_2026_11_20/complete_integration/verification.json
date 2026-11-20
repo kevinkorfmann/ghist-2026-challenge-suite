@@ -1,0 +1,41 @@
+{
+  "recorded_at_utc": "2026-11-20T17:46:20.644687+00:00",
+  "source_manifest": "source_snapshot.json",
+  "source_manifest_sha256": "32c41dd14c51714295d71ed50d4c473efdff34be3042a3304bf367254fee2a78",
+  "scope": "Current combined reviewed source, isolated from editable older checkout",
+  "explicit_pythonpath": true,
+  "ruff": "passed",
+  "source_files_reverified_unchanged": 452,
+  "macos": {
+    "python": "3.12.11",
+    "passed": 949,
+    "seconds": 49.83,
+    "warnings": 2,
+    "log": "macos_pytest.log"
+  },
+  "linux_arm": {
+    "python": "3.12.3",
+    "passed": 949,
+    "log": "linux_pytest.log",
+    "seconds": 41.18,
+    "warnings": 2
+  },
+  "betty": {
+    "python": "3.11.11",
+    "job": "10851144",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "job_seconds": 142,
+    "passed": 949,
+    "seconds": 133.81,
+    "warnings": 12,
+    "log": "betty_pytest.log"
+  },
+  "final_data_runs": false,
+  "submissions": 0,
+  "log_sha256": {
+    "macos_pytest.log": "961a75a6e93e177686f3df3fc4663761141cfdd5985780bb8bcbc830f0eea31f",
+    "linux_pytest.log": "1926739dd872a12123fd285a12818df22304f1ae688067c39ffe364fb0328df2",
+    "betty_pytest.log": "1a28f0fd781be8f1e213ab11b521065e6f4fa3c37ed1208305926006379f0584"
+  }
+}

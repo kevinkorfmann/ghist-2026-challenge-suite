@@ -1,5 +1,5 @@
 {
-  "status": "resource pilot in progress; no Task5 accuracy results inspected",
+  "status": "first-six pass scope locked before accuracy inspection; resource retry ongoing",
   "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
   "initial_case_subset": [
     0,
@@ -41,6 +41,36 @@
     "dependency": "afterany:10850775",
     "output_directory": "scientific/readiness_sweeps/task5_v4_memory_retry"
   },
-  "expansion_beyond_first_six": "not submitted; await observed Zigzag feasibility and parent resource review",
-  "accuracy_used_for_resource_decisions": false
+  "expansion_beyond_first_six": "forbidden for this pass after resource-based scope lock",
+  "accuracy_used_for_resource_decisions": false,
+  "zigzag_case4": {
+    "elapsed_seconds": 960.3623888622969,
+    "state": "FAILED",
+    "cause": "SLiM signal9; trace max11,207,737,344 bytes immediately before exit; no OOM counter transition captured",
+    "trace": "resource_case4.jsonl"
+  },
+  "work_proxy": {
+    "zigzag_finite_history_individual_generations": 956168163.1932313,
+    "burn_in_individual_generations": 51208336,
+    "constant_individual_generations": 100000000,
+    "work_ratio": 10.073764991932313,
+    "predicted_seconds": 4355.865761216556,
+    "scope": "rough N-generation work proxy using432.397s constant pilot; NOT a completed Zigzag measurement; excludes rejection/memory costs"
+  },
+  "pass_scope_locked_utc": "2026-11-20T17:36:20.664250+00:00",
+  "pass_scope": {
+    "planned_originally": 48,
+    "locked_cases_this_pass": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "not_run_due_to_resources": 42,
+    "decision_before_accuracy_inspection": true,
+    "rationale": "Three Zigzag first-attempt signal9 failures, one directly confirmed OOM; rough73min/case work proxy implies multi-hour-per-block and ~15h full48 at bounded concurrency. Original48 remains reporting denominator; no further42 launches authorized."
+  },
+  "resource_retry_policy": "case5 on22GiB/4CPUs/2h first; cases3/4 may receive matching-resource same-seed retries only after feasibility established; total concurrency<=8CPUs"
 }

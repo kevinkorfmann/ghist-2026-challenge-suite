@@ -1,0 +1,44 @@
+{
+  "job_id": "10850656",
+  "checks": [
+    {
+      "run": "seed_2026112711_rate_0.005",
+      "protocol_sha256_matches": true,
+      "policies_completed": true
+    },
+    {
+      "run": "seed_2026112711_rate_0.02",
+      "protocol_sha256_matches": true,
+      "policies_completed": true
+    },
+    {
+      "run": "seed_2026112811_rate_0.005",
+      "protocol_sha256_matches": true,
+      "policies_completed": true
+    },
+    {
+      "run": "seed_2026112811_rate_0.02",
+      "protocol_sha256_matches": true,
+      "policies_completed": true
+    }
+  ],
+  "focused_tests_passed": 18,
+  "command": ".venv/bin/pytest -q tests/test_relatedness_missingness.py tests/test_hapibd_preparation.py",
+  "ruff": "passed",
+  "shell_syntax": "passed",
+  "final_data_accessed": false,
+  "submission_count": 0,
+  "source_sha256": {
+    "scripts/prepare_hapibd_vcf.py": "e724c8d006951f999116909fd8a27de5ac380ff106336b42404ece75ce9643c4",
+    "scripts/validate_relatedness_missingness.py": "c1bb5daffe4ef44589bad835b8411d5e0dd1df79091a045bbc932ee856798d3e",
+    "tests/test_relatedness_missingness.py": "aaeae27610ca9a374259138f06abda0cfdeed70ca2e0e7ef3c69453dc049078d",
+    "tests/test_hapibd_preparation.py": "cf038094d827c7e4d5653fe22f038e532fbccca0be6542ec410174e67fc9fdc3"
+  },
+  "isolated_source_snapshot": {
+    "path": "experiments/complete_pipeline_2026_11_20/missingness/source_snapshot.tar.gz",
+    "sha256": "c1cc8e394cccbc3e7df40839c461c3e12a714f039a74056b04b8714bf4363a67",
+    "bytes": 23718,
+    "archived_after_execution": true,
+    "note": "Unmodified isolated source used by the completed runs; cache bytecode excluded."
+  }
+}

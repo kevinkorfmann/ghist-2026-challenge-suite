@@ -10,6 +10,8 @@ low-coverage challenges are not implemented.
 **November 20: Task 9 has a validated versioned candidate; other scientific release gates remain open.**
 
 [Current readiness and follow-up validation](docs/readiness_2026_11_20.md) ·
+[Complete pedigree pipelines and input checks](docs/parallel_followup_2026_11_20.md) ·
+[Task 9 package and deferred final-run handoff](docs/task9_submission_handoff_2026_11_20.md) ·
 [Parallel scientific validation and measured limitations](docs/scientific_validation_2026_11_20.md) ·
 [Latest reliability fixes and limitations](docs/reliability_2026_11_20.md) ·
 [Initial review and submission blockers](docs/review_2026_11_20.md) ·

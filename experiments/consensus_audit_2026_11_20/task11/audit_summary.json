@@ -1,0 +1,130 @@
+{
+  "scope": "Retrospective development diagnostics on previously inspected sibling-only cohorts; no independent confirmation or accuracy certification.",
+  "independent_families": 16,
+  "development_cohorts": [
+    {
+      "seed": 2026112711,
+      "pairs": 48,
+      "original_consensus_correct": 7,
+      "audited_legacy_consensus_correct": 7,
+      "legacy_guard_rejection": null,
+      "zero_probability_constraints": [],
+      "legacy_label_changes_on_successful_replay": 0,
+      "raw_forest_proposals_correct": 48,
+      "guarded_provisional_pairs": 3,
+      "guarded_abstained_pairs": 45,
+      "guarded_correct_counting_abstentions_as_wrong": 3,
+      "guarded_abstention_reasons": {
+        "topology_disagreement": 39,
+        "unmapped_topology": 6
+      },
+      "raw_hbd_stability": 1.0,
+      "historical_topology_conditioned_stability": 1.0
+    },
+    {
+      "seed": 2026112811,
+      "pairs": 48,
+      "original_consensus_correct": 9,
+      "audited_legacy_consensus_correct": null,
+      "legacy_guard_rejection": "No probability support for topology-constrained labels",
+      "zero_probability_constraints": [
+        {
+          "pair": [
+            "synthetic11_22",
+            "synthetic11_23"
+          ],
+          "hbd_threshold_cm": 10,
+          "topology_meioses": 3
+        }
+      ],
+      "legacy_label_changes_on_successful_replay": null,
+      "raw_forest_proposals_correct": 48,
+      "guarded_provisional_pairs": 4,
+      "guarded_abstained_pairs": 44,
+      "guarded_correct_counting_abstentions_as_wrong": 4,
+      "guarded_abstention_reasons": {
+        "topology_disagreement": 35,
+        "unmapped_topology": 9
+      },
+      "raw_hbd_stability": 1.0,
+      "historical_topology_conditioned_stability": 1.0
+    }
+  ],
+  "pairs": 96,
+  "legacy_label_changes_on_successful_replay": 0,
+  "legacy_guard_rejected_cohorts": 1,
+  "confidence_corrections": 6,
+  "confidence_corrections_by_source": {
+    "full-sibling component propagation": 3,
+    "HBD-robust pair model constrained by pedigree meioses": 3
+  },
+  "original_smoke_output_hashes_verified": 42,
+  "historical_files_hashes_unchanged": 49,
+  "historical_file_sha256": {
+    "experiments/complete_pipeline_2026_11_20/task11/audit_summary.json": "5b63cc4e995a90157838abf1fef50507dcc3a2731ced73969242df648974c0a9",
+    "experiments/complete_pipeline_2026_11_20/task11/pair_before_after.csv": "8e50d909a0bf7ea79b93f79f6aed876991088b0d2b223f114556822d466605ea",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/bonsai.json": "d3cd7819d9eaf07dfffd7d3b0c9ae403b7d215a08cb64c8fa6fcbcdc93ccbcf0",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/bonsai.stderr.log": "462df1ea8157c40abe15c76a9ba5ef719fb5c2c503ed8f9c7484bc9571afe85a",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/bonsai.stdout.log": "2033f13feaa6b739e3ef1859add2835952b7039879ce54809367a50f886284c4",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/clusters.json": "a1bc4f07a7977087b0ff882c23b12783d2f9aab1b49aaeaa3338d35b70d1ddb5",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/consensus/predictions.json": "dbda217f967f8916570399d07644c46563d493aa420e68ce02f78a543ac015b3",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/consensus/summary.json": "490be3879d42817e020e33c40313038a792c985ce575ce02569f4efda53eaf4d",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/consensus.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/consensus.stdout.log": "490be3879d42817e020e33c40313038a792c985ce575ce02569f4efda53eaf4d",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/hapibd.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/hapibd.stdout.log": "2fc5272539c9062602d6208b11490d29479d2436b1ca8f6ad316fb36e38f3e91",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd10.json": "6d1340d7b6960a694a0e9c584948b42a1b705fa2d2f35256ba1bce741bdec216",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd2.json": "e511fce2f3d1d2c232cdb7d56a303dddd135577a74bfb6d0772f8c186ff591d2",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd5.json": "33086d267bbf20ec64f3741ee87dbf27bf71e565151f0ec2d5fd0fa7c6a6e804",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/prepare.stdout.log": "93ec98cd65ebe0a01d68e55fd5e73f72fb45253247439d1a87f65cae67be2d00",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/protocol.json": "9c444e9dbcaf0c97433e90b22dfb5f498fbe12d84e09de323203e26493c94fd1",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/result.json": "504d03865802ccfe1c7ed2ac5e62dac4965746c9d0dfc79e74d79b38a78a03e6",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/segment_summary.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/segment_summary.stdout.log": "e3ee685b32215c22ec37d5cf5b343fb558b70dea0586e689fa222e77d57eaaec",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/segments.log": "2fc5272539c9062602d6208b11490d29479d2436b1ca8f6ad316fb36e38f3e91",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/summary/summary.json": "e3ee685b32215c22ec37d5cf5b343fb558b70dea0586e689fa222e77d57eaaec",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/truth.json": "42e9b930cab11ebcf450114df8c16d870ac985da5444ded8f6697c445a6df9cf",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/bonsai.json": "731f0c64751f4b839116e97ff7fd188f41c2daf6ca7c751300d80c758583a1ef",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/bonsai.stderr.log": "462df1ea8157c40abe15c76a9ba5ef719fb5c2c503ed8f9c7484bc9571afe85a",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/bonsai.stdout.log": "a19a273690e75ab22e6848cc2d4d9a288345d20e9d96f32420ccce24988f803c",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/clusters.json": "a1bc4f07a7977087b0ff882c23b12783d2f9aab1b49aaeaa3338d35b70d1ddb5",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/consensus/predictions.json": "96fa1ae046d74a628144a4417aaa464a681cd3c25bdf71b73f7f7c2d91194f1b",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/consensus/summary.json": "310410b7969a166d859601fea66c2680c6def0136e0925a1775abe3139282fec",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/consensus.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/consensus.stdout.log": "310410b7969a166d859601fea66c2680c6def0136e0925a1775abe3139282fec",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/hapibd.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/hapibd.stdout.log": "ce582e1ec1b09cde11632ed37e300e40dc3db3f1b8f4277d670c5bd259f7fa78",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd10.json": "038fc66009bf33fe8df908fb7532c7dabc9fcc950bcbd8aad7548c68ab0bb50c",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd2.json": "26d2cddd6409465302f7d30a5c09d923c0b724c2279f5028abb4add1b332b2ae",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd5.json": "040b2d8793fc70e8bfc74dd400ac3f3ca55a2845679be0757dd3b35eb0fc599e",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/prepare.stdout.log": "d660b8d028bdc9d4e46c1015c199394de99f894817b2b37f8d15610a38747b49",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/protocol.json": "80162d4d497af6a78b52254c8060a42a37afabf41cccc4cde92b1cf14ac2559a",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/result.json": "80701ff4a400e370e5c2b0e71ca59ece9a3912c7e63d77ff53a5ab6481b0146d",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/segment_summary.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/segment_summary.stdout.log": "b88358d277a2dad9675087d5cd8f6d40a2728d0620e1f603f916f403128cf0fd",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/segments.log": "ce582e1ec1b09cde11632ed37e300e40dc3db3f1b8f4277d670c5bd259f7fa78",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/summary/summary.json": "b88358d277a2dad9675087d5cd8f6d40a2728d0620e1f603f916f403128cf0fd",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/truth.json": "de3f76c628b292979e7135e21598a47735a71b702e2dbbbca157f7c7c783b0bb",
+    "experiments/complete_pipeline_2026_11_20/task11/run.sbatch": "f607aa1f7554480da10ad3301a14d4889a800de35224617ebc19bf25e600e4df",
+    "experiments/complete_pipeline_2026_11_20/task11/slurm_accounting.psv": "8351d6ff6e96e57d8672c7590871b687446d759e42a9356345359b408f060f8e",
+    "experiments/complete_pipeline_2026_11_20/task11/summarize.py": "f06fb1587d78da80cf72f63a87433bc3b81df61aae3f566e4b5a282bc643872d"
+  },
+  "source_sha256": {
+    "scripts/consensus_task11_dog_pedigrees.py": "789bb96db2fd1da24c95741386049a86d7e1e49e030dbeca9605524aeb51514a",
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/freeze_task11_multifamily_inbreeding.py": "722cc9952d4157939202f400f25c1dde7095af8f13016fc7f3a0cad405420691",
+    "tests/test_task11_consensus.py": "1991cc310f0cbd6ce7c142c142022f180c410ea533d26ca8b551836a57963c11",
+    "tests/test_task11_freeze_guard.py": "cff7b9bb81313eae19255afe7e3b5d12669c440c2de0da51418d7110bc5bef42",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "original_source_sha256": {
+    "scripts/reconstruct_bonsai_pedigree.py": "5d317416d437a92746af4c618001af2d521b2854d55accba1ac62142bcc4ea4f",
+    "scripts/consensus_task11_dog_pedigrees.py": "f757bcbcbbba35dd3d9694539e5f8d8ef34cc227689f3f2c40305438739dfd39"
+  },
+  "development_policy_protocol_sha256": "00cfda7ca316d3559abb54e59324a30c0dec22db8e723e06adeba7c0207c3b24",
+  "submission_ready": false,
+  "submission_count": 0,
+  "release_validation_evidence_created": false
+}

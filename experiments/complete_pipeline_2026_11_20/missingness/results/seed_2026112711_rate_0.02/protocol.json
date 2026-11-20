@@ -1,0 +1,42 @@
+{
+  "rates_fixed_before_outcomes": [
+    0.005,
+    0.02
+  ],
+  "policies_fixed_before_outcomes": [
+    "drop-site",
+    "major"
+  ],
+  "rate": 0.02,
+  "masking_seed": 2027112712,
+  "source_cohort_seed": 2026112711,
+  "source_vcf_sha256": "1174c329e37465f133b519083d36cf90e754967edf9b6cc1bd5def72874b89c9",
+  "baseline_protocol_sha256": "9c444e9dbcaf0c97433e90b22dfb5f498fbe12d84e09de323203e26493c94fd1",
+  "baseline_result_sha256": "504d03865802ccfe1c7ed2ac5e62dac4965746c9d0dfc79e74d79b38a78a03e6",
+  "fixed_hbd_threshold_cm": 5,
+  "artifact_provenance": {
+    "map": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+      "sha256": "c10ba1cb15e0f50888ad37b87fceea7dfb232b74634d08762d88bd7005cd851e"
+    },
+    "hapibd": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+      "sha256": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c"
+    },
+    "model": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task11_multifamily_inbreeding/pair_model_hbd5/model.joblib",
+      "sha256": "894481f64c56b3ffd90372bcc1330b61f32565c011b486e17d7777f188fc0591"
+    }
+  },
+  "source_sha256": {
+    "scripts/validate_relatedness_missingness.py": "c1bb5daffe4ef44589bad835b8411d5e0dd1df79091a045bbc932ee856798d3e",
+    "scripts/prepare_hapibd_vcf.py": "e724c8d006951f999116909fd8a27de5ac380ff106336b42404ece75ce9643c4",
+    "scripts/validate_task11_complete_pipeline.py": "e346278e8ed04220530a50947417949458a3f0f773c0f273438cb9e64505e9e9",
+    "scripts/summarize_hapibd.py": "3ec5e3cb6e25a2b32c7725809e6f17ada82d5ddb7b45a18c148c10c2d583afac",
+    "scripts/fit_task11_dog_relationships.py": "4483b9c30fa6696379f030f76c2bb42f0752c6737c7d1a184e6de8ae281b903d",
+    "scripts/cluster_task11_families.py": "6189685ee57702c6576e6231c27533ce9923ac11ac309489b5b95d4fa8695ce8"
+  },
+  "scope": "Repeated missingness sensitivity of existing synthetic cohorts; no fitting or policy selection",
+  "independent_new_biological_replicates": 0,
+  "submission_ready": false
+}

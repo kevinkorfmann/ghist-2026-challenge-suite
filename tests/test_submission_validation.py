@@ -1,9 +1,14 @@
+import json
 import subprocess
 import sys
 
 import pytest
 
-from ghist_submission.validate import all_pairs, validate_submission
+from ghist_submission.validate import (
+    all_pairs,
+    validate_submission,
+    within_family_pairs,
+)
 
 
 def test_demography_valid_all_four(tmp_path):
@@ -94,3 +99,172 @@ def test_cli_returns_failure_for_wrong_dataset(tmp_path):
     )
     assert result.returncode == 1
     assert "chromosome 9" in result.stdout
+
+
+def test_large_finite_yaml_integer_does_not_overflow(tmp_path):
+    path = tmp_path / "prediction.yaml"
+    value = 10**400
+    path.write_text(f"generations: {value}\npost_decline_fraction: 0.52\n")
+    assert validate_submission(path, 1, "testing")["parameters"]["generations"] == value
+
+
+@pytest.mark.parametrize(
+    "content",
+    [
+        'indID1,indID2,meioses_count\na,b,"2\n',
+        'indID1,indID2,relation\na,b,"siblings"junk\n',
+        'indID1,indID2,"relation\na,b,siblings\n',
+    ],
+)
+def test_rejects_malformed_csv_quoting(tmp_path, content):
+    path = tmp_path / "prediction.csv"
+    path.write_text(content)
+    with pytest.raises(ValueError, match="CSV"):
+        validate_submission(path, 9, "testing")
+
+
+@pytest.mark.parametrize(
+    "expected",
+    [
+        [("a",)],
+        [("a", "b", "c")],
+        ["ab"],
+        [(None, "b")],
+        [("a", " ")],
+        [("a", "a")],
+        42,
+    ],
+)
+def test_rejects_invalid_expected_pair_domain(tmp_path, expected):
+    path = tmp_path / "prediction.csv"
+    path.write_text("indID1,indID2,relation\na,b,siblings\n")
+    with pytest.raises(ValueError, match="sample ID"):
+        validate_submission(path, 9, "testing", expected)
+
+
+def test_pair_coverage_normalizes_ids_consistently(tmp_path):
+    path = tmp_path / "prediction.csv"
+    path.write_text("indID1,indID2,relation\n a , b ,siblings\n")
+    expected = all_pairs([" a ", "b"])
+    assert expected == {("a", "b")}
+    assert validate_submission(path, 9, "testing", [(" b ", "a")])[
+        "input_pair_coverage_verified"
+    ]
+
+
+@pytest.mark.parametrize("samples", [["a", " a "], ["a", None], ["a", " "], "ab"])
+def test_rejects_ambiguous_or_invalid_cohort_ids(samples):
+    with pytest.raises(ValueError, match="sample ID"):
+        all_pairs(samples)
+
+
+def test_family_partition_accepts_single_pass_iterables():
+    families = (iter(family) for family in [["b", "a"], ["c"]])
+    assert within_family_pairs(families, ["a", "b", "c"]) == {("a", "b")}
+
+
+def test_vcf_cohort_ids_remain_in_header_order(tmp_path):
+    from ghist_submission.validate import vcf_samples
+
+    path = tmp_path / "cohort.vcf"
+    path.write_text(
+        "##fileformat=VCFv4.2\n"
+        "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tb\ta\tc\n"
+    )
+    assert vcf_samples(path) == ["b", "a", "c"]
+
+
+@pytest.mark.parametrize(
+    "families,samples",
+    [
+        ([["a", "b"]], ["a", "b", "b"]),
+        (["ab"], ["a", "b"]),
+        ([["a", "b"], []], ["a", "b"]),
+        ([["a", "b"], [" b "]], ["a", "b"]),
+        ([["a", "b"]], ["a", "b", None]),
+    ],
+)
+def test_rejects_malformed_family_partitions(families, samples):
+    with pytest.raises(ValueError):
+        within_family_pairs(families, samples)
+
+
+@pytest.mark.parametrize("challenge", [1, 5, 8])
+def test_rejects_inapplicable_pair_coverage(tmp_path, challenge):
+    with pytest.raises(ValueError, match="Pair coverage applies only"):
+        validate_submission(tmp_path / "unused", challenge, "testing", {("a", "b")})
+
+
+@pytest.mark.parametrize(
+    "content,error",
+    [
+        ("indID1,indID2,indID1\nx,b,a\n", "unique"),
+        ("indID1,indID2\na,b,ignored\n", "extra fields"),
+        ("indID1,indID2\na\n", "missing"),
+        ("indID1,indID2\na,\n", "nonempty"),
+        ("indID1,indID2\na,a\n", "self pair"),
+        ("indID1,other\na,b\n", "headers"),
+        ('indID1,indID2\na,"b', "unexpected end"),
+    ],
+)
+def test_cli_rejects_malformed_expected_pairs_with_json_error(
+    tmp_path, monkeypatch, capsys, content, error
+):
+    from scripts.validate_submission import main
+
+    prediction = tmp_path / "prediction.csv"
+    prediction.write_text("indID1,indID2,relation\na,b,siblings\n")
+    pairs = tmp_path / "pairs.csv"
+    pairs.write_text(content)
+    report = tmp_path / "reports" / "validation.json"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "validate_submission",
+            str(prediction),
+            "--challenge",
+            "9",
+            "--dataset",
+            "testing",
+            "--pairs",
+            str(pairs),
+            "--report",
+            str(report),
+        ],
+    )
+    with pytest.raises(SystemExit) as exit_info:
+        main()
+    assert exit_info.value.code == 1
+    result = json.loads(capsys.readouterr().out)
+    assert result["format_valid"] is False
+    assert error in result["error"]
+    assert json.loads(report.read_text()) == result
+
+
+def test_cli_preserves_pair_lists_with_extra_named_columns_and_reversed_duplicates(
+    tmp_path, monkeypatch, capsys
+):
+    from scripts.validate_submission import main
+
+    prediction = tmp_path / "prediction.csv"
+    prediction.write_text('indID1,indID2,relation\n"a","b","siblings"\n')
+    pairs = tmp_path / "pairs.csv"
+    pairs.write_text("indID1,indID2,note\nb,a,first\na,b,\n")
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "validate_submission",
+            str(prediction),
+            "--challenge",
+            "9",
+            "--dataset",
+            "testing",
+            "--pairs",
+            str(pairs),
+        ],
+    )
+    main()
+    result = json.loads(capsys.readouterr().out)
+    assert result["format_valid"] and result["input_pair_coverage_verified"]

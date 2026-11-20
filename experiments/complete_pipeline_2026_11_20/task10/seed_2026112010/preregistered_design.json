@@ -1,0 +1,58 @@
+{
+  "seed": 2026112010,
+  "pedsim_seed": 2026121010,
+  "definition": "def complete 1 4\n2 0 3\n3 0 9\n4 2 9\n",
+  "founders": 14,
+  "genotyped_samples": 18,
+  "expected_pairs": 153,
+  "population_size": 10000,
+  "mutation_rate": 1.25e-08,
+  "marker_policy": "minor allele count >=2; spacing >=500 bp",
+  "phase": "oracle phase; no phasing algorithm executed",
+  "hapibd": {
+    "min_seed": 1,
+    "min_extend": 0.2,
+    "min_output": 2,
+    "min_markers": 100,
+    "max_gap": 1000
+  },
+  "branches": {
+    "field": "relatedness_ge_20",
+    "threshold": 0.12
+  },
+  "bonsai": {
+    "threshold_cm": 10,
+    "fast": [
+      3,
+      1
+    ],
+    "medium": [
+      4,
+      2
+    ]
+  },
+  "consensus": "replicated topology and flat pair meiosis agreement; topology_boost=1",
+  "success_criteria": "all stages complete, 153 unique valid-label pairs; accuracy descriptive only",
+  "readiness_promotion": false,
+  "model_fitting": false,
+  "submission_count": 0,
+  "hashes": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_large_family/clean_spectrum_v1/model.joblib": "c3c7f3e108cdac51936c60476736d5546374d9606686c86a0bee3f91b2142e21",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_large_family/pair_model_min5/model.joblib": "8b0797a07f6c3812d3a1e84336e4303df66d04d9d5966965465560705c058a2b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/ped-sim": "2872021e82936de9815f1e0c28f86f823abdbcdbd4f9fd60d6150ae8da387acd",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/interfere/nu_p_campbell.tsv": "825648443c400c89103295dc0a29804c969164c54e2570a3084403bb778ca1a1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/validate_task10_complete_pipeline.py": "7ae5275261b6ccc8c11faab644c3063a8e7963248d9889dc2a3e0fc100a5a757",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/prepare_hapibd_vcf.py": "8dc4e91aefb6432ce45a93dd1652875e5aca936f30097977ed5cafc5cd96ff07",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/summarize_hapibd.py": "3ec5e3cb6e25a2b32c7725809e6f17ada82d5ddb7b45a18c148c10c2d583afac",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/summarize_hapibd_shape.py": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/fit_human_family_relationships.py": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/cluster_human_family_branches.py": "eed4db8127edcc13a88479b59ee108e69ba6c3a765ee2bd22b98940b31302a46",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/reconstruct_human_branch_pedigrees.py": "f8a594e6adc11937961fb2086267ef19856b6915083217dfd25793eea3d98c38",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/reconstruct_bonsai_pedigree.py": "5d317416d437a92746af4c618001af2d521b2854d55accba1ac62142bcc4ea4f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/consensus_human_family_pedigree.py": "df0a2b289f9079a4cfbdfc0c44fb8513b58a4e3e6bd1ec9d195ac02e5002ea21",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  }
+}

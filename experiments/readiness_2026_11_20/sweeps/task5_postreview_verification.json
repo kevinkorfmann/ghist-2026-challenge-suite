@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "scope": "Input guard compatibility on the same three completed simulations; not new independent biological replicates",
+  "checks": [
+    {
+      "case": 0,
+      "identical_prediction_fields": [
+        "method",
+        "center",
+        "interval",
+        "consensus_eligible",
+        "localization",
+        "contig_length",
+        "haplotypes",
+        "accepted_biallelic_sites"
+      ],
+      "original_sha256": "7ab122948196befb311fdd3f4024bffdc9abb44f7837ad062a8b8c28ad0f2955",
+      "replay_sha256": "7ab122948196befb311fdd3f4024bffdc9abb44f7837ad062a8b8c28ad0f2955"
+    },
+    {
+      "case": 1,
+      "identical_prediction_fields": [
+        "method",
+        "center",
+        "interval",
+        "consensus_eligible",
+        "localization",
+        "contig_length",
+        "haplotypes",
+        "accepted_biallelic_sites"
+      ],
+      "original_sha256": "d2c8a1e11906a93d158f8aea4a5dc088a1804d8d7e986a1ab376bf87a1f42061",
+      "replay_sha256": "d2c8a1e11906a93d158f8aea4a5dc088a1804d8d7e986a1ab376bf87a1f42061"
+    },
+    {
+      "case": 2,
+      "identical_prediction_fields": [
+        "method",
+        "center",
+        "interval",
+        "consensus_eligible",
+        "localization",
+        "contig_length",
+        "haplotypes",
+        "accepted_biallelic_sites"
+      ],
+      "original_sha256": "f471b92cb3a7e4ee787819dd420269523ed964cfd23e92582b5cece66380db91",
+      "replay_sha256": "f471b92cb3a7e4ee787819dd420269523ed964cfd23e92582b5cece66380db91"
+    }
+  ],
+  "source_sha256": {
+    "src/ghist_single_sweep/scan.py": "5b35bab1cbb6513ad02fb6831cf2c34a7b29afa99025e06553029bcedd07d44f",
+    "src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+    "src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+    "src/ghist_single_sweep/peaks.py": "41a48bb7147477462fcfb2dc7a4b67208933ff95b8ee9209af47a5eda5a35c3e",
+    "scripts/predict_single_sweep.py": "f49fdad7a78cad2ac9470f37cefa2b0e70ec106d0bbba2b62f5cc9c42daa0f91",
+    "scripts/run_sweep_readiness_case.py": "e12a8af2873a712f10dc2c8c4dc2b581c31078b900dc4cff9226477c1c23e238",
+    "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_single_sweep/export.py": "b8f24772f8548bb079c4dd8898e3a047f8ec664c5c7384d8e8c0652002ccad56"
+  }
+}

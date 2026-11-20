@@ -1,0 +1,55 @@
+{
+  "completed_at_utc": "2026-11-20T17:39:00.436103+00:00",
+  "scope": "Source contract cross-review; no full-pipeline rerun or scientific promotion",
+  "method_version": "task11-legacy-consensus-audited-v2",
+  "findings_fixed": [
+    "Exact ties are independent of probability mapping order",
+    "Only explicit (+inf,+inf,None) unrelated sentinel bypasses finite topology validation",
+    "Retained heterozygotes cannot mix or cross independent phase sets per sample/chromosome"
+  ],
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_bonsai_conversion.py tests/test_hapibd_preparation.py tests/test_task11_consensus.py tests/test_task11_freeze_guard.py tests/test_relatedness_missingness.py tests/test_task10_complete_pipeline.py tests/test_task11_complete_pipeline.py --junitxml=experiments/complete_pipeline_2026_11_20/cross_review/pytest.xml",
+    "tests": 170,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "junit_sha256": "824f14eabe0361448e08274ede31f3daeedf16acf74e92362bc3f83d8bb256bf"
+  },
+  "independent_geometry_check": {
+    "seed": 2026112009,
+    "random_interval_sets": 5000,
+    "point_checks_per_set": 29,
+    "passed": true,
+    "scope": "Synthetic software geometry, not independent biological validation"
+  },
+  "ruff": "passed",
+  "git_diff_check": "passed",
+  "preserved_experiment_files": 171,
+  "preserved_manifest_sha256": "c265c58547acfa18598a8ae3d173082dc623147d212ec8a522c8b53fc44238e8",
+  "all_prior_experiment_hashes_unchanged": true,
+  "source_sha256_before": {
+    "scripts/prepare_hapibd_vcf.py": "e724c8d006951f999116909fd8a27de5ac380ff106336b42404ece75ce9643c4",
+    "scripts/consensus_task11_dog_pedigrees.py": "789bb96db2fd1da24c95741386049a86d7e1e49e030dbeca9605524aeb51514a",
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/freeze_task11_multifamily_inbreeding.py": "722cc9952d4157939202f400f25c1dde7095af8f13016fc7f3a0cad405420691",
+    "scripts/reconstruct_bonsai_pedigree.py": "1580ee9c7229abe7875d4cf421d2f46c1984f91f5858eaca583caf95a3144b5b",
+    "tests/test_task11_consensus.py": "1991cc310f0cbd6ce7c142c142022f180c410ea533d26ca8b551836a57963c11",
+    "tests/test_hapibd_preparation.py": "cf038094d827c7e4d5653fe22f038e532fbccca0be6542ec410174e67fc9fdc3"
+  },
+  "source_sha256_after": {
+    "scripts/prepare_hapibd_vcf.py": "c303f1f471e9b1ebaafc4842c2f922e65b9906aede4e9b5f209917e953222157",
+    "scripts/consensus_task11_dog_pedigrees.py": "6546a9b6ca8ca16c1c8b37a2ce116393c98b8d8e5eef80b1563b7107db837dc5",
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/freeze_task11_multifamily_inbreeding.py": "722cc9952d4157939202f400f25c1dde7095af8f13016fc7f3a0cad405420691",
+    "scripts/reconstruct_bonsai_pedigree.py": "1580ee9c7229abe7875d4cf421d2f46c1984f91f5858eaca583caf95a3144b5b",
+    "tests/test_task11_consensus.py": "1e347307e15047c17e1cdd848677526b1ddbae93b4a994c33fd071437713d06b",
+    "tests/test_hapibd_preparation.py": "4f0bb167ccc03ee2dec3990567e50f775851dc7e3f8aee3d22bf1b77a7adc6b8"
+  },
+  "verifier_sha256": "98e45cdb35e9da666dea4af0f5593e8ea898c65e9fd3ef7294f38bdd30b9592a",
+  "new_scientific_runs": 0,
+  "historical_results_rewritten": false,
+  "final_data_runs_performed": false,
+  "submissions": 0,
+  "public_answers_used": false,
+  "runtime_attribution": "Earlier followup_verification.json and runtime snapshots retain their original source hashes; they do not certify these later source changes."
+}

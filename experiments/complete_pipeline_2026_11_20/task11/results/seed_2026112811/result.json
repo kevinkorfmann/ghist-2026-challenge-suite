@@ -1,0 +1,297 @@
+{
+  "complete_task11_biological_validation": false,
+  "submission_ready": false,
+  "submission_count": 0,
+  "stages": [
+    {
+      "stage": "joint_pedigree_genotypes",
+      "state": "COMPLETED",
+      "vcf_sha256": "e5aee78dca074015c00ca4f40d83ed9f0471b248463897e671cb01cd98307ca1"
+    },
+    {
+      "stage": "prepare",
+      "command": [
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/source/scripts/prepare_hapibd_vcf.py",
+        "--input",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/synthetic.vcf.gz",
+        "--output",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/prepared.vcf.gz"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "hapibd",
+      "command": [
+        "java",
+        "-Xmx10g",
+        "-jar",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+        "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/prepared.vcf.gz",
+        "map=/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+        "out=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/segments",
+        "min-seed=1.0",
+        "min-extend=0.2",
+        "min-output=2.0",
+        "min-markers=50",
+        "max-gap=1000",
+        "nthreads=4"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "segment_summary",
+      "command": [
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/source/scripts/summarize_hapibd.py",
+        "--ibd",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/segments.ibd.gz",
+        "--hbd",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/segments.hbd.gz",
+        "--map",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+        "--out-dir",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/summary"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "family_clustering",
+      "state": "COMPLETED"
+    },
+    {
+      "stage": "hbd_mask_and_frozen_forest",
+      "state": "COMPLETED"
+    },
+    {
+      "stage": "bonsai",
+      "command": [
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/source/scripts/reconstruct_task11_pedigrees.py",
+        "--ibd",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/segments.ibd.gz",
+        "--map",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+        "--clusters",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/clusters.json",
+        "--genome-cm",
+        "1978.0068331419993",
+        "--out",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/bonsai.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "consensus",
+      "command": [
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/source/scripts/consensus_task11_dog_pedigrees.py",
+        "--pair-predictions",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/pair_predictions_hbd2.json",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/pair_predictions_hbd5.json",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/pair_predictions_hbd10.json",
+        "--bonsai",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/bonsai.json",
+        "--out-dir",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-complete-20261120/results/seed_2026112811/consensus"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "protocol_sha256": "80162d4d497af6a78b52254c8060a42a37afabf41cccc4cde92b1cf14ac2559a",
+  "family_partition": {
+    "truth_families": 8,
+    "predicted_families": 8,
+    "truth_samples": 32,
+    "covered_samples": 32,
+    "missing_samples": [],
+    "exactly_recovered_families": 8,
+    "split_families": 0,
+    "merged_predicted_families": 0,
+    "true_within_pairs": 48,
+    "predicted_within_pairs": 48,
+    "missed_within_pairs": 0,
+    "false_cross_family_pairs": 0,
+    "within_pair_recall": 1.0,
+    "within_pair_precision": 1.0,
+    "ari_with_missing_samples_as_distinct_singletons": 1.0
+  },
+  "cluster_stability": 1.0,
+  "hbd_by_parent_mating_type": {
+    "first_cousins": {
+      "samples": 12,
+      "expected_F": 0.0625,
+      "mean_simulated_F_marker_approximation": 0.07101567410142008,
+      "mean_detected_HBD_fraction_ge2cm": 0.07052688814278317
+    },
+    "siblings": {
+      "samples": 12,
+      "expected_F": 0.25,
+      "mean_simulated_F_marker_approximation": 0.25845036608764627,
+      "mean_detected_HBD_fraction_ge2cm": 0.2568979581630127
+    },
+    "unrelated": {
+      "samples": 8,
+      "expected_F": 0.0,
+      "mean_simulated_F_marker_approximation": 0.0,
+      "mean_detected_HBD_fraction_ge2cm": 0.0
+    }
+  },
+  "pair_model_by_hbd_threshold": {
+    "2.0": {
+      "truth_pairs": 48,
+      "covered_true_pairs": 48,
+      "missing_true_pairs": 0,
+      "correct": 48,
+      "accuracy_counting_missing_as_wrong": 1.0,
+      "extra_cross_family_predictions": 0,
+      "by_parent_mating_type": {
+        "unrelated": {
+          "correct": 12,
+          "covered": 12,
+          "pairs": 12,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "first_cousins": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "siblings": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        }
+      },
+      "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+    },
+    "5.0": {
+      "truth_pairs": 48,
+      "covered_true_pairs": 48,
+      "missing_true_pairs": 0,
+      "correct": 48,
+      "accuracy_counting_missing_as_wrong": 1.0,
+      "extra_cross_family_predictions": 0,
+      "by_parent_mating_type": {
+        "unrelated": {
+          "correct": 12,
+          "covered": 12,
+          "pairs": 12,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "first_cousins": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "siblings": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        }
+      },
+      "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+    },
+    "10.0": {
+      "truth_pairs": 48,
+      "covered_true_pairs": 48,
+      "missing_true_pairs": 0,
+      "correct": 48,
+      "accuracy_counting_missing_as_wrong": 1.0,
+      "extra_cross_family_predictions": 0,
+      "by_parent_mating_type": {
+        "unrelated": {
+          "correct": 12,
+          "covered": 12,
+          "pairs": 12,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "first_cousins": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        },
+        "siblings": {
+          "correct": 18,
+          "covered": 18,
+          "pairs": 18,
+          "accuracy_counting_missing_as_wrong": 1.0
+        }
+      },
+      "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+    }
+  },
+  "consensus": {
+    "truth_pairs": 48,
+    "covered_true_pairs": 48,
+    "missing_true_pairs": 0,
+    "correct": 9,
+    "accuracy_counting_missing_as_wrong": 0.1875,
+    "extra_cross_family_predictions": 0,
+    "by_parent_mating_type": {
+      "unrelated": {
+        "correct": 3,
+        "covered": 12,
+        "pairs": 12,
+        "accuracy_counting_missing_as_wrong": 0.25
+      },
+      "first_cousins": {
+        "correct": 6,
+        "covered": 18,
+        "pairs": 18,
+        "accuracy_counting_missing_as_wrong": 0.3333333333333333
+      },
+      "siblings": {
+        "correct": 0,
+        "covered": 18,
+        "pairs": 18,
+        "accuracy_counting_missing_as_wrong": 0.0
+      }
+    },
+    "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+  },
+  "operational_stages_completed": true,
+  "strict_cluster_stability_passed": true,
+  "remaining_limits": [
+    "No independent dog founder haplotypes with matched LD/allele frequencies were available.",
+    "Only sibling labels and four observed offspring per family; no challenge-sized heterogeneous topology.",
+    "Known true phase and zero genotype error/missingness; no phasing validation.",
+    "Eight families supplied to clustering; family-count inference is not evaluated.",
+    "No posterior calibration, independent matched-population confirmation, or release certification."
+  ],
+  "output_hashes": {
+    "bonsai.json": "731f0c64751f4b839116e97ff7fd188f41c2daf6ca7c751300d80c758583a1ef",
+    "bonsai.stderr.log": "462df1ea8157c40abe15c76a9ba5ef719fb5c2c503ed8f9c7484bc9571afe85a",
+    "bonsai.stdout.log": "a19a273690e75ab22e6848cc2d4d9a288345d20e9d96f32420ccce24988f803c",
+    "clusters.json": "a1bc4f07a7977087b0ff882c23b12783d2f9aab1b49aaeaa3338d35b70d1ddb5",
+    "consensus/predictions.json": "96fa1ae046d74a628144a4417aaa464a681cd3c25bdf71b73f7f7c2d91194f1b",
+    "consensus/summary.json": "310410b7969a166d859601fea66c2680c6def0136e0925a1775abe3139282fec",
+    "consensus/task11_candidate.csv": "bfb78f5e776e6cfdebab57b340fdb221dc3966547ad334205281a99bc3821417",
+    "consensus.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "consensus.stdout.log": "310410b7969a166d859601fea66c2680c6def0136e0925a1775abe3139282fec",
+    "hapibd.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hapibd.stdout.log": "ce582e1ec1b09cde11632ed37e300e40dc3db3f1b8f4277d670c5bd259f7fa78",
+    "pair_predictions_hbd10.json": "038fc66009bf33fe8df908fb7532c7dabc9fcc950bcbd8aad7548c68ab0bb50c",
+    "pair_predictions_hbd2.json": "26d2cddd6409465302f7d30a5c09d923c0b724c2279f5028abb4add1b332b2ae",
+    "pair_predictions_hbd5.json": "040b2d8793fc70e8bfc74dd400ac3f3ca55a2845679be0757dd3b35eb0fc599e",
+    "prepare.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prepare.stdout.log": "d660b8d028bdc9d4e46c1015c199394de99f894817b2b37f8d15610a38747b49",
+    "prepared.vcf.gz": "a2be06c32919c8f61af72e8510fc6ada3d3a4b1836069730b139db9504356d23",
+    "protocol.json": "80162d4d497af6a78b52254c8060a42a37afabf41cccc4cde92b1cf14ac2559a",
+    "segment_summary.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "segment_summary.stdout.log": "b88358d277a2dad9675087d5cd8f6d40a2728d0620e1f603f916f403128cf0fd",
+    "segments.hbd.gz": "c320a08ee9ec871ab3887bdef65fee71809b3cab7b7a58c744280eef82344a65",
+    "segments.ibd.gz": "226ae37087d279fd54b99835713cf254763d520d7150ebf648394d694a9b6dba",
+    "segments.log": "ce582e1ec1b09cde11632ed37e300e40dc3db3f1b8f4277d670c5bd259f7fa78",
+    "summary/hbd_features.csv": "3c3ed07049ef7412b3995dc4968eeb1a0588ce836c22dd542cac445c5c5684b6",
+    "summary/pair_features.csv": "3bb44331f0d2719b3d04d6d5e679e6ad942cb8430af77c66770143f53c5626c7",
+    "summary/summary.json": "b88358d277a2dad9675087d5cd8f6d40a2728d0620e1f603f916f403128cf0fd",
+    "synthetic.vcf.gz": "e5aee78dca074015c00ca4f40d83ed9f0471b248463897e671cb01cd98307ca1",
+    "truth.json": "de3f76c628b292979e7135e21598a47735a71b702e2dbbbca157f7c7c783b0bb"
+  }
+}

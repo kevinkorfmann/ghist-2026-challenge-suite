@@ -1,0 +1,64 @@
+{
+  "scope": "independent whole-family genotype operational smoke, not matched biological validation",
+  "seed": 2026112811,
+  "fixed_seeds": [
+    2026112711,
+    2026112811
+  ],
+  "marker_spacing_cm": 0.01,
+  "mating_types": [
+    "unrelated",
+    "unrelated",
+    "first_cousins",
+    "first_cousins",
+    "first_cousins",
+    "siblings",
+    "siblings",
+    "siblings"
+  ],
+  "sibship_size": 4,
+  "hbd_thresholds": [
+    2.0,
+    5.0,
+    10.0
+  ],
+  "family_count_supplied": 8,
+  "founder_model": "independent biallelic SNPs; common site frequency uniform(0.05,0.5)",
+  "recombination": "Poisson crossovers on fixed dog average map",
+  "phase": "known true simulation phase; missingness and genotype error zero",
+  "fitting": "none; frozen pair forest and existing topology/consensus settings",
+  "provenance": {
+    "map": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+      "sha256": "c10ba1cb15e0f50888ad37b87fceea7dfb232b74634d08762d88bd7005cd851e"
+    },
+    "hapibd": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+      "sha256": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c"
+    },
+    "model": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task11_multifamily_inbreeding/pair_model_hbd5/model.joblib",
+      "sha256": "894481f64c56b3ffd90372bcc1330b61f32565c011b486e17d7777f188fc0591"
+    }
+  },
+  "sources": {
+    "scripts/validate_task11_complete_pipeline.py": "e346278e8ed04220530a50947417949458a3f0f773c0f273438cb9e64505e9e9",
+    "scripts/prepare_hapibd_vcf.py": "8dc4e91aefb6432ce45a93dd1652875e5aca936f30097977ed5cafc5cd96ff07",
+    "scripts/summarize_hapibd.py": "3ec5e3cb6e25a2b32c7725809e6f17ada82d5ddb7b45a18c148c10c2d583afac",
+    "scripts/cluster_task11_families.py": "6189685ee57702c6576e6231c27533ce9923ac11ac309489b5b95d4fa8695ce8",
+    "scripts/reconstruct_bonsai_pedigree.py": "5d317416d437a92746af4c618001af2d521b2854d55accba1ac62142bcc4ea4f",
+    "scripts/fit_task11_dog_relationships.py": "4483b9c30fa6696379f030f76c2bb42f0752c6737c7d1a184e6de8ae281b903d",
+    "scripts/reconstruct_task11_pedigrees.py": "846896388a7130f1e36afbbe9a64d7decf78583f412e4ea15b9f5fa309615ffa",
+    "scripts/consensus_task11_dog_pedigrees.py": "f757bcbcbbba35dd3d9694539e5f8d8ef34cc227689f3f2c40305438739dfd39",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/validation.py": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42"
+  },
+  "runtime": {
+    "python": "3.11.11",
+    "numpy": "2.4.6",
+    "job_id": "10850571"
+  },
+  "selection_policy": "No parameter adjustment from these outcomes; each entire cohort held out.",
+  "failure_policy": "Record failing stage; missing true pairs remain in scoring denominators. An unstable clustering proceeds only as a fixed-reference diagnostic.",
+  "submission_count": 0
+}

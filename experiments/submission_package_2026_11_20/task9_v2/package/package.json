@@ -1,0 +1,59 @@
+{
+  "confirmation_pairs": 20023,
+  "external_artifacts": {
+    "model": {
+      "path": "artifacts/task9_releases/2026-11-20-ten-labels/model.joblib",
+      "sha256": "7fc54aa5f0dff1d8dc01364cf781d7a750970e1558a525c2fbdebcbc04a0611c"
+    },
+    "sex_map_sha256": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1"
+  },
+  "files_sha256": {
+    "configs/task9_current_release.json": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc",
+    "experiments/readiness_2026_11_20/task9/operational_unversioned.json": "f11d96d8d9d8217ae74a3d1304f4c031ad887a787ad8891f7d6c13d36d0ad954",
+    "experiments/readiness_2026_11_20/task9/operational_versioned.json": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928",
+    "experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_interference.json": "1a25fcc5d791bcf40a2d4836c1b57146c86ff2d21fc587c15e1d040559e01703",
+    "experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_poisson.json": "dff5621092456d9aa5af92f2257973eae8f47ba659b5710a57948217f94eef8b",
+    "experiments/scientific_2026_11_20/relatedness/task9_current_training.json": "e1843e32acd3262752369c4c8d9d4354efb1ffc2cd632a9a81ad2d2a1aa64ce0",
+    "requirements/task9-release-2026-11-20.txt": "44375e0cb2fbab9788eeac9f7cc612a7b3d370b7541db3e21e180110f37a757f",
+    "scripts/predict_task9_current.py": "a79e83250266ff43df166549e1865e1b78338a793baf711269e7327090efc671",
+    "scripts/prepare_task9_submission_package.py": "9c18f68ffaea8f4456281bed2dec90680e8e6fd5c425cf72f1c25027d0b49d81",
+    "scripts/validate_submission.py": "c88e3dbda34254996a070c13432237dc6bebbed7815749dcec1916668128602e",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17"
+  },
+  "final_input": {
+    "entity": "syn75202631",
+    "path": null,
+    "sha256": null,
+    "version": null
+  },
+  "final_prediction": {
+    "pairs": null,
+    "path": null,
+    "sha256": null
+  },
+  "operational_passed": true,
+  "release_id": "2026-11-20-ten-labels",
+  "release_sha256": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc",
+  "runtime": {
+    "machine": "x86_64",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "joblib": "1.5.3",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.16.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "python": "3.11.11",
+    "system": "Linux"
+  },
+  "schema": "ghist.task9.submission-package.v1",
+  "status": "OFFLINE_HANDOFF_FINAL_INPUT_PENDING",
+  "submission_count": 0,
+  "training_pairs": 60266
+}

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -15,6 +16,11 @@ from ghist_submission.validate import (
     within_family_pairs,
     validate_submission,
 )
+
+if __package__:
+    from scripts.consensus_task11_dog_pedigrees import METHOD_VERSION
+else:
+    from consensus_task11_dog_pedigrees import METHOD_VERSION
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +40,39 @@ FINAL = (
     / "data/holdout_final/relatedness/multifamily_inbreeding/relatedness3.final.vcf.gz"
 )
 FINAL_SHA256 = "5bbdd1a850f65308ed2376a159cbe63c7540e76eab9e91bb77b75c127a2fc553"
+RELEASE_SOURCES = (
+    "scripts/consensus_task11_dog_pedigrees.py",
+    "scripts/freeze_task11_multifamily_inbreeding.py",
+    "scripts/prepare_hapibd_vcf.py",
+    "scripts/summarize_hapibd.py",
+    "scripts/cluster_task11_families.py",
+    "scripts/reconstruct_bonsai_pedigree.py",
+    "scripts/reconstruct_task11_pedigrees.py",
+    "scripts/fit_task11_dog_relationships.py",
+    "src/ghist_relatedness/labels.py",
+    "src/ghist_relatedness/ibd.py",
+    "src/ghist_relatedness/validation.py",
+)
+RELEASE_ARTIFACTS = (
+    "artifacts/task11_multifamily_inbreeding/consensus/task11_candidate.csv",
+    "artifacts/task11_multifamily_inbreeding/consensus/summary.json",
+    "artifacts/task11_multifamily_inbreeding/family_clusters/summary.json",
+    "artifacts/task11_multifamily_inbreeding/pair_model_hbd5/summary.json",
+    *(
+        f"artifacts/task11_multifamily_inbreeding/pair_model_hbd{threshold}/{name}"
+        for threshold in (2, 5, 10)
+        for name in ("model.joblib", "predictions.json")
+    ),
+)
+RELEASE_CHECKS = (
+    "independent_complete_pipeline",
+    "disjoint_from_training_and_development",
+    "varied_pedigree_topologies",
+    "matched_dog_founder_model",
+    "permitted_missingness_validated",
+    "unconditional_pair_coverage_scored",
+    "predeclared_acceptance_criteria_passed",
+)
 
 
 def sha256(path: Path) -> str:
@@ -44,7 +83,95 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def require_release_validation(evidence_path: Path | None, root: Path = ROOT) -> dict:
+    """Require independent whole-task evidence before opening legacy inputs.
+
+    Hashes bind the attestation to reviewed protocol/results, source, models and
+    candidate. This verifies provenance and declared gates, not scientific truth.
+    The sibling-only development cohorts cannot qualify as confirmation.
+    """
+    if evidence_path is None:
+        raise RuntimeError(
+            "Task 11 is not release-ready: --validation-evidence is required. "
+            "Historical pair accuracy and topology-conditioned stability do not "
+            "validate the complete pipeline."
+        )
+    evidence = json.loads(evidence_path.read_text())
+    if evidence.get("schema_version") != "task11-complete-validation-v1":
+        raise ValueError("Invalid Task 11 complete-validation evidence schema")
+    if evidence.get("method_version") != METHOD_VERSION:
+        raise ValueError(
+            "Validation evidence does not match the selected Task 11 method"
+        )
+    checks = evidence.get("checks", {})
+    if any(checks.get(check) is not True for check in RELEASE_CHECKS):
+        raise ValueError("Task 11 complete-validation checks did not all pass")
+    if set(evidence.get("relationship_labels_evaluated", [])) != set(
+        DOG_LABELS.values()
+    ):
+        raise ValueError(
+            "Task 11 evidence must evaluate all eight accepted relationships"
+        )
+    cohort_ids = evidence.get("confirmation_cohort_ids", [])
+    if (
+        not cohort_ids
+        or any(not isinstance(value, str) or not value for value in cohort_ids)
+        or len(set(cohort_ids)) != len(cohort_ids)
+        or any(
+            seed in value
+            for value in cohort_ids
+            for seed in ("2026112711", "2026112811")
+        )
+    ):
+        raise ValueError(
+            "Task 11 confirmation cohorts must be identified, unique and new"
+        )
+    for key, required in (
+        ("source_sha256", RELEASE_SOURCES),
+        ("artifact_sha256", RELEASE_ARTIFACTS),
+    ):
+        recorded = evidence.get(key, {})
+        if not set(required).issubset(recorded):
+            raise ValueError(f"Task 11 evidence is missing required {key} bindings")
+        for relative in required:
+            if sha256(root / relative) != recorded[relative]:
+                raise ValueError(f"Task 11 validation hash mismatch: {relative}")
+    records = {
+        key: evidence.get(key, {})
+        for key in ("validation_protocol", "validation_report")
+    }
+    records.update(
+        {
+            key: evidence.get("execution_assets", {}).get(key, {})
+            for key in ("dog_recombination_map", "hapibd_jar", "inference_config")
+        }
+    )
+    for key, record in records.items():
+        relative = Path(record.get("path", ""))
+        if (
+            not str(record.get("path", ""))
+            or relative.is_absolute()
+            or ".." in relative.parts
+        ):
+            raise ValueError(f"Task 11 evidence needs a repository-relative {key} path")
+        if sha256(root / relative) != record.get("sha256"):
+            raise ValueError(f"Task 11 {key} hash mismatch")
+    return {
+        "path": str(evidence_path),
+        "sha256": sha256(evidence_path),
+        "method_version": evidence["method_version"],
+        "confirmation_cohort_ids": cohort_ids,
+        "checks": checks,
+        "provenance_verified": True,
+    }
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--validation-evidence", type=Path)
+    args = parser.parse_args()
+    # Must precede legacy artifact reads, genotype inspection and any writes.
+    complete_validation = require_release_validation(args.validation_evidence)
     clusters = json.loads(CLUSTERS.read_text())
     pair_model = json.loads(PAIR_MODEL.read_text())
     consensus = json.loads(CONSENSUS.read_text())
@@ -74,11 +201,22 @@ def main() -> None:
         "pairs_unique": len(set(pairs)) == len(pairs),
         "all_labels_accepted": {row["relation"] for row in rows}.issubset(accepted),
         "hbd_threshold_stability": consensus["hbd_sensitivity_stability"] >= 0.98,
-        "fallback_hbd_threshold_stability": consensus[
-            "fallback_hbd_sensitivity_stability"
-        ]
-        >= 0.93,
+        "fallback_hbd_threshold_stability": (
+            consensus["fallback_hbd_sensitivity_pairs"] == 0
+            or (
+                consensus["fallback_hbd_sensitivity_stability"] is not None
+                and consensus["fallback_hbd_sensitivity_stability"] >= 0.93
+            )
+        ),
         "sibling_components_consistent": consensus["sibling_component_conflicts"] == 0,
+        "all_final_labels_have_pair_probability_support": consensus[
+            "final_labels_with_zero_pair_probability"
+        ]
+        == 0,
+        "audited_consensus_method": consensus["method_version"] == METHOD_VERSION,
+        "independent_complete_pipeline_validation": complete_validation[
+            "provenance_verified"
+        ],
     }
     gates["passed"] = all(gates.values())
     if not gates["passed"]:
@@ -155,12 +293,14 @@ def main() -> None:
             "schema": header,
         },
         "selected_method": {
+            "method_version": METHOD_VERSION,
             "family_partition": "stable graph clustering over long-segment sharing",
             "pair_model": "dog-map Ped-sim forest using IBD1/IBD2 totals and segment-length shape",
             "inbreeding_control": "pairwise union-HBD masking at 2, 5, and 10 cM",
             "topology_consensus": "accepted pedigree tuples, meiosis-constrained pair fallbacks, and full-sibling component consistency",
         },
         "validation": {
+            "complete_pipeline_evidence": complete_validation,
             "input_pair_coverage": coverage,
             "fresh_pair_accuracy": pair_model["fresh_evaluation"]["accuracy"],
             "fresh_pair_balanced_accuracy": pair_model["fresh_evaluation"][

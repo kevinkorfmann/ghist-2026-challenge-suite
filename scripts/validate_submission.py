@@ -10,6 +10,23 @@ import yaml
 from ghist_submission.validate import all_pairs, validate_submission
 
 
+def _read_expected_pairs(path: Path) -> set[tuple[str, str]]:
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle, strict=True)
+        headers = reader.fieldnames or []
+        header_set = set(headers)
+        if len(headers) != len(header_set) or not {"indID1", "indID2"} <= header_set:
+            raise ValueError("Expected-pairs CSV requires unique indID1/indID2 headers")
+        pairs = set()
+        for row in reader:
+            if None in row or any(value is None for value in row.values()):
+                raise ValueError(
+                    f"Expected-pairs CSV line {reader.line_num}: missing or extra fields"
+                )
+            pairs.add((row["indID1"], row["indID2"]))
+        return pairs
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Validate locally; never upload or submit"
@@ -35,12 +52,9 @@ def main() -> None:
         if args.samples:
             expected = all_pairs(args.samples.read_text().splitlines())
         if args.pairs:
-            with args.pairs.open(newline="") as handle:
-                expected = {
-                    (row["indID1"], row["indID2"]) for row in csv.DictReader(handle)
-                }
+            expected = _read_expected_pairs(args.pairs)
         report = validate_submission(args.file, args.challenge, args.dataset, expected)
-    except (ValueError, KeyError, OSError, yaml.YAMLError) as error:
+    except (ValueError, KeyError, OSError, csv.Error, yaml.YAMLError) as error:
         report = {"format_valid": False, "error": str(error)}
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)

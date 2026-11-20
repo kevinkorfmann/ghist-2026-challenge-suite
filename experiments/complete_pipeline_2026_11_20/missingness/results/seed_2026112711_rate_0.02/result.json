@@ -1,0 +1,269 @@
+{
+  "protocol_sha256": "c681fccd380f24759058434edec017ee3d629f8c90689d880708e22e7733fe0e",
+  "masking": {
+    "seed": 2027112712,
+    "per_genotype_missing_probability": 0.02,
+    "samples": 32,
+    "records": 197855,
+    "masked_genotypes": 127176,
+    "sites_with_missing_genotypes": 94753,
+    "expected_complete_site_fraction": 0.5238831403348924,
+    "observed_complete_site_fraction": 0.5210987844633697,
+    "process": "Independent whole-genotype masking; underlying alleles/phase unchanged"
+  },
+  "source_cohort_seed": 2026112711,
+  "baseline_pair_model": {
+    "truth_pairs": 48,
+    "covered_true_pairs": 48,
+    "missing_true_pairs": 0,
+    "correct": 48,
+    "accuracy_counting_missing_as_wrong": 1.0,
+    "extra_cross_family_predictions": 0,
+    "by_parent_mating_type": {
+      "unrelated": {
+        "correct": 12,
+        "covered": 12,
+        "pairs": 12,
+        "accuracy_counting_missing_as_wrong": 1.0
+      },
+      "first_cousins": {
+        "correct": 18,
+        "covered": 18,
+        "pairs": 18,
+        "accuracy_counting_missing_as_wrong": 1.0
+      },
+      "siblings": {
+        "correct": 18,
+        "covered": 18,
+        "pairs": 18,
+        "accuracy_counting_missing_as_wrong": 1.0
+      }
+    },
+    "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+  },
+  "baseline_family_partition": {
+    "truth_families": 8,
+    "predicted_families": 8,
+    "truth_samples": 32,
+    "covered_samples": 32,
+    "missing_samples": [],
+    "exactly_recovered_families": 8,
+    "split_families": 0,
+    "merged_predicted_families": 0,
+    "true_within_pairs": 48,
+    "predicted_within_pairs": 48,
+    "missed_within_pairs": 0,
+    "false_cross_family_pairs": 0,
+    "within_pair_recall": 1.0,
+    "within_pair_precision": 1.0,
+    "ari_with_missing_samples_as_distinct_singletons": 1.0
+  },
+  "policies": {
+    "drop-site": {
+      "stages": [
+        {
+          "stage": "hapibd",
+          "command": [
+            "java",
+            "-Xmx10g",
+            "-jar",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+            "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/prepared.vcf.gz",
+            "map=/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+            "out=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/segments",
+            "min-seed=1.0",
+            "min-extend=0.2",
+            "min-output=2.0",
+            "min-markers=50",
+            "max-gap=1000",
+            "nthreads=4"
+          ],
+          "exit_code": 0
+        },
+        {
+          "stage": "summary",
+          "command": [
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/source/scripts/summarize_hapibd.py",
+            "--ibd",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/segments.ibd.gz",
+            "--hbd",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/segments.hbd.gz",
+            "--map",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+            "--out-dir",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/summary"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "status": "COMPLETED",
+      "preparation": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/masked.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/drop-site/prepared.vcf.gz",
+        "missing_policy": "drop-site",
+        "records_read": 197855,
+        "records_written": 103102,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 94753,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "samples": 32
+      },
+      "family_partition": {
+        "truth_families": 8,
+        "predicted_families": 8,
+        "truth_samples": 32,
+        "covered_samples": 32,
+        "missing_samples": [],
+        "exactly_recovered_families": 8,
+        "split_families": 0,
+        "merged_predicted_families": 0,
+        "true_within_pairs": 48,
+        "predicted_within_pairs": 48,
+        "missed_within_pairs": 0,
+        "false_cross_family_pairs": 0,
+        "within_pair_recall": 1.0,
+        "within_pair_precision": 1.0,
+        "ari_with_missing_samples_as_distinct_singletons": 1.0
+      },
+      "cluster_stability": 1.0,
+      "pair_model": {
+        "truth_pairs": 48,
+        "covered_true_pairs": 48,
+        "missing_true_pairs": 0,
+        "correct": 48,
+        "accuracy_counting_missing_as_wrong": 1.0,
+        "extra_cross_family_predictions": 0,
+        "by_parent_mating_type": {
+          "unrelated": {
+            "correct": 12,
+            "covered": 12,
+            "pairs": 12,
+            "accuracy_counting_missing_as_wrong": 1.0
+          },
+          "first_cousins": {
+            "correct": 18,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 1.0
+          },
+          "siblings": {
+            "correct": 18,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 1.0
+          }
+        },
+        "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+      }
+    },
+    "major": {
+      "stages": [
+        {
+          "stage": "hapibd",
+          "command": [
+            "java",
+            "-Xmx10g",
+            "-jar",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+            "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/prepared.vcf.gz",
+            "map=/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+            "out=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/segments",
+            "min-seed=1.0",
+            "min-extend=0.2",
+            "min-output=2.0",
+            "min-markers=50",
+            "max-gap=1000",
+            "nthreads=4"
+          ],
+          "exit_code": 0
+        },
+        {
+          "stage": "summary",
+          "command": [
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/source/scripts/summarize_hapibd.py",
+            "--ibd",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/segments.ibd.gz",
+            "--hbd",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/segments.hbd.gz",
+            "--map",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+            "--out-dir",
+            "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/summary"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "status": "COMPLETED",
+      "preparation": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/masked.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/relatedness-missingness-20261120/results/seed_2026112711_rate_0.02/major/prepared.vcf.gz",
+        "missing_policy": "major",
+        "records_read": 197855,
+        "records_written": 197855,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 254352,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "samples": 32
+      },
+      "family_partition": {
+        "truth_families": 8,
+        "predicted_families": 8,
+        "truth_samples": 32,
+        "covered_samples": 32,
+        "missing_samples": [],
+        "exactly_recovered_families": 8,
+        "split_families": 0,
+        "merged_predicted_families": 0,
+        "true_within_pairs": 48,
+        "predicted_within_pairs": 48,
+        "missed_within_pairs": 0,
+        "false_cross_family_pairs": 0,
+        "within_pair_recall": 1.0,
+        "within_pair_precision": 1.0,
+        "ari_with_missing_samples_as_distinct_singletons": 1.0
+      },
+      "cluster_stability": 1.0,
+      "pair_model": {
+        "truth_pairs": 48,
+        "covered_true_pairs": 48,
+        "missing_true_pairs": 0,
+        "correct": 48,
+        "accuracy_counting_missing_as_wrong": 1.0,
+        "extra_cross_family_predictions": 0,
+        "by_parent_mating_type": {
+          "unrelated": {
+            "correct": 12,
+            "covered": 12,
+            "pairs": 12,
+            "accuracy_counting_missing_as_wrong": 1.0
+          },
+          "first_cousins": {
+            "correct": 18,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 1.0
+          },
+          "siblings": {
+            "correct": 18,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 1.0
+          }
+        },
+        "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+      }
+    }
+  },
+  "consensus": "Not reassessed: the separate baseline already fails consensus accuracy",
+  "submission_ready": false
+}
