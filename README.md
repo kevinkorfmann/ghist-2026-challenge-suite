@@ -5,10 +5,10 @@
 # GHIST 2026 challenge suite
 
 Inference methods for the original 12 GHIST 2026 challenges. The two later
-low-coverage challenges are under development in a separate continuation; they
-are not yet scientifically validated.
+low-coverage challenges also have scored final submissions; their scientific
+qualification limitations remain documented.
 
-**November 20: Task 9 has a validated versioned candidate; other scientific release gates remain open.**
+**November 20: all 14 final entries scored.** [Results and participant ranking](docs/ghist_participant_report_2026_11_20.md) · [Detailed Challenge 9 report](docs/task9_method_and_results_2026_11_20.md). Task 9 is second of four on both metrics in the 23:52 Berlin snapshot. Scientific qualification limitations remain documented in the reports below.
 
 [Current readiness and follow-up validation](docs/readiness_2026_11_20.md) ·
 [Complete pedigree pipelines and input checks](docs/parallel_followup_2026_11_20.md) ·
