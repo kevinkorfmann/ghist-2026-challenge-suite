@@ -57,8 +57,10 @@ python scripts/restore_frozen_assets.py \
 
 The restoration tool verifies each content object, rejects unsafe paths and refuses to overwrite different existing files. The original runtime root was `/vast/projects/smathi/cohort/korfmann/ghist2026`; the manifest records paths relative to that root. Several historical execution scripts use absolute server paths and deadline guards. For a replay, use the source snapshot identified by the task's method lock, supply the official inputs at its documented paths, and reproduce the recorded runtime environment. Do not treat deadline orchestration wrappers as generic current-date commands or overwrite archived predictions.
 
+The asset builder, `scripts/create_frozen_assets.py`, includes the bytes behind source-file links. The final bundle was checked across all 1,662 paths and 1,344 distinct content objects. Its receipt and verification report are in `experiments/final_archive_2026_11_20/`; a round-trip regression test checks linked libraries, deduplication, file permissions and restoration.
+
 Raw organizer VCF/BAM/reference downloads, virtual environments, caches, authentication material and unrelated private messages are outside the publication package. Official input versions, identifiers and hashes remain in the data and task manifests so the inputs can be obtained from their original source. Historical experimental files are snapshots, while the top-level source and tests provide the maintained checkout.
 
 ## Verification before publication
 
-The complete test suite passed 1,494 tests. Ruff checks passed for the maintained source, scripts and tests. All fourteen candidate hashes and scored receipts match. The local-work snapshot contains 3,072 files (558,180,506 bytes); large files are included in the release asset and indexed in the snapshot manifest.
+The initial complete test suite passed 1,494 tests, and the additional archive round-trip regression test passed. Ruff checks passed for the maintained source, scripts and tests. All fourteen candidate hashes and scored receipts match. The local-work snapshot contains 3,072 files (558,180,506 bytes); large files are included in the release asset and indexed in the snapshot manifest.
