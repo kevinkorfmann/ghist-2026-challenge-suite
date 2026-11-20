@@ -1,0 +1,26 @@
+{
+  "authorizing_agent": "/root",
+  "cap500_scientific_outcomes_inspected": false,
+  "freeze_sha256": "7a98a0e446cf5b5221fef48bace8743b5a604f7cd807fdff0c26df3df001b1bb",
+  "policy": "task14_pragmatic_usefulness_addendum_v1",
+  "primary_estimate": "seed1",
+  "registered_at_utc": "2026-11-20T20:31:58.257349+00:00",
+  "registered_before_any_complete_cap500_case": true,
+  "release": "Root independently audits both cases and signs a hash-bound decision before any final inference. No final data access by lowcoverage subagent. Root also reviews actual final sensitivities before any submission.",
+  "reported_not_erased": [
+    "observed stopping or iteration cap",
+    "full spectrum and segregating spectrum distances",
+    "strict 1 percent target stability",
+    "all historical failures"
+  ],
+  "required": {
+    "all_development_targets_absolute_relative_error_maximum": 0.3,
+    "both_development_cases_complete": true,
+    "callable_fraction_minimum": 0.99,
+    "complete_valid_all_three_estimator_outputs": true,
+    "every_seed2_and_continued_target_absolute_relative_change_maximum": 0.05,
+    "interior_success_and_independent_optimizer_agreement_all_three": true
+  },
+  "scientific_qualification": false,
+  "strict_gate_changes": false
+}

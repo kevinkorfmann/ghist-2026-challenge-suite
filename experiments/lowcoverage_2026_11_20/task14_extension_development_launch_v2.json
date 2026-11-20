@@ -1,0 +1,41 @@
+{
+  "actual_clock_immediately_before_dispatch": {
+    "actual_start_utc": "2026-11-20T20:19:57.542638+00:00",
+    "latest_start_utc": "2026-11-20T20:20:00+00:00",
+    "stage": "development"
+  },
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--export=ALL,FROZEN_SHA=5ac54648b10b3de0bdc328ef1074534dfbb117529a99e839c0799d8f9295436e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/develop_task14_extension_v2.sbatch"
+  ],
+  "completed_cap200_predecessor": [
+    [
+      "10856896_0",
+      "COMPLETED",
+      "0:0"
+    ],
+    [
+      "10856896_1",
+      "COMPLETED",
+      "0:0"
+    ]
+  ],
+  "concurrency": 2,
+  "coordination": "Root approvedcap500 scientific/resourcepolicy,then errored duringcompaction; independent sibling sourceaudit substitutesfor interrupted review. Newclockv2 preservesv1operationalfailure and consumes5of9marginminutes without changing215min/39CPUh caps.",
+  "cpus_per_job": 4,
+  "dispatch_returned_at_utc": "2026-11-20T20:19:57.772082+00:00",
+  "freeze_sha256": "5ac54648b10b3de0bdc328ef1074534dfbb117529a99e839c0799d8f9295436e",
+  "fresh_seeds_consumed": false,
+  "independent_source_clock_review": {
+    "agent": "/root/task10_readiness_development",
+    "reported_at_utc": "2026-11-20T20:19:00Z",
+    "result": "PASS; all21previoussources unchanged,23tarbindingsparse,method/gates/designs/seeds identical,clockonly+300s; remotefreeze/wrappers selfverified and not independently claimed."
+  },
+  "job_id": "10858043",
+  "minutes_per_job": 55,
+  "runtime_verification": "Full3166-file runtime verified by freeze immediately beforedispatch; everyworker independently rechecks beforeinputs and afterinference.",
+  "scientifically_ready": false,
+  "source_wrapper_binary_template_bindings_reverified_before_dispatch": true
+}

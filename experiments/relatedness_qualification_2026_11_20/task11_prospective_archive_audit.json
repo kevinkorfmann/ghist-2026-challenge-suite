@@ -1,0 +1,26 @@
+{
+  "scope": "prospective source archive and protocol integrity, not scientific validation",
+  "protocol_sha256": "f5ec05f6a4e3d27d82021bf6d1623e1392735f1896d9a2bda2249020b7120996",
+  "archive_sha256": "9806d3dbd190b27a61becfd48222b0242928a9171888226a1cb564633e79a27a",
+  "source_files_verified": 231,
+  "all_source_ast_parse": true,
+  "distinct_cohort_master_seeds": true,
+  "cohort_counts": {
+    "train": 16,
+    "calibration": 4,
+    "confirmation": 8
+  },
+  "clustering_policy": "average",
+  "gates": {
+    "accuracy_min": 0.8,
+    "balanced_accuracy_min": 0.75,
+    "each_label_recall_min": 0.6,
+    "bootstrap_balanced_lower95_min": 0.7,
+    "exact_family_recovery_min": 0.95,
+    "expected_calibration_error_max": 0.1,
+    "missing_samples_max": 0,
+    "missing_true_pairs_max": 0,
+    "extra_cross_family_pairs_max": 0
+  },
+  "release_authorized": false
+}

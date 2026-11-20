@@ -1,0 +1,159 @@
+{
+  "status": "FROZEN_INFERENCE_HANDOFF_NO_FINAL_INPUT_ACCESSED",
+  "original_source": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source",
+  "qualification_source": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural-qualification-source-v3",
+  "cpus": 8,
+  "wall_minutes": 90,
+  "memory_GiB": 44,
+  "model_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/pair_only_model.joblib",
+  "model_sha256": "bdfecf8dc908d1222b43c2b16731f4cbe2f465ed7dc93a8a090ecd4b224d4159",
+  "model_calibration_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/model_calibration_freeze.json",
+  "confidence_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural_calibration_v3/confidence_freeze.json",
+  "confidence_sha256": "3fd057e02e827cdd85d5aca2a5959700f8eed034b4dae451dd9225f969efbc8f",
+  "global_correctness_confidence": 0.7744,
+  "runtime": {
+    "python": "3.11.11",
+    "packages": {
+      "numpy": "2.4.6",
+      "scipy": "1.16.3",
+      "scikit-learn": "1.9.0",
+      "msprime": "1.4.2",
+      "joblib": "1.5.3"
+    }
+  },
+  "map_sha256": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba",
+  "map_bounds": {
+    "1": [
+      752721,
+      249170711
+    ],
+    "2": [
+      118913,
+      243043959
+    ],
+    "3": [
+      108226,
+      197800244
+    ],
+    "4": [
+      167596,
+      190936728
+    ],
+    "5": [
+      157856,
+      180692833
+    ],
+    "6": [
+      183917,
+      170981684
+    ],
+    "7": [
+      46239,
+      159119486
+    ],
+    "8": [
+      113565,
+      146280471
+    ],
+    "9": [
+      212908,
+      141027939
+    ],
+    "10": [
+      158946,
+      135473442
+    ],
+    "11": [
+      241489,
+      134944770
+    ],
+    "12": [
+      191619,
+      133744154
+    ],
+    "13": [
+      19260565,
+      115074878
+    ],
+    "14": [
+      19035752,
+      107285437
+    ],
+    "15": [
+      20161372,
+      102398631
+    ],
+    "16": [
+      143503,
+      90141355
+    ],
+    "17": [
+      6888,
+      81050981
+    ],
+    "18": [
+      112535,
+      78014582
+    ],
+    "19": [
+      261033,
+      59058083
+    ],
+    "20": [
+      69094,
+      62906514
+    ],
+    "21": [
+      14665973,
+      48094803
+    ],
+    "22": [
+      17087705,
+      51229805
+    ]
+  },
+  "minimum_markers_per_chromosome": 100,
+  "crop_rule": "Inclusive fixed training-map intervals; outside-domain records excluded and counted; no cM extrapolation. Training simulations contained no outside-domain markers. Preserve original IDs/alleles. Reject inadequate markers. 100 is operational caller minimum, not validation of marker-density equivalence.",
+  "missing_policy_default": "error",
+  "pragmatic_missingness_protocol_sha256": "3648c748c8ce1663a1a11167671e1c88890c3a235fad7c1eb68caa48213b9abc",
+  "optional_drop_site": "Disabled until frozen 25% thinning diagnostic passes exact declared gates; \u226575% eligible markers on every chromosome. MCAR proxy only; not structured-missingness qualification. No major-allele filling.",
+  "confidence_interpretation": "One global calibration correctness estimate; zero individual resolution; not root posterior. Does not assert strict ECE gate has passed.",
+  "csv": "Exactly indID1,indID2,relation; every unordered original-roster pair; official14labels; validate_relatedness challenge10 before atomic publication",
+  "limitations": [
+    "No final labels or challenge truth used",
+    "Source domain has mu1.25e-8 versus official humanmu1e-8",
+    "Phased complete calls or separately validated pragmatic complete-site filtering",
+    "Tree topology and conditional root ambiguity remain; source reports are not individual posterior probabilities",
+    "Root owns one final selection/upload/submission; candidate generation itself makes no readiness claim"
+  ],
+  "import_origins": {
+    "calibrate_phase": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/experiments/task10_development_2026_11_20/calibrate_phase.py",
+    "forest_distance_decoder": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural-qualification-source-v3/forest_distance_decoder.py",
+    "ghist_relatedness": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_relatedness/__init__.py",
+    "ghist_relatedness.labels": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_relatedness/labels.py",
+    "ghist_relatedness.provenance": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_relatedness/provenance.py",
+    "ghist_relatedness.validation": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_relatedness/validation.py",
+    "ghist_submission": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_submission/__init__.py",
+    "ghist_submission.validate": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/src/ghist_submission/validate.py",
+    "integer_edge_decoder": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural-qualification-source-v3/integer_edge_decoder.py",
+    "scripts.develop_task10_detected_ibd": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/develop_task10_detected_ibd.py",
+    "scripts.fit_human_family_relationships": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/fit_human_family_relationships.py",
+    "scripts.prepare_hapibd_vcf": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/prepare_hapibd_vcf.py",
+    "scripts.reconstruct_bonsai_pedigree": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/reconstruct_bonsai_pedigree.py",
+    "scripts.summarize_hapibd": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/summarize_hapibd.py",
+    "scripts.summarize_hapibd_shape": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/summarize_hapibd_shape.py",
+    "scripts.validate_task10_complete_pipeline": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/validate_task10_complete_pipeline.py",
+    "structural_confidence": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural-qualification-source-v3/structural_confidence.py",
+    "structural_pair_candidate": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/structural-qualification-source-v3/structural_pair_candidate.py"
+  },
+  "contract_tests": 5,
+  "tests_scope": "V1 contracts plus complete263ID/34453pair CSV and missing-pair rejection",
+  "version": 2,
+  "expected_people_policy": "Required --expected-people supplied by root from complete official VCF header; require exact match, no subset selection; emit every n*(n-1)/2 pair",
+  "root_preflight_samples": 263,
+  "root_expected_pairs": 34453,
+  "operational_evidence_people": 229,
+  "delta_from_v1": "Only replace hard229 count with required root-declared expected count and report expected combinations. Same model/features/crop/phase/missingness/decoder/confidence. V1 immutable; actual final input not modeled by this agent.",
+  "v1_protocol_sha256": "29ad1f1262235f170585a777cca9338bbe6a920a3a8957e417d0a0328877a2b4",
+  "v1_manifest_sha256": "46fd29342db0bedb0c91b4a44721a83106b16eb669d32f7c29a92a4c3fa1be01"
+}

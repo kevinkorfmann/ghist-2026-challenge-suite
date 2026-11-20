@@ -1,0 +1,23 @@
+{
+  "candidate": "nj10-decoder-of-frozen-detected-v2-probabilities",
+  "stage": "SUPPLEMENTARY_DEVELOPMENT_ONLY",
+  "v2_development_outcomes_observed_at_design": false,
+  "candidate_source_manifest_sha256": "7d4c00c9cfd9d197fce722e5de566078336ff0e6c2d7a39a84504e28a3bd9489",
+  "decoder_source_sha256": "f7182f64464b94a1a7f2d0ca9379c95b4ada6a16f1f855e7df167bc75d553b3a",
+  "variants": [
+    "context",
+    "pair_only"
+  ],
+  "threshold_cm": 10,
+  "policy": "Use frozen global_tree_predictions, with state_relatedness_ge_10 from retained detected panel features and frozen model probabilities. NJ unrooted tree and integer meiosis edges are inferred without truth; rank only roots that yield accepted labels for every roster pair. No valid root falls back to the corresponding pair predictions. No midpoint, generation, age or true topology prior. No other thresholds or parameter search.",
+  "cohorts": "Only the eight declared v2 development families; training/calibration and old reserved confirmation unchanged. This is an additional development diagnostic, not independent confirmation.",
+  "uncertainty": "Composite root scores are uncalibrated. Full rooted predictions are exploratory; retain all-root ambiguity. Do not export root probabilities or change original v2 scientific gates.",
+  "budget": {
+    "cpus": 2,
+    "minutes": 10,
+    "hard_cpu_hours": 0.3333333333333333
+  },
+  "advance_to_confirmation": false,
+  "submission_ready": false,
+  "launch_condition": "Only after v2 completion, and only if its fixed primary gates fail. If v2 passes, write a skipped record without computing decoder outputs."
+}

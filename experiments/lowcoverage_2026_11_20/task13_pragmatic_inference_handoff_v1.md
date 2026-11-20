@@ -1,0 +1,9 @@
+# Task13 fixed pragmatic fallback
+
+Selected from existing inspected synthetic development: GL2 SAF → winsfs 0.7.0, 500 blocks/window 100/tolerance 1e-4/cap 50 → unchanged 8 starts each L-BFGS-B and Powell. Run seed761001, seed761002 and seed761001 continued from its first spectrum; always format the continued estimate. No outcome-based switching or bias correction. The exact source remains audited `source_v12` under Task14 pragmatic freeze `7a98a0e446cf5b5221fef48bace8743b5a604f7cd807fdff0c26df3df001b1bb`.
+
+Remote files are in `/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/`: `lowcoverage_predict_task13_pragmatic.py`, `task13_pragmatic_selection_v1.json`, and `infer_task13_pragmatic_final_v1.sbatch`. The Slurm wrapper uses 4 CPUs, 5632M/CPU, 55 minutes, and rejects actual starts after 22:45 UTC. It creates `task13.pragmatic.submission.draft.yaml` and all raw estimation diagnostics; it never submits.
+
+Root decision fields: `authorize_final_inference: true`, `task: bottleneck`, `strict_qualification: false`, `freeze_sha256` as above, the exact `wrapper_sha256`, `primary_estimate: continued`, and `development_selection_disclosed: true`. Pass environment variables `ROOT_DECISION`, `DECISION_SHA`, `FINAL_INPUT_DIRECTORY`, `FINAL_REFERENCE`, `FINAL_OUTPUT` to sbatch. Output must be new. Normalize an exact organizer header in a separately bound staging directory, leaving original inputs unchanged.
+
+The method is selected for better aggregate recovery and optimizer/stopping reliability than the full-batch alternative. Its development age error was −4.32% and fraction error +41.21%; aggregate root-sum-square relative error was 0.414327. Original seed disagreement and recovery failures remain explicit. This is an unqualified fallback under the user's instruction to submit remaining tasks, not a scientific-readiness claim.

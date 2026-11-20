@@ -1,0 +1,63 @@
+### Bottleneck with Low Coverage
+For this challenge, you must infer how many generations ago a bottleneck occurred and the severity of that bottleneck, using low-coverage sequencing data.
+
+Unlike the other demographic inference challenges, these data are distributed as aligned reads (BAM files), not as a VCF. No variant calls, genotypes, or genotype likelihoods are provided. How you get from reads to demography is up to you.
+
+Data:
+[Testing BAMs](syn77432049)
+[Testing reference FASTA](syn77432060) ([index](syn77432058))
+[Final BAMs](syn77432048)
+[Final reference FASTA](syn77432061) ([index](syn77432059))
+
+[Submission file](syn74933357)
+
+Sequencing data:
+* 20 diploid individuals from a single population
+* Mean sequencing depth: approximately 2x per individual (depth varies between individuals)
+* Paired-end 126 bp reads, aligned with BWA-MEM to a single contig named `1`
+* Each archive unpacks to a folder of the same name, containing one coordinate-sorted, indexed BAM per individual and a `popfile.txt`. Each BAM's read group `SM` field holds its sample name. The `popfile.txt` has two columns: the sample and the population the sample is from.
+* The testing and final datasets use different reference sequences. Use the reference FASTA that matches the dataset you are analysing.
+
+Population genetic parameters:
+* Generation time: 1 year
+* Mutation rate (per generation per base pair): $$\mu = {1*10}^{-7}$$
+* Recombination rate (per generation per base pair): $$r = {1*10}^{-8}$$
+* Size of genomic region sequenced: 10,000,000 bp
+
+${evalsubmit?buttonText=Submit Testing Attempt to GHIST Bottleneck with Low Coverage Challenge&evaluationId=9620083&unavailableMessage=Join the team to submit to the challenge}
+${evalsubmit?buttonText=Submit Final Attempt to GHIST Bottleneck with Low Coverage Challenge&evaluationId=9620084&unavailableMessage=Join the team to submit to the challenge}
+
+[Details withheld in full]
+
+---
+
+### Split Isolation with Low Coverage
+For this challenge, two populations split from an ancestral population and have had no migration since. You must infer how many generations ago the split occurred and the current effective population sizes of both populations, using low-coverage sequencing data.
+
+Unlike the other demographic inference challenges, these data are distributed as aligned reads (BAM files), not as a VCF. No variant calls, genotypes, or genotype likelihoods are provided. How you get from reads to demography is up to you.
+
+Data:
+[Testing BAMs](syn77432188)
+[Testing reference FASTA](syn77432199) ([index](syn77432198))
+[Final BAMs](syn77432194)
+[Final reference FASTA](syn77432201) ([index](syn77432197))
+
+[Submission file](syn77432299)
+
+Sequencing data:
+* 20 diploid individuals: 10 from `pop1` and 10 from `pop2`, as listed in each dataset's `popfile.txt`
+* Mean sequencing depth: approximately 4x per individual (depth varies between individuals)
+* Paired-end 126 bp reads, aligned with BWA-MEM to a single contig named `1`
+* Each archive unpacks to a folder of the same name, containing one coordinate-sorted, indexed BAM per individual and a `popfile.txt`. Each BAM's read group `SM` field holds its sample name. The `popfile.txt` has two columns: the sample and the population the sample is from.
+* The testing and final datasets use different reference sequences. Use the reference FASTA that matches the dataset you are analysing.
+
+Population genetic parameters:
+* Generation time: 1 year
+* Mutation rate (per generation per base pair): $$\mu = {1*10}^{-7}$$
+* Recombination rate (per generation per base pair): $$r = {1*10}^{-8}$$
+* Size of genomic region sequenced: 10,000,000 bp
+
+${evalsubmit?buttonText=Submit Testing Attempt to GHIST Split Isolation with Low Coverage Challenge&evaluationId=9620085&unavailableMessage=Join the team to submit to the challenge}
+${evalsubmit?buttonText=Submit Final Attempt to GHIST Split Isolation with Low Coverage Challenge&evaluationId=9620086&unavailableMessage=Join the team to submit to the challenge}
+
+[Details withheld in full]

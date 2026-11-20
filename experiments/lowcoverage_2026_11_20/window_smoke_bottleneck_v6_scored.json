@@ -1,0 +1,97 @@
+{
+  "comparison": {
+    "callable_fraction": {
+      "continued": 0.9999699999980001,
+      "seed1": 0.99997,
+      "seed2": 0.999970000001
+    },
+    "comparisons": {
+      "continued": {
+        "frequency_L1": 0.00012745491562888393,
+        "target_relative_change": {
+          "generations": -0.0006916390652218496,
+          "post_decline_fraction": -0.00019496593648704597
+        }
+      },
+      "seed2": {
+        "frequency_L1": 0.0005376618998639293,
+        "target_relative_change": {
+          "generations": -0.022227390783241652,
+          "post_decline_fraction": -0.0021681206618143767
+        }
+      }
+    },
+    "early_stop_observed": {
+      "continued": true,
+      "seed1": true,
+      "seed2": true
+    },
+    "estimates": {
+      "continued": {
+        "generations": 15920.0057343468,
+        "post_decline_fraction": 0.010099062422264292
+      },
+      "seed1": {
+        "generations": 15931.02425306922,
+        "post_decline_fraction": 0.010101031779384645
+      },
+      "seed2": {
+        "generations": 15576.91915141895,
+        "post_decline_fraction": 0.010079131523678118
+      }
+    },
+    "optimizer_agreement": {
+      "continued": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B"
+        ],
+        "passed": false
+      },
+      "seed1": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B"
+        ],
+        "passed": false
+      },
+      "seed2": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B"
+        ],
+        "passed": false
+      }
+    },
+    "release_gate_policy": "v1 realSFS gates remain unpassed; separate development comparison only",
+    "scientifically_ready": false,
+    "task": "bottleneck"
+  },
+  "final_data_access": false,
+  "input_likelihood_protocol_sha256": "d688304e6f5d4a07788b0c0871955a16d05757c2e5648c9f7e6e351cf2c2d930",
+  "relative_errors": {
+    "continued": {
+      "generations": 6.9600028671734,
+      "post_decline_fraction": -0.9495046878886786
+    },
+    "seed1": {
+      "generations": 6.96551212653461,
+      "post_decline_fraction": -0.9494948411030768
+    },
+    "seed2": {
+      "generations": 6.788459575709475,
+      "post_decline_fraction": -0.9496043423816094
+    }
+  },
+  "scientifically_ready": false,
+  "simulation_sha256": "98c0fa520b6116ed067992ee203c05038d91b5d963d648b1d05887a42b013a79",
+  "source_sha256": "dff075b2d68de27fad6074cbc23000c09adf3866790a14aa8eb4dbf0902feb0e",
+  "testing_data_access": false,
+  "truth": {
+    "generations": 2000,
+    "post_decline_fraction": 0.2
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "scope": "Development launch guard, not scientific qualification",
+  "summaries": {
+    "calibration_base": {
+      "score": {
+        "truth_pairs": 735,
+        "correct": 610,
+        "accuracy": 0.8299319727891157,
+        "balanced_accuracy": 0.674933079083415,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.8297872340425532,
+          "avuncular": 0.6578947368421053,
+          "half_avuncular": 0.17857142857142858,
+          "avuncular_once_removed": 0.48717948717948717,
+          "avuncular_twice_removed": 0.8888888888888888,
+          "full_1st_cousin": 0.625,
+          "half_1st_cousin": 0.7321428571428571
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 39,
+          "avuncular": 25,
+          "half_avuncular": 10,
+          "avuncular_once_removed": 19,
+          "avuncular_twice_removed": 40,
+          "full_1st_cousin": 30,
+          "half_1st_cousin": 41
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 39,
+            "avuncular": 6,
+            "full_1st_cousin": 2
+          },
+          "avuncular": {
+            "half_sibling": 12,
+            "avuncular": 25,
+            "full_1st_cousin": 1
+          },
+          "half_avuncular": {
+            "avuncular_once_removed": 25,
+            "full_1st_cousin": 10,
+            "half_1st_cousin": 6,
+            "half_avuncular": 10,
+            "avuncular_twice_removed": 5
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 19,
+            "half_avuncular": 13,
+            "full_1st_cousin": 5,
+            "avuncular_twice_removed": 1,
+            "half_1st_cousin": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 40,
+            "half_avuncular": 1,
+            "half_1st_cousin": 4
+          },
+          "full_1st_cousin": {
+            "half_1st_cousin": 9,
+            "full_1st_cousin": 30,
+            "avuncular_once_removed": 8,
+            "half_avuncular": 1
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 41,
+            "half_avuncular": 3,
+            "full_1st_cousin": 3,
+            "avuncular_twice_removed": 9
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.019887200754522313,
+        "cohort_bootstrap_balanced_interval95": [
+          0.5919457197883216,
+          0.7430339403844839
+        ]
+      },
+      "checks": {
+        "accuracy": true,
+        "balanced_accuracy": false,
+        "each_label_recall": false,
+        "bootstrap_lower": false,
+        "family_recovery": true,
+        "missing_samples": true,
+        "missing_true_pairs": true,
+        "extra_pairs": true,
+        "calibration": true
+      },
+      "exact_family_recovery": 1.0,
+      "all_nine_gates_passed": false
+    },
+    "calibration_context": {
+      "score": {
+        "truth_pairs": 735,
+        "correct": 662,
+        "accuracy": 0.9006802721088435,
+        "balanced_accuracy": 0.8097590112077795,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9574468085106383,
+          "avuncular": 0.9210526315789473,
+          "half_avuncular": 0.5,
+          "avuncular_once_removed": 0.5384615384615384,
+          "avuncular_twice_removed": 0.9777777777777777,
+          "full_1st_cousin": 0.7083333333333334,
+          "half_1st_cousin": 0.875
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 45,
+          "avuncular": 35,
+          "half_avuncular": 28,
+          "avuncular_once_removed": 21,
+          "avuncular_twice_removed": 44,
+          "full_1st_cousin": 34,
+          "half_1st_cousin": 49
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 45,
+            "avuncular": 2
+          },
+          "avuncular": {
+            "half_sibling": 3,
+            "avuncular": 35
+          },
+          "half_avuncular": {
+            "avuncular_once_removed": 14,
+            "full_1st_cousin": 14,
+            "half_avuncular": 28
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 21,
+            "half_avuncular": 12,
+            "avuncular_twice_removed": 1,
+            "full_1st_cousin": 5
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 44,
+            "half_1st_cousin": 1
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 34,
+            "avuncular_once_removed": 10,
+            "half_1st_cousin": 4
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 49,
+            "full_1st_cousin": 2,
+            "avuncular_once_removed": 1,
+            "avuncular_twice_removed": 4
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.00862771822357926,
+        "cohort_bootstrap_balanced_interval95": [
+          0.706838768115942,
+          0.8969167710944026
+        ]
+      },
+      "checks": {
+        "accuracy": true,
+        "balanced_accuracy": true,
+        "each_label_recall": false,
+        "bootstrap_lower": true,
+        "family_recovery": true,
+        "missing_samples": true,
+        "missing_true_pairs": true,
+        "extra_pairs": true,
+        "calibration": true
+      },
+      "exact_family_recovery": 1.0,
+      "all_nine_gates_passed": false
+    },
+    "exposed_base": {
+      "score": {
+        "truth_pairs": 1443,
+        "correct": 1166,
+        "accuracy": 0.808038808038808,
+        "balanced_accuracy": 0.6512843002693645,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.7790697674418605,
+          "avuncular": 0.6928571428571428,
+          "half_avuncular": 0.1794871794871795,
+          "avuncular_once_removed": 0.5689655172413793,
+          "avuncular_twice_removed": 0.7708333333333334,
+          "full_1st_cousin": 0.6744186046511628,
+          "half_1st_cousin": 0.5446428571428571
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 67,
+          "avuncular": 97,
+          "half_avuncular": 14,
+          "avuncular_once_removed": 66,
+          "avuncular_twice_removed": 74,
+          "full_1st_cousin": 58,
+          "half_1st_cousin": 61
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "half_sibling": 67,
+            "avuncular": 15,
+            "full_1st_cousin": 3,
+            "half_avuncular": 1
+          },
+          "avuncular": {
+            "half_sibling": 40,
+            "avuncular": 97,
+            "avuncular_once_removed": 2,
+            "full_1st_cousin": 1
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 26,
+            "avuncular_once_removed": 26,
+            "half_avuncular": 14,
+            "half_sibling": 1,
+            "avuncular_twice_removed": 3,
+            "half_1st_cousin": 8
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 66,
+            "half_avuncular": 32,
+            "half_1st_cousin": 7,
+            "full_1st_cousin": 3,
+            "avuncular_twice_removed": 6,
+            "avuncular": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 74,
+            "avuncular_once_removed": 5,
+            "half_avuncular": 6,
+            "half_1st_cousin": 11
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 58,
+            "half_1st_cousin": 9,
+            "avuncular_twice_removed": 1,
+            "half_avuncular": 4,
+            "half_sibling": 4,
+            "avuncular_once_removed": 10
+          },
+          "half_1st_cousin": {
+            "avuncular_twice_removed": 28,
+            "half_1st_cousin": 61,
+            "avuncular_once_removed": 7,
+            "full_1st_cousin": 8,
+            "half_avuncular": 8
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.028334344081560013,
+        "cohort_bootstrap_balanced_interval95": [
+          0.5952696392017638,
+          0.7002964444603904
+        ]
+      },
+      "checks": {
+        "accuracy": true,
+        "balanced_accuracy": false,
+        "each_label_recall": false,
+        "bootstrap_lower": false,
+        "family_recovery": true,
+        "missing_samples": true,
+        "missing_true_pairs": true,
+        "extra_pairs": true,
+        "calibration": true
+      },
+      "exact_family_recovery": 1.0,
+      "all_nine_gates_passed": false
+    },
+    "exposed_context": {
+      "score": {
+        "truth_pairs": 1443,
+        "correct": 1231,
+        "accuracy": 0.853083853083853,
+        "balanced_accuracy": 0.7186039213893564,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.7093023255813954,
+          "avuncular": 0.9214285714285714,
+          "half_avuncular": 0.24358974358974358,
+          "avuncular_once_removed": 0.6551724137931034,
+          "avuncular_twice_removed": 0.8958333333333334,
+          "full_1st_cousin": 0.6627906976744186,
+          "half_1st_cousin": 0.6607142857142857
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 61,
+          "avuncular": 129,
+          "half_avuncular": 19,
+          "avuncular_once_removed": 76,
+          "avuncular_twice_removed": 86,
+          "full_1st_cousin": 57,
+          "half_1st_cousin": 74
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "avuncular": 25,
+            "half_sibling": 61
+          },
+          "avuncular": {
+            "avuncular": 129,
+            "half_sibling": 11
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 29,
+            "avuncular_once_removed": 28,
+            "half_avuncular": 19,
+            "half_1st_cousin": 2
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 76,
+            "half_avuncular": 32,
+            "half_1st_cousin": 4,
+            "full_1st_cousin": 1,
+            "avuncular_twice_removed": 3
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 86,
+            "half_1st_cousin": 10
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 57,
+            "half_1st_cousin": 3,
+            "avuncular_once_removed": 15,
+            "half_avuncular": 11
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 74,
+            "avuncular_twice_removed": 31,
+            "avuncular_once_removed": 2,
+            "full_1st_cousin": 5
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.03909138199265891,
+        "cohort_bootstrap_balanced_interval95": [
+          0.6264825255664355,
+          0.7903387424144689
+        ]
+      },
+      "checks": {
+        "accuracy": true,
+        "balanced_accuracy": false,
+        "each_label_recall": false,
+        "bootstrap_lower": false,
+        "family_recovery": true,
+        "missing_samples": true,
+        "missing_true_pairs": true,
+        "extra_pairs": true,
+        "calibration": true
+      },
+      "exact_family_recovery": 1.0,
+      "all_nine_gates_passed": false
+    }
+  },
+  "sparse_stress_launch_allowed": false,
+  "calibration_gate_scope": [
+    "each_label_recall",
+    "calibration"
+  ],
+  "gates": {
+    "accuracy_min": 0.8,
+    "balanced_accuracy_min": 0.75,
+    "each_label_recall_min": 0.6,
+    "bootstrap_balanced_lower95_min": 0.7,
+    "exact_family_recovery_min": 0.95,
+    "expected_calibration_error_max": 0.1,
+    "missing_samples_max": 0,
+    "missing_true_pairs_max": 0,
+    "extra_cross_family_pairs_max": 0
+  },
+  "preservation_audit": {
+    "calibration": {
+      "base_correct_to_wrong": 12,
+      "base_wrong_to_correct": 64,
+      "strong_base_correct_to_wrong": 0
+    },
+    "exposed": {
+      "base_correct_to_wrong": 45,
+      "base_wrong_to_correct": 110,
+      "strong_base_correct_to_wrong": 2
+    }
+  },
+  "models_sha256": {
+    "base_model.joblib": "b83ad537d0ec9f014410bc2a6314e63e04105b78a61a0d111707de05df6eab28",
+    "context_model.joblib": "4a1808aa733791bb4ea27a159624a490886aa9fec90967b510df28ce038deb95"
+  },
+  "fit_report_sha256": "6d13a7c8322a7f277da413e24ad324334379e2709afe9d17f288c647f78b7e89",
+  "audit_script_sha256": "7a0f562915684ff039218d004875d14657dac8877877659e3d1a41cf9e12501e",
+  "input_design_sha256": "2b4f32a1f8b1083e119ebde8351c16921028f5ce79f4ec4b13c5b4c969897b0c",
+  "launch_guard_sha256": "99e66511db306365c7611b35820d43c5f1130669093d8f589330d42a432e4587",
+  "output_sha256": {
+    "calibration_00_clusters.json": "6c840eb593cb90096a4acb920151ebde46fa8a044c9c2fd2b3398fed22a7e99e",
+    "calibration_00_protocol.json": "c135daa6a77ac9c2bbce985250b7a8b85ec3382cda5c9888e71437fc4d457cf2",
+    "calibration_00_result.json": "ed0a02513f7130d031e4640c43b717794a64e7e3aa8c07db761a78b5dd32b442",
+    "calibration_00_truth.json": "5b64b1397ca65fda4213cce9d5752d0e04d049625aa497ae29fa702aca13a43f",
+    "calibration_01_clusters.json": "13feff7182c2fe7062039329ff318256a12f733ce5ab7ff393a0eae2aa487ee6",
+    "calibration_01_protocol.json": "0da08418ad40b94b5479bb19e304e4cc49c114042019ac02cae326b4d70b2861",
+    "calibration_01_result.json": "660bc47c9936a459fdb27b4af1590dbb685fae2dff7cb6489c5db35854810dd5",
+    "calibration_01_truth.json": "d6a94fa8e2973ba76c8f03bed2c7400f308a2a7d30f57826d385e4e800becd9b",
+    "calibration_02_clusters.json": "00f72cad4f32e00290f3a670e3779ddae817e2da25b5ac825f71163c903c774e",
+    "calibration_02_protocol.json": "f7926f42d022e66545d75c76166c7a928060937be966d94bdfa2632d964e0800",
+    "calibration_02_result.json": "cce94e9e7425fc95a1f4f4018216c2243b2f4f4b1541e68e38dcff14ac714a47",
+    "calibration_02_truth.json": "6d6ef21a2af700b7e28db2b56e8c84b7bab9feda4ef369c4fcc8848a8a376f48",
+    "calibration_03_clusters.json": "277b537302a9f5f75f68dcd29fa444bb6842d189300784837e8d0e09da1bed4a",
+    "calibration_03_protocol.json": "04aa4ad0e11591d116f2af63541f3b49dab801a6608106f3bc176a68924c72e8",
+    "calibration_03_result.json": "97da289274580a0df4c81ecd4ee0f9c8c23974d88844db3e5437f97899209e7f",
+    "calibration_03_truth.json": "9a691eed02cf135bf585bec842c259dbaa7e8f61c2ef84d4adeade274f410abf",
+    "expanded_training_plan_v2.json": "0d1c89dc3c6f8925c0c5d88653cf555e28c44343d2f0c98509f9e08fb5f98da8",
+    "expanded_training_protocol_v1.json": "6a775296a270e9808f3d7e906a73d64951d732297c35e56f3f77a496247277e1",
+    "exposed_00_clusters.json": "1143e09b12e5d8dabdf4a14a494f5b1085350dfda2103b3a93436c0b6639445e",
+    "exposed_00_protocol.json": "a9c340e5a168871043304388cb8fe34eaeafd33c7a9ef1518c7c44472bb2d740",
+    "exposed_00_result.json": "8d361e26c079bd404c5bae7e4009027e08dc8bdbab75184b4f6d1dca1c1878f1",
+    "exposed_00_truth.json": "14d962f749c1f63c420f98a4d83c83bc970946cdf9aea2b78840edc5342cd1e5",
+    "exposed_01_clusters.json": "84db33816bb4bdd4cf3d1ce0784437cd6dab7b9fc1cd09583cda21eb2cfa63a1",
+    "exposed_01_protocol.json": "f706a1f4e99e94b52465180be284458e30c7fb7cb720a0a67a7344daad587d66",
+    "exposed_01_result.json": "fd152a8ad790ddb7faf5c8dbfb9f4ab86630483c5d54b10ebf524a393ed5684c",
+    "exposed_01_truth.json": "4688c8833138aca5758b31e8099487c4f6b2ff6b0e5bf6a012adfca5ae22139d",
+    "exposed_02_clusters.json": "0d71756cafe9e46d7f6232e61f6915e3908cb48be4b7e033b656af8a07169bcb",
+    "exposed_02_protocol.json": "35427ca951fa3c08cf8aae30021d2692d608080a211a4ed9fec0d091f56b82b1",
+    "exposed_02_result.json": "3ff62593f4dad33d43cb4f0f6b4cdc8f91d8d40cc8c1ba48e109ba9b9caeafaa",
+    "exposed_02_truth.json": "8ca047ae498943f77390e7496f145828ef0a65557d1ae573883cbcb7b93bc307",
+    "exposed_03_clusters.json": "a4a4986fcfa03e4d19fde2ff5d2f5ee1a9b41b4e489c1c3b45b05d09400b8b66",
+    "exposed_03_protocol.json": "33701130ef35fdf48981d172a2714b3e4ceff47f82009788342309c2f6520c5f",
+    "exposed_03_result.json": "a9d7a86fca8a440d36f341f22a4e17426a0b7e00e07064685346dc3f421feb4c",
+    "exposed_03_truth.json": "506292576837bfbc0ce985bc3961191532bc4134bd1416338f7c634ef10e7dc7",
+    "exposed_04_clusters.json": "cf5a36d2ba66b54f166cbc51d592bfd0cc6d48ba6227b46494fd17c236c455d4",
+    "exposed_04_protocol.json": "d84bdf33ca795979cedbf4bc49510a70154d35fd185de07f335f34493ba40154",
+    "exposed_04_result.json": "60c915868c0f0653cd37359c756fa5797c00fdb4a60d41692999b87a06030d63",
+    "exposed_04_truth.json": "5567ed155a0f24cb7aee77a4e47ab63862df52347eef9c365382a92b8f1ff219",
+    "exposed_05_clusters.json": "829bd9359c08669488b23358733f1bd59b28b8d4ee6126825f59369854794704",
+    "exposed_05_protocol.json": "c53d51a6fee31a4dedb9c8edd961ac309e80b5485a6e1f34cfefbd6c5755412b",
+    "exposed_05_result.json": "4b45c8b7ee1144e661a3dfcee473349b3f9dfd2d9d51e1b0f7974895f62e09d8",
+    "exposed_05_truth.json": "deb664e025d4fd36469f127de2898ec59181067b2bba4060a0774a32a2ef8e08",
+    "exposed_06_clusters.json": "afd6f9988b38327dad07b10dd71174a002f599434af167f15c80196a7e8e5d42",
+    "exposed_06_protocol.json": "f8d4dae80f356eefc9f4fceadc500b753b7fc3033328019468cb9713a7ff5270",
+    "exposed_06_result.json": "613aeda9cab620fe262c8a7481de8528db7e6b967ddfdc2c281e8e3fe2d531cb",
+    "exposed_06_truth.json": "3c3e8606af575218ba0d44f2258f7e594f5eeee39f0193ea7301ee1a30aceebb",
+    "exposed_07_clusters.json": "428ac8e9e1f2b1cc660382c5e0c18e64d55d1b40e185afc568d7a939e130d7c9",
+    "exposed_07_protocol.json": "b3697f5be4ee4ff0e4faf91922d210619173cf496dee0a390f723a507efdc9d0",
+    "exposed_07_result.json": "c637753f21751412800bcd075d5839d30dd6daa34933d3202a220804031fcd0c",
+    "exposed_07_truth.json": "b1adda6f12187d3227e84a9aa6c955332daf045d4977dd1070d5abd56d819c52",
+    "protocol_v5.json": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+    "report.json": "6d13a7c8322a7f277da413e24ad324334379e2709afe9d17f288c647f78b7e89",
+    "scoring_calibration_base.json": "e31cfa8d0014776cdde3b1cbddff841576f242ddcf7504f83f0b3bbe38e535c2",
+    "scoring_calibration_context.json": "f4946bd0140756afe779dd46450895f5bf1010537ac725d9c836403417a84411",
+    "scoring_exposed_base.json": "38109f04eadb2e9e65749b55beff4df98fcae9efdeb6c57bda09718edc26f5e0",
+    "scoring_exposed_context.json": "964e3fbf119867e65a337f73795edaf514a4bb17ad265d9a2e55af69006484b6",
+    "sparse_context_stress_design_v1.json": "2b4f32a1f8b1083e119ebde8351c16921028f5ce79f4ec4b13c5b4c969897b0c",
+    "sparse_context_stress_launch_guard_v1.json": "99e66511db306365c7611b35820d43c5f1130669093d8f589330d42a432e4587"
+  },
+  "submission_ready": false,
+  "reserved_confirmation_used": false
+}

@@ -1,0 +1,1052 @@
+{
+  "scope": "Registered pedigree metadata only; no genotypes/detection/predictions generated",
+  "design_sha256": "2b4f32a1f8b1083e119ebde8351c16921028f5ce79f4ec4b13c5b4c969897b0c",
+  "preview_script_sha256": "966b3d68c1f1c68f4efd905177666dbf3012955584427c8f579a7367d4d01f7e",
+  "cohorts": [
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 0,
+        "seed": 2026122000,
+        "population_size": 500,
+        "missing_rate": 0.0,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            1,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 2,
+          "label_counts": {
+            "siblings": 1
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            3,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 9,
+            "half_sibling": 12
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "avuncular": 16
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            1,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "half_avuncular": 4
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 4,
+          "label_counts": {
+            "siblings": 3,
+            "avuncular_once_removed": 3
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            2,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 11,
+            "avuncular_twice_removed": 10
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 9,
+            "full_1st_cousin": 12
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            3,
+            1
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 6,
+            "half_1st_cousin": 9
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 57,
+        "half_sibling": 12,
+        "avuncular": 16,
+        "half_avuncular": 4,
+        "avuncular_once_removed": 3,
+        "avuncular_twice_removed": 10,
+        "full_1st_cousin": 12,
+        "half_1st_cousin": 9
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 1,
+        "seed": 2026122001,
+        "population_size": 1000,
+        "missing_rate": 0.005,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            3,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 21
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            1,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 2,
+          "label_counts": {
+            "half_sibling": 1
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            4,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "avuncular": 16
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 4,
+          "label_counts": {
+            "siblings": 3,
+            "half_avuncular": 3
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            4,
+            1
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 9,
+            "avuncular_once_removed": 12
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "avuncular_twice_removed": 16
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            1,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 15,
+            "full_1st_cousin": 6
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 9,
+            "half_1st_cousin": 12
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 81,
+        "half_sibling": 1,
+        "avuncular": 16,
+        "half_avuncular": 3,
+        "avuncular_once_removed": 12,
+        "avuncular_twice_removed": 16,
+        "full_1st_cousin": 6,
+        "half_1st_cousin": 12
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 2,
+        "seed": 2026122002,
+        "population_size": 2000,
+        "missing_rate": 0.02,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            4,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 10
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            3,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 18,
+            "half_sibling": 18
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            1,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "avuncular": 4
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            1,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 15,
+            "half_avuncular": 6
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 4,
+          "label_counts": {
+            "siblings": 3,
+            "avuncular_once_removed": 3
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            2,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 16,
+            "avuncular_twice_removed": 12
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            2,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 7,
+            "full_1st_cousin": 8
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            2,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 7,
+            "half_1st_cousin": 8
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 82,
+        "half_sibling": 18,
+        "avuncular": 4,
+        "half_avuncular": 6,
+        "avuncular_once_removed": 3,
+        "avuncular_twice_removed": 12,
+        "full_1st_cousin": 8,
+        "half_1st_cousin": 8
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 3,
+        "seed": 2026122003,
+        "population_size": 500,
+        "missing_rate": 0.005,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            2,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 21
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 4,
+          "label_counts": {
+            "siblings": 3,
+            "half_sibling": 3
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            1,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "avuncular": 4
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "half_avuncular": 16
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 10,
+            "avuncular_once_removed": 5
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "avuncular_twice_removed": 16
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            1,
+            1
+          ],
+          "third_branch": true,
+          "observed_samples": 4,
+          "label_counts": {
+            "full_1st_cousin": 3,
+            "siblings": 3
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 9,
+            "half_1st_cousin": 12
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 76,
+        "half_sibling": 3,
+        "avuncular": 4,
+        "half_avuncular": 16,
+        "avuncular_once_removed": 5,
+        "avuncular_twice_removed": 16,
+        "full_1st_cousin": 3,
+        "half_1st_cousin": 12
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 4,
+        "seed": 2026122004,
+        "population_size": 1000,
+        "missing_rate": 0.02,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            2,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 15
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            1,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "half_sibling": 4
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 4,
+            "avuncular": 9,
+            "avuncular_once_removed": 2
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            1,
+            1
+          ],
+          "third_branch": true,
+          "observed_samples": 4,
+          "label_counts": {
+            "half_avuncular": 3,
+            "siblings": 3
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 10,
+          "label_counts": {
+            "siblings": 13,
+            "avuncular_once_removed": 16,
+            "avuncular": 8,
+            "avuncular_twice_removed": 8
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            4,
+            1
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 7,
+            "avuncular_twice_removed": 4,
+            "avuncular": 2,
+            "avuncular_once_removed": 8
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            3,
+            2
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 4,
+            "full_1st_cousin": 6
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            2,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 16,
+            "half_1st_cousin": 12
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 68,
+        "half_sibling": 4,
+        "avuncular": 19,
+        "avuncular_once_removed": 26,
+        "half_avuncular": 3,
+        "avuncular_twice_removed": 12,
+        "full_1st_cousin": 6,
+        "half_1st_cousin": 12
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 5,
+        "seed": 2026122005,
+        "population_size": 2000,
+        "missing_rate": 0.0,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 36
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 4,
+          "label_counts": {
+            "siblings": 3,
+            "half_sibling": 3
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            4,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 8,
+            "avuncular": 12,
+            "avuncular_once_removed": 8
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            3,
+            2
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 4,
+            "half_avuncular": 6
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 10,
+            "avuncular_once_removed": 12,
+            "avuncular": 6,
+            "avuncular_twice_removed": 8
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            3,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 7,
+            "avuncular_twice_removed": 9,
+            "avuncular": 6,
+            "avuncular_once_removed": 6
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            4,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "full_1st_cousin": 16
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            1,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 2,
+          "label_counts": {
+            "half_1st_cousin": 1
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 80,
+        "half_sibling": 3,
+        "avuncular": 24,
+        "avuncular_once_removed": 26,
+        "half_avuncular": 6,
+        "avuncular_twice_removed": 17,
+        "full_1st_cousin": 16,
+        "half_1st_cousin": 1
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 6,
+        "seed": 2026122006,
+        "population_size": 500,
+        "missing_rate": 0.005,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": false,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 21
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            3,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 13,
+            "half_sibling": 15
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            1,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 2,
+            "avuncular": 6,
+            "avuncular_once_removed": 2
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 16,
+            "half_avuncular": 20
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            1,
+            2
+          ],
+          "third_branch": true,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 2,
+            "avuncular_once_removed": 2,
+            "avuncular": 4,
+            "avuncular_twice_removed": 2
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            3,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 10,
+            "avuncular_twice_removed": 12,
+            "avuncular": 8,
+            "avuncular_once_removed": 6
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            1,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "full_1st_cousin": 4
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            4,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 9,
+          "label_counts": {
+            "siblings": 16,
+            "half_1st_cousin": 20
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 86,
+        "half_sibling": 15,
+        "avuncular": 18,
+        "avuncular_once_removed": 10,
+        "half_avuncular": 20,
+        "avuncular_twice_removed": 14,
+        "full_1st_cousin": 4,
+        "half_1st_cousin": 20
+      }
+    },
+    {
+      "config": {
+        "split": "sparse_stress",
+        "index": 7,
+        "seed": 2026122007,
+        "population_size": 2000,
+        "missing_rate": 0.02,
+        "min_branch_size": 1,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "families": [
+        {
+          "focal_label": "siblings",
+          "branch_sizes": [
+            1,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 7,
+          "label_counts": {
+            "siblings": 21
+          }
+        },
+        {
+          "focal_label": "half_sibling",
+          "branch_sizes": [
+            4,
+            4
+          ],
+          "third_branch": false,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 12,
+            "half_sibling": 16
+          }
+        },
+        {
+          "focal_label": "avuncular",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 4,
+            "avuncular": 9,
+            "avuncular_once_removed": 2
+          }
+        },
+        {
+          "focal_label": "half_avuncular",
+          "branch_sizes": [
+            4,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 5,
+          "label_counts": {
+            "siblings": 6,
+            "half_avuncular": 4
+          }
+        },
+        {
+          "focal_label": "avuncular_once_removed",
+          "branch_sizes": [
+            3,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 7,
+            "avuncular_once_removed": 9,
+            "avuncular": 6,
+            "avuncular_twice_removed": 6
+          }
+        },
+        {
+          "focal_label": "avuncular_twice_removed",
+          "branch_sizes": [
+            1,
+            3
+          ],
+          "third_branch": true,
+          "observed_samples": 6,
+          "label_counts": {
+            "siblings": 4,
+            "avuncular_twice_removed": 3,
+            "avuncular": 6,
+            "avuncular_once_removed": 2
+          }
+        },
+        {
+          "focal_label": "full_1st_cousin",
+          "branch_sizes": [
+            2,
+            4
+          ],
+          "third_branch": true,
+          "observed_samples": 8,
+          "label_counts": {
+            "siblings": 16,
+            "full_1st_cousin": 12
+          }
+        },
+        {
+          "focal_label": "half_1st_cousin",
+          "branch_sizes": [
+            2,
+            1
+          ],
+          "third_branch": false,
+          "observed_samples": 3,
+          "label_counts": {
+            "siblings": 1,
+            "half_1st_cousin": 2
+          }
+        }
+      ],
+      "label_counts": {
+        "siblings": 71,
+        "half_sibling": 16,
+        "avuncular": 21,
+        "avuncular_once_removed": 13,
+        "half_avuncular": 4,
+        "avuncular_twice_removed": 9,
+        "full_1st_cousin": 12,
+        "half_1st_cousin": 2
+      }
+    }
+  ],
+  "total_label_counts": {
+    "siblings": 601,
+    "half_sibling": 72,
+    "avuncular": 122,
+    "half_avuncular": 62,
+    "avuncular_once_removed": 98,
+    "avuncular_twice_removed": 106,
+    "full_1st_cousin": 67,
+    "half_1st_cousin": 76
+  },
+  "total_pairs": 1204
+}

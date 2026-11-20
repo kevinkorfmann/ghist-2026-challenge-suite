@@ -1,0 +1,1508 @@
+{
+  "state": "PASS",
+  "cohorts": [
+    {
+      "index": 40,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009",
+          "sample_010",
+          "sample_011",
+          "sample_012",
+          "sample_013",
+          "sample_014",
+          "sample_015"
+        ],
+        "read_per_chromosome": {
+          "1": 187462,
+          "2": 183647,
+          "3": 150463,
+          "4": 144956,
+          "5": 136531,
+          "6": 129631,
+          "7": 120955,
+          "8": 110830,
+          "9": 106887,
+          "10": 102869,
+          "11": 102479,
+          "12": 100195,
+          "13": 72584,
+          "14": 67449,
+          "15": 62488,
+          "16": 68180,
+          "17": 61218,
+          "18": 58746,
+          "19": 44524,
+          "20": 47634,
+          "21": 25125,
+          "22": 26052
+        },
+        "retained_per_chromosome": {
+          "1": 187462,
+          "2": 183647,
+          "3": 150463,
+          "4": 144956,
+          "5": 136531,
+          "6": 129631,
+          "7": 120955,
+          "8": 110830,
+          "9": 106887,
+          "10": 102869,
+          "11": 102479,
+          "12": 100195,
+          "13": 72584,
+          "14": 67449,
+          "15": 62488,
+          "16": 68180,
+          "17": 61218,
+          "18": 58746,
+          "19": 44524,
+          "20": 47634,
+          "21": 25125,
+          "22": 26052
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2110905,
+        "records_retained": 2110905,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_40.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_40.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2110905,
+        "records_written": 2110905,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 16
+      },
+      "comparison": {
+        "original_content_sha256": "1035f017d1297603bd3d039cba4e53e6d0951dfebc8b645afa8e3e8a1fde88ea",
+        "cropped_content_sha256": "1035f017d1297603bd3d039cba4e53e6d0951dfebc8b645afa8e3e8a1fde88ea",
+        "old_prepared_content_sha256": "1035f017d1297603bd3d039cba4e53e6d0951dfebc8b645afa8e3e8a1fde88ea",
+        "new_prepared_content_sha256": "1035f017d1297603bd3d039cba4e53e6d0951dfebc8b645afa8e3e8a1fde88ea"
+      }
+    },
+    {
+      "index": 41,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009"
+        ],
+        "read_per_chromosome": {
+          "1": 179885,
+          "2": 174550,
+          "3": 141734,
+          "4": 137278,
+          "5": 129117,
+          "6": 122563,
+          "7": 114007,
+          "8": 105392,
+          "9": 102531,
+          "10": 96846,
+          "11": 96042,
+          "12": 96616,
+          "13": 69535,
+          "14": 64424,
+          "15": 59556,
+          "16": 65027,
+          "17": 58505,
+          "18": 55753,
+          "19": 42695,
+          "20": 45487,
+          "21": 24108,
+          "22": 24641
+        },
+        "retained_per_chromosome": {
+          "1": 179885,
+          "2": 174550,
+          "3": 141734,
+          "4": 137278,
+          "5": 129117,
+          "6": 122563,
+          "7": 114007,
+          "8": 105392,
+          "9": 102531,
+          "10": 96846,
+          "11": 96042,
+          "12": 96616,
+          "13": 69535,
+          "14": 64424,
+          "15": 59556,
+          "16": 65027,
+          "17": 58505,
+          "18": 55753,
+          "19": 42695,
+          "20": 45487,
+          "21": 24108,
+          "22": 24641
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2006292,
+        "records_retained": 2006292,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_41.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_41.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2006292,
+        "records_written": 2006292,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 10
+      },
+      "comparison": {
+        "original_content_sha256": "b5da8cca3a37780e3558ec4a07c736bb11fced2d8a31595960a5e5d40a37a757",
+        "cropped_content_sha256": "b5da8cca3a37780e3558ec4a07c736bb11fced2d8a31595960a5e5d40a37a757",
+        "old_prepared_content_sha256": "b5da8cca3a37780e3558ec4a07c736bb11fced2d8a31595960a5e5d40a37a757",
+        "new_prepared_content_sha256": "b5da8cca3a37780e3558ec4a07c736bb11fced2d8a31595960a5e5d40a37a757"
+      }
+    },
+    {
+      "index": 42,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007"
+        ],
+        "read_per_chromosome": {
+          "1": 206550,
+          "2": 201767,
+          "3": 165237,
+          "4": 157102,
+          "5": 149590,
+          "6": 140303,
+          "7": 131731,
+          "8": 121252,
+          "9": 116280,
+          "10": 112114,
+          "11": 111718,
+          "12": 110390,
+          "13": 79743,
+          "14": 73015,
+          "15": 67342,
+          "16": 75483,
+          "17": 67262,
+          "18": 65272,
+          "19": 49157,
+          "20": 52015,
+          "21": 27322,
+          "22": 28533
+        },
+        "retained_per_chromosome": {
+          "1": 206550,
+          "2": 201767,
+          "3": 165237,
+          "4": 157102,
+          "5": 149590,
+          "6": 140303,
+          "7": 131731,
+          "8": 121252,
+          "9": 116280,
+          "10": 112114,
+          "11": 111718,
+          "12": 110390,
+          "13": 79743,
+          "14": 73015,
+          "15": 67342,
+          "16": 75483,
+          "17": 67262,
+          "18": 65272,
+          "19": 49157,
+          "20": 52015,
+          "21": 27322,
+          "22": 28533
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2309178,
+        "records_retained": 2309178,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_42.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_42.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2309178,
+        "records_written": 2309178,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 8
+      },
+      "comparison": {
+        "original_content_sha256": "5e0e53e18c96b49e82c5786e42ce0f32915950ab955c40de7419e4e99eb0460b",
+        "cropped_content_sha256": "5e0e53e18c96b49e82c5786e42ce0f32915950ab955c40de7419e4e99eb0460b",
+        "old_prepared_content_sha256": "5e0e53e18c96b49e82c5786e42ce0f32915950ab955c40de7419e4e99eb0460b",
+        "new_prepared_content_sha256": "5e0e53e18c96b49e82c5786e42ce0f32915950ab955c40de7419e4e99eb0460b"
+      }
+    },
+    {
+      "index": 43,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009",
+          "sample_010",
+          "sample_011",
+          "sample_012",
+          "sample_013",
+          "sample_014",
+          "sample_015"
+        ],
+        "read_per_chromosome": {
+          "1": 189227,
+          "2": 185615,
+          "3": 150659,
+          "4": 145199,
+          "5": 137408,
+          "6": 129816,
+          "7": 121712,
+          "8": 111262,
+          "9": 107170,
+          "10": 102885,
+          "11": 102364,
+          "12": 101223,
+          "13": 73043,
+          "14": 66730,
+          "15": 62271,
+          "16": 68534,
+          "17": 61449,
+          "18": 59353,
+          "19": 44613,
+          "20": 47965,
+          "21": 25544,
+          "22": 26168
+        },
+        "retained_per_chromosome": {
+          "1": 189227,
+          "2": 185615,
+          "3": 150659,
+          "4": 145199,
+          "5": 137408,
+          "6": 129816,
+          "7": 121712,
+          "8": 111262,
+          "9": 107170,
+          "10": 102885,
+          "11": 102364,
+          "12": 101223,
+          "13": 73043,
+          "14": 66730,
+          "15": 62271,
+          "16": 68534,
+          "17": 61449,
+          "18": 59353,
+          "19": 44613,
+          "20": 47965,
+          "21": 25544,
+          "22": 26168
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2120210,
+        "records_retained": 2120210,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_43.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_43.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2120210,
+        "records_written": 2120210,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 16
+      },
+      "comparison": {
+        "original_content_sha256": "12032fd0b9d95e4987c7df49e9eaec61d1135dc430b40d3df0a7bde34c267b4a",
+        "cropped_content_sha256": "12032fd0b9d95e4987c7df49e9eaec61d1135dc430b40d3df0a7bde34c267b4a",
+        "old_prepared_content_sha256": "12032fd0b9d95e4987c7df49e9eaec61d1135dc430b40d3df0a7bde34c267b4a",
+        "new_prepared_content_sha256": "12032fd0b9d95e4987c7df49e9eaec61d1135dc430b40d3df0a7bde34c267b4a"
+      }
+    },
+    {
+      "index": 44,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009"
+        ],
+        "read_per_chromosome": {
+          "1": 182973,
+          "2": 177634,
+          "3": 145841,
+          "4": 140868,
+          "5": 133041,
+          "6": 126407,
+          "7": 117442,
+          "8": 107952,
+          "9": 103268,
+          "10": 100005,
+          "11": 99529,
+          "12": 98058,
+          "13": 70447,
+          "14": 65247,
+          "15": 60859,
+          "16": 66753,
+          "17": 60077,
+          "18": 56971,
+          "19": 43630,
+          "20": 45882,
+          "21": 24660,
+          "22": 25366
+        },
+        "retained_per_chromosome": {
+          "1": 182973,
+          "2": 177634,
+          "3": 145841,
+          "4": 140868,
+          "5": 133041,
+          "6": 126407,
+          "7": 117442,
+          "8": 107952,
+          "9": 103268,
+          "10": 100005,
+          "11": 99529,
+          "12": 98058,
+          "13": 70447,
+          "14": 65247,
+          "15": 60859,
+          "16": 66753,
+          "17": 60077,
+          "18": 56971,
+          "19": 43630,
+          "20": 45882,
+          "21": 24660,
+          "22": 25366
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2052910,
+        "records_retained": 2052910,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_44.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_44.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2052910,
+        "records_written": 2052910,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 10
+      },
+      "comparison": {
+        "original_content_sha256": "0818a49f2b2ed2eda0702a57d40374ab543138b2abd66343eb4400ce279e90c4",
+        "cropped_content_sha256": "0818a49f2b2ed2eda0702a57d40374ab543138b2abd66343eb4400ce279e90c4",
+        "old_prepared_content_sha256": "0818a49f2b2ed2eda0702a57d40374ab543138b2abd66343eb4400ce279e90c4",
+        "new_prepared_content_sha256": "0818a49f2b2ed2eda0702a57d40374ab543138b2abd66343eb4400ce279e90c4"
+      }
+    },
+    {
+      "index": 45,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009"
+        ],
+        "read_per_chromosome": {
+          "1": 179148,
+          "2": 174703,
+          "3": 142188,
+          "4": 138072,
+          "5": 130853,
+          "6": 123863,
+          "7": 115331,
+          "8": 105292,
+          "9": 101774,
+          "10": 97630,
+          "11": 97189,
+          "12": 96149,
+          "13": 69032,
+          "14": 64160,
+          "15": 59165,
+          "16": 64947,
+          "17": 58952,
+          "18": 56140,
+          "19": 42989,
+          "20": 45683,
+          "21": 24256,
+          "22": 24606
+        },
+        "retained_per_chromosome": {
+          "1": 179148,
+          "2": 174703,
+          "3": 142188,
+          "4": 138072,
+          "5": 130853,
+          "6": 123863,
+          "7": 115331,
+          "8": 105292,
+          "9": 101774,
+          "10": 97630,
+          "11": 97189,
+          "12": 96149,
+          "13": 69032,
+          "14": 64160,
+          "15": 59165,
+          "16": 64947,
+          "17": 58952,
+          "18": 56140,
+          "19": 42989,
+          "20": 45683,
+          "21": 24256,
+          "22": 24606
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2012122,
+        "records_retained": 2012122,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_45.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_45.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2012122,
+        "records_written": 2012122,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 10
+      },
+      "comparison": {
+        "original_content_sha256": "6138dba97618bc3a1bdd866f2d32cb04a93e97662e8748aa49bbf1dfbb3b0396",
+        "cropped_content_sha256": "6138dba97618bc3a1bdd866f2d32cb04a93e97662e8748aa49bbf1dfbb3b0396",
+        "old_prepared_content_sha256": "6138dba97618bc3a1bdd866f2d32cb04a93e97662e8748aa49bbf1dfbb3b0396",
+        "new_prepared_content_sha256": "6138dba97618bc3a1bdd866f2d32cb04a93e97662e8748aa49bbf1dfbb3b0396"
+      }
+    },
+    {
+      "index": 46,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009",
+          "sample_010",
+          "sample_011",
+          "sample_012",
+          "sample_013"
+        ],
+        "read_per_chromosome": {
+          "1": 180369,
+          "2": 177528,
+          "3": 144579,
+          "4": 139510,
+          "5": 131591,
+          "6": 124407,
+          "7": 116057,
+          "8": 106413,
+          "9": 103175,
+          "10": 98276,
+          "11": 98108,
+          "12": 98043,
+          "13": 69937,
+          "14": 64866,
+          "15": 60208,
+          "16": 66191,
+          "17": 59349,
+          "18": 56785,
+          "19": 42467,
+          "20": 46200,
+          "21": 24670,
+          "22": 24894
+        },
+        "retained_per_chromosome": {
+          "1": 180369,
+          "2": 177528,
+          "3": 144579,
+          "4": 139510,
+          "5": 131591,
+          "6": 124407,
+          "7": 116057,
+          "8": 106413,
+          "9": 103175,
+          "10": 98276,
+          "11": 98108,
+          "12": 98043,
+          "13": 69937,
+          "14": 64866,
+          "15": 60208,
+          "16": 66191,
+          "17": 59349,
+          "18": 56785,
+          "19": 42467,
+          "20": 46200,
+          "21": 24670,
+          "22": 24894
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2033623,
+        "records_retained": 2033623,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_46.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_46.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2033623,
+        "records_written": 2033623,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 14
+      },
+      "comparison": {
+        "original_content_sha256": "664db4384330eb10ae7b23366f93aae93c63085df75939fae337f4dcb6d87e74",
+        "cropped_content_sha256": "664db4384330eb10ae7b23366f93aae93c63085df75939fae337f4dcb6d87e74",
+        "old_prepared_content_sha256": "664db4384330eb10ae7b23366f93aae93c63085df75939fae337f4dcb6d87e74",
+        "new_prepared_content_sha256": "664db4384330eb10ae7b23366f93aae93c63085df75939fae337f4dcb6d87e74"
+      }
+    },
+    {
+      "index": 47,
+      "crop": {
+        "samples": [
+          "sample_000",
+          "sample_001",
+          "sample_002",
+          "sample_003",
+          "sample_004",
+          "sample_005",
+          "sample_006",
+          "sample_007",
+          "sample_008",
+          "sample_009",
+          "sample_010",
+          "sample_011",
+          "sample_012",
+          "sample_013"
+        ],
+        "read_per_chromosome": {
+          "1": 182681,
+          "2": 178129,
+          "3": 145741,
+          "4": 140394,
+          "5": 133078,
+          "6": 125331,
+          "7": 117535,
+          "8": 107321,
+          "9": 103070,
+          "10": 99307,
+          "11": 99454,
+          "12": 98668,
+          "13": 70021,
+          "14": 64190,
+          "15": 60225,
+          "16": 65846,
+          "17": 59265,
+          "18": 57353,
+          "19": 43357,
+          "20": 45759,
+          "21": 24629,
+          "22": 25241
+        },
+        "retained_per_chromosome": {
+          "1": 182681,
+          "2": 178129,
+          "3": 145741,
+          "4": 140394,
+          "5": 133078,
+          "6": 125331,
+          "7": 117535,
+          "8": 107321,
+          "9": 103070,
+          "10": 99307,
+          "11": 99454,
+          "12": 98668,
+          "13": 70021,
+          "14": 64190,
+          "15": 60225,
+          "16": 65846,
+          "17": 59265,
+          "18": 57353,
+          "19": 43357,
+          "20": 45759,
+          "21": 24629,
+          "22": 25241
+        },
+        "excluded_per_chromosome": {},
+        "records_read": 2046595,
+        "records_retained": 2046595,
+        "records_excluded": 0,
+        "inclusive_map_bounds": {
+          "1": [
+            752721,
+            249170711
+          ],
+          "2": [
+            118913,
+            243043959
+          ],
+          "3": [
+            108226,
+            197800244
+          ],
+          "4": [
+            167596,
+            190936728
+          ],
+          "5": [
+            157856,
+            180692833
+          ],
+          "6": [
+            183917,
+            170981684
+          ],
+          "7": [
+            46239,
+            159119486
+          ],
+          "8": [
+            113565,
+            146280471
+          ],
+          "9": [
+            212908,
+            141027939
+          ],
+          "10": [
+            158946,
+            135473442
+          ],
+          "11": [
+            241489,
+            134944770
+          ],
+          "12": [
+            191619,
+            133744154
+          ],
+          "13": [
+            19260565,
+            115074878
+          ],
+          "14": [
+            19035752,
+            107285437
+          ],
+          "15": [
+            20161372,
+            102398631
+          ],
+          "16": [
+            143503,
+            90141355
+          ],
+          "17": [
+            6888,
+            81050981
+          ],
+          "18": [
+            112535,
+            78014582
+          ],
+          "19": [
+            261033,
+            59058083
+          ],
+          "20": [
+            69094,
+            62906514
+          ],
+          "21": [
+            14665973,
+            48094803
+          ],
+          "22": [
+            17087705,
+            51229805
+          ]
+        },
+        "alleles_modified": 0,
+        "scope": "Fixed training-map domain only; no genetic-map extrapolation, imputation, phase inference or MAF tuning"
+      },
+      "contract": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/crop_47.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/handoff_crop_parity_v1/prepared_47.vcf.gz",
+        "missing_policy": "error",
+        "records_read": 2046595,
+        "records_written": 2046595,
+        "multiallelic_records_skipped": 0,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 0,
+        "unphased_homozygotes_normalized": 0,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 14
+      },
+      "comparison": {
+        "original_content_sha256": "d9562ad02e79e1625ba76158145a07f2ed6155a5f3c8b4a800f8616db28a6bfc",
+        "cropped_content_sha256": "d9562ad02e79e1625ba76158145a07f2ed6155a5f3c8b4a800f8616db28a6bfc",
+        "old_prepared_content_sha256": "d9562ad02e79e1625ba76158145a07f2ed6155a5f3c8b4a800f8616db28a6bfc",
+        "new_prepared_content_sha256": "d9562ad02e79e1625ba76158145a07f2ed6155a5f3c8b4a800f8616db28a6bfc"
+      }
+    }
+  ],
+  "input_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_040/family.normalized.vcf.gz": "56be9755ca55e6e085a1a4467b0e2fd68d7a1843add64f442738fc79cb322105",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_040/prepared.vcf.gz": "ef613c6d6d2f36abcd895ec835f1cc67130025105ea426c4178f603d066ece79",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_041/family.normalized.vcf.gz": "e8f454062545ea49742469a93cce11ee661934512a374f08de8e8b2e744de269",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_041/prepared.vcf.gz": "a7c36c9b7909020dc8e5e0e7882e6b843b02a4c8ffafed057115a4bae943836d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_042/family.normalized.vcf.gz": "f07f5273f156ff2beec745a32faae5d991dde82df6caef8e312fcc8e2667a851",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_042/prepared.vcf.gz": "57813ac383f558d1070208b3ab3e5d51a95e9f175650e5b52d462467830066be",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_043/family.normalized.vcf.gz": "d998668bcb7779dae8b4e5629a92ad750c2c2f10c7776d3dc817810136bf7b85",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_043/prepared.vcf.gz": "17559ba5144d36b9b428f26ac4a1639b5827038a47763483f7c0dff70d9e721f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_044/family.normalized.vcf.gz": "0d249fd47c3227df502bf4e9b1c16621b0662fe7036f66686db3dce30d3acef7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_044/prepared.vcf.gz": "a1ba0bd0e70004bc01bd8731abc266fd29445b5fe89d76e208e48f5a1b76f796",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_045/family.normalized.vcf.gz": "a7d31a16c60b74af7c2abb4b992c403e5491573032b288234872896ef85ed795",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_045/prepared.vcf.gz": "87c764d8fe30f4ae2915f1e04d74fc4897a53fcc5247f9bad8241a83d70563a9",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_046/family.normalized.vcf.gz": "a5d553ef58692f860adbb58408f97c4fdf5f0ce382233dc019eae403cba9f971",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_046/prepared.vcf.gz": "b92a4933e7fc084d3632d5e418c011d3aa7daf6fad1154c86c8ebf0941b1bcb1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_047/family.normalized.vcf.gz": "b51b1ac5803fd97f883579bfde0bcea97bfacb3efd1cdf5f75613945252776eb",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_047/prepared.vcf.gz": "41adbb93855d4f25759d8e53aaeeab8844eda6c82172e8f4318d84e91a4d5396"
+  },
+  "source_manifest_sha256": "46fd29342db0bedb0c91b4a44721a83106b16eb669d32f7c29a92a4c3fa1be01",
+  "protocol_sha256": "29ad1f1262235f170585a777cca9338bbe6a920a3a8957e417d0a0328877a2b4",
+  "consequence": "Existing detector inputs byte-identical after decompression, therefore no changed inference input; no new biological evidence"
+}

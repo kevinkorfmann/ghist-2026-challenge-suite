@@ -1,0 +1,143 @@
+{
+  "assessment": {
+    "bias_interpretation": "Signed error summaries describe these small synthetic designs only, not calibrated bias corrections or universal uncertainty bounds.",
+    "broadest_measured_task14_candidate": "Original fixed window100 seed1 has six prespecified cohorts and <=11.34% error across all runs; 1.08-3.93% target sensitivity fails strict 1% but remains within the separately authorized pragmatic 5% rule.",
+    "cap200_tradeoff": "Full window reduces seed sensitivity below 0.04% in the two regime0 cases; five of six runs hit cap200 above 1e-6 and no new regime1/2 validation was performed.",
+    "cap500_plan": "Separate prospectively frozen same engine, two existing development cases, no fresh confirmation. Root reviews all unchanged strict gates and separate pragmatic usefulness criteria before any final inference.",
+    "estimate_selection": "Fixed seed1 primary; no seed selection, truth-based correction, or final-data tuning.",
+    "strictly_qualified_candidates": [],
+    "task13": "No current supported recovery claim for decline fraction: full-batch refinement agrees across optimizers yet overestimates fraction by about51.7% in the single full-width development case, and stopping/spectrum stability still fail."
+  },
+  "final_data_access": false,
+  "recorded_at_utc": "2026-11-20T20:33:38.855501+00:00",
+  "scientifically_ready": false,
+  "scope": "Previously inspected synthetic evidence only; no cap500 pragmatic results or challenge data read.",
+  "sources_sha256": {
+    "task13_refinement_gate_audit_v1.json": "33a7e7fbd94502964aebb62b91ec49ef6b7d1ec6a9401fcc69c2d4f2205e1b79",
+    "task14_confirmation_gate_audit_v1.json": "3d6455e2f781bddfda3541e82c275c03425e43bfdf4f735da38cd3befb015087",
+    "task14_stabilized_development_gate_audit_v1.json": "fbe4a788ef62da8a17eb907ca7717567c0f20a48408439e85f9f70aa804fafed"
+  },
+  "submitted": false,
+  "summarizer_sha256": "dca5876231d17cb17447b83cc79236fa8e2ffe13dd8ce58c7e432ea9e5af417a",
+  "task13_fullbatch_refinement": {
+    "age_error_range": [
+      -0.0011962868528474502,
+      0.0026781399087834057
+    ],
+    "all_registered_diagnostic_gates_passed": false,
+    "failed_gates_by_initialization": {
+      "continued": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ],
+      "seed1": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ],
+      "seed2": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ]
+    },
+    "fraction_error_range": [
+      0.51666623286275,
+      0.5173811750326467
+    ]
+  },
+  "task14_fixed_window500_cap200_seed1": {
+    "all_registered_gates_passed": false,
+    "all_runs_maximum_absolute_relative_error": 0.0719072916565835,
+    "cohort_count": 2,
+    "failed_gates_by_case": {
+      "split_r0_p0_v1": [
+        "observed_stopping"
+      ],
+      "split_r0_p1_v1": [
+        "observed_stopping"
+      ]
+    },
+    "maximum_frequency_L1": 0.0006083465618885663,
+    "maximum_segregating_relative_L1": 0.04473284021229343,
+    "maximum_target_sensitivity": 0.0003868492891749842,
+    "minimum_callable_fraction": 0.9999983999998996,
+    "noise_stratum_primary_median_absolute_relative_errors": {
+      "replicate0": 0.04174082828025738,
+      "replicate1": 0.05730199860827112
+    },
+    "primary_median_absolute_relative_error": 0.055670650591012116,
+    "primary_signed_error_by_target": {
+      "generations_since_split": {
+        "maximum": -0.05730199860827112,
+        "mean": -0.05737776638228731,
+        "minimum": -0.0574535341563035
+      },
+      "pop1_population_size": {
+        "maximum": 0.05403930257375311,
+        "mean": 0.006149237146747866,
+        "minimum": -0.04174082828025738
+      },
+      "pop2_population_size": {
+        "maximum": 0.07189953465948262,
+        "mean": 0.02036709679508486,
+        "minimum": -0.031165341069312902
+      }
+    },
+    "primary_target_count": 6
+  },
+  "task14_original_fixed_window100_seed1": {
+    "all_registered_gates_passed": false,
+    "all_runs_maximum_absolute_relative_error": 0.11331441272765319,
+    "cohort_count": 6,
+    "failed_gates_by_case": {
+      "split_r0_p0_v1": [
+        "target_stability"
+      ],
+      "split_r0_p1_v1": [
+        "target_stability"
+      ],
+      "split_r1_p0_v1": [
+        "target_stability"
+      ],
+      "split_r1_p1_v1": [
+        "target_stability"
+      ],
+      "split_r2_p0_v1": [
+        "target_stability",
+        "frequency_L1"
+      ],
+      "split_r2_p1_v1": [
+        "target_stability"
+      ]
+    },
+    "maximum_frequency_L1": 0.0011042142965597876,
+    "maximum_segregating_relative_L1": 0.039408126226781054,
+    "maximum_target_sensitivity": 0.039260158578535154,
+    "minimum_callable_fraction": 0.9999973999995999,
+    "noise_stratum_primary_median_absolute_relative_errors": {
+      "replicate0": 0.0351693791849742,
+      "replicate1": 0.06668194641307679
+    },
+    "primary_median_absolute_relative_error": 0.053541477620978994,
+    "primary_signed_error_by_target": {
+      "generations_since_split": {
+        "maximum": 0.006642850815266055,
+        "mean": -0.05491234194875246,
+        "minimum": -0.08218280637337239
+      },
+      "pop1_population_size": {
+        "maximum": 0.05336346623797694,
+        "mean": -0.035591611575823835,
+        "minimum": -0.10554887438642668
+      },
+      "pop2_population_size": {
+        "maximum": 0.06668194641307679,
+        "mean": -0.02106674400057773,
+        "minimum": -0.09469906556223451
+      }
+    },
+    "primary_target_count": 18
+  }
+}

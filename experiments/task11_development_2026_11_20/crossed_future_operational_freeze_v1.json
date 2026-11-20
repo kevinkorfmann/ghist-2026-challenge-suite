@@ -1,0 +1,19 @@
+{
+  "schema": "task11-crossed-future-operational-freeze-v1",
+  "frozen_utc": "2026-11-20T19:53:56.779552+00:00",
+  "plan_sha256": "e90d2235de805d17a6c1d0176cab2132c2626b5ef04d3c97b4a4e12c67850016",
+  "file_sha256": {
+    "run_crossed_future_v1.py": "49ab0f17b3948fa87e416682f16cf2bc4a785424f7a1328ea95c3dfefbcedfa2",
+    "prepare_crossed_context_v1.py": "c7f74c13e2cd4bc8e79565c299195f80f2491bbc6f43e7b23f4e70c96fb0c046",
+    "adapter_dependency_v3.py": "994b268b117e047fcfbc42eef54b5dcbbe56da2602e043746f5200346bbcbbe4",
+    "test_crossed_future_v1.py": "01ee5ff4fbfca1bf50bf4aa121fc34f57e77361aa867714fa7277b3cafb41634",
+    "crossed_future_v1.sbatch": "9c78ee1b1f981b93d3ddadeb8c1574ee2eeca917ede156a86e99eec3e6e54885",
+    "crossed_future_summary_v1.sbatch": "e8d06301e277a4e6668f85263ffcb61614dc1adaeeb296c7953e3d121753ca95"
+  },
+  "scientific_changes": false,
+  "no_reserved_cohorts_run": true,
+  "candidate_not_yet_frozen": true,
+  "tests": "21 passed; Ruff passed; source-only initialize verified exact source_v5 without running cohorts",
+  "gates": "All9 development and calibration minimum recall/ECE, then all9 stress, then all9 confirmation; independent root audits before launching each stage",
+  "scope": "Future wrapper and truth-free CSV adapter only; no final data access or upload"
+}

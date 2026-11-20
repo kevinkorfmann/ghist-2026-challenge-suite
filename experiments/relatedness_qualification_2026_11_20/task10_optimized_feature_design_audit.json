@@ -1,0 +1,23 @@
+{
+  "verified_at_utc": "2026-11-20T19:11:26.056563+00:00",
+  "protocol_sha256": "431cbe63c94c32f3d10fa77e8260075d48a46c22535a19366b363462eee278f8",
+  "source_sha256": {
+    "fast_multiway_features.py": "a434bda7f0c6450b7681d1c01cfbd7ddeb78417056236c09995944dc7ffb1ae2",
+    "benchmark_fast_features.py": "89aa6e0d743eb539bddc4d400b41774bda5465e4925dd546e1a20141123d2c37",
+    "optimized_scaling.sbatch": "dd1fed3daeca26daf83a1427a1e61ee51f705b9e57fedb9783fb424160bd0897"
+  },
+  "design_review": "Each connected component spanning three inferred groups requires overlapping edges from at least two different cross-group pair types; other conflicts are preserved as the union of pair conflicts. Genetic interpolation and interval merging are precomputed; no feature thresholds or group/model policy changed.",
+  "agent_reported_tests": {
+    "passing": 26,
+    "includes": "All4096three-person diploid graphs;20random multiperson overlap/nonlinear-map cases; chromosome homolog and sample/order invariance; complete features compared",
+    "test_sha256": "b9e228541eafa9884f67c4480de7eaf8f60dfa882e43c5898a480f81eba6db96"
+  },
+  "required_equivalence": [
+    "Every declared training feature and inferred group agrees within tolerance",
+    "229-person same-input fixed runtime gate passes",
+    "Freeze final model hashes and compare actual forest probabilities from original and optimized training features exactly before any qualification",
+    "No biological qualification from runtime tests; v2 development gates still control advance"
+  ],
+  "biological_qualification": false,
+  "runtime_result_pending": true
+}

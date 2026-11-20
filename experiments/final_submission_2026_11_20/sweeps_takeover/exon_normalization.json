@@ -1,0 +1,9 @@
+{
+  "source": "/private/tmp/ghist-final-submissions-20261120/taskshared/ensembl_havana_exons_9.txt",
+  "source_sha256": "8fd6936957caa771adc0135a8d5f7e09c3227c513c2b287d26ae90ca09a58b63",
+  "normalized_sha256": "0a1f9f609237cee7bf9907b80075747cc5a1a9612c1115d91db63738de17abdf",
+  "rows": 7225,
+  "conversion": "Add chromosome9; interpret Ensembl exon starts/ends as1-based inclusive and convert [start,end] to BED[start-1,end).",
+  "basis": "Official specification identifies Ensembl release104 Havana exons; raw file is two-column start/end. The challenge page does not explicitly declare exon indexing; this standard Ensembl convention is an operational assumption, with one-base boundary uncertainty. No loci or intervals selected from final truth.",
+  "scientific_method_changes": []
+}

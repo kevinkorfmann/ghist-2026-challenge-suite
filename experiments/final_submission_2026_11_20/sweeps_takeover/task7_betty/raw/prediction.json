@@ -1,0 +1,105 @@
+{
+  "method": "blind_callable_median_ten_v1",
+  "settings": {
+    "composite_widths": [
+      25000,
+      50000,
+      100000,
+      250000,
+      500000
+    ],
+    "composite_step_divisor": 5,
+    "region_width": 100000,
+    "region_radius": 750000,
+    "grid_step": 1000,
+    "flank_widths": [
+      50000,
+      100000,
+      250000
+    ],
+    "minimum_callable_flank_fraction": 0.8,
+    "raisd_snp_window": 50,
+    "raisd_mask_policy": "entire inclusive SNP span callable",
+    "half_width": 80000,
+    "secondary_peak_separation": 100000,
+    "secondary_peak_minimum_distance": 2000000,
+    "minimum_signal_ratio": 4.0
+  },
+  "status": "provisional candidate; matched biological recovery absent",
+  "chromosome": "9",
+  "contig_length": 138394717,
+  "haplotypes": 50,
+  "callable_sites": 660672,
+  "callable_bases": 138353807,
+  "localization": {
+    "region_source": "full_scan_composite_maximum",
+    "region": [
+      2160000,
+      3660000
+    ],
+    "truth_used_for_inference": false
+  },
+  "estimates": {
+    "composite_25000": 2872500,
+    "composite_50000": 2885000,
+    "composite_100000": 2910000,
+    "composite_250000": 2875000,
+    "composite_500000": 39350000,
+    "largest_gap_midpoint": 2878520.5,
+    "flank_ld_50000": 2882000,
+    "flank_ld_100000": 2863000,
+    "flank_ld_250000": 2918000,
+    "raisd": 2888650
+  },
+  "center": 2883500,
+  "interval": [
+    2803500,
+    2963500
+  ],
+  "consensus_span": 36487000.0,
+  "consensus_eligible": false,
+  "raisd_windows_total": 660623,
+  "raisd_windows_callable": 660623,
+  "distant_peak_score": 14.95,
+  "signal_ratio": 7.819397993311037,
+  "coordinate_system": "zero-based half-open BED",
+  "submission_count": 0,
+  "format_validation": {
+    "challenge": 7,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "chromosome": "9",
+    "intervals": [
+      [
+        2803500,
+        2963500
+      ]
+    ]
+  },
+  "dataset": "final",
+  "input_provenance": {
+    "vcf_sha256": "ef4f6fb9a795df476f6553e5890db1b3094fc026f288f11378b6c05c1ef67baa",
+    "accessibility_sha256": "9f5235a687683eec6a7f19b0cf1334f545bda23497ff8e715658b1086778ec33"
+  },
+  "source_sha256": {
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "src/ghist_single_sweep/peaks.py": "41a48bb7147477462fcfb2dc7a4b67208933ff95b8ee9209af47a5eda5a35c3e",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17"
+  },
+  "software": {
+    "numpy": "2.4.6",
+    "pysam": "0.24.0",
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307"
+  },
+  "artifact_sha256": {
+    "masked.vcf": "a9b96c01b445e56dab28324c94261b7d4cec4fe9e1574e42cb1e21c37d90839c",
+    "accessible.bed": "9f5235a687683eec6a7f19b0cf1334f545bda23497ff8e715658b1086778ec33",
+    "RAiSD_Report.task7": "a898662c45a4a5538e0142d0dc565cf85620c90a7ebe010cb16b78442a92a8c2",
+    "RAiSD_Info.task7": "2384fa6f3f50efe169a1e1b8ed78a7c1dec2e9cd620872935931db2b8ce5ba25",
+    "candidate.bed": "feefe01b2c6a97bb9434136f39df7bfbd502911518aa4a7a1ddb69920d2b01c7"
+  },
+  "raisd_contract": "Same mask-filtered A/C genotypes; reject report windows crossing inaccessible bases; native chromosome-wide RAiSD score normalization retained"
+}

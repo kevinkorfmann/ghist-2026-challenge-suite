@@ -1,0 +1,113 @@
+{
+  "all_compact_outputs_match_adapter_and_current_remote_sha256": true,
+  "all_within_inferred_family_pairs_exactly_once": true,
+  "candidate_local_path": "/private/tmp/ghist-final-submissions-20261120/task11/task11_final_candidate.csv",
+  "candidate_sha256": "8ab80bd7d7c39a7ec95de49290b71ab1edcfa53c206ee431386625fe4fea951f",
+  "compact_artifact_sha256": {
+    "adapter_audit.json": "940a7b68d4974a313260ebde6341f458ea7d1aa1496d2e87c032dfa7bd6b6722",
+    "base_predictions.json": "ee2d263ed3aebcf54d850be287d18b4b0d9beae07a68bc148a75b6cc73c573cb",
+    "clusters.json": "2b9c7dc5fb1af0696b83e53c887ef19b0212bbc3f86e1b91bfdc71c6558f9fd0",
+    "context_features.npz": "773fd923b9362fb117f8cd95c42378db2241983e135b669ca407478057aafc29",
+    "context_predictions.json": "4b2a10dfd3c538c48ab714ea28dcd0324f67df38dfdfc42b832d036e22f1298b",
+    "families.json": "954c9860ef1ecd68cc2f0e5833fc69b11946f620132357665309deb716ae5753",
+    "feature_pairs.json": "4056c4221962cb8a43a1c55552e4129d7a9766efdeaee64a1a43cd9f485877c5",
+    "features.npz": "883ce93f99d23dddb35f408957f772aac1b1608bcb83b81c0e64b24ed8860055",
+    "grouping_audit.json": "c1f7ecd6a519c733259986ccb002c7e56042619e7c7cb18004fbd8d6b454f89c",
+    "hapibd.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hapibd.out": "4bbdb3de561674ca54e2476713dd64ba0f214c71662965e2f5f8ba1243072536",
+    "predictions.json": "4b2a10dfd3c538c48ab714ea28dcd0324f67df38dfdfc42b832d036e22f1298b",
+    "preparation.json": "5f2c561a6a7ec38470f29a3abc0621ef9580381db264d3b28b80484f82be40c7",
+    "roster.json": "d2c9b7b841538580630b3b5e98997f7ac26146b6c492ce127f400dea17793f92",
+    "segments.hbd.gz": "77c077c058154aa7eec3e6f2242ef8d18fdaeaa20fccb88ff6916304df9cb7ba",
+    "segments.ibd.gz": "c37d5af661b87ac635ec264e081a18feaed3f8f8738d3f2803c25a80ae201c73",
+    "segments.log": "4bbdb3de561674ca54e2476713dd64ba0f214c71662965e2f5f8ba1243072536",
+    "summary.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "summary.out": "4a12d41cc0f670a2e2b4f435a7232230152ede39d83cde3def673682b15416ff",
+    "summary/hbd_features.csv": "e28c6d2176b2a03214ef0e5482e1488a6807a39d0102f34add00685654510c93",
+    "summary/pair_features.csv": "6a4b74815502128d992125e95926bf6f7223e9f45d3bc3ed5864994f2a3fb63f",
+    "summary/summary.json": "4a12d41cc0f670a2e2b4f435a7232230152ede39d83cde3def673682b15416ff",
+    "task11_candidate.csv": "520b8774c79f6025ed38b12ae9a4134f3e11b0277f0556191885f66a97d8ccea",
+    "validation.json": "bd23bace929767bd766ea701b41bd55bc7963f5fb3bfe914a9ae3acefa04ac00"
+  },
+  "compact_output_hash_count": 24,
+  "context_predictions_equal_selected_predictions": true,
+  "families": 8,
+  "family_sizes": [
+    10,
+    8,
+    8,
+    10,
+    6,
+    11,
+    8,
+    7
+  ],
+  "frozen_model_candidate_sha256": "f2c1391a5866567a3bc10423bea25ecd537b86f9d3cf819fcd72798bb2abd833",
+  "frozen_official_schema_validation": {
+    "challenge": 11,
+    "dataset": "final",
+    "format_valid": true,
+    "individuals": 68,
+    "input_pair_coverage_verified": true,
+    "pairs": 265,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance"
+  },
+  "limitation": "Valid packaging and normalized probabilities do not establish inference accuracy; root retains source/model/full-output rehash and submission responsibility.",
+  "mapped_input_sha256_from_frozen_completed_adapter": "24df5742918baa0c3e7a5725e87dc904a31429f66b320be455f26115003618cd",
+  "meioses_mapping": {
+    "avuncular": 3,
+    "avuncular_once_removed": 4,
+    "avuncular_twice_removed": 5,
+    "full_1st_cousin": 4,
+    "half_1st_cousin": 4,
+    "half_avuncular": 3,
+    "half_sibling": 2,
+    "siblings": 2
+  },
+  "meioses_rule": "Frozen DOG_LABELS tuple up + down",
+  "original_input_sha256_from_root_preflight": "5bbdd1a850f65308ed2376a159cbe63c7540e76eab9e91bb77b75c127a2fc553",
+  "original_unique_samples": 68,
+  "packaging_audit_source_sha256": "b356a50dae331433177e40544602524c6b73b65af174d21dfe2d6926e94b823b",
+  "probability_checks": {
+    "base_predictions.json": {
+      "all_finite_nonnegative_normalized": true,
+      "maximum_probability_sum_error": 2.220446049250313e-16,
+      "rows": 265,
+      "support_matches_selected_label_probability": true
+    },
+    "context_predictions.json": {
+      "all_finite_nonnegative_normalized": true,
+      "maximum_probability_sum_error": 2.220446049250313e-16,
+      "rows": 265,
+      "support_matches_selected_label_probability": true
+    },
+    "predictions.json": {
+      "all_finite_nonnegative_normalized": true,
+      "maximum_probability_sum_error": 2.220446049250313e-16,
+      "rows": 265,
+      "support_matches_selected_label_probability": true
+    }
+  },
+  "raw_and_packaged_first_three_columns_identical_to_context_labels_in_order": true,
+  "scope": "Existing frozen outputs and original preflight roster only; no actual VCF, truth, tuning, inference, or upload.",
+  "source_binding_local_remote_sha256": {
+    "/private/tmp/ghist-final-submissions-20261120/task11/audit_inputs/input_provenance.json": "f5dc7d7935cf367249dc03b45fa2ef92942330b619ac820042daafc9068819ac",
+    "/private/tmp/ghist-final-submissions-20261120/task11/audit_inputs/pragmatic_corrected_bindings_v1.py": "580c492cd8997821669ee4677df11a0123c21e79ad95b292704ecaae011d3c9f",
+    "/private/tmp/ghist-final-submissions-20261120/task11/audit_inputs/pragmatic_corrected_context_candidate_v1.json": "f2c1391a5866567a3bc10423bea25ecd537b86f9d3cf819fcd72798bb2abd833",
+    "/private/tmp/ghist-final-submissions-20261120/task11/audit_inputs/prepare_pragmatic_corrected_v1.py": "69b288845b8a44f2fc406f43b90daa6b3a05ca3f9570c7b0645b9c238b95f632",
+    "/private/tmp/ghist-final-submissions-20261120/task11/audit_inputs/vcf_preflight.json": "50d12afd9d47f43bb087dc8fca70f78a64a557448321586f06fee3668b3ce6fe",
+    "/tmp/ghist-task10-final-independent-20261120/source/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "/tmp/ghist-task10-final-independent-20261120/source/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "/tmp/ghist-task10-final-independent-20261120/source/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "/tmp/ghist-task10-final-independent-20261120/source/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17"
+  },
+  "state": "PASS_INDEPENDENT_OUTPUT_AUDIT_AND_DETERMINISTIC_PACKAGING",
+  "strict_qualification_passed": false,
+  "submission_performed": false,
+  "vcf_hashes_deferred_to_root": {
+    "prepared.vcf.gz": "479f547b5d522bc7c7d29a4a5f47ab6d2fd10294d375c5c43f56c792029f3c60",
+    "synthetic.vcf.gz": "30212eed6be342f24f35a1a862a0d18eac3e747a516b819ae7a10051f99cc9b1"
+  },
+  "verified_at_utc": "2026-11-20T21:28:40.828362+00:00",
+  "within_family_pairs": 265
+}

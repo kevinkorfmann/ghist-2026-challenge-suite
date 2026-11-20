@@ -1,0 +1,48 @@
+{
+  "status": "PROSPECTIVE_NEW_PRAGMATIC_FALLBACK_POLICY_NOT_STRICT_QUALIFICATION",
+  "declared_utc": "2026-11-20T20:49:40.329867+00:00",
+  "trigger": "All eight small nested results complete and independently audited, including failures, before dispatch",
+  "launch_gates": {
+    "overall_exact_accuracy_minimum": 0.7,
+    "macro_recall_minimum": 0.6,
+    "weighted_jaccard_strictly_exceeds_matched_baseline": true,
+    "all_outputs_and_resources_valid": true
+  },
+  "small_strict_result": "Preserve unchanged original fixed-gate report, including ECE/min-label/nonregression failures; no strict pass claim",
+  "cohort_indices": [
+    8,
+    9
+  ],
+  "cohort_source": "structural-qualification-source-v3/structural_qualification_protocol_v3.json",
+  "cohort_protocol_sha256": "9b9ebaa12e95ce0cd85c0be8056c33ede2a7dc1af5c717594c21383cd46d5803",
+  "model_or_method_changes": false,
+  "candidate": "structural-if-valid-else-exact-initial-no-root-pair-only-v1",
+  "resources": {
+    "jobs": 2,
+    "cpus_per_job": 8,
+    "wall_minutes": 90,
+    "memory_GiB_per_job": 44,
+    "hard_cpu_hours": 24,
+    "latest_actual_start_utc": "2026-11-20T21:50:00Z"
+  },
+  "evaluation": "Every26106pair in both fixed229person cohorts; retain baseline/pair/structural raw predictions, strict gates and pragmatic diagnostics; no selected subset",
+  "domain": "Complete calls only; optional missingness diagnostic is separate",
+  "approval": "Root explicitly authorized preparing separate narrow fallback and two untouched229cohorts; source/package and raw small audit required before launch",
+  "policy": "Only exact initial NJ no accepted root ValueError permits whole-cohort frozen pair-only fallback; all other exceptions fail; no truth input or per-pair replacement",
+  "source_policy_sha256": "6c0d5add27eb22cd87bdd5d56ef181996770cacf6a8c4414fff7f43406e046d0",
+  "small_status": "Original strict v3 failed cohort000; all eight now explicitly development diagnostics for this new policy",
+  "calibration": "Same fixed q.7744. Every original calibration cohort had a valid structural root, so policy is unchanged on all623calibrationpairs. Zero individual confidence resolution; not root posterior; ECE remains a separate strict diagnostic.",
+  "retained_comparators": [
+    "original strict structural with missing000 predictions",
+    "frozen pair-only",
+    "frozen baseline"
+  ],
+  "fresh_data": "The original two229person cohorts8/9 and all52212pairs remain genetically unrun before this newpolicyfreeze",
+  "tests_passed": 6,
+  "pragmatic_fresh_evaluation": {
+    "all_outputs_and_resources_valid": true,
+    "exact_accuracy_minimum": 0.7,
+    "macro_recall_minimum": 0.6,
+    "weighted_jaccard_strictly_exceeds_baseline": true
+  }
+}

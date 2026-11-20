@@ -1,0 +1,85 @@
+{
+  "verified_at_utc": "2026-11-20T19:51:18.095496+00:00",
+  "manifest_sha256": {
+    "forest_distance_scorer_inputs/context.manifest.json": "1e37cba966f3ce1198dd9856d6ca8e8026a39ce49f84e0f3e2a25c0f7e8fdd4d",
+    "forest_distance_scorer_inputs/pair_only.manifest.json": "82bce1929ce816031b428fcf465d0d54c2947b76149ebd4f1cdecaad6f7e48ee"
+  },
+  "bound_file_count": 27,
+  "files_sha256": {
+    "detected_panel_evidence/cohort_040/identifiers.json": "57d7992d2093fc9d30fdecca2c2d09df57aedd9add35e95a95fabf2e6a73d15f",
+    "detected_panel_evidence/cohort_040/truth.json": "1cc14091d90ee32af5f6e9cee362a737f208bb5f91c626c4ed2638bdb32edb7e",
+    "detected_panel_evidence/cohort_041/identifiers.json": "aa261c33b93106b81cd57882dad6625f8a83dc7019e4f47216e1cab4e98902f0",
+    "detected_panel_evidence/cohort_041/truth.json": "9b26ed8db1cb490d0d4c1a82b204fbe4bd4d6321b870d4da62b6f98db7c4ad42",
+    "detected_panel_evidence/cohort_042/identifiers.json": "65606a1f622a435b56412d698d68b19e56bfa7a0c4cf0bd5ba2caefcc3843f43",
+    "detected_panel_evidence/cohort_042/truth.json": "e6ead31f9339fef9d9dfdcd139c56e432afcb851511be9b195a18c4649caaaef",
+    "detected_panel_evidence/cohort_043/identifiers.json": "818515e04a6e4fb175c3fa5433c633ff9b9c3f59ef4ad06f03aec8c162ea5929",
+    "detected_panel_evidence/cohort_043/truth.json": "5ed4140c98704ba088223f70436317d236ac5976597006f396487ec00a419f8e",
+    "detected_panel_evidence/cohort_044/identifiers.json": "20c491fb5623707505fcf91d25bd7959739b61e2c185b054bf5049f8523da103",
+    "detected_panel_evidence/cohort_044/truth.json": "57a8f270fd9710782aab591b4dfab376f5fbc84c1794ab16cbad02c5ffd853c7",
+    "detected_panel_evidence/cohort_045/identifiers.json": "a219232de90c5cf9752602dc28301cad067cb96800a34f7bd80d00cef96d36ac",
+    "detected_panel_evidence/cohort_045/truth.json": "fc2449d2312d2764ba49be40c4ea6c9766e3bbd8ea8365cd42781ad015579bf7",
+    "detected_panel_evidence/cohort_046/identifiers.json": "a1debed4442c42a93ca790126b6bb83cdfff9f52793244d3b57ed1648a885e76",
+    "detected_panel_evidence/cohort_046/truth.json": "cefe6b65804cedc77d6007cc469ddf2ce89699b780b873c49724049aecd4b73c",
+    "detected_panel_evidence/cohort_047/identifiers.json": "db864a1bc0974c9ebbf19a5f63f9bd055f5f8905cecf74382c059dbf78e5f19a",
+    "detected_panel_evidence/cohort_047/truth.json": "71fde0aef8c02fc0ee04d41a05879447b43114f6c475fc76dede1f163aea9456",
+    "detected_panel_scorer_inputs/context.manifest.json": "69ce6663a6794f4953ad19457019e1fbcc3e26f6e869f037311d659b6b4e4105",
+    "forest_distance_decoder.py": "11db5433e315682a2fdd3ce7ce4596306c8c72517340832d154d50ed2fb7a39f",
+    "forest_distance_evidence/context_predictions.json": "50281e25293645ca2e515de846370a1f219d63036b74f99a947c81189f82f35c",
+    "forest_distance_evidence/context_scorer_input.json": "38b081cd0c3b8a8a74842520e2c35fd93f6c13187d63891ef9e02b8e2e0406de",
+    "forest_distance_evidence/context_trees.json": "d5c43ec08907f467ed6c3f177b5edfc59030f89c5236208ef82cc2d1fdd1d6be",
+    "forest_distance_evidence/result.json": "358f91ab0a11dacb61b781e371ca0aa029c19665f2c81c73f12d060e6088cf2e",
+    "forest_distance_protocol.json": "dbc38a3071b17883653580c7ceaf346af735430a81d5a673d256eca4ae260ea1",
+    "detected_panel_scorer_inputs/pair_only.manifest.json": "560f19a2872dbc8c937de55a4e4bd69dc83383b6a6aee4cadce5d397f0b2c0d8",
+    "forest_distance_evidence/pair_only_predictions.json": "e95ee6cc6673762bdba2e8c8ae6cb87df4c7a484651e0c3e190ac1dcaac2b14d",
+    "forest_distance_evidence/pair_only_scorer_input.json": "e6a671e0bad34d45edf27d648ffcf0afd24ef2a4c74b88893dd06ed4894100f2",
+    "forest_distance_evidence/pair_only_trees.json": "01a8d93089ccdd91cd9330c1eaa902aed7bc129c4d597526a2cddb741e6c4ede"
+  },
+  "source_sha256": "d170bf037a895b0f8262594106c72108fabc4e0b7afce942c6ba82b6a0715b38",
+  "remote_bindings_to_verify": {},
+  "scope": "Independent raw-row, complete-roster, pair-coverage and before/after local hash audit. Remote bindings require the separate remote report. Development only.",
+  "summary": {
+    "forest_distance_scorer_inputs_context": {
+      "correct": 389,
+      "pairs": 585,
+      "accuracy": 0.6649572649572649,
+      "macro_recall": 0.5859410430839002,
+      "minimum_label_recall": 0.0,
+      "weighted_jaccard": 0.5349337297163385,
+      "ece": null,
+      "bootstrap": {
+        "unit": "whole cohort",
+        "seed": 20301120,
+        "replicates_requested": 2000,
+        "replicates_evaluated": 1420,
+        "replicates_missing_labels": 580,
+        "confidence_level": 0.95,
+        "exact_accuracy_interval": null,
+        "balanced_accuracy_interval": null,
+        "status": "missing_label_support",
+        "limitations": "Percentile bootstrap is descriptive; few cohorts or unrepresentative models cannot establish generalization."
+      }
+    },
+    "forest_distance_scorer_inputs_pair_only": {
+      "correct": 437,
+      "pairs": 585,
+      "accuracy": 0.747008547008547,
+      "macro_recall": 0.6779478458049887,
+      "minimum_label_recall": 0.0,
+      "weighted_jaccard": 0.6335839104534757,
+      "ece": null,
+      "bootstrap": {
+        "unit": "whole cohort",
+        "seed": 20301120,
+        "replicates_requested": 2000,
+        "replicates_evaluated": 1420,
+        "replicates_missing_labels": 580,
+        "confidence_level": 0.95,
+        "exact_accuracy_interval": null,
+        "balanced_accuracy_interval": null,
+        "status": "missing_label_support",
+        "limitations": "Percentile bootstrap is descriptive; few cohorts or unrepresentative models cannot establish generalization."
+      }
+    }
+  },
+  "release_authorized": false
+}

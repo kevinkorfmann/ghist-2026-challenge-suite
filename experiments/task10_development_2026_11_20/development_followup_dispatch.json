@@ -1,0 +1,43 @@
+{
+  "date_utc": "2026-11-20",
+  "jobs": {
+    "original_scaling_preflight": {
+      "job_id": 10854208,
+      "state": "COMPLETED_WITH_128_AND_229_TIMEOUTS",
+      "hard_CPU_hours": 2
+    },
+    "nested_structure_initial": {
+      "job_id": 10854846,
+      "state": "FAILED_BEFORE_GENERATION_MISSING_CROSSOVER_FLAG",
+      "hard_CPU_hours": 0.03333333333333333
+    },
+    "nested_structure_verified": {
+      "job_id": 10855084,
+      "state": "COMPLETED_NO_GENETIC_DATA",
+      "hard_CPU_hours": 0.03333333333333333
+    },
+    "partial_CPU_profile": {
+      "job_id": 10855400,
+      "state": "COMPLETED_FIXED_60_SECONDS",
+      "hard_CPU_hours": 0.2
+    },
+    "optimized_scaling": {
+      "job_id": 10855790,
+      "state": "COMPLETED_EQUIVALENCE_AND_ALL_RUNTIME_SIZES",
+      "hard_CPU_hours": 2,
+      "protocol_sha256": "431cbe63c94c32f3d10fa77e8260075d48a46c22535a19366b363462eee278f8"
+    },
+    "final_model_equivalence": {
+      "job_id": 10855853,
+      "state": "PENDING_AFTEROK",
+      "dependencies": [
+        10852569,
+        10855790
+      ],
+      "hard_CPU_hours": 0.08333333333333333
+    }
+  },
+  "scientific_qualification_jobs_dispatched": false,
+  "held_out_outcomes_observed": false,
+  "final_data_or_submission_actions": false
+}

@@ -1,0 +1,1112 @@
+{
+  "schema": "ghist2026-published-relatedness-metric-v1",
+  "source_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640739",
+  "formula": "sum_k N_k * TP_k / (TP_k + FN_k + FP_k) / sum_k N_k",
+  "scope": "Independent implementation of the published formula; not organizer-executable parity or scientific release authorization",
+  "pooled": {
+    "truth_pairs": 585,
+    "weighted_jaccard": 0.5679162709656771,
+    "per_label": {
+      "siblings": {
+        "truth": 61,
+        "true_positive": 61,
+        "false_negative": 0,
+        "false_positive": 0,
+        "jaccard": 1.0,
+        "weight": 0.10427350427350428
+      },
+      "avuncular": {
+        "truth": 56,
+        "true_positive": 56,
+        "false_negative": 0,
+        "false_positive": 0,
+        "jaccard": 1.0,
+        "weight": 0.09572649572649573
+      },
+      "avuncular_once_removed": {
+        "truth": 24,
+        "true_positive": 24,
+        "false_negative": 0,
+        "false_positive": 6,
+        "jaccard": 0.8,
+        "weight": 0.041025641025641026
+      },
+      "avuncular_twice_removed": {
+        "truth": 32,
+        "true_positive": 26,
+        "false_negative": 6,
+        "false_positive": 6,
+        "jaccard": 0.6842105263157895,
+        "weight": 0.0547008547008547
+      },
+      "full_1st_cousin": {
+        "truth": 36,
+        "true_positive": 36,
+        "false_negative": 0,
+        "false_positive": 0,
+        "jaccard": 1.0,
+        "weight": 0.06153846153846154
+      },
+      "full_1st_cousin_once_removed": {
+        "truth": 84,
+        "true_positive": 70,
+        "false_negative": 14,
+        "false_positive": 4,
+        "jaccard": 0.7954545454545454,
+        "weight": 0.14358974358974358
+      },
+      "full_1st_cousin_twice_removed": {
+        "truth": 60,
+        "true_positive": 36,
+        "false_negative": 24,
+        "false_positive": 44,
+        "jaccard": 0.34615384615384615,
+        "weight": 0.10256410256410256
+      },
+      "full_1st_cousin_thrice_removed": {
+        "truth": 32,
+        "true_positive": 20,
+        "false_negative": 12,
+        "false_positive": 30,
+        "jaccard": 0.3225806451612903,
+        "weight": 0.0547008547008547
+      },
+      "full_2nd_cousin": {
+        "truth": 36,
+        "true_positive": 4,
+        "false_negative": 32,
+        "false_positive": 20,
+        "jaccard": 0.07142857142857142,
+        "weight": 0.06153846153846154
+      },
+      "full_2nd_cousin_once_removed": {
+        "truth": 56,
+        "true_positive": 32,
+        "false_negative": 24,
+        "false_positive": 14,
+        "jaccard": 0.45714285714285713,
+        "weight": 0.09572649572649573
+      },
+      "full_2nd_cousin_twice_removed": {
+        "truth": 56,
+        "true_positive": 5,
+        "false_negative": 51,
+        "false_positive": 22,
+        "jaccard": 0.0641025641025641,
+        "weight": 0.09572649572649573
+      },
+      "full_3rd_cousin": {
+        "truth": 20,
+        "true_positive": 8,
+        "false_negative": 12,
+        "false_positive": 20,
+        "jaccard": 0.2,
+        "weight": 0.03418803418803419
+      },
+      "full_3rd_cousin_once_removed": {
+        "truth": 24,
+        "true_positive": 8,
+        "false_negative": 16,
+        "false_positive": 19,
+        "jaccard": 0.18604651162790697,
+        "weight": 0.041025641025641026
+      },
+      "full_4th_cousin": {
+        "truth": 8,
+        "true_positive": 0,
+        "false_negative": 8,
+        "false_positive": 14,
+        "jaccard": 0.0,
+        "weight": 0.013675213675213675
+      }
+    }
+  },
+  "cohorts": [
+    {
+      "cohort_id": "detected_panel_040",
+      "truth_pairs": 120,
+      "weighted_jaccard": 0.8095238095238095,
+      "per_label": {
+        "siblings": {
+          "truth": 12,
+          "true_positive": 12,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.1
+        },
+        "avuncular": {
+          "truth": 24,
+          "true_positive": 24,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.2
+        },
+        "avuncular_once_removed": {
+          "truth": 16,
+          "true_positive": 16,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.13333333333333333
+        },
+        "avuncular_twice_removed": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.06666666666666667
+        },
+        "full_1st_cousin": {
+          "truth": 12,
+          "true_positive": 12,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.1
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 24,
+          "true_positive": 20,
+          "false_negative": 4,
+          "false_positive": 4,
+          "jaccard": 0.7142857142857143,
+          "weight": 0.2
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 12,
+          "true_positive": 8,
+          "false_negative": 4,
+          "false_positive": 12,
+          "jaccard": 0.3333333333333333,
+          "weight": 0.1
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.03333333333333333
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 8,
+          "true_positive": 4,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.5,
+          "weight": 0.06666666666666667
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_3rd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_041",
+      "truth_pairs": 45,
+      "weighted_jaccard": 0.23950617283950618,
+      "per_label": {
+        "siblings": {
+          "truth": 5,
+          "true_positive": 5,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.1111111111111111
+        },
+        "avuncular": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 8,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.08888888888888889
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 8,
+          "true_positive": 4,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.5,
+          "weight": 0.17777777777777778
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 16,
+          "true_positive": 0,
+          "false_negative": 16,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.35555555555555557
+        },
+        "full_3rd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 8,
+          "true_positive": 4,
+          "false_negative": 4,
+          "false_positive": 10,
+          "jaccard": 0.2222222222222222,
+          "weight": 0.17777777777777778
+        },
+        "full_4th_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 10,
+          "jaccard": 0.0,
+          "weight": 0.08888888888888889
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_042",
+      "truth_pairs": 28,
+      "weighted_jaccard": 1.0,
+      "per_label": {
+        "siblings": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.2857142857142857
+        },
+        "avuncular": {
+          "truth": 16,
+          "true_positive": 16,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.5714285714285714
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin": {
+          "truth": 4,
+          "true_positive": 4,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.14285714285714285
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_3rd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_043",
+      "truth_pairs": 120,
+      "weighted_jaccard": 0.4716666666666667,
+      "per_label": {
+        "siblings": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.06666666666666667
+        },
+        "avuncular": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 5,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_1st_cousin": {
+          "truth": 12,
+          "true_positive": 12,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.1
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 36,
+          "true_positive": 27,
+          "false_negative": 9,
+          "false_positive": 0,
+          "jaccard": 0.75,
+          "weight": 0.3
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 16,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 24,
+          "true_positive": 16,
+          "false_negative": 8,
+          "false_positive": 16,
+          "jaccard": 0.4,
+          "weight": 0.2
+        },
+        "full_2nd_cousin": {
+          "truth": 12,
+          "true_positive": 0,
+          "false_negative": 12,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.1
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 8,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 24,
+          "true_positive": 0,
+          "false_negative": 24,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.2
+        },
+        "full_3rd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 8,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_4th_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.03333333333333333
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_044",
+      "truth_pairs": 45,
+      "weighted_jaccard": 0.6000000000000001,
+      "per_label": {
+        "siblings": {
+          "truth": 9,
+          "true_positive": 9,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.2
+        },
+        "avuncular": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.17777777777777778
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 6,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 16,
+          "true_positive": 10,
+          "false_negative": 6,
+          "false_positive": 0,
+          "jaccard": 0.625,
+          "weight": 0.35555555555555557
+        },
+        "full_1st_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 8,
+          "true_positive": 0,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.17777777777777778
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 8,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_3rd_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.08888888888888889
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_045",
+      "truth_pairs": 45,
+      "weighted_jaccard": 0.419047619047619,
+      "per_label": {
+        "siblings": {
+          "truth": 5,
+          "true_positive": 5,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.1111111111111111
+        },
+        "avuncular": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 2,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 12,
+          "true_positive": 4,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.3333333333333333,
+          "weight": 0.26666666666666666
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 12,
+          "true_positive": 8,
+          "false_negative": 4,
+          "false_positive": 2,
+          "jaccard": 0.5714285714285714,
+          "weight": 0.26666666666666666
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 12,
+          "true_positive": 5,
+          "false_negative": 7,
+          "false_positive": 8,
+          "jaccard": 0.25,
+          "weight": 0.26666666666666666
+        },
+        "full_3rd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 7,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.08888888888888889
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_046",
+      "truth_pairs": 91,
+      "weighted_jaccard": 0.8417582417582418,
+      "per_label": {
+        "siblings": {
+          "truth": 7,
+          "true_positive": 7,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.07692307692307693
+        },
+        "avuncular": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.08791208791208792
+        },
+        "avuncular_once_removed": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.08791208791208792
+        },
+        "avuncular_twice_removed": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.08791208791208792
+        },
+        "full_1st_cousin": {
+          "truth": 4,
+          "true_positive": 4,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.04395604395604396
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 16,
+          "true_positive": 16,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.17582417582417584
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 16,
+          "true_positive": 12,
+          "false_negative": 4,
+          "false_positive": 4,
+          "jaccard": 0.6,
+          "weight": 0.17582417582417584
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "full_2nd_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.04395604395604396
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 16,
+          "true_positive": 16,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.17582417582417584
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 3,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_3rd_cousin": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.04395604395604396
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 1,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "cohort_id": "detected_panel_047",
+      "truth_pairs": 91,
+      "weighted_jaccard": 0.49722042663219135,
+      "per_label": {
+        "siblings": {
+          "truth": 7,
+          "true_positive": 7,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.07692307692307693
+        },
+        "avuncular": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_once_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": null,
+          "weight": 0.0
+        },
+        "avuncular_twice_removed": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 1,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_1st_cousin": {
+          "truth": 4,
+          "true_positive": 4,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.04395604395604396
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 8,
+          "true_positive": 7,
+          "false_negative": 1,
+          "false_positive": 0,
+          "jaccard": 0.875,
+          "weight": 0.08791208791208792
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 24,
+          "true_positive": 16,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.6666666666666666,
+          "weight": 0.26373626373626374
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 8,
+          "true_positive": 4,
+          "false_negative": 4,
+          "false_positive": 12,
+          "jaccard": 0.2,
+          "weight": 0.08791208791208792
+        },
+        "full_2nd_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 8,
+          "jaccard": 0.0,
+          "weight": 0.0
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 12,
+          "true_positive": 0,
+          "false_negative": 12,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.13186813186813187
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 4,
+          "true_positive": 0,
+          "false_negative": 4,
+          "false_positive": 11,
+          "jaccard": 0.0,
+          "weight": 0.04395604395604396
+        },
+        "full_3rd_cousin": {
+          "truth": 12,
+          "true_positive": 8,
+          "false_negative": 4,
+          "false_positive": 5,
+          "jaccard": 0.47058823529411764,
+          "weight": 0.13186813186813187
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 12,
+          "true_positive": 4,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.3333333333333333,
+          "weight": 0.13186813186813187
+        },
+        "full_4th_cousin": {
+          "truth": 0,
+          "true_positive": 0,
+          "false_negative": 0,
+          "false_positive": 4,
+          "jaccard": 0.0,
+          "weight": 0.0
+        }
+      },
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    }
+  ],
+  "pair_coverage_passed": true,
+  "release_authorized": false
+}

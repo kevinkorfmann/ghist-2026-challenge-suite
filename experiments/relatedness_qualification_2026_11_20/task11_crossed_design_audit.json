@@ -1,0 +1,18 @@
+{
+  "verified_at_utc": "2026-11-20T19:42:37.656741+00:00",
+  "plan_sha256": "e90d2235de805d17a6c1d0176cab2132c2626b5ef04d3c97b4a4e12c67850016",
+  "bundle_sha256": "93bab1df576b945936aa69bf273e7e56b24757e93b2d73d0c09a7b2abec042fb",
+  "bundle_files": 11,
+  "bound_files_verified": 10,
+  "cohorts": {
+    "train": 108,
+    "calibration": 54,
+    "development": 54
+  },
+  "new_and_reserved_master_seeds": 232,
+  "old_master_seed_overlap": 0,
+  "fully_crossed_by_label": true,
+  "balanced_oof_folds": true,
+  "generator_ast_diff": "--- v5 genotype function\n+++ crossed genotype function\n@@ -1,23 +1,23 @@\n def generate_genotypes(map_path: Path, out: Path, config: dict) -> dict:\n+    validate_assignment(config)\n     import msprime\n     rng = np.random.default_rng(config['seed'])\n     maps = read_map(map_path)\n     records = []\n     samples, families, truth_pairs = ([], [], [])\n     next_sample = 0\n-    kinds = ('unrelated', 'first_cousins', 'siblings')\n     for index, label in enumerate(LABELS):\n         sizes = tuple((int(x) for x in rng.integers(config['min_branch_size'], config['max_branch_size'] + 1, 2)))\n         complex_topology = bool(config.get('complex_topology', False))\n-        third = bool((config['index'] + index) % 2) or (complex_topology and label.startswith('avuncular'))\n+        third = config['third_branches'][index]\n         pedigree = focal_pedigree(label, sizes, third, complex_topology)\n-        parents = expand_inbreeding(pedigree, kinds[(index + config['index']) % 3])\n+        parents = expand_inbreeding(pedigree, config['ancestry_kinds'][index])\n         names = {n: f'synthetic11_{next_sample + i}' for i, n in enumerate(pedigree['observed'])}\n         next_sample += len(names)\n         families.append(list(names.values()))\n         samples.extend(names.values())\n         truth_pairs.extend(({'indID1': names[a], 'indID2': names[b], 'relation': relation, 'family': index} for a, b, relation in pedigree['pairs']))\n-        records.append({'parents': parents, 'observed': pedigree['observed'], 'kind': kinds[(index + config['index']) % 3], 'names': names})\n+        records.append({'parents': parents, 'observed': pedigree['observed'], 'kind': config['ancestry_kinds'][index], 'names': names})\n     founder_count = sum((sum((pair is None for pair in r['parents'].values())) for r in records))\n     hbd_cm = np.zeros(len(samples))\n     genome_cm, markers, missing_calls = (0.0, 0, 0)\n",
+  "scope": "Prospective schedule/archive/source review; no outcomes observed or scientific readiness established."
+}

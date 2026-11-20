@@ -1,0 +1,165 @@
+{
+  "created_utc": "2026-11-20T21:34:06.546106+00:00",
+  "scope": "Read-only definitive Tasks2/4 candidate/input/source/method/selection/format review; no rerun, tuning, truth, messages, browser, or submission; exact copies staged only after checks.",
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "source_manifest_sha256": "cf0b1e98837d01ea296610ca6e9d0cd9ea576716fdd8a17f0c75e18b0f2229af",
+  "source_files_verified": 247,
+  "tasks": {
+    "2": {
+      "ready_for_root": true,
+      "candidate": "/private/tmp/ghist-final-submissions-20261120/task2/ready_for_root/task2.final.yaml",
+      "candidate_sha256": "bef1635f3f75ba1bcc3c5af8d18f40899341e1175de36e082883d35736efc0bb",
+      "audit": "/private/tmp/ghist-final-submissions-20261120/task2/ready_for_root/task2.audit.json",
+      "audit_sha256": "0978d04fcb21f05386d15f8848fd6d085db5e05dfc0b9a6fcadc5d93977fd0b9",
+      "input_entity": "syn74933326",
+      "input_version": 3,
+      "input_sha256": "f69039ac97aa8bc675488919d26c6035d9bacd2ea0e13bdce7509394dffa5388",
+      "input_md5": "3982119419e150745093bd6191fe09c0",
+      "sample_count": 67,
+      "population_counts": {
+        "mainland": 43,
+        "island": 24
+      },
+      "planned_fits": 16,
+      "completed_finite_eligible": 13,
+      "preserved_failed_fits": [
+        "task2_generator_matched_r00",
+        "task2_simple_r01",
+        "task2_simple_r03"
+      ],
+      "missing_or_censored_fits": 0,
+      "selection_recomputed_from_all_eligible_cases": [
+        "task2_generator_matched_r06"
+      ],
+      "selected_convergence": [
+        false
+      ],
+      "recomputed_prediction": {
+        "mainland_population_size": 152118.28916781308,
+        "island_population_size": 8808.307756467895,
+        "generations_since_split": 3619.462925438996,
+        "generations_since_migration": 1853.171905937364,
+        "migration_rate": 0.0001457472340818597
+      },
+      "validation": {
+        "challenge": 2,
+        "dataset": "final",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "parameters": {
+          "mainland_population_size": 152118.28916781308,
+          "island_population_size": 8808.307756467895,
+          "generations_since_split": 3619.462925438996,
+          "generations_since_migration": 1853.171905937364,
+          "migration_rate": 0.0001457472340818597
+        }
+      },
+      "reference_confirmations": [],
+      "scientifically_validated": false,
+      "limitations": [
+        "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established.",
+        "Task2 selected optimizer reports ABNORMAL; Task4 selected convergence flags are true,false,false. Predeclared best-finite deadline selection permits these endpoints.",
+        "Retained theta/scaling/selected-case checks establish internal arithmetic and artifact identity, not global optimization or full parameter-trajectory provenance."
+      ],
+      "staged_files": [
+        "/private/tmp/ghist-final-submissions-20261120/task2/ready_for_root/task2.final.yaml",
+        "/private/tmp/ghist-final-submissions-20261120/task2/ready_for_root/task2.audit.json",
+        "/private/tmp/ghist-final-submissions-20261120/task2/ready_for_root/input_provenance.json"
+      ],
+      "complete_unique_planned_case_roster_verified": true
+    },
+    "4": {
+      "ready_for_root": true,
+      "candidate": "/private/tmp/ghist-final-submissions-20261120/task4/ready_for_root/task4.final.yaml",
+      "candidate_sha256": "3ee0a388789a7969044456d82cec0bad9a49c17b04d227554f0308f12a408546",
+      "audit": "/private/tmp/ghist-final-submissions-20261120/task4/ready_for_root/task4.audit.json",
+      "audit_sha256": "b2c607a71584e347a850fe33feec7135338dd3305134b6c746bf69f38720b70f",
+      "input_entity": "syn75193301",
+      "input_version": 5,
+      "input_sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe",
+      "input_md5": "0daf167027858284596dc4e935edf709",
+      "sample_count": 81,
+      "population_counts": {
+        "AFR": 47,
+        "EUR": 34
+      },
+      "planned_fits": 24,
+      "completed_finite_eligible": 13,
+      "preserved_failed_fits": [
+        "task4_p70x50_r00",
+        "task4_p94x68_r00",
+        "task4_p94x68_r01",
+        "task4_p50x40_r03",
+        "task4_p50x40_r04",
+        "task4_p70x50_r04",
+        "task4_p94x68_r04",
+        "task4_p94x68_r05",
+        "task4_p50x40_r06",
+        "task4_p70x50_r06",
+        "task4_p94x68_r06"
+      ],
+      "missing_or_censored_fits": 0,
+      "selection_recomputed_from_all_eligible_cases": [
+        "task4_p50x40_r02",
+        "task4_p70x50_r05",
+        "task4_p94x68_r03"
+      ],
+      "selected_convergence": [
+        true,
+        false,
+        false
+      ],
+      "recomputed_prediction": {
+        "AFR_population_size": 15247.120714281818,
+        "EUR_population_size": 19135.421691466254,
+        "generations_since_split": 4981.438096154486,
+        "migration_rate": 0.00011636163915571935
+      },
+      "validation": {
+        "challenge": 4,
+        "dataset": "final",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "parameters": {
+          "AFR_population_size": 15247.120714281818,
+          "EUR_population_size": 19135.421691466254,
+          "generations_since_split": 4981.438096154486,
+          "migration_rate": 0.00011636163915571935
+        }
+      },
+      "reference_confirmations": [
+        {
+          "entity": "syn74933457",
+          "version": 1,
+          "sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057"
+        },
+        {
+          "entity": "syn75318369",
+          "version": 1,
+          "sha256": "8fd66697338340a6a73e47f7e0de97879d84c7ea3e403fa07ddae532f0d78ad7"
+        }
+      ],
+      "scientifically_validated": false,
+      "limitations": [
+        "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established.",
+        "Task2 selected optimizer reports ABNORMAL; Task4 selected convergence flags are true,false,false. Predeclared best-finite deadline selection permits these endpoints.",
+        "Retained theta/scaling/selected-case checks establish internal arithmetic and artifact identity, not global optimization or full parameter-trajectory provenance."
+      ],
+      "staged_files": [
+        "/private/tmp/ghist-final-submissions-20261120/task4/ready_for_root/task4.final.yaml",
+        "/private/tmp/ghist-final-submissions-20261120/task4/ready_for_root/task4.audit.json",
+        "/private/tmp/ghist-final-submissions-20261120/task4/ready_for_root/input_provenance.json"
+      ],
+      "complete_unique_planned_case_roster_verified": true
+    }
+  },
+  "scientific_qualification_is_not_a_submission_veto": true,
+  "remote_verification": {
+    "checked": 305,
+    "all_match": true,
+    "manifest": "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/relatedness_qualification_2026_11_20/remaining_ready_2_4_remote_bindings.json",
+    "manifest_sha256": "4d834f2b7496e3a9d7b52bb9167fbca5fbe3afe1afa4b955f5cd320c3ffc725e"
+  },
+  "review_script_sha256": "38992b8b6d6ef5b1a14e227182860721963d739f30558be20f5e4c24e58d0589",
+  "finished_utc": "2026-11-20T21:34:42.106771+00:00"
+}

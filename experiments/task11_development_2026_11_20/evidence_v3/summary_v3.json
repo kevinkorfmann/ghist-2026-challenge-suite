@@ -1,0 +1,211 @@
+{
+  "method_version": "task11-detected-ibd-pair-first-development-v2",
+  "score": {
+    "truth_pairs": 1443,
+    "correct": 1223,
+    "accuracy": 0.8475398475398476,
+    "balanced_accuracy": 0.7381598368134805,
+    "recall": {
+      "siblings": 1.0,
+      "half_sibling": 0.7790697674418605,
+      "avuncular": 0.6857142857142857,
+      "half_avuncular": 0.6153846153846154,
+      "avuncular_once_removed": 0.4482758620689655,
+      "avuncular_twice_removed": 0.8020833333333334,
+      "full_1st_cousin": 0.8604651162790697,
+      "half_1st_cousin": 0.7142857142857143
+    },
+    "counts": {
+      "siblings": 729,
+      "half_sibling": 86,
+      "avuncular": 140,
+      "half_avuncular": 78,
+      "avuncular_once_removed": 116,
+      "avuncular_twice_removed": 96,
+      "full_1st_cousin": 86,
+      "half_1st_cousin": 112
+    },
+    "correct_counts": {
+      "siblings": 729,
+      "half_sibling": 67,
+      "avuncular": 96,
+      "half_avuncular": 48,
+      "avuncular_once_removed": 52,
+      "avuncular_twice_removed": 77,
+      "full_1st_cousin": 74,
+      "half_1st_cousin": 80
+    },
+    "confusion": {
+      "siblings": {
+        "siblings": 729
+      },
+      "half_sibling": {
+        "half_sibling": 67,
+        "avuncular": 17,
+        "full_1st_cousin": 2
+      },
+      "avuncular": {
+        "avuncular": 96,
+        "half_sibling": 37,
+        "full_1st_cousin": 7
+      },
+      "half_avuncular": {
+        "full_1st_cousin": 20,
+        "half_avuncular": 48,
+        "avuncular_twice_removed": 1,
+        "half_1st_cousin": 5,
+        "avuncular_once_removed": 4
+      },
+      "avuncular_once_removed": {
+        "half_avuncular": 28,
+        "avuncular_once_removed": 52,
+        "half_1st_cousin": 11,
+        "avuncular_twice_removed": 6,
+        "full_1st_cousin": 17,
+        "avuncular": 1,
+        "half_sibling": 1
+      },
+      "avuncular_twice_removed": {
+        "avuncular_twice_removed": 77,
+        "avuncular_once_removed": 8,
+        "half_1st_cousin": 10,
+        "half_avuncular": 1
+      },
+      "full_1st_cousin": {
+        "half_avuncular": 9,
+        "full_1st_cousin": 74,
+        "half_1st_cousin": 2,
+        "avuncular_twice_removed": 1
+      },
+      "half_1st_cousin": {
+        "half_1st_cousin": 80,
+        "full_1st_cousin": 21,
+        "avuncular_once_removed": 2,
+        "avuncular_twice_removed": 6,
+        "half_avuncular": 3
+      }
+    },
+    "missing_true_pairs": 0,
+    "extra_cross_family_pairs": 0,
+    "ece_10_equal_width": 0.038009764905934273,
+    "cohort_bootstrap_balanced_interval95": [
+      0.6840054431469255,
+      0.7915457843237055
+    ]
+  },
+  "checks": {
+    "accuracy": true,
+    "balanced_accuracy": false,
+    "each_label_recall": false,
+    "bootstrap_lower": false,
+    "family_recovery": true,
+    "missing_samples": true,
+    "missing_true_pairs": true,
+    "extra_pairs": true,
+    "calibration": true
+  },
+  "protocol_sha256": "f5ec05f6a4e3d27d82021bf6d1623e1392735f1896d9a2bda2249020b7120996",
+  "candidate_sha256": "c966d2f676057ebaf60b862b73f2b69d076e92a7574457497e339f855c262f50",
+  "confirmation_results_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_00/result.json": "8d361e26c079bd404c5bae7e4009027e08dc8bdbab75184b4f6d1dca1c1878f1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_01/result.json": "fd152a8ad790ddb7faf5c8dbfb9f4ab86630483c5d54b10ebf524a393ed5684c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_02/result.json": "3ff62593f4dad33d43cb4f0f6b4cdc8f91d8d40cc8c1ba48e109ba9b9caeafaa",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_03/result.json": "a9d7a86fca8a440d36f341f22a4e17426a0b7e00e07064685346dc3f421feb4c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_04/result.json": "60c915868c0f0653cd37359c756fa5797c00fdb4a60d41692999b87a06030d63",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_05/result.json": "4b45c8b7ee1144e661a3dfcee473349b3f9dfd2d9d51e1b0f7974895f62e09d8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_06/result.json": "613aeda9cab620fe262c8a7481de8528db7e6b967ddfdc2c281e8e3fe2d531cb",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_07/result.json": "c637753f21751412800bcd075d5839d30dd6daa34933d3202a220804031fcd0c"
+  },
+  "crosscheck_input_sha256": "7c23470a8285e9bf54194692041e64ee60365553ce6d40705db1d915fc28c2c2",
+  "predeclared_criteria_passed": false,
+  "exact_family_recovery": 1.0,
+  "cohorts": [
+    {
+      "split": "confirmation",
+      "index": 0,
+      "seed": 2026120300,
+      "population_size": 500,
+      "missing_rate": 0.0,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": false
+    },
+    {
+      "split": "confirmation",
+      "index": 1,
+      "seed": 2026120301,
+      "population_size": 1000,
+      "missing_rate": 0.0,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": false
+    },
+    {
+      "split": "confirmation",
+      "index": 2,
+      "seed": 2026120302,
+      "population_size": 2000,
+      "missing_rate": 0.0,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": false
+    },
+    {
+      "split": "confirmation",
+      "index": 3,
+      "seed": 2026120303,
+      "population_size": 500,
+      "missing_rate": 0.005,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": false
+    },
+    {
+      "split": "confirmation",
+      "index": 4,
+      "seed": 2026120304,
+      "population_size": 1000,
+      "missing_rate": 0.005,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": true
+    },
+    {
+      "split": "confirmation",
+      "index": 5,
+      "seed": 2026120305,
+      "population_size": 2000,
+      "missing_rate": 0.005,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": true
+    },
+    {
+      "split": "confirmation",
+      "index": 6,
+      "seed": 2026120306,
+      "population_size": 500,
+      "missing_rate": 0.02,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": true
+    },
+    {
+      "split": "confirmation",
+      "index": 7,
+      "seed": 2026120307,
+      "population_size": 1000,
+      "missing_rate": 0.02,
+      "min_branch_size": 2,
+      "max_branch_size": 4,
+      "complex_topology": true
+    }
+  ],
+  "submission_ready": false,
+  "submission_count": 0,
+  "limitations": [
+    "No final challenge inference performed.",
+    "Four confirmation cohorts contain new three-branch generation structures; finite templates still do not cover every possible family topology.",
+    "Coalescent population/missingness stresses cover prespecified assumptions, not all possible dog histories."
+  ]
+}

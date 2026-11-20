@@ -1,0 +1,146 @@
+{
+  "stage": "POST_V2_FAILURE_DEVELOPMENT_DIAGNOSTIC",
+  "protocol_sha256": "dbc38a3071b17883653580c7ceaf346af735430a81d5a673d256eca4ae260ea1",
+  "scores": {
+    "context": {
+      "pairs": 585,
+      "correct": 389,
+      "exact_accuracy": 0.6649572649572649,
+      "macro_recall": 0.5859410430839002,
+      "minimum_label_recall": 0,
+      "recall": {
+        "siblings": 1.0,
+        "avuncular": 1.0,
+        "avuncular_once_removed": 1.0,
+        "avuncular_twice_removed": 0.25,
+        "full_1st_cousin": 1.0,
+        "full_1st_cousin_once_removed": 1.0,
+        "full_1st_cousin_twice_removed": 0.5333333333333333,
+        "full_1st_cousin_thrice_removed": 0.25,
+        "full_2nd_cousin": 0.5555555555555556,
+        "full_2nd_cousin_once_removed": 0.5714285714285714,
+        "full_2nd_cousin_twice_removed": 0.14285714285714285,
+        "full_3rd_cousin": 0.4,
+        "full_3rd_cousin_once_removed": 0.5,
+        "full_4th_cousin": 0.0
+      },
+      "counts": {
+        "siblings": 61,
+        "avuncular": 56,
+        "avuncular_once_removed": 24,
+        "avuncular_twice_removed": 32,
+        "full_1st_cousin": 36,
+        "full_1st_cousin_once_removed": 84,
+        "full_1st_cousin_twice_removed": 60,
+        "full_2nd_cousin": 36,
+        "full_2nd_cousin_once_removed": 56,
+        "full_2nd_cousin_twice_removed": 56,
+        "full_3rd_cousin_once_removed": 24,
+        "full_4th_cousin": 8,
+        "full_1st_cousin_thrice_removed": 32,
+        "full_3rd_cousin": 20
+      },
+      "cohort_accuracy": {
+        "detected_panel_040": 0.7666666666666667,
+        "detected_panel_041": 0.28888888888888886,
+        "detected_panel_042": 1.0,
+        "detected_panel_043": 0.5,
+        "detected_panel_044": 0.37777777777777777,
+        "detected_panel_045": 0.4666666666666667,
+        "detected_panel_046": 1.0,
+        "detected_panel_047": 0.7362637362637363
+      },
+      "complete_label_coverage": true
+    },
+    "pair_only": {
+      "pairs": 585,
+      "correct": 437,
+      "exact_accuracy": 0.747008547008547,
+      "macro_recall": 0.6779478458049887,
+      "minimum_label_recall": 0,
+      "recall": {
+        "siblings": 1.0,
+        "avuncular": 1.0,
+        "avuncular_once_removed": 1.0,
+        "avuncular_twice_removed": 0.75,
+        "full_1st_cousin": 1.0,
+        "full_1st_cousin_once_removed": 1.0,
+        "full_1st_cousin_twice_removed": 0.9333333333333333,
+        "full_1st_cousin_thrice_removed": 0.0,
+        "full_2nd_cousin": 0.5555555555555556,
+        "full_2nd_cousin_once_removed": 0.7857142857142857,
+        "full_2nd_cousin_twice_removed": 0.0,
+        "full_3rd_cousin": 0.8,
+        "full_3rd_cousin_once_removed": 0.6666666666666666,
+        "full_4th_cousin": 0.0
+      },
+      "counts": {
+        "siblings": 61,
+        "avuncular": 56,
+        "avuncular_once_removed": 24,
+        "avuncular_twice_removed": 32,
+        "full_1st_cousin": 36,
+        "full_1st_cousin_once_removed": 84,
+        "full_1st_cousin_twice_removed": 60,
+        "full_2nd_cousin": 36,
+        "full_2nd_cousin_once_removed": 56,
+        "full_2nd_cousin_twice_removed": 56,
+        "full_3rd_cousin_once_removed": 24,
+        "full_4th_cousin": 8,
+        "full_1st_cousin_thrice_removed": 32,
+        "full_3rd_cousin": 20
+      },
+      "cohort_accuracy": {
+        "detected_panel_040": 1.0,
+        "detected_panel_041": 0.28888888888888886,
+        "detected_panel_042": 1.0,
+        "detected_panel_043": 0.5,
+        "detected_panel_044": 0.6444444444444445,
+        "detected_panel_045": 0.37777777777777777,
+        "detected_panel_046": 1.0,
+        "detected_panel_047": 0.8681318681318682
+      },
+      "complete_label_coverage": true
+    }
+  },
+  "diagnostics": {
+    "context": {
+      "valid_root_counts": {
+        "detected_panel_040": 7,
+        "detected_panel_041": 2,
+        "detected_panel_042": 3,
+        "detected_panel_043": 6,
+        "detected_panel_044": 4,
+        "detected_panel_045": 6,
+        "detected_panel_046": 5,
+        "detected_panel_047": 2
+      },
+      "fallback_cohorts": []
+    },
+    "pair_only": {
+      "valid_root_counts": {
+        "detected_panel_040": 5,
+        "detected_panel_041": 2,
+        "detected_panel_042": 3,
+        "detected_panel_043": 6,
+        "detected_panel_044": 4,
+        "detected_panel_045": 6,
+        "detected_panel_046": 5,
+        "detected_panel_047": 2
+      },
+      "fallback_cohorts": []
+    }
+  },
+  "input_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/forest-distance-source-v1/forest_distance_protocol.json": "dbc38a3071b17883653580c7ceaf346af735430a81d5a673d256eca4ae260ea1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/forest-distance-source-v1/forest_distance_decoder.py": "11db5433e315682a2fdd3ce7ce4596306c8c72517340832d154d50ed2fb7a39f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/model_calibration_freeze.json": "07aaacb82b222526f89c14d781036d63c22ea34dd8f9a07e5504e930f2148437",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/result.json": "f81e13c5021273862241e555af914cdfeef6c43aa030b1a45628806e81a457e2",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/context_development_scorer_input.json": "fdae454fac9b023122ac1e50f4414f51fdcac889dd372e485ef3df83b4e7fbe2",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/model_evaluation/pair_only_development_scorer_input.json": "2620466ca6d55ad2a561e48158146175a035dc3abf42a7b41c03c8eb7477c0b7"
+  },
+  "original_v2_policy_changed": false,
+  "uncertainty_calibrated": false,
+  "submission_ready": false,
+  "advance_to_confirmation": false
+}

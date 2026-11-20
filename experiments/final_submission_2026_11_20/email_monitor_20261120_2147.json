@@ -1,0 +1,457 @@
+{
+  "checked_at_utc": "2026-11-20 21:47:26 UTC",
+  "evidence_source": "Gmail connector read-only retrieval; no email mutations",
+  "attempts": [
+    {
+      "task": 10,
+      "submission_id": "9785356",
+      "evaluation_queue_id": "9619674",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1fad9451a8e239",
+      "status_at_utc": "2026-11-20T21:25:04.000Z",
+      "invalid_reason": "Expected relation of any of the following: full_1st_cousin, full_2nd_cousin, siblings, avuncular, full_1st_cousin_once_removed, full_2nd_cousin_once_removed, full_3rd_cousin, full_2nd_cousin_twice_removed, full_3rd_cousin_once_removed, full_1st_cousin_twice_removed, full_4th_cousin, avuncular_once_removed.\nUnexpected relation value: full_1st_cousin_thrice_removed (3040 rows, first on line 11).",
+      "scoring_log_ids": [
+        "syn78780191"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1fad9a040851ed",
+          "received_at_utc": "2026-11-20T21:25:28.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785356), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-cf1bdq6_ with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-cf1bdq6_ to 0\nSTDERR: 2026-11-20T21:25:15.733388525Z"
+        },
+        {
+          "gmail_message_id": "1a1fad9451a8e239",
+          "received_at_utc": "2026-11-20T21:25:04.000Z",
+          "subject": "Submission to 'GHIST 2026 Relatedness 2 Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785356) is invalid, below are the invalid reasons:\n\nExpected relation of any of the following: full_1st_cousin, full_2nd_cousin, siblings, avuncular, full_1st_cousin_once_removed, full_2nd_cousin_once_removed, full_3rd_cousin, full_2nd_cousin_twice_removed, full_3rd_cousin_once_removed, full_1st_cousin_twice_removed, full_4th_cousin, avuncular_once_removed.\nUnexpected relation value: full_1st_cousin_thrice_removed (3040 rows, first on line 11).\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1fad9154c35866",
+          "received_at_utc": "2026-11-20T21:24:52.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Relatedness 2 Final (9619674)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785356) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780191 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 14,
+      "submission_id": "9785360",
+      "evaluation_queue_id": "9620086",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.042643298573969445
+      },
+      "status_email_id": "1a1fae233fe71b87",
+      "status_at_utc": "2026-11-20T21:34:50.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780293"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1fae283b2476cf",
+          "received_at_utc": "2026-11-20T21:35:10.000Z",
+          "subject": "Workflow Complete",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785360), has finished running.   Your logs are available here: https://www.synapse.org/#!Synapse:syn78780293.\n\n\nSincerely,\n\nWorkflow Administration"
+        },
+        {
+          "gmail_message_id": "1a1fae233fe71b87",
+          "received_at_utc": "2026-11-20T21:34:50.000Z",
+          "subject": "Submission to 'GHIST 2026 Split Isolation with Low Coverage Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785360) is scored, below are your results:\n\nRRMSE : 0.042643298573969445\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1fae1ee6576889",
+          "received_at_utc": "2026-11-20T21:34:33.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Split Isolation with Low Coverage Final (9620086)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785360) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780293 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 11,
+      "submission_id": "9785361",
+      "evaluation_queue_id": "9619676",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.5724422540498211,
+        "relation": 0.42540795348737687
+      },
+      "status_email_id": "1a1fae3204484254",
+      "status_at_utc": "2026-11-20T21:35:51.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780307"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1fae36f851ae69",
+          "received_at_utc": "2026-11-20T21:36:11.000Z",
+          "subject": "Workflow Complete",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785361), has finished running.   Your logs are available here: https://www.synapse.org/#!Synapse:syn78780307.\n\n\nSincerely,\n\nWorkflow Administration"
+        },
+        {
+          "gmail_message_id": "1a1fae3204484254",
+          "received_at_utc": "2026-11-20T21:35:51.000Z",
+          "subject": "Submission to 'GHIST 2026 Relatedness 3 Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785361) is scored, below are your results:\n\nmeioses_count : 0.5724422540498211\nrelation : 0.42540795348737687\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1fae2d9d2967ed",
+          "received_at_utc": "2026-11-20T21:35:32.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Relatedness 3 Final (9619676)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785361) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780307 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 13,
+      "submission_id": "9785362",
+      "evaluation_queue_id": "9620084",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.6172118592711575
+      },
+      "status_email_id": "1a1fae927a59ad34",
+      "status_at_utc": "2026-11-20T21:42:26.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780375"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1fae9723005a41",
+          "received_at_utc": "2026-11-20T21:42:45.000Z",
+          "subject": "Workflow Complete",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785362), has finished running.   Your logs are available here: https://www.synapse.org/#!Synapse:syn78780375.\n\n\nSincerely,\n\nWorkflow Administration"
+        },
+        {
+          "gmail_message_id": "1a1fae927a59ad34",
+          "received_at_utc": "2026-11-20T21:42:26.000Z",
+          "subject": "Submission to 'GHIST 2026 Bottleneck with Low Coverage Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785362) is scored, below are your results:\n\nRRMSE : 0.6172118592711575\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1fae8d5d20069b",
+          "received_at_utc": "2026-11-20T21:42:04.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Bottleneck with Low Coverage Final (9620084)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785362) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780375 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 12,
+      "submission_id": "9785363",
+      "evaluation_queue_id": "9619678",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1fae902fbf3f6d",
+      "status_at_utc": "2026-11-20T21:42:16.000Z",
+      "invalid_reason": "Expected relation of any of the following: full_2nd_cousin, full_2nd_cousin_once_removed, full_3rd_cousin, siblings, full_1st_cousin_once_removed, full_1st_cousin, full_2nd_cousin_twice_removed, full_3rd_cousin_once_removed, avuncular, full_4th_cousin, full_1st_cousin_twice_removed, avuncular_once_removed.\nUnexpected relation value: full_1st_cousin_thrice_removed (4275 rows, first on line 5).\nUnexpected relation value: avuncular_twice_removed (3025 rows, first on line 22).",
+      "scoring_log_ids": [
+        "syn78780371"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1fae984116a3c9",
+          "received_at_utc": "2026-11-20T21:42:50.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785363), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-qtanlqdk with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-qtanlqdk to 0\nSTDERR: 2026-11-20T21:42:28.249920534Z"
+        },
+        {
+          "gmail_message_id": "1a1fae902fbf3f6d",
+          "received_at_utc": "2026-11-20T21:42:16.000Z",
+          "subject": "Submission to 'GHIST 2026 Relatedness 4 Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785363) is invalid, below are the invalid reasons:\n\nExpected relation of any of the following: full_2nd_cousin, full_2nd_cousin_once_removed, full_3rd_cousin, siblings, full_1st_cousin_once_removed, full_1st_cousin, full_2nd_cousin_twice_removed, full_3rd_cousin_once_removed, avuncular, full_4th_cousin, full_1st_cousin_twice_removed, avuncular_once_removed.\nUnexpected relation value: full_1st_cousin_thrice_removed (4275 rows, first on line 5).\nUnexpected relation value: avuncular_twice_removed (3025 rows, first on line 22).\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1fae8e00b5314b",
+          "received_at_utc": "2026-11-20T21:42:07.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Relatedness 4 Final (9619678)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785363) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780371 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 1,
+      "submission_id": "9785364",
+      "evaluation_queue_id": "9619646",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1faeb0d88ba48b",
+      "status_at_utc": "2026-11-20T21:44:30.000Z",
+      "invalid_reason": "Could not find a parameters section in the YAML file",
+      "scoring_log_ids": [
+        "syn78780417"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faebb0b1916f9",
+          "received_at_utc": "2026-11-20T21:45:12.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785364), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-y24ktrig with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-y24ktrig to 0\nSTDERR: 2026-11-20T21:44:42.298593384Z"
+        },
+        {
+          "gmail_message_id": "1a1faeb0d88ba48b",
+          "received_at_utc": "2026-11-20T21:44:30.000Z",
+          "subject": "Submission to 'GHIST 2026 Bottleneck Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785364) is invalid, below are the invalid reasons:\n\nCould not find a parameters section in the YAML file\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faeaf2422eea4",
+          "received_at_utc": "2026-11-20T21:44:23.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Bottleneck Final (9619646)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785364) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780417 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 2,
+      "submission_id": "9785365",
+      "evaluation_queue_id": "9619648",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1faeb10f3e20a2",
+      "status_at_utc": "2026-11-20T21:44:31.000Z",
+      "invalid_reason": "Could not find a parameters section in the YAML file",
+      "scoring_log_ids": [
+        "syn78780410"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faeb10f3e20a2",
+          "received_at_utc": "2026-11-20T21:44:31.000Z",
+          "subject": "Submission to 'GHIST 2026 Secondary Contact Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785365) is invalid, below are the invalid reasons:\n\nCould not find a parameters section in the YAML file\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faeacb1181010",
+          "received_at_utc": "2026-11-20T21:44:13.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Secondary Contact Final (9619648)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785365) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780410 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        },
+        {
+          "gmail_message_id": "1a1faec390d20692",
+          "received_at_utc": "2026-11-20T21:45:47.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785365), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-yjyji__5 with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-yjyji__5 to 0\nSTDERR: 2026-11-20T21:44:43.107673535Z <=========\n\n\n  Your logs are available here: https://www.synapse.org/#!Synapse:syn78780410.\n\nSincerely,\n\nWorkflow Administration"
+        }
+      ]
+    },
+    {
+      "task": 3,
+      "submission_id": "9785366",
+      "evaluation_queue_id": "9619650",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1faeafbc5c1408",
+      "status_at_utc": "2026-11-20T21:44:26.000Z",
+      "invalid_reason": "Could not find a parameters section in the YAML file",
+      "scoring_log_ids": [
+        "syn78780406"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faeb4d5c1764c",
+          "received_at_utc": "2026-11-20T21:44:46.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785366), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-nry3gytn with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-nry3gytn to 0\nSTDERR: 2026-11-20T21:44:38.558379067Z"
+        },
+        {
+          "gmail_message_id": "1a1faeafbc5c1408",
+          "received_at_utc": "2026-11-20T21:44:26.000Z",
+          "subject": "Submission to 'GHIST 2026 Growth Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785366) is invalid, below are the invalid reasons:\n\nCould not find a parameters section in the YAML file\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faeae103976ef",
+          "received_at_utc": "2026-11-20T21:44:19.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Growth Final (9619650)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785366) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780406 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 4,
+      "submission_id": "9785367",
+      "evaluation_queue_id": "9619652",
+      "status": "INVALID",
+      "scores": {},
+      "status_email_id": "1a1faeaddff5ea84",
+      "status_at_utc": "2026-11-20T21:44:18.000Z",
+      "invalid_reason": "Could not find a parameters section in the YAML file",
+      "scoring_log_ids": [
+        "syn78780402"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faeb3fbbcad50",
+          "received_at_utc": "2026-11-20T21:44:43.000Z",
+          "subject": "Workflow Failed",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785367), has failed to complete.  The message is:\n\n\tengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-wf_e0fk3 with ID kind-https_raw.githubusercontent.com_Sage-Bionetworks_ChallengeWorkflowTemplates_v4.1_cwl_check_status.cwl/instance-wf_e0fk3 to 0\nSTDERR: 2026-11-20T21:44:30.027338115Z"
+        },
+        {
+          "gmail_message_id": "1a1faeaddff5ea84",
+          "received_at_utc": "2026-11-20T21:44:18.000Z",
+          "subject": "Submission to 'GHIST 2026 Split Migration Final' invalid!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785367) is invalid, below are the invalid reasons:\n\nCould not find a parameters section in the YAML file\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faeacea95f35a",
+          "received_at_utc": "2026-11-20T21:44:14.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Split Migration Final (9619652)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785367) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780402 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 10,
+      "submission_id": "9785368",
+      "evaluation_queue_id": "9619674",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.1283610601352386,
+        "relation": 0.12225889450060641
+      },
+      "status_email_id": "1a1faecf8df8f56a",
+      "status_at_utc": "2026-11-20T21:46:36.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780459"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faecf8df8f56a",
+          "received_at_utc": "2026-11-20T21:46:36.000Z",
+          "subject": "Submission to 'GHIST 2026 Relatedness 2 Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785368) is scored, below are your results:\n\nmeioses_count : 0.1283610601352386\nrelation : 0.12225889450060641\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faec591453df1",
+          "received_at_utc": "2026-11-20T21:45:55.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Relatedness 2 Final (9619674)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785368) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780459 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 5,
+      "submission_id": "9785369",
+      "evaluation_queue_id": "9619656",
+      "status": "SCORED",
+      "scores": {
+        "recall": 0,
+        "size": 1.2
+      },
+      "status_email_id": "1a1faecaaa90cdb6",
+      "status_at_utc": "2026-11-20T21:46:16.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780455"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faecaaa90cdb6",
+          "received_at_utc": "2026-11-20T21:46:16.000Z",
+          "subject": "Submission to 'GHIST 2026 Single Sweep Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785369) is scored, below are your results:\n\nrecall : 0.0\nsize : 1.2\nf1 : 0.0\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faec87586991d",
+          "received_at_utc": "2026-11-20T21:46:07.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Single Sweep Final (9619656)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785369) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780455 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 6,
+      "submission_id": "9785370",
+      "evaluation_queue_id": "9619680",
+      "status": "PROCESSING",
+      "scores": {},
+      "status_email_id": null,
+      "status_at_utc": null,
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780467"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faec4763bc86f",
+          "received_at_utc": "2026-11-20T21:45:50.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Soft Sweep Final (9619680)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785370) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780467 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 7,
+      "submission_id": "9785371",
+      "evaluation_queue_id": "9619658",
+      "status": "SCORED",
+      "scores": {
+        "recall": 1,
+        "size": 1.6
+      },
+      "status_email_id": "1a1faecb050f4cfd",
+      "status_at_utc": "2026-11-20T21:46:18.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780450"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faed247bcaee4",
+          "received_at_utc": "2026-11-20T21:46:47.000Z",
+          "subject": "Workflow Complete",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour workflow job, (submission ID 9785371), has finished running.   Your logs are available here: https://www.synapse.org/#!Synapse:syn78780450.\n\n\nSincerely,\n\nWorkflow Administration"
+        },
+        {
+          "gmail_message_id": "1a1faecb050f4cfd",
+          "received_at_utc": "2026-11-20T21:46:18.000Z",
+          "subject": "Submission to 'GHIST 2026 Single Sweep with Background Selection Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785371) is scored, below are your results:\n\nrecall : 1.0\nsize : 1.6\nf1 : 0.5555555555555556\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faec65c46335a",
+          "received_at_utc": "2026-11-20T21:45:58.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Single Sweep with Background Selection Final (9619658)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785371) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780450 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    },
+    {
+      "task": 8,
+      "submission_id": "9785372",
+      "evaluation_queue_id": "9619662",
+      "status": "SCORED",
+      "scores": {
+        "recall": 0.06060606060606061,
+        "size": 2.4
+      },
+      "status_email_id": "1a1faecec663ddf2",
+      "status_at_utc": "2026-11-20T21:46:33.000Z",
+      "invalid_reason": null,
+      "scoring_log_ids": [
+        "syn78780463"
+      ],
+      "records": [
+        {
+          "gmail_message_id": "1a1faecec663ddf2",
+          "received_at_utc": "2026-11-20T21:46:33.000Z",
+          "subject": "Submission to 'GHIST 2026 Multi Sweep with Background Selection Final' scored!",
+          "body_text": "Hello ancestrum,\n\nYour submission (id: 9785372) is scored, below are your results:\n\nrecall : 0.06060606060606061\nsize : 2.4\nf1 : 0.10695187165775401\n\nSincerely,\nChallenge Administrator"
+        },
+        {
+          "gmail_message_id": "1a1faec7ba56dbc6",
+          "received_at_utc": "2026-11-20T21:46:03.000Z",
+          "subject": "Submission Processing Started in GHIST 2026 Multi Sweep with Background Selection Final (9619662)",
+          "body_text": "Dear kevin korfmann (ancestrum):\n\nYour submission (submission ID 9785372) is in progress.  Log files produced while your workflow is running will be periodically uploaded here: https://www.synapse.org/#!Synapse:syn78780463 Further notification will be provided when it is complete.\n\nSincerely,\n\nSubmission Queue Administration"
+        }
+      ]
+    }
+  ]
+}

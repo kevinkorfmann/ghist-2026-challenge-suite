@@ -1,0 +1,131 @@
+{
+  "budget": {
+    "confirmation_audit_minutes": 15,
+    "cpus_per_job": 4,
+    "deadline_utc": "2026-11-20T23:59:00Z",
+    "development_audit_minutes": 10,
+    "development_concurrency": 2,
+    "development_jobs": 2,
+    "development_minutes_per_job": 55,
+    "fresh_inference_concurrency": 6,
+    "fresh_inference_jobs": 6,
+    "fresh_inference_minutes_per_job": 55,
+    "fresh_preparation_concurrency": 6,
+    "fresh_preparation_jobs": 6,
+    "fresh_preparation_minutes_per_job": 15,
+    "maximum_cpu_hours_including_root_final": 39,
+    "maximum_elapsed_minutes_without_queueing_including_audits_submission": 215,
+    "memory_per_cpu_mb": 5632,
+    "remaining_deadline_margin_minutes": 9,
+    "root_final_jobs": 1,
+    "root_final_minutes_per_job": 55,
+    "scheduled_hard_caps_finish_utc": "2026-11-20T23:50:00Z",
+    "submission_minutes": 10,
+    "task13": "Existing separately registered three-start diagnostic<=9CPU-hours; max2 concurrent4CPU refinements. Aggregate concurrent Task14fresh+Task13<=32CPUs."
+  },
+  "clock_rule": "Check actual UTC at dispatch and each worker start before input access. Queue delays cannot shift these deadlines; a late start fails closed. Slurm hard wall caps include checks and inference. Later stages launch only if all required gates/audits pass and their remaining registered hard budgets fit. No deadline extension or threshold relaxation.",
+  "confirmation_designs": {
+    "split_isolation": [
+      {
+        "ancestral_size": 8000,
+        "generations": 1000,
+        "seeds": [
+          963001,
+          963002
+        ],
+        "size1": 4000,
+        "size2": 4000
+      },
+      {
+        "ancestral_size": 10000,
+        "generations": 5000,
+        "seeds": [
+          963011,
+          963012
+        ],
+        "size1": 5000,
+        "size2": 15000
+      },
+      {
+        "ancestral_size": 20000,
+        "generations": 12000,
+        "seeds": [
+          963021,
+          963022
+        ],
+        "size1": 30000,
+        "size2": 10000
+      }
+    ]
+  },
+  "development_cohorts": [
+    "full_confirmation_split_r0_p0_v1",
+    "full_confirmation_split_r0_p1_v1"
+  ],
+  "development_policy": "Restart all three fixed estimators on the same two original regime0Q30/Q20 SAF inputs, usingcap500 and unchanged1e-6 tolerance. Every unchanged gate must pass in both. Do not initialize from cap200 spectra or select among outcomes.",
+  "fresh_rule": "All six963xxx seeds were registered but never generated under failedcap200. Reuse them unchanged only after both newcap500 development cases pass all unchanged gates and independent review, source/runtime freeze passes, and actual-clock stage guards pass. Retain all six outcomes; no retries, substitutions or droppingnoise strata.",
+  "method": {
+    "blocks": 500,
+    "max_epochs": 500,
+    "same_as_v7": [
+      "GL2/SAF filters and callable exposure",
+      "global folding",
+      "eight starts each L-BFGS-B and Powell",
+      "primary seed1=761001, alternate seed2=761002, initialized continuation from seed1",
+      "pinned winsfs0.7.0/runtime and exact official formatter"
+    ],
+    "threads": 4,
+    "tolerance": 1e-06,
+    "window_size": 500
+  },
+  "noise_profiles": {
+    "replicate0": {
+      "depth_sigma": 0.25,
+      "quality": 30
+    },
+    "replicate1": {
+      "depth_sigma": 0.5,
+      "quality": 20
+    }
+  },
+  "numerical_gates": {
+    "all_three_optimizer_agreements": true,
+    "callable_fraction_min": 0.99,
+    "each_run_stop_before_epoch": 500,
+    "full_frequency_L1_max_exclusive": 0.001,
+    "segregating_relative_L1_max_exclusive": 0.05,
+    "target_relative_change_max_exclusive": 0.01
+  },
+  "previous_failed_evidence": {
+    "archive_sha256": "76a256e532f09f7c871eab192d3dcd9d3722250f44b4cfe06e59f134342ae6a4",
+    "path": "task14_stabilized_development_gate_audit_v1.json",
+    "sha256": "fbe4a788ef62da8a17eb907ca7717567c0f20a48408439e85f9f70aa804fafed"
+  },
+  "rationale": {
+    "inference": "A full 500-block window may reduce persistent seed-dependent subset variation; tighter stopping alone need not remove it. Neither improvement nor full-batch equivalence is assumed.",
+    "primary_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9713400/",
+    "source_equation": "Eq.12 averages only the W most recent block estimates; pinned winsfs-core/src/em/window_em.rs confirms finite FIFO window of posterior sums."
+  },
+  "registered_at_utc": "2026-11-20T20:05:15.877457+00:00",
+  "release_rule": "Both new development cases then all six fresh cohorts must pass every unchanged numerical/recovery gate, with independent audits and all actual-clock guards. All earlier failures remain retained.",
+  "scientific_gates": {
+    "all_targets_all_cohorts_absolute_relative_error_max": 0.3,
+    "extra_conservative_check": "Also require <=30% recovery for every target in alternate-seed/continued fits.",
+    "median_absolute_relative_error_max": 0.2,
+    "median_definition": "All 18 primary seed1 target errors across six cohorts, with each noise stratum additionally reported separately."
+  },
+  "scientifically_ready": false,
+  "scope": "Separate fixed cap500 development and conditional fresh confirmation. Failed cap200 policy, original six failures and their cutoffs remain unchanged.",
+  "seed_nonconsumption_evidence": {
+    "path": "task14_stabilization_v1_no_fresh_dispatch.json",
+    "seeds_consumed": false,
+    "sha256": "c17f1ef205548c6a032158cd31c2803830fda276d0a51da71f2c1ace782c0599"
+  },
+  "stage_latest_start_utc": {
+    "confirmation": "2026-11-20T21:35:00Z",
+    "development": "2026-11-20T20:15:00Z",
+    "final": "2026-11-20T22:45:00Z",
+    "prepare": "2026-11-20T21:20:00Z"
+  },
+  "task": "split_isolation"
+}

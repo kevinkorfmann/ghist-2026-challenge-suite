@@ -1,0 +1,21 @@
+{
+  "prepared_at_utc": "2026-11-20T18:44:19.795744+00:00",
+  "status": "prepared_not_yet_submitted",
+  "protocol": "winsfs_full_development_v1.json",
+  "protocol_sha256": "6bb7811d87d0028dfa5d817886e5d26dbe171585e7939b4fc027e8e28d4415f6",
+  "source_manifest": "source_manifest_v7.json",
+  "source_manifest_sha256": "43a608f4bde3334fc8239f48b4dd4834ee3a87ee547acb15b379bfc4838e21f4",
+  "slurm_script": "winsfs_full_v7.sbatch",
+  "slurm_script_sha256": "9b6b9420838a679ae50bea971b81c5063221185c57efbc0ea13e391334320ce6",
+  "max_concurrent_jobs": 2,
+  "cpus_per_job": 4,
+  "memory_mb_per_cpu": 5632,
+  "walltime_hours_per_task": 1,
+  "cases": [
+    "full_bottleneck",
+    "full_split_isolation"
+  ],
+  "confirmed_no_fresh_confirmation_launch": true,
+  "pre_post_verification": "All manifest source files, frozen protocol, launch wrapper, complete BAM/reference/popfile audits, and equality to actual SAF input audit; post record binds result and likelihood/window protocols.",
+  "index_and_tool_binding": "BAM/FASTA indices and ANGSD/winsfs binaries also compared before and after execution."
+}

@@ -1,0 +1,16 @@
+[E::idx_find_and_load] Could not retrieve index file for '/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/inputs/task7/onesweep_bgs.final.vcf.gz'
+[E::idx_find_and_load] Could not retrieve index file for '/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/inputs/task7/onesweep_bgs.final.vcf.gz'
+Traceback (most recent call last):
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-deadline-inference-20261120/experiments/submission_package_2026_11_20/sweeps_best_effort/run_final_sweep.py", line 449, in <module>
+    main()
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-deadline-inference-20261120/experiments/submission_package_2026_11_20/sweeps_best_effort/run_final_sweep.py", line 435, in main
+    result = run(parser.parse_args())
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-deadline-inference-20261120/experiments/submission_package_2026_11_20/sweeps_best_effort/run_final_sweep.py", line 296, in run
+    result = run_task7(args.vcf, args.accessible, "final", args.raisd, raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-deadline-inference-20261120/scripts/predict_task7_sweep_bgs.py", line 113, in run
+    subprocess.run(
+  File "/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/vast/projects/smathi/cohort/korfmann/ghist2026/external/raisd/bin/release/RAiSD', '-n', 'task7', '-I', '/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/task7/raw/masked.vcf', '-w', '50', '-R']' returned non-zero exit status 127.

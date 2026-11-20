@@ -1,0 +1,157 @@
+"""Independently score both frozen phase variants on exposed development cohorts."""
+import hashlib
+import json
+import math
+import tarfile
+from datetime import UTC, datetime
+from itertools import combinations
+from pathlib import Path
+
+from scripts.score_relatedness_cohorts import evaluate_cohorts
+from scripts.score_relatedness_published_metric import evaluate_published_metric
+
+
+ROOT = Path(__file__).resolve().parents[2]
+BASE = ROOT / "experiments/task11_development_2026_11_20"
+OUTPUT = ROOT / "experiments/relatedness_qualification_2026_11_20/task11_phase_development"
+ARCHIVE = BASE / "raw_development_v4_v5_v2.tar.gz"
+ARCHIVE_SHA = "16d479a25c1066ac392415d10ab52e742dce0ad022d4097f299d8eb411bc6470"
+EXPECTED = {
+    4: {
+        "protocol": "da6f44548fdf8e02844221b780bc8585d7b2cddc1ba369fa2000de364acff4e5",
+        "candidate": "3824eaf919e1938215a9072055e6fea36b920a0025a8d300ba3e64bc2fe15151",
+        "source_archive": "1b4635c6bf085d4070500ba596e8f8cd95b7c23a534ba5509cae0d6c236ff752",
+    },
+    5: {
+        "protocol": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+        "candidate": "354e49276bdee2643eb2b2827a397a0435c80553b7767139f7c0b07228c8a933",
+        "source_archive": "77375babb7fdac32b16ed7e487267f1fb38b29e6f7d291bcafaa4bfc8a86f558",
+    },
+}
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load(path):
+    return json.loads(path.read_text())
+
+
+def pairs(rows):
+    return {tuple(sorted((row["indID1"], row["indID2"]))) for row in rows}
+
+
+def verify_version(version):
+    folder = BASE / f"raw_development_v{version}_v2"
+    before = {p.name: digest(p) for p in folder.iterdir() if p.is_file()}
+    manifest, protocol, candidate, ablation, crosscheck = [
+        load(folder / name) for name in (
+            "manifest.json", "protocol.json", "candidate.json", "ablation.json", "independent_scoring_input.json"
+        )
+    ]
+    expected = EXPECTED[version]
+    for name, value in manifest["outputs_sha256"].items():
+        assert before[name] == value, name
+    assert set(before) == set(manifest["outputs_sha256"]) | {"manifest.json"}
+    assert before["protocol.json"] == manifest["protocol_sha256"] == expected["protocol"]
+    assert before["candidate.json"] == manifest["candidate_sha256"] == expected["candidate"]
+    assert manifest["source_archive_sha256"] == expected["source_archive"]
+    assert candidate["protocol_sha256"] == ablation["protocol_sha256"] == expected["protocol"]
+    assert ablation["candidate_sha256"] == expected["candidate"]
+    assert candidate["source_sha256"] == protocol["source_sha256"]
+    assert candidate["gates"] == protocol["gates"]
+    assert crosscheck["labels"] == protocol["labels"]
+    assert len(crosscheck["cohorts"]) == 8
+    cohorts, partitions = [], []
+    for index, cross in enumerate(crosscheck["cohorts"]):
+        truth, predictions, clusters = [load(folder / f"{name}_{index:02d}.json")
+                                       for name in ("truth", "predictions", "clusters")]
+        old = BASE / "evidence_v3/results_v3" / f"confirmation_{index:02d}"
+        assert truth == load(old / "truth.json")
+        assert clusters == load(old / "clusters.json")
+        original_result = load(old / "result.json")
+        assert cross["cohort"] == original_result["cohort"]
+        assert cross["truth"] == truth["pairs"] and cross["predictions"] == predictions
+        assert cross["cohort_id"] == f"exposed_{index:02d}"
+        original_bound = next(name for name in manifest["inputs_sha256"]
+                              if name.endswith(f"confirmation_{index:02d}/result.json"))
+        assert digest(old / "result.json") == manifest["inputs_sha256"][original_bound]
+        actual = {frozenset(family) for family in truth["families"]}
+        inferred = {frozenset(family) for family in clusters["families"]}
+        for partition in (actual, inferred):
+            flattened = [sample for family in partition for sample in family]
+            assert len(flattened) == len(set(flattened)) == len(truth["samples"])
+            assert set(flattened) == set(truth["samples"])
+        expected_pairs = {tuple(sorted(pair)) for family in actual for pair in combinations(family, 2)}
+        assert pairs(truth["pairs"]) == expected_pairs
+        assert len(truth["pairs"]) == len(expected_pairs)
+        cohorts.append({key: cross[key] for key in ("cohort_id", "truth", "predictions")})
+        partitions.append({"cohort_id": cross["cohort_id"], "families": len(actual),
+                           "exact_families": len(actual & inferred), "pairs": len(expected_pairs)})
+    scores = evaluate_cohorts(cohorts, protocol["labels"], bootstrap_seed=20301120)
+    published = evaluate_published_metric(cohorts, protocol["labels"])
+    phase = ablation["phase"]
+    assert scores["pooled"]["pairs"] == phase["truth_pairs"]
+    assert scores["pooled"]["correct"] == phase["correct"]
+    assert scores["missing_pairs"] == phase["missing_true_pairs"]
+    assert scores["extra_pairs"] == phase["extra_cross_family_pairs"]
+    for label, row in scores["pooled"]["per_label"].items():
+        assert row["pairs"] == phase["counts"][label]
+        assert row["correct"] == phase["correct_counts"][label]
+        assert row["recall"] == phase["recall"][label]
+    for actual, claimed in ((scores["pooled"]["exact_accuracy"], phase["accuracy"]),
+                            (scores["pooled"]["balanced_accuracy"], phase["balanced_accuracy"]),
+                            (scores["calibration"]["ece"], phase["ece_10_equal_width"])):
+        assert math.isclose(actual, claimed, abs_tol=1e-12, rel_tol=0)
+    gates = protocol["gates"]
+    checks = {
+        "accuracy": scores["pooled"]["exact_accuracy"] >= gates["accuracy_min"],
+        "balanced_accuracy": scores["pooled"]["balanced_accuracy"] >= gates["balanced_accuracy_min"],
+        "each_label_recall": min(row["recall"] for row in scores["pooled"]["per_label"].values()) >= gates["each_label_recall_min"],
+        "bootstrap_lower": scores["bootstrap"]["balanced_accuracy_interval"][0] >= gates["bootstrap_balanced_lower95_min"],
+        "exact_family_recovery": sum(row["exact_families"] for row in partitions) / sum(row["families"] for row in partitions) >= gates["exact_family_recovery_min"],
+        "pair_coverage": scores["pair_coverage_passed"],
+        "calibration": scores["calibration"]["ece"] <= gates["expected_calibration_error_max"],
+    }
+    assert before == {p.name: digest(p) for p in folder.iterdir() if p.is_file()}
+    audit = {"verified_at_utc": datetime.now(UTC).isoformat(), "archive_sha256": ARCHIVE_SHA,
+             "input_sha256_before_and_after": before, "partitions": partitions, "checks": checks,
+             "scope": "Previously exposed development cohorts; never independent confirmation",
+             "predeclared_criteria_passed": all(checks.values()), "release_authorized": False,
+             "audit_source_sha256": digest(Path(__file__)),
+             "scorer_sha256": digest(ROOT / "scripts/score_relatedness_cohorts.py"),
+             "published_metric_scorer_sha256": digest(ROOT / "scripts/score_relatedness_published_metric.py")}
+    return scores, published, audit
+
+
+def main():
+    assert digest(ARCHIVE) == ARCHIVE_SHA
+    with tarfile.open(ARCHIVE) as archive:
+        members = archive.getmembers()
+        assert len({member.name for member in members}) == len(members)
+        for member in members:
+            path = Path(member.name)
+            assert not path.is_absolute() and ".." not in path.parts
+            assert not member.issym() and not member.islnk()
+            if member.isfile():
+                assert hashlib.sha256(archive.extractfile(member).read()).hexdigest() == digest(BASE / path)
+    reports = {version: verify_version(version) for version in EXPECTED}
+    OUTPUT.mkdir(exist_ok=False)
+    summary = {}
+    for version, (scores, published, audit) in reports.items():
+        target = OUTPUT / f"v{version}"
+        target.mkdir()
+        for name, value in (("cohort_scores.json", scores), ("published_metric.json", published), ("audit.json", audit)):
+            (target / name).write_text(json.dumps(value, indent=2, allow_nan=False) + "\n")
+        summary[f"v{version}"] = {"correct": scores["pooled"]["correct"], "pairs": scores["pooled"]["pairs"],
+                                  "balanced_accuracy": scores["pooled"]["balanced_accuracy"],
+                                  "weighted_jaccard": published["pooled"]["weighted_jaccard"],
+                                  "bootstrap_lower": scores["bootstrap"]["balanced_accuracy_interval"][0],
+                                  "ece": scores["calibration"]["ece"], "checks": audit["checks"]}
+    (OUTPUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    print(json.dumps(summary))
+
+
+if __name__ == "__main__":
+    main()

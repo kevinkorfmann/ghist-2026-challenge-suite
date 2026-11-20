@@ -1,0 +1,37 @@
+{
+  "predictor": [
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task9-offline-package-v2-20261120/task9-package-v2/scripts/predict_task9_current.py",
+    "--release",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task9-offline-package-v2-20261120/task9-package-v2/configs/task9_current_release.json",
+    "--artifact-root",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026",
+    "--observed",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/input.csv",
+    "--sex-map",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap",
+    "--dataset",
+    "final",
+    "--input-provenance",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/input_provenance.json",
+    "--pairs",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/expected_pairs.csv",
+    "--workers",
+    "2",
+    "--out-dir",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/prediction"
+  ],
+  "validator": [
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task9-offline-package-v2-20261120/task9-package-v2/scripts/validate_submission.py",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/prediction/task9_final_candidate.csv",
+    "--challenge",
+    "9",
+    "--dataset",
+    "final",
+    "--pairs",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/expected_pairs.csv",
+    "--report",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/validation.json"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "state": "SERVER_SCHEMA_CORRECTED_PENDING_ROOT_RETRY",
+  "created_utc": "2026-11-20T21:44:37.986049+00:00",
+  "original_columns": [
+    "indID1",
+    "indID2",
+    "relation"
+  ],
+  "output_columns": [
+    "indID1",
+    "indID2",
+    "relation",
+    "meioses_count"
+  ],
+  "meioses_column": "Appended deterministically from each original label before schema merging",
+  "original_label_to_meioses": {
+    "siblings": 2,
+    "avuncular": 3,
+    "avuncular_once_removed": 4,
+    "full_1st_cousin": 4,
+    "full_1st_cousin_once_removed": 5,
+    "full_1st_cousin_twice_removed": 6,
+    "full_2nd_cousin": 6,
+    "full_2nd_cousin_once_removed": 7,
+    "full_2nd_cousin_twice_removed": 8,
+    "full_3rd_cousin": 8,
+    "full_3rd_cousin_once_removed": 9,
+    "full_4th_cousin": 10,
+    "full_1st_cousin_thrice_removed": 7,
+    "avuncular_twice_removed": 5
+  },
+  "server_allowed_label_to_meioses": {
+    "siblings": 2,
+    "avuncular": 3,
+    "avuncular_once_removed": 4,
+    "full_1st_cousin": 4,
+    "full_1st_cousin_once_removed": 5,
+    "full_1st_cousin_twice_removed": 6,
+    "full_2nd_cousin": 6,
+    "full_2nd_cousin_once_removed": 7,
+    "full_2nd_cousin_twice_removed": 8,
+    "full_3rd_cousin": 8,
+    "full_3rd_cousin_once_removed": 9,
+    "full_4th_cousin": 10
+  },
+  "replacement_mapping": {
+    "full_1st_cousin_thrice_removed": "full_2nd_cousin_once_removed",
+    "avuncular_twice_removed": "full_1st_cousin_once_removed"
+  },
+  "replacement_counts": {
+    "full_1st_cousin_thrice_removed": 4275,
+    "avuncular_twice_removed": 3025
+  },
+  "mapping_interpretation": "Unique accepted same-meiosis label; different pedigree relationships are merged, not biologically equivalent",
+  "pairs": 43956,
+  "people": 297,
+  "all_original_ids_pair_order_and_implied_meioses_preserved": true,
+  "all_other_labels_preserved": true,
+  "vcf_access": "Original SHA256 verification and sample header only; no genotype parsing or model execution",
+  "no_model_probability_refit_or_score_feedback": true,
+  "input_sha256_before_after": {
+    "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/task12.final.csv": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+    "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/candidate_manifest.json": "6aa366a3a8585701fbb4519e77c2dbe7e41925a284ce00b09e0e9b2eb9d86fb3",
+    "/private/tmp/ghist-final-submissions-20261120/task12/relatedness4.final.vcf.gz": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/task12/correct_server_schema_v1.py": "f00d082230be7bdf7139f90ad669f1223ef730b808030ac2fcf3da49a0afa5c6"
+  },
+  "output_path": "/private/tmp/ghist-final-submissions-20261120/task12/task12_final_schema_corrected.csv",
+  "output_sha256": "fc9c18c0ea1629d12d8f54ad7a45a0eb89a8df26f37a13693e51cb7e47bdec80",
+  "invalid_receipt_sha256": "adc9a3ce5cc5aee3c9e08f5c82933d283ade6db36aeab6ffac7911d9e2e5e121",
+  "scientific_qualification": false,
+  "submission_performed": false
+}

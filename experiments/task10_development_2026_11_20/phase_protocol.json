@@ -1,0 +1,34 @@
+{
+  "candidate": "phase-pair-forest-v1",
+  "stage": "DEVELOPMENT",
+  "training": {"copies_per_label": 1000, "seed": 2026130010},
+  "exact_diagnostic": {"copies_per_label": 100, "seed": 2026131010},
+  "model_seed": 2026136010,
+  "estimator": {"name": "ExtraTreesClassifier", "trees": 500, "minimum_leaf": 5, "class_weight": "balanced", "max_features": 1.0},
+  "features": "raw haplotype and diploid-state length spectra; threshold5/10cM chromosome-wise homolog minor-sharing fractions and lengths after IBD2 masking; IBD2 fraction",
+  "ablation": "otherwise identical classifier excludes homolog minor-sharing features but retains explicit IBD2 fractions",
+  "phase_invariance": "sample-order swap and independent homolog swaps within each chromosome; interval unions prevent duplicate counting",
+  "training_detectability_approximation": "exact ancestral haplotype edges below2cM omitted; this does not model complete detection uncertainty",
+  "new_detected_development_cohorts": [
+    {"topology": "cousins", "seed": 2026132010},
+    {"topology": "avuncular", "seed": 2026133010},
+    {"topology": "cousins", "seed": 2026134010},
+    {"topology": "avuncular", "seed": 2026135010}
+  ],
+  "scalar_temperature_grid": [0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0],
+  "calibration_rule": "select scalar temperature minimizing class-balanced negative log loss on only the four new detected development cohorts; deterministic lowest-temperature tie break",
+  "confirmation_reserved": [
+    {"topology": "cousins", "seed": 2026142010},
+    {"topology": "avuncular", "seed": 2026143010},
+    {"topology": "cousins", "seed": 2026144010},
+    {"topology": "avuncular", "seed": 2026145010}
+  ],
+  "confirmation_execution_gate": "Only after development reaches complete coverage,0.80exact,0.70macro,0.50minimum-label-recall,+0.10gain over frozen baseline and no cohort regression; source/model/calibration freeze before confirmation",
+  "rng": "Founder ancestry, mutation and hypothetical dropout use NumPy SeedSequence([cohort_seed,chromosome,stage]); Ped-sim uses stage3/chromosome0. Derived seeds recorded before generation, checked unique over all planned cohorts/stages.",
+  "existing_diagnostic_data_policy": "original18person and both prior mixed-depth families excluded from fitting and calibration; repeated founder RNG seeds in prior mixed families prohibit independence claims",
+  "budget": "one exact-phased training job (4CPU,30minutes); four detected development families(4CPU,60minute limits); at most four confirmation families if gates pass",
+  "limitations": ["fixed simple outbred founder history", "two sampled pedigree designs", "no missing genotypes", "no229person scaling", "rooting uncertainty unresolved by composite pair probabilities"],
+  "reference": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12341879/",
+  "submission_ready": false,
+  "submission_count": 0
+}

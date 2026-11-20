@@ -1,0 +1,100 @@
+{
+  "bindings": {
+    "external/angsd/angsd": "c8059942b9bdaeef232515947b5761f4ca33d2c8c2443a27d63af199763c6242",
+    "external/bwa/bwa": "7af32763e40ad180225335a47cca77309100f910cbf1a0855bef7e782995b5d9",
+    "external/winsfs-release-v0.7.0/winsfs": "be5993c4ad06ddaa4cb8d45723c8039af50110cd63f11de563ee04bfdaeba1b7",
+    "infer_task14_confirmation_v1.sbatch": "cc4fd1aa8d9d8b49eaccdb894cc1f56ba480524d5de81905bf7d34564b3c7d7e",
+    "lowcoverage_confirm_guard_v1.py": "b925c906968fd00c721fdca18017d3380f4567187c5ba7ed2991d62c6fc2746c",
+    "official_templates/provenance.json": "0c442ecfe400cc28b26508d2575e86ee57e6bc1e646c1426070f18e3dbb5ac5a",
+    "official_templates/split_isolation_low_coverage.submission.yaml": "46bddd26dd3ef9fac2d707c549214b5b8f9d2c427b9d0a38cc7ecc9a4ed2d0cb",
+    "prepare_task14_confirmation_v1.sbatch": "e8510166f3be9278489098e5f425bf7b5c4dd43ef6e1c74f2adede235874674b",
+    "runtime_task14_confirmation_v1.json": "5cff417b7e3c0d28e386943adf6f14767825a8a41c0c1406023172f95b16d48c",
+    "source_v7/source_manifest.json": "43a608f4bde3334fc8239f48b4dd4834ee3a87ee547acb15b379bfc4838e21f4",
+    "validation_acceptance_v1.json": "2d824a285c9b3186c4c6c47a90a1a61266f025c6d69ce877db016d61f4f97585",
+    "winsfs_full_development_v1.json": "6bb7811d87d0028dfa5d817886e5d26dbe171585e7939b4fc027e8e28d4415f6"
+  },
+  "budget": "At most2 concurrent4CPU jobs,5632M/CPU; six preparation jobs capped30min each then six inference jobs capped45min each. Worst scheduler-free bound3h45m; expected30-50min.",
+  "confirmation_designs": [
+    {
+      "ancestral_size": 8000,
+      "generations": 1000,
+      "seeds": [
+        853001,
+        853002
+      ],
+      "size1": 4000,
+      "size2": 4000
+    },
+    {
+      "ancestral_size": 10000,
+      "generations": 5000,
+      "seeds": [
+        853011,
+        853012
+      ],
+      "size1": 5000,
+      "size2": 15000
+    },
+    {
+      "ancestral_size": 20000,
+      "generations": 12000,
+      "seeds": [
+        853021,
+        853022
+      ],
+      "size1": 30000,
+      "size2": 10000
+    }
+  ],
+  "failure_rule": "Preserve every failure/timeout and all six cohorts. No refits, seed replacement, tolerance change, or dropping Q20/high-variation strata under this confirmation label.",
+  "frozen_at_utc": "2026-11-20T19:04:18.636424+00:00",
+  "historical_gates": "Earlier realSFS criteria and Task13 failures remain unpassed; this is separately registered Task14 window-estimator confirmation.",
+  "method": "Unchanged source_v7 GL2/SAF1 minMapQ30/minQ20; winsfs0.7.0 blocks500/window100/tolerance1e-4/max_epochs50; seeds761001/761002 and initialized continuation; global folding; v5 eight starts each L-BFGS-B and Powell.",
+  "noise_profiles": {
+    "replicate0": {
+      "depth_sigma": 0.25,
+      "quality": 30
+    },
+    "replicate1": {
+      "depth_sigma": 0.5,
+      "quality": 20
+    }
+  },
+  "numerical_gates": {
+    "all_three_optimizer_agreements": true,
+    "callable_fraction_min": 0.99,
+    "each_run_stop_before_epoch": 50,
+    "full_frequency_L1_max_exclusive": 0.001,
+    "segregating_relative_L1_max_exclusive": 0.05,
+    "target_relative_change_max_exclusive": 0.01
+  },
+  "primary_estimate": "seed1; seed2 and continuation are numerical checks, not extra independent cohorts.",
+  "release_rule": "No scientific readiness until all six cohorts, all numerical/scientific gates, provenance checks, and independent audit pass; scope limited to tested model/noise domain.",
+  "scientific_gates": {
+    "all_targets_all_cohorts_absolute_relative_error_max": 0.3,
+    "extra_conservative_check": "Also require <=30% recovery for every target in alternate-seed/continued fits.",
+    "median_absolute_relative_error_max": 0.2,
+    "median_definition": "All 18 primary seed1 target errors across six cohorts, with each noise stratum additionally reported separately."
+  },
+  "scientifically_ready": false,
+  "scope": "Six prespecified independent synthetic Task14 cohorts only; no challenge input or Task13 confirmation seeds.",
+  "source_files": {
+    "scripts/lowcoverage_audit_spectra.py": "f88395f631b6fb15ca0e1f8f15f8219a438c0a2a5ad7c2f13699c87eeacd9df2",
+    "scripts/lowcoverage_collect.py": "4fc37c4daed1c33725f036f82fc98b672f94e31b76111abf49e2e3127f91946a",
+    "scripts/lowcoverage_continue.py": "24bcdc64f8e8d3f5a519b15db5c3c485ca44171e72024aa6640c57c3f7c7a655",
+    "scripts/lowcoverage_infer.py": "133f91a23924538011b676ef24ee6fb206f0dd304f796c64e6d19c131b0bf3c1",
+    "scripts/lowcoverage_prepare_confirmation.py": "3adfdcc8ddfdf41500ca17048dda451c9424a60da1faaf292d5162ddbfa6bf5e",
+    "scripts/lowcoverage_prepare_full.py": "05c381ce8ec6495432ad887e2797b6641fe97001024381b416ac6be526d02f46",
+    "scripts/lowcoverage_profile_truth.py": "1e09850ababf608f4737394bef5a57900634cdab59e1bd89eed5392efa4d4df9",
+    "scripts/lowcoverage_realsfs_from_saf.py": "dff3810492049cb9969156102b71df278ae9037a4ba30b395b42040d87d94887",
+    "scripts/lowcoverage_reinfer.py": "890ca0628d0b050e2ebffb922538af6d01d39df1d5d1f08e7da5aedd78ede403",
+    "scripts/lowcoverage_validate.py": "fbb6d4b3c98a2954fe64b0e038a361d2f31b3429622ca669359853cd9d268ee8",
+    "scripts/lowcoverage_winsfs.py": "1717ea6672756ac64878ccde980e4a3f03f30daa3a8670922cb3534013a9b8bc",
+    "src/ghist_lowcoverage/__init__.py": "07d182837d9bb3f65344d79572554799ee9bbfe48bc97b386b6eebdd9cd6c821",
+    "src/ghist_lowcoverage/pipeline.py": "3a994ec9ea14b38012b7528f959f0ee6fdd82c5a3ca23bb863f1d44ef73b3ba0",
+    "src/ghist_lowcoverage/remap.py": "3be7755f805e24cf13f7fb627feae67da136389d9fecbb7e496788f591d32185",
+    "src/ghist_lowcoverage/submission.py": "b75531e8cbc3c03fff78b0d0b38adb3262c21c8137133979a95f56e8a54277bf",
+    "src/ghist_lowcoverage/winsfs.py": "3fb657c03dff9086cbaad24c4328005f106097f4891778465976a922e4723bd0"
+  },
+  "task": "split_isolation"
+}

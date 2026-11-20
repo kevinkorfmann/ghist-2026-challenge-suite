@@ -1,0 +1,55 @@
+{
+  "parameters": {
+    "version": "task11-context-information-diagnostic-v1",
+    "sibling_probability_min": 0.95,
+    "cohort_folds": 4,
+    "fold_assignment": "training cohort index modulo four",
+    "phase_min_cm": 10.0,
+    "hbd_cutoffs_cm": [
+      2.0,
+      5.0,
+      10.0
+    ],
+    "ambiguous_component_policy": "all members become singletons",
+    "edge_filter": "merge each homolog edge then require at least10cM; union eligible edges",
+    "ibd0_exclusion": "all detected IBD between siblings, including short edges",
+    "mask": "union of all participating individuals' HBD at each fixed cutoff",
+    "zero_exposure": "IBD011 ratio, numerator and denominator are zero; union remains measurable",
+    "model": {
+      "n_estimators": 800,
+      "min_samples_leaf": 3,
+      "max_features": 0.75,
+      "n_jobs": 4,
+      "random_state": 20300111
+    },
+    "temperature_grid": [
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      2.0
+    ],
+    "selection": "single fixed diagnostic; all results reported, no outcome-selected feature/model variant",
+    "scope": "training only fitting, four separate calibration cohorts, exposed8 development only",
+    "submission_ready": false
+  },
+  "diagnostic_script_sha256": "4b347c189e0a5799c99e158715c236934485e618db44cb231e84a27535fd396b",
+  "tests_sha256": "25d8ece693f60a7f1fef45c74e749f03cc1220e0839b1abdcbbce8142861f21f",
+  "bound_inputs": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/protocol_v5.json": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/candidate_v5/candidate.json": "354e49276bdee2643eb2b2827a397a0435c80553b7767139f7c0b07228c8a933"
+  },
+  "feature_count": 36,
+  "confirmation_seeds_unused": [
+    2026120400,
+    2026120401,
+    2026120402,
+    2026120403,
+    2026120404,
+    2026120405,
+    2026120406,
+    2026120407
+  ],
+  "reference": "https://doi.org/10.1016/j.ajhg.2018.05.008",
+  "limitations": "DRUID motivates observed multiway sharing; human degree results do not validate exact dog labels with inbreeding."
+}

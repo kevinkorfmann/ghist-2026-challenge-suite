@@ -1,0 +1,17 @@
+{
+  "status": "PROSPECTIVE_PRAGMATIC_DIAGNOSTIC_BEFORE_FINAL_INSPECTION",
+  "strict_policy": "Unchanged: reject every missing allele on retained biallelic sites",
+  "optional_policy": "Complete-site filtering only; no imputation, no inferred phase; preserve all retained allele calls and original IDs",
+  "actual_input_gate": {"minimum_retained_fraction_every_chromosome": 0.75, "denominator": "All in-map biallelic variant records before missing-call filtering", "minimum_retained_markers_every_chromosome": 100},
+  "development_cohorts": [40,41,42,43,44,45,46,47],
+  "thinning": {"rate": 0.25, "method": "Uniform without replacement exactly floor(0.25*N) records per chromosome; original prepared complete-call VCF", "seed_derivation": "numpy SeedSequence([2026207010, cohort_index, chromosome]).generate_state(1)[0]", "no_resimulation": true},
+  "fixed_model": "pair-only-detected-forest-mean-NJ-integer-edge-v3",
+  "pair_model_sha256": "bdfecf8dc908d1222b43c2b16731f4cbe2f465ed7dc93a8a090ecd4b224d4159",
+  "qualification_source_manifest_sha256": "d59da1b628ff57bc7a7bcccd41503e44408f1c5f76d62b1666b5d1fcf6864036",
+  "confidence": 0.7744,
+  "gates": {"complete_all_8_cohorts_and_pairs": true, "maximum_overall_exact_accuracy_loss": 0.03, "maximum_macro_recall_loss": 0.03, "no_label_with_intact_recall_at_least_0_5_falls_below": 0.5},
+  "comparison": "Frozen intact structural integer-edge development predictions; same 585 pairs; no selection or fitting",
+  "resources": {"jobs":8,"cpus_per_job":4,"minutes_per_job":10,"concurrency":4,"hard_cpu_hours":5.333333333333333},
+  "limitation": "Reused development diagnostic under uniform MCAR whole-site thinning; not independent confirmation or robustness to structured missingness, allele-dependent missingness, or phase error. Passing does not change strict qualification.",
+  "release_rule": "Optional drop-site path disabled until every fixed diagnostic gate passes and root independently verifies results; complete-call path preferred. Root owns final inputs and one final submission."
+}

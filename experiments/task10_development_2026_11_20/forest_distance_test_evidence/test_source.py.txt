@@ -1,0 +1,533 @@
+from __future__ import annotations
+
+import gzip
+
+import pytest
+
+from scripts.develop_task10_detected_ibd import complete_features, detected_segments
+
+
+def test_features_include_zero_ibd_pairs_from_genotype_roster():
+    rows = complete_features({('a', 'b'): [('1', 20.0)]}, ['a', 'b', 'c'], 100)
+    assert len(rows) == 3
+    assert rows[0]['total_cm_ge_5'] == 20
+    assert rows[-1]['total_cm_ge_5'] == 0
+    with pytest.raises(ValueError, match='outside'):
+        complete_features({('a', 'x'): [('1', 20)]}, ['a', 'b'], 100)
+
+
+def test_diploid_state_partitions_true_two_haplotype_sharing(tmp_path):
+    map_path = tmp_path / 'map'
+    map_path.write_text('1 . 0 1\n1 . 100 101\n')
+    segments = tmp_path / 'ibd.gz'
+    with gzip.open(segments, 'wt') as handle:
+        handle.write('a 1 b 1 1 1 101 100\n')
+        handle.write('a 2 b 2 1 21 81 60\n')
+    assert detected_segments(segments, map_path, 'raw_haplotype')[('a', 'b')] == [('1', 100.0), ('1', 60.0)]
+    assert detected_segments(segments, map_path, 'diploid_state')[('a', 'b')] == [
+        ('1', 20.0), ('1', 60.0), ('1', 60.0), ('1', 20.0)]
+
+
+def test_duplicate_same_haplotype_never_creates_second_copy(tmp_path):
+    map_path = tmp_path / 'map'
+    map_path.write_text('1 . 0 1\n1 . 100 101\n')
+    segments = tmp_path / 'ibd.gz'
+    with gzip.open(segments, 'wt') as handle:
+        handle.write('a 1 b 1 1 1 101 100\na 1 b 1 1 21 81 60\n')
+    assert detected_segments(segments, map_path, 'diploid_state')[('a', 'b')] == [('1', 100.0)]
+
+
+def _synthetic_parents(depths):
+    parents = {'root1': (), 'root2': ()}
+    identifiers = {}
+    for branch, depth in enumerate(depths, 1):
+        previous = ('root1', 'root2')
+        for generation in range(2, depth + 2):
+            person = f'validation1_g{generation}-b{branch}-i1'
+            sibling = f'validation1_g{generation}-b{branch}-i2'
+            spouse = f'mate_{branch}_{generation}'
+            parents[person] = previous
+            parents[sibling] = previous
+            parents[spouse] = ()
+            previous = (person, spouse)
+        identifiers[person] = f'sample_{len(identifiers)}'
+        identifiers[sibling] = f'sample_{len(identifiers)}'
+    return parents, identifiers
+
+
+def test_two_whole_family_designs_cover_all_task_labels_without_pair_exclusions():
+    from ghist_relatedness.labels import HUMAN_LABELS
+    from scripts.develop_task10_detected_ibd import TOPOLOGIES, family_truth
+    labels = set()
+    for topology in TOPOLOGIES.values():
+        parents, identifiers = _synthetic_parents(topology['depths'])
+        truth = family_truth(parents, identifiers)
+        n = len(identifiers)
+        assert len(truth) == n * (n - 1) // 2
+        labels.update(row['relation'] for row in truth)
+    assert labels == set(HUMAN_LABELS.values())
+
+
+def test_genotype_selection_uses_declared_generation_and_parentage(tmp_path):
+    from scripts.develop_task10_detected_ibd import (
+        TOPOLOGIES,
+        genotype_roster,
+        select_vcf,
+    )
+    parents, identifiers = _synthetic_parents(TOPOLOGIES['avuncular']['depths'])
+    source, output = tmp_path / 'source.gz', tmp_path / 'out.gz'
+    samples = list(parents)
+    with gzip.open(source, 'wt') as handle:
+        handle.write('#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t' + '\t'.join(samples) + '\n')
+        handle.write('1\t1\t.\tA\tC\t.\tPASS\t.\tGT\t' + '\t'.join(['0|1'] * len(samples)) + '\n')
+    result = select_vcf(source, output, 'avuncular', parents)
+    assert set(result) == set(identifiers)
+    assert genotype_roster(output) == list(result.values())
+
+
+def test_completed_run_fails_if_bound_source_or_truth_changes(tmp_path):
+    from scripts.develop_task10_detected_ibd import sha256, verify_inputs
+    path = tmp_path / 'truth.json'
+    path.write_text('[]')
+    hashes = {str(path): sha256(path)}
+    verify_inputs(hashes)
+    path.write_text('[{}]')
+    with pytest.raises(RuntimeError, match='Immutable input changed'):
+        verify_inputs(hashes)
+
+
+def test_global_tree_recovers_additive_sibling_and_cousin_structure():
+    import itertools
+
+    from ghist_relatedness.labels import HUMAN_LABELS
+    from scripts.develop_task10_detected_ibd import global_tree_predictions
+    features, predictions = [], []
+    for i, j in itertools.combinations(range(6), 2):
+        label = 'siblings' if i // 2 == j // 2 else 'full_1st_cousin'
+        rel = 0.5 if label == 'siblings' else 0.125
+        pair = {'indID1': f'a{i}', 'indID2': f'a{j}'}
+        features.append({**pair, 'relatedness_ge_5': rel})
+        probabilities = {name: 0.05 / 13 for name in HUMAN_LABELS.values()}
+        probabilities[label] = 0.95
+        predictions.append({**pair, 'relation': label, 'probabilities': probabilities})
+    result, diagnostics = global_tree_predictions(features, predictions)
+    assert diagnostics['state'] == 'COMPLETED'
+    assert [row['relation'] for row in result] == [row['relation'] for row in predictions]
+    assert len(result) == 15
+    with pytest.raises(ValueError, match='every unique'):
+        global_tree_predictions(features[:-1], predictions)
+
+
+def test_global_tree_rejects_bad_relatedness_without_reading_truth():
+    from scripts.develop_task10_detected_ibd import global_tree_predictions
+    features = [{'indID1': 'a', 'indID2': 'b', 'relatedness_ge_5': float('nan')}]
+    probabilities = [{'indID1': 'a', 'indID2': 'b', 'probabilities': {'siblings': 1}, 'relation': 'siblings'}]
+    with pytest.raises(ValueError, match='finite'):
+        global_tree_predictions(features, probabilities)
+
+
+def test_phased_scores_are_invariant_to_homolog_and_sample_relabeling():
+    import numpy as np
+
+    from scripts.develop_task10_detected_ibd import phase_pair_features
+    genetic_map = {'1': (np.array([1, 101]), np.array([0., 100.])),
+                   '2': (np.array([1, 101]), np.array([0., 100.]))}
+    original = {'1': [(1, 31, 1, 1), (41, 81, 2, 1)], '2': [(1, 51, 1, 2)]}
+    expected = phase_pair_features(original, genetic_map, 200)
+    flipped = {chrom: [(lo, hi, 3 - h1, h2) for lo, hi, h1, h2 in rows]
+               if chrom == '1' else rows for chrom, rows in original.items()}
+    swapped = {chrom: [(lo, hi, h2, h1) for lo, hi, h1, h2 in rows] for chrom, rows in original.items()}
+    assert phase_pair_features(flipped, genetic_map, 200) == expected
+    assert phase_pair_features(swapped, genetic_map, 200) == expected
+    assert expected['phase_minor_high_5'] == pytest.approx(30 / 120)
+    assert expected['phase_minor_low_5'] == 0
+
+
+def test_phased_scores_mask_ibd2_and_deduplicate_overlap():
+    import numpy as np
+
+    from scripts.develop_task10_detected_ibd import phase_pair_features
+    genetic_map = {'1': (np.array([1, 101]), np.array([0., 100.]))}
+    original = {'1': [(1, 101, 1, 1), (21, 81, 2, 2)]}
+    expected = phase_pair_features(original, genetic_map, 100)
+    duplicates = {'1': original['1'] + [(1, 101, 1, 1), (11, 91, 1, 1)]}
+    assert phase_pair_features(duplicates, genetic_map, 100) == expected
+    assert expected['ibd2_fraction_5'] == pytest.approx(0.6)
+    assert expected['phase_minor_low_5'] == expected['phase_minor_high_5'] == 0
+
+
+def test_planned_seed_streams_are_deterministic_and_do_not_collide():
+    from scripts.develop_task10_detected_ibd import derived_seed
+    cohorts = [2026132010, 2026133010, 2026134010, 2026135010,
+               2026142010, 2026143010, 2026144010, 2026145010]
+    streams = [derived_seed(seed, chrom, stage) for seed in cohorts for chrom in range(23)
+               for stage in [1, 2, 3, 4]]
+    assert len(streams) == len(set(streams))
+    assert all(0 < seed < 2**32 for seed in streams)
+    assert derived_seed(cohorts[0], 1, 1) == derived_seed(cohorts[0], 1, 1)
+    assert derived_seed(cohorts[0], 11, 1) != derived_seed(cohorts[1], 1, 1)
+
+
+def test_phased_template_labels_and_zero_sharing_pairs_are_explicit():
+    from collections import Counter
+
+    from scripts.develop_task10_detected_ibd import (
+        phase_training_definition,
+        read_exact_phase,
+    )
+    definition, pairs = phase_training_definition(2)
+    assert definition.count('def ') == 14
+    assert len(pairs) == 28
+    assert set(Counter(pairs.values()).values()) == {2}
+    assert any('full_4th_cousin' in pair[0] for pair in pairs)
+    assert callable(read_exact_phase)
+
+
+def test_exact_phased_parser_normalizes_zero_based_homologs_and_pair_order(tmp_path):
+    from scripts.develop_task10_detected_ibd import read_exact_phase
+    path = tmp_path / 'segments'
+    path.write_text('b 0 a 1 1 1 101 IBD1 0 100 100\n')
+    result = read_exact_phase(path, {('a', 'b'): 'siblings', ('c', 'd'): 'full_4th_cousin'})
+    assert result[('a', 'b')]['1'] == [(1, 101, 2, 1)]
+    assert ('c', 'd') not in result
+
+
+def test_calibration_preserves_ranks_and_rejects_incomplete_pair_coverage():
+    import importlib.util
+    from pathlib import Path
+
+    import numpy as np
+
+    path = Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20/calibrate_phase.py'
+    spec = importlib.util.spec_from_file_location('task10_calibration', path)
+    calibration = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(calibration)
+    probabilities = np.array([[.2, .8], [0., 1.]])
+    for value in [.5, .75, 1., 1.5, 2., 3., 4.]:
+        adjusted = calibration.temperature(probabilities, value)
+        assert np.all(np.isfinite(adjusted))
+        assert np.allclose(adjusted.sum(axis=1), 1.)
+        assert np.array_equal(adjusted.argmax(axis=1), probabilities.argmax(axis=1))
+    with pytest.raises(ValueError, match='Missing or extra'):
+        calibration.metrics([{'cohort_id': 'a', 'truth': [
+            {'indID1': 'a', 'indID2': 'b', 'relation': 'siblings'}],
+            'predictions': []}], ['siblings'])
+
+
+def _multiway_module():
+    import importlib.util
+    from pathlib import Path
+    path = Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20/multiway_candidate.py'
+    spec = importlib.util.spec_from_file_location('task10_multiway', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_multiway_training_and_diagnostic_topologies_are_disjoint_and_complete():
+    from ghist_relatedness.labels import HUMAN_LABELS
+    module = _multiway_module()
+    training = module.topology_design(200, 2026150010)
+    diagnostic = module.topology_design(40, 2026152010, training)
+    assert len(set(training)) == 200
+    assert len(set(diagnostic)) == 40
+    assert not set(training) & set(diagnostic)
+    assert diagnostic == module.topology_design(40, 2026152010, training)
+    _, families, expected = module.whole_family_definition(diagnostic, 'test')
+    assert set(expected.values()) == set(HUMAN_LABELS.values())
+    for truth in families.values():
+        n = len({sample for pair in truth for sample in pair})
+        assert len(truth) == n * (n - 1) // 2
+
+
+def test_multiway_components_are_invariant_and_reject_conflicting_homolog_merges():
+    import numpy as np
+    module = _multiway_module()
+    genetic_map = {'1': (np.array([1, 101]), np.array([0., 100.]))}
+    segments = {('a', 'b'): {'1': [(1, 101, 1, 1), (1, 101, 1, 1)]},
+                ('a', 'c'): {'1': [(1, 101, 1, 2)]},
+                ('b', 'c'): {'1': [(1, 101, 1, 2)]}}
+    expected = module.component_integrals([['a'], ['b'], ['c']], segments, genetic_map, 100, 5)
+    assert expected == {'union': 1., 'copies': 1., 'multiple': 0., 'conflict': 0., 'complete': 1.}
+    flipped = {pair: {chrom: [(lo, hi, 3 - h1 if pair[0] == 'a' else h1,
+                3 - h2 if pair[1] == 'a' else h2) for lo, hi, h1, h2 in rows]
+            for chrom, rows in chromosomes.items()} for pair, chromosomes in segments.items()}
+    assert module.component_integrals([['c'], ['a'], ['b']], flipped, genetic_map, 100, 5) == expected
+    segments[('a', 'c')]['1'].append((1, 101, 2, 2))
+    conflict = module.component_integrals([['a'], ['b'], ['c']], segments, genetic_map, 100, 5)
+    assert conflict['conflict'] == 1.
+    assert conflict['union'] == conflict['copies'] == conflict['complete'] == 0.
+
+
+def test_multiway_counts_distinct_shared_components_once():
+    import numpy as np
+    module = _multiway_module()
+    genetic_map = {'1': (np.array([1, 101]), np.array([0., 100.]))}
+    segments = {('a', 'c'): {'1': [(1, 101, 1, 1)]},
+                ('b', 'd'): {'1': [(1, 101, 1, 1)]}}
+    result = module.component_integrals([['a', 'b'], ['c', 'd']], segments, genetic_map, 100, 5)
+    assert result['copies'] == 2.
+    assert result['multiple'] == result['union'] == 1.
+    segments[('a', 'b')] = {'1': [(1, 101, 1, 1)]}
+    result = module.component_integrals([['a', 'b'], ['c', 'd']], segments, genetic_map, 100, 5)
+    assert result['copies'] == 1.
+    assert result['multiple'] == 0.
+
+
+@pytest.mark.parametrize('engine_name', ['original', 'fast'])
+def test_complete_context_features_ignore_sample_names_order_and_homolog_labels(engine_name, monkeypatch):
+    import itertools
+
+    import numpy as np
+    module = _multiway_module()
+    original_module = module
+    if engine_name == 'fast':
+        from pathlib import Path
+        monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+        import fast_multiway_features
+        module = fast_multiway_features
+
+    class FixedSiblingDetector:
+        classes_ = np.array(['siblings', 'full_1st_cousin'])
+
+        def predict_proba(self, matrix):
+            return np.array([[.99, .01] if row[0] >= .1 else [.01, .99] for row in matrix])
+
+    model = {'model': FixedSiblingDetector(), 'feature_names': ['ibd2_fraction_5']}
+    genetic_map = {'1': (np.array([1, 101]), np.array([0., 100.]))}
+    samples = ['a', 'b', 'c', 'd', 'e']
+    segments = {('a', 'b'): {'1': [(1, 101, 1, 1), (1, 101, 2, 2)]},
+                ('c', 'd'): {'1': [(1, 101, 1, 1), (1, 101, 2, 2)]}}
+    for a, b in itertools.combinations(samples, 2):
+        if (a, b) not in segments:
+            segments[(a, b)] = {'1': [(1, 51, 1, 1)]}
+    original, groups, _ = module.family_features(samples, segments, genetic_map, 100, model)
+    if engine_name == 'fast':
+        reference, reference_groups, _ = original_module.family_features(samples, segments, genetic_map, 100, model)
+        assert groups == reference_groups
+        for left, right in zip(original, reference, strict=True):
+            assert {key: value for key, value in left.items() if key not in ['indID1', 'indID2']} == pytest.approx(
+                {key: value for key, value in right.items() if key not in ['indID1', 'indID2']}, abs=1e-12, rel=1e-12)
+    assert groups == [('a', 'b'), ('c', 'd'), ('e',)]
+    rename = dict(zip(samples, reversed(samples), strict=True))
+    transformed = {}
+    for (a, b), chromosomes in segments.items():
+        x, y = rename[a], rename[b]
+        rows = [(lo, hi, 3 - h1 if a in ['a', 'c'] else h1,
+                 3 - h2 if b in ['a', 'c'] else h2) for lo, hi, h1, h2 in chromosomes['1']]
+        if x > y:
+            x, y = y, x
+            rows = [(lo, hi, h2, h1) for lo, hi, h1, h2 in rows]
+        transformed[(x, y)] = {'1': rows}
+    repeated, _, _ = module.family_features(list(reversed(samples)), transformed, genetic_map, 100, model)
+    actual = {(row['indID1'], row['indID2']): row for row in repeated}
+    for row in original:
+        pair = tuple(sorted([rename[row['indID1']], rename[row['indID2']]]))
+        assert {key: value for key, value in actual[pair].items() if key not in ['indID1', 'indID2']} == pytest.approx(
+            {key: value for key, value in row.items() if key not in ['indID1', 'indID2']})
+
+
+def test_detected_panel_split_roster_and_all_random_streams_are_disjoint():
+    import json
+    from collections import defaultdict
+    from pathlib import Path
+
+    from scripts.develop_task10_detected_ibd import derived_seed
+    protocol = json.loads((Path(__file__).parents[1] /
+        'experiments/task10_development_2026_11_20/detected_panel_protocol_v2.json').read_text())
+    cohorts = protocol['cohorts']
+    assert len(cohorts) == 48
+    assert len({tuple(row['depths']) for row in cohorts}) == 48
+    assert not {tuple(depths) for depths in protocol['excluded_confirmation_topologies']} & {
+        tuple(row['depths']) for row in cohorts}
+    split_sizes = defaultdict(int)
+    for row in cohorts:
+        split_sizes[row['stage']] += 1
+        assert derived_seed(row['seed'], 0, 3) == row['derived_seeds']['meioses']
+    assert split_sizes == {'training': 32, 'calibration': 8, 'development': 8}
+    streams = [derived_seed(row['seed'], chrom, stage) for row in cohorts for chrom in range(23) for stage in range(1, 5)]
+    assert len(streams) == len(set(streams))
+    old = [2026132010, 2026133010, 2026134010, 2026135010, 2026142010, 2026143010, 2026144010, 2026145010]
+    assert not set(streams) & {derived_seed(seed, chrom, stage) for seed in old for chrom in range(23) for stage in range(1, 5)}
+    for split, record in protocol['design_summary'].items():
+        assert len(record['label_pair_counts']) == 14
+        assert min(record['label_pair_counts'].values()) >= (16 if split == 'training' else 8)
+
+
+def test_detected_panel_selects_declared_samples_and_preserves_phase(tmp_path, monkeypatch):
+    import importlib.util
+    from pathlib import Path
+    directory = Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'
+    monkeypatch.syspath_prepend(str(directory))
+    spec = importlib.util.spec_from_file_location('task10_detected_panel', directory / 'detected_family_panel.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    source, destination = tmp_path / 'in.gz', tmp_path / 'out.gz'
+    with gzip.open(source, 'wt') as handle:
+        handle.write('#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tfounder\tb\ta\n')
+        handle.write('1\t1\t.\tA\tC\t.\tPASS\t.\tGT\t0|0\t0|1\t1|0\n')
+    result = module.select_observed(source, destination, {('a', 'b'): 'siblings'},
+        {'a': ('p', 'q'), 'b': ('p', 'q'), 'founder': ()})
+    assert result == {'a': 'sample_000', 'b': 'sample_001'}
+    with gzip.open(destination, 'rt') as handle:
+        assert handle.read().splitlines()[-1].endswith('\t1|0\t0|1')
+
+
+def test_multiway_scoring_keeps_reused_sample_ids_separate_across_families():
+    import numpy as np
+    module = _multiway_module()
+    rows = [{'cohort_id': cohort, 'indID1': 'a', 'indID2': 'b', 'relation': 'siblings'}
+            for cohort in ['family1', 'family2']]
+    exported, score = module.score_family_rows(rows, np.array([[.9, .1], [.1, .9]]),
+        np.array(['siblings', 'full_1st_cousin']))
+    assert score['expected_pairs'] == 2
+    assert score['exact_accuracy'] == .5
+    assert exported['cohorts'][0]['truth'][0]['indID1'] == 'a'
+
+
+def test_prospective_nested_designs_cover_all_labels_and_229_roster(monkeypatch):
+    from pathlib import Path
+    from ghist_relatedness.labels import HUMAN_LABELS
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from nested_qualification_design import compile_definition, large_nested_shape, nested_shapes
+    for index, leaves in enumerate(nested_shapes() + [large_nested_shape()]):
+        definition, roster, truth = compile_definition(leaves, f'nested{index}', 229 if index == 4 else None)
+        assert len(truth) == len(roster) * (len(roster) - 1) // 2
+        assert set(truth.values()) == set(HUMAN_LABELS.values())
+        assert len(set(roster)) == len(roster)
+        assert definition.startswith(f'def nested{index} 1 6\n')
+    assert len(roster) == 229
+    assert len(truth) == 26106
+    with pytest.raises(ValueError, match='ancestors'):
+        compile_definition([(0, 0), (0, 0, 1)], 'invalid')
+
+
+def test_fast_components_match_original_with_duplicate_overlapping_and_conflicting_edges(monkeypatch):
+    import itertools
+    from pathlib import Path
+    import numpy as np
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from fast_multiway_features import ComponentCache
+    original = _multiway_module()
+    groups = [('a', 'b'), ('c',), ('d', 'e'), ('f', 'g')]
+    samples = sorted(sample for group in groups for sample in group)
+    genetic_map = {'1': (np.array([0., 50., 100.]), np.array([0., 35., 100.])),
+        '2': (np.array([0., 100.]), np.array([0., 100.]))}
+    for seed in range(20):
+        rng = np.random.default_rng(seed)
+        segments = {}
+        for pair in itertools.combinations(samples, 2):
+            chromosomes = {}
+            for chromosome in genetic_map:
+                rows = []
+                for _ in range(int(rng.integers(0, 4))):
+                    start, end = sorted(map(int, rng.choice(101, size=2, replace=False)))
+                    row = (start, end, int(rng.integers(1, 3)), int(rng.integers(1, 3)))
+                    rows.extend([row, row] if rng.random() < .3 else [row])
+                if rows:
+                    chromosomes[chromosome] = rows
+            if chromosomes:
+                segments[pair] = chromosomes
+        cache = ComponentCache(groups, segments, genetic_map, 200.)
+        for size in [2, 3]:
+            for indices in itertools.combinations(range(len(groups)), size):
+                for threshold in [5, 10]:
+                    expected = original.component_integrals([groups[i] for i in indices], segments, genetic_map, 200., threshold)
+                    assert cache.integral(indices, threshold) == pytest.approx(expected, rel=1e-12, abs=1e-12)
+
+
+def test_fast_components_preserve_conflicts_without_three_group_connectivity(monkeypatch):
+    from pathlib import Path
+    import numpy as np
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from fast_multiway_features import ComponentCache
+    groups = [('a',), ('b',), ('c',)]
+    genetic_map = {'1': (np.array([0., 100.]), np.array([0., 100.]))}
+    segments = {('a', 'b'): {'1': [(0, 40, 1, 1), (10, 30, 2, 1)]},
+        ('b', 'c'): {'1': [(60, 100, 1, 1)]}}
+    observed = ComponentCache(groups, segments, genetic_map, 100.).integral([0, 1, 2], 5)
+    assert observed == {'union': 0., 'copies': 0., 'multiple': 0., 'conflict': .2, 'complete': 0.}
+
+
+def test_fast_components_exhaustive_three_person_diploid_graphs(monkeypatch):
+    import itertools
+    from pathlib import Path
+    import numpy as np
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from fast_multiway_features import ComponentCache
+    original = _multiway_module()
+    groups = [('a',), ('b',), ('c',)]
+    genetic_map = {'1': (np.array([0., 100.]), np.array([0., 100.]))}
+    edges = [(pair, h1, h2) for pair in itertools.combinations(['a', 'b', 'c'], 2)
+        for h1, h2 in itertools.product([1, 2], repeat=2)]
+    for mask in range(1 << len(edges)):
+        segments = {}
+        for index, (pair, h1, h2) in enumerate(edges):
+            if mask & (1 << index):
+                segments.setdefault(pair, {}).setdefault('1', []).append((0, 100, h1, h2))
+        expected = original.component_integrals(groups, segments, genetic_map, 100., 5)
+        assert ComponentCache(groups, segments, genetic_map, 100.).integral([0, 1, 2], 5) == expected
+
+
+def test_prospective_missingness_masks_are_nested_and_sample_order_invariant(tmp_path, monkeypatch):
+    from pathlib import Path
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from verify_missingness_contract import mask_genotypes
+    sources = [tmp_path / 'forward.gz', tmp_path / 'reverse.gz']
+    for source, names in zip(sources, [['a', 'b'], ['b', 'a']], strict=True):
+        with gzip.open(source, 'wt') as handle:
+            handle.write('#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t' + '\t'.join(names) + '\n')
+            for position in range(1, 101):
+                calls = ['0|1' if sample == 'a' else '1|1' for sample in names]
+                handle.write(f'1\t{position}\t.\tA\tC\t.\tPASS\t.\tGT\t' + '\t'.join(calls) + '\n')
+    outputs = [{rate: tmp_path / f'{side}_{rate}.gz' for rate in [.05, .20]} for side in ['f', 'r']]
+    reports = [mask_genotypes(source, output, {'1': 76543}) for source, output in zip(sources, outputs, strict=True)]
+    assert reports[0] == reports[1]
+    masks = []
+    for rate in [.05, .20]:
+        calls = []
+        for index, output in enumerate(outputs):
+            with gzip.open(output[rate], 'rt') as handle:
+                calls.append([line.rstrip().split('\t')[9:][::1 if index == 0 else -1]
+                    for line in handle if not line.startswith('#')])
+        assert calls[0] == calls[1]
+        masks.append({(row, sample) for row, values in enumerate(calls[0]) for sample, call in enumerate(values) if call == '.|.'})
+    assert masks[0] < masks[1]
+
+
+def test_forest_mean_distance_encoding_and_validation(monkeypatch):
+    from pathlib import Path
+    import math
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from forest_distance_decoder import model_distances
+    from ghist_relatedness.labels import HUMAN_LABELS
+    probabilities = dict.fromkeys(HUMAN_LABELS.values(), 0.)
+    probabilities.update(full_1st_cousin=.5, full_2nd_cousin=.5)
+    row = {'indID1': 'a', 'indID2': 'b', 'relation': 'full_1st_cousin', 'probabilities': probabilities}
+    features, distances = model_distances([row])
+    assert distances[0]['model_mean_meioses'] == 5.
+    assert 1 - math.log2(features[0]['relatedness_ge_10']) == 5.
+    with pytest.raises(ValueError, match='Duplicate'):
+        model_distances([row, row])
+    with pytest.raises(ValueError, match='sum to one'):
+        model_distances([row | {'probabilities': dict.fromkeys(HUMAN_LABELS.values(), 0.)}])
+
+
+def test_forest_distance_decoder_exact_tree_and_order_invariance(monkeypatch):
+    from pathlib import Path
+    import itertools
+    monkeypatch.syspath_prepend(str(Path(__file__).parents[1] / 'experiments/task10_development_2026_11_20'))
+    from forest_distance_decoder import decode
+    from ghist_relatedness.labels import HUMAN_LABELS
+    rows = []
+    for a, b in itertools.combinations(['a', 'b', 'c', 'd'], 2):
+        label = 'siblings' if (a, b) in [('a', 'b'), ('c', 'd')] else 'full_1st_cousin'
+        probabilities = dict.fromkeys(HUMAN_LABELS.values(), 0.) | {label: 1.}
+        rows.append({'indID1': a, 'indID2': b, 'relation': label, 'probabilities': probabilities})
+    expected = [{key: row[key] for key in ['indID1', 'indID2', 'relation']} for row in rows]
+    actual, report = decode(rows)
+    flipped = [row | {'indID1': row['indID2'], 'indID2': row['indID1']} for row in reversed(rows)]
+    reordered, _ = decode(flipped)
+    assert actual == reordered == expected
+    assert report['uncertainty_calibrated'] is False
+    assert report['threshold_cm'] is None

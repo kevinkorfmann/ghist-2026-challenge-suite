@@ -1,0 +1,657 @@
+{
+  "scope": "Expanded training development experiment; not scientific qualification or final inference",
+  "training_audit": {
+    "cohorts": 64,
+    "families": 512,
+    "observed_feature_rows": 12047,
+    "fitted_true_pair_rows": 12047,
+    "exact_families": 512,
+    "independent_focal_families_per_label": 64,
+    "simple_cohorts": 32,
+    "mixed_generation_cohorts": 32
+  },
+  "base_temperature": 1.0,
+  "context_temperature": 0.75,
+  "base_calibration_losses": {
+    "0.75": 0.40587694916257155,
+    "1.0": 0.39222779364022164,
+    "1.25": 0.39707090378483,
+    "1.5": 0.4093597943194379,
+    "2.0": 0.4406856796795106
+  },
+  "context_calibration_losses": {
+    "0.75": 0.2397276477171911,
+    "1.0": 0.24999676471311733,
+    "1.25": 0.26752546240665015,
+    "1.5": 0.28756933462308754,
+    "2.0": 0.32827536106361127
+  },
+  "reports": {
+    "calibration": {
+      "base": {
+        "truth_pairs": 735,
+        "correct": 610,
+        "accuracy": 0.8299319727891157,
+        "balanced_accuracy": 0.674933079083415,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.8297872340425532,
+          "avuncular": 0.6578947368421053,
+          "half_avuncular": 0.17857142857142858,
+          "avuncular_once_removed": 0.48717948717948717,
+          "avuncular_twice_removed": 0.8888888888888888,
+          "full_1st_cousin": 0.625,
+          "half_1st_cousin": 0.7321428571428571
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 39,
+          "avuncular": 25,
+          "half_avuncular": 10,
+          "avuncular_once_removed": 19,
+          "avuncular_twice_removed": 40,
+          "full_1st_cousin": 30,
+          "half_1st_cousin": 41
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 39,
+            "avuncular": 6,
+            "full_1st_cousin": 2
+          },
+          "avuncular": {
+            "half_sibling": 12,
+            "avuncular": 25,
+            "full_1st_cousin": 1
+          },
+          "half_avuncular": {
+            "avuncular_once_removed": 25,
+            "full_1st_cousin": 10,
+            "half_1st_cousin": 6,
+            "half_avuncular": 10,
+            "avuncular_twice_removed": 5
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 19,
+            "half_avuncular": 13,
+            "full_1st_cousin": 5,
+            "avuncular_twice_removed": 1,
+            "half_1st_cousin": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 40,
+            "half_avuncular": 1,
+            "half_1st_cousin": 4
+          },
+          "full_1st_cousin": {
+            "half_1st_cousin": 9,
+            "full_1st_cousin": 30,
+            "avuncular_once_removed": 8,
+            "half_avuncular": 1
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 41,
+            "half_avuncular": 3,
+            "full_1st_cousin": 3,
+            "avuncular_twice_removed": 9
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.019887200754522313
+      },
+      "context": {
+        "truth_pairs": 735,
+        "correct": 662,
+        "accuracy": 0.9006802721088435,
+        "balanced_accuracy": 0.8097590112077795,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9574468085106383,
+          "avuncular": 0.9210526315789473,
+          "half_avuncular": 0.5,
+          "avuncular_once_removed": 0.5384615384615384,
+          "avuncular_twice_removed": 0.9777777777777777,
+          "full_1st_cousin": 0.7083333333333334,
+          "half_1st_cousin": 0.875
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 45,
+          "avuncular": 35,
+          "half_avuncular": 28,
+          "avuncular_once_removed": 21,
+          "avuncular_twice_removed": 44,
+          "full_1st_cousin": 34,
+          "half_1st_cousin": 49
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 45,
+            "avuncular": 2
+          },
+          "avuncular": {
+            "half_sibling": 3,
+            "avuncular": 35
+          },
+          "half_avuncular": {
+            "avuncular_once_removed": 14,
+            "full_1st_cousin": 14,
+            "half_avuncular": 28
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 21,
+            "half_avuncular": 12,
+            "avuncular_twice_removed": 1,
+            "full_1st_cousin": 5
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 44,
+            "half_1st_cousin": 1
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 34,
+            "avuncular_once_removed": 10,
+            "half_1st_cousin": 4
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 49,
+            "full_1st_cousin": 2,
+            "avuncular_once_removed": 1,
+            "avuncular_twice_removed": 4
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.00862771822357926
+      },
+      "flips": {
+        "base_correct_to_wrong": 12,
+        "base_wrong_to_correct": 64,
+        "strong_base_correct_to_wrong": 0
+      }
+    },
+    "exposed": {
+      "base": {
+        "truth_pairs": 1443,
+        "correct": 1166,
+        "accuracy": 0.808038808038808,
+        "balanced_accuracy": 0.6512843002693645,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.7790697674418605,
+          "avuncular": 0.6928571428571428,
+          "half_avuncular": 0.1794871794871795,
+          "avuncular_once_removed": 0.5689655172413793,
+          "avuncular_twice_removed": 0.7708333333333334,
+          "full_1st_cousin": 0.6744186046511628,
+          "half_1st_cousin": 0.5446428571428571
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 67,
+          "avuncular": 97,
+          "half_avuncular": 14,
+          "avuncular_once_removed": 66,
+          "avuncular_twice_removed": 74,
+          "full_1st_cousin": 58,
+          "half_1st_cousin": 61
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "half_sibling": 67,
+            "avuncular": 15,
+            "full_1st_cousin": 3,
+            "half_avuncular": 1
+          },
+          "avuncular": {
+            "half_sibling": 40,
+            "avuncular": 97,
+            "avuncular_once_removed": 2,
+            "full_1st_cousin": 1
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 26,
+            "avuncular_once_removed": 26,
+            "half_avuncular": 14,
+            "half_sibling": 1,
+            "avuncular_twice_removed": 3,
+            "half_1st_cousin": 8
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 66,
+            "half_avuncular": 32,
+            "half_1st_cousin": 7,
+            "full_1st_cousin": 3,
+            "avuncular_twice_removed": 6,
+            "avuncular": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 74,
+            "avuncular_once_removed": 5,
+            "half_avuncular": 6,
+            "half_1st_cousin": 11
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 58,
+            "half_1st_cousin": 9,
+            "avuncular_twice_removed": 1,
+            "half_avuncular": 4,
+            "half_sibling": 4,
+            "avuncular_once_removed": 10
+          },
+          "half_1st_cousin": {
+            "avuncular_twice_removed": 28,
+            "half_1st_cousin": 61,
+            "avuncular_once_removed": 7,
+            "full_1st_cousin": 8,
+            "half_avuncular": 8
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.028334344081560013
+      },
+      "context": {
+        "truth_pairs": 1443,
+        "correct": 1231,
+        "accuracy": 0.853083853083853,
+        "balanced_accuracy": 0.7186039213893564,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.7093023255813954,
+          "avuncular": 0.9214285714285714,
+          "half_avuncular": 0.24358974358974358,
+          "avuncular_once_removed": 0.6551724137931034,
+          "avuncular_twice_removed": 0.8958333333333334,
+          "full_1st_cousin": 0.6627906976744186,
+          "half_1st_cousin": 0.6607142857142857
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 61,
+          "avuncular": 129,
+          "half_avuncular": 19,
+          "avuncular_once_removed": 76,
+          "avuncular_twice_removed": 86,
+          "full_1st_cousin": 57,
+          "half_1st_cousin": 74
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "avuncular": 25,
+            "half_sibling": 61
+          },
+          "avuncular": {
+            "avuncular": 129,
+            "half_sibling": 11
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 29,
+            "avuncular_once_removed": 28,
+            "half_avuncular": 19,
+            "half_1st_cousin": 2
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 76,
+            "half_avuncular": 32,
+            "half_1st_cousin": 4,
+            "full_1st_cousin": 1,
+            "avuncular_twice_removed": 3
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 86,
+            "half_1st_cousin": 10
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 57,
+            "half_1st_cousin": 3,
+            "avuncular_once_removed": 15,
+            "half_avuncular": 11
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 74,
+            "avuncular_twice_removed": 31,
+            "avuncular_once_removed": 2,
+            "full_1st_cousin": 5
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.03909138199265891
+      },
+      "flips": {
+        "base_correct_to_wrong": 45,
+        "base_wrong_to_correct": 110,
+        "strong_base_correct_to_wrong": 2
+      }
+    }
+  },
+  "inputs_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/protocol_v5.json": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/expanded_training_protocol_v1.json": "6a775296a270e9808f3d7e906a73d64951d732297c35e56f3f77a496247277e1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/source_snapshot_v5.tar.gz": "77375babb7fdac32b16ed7e487267f1fb38b29e6f7d291bcafaa4bfc8a86f558",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/context_diagnostic_source_v1/diagnose_family_context.py": "4b347c189e0a5799c99e158715c236934485e618db44cb231e84a27535fd396b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_00/result.json": "9d55ae72d8218d66e65c8a2ba0b3b73bf332f7031938282befd869648b191c67",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_01/result.json": "510acc888f8b5cdd2ece4fa5125b789327ed9c29022b46330c40d17eaea02198",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_02/result.json": "c088605ed9dcb2abea3663a8e0b862107afc33a47d2a47da7b7c02656228733e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_03/result.json": "c4b0a30efab3cee63eb85c5bb38b1d29d577e7621084f842b00caa08cbc4fb24",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_04/result.json": "3f8f0c68814c306fd7de69abd2f660671b15eeb4bb77dce7c6a1a33f1a030652",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_05/result.json": "84d7e27b107a15bfb44f46d2829c81601ad806a78e996f2bab2f606356ed2bf9",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_06/result.json": "6eea1ebc78bdff3f7a0e80cb399b47e99ba558d4f76f64251826d50ce736bc11",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_07/result.json": "5e4490d8c327f09658b7680a4da369148f057ce49bb8facd20e6f09d9402fa0e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_08/result.json": "7fd665ac1c63ef0274766336d4badf96055e8c768f2315ce1956c92d47dc1472",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_09/result.json": "82282c476d41aa48757fc69cd5eb7a97d263e058f8f7d4fa1ce7bf5d3813b5d3",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_10/result.json": "89d6c10bb812cb7fccfa9401e0c3c8a8f4fa7a8fc92930b4d5d3eade3196725a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_11/result.json": "ebab8c56760f3aa43b821df06560ab50aa34096b8bf68e6e54b754aaad2519a7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_12/result.json": "f132c9f75033a0ce15a882dc48af46ce5de100b51e72b0fe55aea5203c7683ea",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_13/result.json": "340b94610de50f2c40510831f470e37f83ba27096a285734b6c1a58c2bbd8b6a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_14/result.json": "89d40b45fdaea17e5f090df519f2313466f31ff61c68157491c1412d08472b9a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_15/result.json": "2fd66a4759832bc0118a3a31d6c0ea3d3bf447fff6616312a98ce0c7396f2626",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_00/result.json": "ed0a02513f7130d031e4640c43b717794a64e7e3aa8c07db761a78b5dd32b442",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_01/result.json": "660bc47c9936a459fdb27b4af1590dbb685fae2dff7cb6489c5db35854810dd5",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_02/result.json": "cce94e9e7425fc95a1f4f4018216c2243b2f4f4b1541e68e38dcff14ac714a47",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_03/result.json": "97da289274580a0df4c81ecd4ee0f9c8c23974d88844db3e5437f97899209e7f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/expanded_training_plan_v2.json": "0d1c89dc3c6f8925c0c5d88653cf555e28c44343d2f0c98509f9e08fb5f98da8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/expanded_training_source_v2/fit_expanded_context.py": "2baca5dc2d014b19be5e3c1e749ff58f42119e601a3cd8bcd43c3dbca9a128a6",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_16/result.json": "99f5394a42b8b6120e4c6a401838e7bef707448d132ee32c5f11177e59104f7d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_17/result.json": "bcccc46e2ee2c88d5c6c923f4d0080fa26d543aa5f89f72d52dd163a555d4235",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_18/result.json": "572b81072f606ea45869e2b3d7ac0de556e87345fffb3db444177b7e51086904",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_19/result.json": "0b8160193c72d207a041e9988fb47f78780cf0e8dd3cdc84416dbe5722cb8fc8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_20/result.json": "0d5cdfa9dc45d0c804d786c38d1fdee1dad2f00e729b251cc1a3a59cbdde8be0",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_21/result.json": "198a8359ddf48e4c16933413627113f6f1028eaa87bc50c7fb58c5d8b9222ad9",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_22/result.json": "326dc299eb2fe964dcda16e3e37099796c767930cd4e1588e9c9be1f833474e3",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_23/result.json": "c8d9aa4de6a4fde3542edbaabca0692ac6697a7465f101824d9915d9b5c87560",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_24/result.json": "26bf10779586f01ee3ba65ed74d9b515661015c5463d440f0e0bdc17b76bbd70",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_25/result.json": "dde3f73b7f1cd4cfbf6bb71372f2216f642dcd07ea021c7ab4fea2360de4c676",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_26/result.json": "b997ef1b34eeabac3a87ad0296a216c5e4a14228208a6a96bdbbc6c23019c4a6",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_27/result.json": "643d56039bdf6915bcdbff9ff3b7ab35797c13a83f932cb616715b4223cd7372",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_28/result.json": "5b253dca73dcb6cb9c33809206f94b014ed465d1d3000126c031b1484460cc9f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_29/result.json": "3b840fbc488162403ed669a2b8a44c86fad65b4199f9611638c5a9b1bd32c59f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_30/result.json": "7e1efb8142f574be93127b9d587b4ffb199d64e3834c9790c5e4722604ce56e4",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_31/result.json": "98f61603ae0fca5207c712941e3f7b01664b6fa084343fe79fb96b4e48a52109",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_32/result.json": "e0c9a91689fc1802c39d7234e6c5f4618432eed5944246b2d295700e18dd8b45",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_33/result.json": "2bc97c8987098d95177f82e7c3d2ec02458de5e6fada8097f561965be1628b7e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_34/result.json": "6f78597ee850f30269f79f7f24f8eecec4b24439bc561dd88abbb8f47acb4353",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_35/result.json": "a94f439aca0f241d1e7d97ff9dba2601a56ba16960e26a96e6d6278d0ee00f82",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_36/result.json": "8c947648b88403b5a28d5fd5e88317b07ed5d6c394e38f93f310b46cce39af94",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_37/result.json": "73468bf8bee6397f901364b6dc64c8d5c15cf7627ad0aae833ebba3cdd7f3dad",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_38/result.json": "25d1c9e27262ac7403b51625d811614ae2bc088140c930563ea67c374692703a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_39/result.json": "479715088cfa34eedb8d91f54081be31ad8f6bcc344866af91525b4c05b4abb5",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_40/result.json": "061f8b650a8d553ad8b1ffc4875d72cae14693feab98b1ef359f3534ce2b00db",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_41/result.json": "95213c9332393dea54d37856fbdca162a137ea1d776b87583203efa972d9319c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_42/result.json": "6829f5479b195b5114cf543e2703813ac83369b6371afa8c1983eeca711df2c2",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_43/result.json": "c5764e2d6be2e39c37174b7874ca3937a9ce9755e39991fd6f0c1193da5dfb8b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_44/result.json": "f25a7c277f9a0dd6b56f74653465f4232418fe8128264e63554dd96272d31cd7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_45/result.json": "aeb7e39bbed9fc1ae805cdf63b93c8f452d120a6966cd5343960139dc0a4f0e8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_46/result.json": "25fc2130fb1b65787af04447ed1ae6b2ea786daecb8309db8539bea774d6ad86",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_47/result.json": "5705ca7f2a61daa7bee3b7abd5f60d58b64774077b037c84370f62c81478355a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_48/result.json": "dd90157c2a05845285a19c152053e96fd55c8cb252a26263dbf584ba8989e4a6",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_49/result.json": "0593a9a96129e7a788451a770e2080269deb68e52de0de969ee81cf3ade38bde",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_50/result.json": "7658dad449ef50d2ddd93fe464be06ad6d4c9cd9fe9bc360f5f445fd8464c8cb",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_51/result.json": "ec71416fd4dc2095d73622ef40c273273a902981dcbdd8bba0f66c8a7491b7f1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_52/result.json": "c1b2032494186832ff14fee33d8ef250cced07474811f46269caff56e001e715",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_53/result.json": "62533eb99b882ccb7b8abc1674ecebfc21186d3e06adf0118ec5e777cbea3b2c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_54/result.json": "e56a7dc5977a9810dc9c3f56f861a9542029368dd51c6517ac3df97606409307",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_55/result.json": "bf48f08e9b6d213f7401431c9a31c625005a5308514919117391b58b838ca784",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_56/result.json": "c7c4cdfbbd2db68abacab5d7daffe5053f7a8db941e192f3db827634de332c8f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_57/result.json": "082cb68cc20af5f027d3cacfcab545ad6d5bb11c614d9e8fd48c7c026ab9ad86",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_58/result.json": "6c7db004ffd963cf85905a7be0c6a8865d74ac4dd608915bfc35eb59b8ec5ef0",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_59/result.json": "49e822b76873641bc0fc12067a656aafbc5c5c902ff369a6b812f6a4d8f76329",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_60/result.json": "f9d04990bb14a5f85a399e254c54323abac6f22617715a9a960997c2d66ef7fc",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_61/result.json": "2316f177d949b665e93591f1d03ec204e63ad17d32015fe64a77c4db27a53cd5",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_62/result.json": "e4dcf5f67cb067018dda9620a4f0fd2d3b148d3d9ef57d5fbac73087f11ed8c0",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_expanded_v1/train_63/result.json": "2e5906a4d4f3b3a39916c3d45ed469f288df0b9bac6c3ecef7d683dc81cbd1e9",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_00.npz": "913c50241f8c545f0a0d81f37da4c12793eaf99a89fd64a1f967013f418adbbd",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_00/result.json": "8d361e26c079bd404c5bae7e4009027e08dc8bdbab75184b4f6d1dca1c1878f1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_01.npz": "a202f887aa5b1167e7ce6980b2133f43100ef397761a7516782aced91931a33f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_01/result.json": "fd152a8ad790ddb7faf5c8dbfb9f4ab86630483c5d54b10ebf524a393ed5684c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_02.npz": "9d7562a3c14262d8615f7bc26f4aaf42e8bcdfcb1d1ff3b9db5ad64798dfc59c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_02/result.json": "3ff62593f4dad33d43cb4f0f6b4cdc8f91d8d40cc8c1ba48e109ba9b9caeafaa",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_03.npz": "2e5cb02ba4ee2ea5a8cdd5c3b4a8b74fa8ac9583b9824efcfc6176039605fa16",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_03/result.json": "a9d7a86fca8a440d36f341f22a4e17426a0b7e00e07064685346dc3f421feb4c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_04.npz": "5b29003bd284a1638e4e156d1605cb9cec6d2231d38d6ef46de99e44ad7938f7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_04/result.json": "60c915868c0f0653cd37359c756fa5797c00fdb4a60d41692999b87a06030d63",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_05.npz": "8dde71afe27901e6a8bd56b2677abde96507aa9fd3dfb7f36e4a167d00210cb2",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_05/result.json": "4b45c8b7ee1144e661a3dfcee473349b3f9dfd2d9d51e1b0f7974895f62e09d8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_06.npz": "613f49f5a42a67ba0c0107c161f50ed3ad7d4788ca60258918b88666dd2a4267",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_06/result.json": "613aeda9cab620fe262c8a7481de8528db7e6b967ddfdc2c281e8e3fe2d531cb",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_07.npz": "ddeb01a132402eca875417146f8f834bbf0b06ebf0d51d7fac3ecc83ee69f201",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_07/result.json": "c637753f21751412800bcd075d5839d30dd6daa34933d3202a220804031fcd0c"
+  },
+  "outputs_sha256": {
+    "base_model.joblib": "b83ad537d0ec9f014410bc2a6314e63e04105b78a61a0d111707de05df6eab28",
+    "context_calibration_00.npz": "9719d1de3e9dd223c00a595cbdb48e50ec373b1863f2aee004b80aaa7b2cc27c",
+    "context_calibration_01.npz": "e6acbabf4ecfacba0c71ca73b2657b977338907c86cf235001c1828272856c24",
+    "context_calibration_02.npz": "592d1a9ba8e7692caf88fd4336bc5882c7f24d81b50ba421f1835f20b802d088",
+    "context_calibration_03.npz": "d2a21756a5b9d666b927336f6a1c68cfbe01616a66b5a5953afddad86127a4d2",
+    "context_exposed_00.npz": "1c4b7e49534b0e01cb0f68c60626df0647b412f21b6faecef0a4da25dbaf0c4e",
+    "context_exposed_01.npz": "43dccb6fe988c92cc6230beb8af7c1191a8687c91c7685c841ebc6b0487184da",
+    "context_exposed_02.npz": "e3745bd951c80e2bc4b467d7bd694969e8bbc1c11c706bb16aeb0a4d93e595b3",
+    "context_exposed_03.npz": "8218a34e4e8f52b9311d96801c8658655f2015ccade46caa2a40382a7707ba7c",
+    "context_exposed_04.npz": "b0a7fdff58d3e494ffcb6638ca3cd9fa1f8d3640f763fe145c2158af4ae900a7",
+    "context_exposed_05.npz": "1d66c173d4dc4d15fc2ef5012e2a4cff1511f59a82d58140ea3d566e41c37247",
+    "context_exposed_06.npz": "52e4a0f5adebb8ae321baac5c80fe870db5073315d0460e66cd2cffee772d525",
+    "context_exposed_07.npz": "7ca3619265980616d79d639752c0eabb84a48604f6a93f6db5245f12d143e642",
+    "context_model.joblib": "4a1808aa733791bb4ea27a159624a490886aa9fec90967b510df28ce038deb95",
+    "context_train_00.npz": "8e35ce9a4c1d8e1b9b506f6f637a1e89f8f16f1c2cecfe583e78a61f3236dfdd",
+    "context_train_01.npz": "1d3e1b1c4703d8b5b9b7ef108e76ee9110744428b38098c850be6ffc7f6d33d8",
+    "context_train_02.npz": "a768f32059a22738de759375b2d17333f633d8faf775164b204689a02d43814d",
+    "context_train_03.npz": "4edd54ce4b52aec815060108213328bdc03cd75c78b079a654b1ff2d471c6b72",
+    "context_train_04.npz": "07e9bec09efc962080f245e3266fcf23792580a72a052a09391c903fedbc1810",
+    "context_train_05.npz": "e83d29a00490c584eb418944446026abba48fa235f2e773380bfec524e4ead02",
+    "context_train_06.npz": "c6243c217ed6014a3d2e240ececfd2729e2653d8d7043e402d24479edbe1d3be",
+    "context_train_07.npz": "f6308850bbc119dcf77346c90cc6239b12f82c13c056d2bd14800de7b3ab14cd",
+    "context_train_08.npz": "b8f1228acef048defb2a0e91da99d8a74dce0c0ed37c6bc6162e6c0baeb463bd",
+    "context_train_09.npz": "f755f99ee70ed3ec0fc17f758a856f74b82b8b01dfc02d74815d9ee87851e96d",
+    "context_train_10.npz": "e42472d6ea2c456287d98c5e2507a015ce0b3c334068f24bb6f29c28e358324c",
+    "context_train_11.npz": "5268a6c3c3b614df4a8d24a28e03e7c178f19be91d2e31db7c8b4e974b625bcd",
+    "context_train_12.npz": "f9a992f32556cdd7f5a975878d015039dea407987bfb246361045ef71634b763",
+    "context_train_13.npz": "6adc61ec548cf34a86ad6e70779aa40855f414a6aa6e5eca55f03ad4f3aa2c5b",
+    "context_train_14.npz": "edad945364932da9393e2db24c2cb515358cf133f5174526fa792314fca7283b",
+    "context_train_15.npz": "080ebd6fe2b773678c3314d0554fdcd8b7250550a973382cfeac256a17bf82a7",
+    "context_train_16.npz": "a14d1db198eda26188f6a9fdb8620dff3ccc83ea0655071a4a28f1bbcc709b90",
+    "context_train_17.npz": "6a54124234e46ff56e0229bfa3689513b0a8cabf744e92a2ecebec27cc22435e",
+    "context_train_18.npz": "bdf7ca846589b87ee3be0282abdf2b3ef5f276bf4a265eda9168b56a131f3e42",
+    "context_train_19.npz": "7d49410e9567cb64f33c75d789ea758f57f5ef1ea561fbc0c436b7e6ceb603c2",
+    "context_train_20.npz": "452ebdfc76ce210168ef7191e33cad8da7684d35b20c9a668f6f2e02db3a9127",
+    "context_train_21.npz": "02f1ff8295dc98232a2e08bb5a45dc5d43c0aa83a69a81561a04af4bca77b43e",
+    "context_train_22.npz": "71a170269d1cc82fe42de068441b1e3ad2115c5d26e9bb05bfe4ec85862ba889",
+    "context_train_23.npz": "6e1300ee4545b75cdc8008b1b380846a2522800920187ee13f8d1814fd621622",
+    "context_train_24.npz": "895a28bba90df2a23ace2c4d6ab4a24b5ce2e75b34c1c0afc9f7a165585f9c68",
+    "context_train_25.npz": "dc7c7d9c22b366d4fee76e62fcb931396add6d46ff4d5abefd0b54d87a26d790",
+    "context_train_26.npz": "e6b5537a8910ac948fa43ad81b34f321664f48d518bc0820793b38203aa2fcf2",
+    "context_train_27.npz": "21a1f3ec5626e4b5fd854ed55fcd1f11ecb9598491832e7c44bb52806b405959",
+    "context_train_28.npz": "8505e683f4f4a85da7464de766299e7c483817003c459080c8a24c86f8618022",
+    "context_train_29.npz": "8bbf9c78885453706b2b4d2ead6d01104c70a7438bc83e47f708b3b7714a462b",
+    "context_train_30.npz": "a5ec9479d489069c89a299d554a2aea95cbee087d5ec250b166aa5e2a0b6cf4d",
+    "context_train_31.npz": "36eab50aa72811cf4aa05ba7602c712989a3057f1e2dd348c594d9d2971518d4",
+    "context_train_32.npz": "8416767a227a35fe2256aaade0c2f7bb1e0a0ee1f7bca342545dbc7a8d5a0162",
+    "context_train_33.npz": "8a3ca14166c764dbc53037235a254e730b948f2a4d479089fb3fe18e47c45593",
+    "context_train_34.npz": "cf61975ac5726dff082b26d190626507ba1cd5d75402872e1357aac3c96bdcbf",
+    "context_train_35.npz": "daf571a6e8b015856c21aff16f6e454cd7eef9049f32bbd49b92a3e0aeb50a29",
+    "context_train_36.npz": "c1cf559ba6682535a4d94bd642552f99b9e0be0abc9c971a1d9760749da02dda",
+    "context_train_37.npz": "256c651555d2d2da8ab696d70b6d0d7b896436150c05f24b890fd90ed2f83531",
+    "context_train_38.npz": "ea24bcb2a9bf7b48ef79f8a252e661a931fcabfc7e0ced880532db6428977c3f",
+    "context_train_39.npz": "fdd8004f04e78ed5ad3a6029e8234abd449a079393a20f3b39b138954bc91f0c",
+    "context_train_40.npz": "680e1a98d238ae69b7313df9112364e26fb0917c16b068d87b1a0760d2904ea4",
+    "context_train_41.npz": "12d88f6c1e349fcf200b1c94e897d831d5098c5687277539adfef300e7c32d98",
+    "context_train_42.npz": "4cf35ee6a27a0555bde1ead40a8bc5e884c9d1efb42b0839af1298ab9c20ce19",
+    "context_train_43.npz": "f9dd6eaccb64bad2c0490465b090929d86a356bf97d3a84fcdbf8a7d3c502866",
+    "context_train_44.npz": "fc33c2cfa155d21f49bec7883ef7478653fb95718378b08ad2f5381fc23bfaf4",
+    "context_train_45.npz": "adca489a531eb88719640af6523ebc14a5df8c780016454a41c274f247e56b3a",
+    "context_train_46.npz": "78e65c9fa5a7087aaf63b7df73259b21c6b7ef8f9e77f3c547352c7a29aa9dd2",
+    "context_train_47.npz": "f6d6c808b8f737cfda838eb7302689400c6329c4ad4065f22d15fef67547fd73",
+    "context_train_48.npz": "62b5aade4eef3292124d37607b822b4bb1127b0bd730bd61f896ffb12baa06ec",
+    "context_train_49.npz": "135dd22ab406f5ced91f62db0c96e513688dcbbfbd4f0a1d745aa2523742e935",
+    "context_train_50.npz": "b282b97389787b85384a19c4fffca3e080003207de47d8aa9823eda13c342fb6",
+    "context_train_51.npz": "e3821d7eff87827ac72d0c1a1391e10bcaf7168f038ee185f548934880a8d16e",
+    "context_train_52.npz": "34957a18966951ea3bece9bed80e991ed5febcb388821ae276ed669573b929db",
+    "context_train_53.npz": "6b253bd42de90887e3f58d14c57d69a9cf022aceb865e3a3f5a25416df70b729",
+    "context_train_54.npz": "9e1087187057092ebae9299d1266acb2e8ddcd5a36a9c7b3a1eaa6d0254187d7",
+    "context_train_55.npz": "e88621023090dff716902f585e1fccb9f91d2aa5c42619bbb45bf566d7a6a220",
+    "context_train_56.npz": "97e161b36a61a9cc788c6b6e2df26a9bc62bbc9432acc10e28a54a3c7007b1a5",
+    "context_train_57.npz": "17e35cb17cb5b4b61de736fce79a9d06b5bfa922d8cc31830a375db2028ab9f8",
+    "context_train_58.npz": "fd1c788349adae5a96b39437ad2b8b32e39de383328127c4f6e6696e08cceb85",
+    "context_train_59.npz": "2f7d0369dd42cfa19fcbe2d4e548a563cf1234b3838746920185b56fc6f07c56",
+    "context_train_60.npz": "c20d05501f976f4a6367176bd87cae4ff6ce4c4f0b47780e754073039c1e6bb2",
+    "context_train_61.npz": "4643004c711be7a720344b5356fe76c8ee5ff9783f22b57bb045afcd8606fc01",
+    "context_train_62.npz": "648031a6375b3954eb863828a046133ddb652525b76f3d58cb2135bcaf49c8a5",
+    "context_train_63.npz": "03a5203db93e015e089ab152e1fa10c4c0965d2c1cb05723a8174d8d589ee8a8",
+    "groups_calibration_00.json": "9ba9729b63409a9cbe621677097661073015e5251cf7a36f58b68d6fd552ad9b",
+    "groups_calibration_01.json": "bdd439ecc9a96affa8b7045104da533c0232e8f4ac70b9b6f1c766a3a84c18fd",
+    "groups_calibration_02.json": "6a028ef92e10a0da4dd538411ce83dfd6ee6ca0bb080ec22b46c223a841324ae",
+    "groups_calibration_03.json": "59f1f21c9f10d22498708ecde926aef9555371d6805dc9ea9b0329c7070bfa23",
+    "groups_exposed_00.json": "ac78792e6919ed093df5e09b90bf9dd00cc9ceef8c41afade96e93def151fc44",
+    "groups_exposed_01.json": "ccd2ba0fcd5e485172c982eb9ff73e22757e331601b7c5bc5bcd6346e9d785c9",
+    "groups_exposed_02.json": "b1036704f8b490649ce90a0f740f19864364a6eee0f2924847cf685ec564916a",
+    "groups_exposed_03.json": "c5e01ff91a30be4b4e56e079856654b8f4b1767b2a0fa9dd550169837dd2ab1f",
+    "groups_exposed_04.json": "cc4b964931393b618080caaa82058d3a8e6af9c8071038604a8858d89d15094a",
+    "groups_exposed_05.json": "e7fe4ccf2412af282cb397ffd4596920ddeef6f588cefe58350273841b1c7ce6",
+    "groups_exposed_06.json": "f7a7e88d89d768d3d5fb7bd8b2de3c878c822e972bfc303fd86f0f161da17502",
+    "groups_exposed_07.json": "06a8e5bffbe58c6591073b5266ca7a8aee90b06ebd3b4110a6b95f1c486a5fea",
+    "groups_train_00.json": "4bd98e725532a96edfe01095d3373104542ee5bac4822d60b3e6f6504723384b",
+    "groups_train_01.json": "b0c146e42f6da145ccffc98b55498a96593baba2fababd9903de4597d15c5b24",
+    "groups_train_02.json": "e0b6e24dcfe51e5ff2fdc53c72421658c13023a42ec9052d0b2a3326387d1643",
+    "groups_train_03.json": "0da97a902ed0c8ba9f34c69fb753fb9bf8faac385e716d619257bd0a0657e07b",
+    "groups_train_04.json": "703180fb780d141dfde284287aa8e0e705b9cf63871670201f6e3820d0beebfa",
+    "groups_train_05.json": "1847f7905725d1aba25260919982622d930be46f34665de340c9f39688621375",
+    "groups_train_06.json": "2e18d200e82d620a727041fd34155d94205aa48365bbfec72adf00544f6a645e",
+    "groups_train_07.json": "4612fba7609a4a799b38a3d224e813018799a88b7366736a7ea10600469d422c",
+    "groups_train_08.json": "ce7235652601eda5ef479a1d9f99a7f4ea9ea4f9f8e82bbc0059d3a22e80794d",
+    "groups_train_09.json": "3a02969e3e17963d57805814372b0ae31c37060f3d6bdd06bb0a742c30c916f3",
+    "groups_train_10.json": "32ff77c12d4eb2e376776d9e5c182eeb1030bf1ed852a0d50add8c008a122396",
+    "groups_train_11.json": "21d87d42c3c4f4f913d20d7f13a21f453c5c0cc2d45793d015966d2f12893cc4",
+    "groups_train_12.json": "5ce232d7174ce9340dc96c1ad27bd95737d6edc5b71717a07d269fac719aa4ab",
+    "groups_train_13.json": "681d34ac15f53ad0f9809c8e6e8c3b2ff69f34e53f56dbdbe06d1836d1160914",
+    "groups_train_14.json": "ba912505d182e19ed15a059339337b47fdf4a29209b4a7d7d0c1e821dbc2da68",
+    "groups_train_15.json": "d07cbd05851cc25ac46f642e7f2e7445d80ad733578595c8fe41de20493c6e52",
+    "groups_train_16.json": "69982cd58c37a41f07e3679169c235c2a3dde9acb39f8ecaa0d182ed9d1acee6",
+    "groups_train_17.json": "6b29ce5566164bfd0bf989e3df6fe18eb3c1b29e459ca99edde9cb279708d287",
+    "groups_train_18.json": "4c0c1e4c096dbd57ddf99de7c7d750ff7845e6892f448673bf28271f77ba8775",
+    "groups_train_19.json": "06d73349fa674bc40c03d7e0d15b67b264c971205698e8fbec2ec9095801ded5",
+    "groups_train_20.json": "49e5e62280b9add25a8ec80a65691cb6d87e4887ba0f945213a4272d078f5d0d",
+    "groups_train_21.json": "9314f540783e217829d62aca8894fa87b800d1b49c7b088681cadf927fcdcbfd",
+    "groups_train_22.json": "9023b0bd4548111045e2c6e6cad4115260d68a8e2e2d552961cad6ff58241677",
+    "groups_train_23.json": "1947b08e9a500a70641211e47f2e1ba263e6408c399a1a8115617ea071c0b02d",
+    "groups_train_24.json": "aacec03930243eb0ab10dafaa8edbff35efd9cc30285ee152f14f5e64b8466c2",
+    "groups_train_25.json": "86dcce694dfe89d3230f4b2033267f7f53b6ae18dff6f109a2966ac7d6a8d158",
+    "groups_train_26.json": "71075116ae9dcbe94bae1908f89d0ccdbf5e7eea71349d3328ca612002049f5e",
+    "groups_train_27.json": "1826d69fb53a52eb47b9f3312fe0d363a0d014200ca3823279b05da2d58b0e2f",
+    "groups_train_28.json": "ea26dd60df574ceaea432f4f8389c0a1f6604d5c9f624985a75a57b676b431f1",
+    "groups_train_29.json": "de17feb7968c2136dc55227864f18ed1cd075131da41916e6612aa8fb16f89db",
+    "groups_train_30.json": "dc1f2d5941b030974e02c283012c5cda105a193603f18c3d263bf920f3688cbd",
+    "groups_train_31.json": "5865ba2dedd4b1ea6f7328973bfa26a7956f4e83bed6b29fb8cb908bc927e842",
+    "groups_train_32.json": "969fbd8378c2dd7c7afba26bd76afc9e3a2896b7e31c364c42f08fa56033bd9a",
+    "groups_train_33.json": "ceed8e5e8295fd1721af35a956e3ea129819121dbfa782cd6c60d55496fc978e",
+    "groups_train_34.json": "10155fecf4405f06f6f08c9870690ff938703cc45c31a58ec02e10cac4534c10",
+    "groups_train_35.json": "a30ed261cbafbed93671967be5c31d120610822ae81bca7922268310076c40b5",
+    "groups_train_36.json": "fd1cb0d010f70fe992d6f90150d99d7d031de54ef215cebec16b98a0068b96d6",
+    "groups_train_37.json": "583ec3e14fff3be4d7c58d070e837d83b4cc75e26518aa770894d56444477502",
+    "groups_train_38.json": "b26fcb63ff780b0f577f7b5f2f060079682da87d19d8c0baaa6225b80dd134e1",
+    "groups_train_39.json": "bde64defec7f00a70bab0d7d665493323a1e3e3370c20bb2941b7066299bb2b8",
+    "groups_train_40.json": "d271f177909502fd0d70891038c8e3d276463f93dd8f78866fde8f0ccba863cd",
+    "groups_train_41.json": "3d26c43fdfb787e2862cd70f6b7f09f51758e0b2570f0024c3b284275b6d2fd5",
+    "groups_train_42.json": "6cbf16b2ee5cf487904e190901ac641f2d7a19416cb36363e4b3bb3ceb77f233",
+    "groups_train_43.json": "995a00653c7b23b73bd161740dbee91325509b46606ee0117e125259bc8729a2",
+    "groups_train_44.json": "658d88df9092ad9dfe9e2cb9f9d364d7505fc3c99580e08f323a80b251deb418",
+    "groups_train_45.json": "03f5352890df8e5f2be37b826592b6893cea902861129588208b691c261adbc6",
+    "groups_train_46.json": "e1b1889cfdf4bd564d2ca25535102690be947bfd5df110868dcd8b1392c436b7",
+    "groups_train_47.json": "3192d584a91301d680738428b58d526d4a62da6078c15dae00a22932b3054121",
+    "groups_train_48.json": "5446d336ef238ff0dbd457080e8a2edc5a3e7f6fb5d4d1e2e2d69b9da7d2ef92",
+    "groups_train_49.json": "d05374b89863522a8ca7444747a857d6cb938a4b1706e9fef4f433e6fca587f9",
+    "groups_train_50.json": "2428f6cbd1d36eac910563f733501e6309b054e027da89860055e644fd0edd79",
+    "groups_train_51.json": "2fcd74472e825f8f103e455b937cb9dc9e1c92890cc60ca25e5a692bd80a909a",
+    "groups_train_52.json": "619fd47e92daa185b5472121c291440808bdc8184a53cd9103d37a139d030fa7",
+    "groups_train_53.json": "4d43f20105aa3a6dbf7458a05257063bda073cc474ef630c2fa7f9f47ea439d3",
+    "groups_train_54.json": "2f5fb9254ff780f03d0df48347bea4d6bdd6635ce390ae0e785f233b42c9530d",
+    "groups_train_55.json": "f7e4e9413698e69052dd19f98fc10326a18a992d7766ad3549d36a2bd2209ad4",
+    "groups_train_56.json": "68faa14b9ec2ef8d3955e265f57206df72e0cd0c0ee846b18ea56cdca3bd822a",
+    "groups_train_57.json": "127084f8d39ec0a7c8e2c7b2f78cc4c3691e4bafc0d79befc435be22cd7784fe",
+    "groups_train_58.json": "da07e1557b9017bd86b0230bee904a9a2c81c855ac7cb6146c1f4456ab08e502",
+    "groups_train_59.json": "dfebf082dd3f0fbfc503b3ce008c9cb6381ead51f48da2c87784ede04a6322eb",
+    "groups_train_60.json": "fbe0eafbd9beabc6c8b9313c4de322325d1e66d86528615753ceb0372b8fe8ca",
+    "groups_train_61.json": "e891a7bd2fff658148d29a7b2b70997211a1dae0c14578cb9e83d774290e7cbd",
+    "groups_train_62.json": "b51f36a10bb57d2c01fed5376cf547c6b161abd38dc22bf4b3585312f43865a3",
+    "groups_train_63.json": "d113b0ae2282b7f55d5f93d821f9dd7fe52aff8dbe52db6a73784dbb4779ef74",
+    "job.json": "c827adf7b310df2444b63d412adb269d309a2f7b64195264d9f85e4afa4930ee",
+    "prospective_plan.json": "0d1c89dc3c6f8925c0c5d88653cf555e28c44343d2f0c98509f9e08fb5f98da8",
+    "scoring_calibration_base.json": "e31cfa8d0014776cdde3b1cbddff841576f242ddcf7504f83f0b3bbe38e535c2",
+    "scoring_calibration_context.json": "f4946bd0140756afe779dd46450895f5bf1010537ac725d9c836403417a84411",
+    "scoring_exposed_base.json": "38109f04eadb2e9e65749b55beff4df98fcae9efdeb6c57bda09718edc26f5e0",
+    "scoring_exposed_context.json": "964e3fbf119867e65a337f73795edaf514a4bb17ad265d9a2e55af69006484b6",
+    "sibling_fold_0.joblib": "20d88682bf308e628e8f5c73e4da413d861f9ff3134b698247e270d422002a4b",
+    "sibling_fold_1.joblib": "4ca66f430cedfab5c15f180360660db5753af4f4748369e318ff8d0a9719196c",
+    "sibling_fold_2.joblib": "eafbca327a947b78ee51376b0908b4ecb6caa29780449f61d3aff448c569b467",
+    "sibling_fold_3.joblib": "ddda8accb0e21ba4d8f66c64290d1829ba0c00984cbed3c539553ccf0a5ccf1b"
+  },
+  "all_original_gates_unchanged": {
+    "accuracy_min": 0.8,
+    "balanced_accuracy_min": 0.75,
+    "each_label_recall_min": 0.6,
+    "bootstrap_balanced_lower95_min": 0.7,
+    "exact_family_recovery_min": 0.95,
+    "expected_calibration_error_max": 0.1,
+    "missing_samples_max": 0,
+    "missing_true_pairs_max": 0,
+    "extra_cross_family_pairs_max": 0
+  },
+  "submission_ready": false,
+  "limitations": [
+    "Earlier calibration/exposed cohorts have informed development and are not new confirmation.",
+    "More independent families still come from finite sibling-rich templates and coalescent population assumptions.",
+    "Context model is a matched diagnostic; preservation of strong predictions requires separate review."
+  ]
+}

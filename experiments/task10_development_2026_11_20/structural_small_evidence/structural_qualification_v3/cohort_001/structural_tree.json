@@ -1,0 +1,981 @@
+{
+  "initial_tree": {
+    "state": "COMPLETED",
+    "root": 30,
+    "valid_roots": 1,
+    "root_score_margin": null,
+    "root_invariant_pairs": 120,
+    "root_ambiguous_pairs": 0,
+    "root_ambiguity": [],
+    "uncertainty_calibrated": false,
+    "abstention_policy": "Only root-invariant labels qualify as structurally resolved; ranked labels remain exploratory",
+    "score_interpretation": "composite pair log score; not an independent likelihood or calibrated posterior",
+    "threshold_cm": null,
+    "raw_edges": [
+      [
+        16,
+        18,
+        0.9127564730644846
+      ],
+      [
+        14,
+        16,
+        0.8249285293489315
+      ],
+      [
+        15,
+        16,
+        1.1750714707070686
+      ],
+      [
+        17,
+        24,
+        1.0180928605699848
+      ],
+      [
+        12,
+        17,
+        0.9771013607397158
+      ],
+      [
+        13,
+        17,
+        1.0228986393162844
+      ],
+      [
+        18,
+        19,
+        0.21214098143214222
+      ],
+      [
+        11,
+        18,
+        1.0828330502311645
+      ],
+      [
+        19,
+        21,
+        0.8716737038680752
+      ],
+      [
+        10,
+        19,
+        0.7950631831155486
+      ],
+      [
+        20,
+        21,
+        0.12620578233407287
+      ],
+      [
+        6,
+        20,
+        1.0152551359049327
+      ],
+      [
+        7,
+        20,
+        0.9847448641510674
+      ],
+      [
+        21,
+        22,
+        1.0183295764177405
+      ],
+      [
+        22,
+        23,
+        0.08179218997156945
+      ],
+      [
+        2,
+        22,
+        0.9938713165008017
+      ],
+      [
+        23,
+        26,
+        2.0170465446369485
+      ],
+      [
+        3,
+        23,
+        0.9454503709216509
+      ],
+      [
+        24,
+        25,
+        0.026048431577603726
+      ],
+      [
+        9,
+        24,
+        0.9849291037588732
+      ],
+      [
+        25,
+        29,
+        1.0185231590264572
+      ],
+      [
+        8,
+        25,
+        0.9740040104627159
+      ],
+      [
+        26,
+        27,
+        0.05046143938235326
+      ],
+      [
+        1,
+        26,
+        0.9537326111210775
+      ],
+      [
+        27,
+        29,
+        0.9764945821998163
+      ],
+      [
+        0,
+        27,
+        1.0230568516421927
+      ],
+      [
+        28,
+        29,
+        0.013184429885551241
+      ],
+      [
+        4,
+        28,
+        0.9797042155491227
+      ],
+      [
+        5,
+        28,
+        1.0202957845068774
+      ]
+    ],
+    "integer_edges": [
+      [
+        16,
+        18
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        15,
+        16
+      ],
+      [
+        17,
+        24
+      ],
+      [
+        24,
+        28
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        22,
+        30
+      ],
+      [
+        2,
+        22
+      ],
+      [
+        26,
+        28
+      ],
+      [
+        26,
+        30
+      ],
+      [
+        3,
+        22
+      ],
+      [
+        9,
+        24
+      ],
+      [
+        8,
+        24
+      ],
+      [
+        1,
+        26
+      ],
+      [
+        0,
+        26
+      ],
+      [
+        4,
+        28
+      ],
+      [
+        5,
+        28
+      ]
+    ],
+    "distance_source": "Frozen forest mean meioses, not measured IBD or kinship",
+    "model_implied_distances": [
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_001",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_002",
+        "model_mean_meioses": 4.000000000027998
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_003",
+        "model_mean_meioses": 4.00686532680662
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_004",
+        "model_mean_meioses": 3.0005882353341127
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_005",
+        "model_mean_meioses": 2.999818181861185
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_006",
+        "model_mean_meioses": 5.950804693835022
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_007",
+        "model_mean_meioses": 5.2362542778158545
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_008",
+        "model_mean_meioses": 4.008267585125182
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_009",
+        "model_mean_meioses": 4.045044109189089
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_010",
+        "model_mean_meioses": 5.868380189418227
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_011",
+        "model_mean_meioses": 6.692660446766225
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_012",
+        "model_mean_meioses": 4.997838244469006
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_013",
+        "model_mean_meioses": 5.230376119001389
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_014",
+        "model_mean_meioses": 8.33967731322665
+      },
+      {
+        "indID1": "sample_000",
+        "indID2": "sample_015",
+        "model_mean_meioses": 8.443769736735156
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_002",
+        "model_mean_meioses": 4.002842808756655
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_003",
+        "model_mean_meioses": 3.989597613231907
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_004",
+        "model_mean_meioses": 3.0000000000419984
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_005",
+        "model_mean_meioses": 3.0005882353341127
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_006",
+        "model_mean_meioses": 5.107390008020158
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_007",
+        "model_mean_meioses": 5.028342930689237
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_008",
+        "model_mean_meioses": 4.011007251674366
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_009",
+        "model_mean_meioses": 4.089018001782443
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_010",
+        "model_mean_meioses": 5.567078042440271
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_011",
+        "model_mean_meioses": 6.117833219953612
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_012",
+        "model_mean_meioses": 4.871602501421226
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_013",
+        "model_mean_meioses": 5.021550854605914
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_014",
+        "model_mean_meioses": 6.600581571049813
+      },
+      {
+        "indID1": "sample_001",
+        "indID2": "sample_015",
+        "model_mean_meioses": 7.839773299389412
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_003",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_004",
+        "model_mean_meioses": 5.023801872835938
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_005",
+        "model_mean_meioses": 5.016061752676093
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_006",
+        "model_mean_meioses": 2.9995384615814658
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_007",
+        "model_mean_meioses": 3.0000000000419984
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_008",
+        "model_mean_meioses": 6.241200818796088
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_009",
+        "model_mean_meioses": 6.308341599146484
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_010",
+        "model_mean_meioses": 3.985214620432734
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_011",
+        "model_mean_meioses": 4.042803621717997
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_012",
+        "model_mean_meioses": 7.338771803203242
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_013",
+        "model_mean_meioses": 7.151262666236565
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_014",
+        "model_mean_meioses": 4.959649970751072
+      },
+      {
+        "indID1": "sample_002",
+        "indID2": "sample_015",
+        "model_mean_meioses": 5.2139763389640645
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_004",
+        "model_mean_meioses": 5.003975302091661
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_005",
+        "model_mean_meioses": 4.9667620491458475
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_006",
+        "model_mean_meioses": 3.0021742520659407
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_007",
+        "model_mean_meioses": 3.0167479996759825
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_008",
+        "model_mean_meioses": 5.913349788695154
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_009",
+        "model_mean_meioses": 5.915901403355587
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_010",
+        "model_mean_meioses": 4.004043615818446
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_011",
+        "model_mean_meioses": 4.516322649723413
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_012",
+        "model_mean_meioses": 7.107744549369492
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_013",
+        "model_mean_meioses": 7.108673005509145
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_014",
+        "model_mean_meioses": 4.877488548586473
+      },
+      {
+        "indID1": "sample_003",
+        "indID2": "sample_015",
+        "model_mean_meioses": 5.0680105107881825
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_005",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_006",
+        "model_mean_meioses": 6.381661407908247
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_007",
+        "model_mean_meioses": 5.898709184230836
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_008",
+        "model_mean_meioses": 3.0000000000419984
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_009",
+        "model_mean_meioses": 3.0000000000419984
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_010",
+        "model_mean_meioses": 6.942911743274323
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_011",
+        "model_mean_meioses": 7.277155525680834
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_012",
+        "model_mean_meioses": 4.006367145973554
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_013",
+        "model_mean_meioses": 4.008621988749347
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_014",
+        "model_mean_meioses": 7.9617153526684765
+      },
+      {
+        "indID1": "sample_004",
+        "indID2": "sample_015",
+        "model_mean_meioses": 9.421719743450472
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_006",
+        "model_mean_meioses": 6.6231944641408
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_007",
+        "model_mean_meioses": 6.683013725348679
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_008",
+        "model_mean_meioses": 3.020085361826109
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_009",
+        "model_mean_meioses": 3.001992866144243
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_010",
+        "model_mean_meioses": 7.612402175292498
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_011",
+        "model_mean_meioses": 7.591736858330486
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_012",
+        "model_mean_meioses": 4.020364512474364
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_013",
+        "model_mean_meioses": 4.4001479897479445
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_014",
+        "model_mean_meioses": 7.896287546500922
+      },
+      {
+        "indID1": "sample_005",
+        "indID2": "sample_015",
+        "model_mean_meioses": 8.559924376987263
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_007",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_008",
+        "model_mean_meioses": 6.972639631558191
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_009",
+        "model_mean_meioses": 7.312297478092912
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_010",
+        "model_mean_meioses": 2.999818181861185
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_011",
+        "model_mean_meioses": 3.0000000000419984
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_012",
+        "model_mean_meioses": 7.761200214648436
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_013",
+        "model_mean_meioses": 8.20335915045107
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_014",
+        "model_mean_meioses": 4.014176577251693
+      },
+      {
+        "indID1": "sample_006",
+        "indID2": "sample_015",
+        "model_mean_meioses": 4.002033326256536
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_008",
+        "model_mean_meioses": 7.02870523710427
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_009",
+        "model_mean_meioses": 7.156173025484361
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_010",
+        "model_mean_meioses": 2.9990681818611926
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_011",
+        "model_mean_meioses": 2.999484848527854
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_012",
+        "model_mean_meioses": 9.343142008585053
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_013",
+        "model_mean_meioses": 8.620945473239017
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_014",
+        "model_mean_meioses": 4.0046551286310725
+      },
+      {
+        "indID1": "sample_007",
+        "indID2": "sample_015",
+        "model_mean_meioses": 3.9906830051899727
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_009",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_010",
+        "model_mean_meioses": 7.356824178112896
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_011",
+        "model_mean_meioses": 8.560980686861715
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_012",
+        "model_mean_meioses": 3.0035981127493083
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_013",
+        "model_mean_meioses": 3.0026555840136857
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_014",
+        "model_mean_meioses": 7.963812060361646
+      },
+      {
+        "indID1": "sample_008",
+        "indID2": "sample_015",
+        "model_mean_meioses": 8.18974905723736
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_010",
+        "model_mean_meioses": 7.1657363140462795
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_011",
+        "model_mean_meioses": 8.61391252532109
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_012",
+        "model_mean_meioses": 3.0050724144298493
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_013",
+        "model_mean_meioses": 3.000971514283867
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_014",
+        "model_mean_meioses": 8.896385234465644
+      },
+      {
+        "indID1": "sample_009",
+        "indID2": "sample_015",
+        "model_mean_meioses": 9.573138031882143
+      },
+      {
+        "indID1": "sample_010",
+        "indID2": "sample_011",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_010",
+        "indID2": "sample_012",
+        "model_mean_meioses": 8.165557604403595
+      },
+      {
+        "indID1": "sample_010",
+        "indID2": "sample_013",
+        "model_mean_meioses": 8.094788672106716
+      },
+      {
+        "indID1": "sample_010",
+        "indID2": "sample_014",
+        "model_mean_meioses": 3.000042917907446
+      },
+      {
+        "indID1": "sample_010",
+        "indID2": "sample_015",
+        "model_mean_meioses": 3.019952786818617
+      },
+      {
+        "indID1": "sample_011",
+        "indID2": "sample_012",
+        "model_mean_meioses": 8.713218108677944
+      },
+      {
+        "indID1": "sample_011",
+        "indID2": "sample_013",
+        "model_mean_meioses": 8.902414984594454
+      },
+      {
+        "indID1": "sample_011",
+        "indID2": "sample_014",
+        "model_mean_meioses": 2.9908863636794734
+      },
+      {
+        "indID1": "sample_011",
+        "indID2": "sample_015",
+        "model_mean_meioses": 3.000292682967825
+      },
+      {
+        "indID1": "sample_012",
+        "indID2": "sample_013",
+        "model_mean_meioses": 2.000000000056
+      },
+      {
+        "indID1": "sample_012",
+        "indID2": "sample_014",
+        "model_mean_meioses": 9.077405867868988
+      },
+      {
+        "indID1": "sample_012",
+        "indID2": "sample_015",
+        "model_mean_meioses": 9.260893865576096
+      },
+      {
+        "indID1": "sample_013",
+        "indID2": "sample_014",
+        "model_mean_meioses": 9.402799271223797
+      },
+      {
+        "indID1": "sample_013",
+        "indID2": "sample_015",
+        "model_mean_meioses": 9.303648140943988
+      },
+      {
+        "indID1": "sample_014",
+        "indID2": "sample_015",
+        "model_mean_meioses": 2.000000000056
+      }
+    ]
+  },
+  "optimized_tree": {
+    "state": "COMPLETED",
+    "root": 29,
+    "valid_roots": 1,
+    "initial_degree_log_score": -54.02315463564603,
+    "optimized_degree_log_score": -54.02315463564603,
+    "moves": [],
+    "feasibility_checks": 0,
+    "stop": "NO_FEASIBLE_IMPROVING_SINGLE_EDGE_MOVE",
+    "root_score_margin": null,
+    "root_invariant_pairs": 120,
+    "root_ambiguous_pairs": 0,
+    "root_ambiguity": [],
+    "integer_edges": [
+      [
+        0,
+        26
+      ],
+      [
+        26,
+        28
+      ],
+      [
+        26,
+        29
+      ],
+      [
+        1,
+        26
+      ],
+      [
+        2,
+        22
+      ],
+      [
+        22,
+        29
+      ],
+      [
+        3,
+        22
+      ],
+      [
+        4,
+        28
+      ],
+      [
+        5,
+        28
+      ],
+      [
+        6,
+        20
+      ],
+      [
+        20,
+        22
+      ],
+      [
+        7,
+        20
+      ],
+      [
+        8,
+        24
+      ],
+      [
+        24,
+        28
+      ],
+      [
+        9,
+        24
+      ],
+      [
+        10,
+        18
+      ],
+      [
+        18,
+        20
+      ],
+      [
+        11,
+        18
+      ],
+      [
+        12,
+        17
+      ],
+      [
+        17,
+        24
+      ],
+      [
+        13,
+        17
+      ],
+      [
+        14,
+        16
+      ],
+      [
+        16,
+        18
+      ],
+      [
+        15,
+        16
+      ]
+    ],
+    "topology_fixed": true,
+    "uncertainty_calibrated": false,
+    "score_interpretation": "Composite degree log score for edge lengths, full-label composite score for roots; neither is an independent likelihood or calibrated posterior",
+    "uncertainty_scope": "Root ambiguity is conditional on selected edge lengths and does not cover other edge-length assignments or other topologies"
+  },
+  "uncertainty_calibrated": false,
+  "biological_qualification": false
+}

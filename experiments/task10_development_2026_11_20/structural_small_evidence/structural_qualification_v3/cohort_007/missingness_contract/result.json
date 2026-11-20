@@ -1,0 +1,38 @@
+{
+  "state": "MISSINGNESS_REJECTION_VERIFIED",
+  "counts": {
+    "variants": 2230307,
+    "genotypes": 53527368,
+    "masked": {
+      "0.05": {
+        "count": 2675878,
+        "fraction": 0.049990838331524165
+      },
+      "0.2": {
+        "count": 10705288,
+        "fraction": 0.19999653261486722
+      }
+    }
+  },
+  "checks": [
+    {
+      "rate": 0.05,
+      "rejected_missing_allele": true,
+      "published_prepared_vcf": false,
+      "message": "Line 27, sample_002: missing allele; choose an explicit --missing-policy after validating its effects",
+      "masked_sha256": "addbc7b2bd8519280d794f26f6bd4769065e6dd2e5416f66f38e858d844a22dd"
+    },
+    {
+      "rate": 0.2,
+      "rejected_missing_allele": true,
+      "published_prepared_vcf": false,
+      "message": "Line 26, sample_003: missing allele; choose an explicit --missing-policy after validating its effects",
+      "masked_sha256": "1e1ca22d2b5a8109feb8975462e145c152239c93d0d15a9177bd33dace6f59ae"
+    }
+  ],
+  "source_sha256": "de94e0f1da9b74d93743eab2044ec2e51993cdacacebe60290d6790cef850ad1",
+  "protocol_sha256": "9b9ebaa12e95ce0cd85c0be8056c33ede2a7dc1af5c717594c21383cd46d5803",
+  "biological_robustness_qualified": false,
+  "alleles_imputed": 0,
+  "sites_deleted": 0
+}

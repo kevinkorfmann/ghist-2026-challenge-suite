@@ -1,0 +1,179 @@
+{
+  "verified_at_utc": "2026-11-20T20:04:32.861774+00:00",
+  "archive_sha256": "76a256e532f09f7c871eab192d3dcd9d3722250f44b4cfe06e59f134342ae6a4",
+  "freeze_sha256": "35c2cb3576befed1c8bc000ede4baa4c37fcae901a5c9e4c91aa0d8a9f6111f2",
+  "manifest_bound_files_verified": 784,
+  "cohorts": {
+    "split_r0_p0_v1": {
+      "gates": {
+        "exposure": true,
+        "observed_stopping": false,
+        "two_optimizer_agreement": true,
+        "target_stability": true,
+        "frequency_L1": true,
+        "segregating_relative_L1": true,
+        "primary_parameter_recovery": true,
+        "all_estimator_runs_parameter_recovery": true,
+        "provenance_bindings": true,
+        "formatter_schema": true
+      },
+      "all_gates_passed": false,
+      "failed_gates": [
+        "observed_stopping"
+      ],
+      "targets": {
+        "seed1": {
+          "generations_since_split": 942.5464658436965,
+          "pop1_population_size": 3833.0366868789706,
+          "pop2_population_size": 3875.338635722748
+        },
+        "seed2": {
+          "generations_since_split": 942.5806851082596,
+          "pop1_population_size": 3832.471656139483,
+          "pop2_population_size": 3874.645192479709
+        },
+        "continued": {
+          "generations_since_split": 942.5599566939446,
+          "pop1_population_size": 3833.128257993564,
+          "pop2_population_size": 3875.382678675444
+        }
+      },
+      "relative_errors": {
+        "seed1": {
+          "pop1_population_size": -0.04174082828025738,
+          "pop2_population_size": -0.031165341069312902,
+          "generations_since_split": -0.0574535341563035
+        },
+        "seed2": {
+          "pop1_population_size": -0.041882085965129545,
+          "pop2_population_size": -0.03133870188007315,
+          "generations_since_split": -0.05741931489174079
+        },
+        "continued": {
+          "pop1_population_size": -0.04171793550160885,
+          "pop2_population_size": -0.031154330331138902,
+          "generations_since_split": -0.05744004330605523
+        }
+      },
+      "comparisons": {
+        "seed2": {
+          "frequency_L1": 5.455395170217111e-05,
+          "segregating_relative_L1": 0.004020197091393541,
+          "target_relative_change": {
+            "generations_since_split": 3.630512213792514e-05,
+            "pop1_population_size": -0.00014741073087609635,
+            "pop2_population_size": -0.0001789374576578462
+          }
+        },
+        "continued": {
+          "frequency_L1": 2.1586113550087952e-05,
+          "segregating_relative_L1": 0.0016115928446270378,
+          "target_relative_change": {
+            "generations_since_split": 1.431319381794971e-05,
+            "pop1_population_size": 2.388996560021006e-05,
+            "pop2_population_size": 1.1364930096569026e-05
+          }
+        }
+      },
+      "last_epochs": {
+        "seed1": 200,
+        "seed2": 200,
+        "continued": 7
+      }
+    },
+    "split_r0_p1_v1": {
+      "gates": {
+        "exposure": true,
+        "observed_stopping": false,
+        "two_optimizer_agreement": true,
+        "target_stability": true,
+        "frequency_L1": true,
+        "segregating_relative_L1": true,
+        "primary_parameter_recovery": true,
+        "all_estimator_runs_parameter_recovery": true,
+        "provenance_bindings": true,
+        "formatter_schema": true
+      },
+      "all_gates_passed": false,
+      "failed_gates": [
+        "observed_stopping"
+      ],
+      "targets": {
+        "seed1": {
+          "generations_since_split": 942.6980013917289,
+          "pop1_population_size": 4216.157210295012,
+          "pop2_population_size": 4287.598138637931
+        },
+        "seed2": {
+          "generations_since_split": 942.3333193399839,
+          "pop1_population_size": 4216.593406066655,
+          "pop2_population_size": 4286.136033040937
+        },
+        "continued": {
+          "generations_since_split": 942.7141281176043,
+          "pop1_population_size": 4216.200618442528,
+          "pop2_population_size": 4287.629166626334
+        }
+      },
+      "relative_errors": {
+        "seed1": {
+          "pop1_population_size": 0.054039302573753334,
+          "pop2_population_size": 0.07189953465948284,
+          "generations_since_split": -0.0573019986082709
+        },
+        "seed2": {
+          "pop1_population_size": 0.05414835151666342,
+          "pop2_population_size": 0.07153400826023404,
+          "generations_since_split": -0.057666680660016345
+        },
+        "continued": {
+          "pop1_population_size": 0.05405015461063245,
+          "pop2_population_size": 0.07190729165658372,
+          "generations_since_split": -0.05728587188239542
+        }
+      },
+      "comparisons": {
+        "seed2": {
+          "frequency_L1": 9.96281721205018e-05,
+          "segregating_relative_L1": 0.00729351357319573,
+          "target_relative_change": {
+            "generations_since_split": -0.0003868492891749842,
+            "pop1_population_size": 0.00010345813732404174,
+            "pop2_population_size": -0.0003410080771838464
+          }
+        },
+        "continued": {
+          "frequency_L1": 0.0006083465618885667,
+          "segregating_relative_L1": 0.04473284021229342,
+          "target_relative_change": {
+            "generations_since_split": 1.7106990628734664e-05,
+            "pop1_population_size": 1.0295666255100144e-05,
+            "pop2_population_size": 7.236682963318586e-06
+          }
+        }
+      },
+      "last_epochs": {
+        "seed1": 200,
+        "seed2": 200,
+        "continued": 200
+      }
+    }
+  },
+  "primary_target_count": 6,
+  "primary_median_absolute_relative_error": 0.055670650591012116,
+  "stratum_medians": {
+    "0": 0.04174082828025738,
+    "1": 0.0573019986082709
+  },
+  "all_registered_gates_passed": false,
+  "mode": "development",
+  "scientifically_ready_under_frozen_policy": false,
+  "external_binary_bindings": {
+    "external/angsd/angsd": "c8059942b9bdaeef232515947b5761f4ca33d2c8c2443a27d63af199763c6242",
+    "external/bwa/bwa": "7af32763e40ad180225335a47cca77309100f910cbf1a0855bef7e782995b5d9",
+    "external/winsfs-release-v0.7.0/winsfs": "be5993c4ad06ddaa4cb8d45723c8039af50110cd63f11de563ee04bfdaeba1b7"
+  },
+  "scope": "Independent raw-spectrum/log/optimizer/target and complete-two-cohort reused-development provenance audit. Raw BAM likelihoods are not rerun; runtime/binary hashes have a separate remote audit.",
+  "audit_source_sha256": "6faab3758ea58acfd28e280f42e1c19c4a6cb8f76e219a3d9d96bc8ab87385be",
+  "helper_source_sha256": "e2296f854bf008971c53925a56ae50abc872ad3956cc3970c891ac55f0b765c0"
+}

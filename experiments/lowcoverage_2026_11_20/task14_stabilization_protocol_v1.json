@@ -1,0 +1,105 @@
+{
+  "budget": {
+    "concurrency": 2,
+    "cpus_per_job": 4,
+    "development_jobs": 2,
+    "development_minutes_per_job": 30,
+    "fresh_inference_jobs": 6,
+    "fresh_inference_minutes_per_job": 30,
+    "fresh_launch_deadline_utc": "2026-11-20T20:15:00Z",
+    "fresh_preparation_jobs": 6,
+    "fresh_preparation_minutes_per_job": 15,
+    "maximum_cpu_hours": 22,
+    "maximum_elapsed_minutes_without_queueing": 165,
+    "memory_per_cpu_mb": 5632,
+    "task13": "deferred; Task14 has priority"
+  },
+  "confirmation_designs": {
+    "split_isolation": [
+      {
+        "ancestral_size": 8000,
+        "generations": 1000,
+        "seeds": [
+          963001,
+          963002
+        ],
+        "size1": 4000,
+        "size2": 4000
+      },
+      {
+        "ancestral_size": 10000,
+        "generations": 5000,
+        "seeds": [
+          963011,
+          963012
+        ],
+        "size1": 5000,
+        "size2": 15000
+      },
+      {
+        "ancestral_size": 20000,
+        "generations": 12000,
+        "seeds": [
+          963021,
+          963022
+        ],
+        "size1": 30000,
+        "size2": 10000
+      }
+    ]
+  },
+  "development_cohorts": [
+    "full_confirmation_split_r0_p0_v1",
+    "full_confirmation_split_r0_p1_v1"
+  ],
+  "development_policy": "Use both original regime0 Q30/Q20 cohorts, preserve old outcomes, reuse exact hashed SAFs; both must pass every unchanged numerical and all-target recovery gate before fresh generation. No candidate selection or tolerance changes.",
+  "fresh_rule": "Generate all six fresh seeds only if both development cohorts pass, source/protocol/runtime are frozen and reviewed, original six have finished and been exported, and fresh launch is no later than20:15UTC. Retain all outcomes; no retries or seed replacement under confirmation label.",
+  "method": {
+    "blocks": 500,
+    "max_epochs": 200,
+    "same_as_v7": [
+      "GL2/SAF filters and callable exposure",
+      "global folding",
+      "eight starts each L-BFGS-B and Powell",
+      "primary seed1=761001, alternate seed2=761002, initialized continuation from seed1",
+      "pinned winsfs0.7.0/runtime and exact official formatter"
+    ],
+    "threads": 4,
+    "tolerance": 1e-06,
+    "window_size": 500
+  },
+  "noise_profiles": {
+    "replicate0": {
+      "depth_sigma": 0.25,
+      "quality": 30
+    },
+    "replicate1": {
+      "depth_sigma": 0.5,
+      "quality": 20
+    }
+  },
+  "numerical_gates": {
+    "all_three_optimizer_agreements": true,
+    "callable_fraction_min": 0.99,
+    "each_run_stop_before_epoch": 200,
+    "full_frequency_L1_max_exclusive": 0.001,
+    "segregating_relative_L1_max_exclusive": 0.05,
+    "target_relative_change_max_exclusive": 0.01
+  },
+  "rationale": {
+    "inference": "A full 500-block window may reduce persistent seed-dependent subset variation; tighter stopping alone need not remove it. Neither improvement nor full-batch equivalence is assumed.",
+    "primary_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9713400/",
+    "source_equation": "Eq.12 averages only the W most recent block estimates; pinned winsfs-core/src/em/window_em.rs confirms finite FIFO window of posterior sums."
+  },
+  "registered_at_utc": "2026-11-20T19:30:47.078101+00:00",
+  "release_rule": "All six fresh cohorts, every unchanged1% target stability/optimizer/exposure/spectrum/recovery gate, median18 primary errors<=20%, and independent audit must pass. Original confirmation remains failed.",
+  "scientific_gates": {
+    "all_targets_all_cohorts_absolute_relative_error_max": 0.3,
+    "extra_conservative_check": "Also require <=30% recovery for every target in alternate-seed/continued fits.",
+    "median_absolute_relative_error_max": 0.2,
+    "median_definition": "All 18 primary seed1 target errors across six cohorts, with each noise stratum additionally reported separately."
+  },
+  "scientifically_ready": false,
+  "scope": "Fixed new development stabilization and conditional fresh synthetic confirmation; original six remain failed and retained. No challenge-data access.",
+  "task": "split_isolation"
+}

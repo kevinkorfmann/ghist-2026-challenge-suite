@@ -1,0 +1,36 @@
+{
+  "verified_at_utc": "2026-11-20T19:09:03.469574+00:00",
+  "bindings": {
+    "expanded_training_plan_v2.json": "0d1c89dc3c6f8925c0c5d88653cf555e28c44343d2f0c98509f9e08fb5f98da8",
+    "expanded_training_protocol_v1.json": "6a775296a270e9808f3d7e906a73d64951d732297c35e56f3f77a496247277e1",
+    "expanded_training_bundle_v2.tar.gz": "6dc1b7daa8c27b667fd35e2c85afe6eac63e80207267075e6d9130d97d11ece5",
+    "fit_expanded_context_v2.py": "2baca5dc2d014b19be5e3c1e749ff58f42119e601a3cd8bcd43c3dbca9a128a6"
+  },
+  "new_training_cohorts": 48,
+  "total_training_cohorts": 64,
+  "folds": 4,
+  "each_fold_simple_mixed": [
+    8,
+    8
+  ],
+  "new_joint_cells_each_topology": 9,
+  "unchanged_generator_features_model_and_gates": true,
+  "changed_protocol_fields": [
+    "cohorts",
+    "confirmation_policy",
+    "development_extension",
+    "pedigrees"
+  ],
+  "confirmation_seeds_unused": [
+    2026120400,
+    2026120401,
+    2026120402,
+    2026120403,
+    2026120404,
+    2026120405,
+    2026120406,
+    2026120407
+  ],
+  "scope": "Prospective design/archive/source audit; outcomes pending; not scientific qualification.",
+  "audit_note": "Initial audit required confirmation_policy text equality and failed; inspected change explicitly removes all confirmation configurations, which is appropriate for this training-only protocol."
+}
