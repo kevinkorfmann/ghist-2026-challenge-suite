@@ -1,0 +1,610 @@
+{
+  "task": 2,
+  "planned_fit_cases": 16,
+  "eligible_fit_cases": 13,
+  "case_states": [
+    {
+      "id": "task2_simple_r00",
+      "case": {
+        "id": "task2_simple_r00",
+        "task": 2,
+        "origin": 0,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612200,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r00.json",
+      "sha256": "253b10f689e64c5d0b54396b191e69b40bd47455ea4bb5b5d44038f10db9a175",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -113895.38673122304
+    },
+    {
+      "id": "task2_generator_matched_r00",
+      "case": {
+        "id": "task2_generator_matched_r00",
+        "task": 2,
+        "origin": 0,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612300,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task2/task2_generator_matched_r00.json",
+      "sha256": "94b8b541dff57184a38880cad9c9ca3c8c357169a7e30b22b2ba43ebc5fe1fe1",
+      "failure": "RuntimeError: all moments restarts failed: [{'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task2_simple_r01",
+      "case": {
+        "id": "task2_simple_r01",
+        "task": 2,
+        "origin": 1,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612201,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task2/task2_simple_r01.json",
+      "sha256": "153bd2edeaef4397732ff3f4f18ab9d809153c9b8ea63714ad54328dc2371bc6",
+      "failure": "RuntimeError: all moments restarts failed: [{'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task2_generator_matched_r01",
+      "case": {
+        "id": "task2_generator_matched_r01",
+        "task": 2,
+        "origin": 1,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612301,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r01.json",
+      "sha256": "df79f50ec6619503041a0c6fb5a95d0693e9277f505932a8badae9fb741fc92b",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -147162.7424879186
+    },
+    {
+      "id": "task2_simple_r02",
+      "case": {
+        "id": "task2_simple_r02",
+        "task": 2,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612202,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r02.json",
+      "sha256": "2c84490a654d660e7232e4720465d4a7d42e9a74f91ec65e90e6583f48257896",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -129707.88691028187
+    },
+    {
+      "id": "task2_generator_matched_r02",
+      "case": {
+        "id": "task2_generator_matched_r02",
+        "task": 2,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612302,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r02.json",
+      "sha256": "6b1e34357a45545ba8476f11b9e6f97569800c332f3d7785fe4d93f80fedb504",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -147161.9308946788
+    },
+    {
+      "id": "task2_simple_r03",
+      "case": {
+        "id": "task2_simple_r03",
+        "task": 2,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612203,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task2/task2_simple_r03.json",
+      "sha256": "cfc47993cf1e0b6824ba044318114d9358755c5dd52c698c2cde4be1833e21d9",
+      "failure": "RuntimeError: all moments restarts failed: [{'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task2_generator_matched_r03",
+      "case": {
+        "id": "task2_generator_matched_r03",
+        "task": 2,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612303,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r03.json",
+      "sha256": "a297bafee23b81e41cbb7af65cacfb5a39f7e83705f7b63fb707b2ccbfadf627",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -71146.82473718817
+    },
+    {
+      "id": "task2_simple_r04",
+      "case": {
+        "id": "task2_simple_r04",
+        "task": 2,
+        "origin": 4,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612204,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r04.json",
+      "sha256": "4a3caaf69278e975f77f998cd470a6240d18f8722ff30401d96213aa1f4fffb6",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -75832.27772042569
+    },
+    {
+      "id": "task2_generator_matched_r04",
+      "case": {
+        "id": "task2_generator_matched_r04",
+        "task": 2,
+        "origin": 4,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612304,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r04.json",
+      "sha256": "459b1d799236f819d01dfbf1f9fb9861092f2c67205bdf16f696b18074dbe490",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -112761.8937641409
+    },
+    {
+      "id": "task2_simple_r05",
+      "case": {
+        "id": "task2_simple_r05",
+        "task": 2,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612205,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r05.json",
+      "sha256": "7017526449eed62e3edc090b6d8c466573af35fef736254b3efbd90487957451",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -129707.20297981493
+    },
+    {
+      "id": "task2_generator_matched_r05",
+      "case": {
+        "id": "task2_generator_matched_r05",
+        "task": 2,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612305,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r05.json",
+      "sha256": "a24183c221d10c8b8b69fb0391138a72954d3e8fd98909c2e6d0b879fb1f1225",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -71146.82471172992
+    },
+    {
+      "id": "task2_simple_r06",
+      "case": {
+        "id": "task2_simple_r06",
+        "task": 2,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612206,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r06.json",
+      "sha256": "ea1d697bd8d7f9f48b9fad8ebc3307fd971799b316a013701a3ddaaa8c6038a0",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -129702.81880902397
+    },
+    {
+      "id": "task2_generator_matched_r06",
+      "case": {
+        "id": "task2_generator_matched_r06",
+        "task": 2,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612306,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r06.json",
+      "sha256": "ce0c522911260580242055d4e9108aca50b4b48ff5a9dcf7d5cc4115bcab0cb7",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -71146.80737748274
+    },
+    {
+      "id": "task2_simple_r07",
+      "case": {
+        "id": "task2_simple_r07",
+        "task": 2,
+        "origin": 7,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612207,
+          "folded": false,
+          "convention": "simple",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_simple_r07.json",
+      "sha256": "85200c6490f5596936f9fbb0a674fb128e7d05104363673dd4f4b75178bbf401",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -129705.62705833816
+    },
+    {
+      "id": "task2_generator_matched_r07",
+      "case": {
+        "id": "task2_generator_matched_r07",
+        "task": 2,
+        "origin": 7,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612307,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task2/task2_generator_matched_r07.json",
+      "sha256": "ff373affed0c080425b41a28eb5e1d814d3775af48d4405092cba66f3f5595d2",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -147162.7253045906
+    }
+  ],
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "complete_projection_set": null,
+  "scientifically_validated": false,
+  "release_qualified": false,
+  "submission_count": 0,
+  "intervals_generated": false,
+  "state": "BEST_EFFORT_CANDIDATE",
+  "selection": "maximum finite likelihood on common unfolded40x30 SFS, equal5parameter models; theta optimized",
+  "prediction": {
+    "mainland_population_size": 152118.28916781308,
+    "island_population_size": 8808.307756467895,
+    "generations_since_split": 3619.462925438996,
+    "generations_since_migration": 1853.171905937364,
+    "migration_rate": 0.0001457472340818597
+  },
+  "candidate": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/definitive_001/task2.final.yaml",
+  "candidate_sha256": "bef1635f3f75ba1bcc3c5af8d18f40899341e1175de36e082883d35736efc0bb",
+  "format_check": {
+    "challenge": 2,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "parameters": {
+      "mainland_population_size": 152118.28916781308,
+      "island_population_size": 8808.307756467895,
+      "generations_since_split": 3619.462925438996,
+      "generations_since_migration": 1853.171905937364,
+      "migration_rate": 0.0001457472340818597
+    }
+  },
+  "selected_cases": [
+    "task2_generator_matched_r06"
+  ],
+  "selected_convergence": [
+    false
+  ],
+  "selected_fits": [
+    {
+      "case": {
+        "id": "task2_generator_matched_r06",
+        "task": 2,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 8.4e-08,
+          "projection": [
+            40,
+            30
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612306,
+          "folded": false,
+          "convention": "generator_matched",
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "fit": {
+        "generations_since_split": 3619.462925438996,
+        "generations_since_contact": 1853.171905937364,
+        "population1_effective_size": 152118.28916781308,
+        "population2_effective_size": 8808.307756467895,
+        "ancestral_effective_size": 35060.581894845294,
+        "migration_rate": 0.0001457472340818597,
+        "scaled_parameters": {
+          "population1_size_ratio": 4.338726882059477,
+          "population2_size_ratio": 0.2512310771933571,
+          "split_duration_2N": 0.05161726830853226,
+          "contact_fraction": 0.5120019030758817,
+          "migration_2N": 10.219965672948458
+        },
+        "theta": 1178035.551666802,
+        "multinomial_log_likelihood": -71146.80737748274,
+        "optimizer_diagnostics": {
+          "near_boundary_parameter_indices": [],
+          "restarts_within_0_1_log_likelihood": 1,
+          "numerically_supported": false,
+          "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+        },
+        "best_restart": 0,
+        "best_restart_converged": false,
+        "converged_restarts": 0,
+        "restart_diagnostics": [
+          {
+            "ok": true,
+            "restart": 0,
+            "likelihood": -71146.80737748274,
+            "theta": 1178035.551666802,
+            "optimizer": {
+              "converged": false,
+              "warnflag": 2,
+              "iterations": 42,
+              "function_calls": 630,
+              "message": "ABNORMAL: "
+            }
+          }
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
+        "successful_restarts": 1,
+        "failed_restarts": [],
+        "restarts": 1,
+        "workers": 1,
+        "projection": [
+          40,
+          30
+        ],
+        "maxiter": 750,
+        "folded": false,
+        "convention": "generator_matched",
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false,
+        "initial_scaled": null,
+        "sequence_length": 100000000.0,
+        "mutation_rate": 8.4e-08
+      },
+      "artifact": "results/task2/task2_generator_matched_r06.json",
+      "sha256": "ce0c522911260580242055d4e9108aca50b4b48ff5a9dcf7d5cc4115bcab0cb7"
+    }
+  ],
+  "input_vcf_sha256": "f69039ac97aa8bc675488919d26c6035d9bacd2ea0e13bdce7509394dffa5388",
+  "input_record": {
+    "task": 2,
+    "entity": "syn74933326",
+    "version": 3,
+    "current_version_confirmed": true,
+    "files": {
+      "vcf": {
+        "path": "inputs/task2.vcf.gz",
+        "sha256": "f69039ac97aa8bc675488919d26c6035d9bacd2ea0e13bdce7509394dffa5388",
+        "bytes": 80487080,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/task2.vcf.gz"
+      },
+      "download_provenance": {
+        "path": "inputs/task2.synapse_provenance.json",
+        "sha256": "58fd665572af8826e8661c577c0b601020d16303d4ecdab7e309065fbbcff60d",
+        "bytes": 627,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/task2.synapse_provenance.json"
+      }
+    },
+    "old_inventory_checksum_not_used": true
+  },
+  "spectrum_sha256": "29efe17d22d4981140506a50e7b81034bf15ac12bb40fc61c6308a1c97f9a41f",
+  "sequence_length": 100000000.0,
+  "uncertainty": "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established."
+}

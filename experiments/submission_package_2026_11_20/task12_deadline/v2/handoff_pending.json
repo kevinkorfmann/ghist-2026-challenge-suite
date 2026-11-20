@@ -1,0 +1,30 @@
+{
+  "schema": "task12-final-candidate-handoff-pending-v1",
+  "created_utc": "2026-11-20T21:19:44.505803+00:00",
+  "candidate_ready": false,
+  "job_id": "10859506",
+  "external_submission_performed": false,
+  "uploader_owner": "Other user chat central uploader; root coordinates handoff. This agent must not submit.",
+  "method_lock_sha256": "fe3a4604a639079ec29c67113ef21b5fab88d181a0f3e036d84dccff82b444d1",
+  "source_manifest_sha256": "173997a37259d9385db88d9198f1c2fad7ac0ed8cb6522e667be7e662d4e3327",
+  "input_entity": "syn75203676",
+  "input_version": 1,
+  "input_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+  "expected_samples": 297,
+  "expected_pairs": 43956,
+  "first_attempt": {
+    "job": "10859426",
+    "status": "FAILED before detector; strict missing-allele contract",
+    "preserved_cache": "/Users/kevinkorfmann/.cache/ghist-2026/final-task12-20261120/first_attempt_output"
+  },
+  "preparation_adaptation": "Explicit root-authorized observed per-site major-allele completion with reference-allele tie break; missingness quantified and original phase guards unchanged. No model or detector adjustment.",
+  "independent_review": "Demography agent read-only source review found no point-output blocker. Static source identity enforced; actual runtime import path hashes not captured, so no such attestation claimed.",
+  "scientific_limitations": [
+    "Full VCF-to-detector-to-family pipeline has not passed independent scientific validation.",
+    "Historical component accuracy approximately37.5%; not an estimate of final-data accuracy.",
+    "Historical correction retains documented top20 histogram truncation defect to preserve model feature semantics.",
+    "Zero-segment classification is forced to official supported labels, without an unrelated label; probabilities are uncalibrated.",
+    "Existing historical model outperformed both previous fixed refits on recorded comparisons; neither candidate was promoted.",
+    "Missing alleles are deterministically replaced with observed per-site major allele; this may bias IBD and is an unvalidated best-effort preprocessing adaptation."
+  ]
+}

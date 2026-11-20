@@ -333,10 +333,18 @@ before this exposure. New sweep designs use mechanical random positions and
 prespecified cells, but this follow-up cannot be described as wholly blinded
 to public answers. The earlier frozen scientific evidence is unchanged.
 
-Claude's requested duplicate reviews remain incomplete because its account
-quota rejects execution. Earlier interrupted attempts do not count as completed
-reviews. This limitation is separate from the completed parallel reviews and
-measured experimental evidence.
+Claude access recovered at 21:00 UTC. Two duplicate, read-only source reviews
+completed against the frozen Task 1 optimizer/bootstrap and Task 3–4
+export/bootstrap code. Their source hashes were unchanged before and after
+review; no challenge data, fitted outputs or other reviews were supplied.
+The [review records](../experiments/readiness_2026_11_20/claude/final_duplicate_reviews/task1_optimizer_bootstrap.metadata.json)
+and [Task 3–4 record](../experiments/readiness_2026_11_20/claude/final_duplicate_reviews/task3_4_export_bootstrap.metadata.json)
+preserve the exact scope and outcome. The
+[triage](../experiments/readiness_2026_11_20/claude/final_duplicate_reviews/deadline_triage.json)
+separates demonstrated candidate-path checks from unverified findings and
+deferred interval-validation work. Earlier quota-interrupted attempts still
+do not count as completed reviews. These source audits do not establish
+scientific accuracy or justify promotion.
 
 The initial readiness repair passed 340 tests and was merged in
 [PR #4](https://github.com/kevinkorfmann/ghist-2026-challenge-suite/pull/4).

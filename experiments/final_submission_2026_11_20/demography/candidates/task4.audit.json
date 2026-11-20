@@ -1,0 +1,936 @@
+{
+  "task": 4,
+  "planned_fit_cases": 24,
+  "eligible_fit_cases": 13,
+  "case_states": [
+    {
+      "id": "task4_p50x40_r00",
+      "case": {
+        "id": "task4_p50x40_r00",
+        "task": 4,
+        "origin": 0,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612400,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p50x40_r00.json",
+      "sha256": "613e5cc1d446cff021d58c87a9252ac9c9738a912a47cc3199059252fc871809",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -9077.06409404275
+    },
+    {
+      "id": "task4_p70x50_r00",
+      "case": {
+        "id": "task4_p70x50_r00",
+        "task": 4,
+        "origin": 0,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612500,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p70x50_r00.json",
+      "sha256": "649c79652e42f4c75b90221a9bb2adb5d18051cf6c81274c636304014c88fa31",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p94x68_r00",
+      "case": {
+        "id": "task4_p94x68_r00",
+        "task": 4,
+        "origin": 0,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612600,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p94x68_r00.json",
+      "sha256": "71db8b88a3c7c4c9e48ce1444d287728d876af567b35064546620878a0d89b85",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p50x40_r01",
+      "case": {
+        "id": "task4_p50x40_r01",
+        "task": 4,
+        "origin": 1,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612401,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p50x40_r01.json",
+      "sha256": "14dc9f1d4b1ce944447ad5f6304b2019b897476addb9d58825601af19084abda",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -9065.428015270525
+    },
+    {
+      "id": "task4_p70x50_r01",
+      "case": {
+        "id": "task4_p70x50_r01",
+        "task": 4,
+        "origin": 1,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612501,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p70x50_r01.json",
+      "sha256": "c84e428a13685428095918c9b1b1e5a54736e21d6f73483f605af95180767ab2",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -14176.926431042213
+    },
+    {
+      "id": "task4_p94x68_r01",
+      "case": {
+        "id": "task4_p94x68_r01",
+        "task": 4,
+        "origin": 1,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612601,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p94x68_r01.json",
+      "sha256": "6461b570169658793baa3271580726c070c66fafc30676593e1423ca5ac5512d",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p50x40_r02",
+      "case": {
+        "id": "task4_p50x40_r02",
+        "task": 4,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612402,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p50x40_r02.json",
+      "sha256": "f03b6f95417367fe2e004d9b95158a8c0b6a7591e6f08f1dafdf62fef24640fc",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -4954.961084577447
+    },
+    {
+      "id": "task4_p70x50_r02",
+      "case": {
+        "id": "task4_p70x50_r02",
+        "task": 4,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612502,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p70x50_r02.json",
+      "sha256": "d8b61c29c9bf05d10ba5079203c314d0a02d6cdc30c1f825bbec2873d79ec997",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -7740.260471593307
+    },
+    {
+      "id": "task4_p94x68_r02",
+      "case": {
+        "id": "task4_p94x68_r02",
+        "task": 4,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612602,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p94x68_r02.json",
+      "sha256": "4947103933fc2acb9ad830cde7c21ad968f21305970f5b8f000b72f159bfb961",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -30477.393403724225
+    },
+    {
+      "id": "task4_p50x40_r03",
+      "case": {
+        "id": "task4_p50x40_r03",
+        "task": 4,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612403,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p50x40_r03.json",
+      "sha256": "9ab5400b223c28b3f1ce8bcefa3b6c9d8278bcc48b0c06b17925fab0b0de4233",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p70x50_r03",
+      "case": {
+        "id": "task4_p70x50_r03",
+        "task": 4,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612503,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p70x50_r03.json",
+      "sha256": "ef7d78e6a7a8dd136f609cf01ab3dcba102027e4a28dd47f86b177514a2fb6f9",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -25199.141155484132
+    },
+    {
+      "id": "task4_p94x68_r03",
+      "case": {
+        "id": "task4_p94x68_r03",
+        "task": 4,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612603,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p94x68_r03.json",
+      "sha256": "638aa2158943ac49d3f642d684449f43f92860b4c76b528aa6d045fe133d2e0d",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -20654.66544713318
+    },
+    {
+      "id": "task4_p50x40_r04",
+      "case": {
+        "id": "task4_p50x40_r04",
+        "task": 4,
+        "origin": 4,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612404,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p50x40_r04.json",
+      "sha256": "1544c1d15fef45274daf1e06136b937607efdc494d0b64beba2e40dabd781bbb",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p70x50_r04",
+      "case": {
+        "id": "task4_p70x50_r04",
+        "task": 4,
+        "origin": 4,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612504,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p70x50_r04.json",
+      "sha256": "27177d61b90463ce2394c1bb0b9544e97b2c8a89466f58554842f9d285440fef",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p94x68_r04",
+      "case": {
+        "id": "task4_p94x68_r04",
+        "task": 4,
+        "origin": 4,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612604,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p94x68_r04.json",
+      "sha256": "e3077ee63cd9b0401c86a1521a3787ef303c6f4c6ea83dfa56f80320e457be9e",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p50x40_r05",
+      "case": {
+        "id": "task4_p50x40_r05",
+        "task": 4,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612405,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p50x40_r05.json",
+      "sha256": "1b4da2f527dec3526074164e2333c66af846b3e1ba617afe0c95ccb850276a8e",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -9078.328396066107
+    },
+    {
+      "id": "task4_p70x50_r05",
+      "case": {
+        "id": "task4_p70x50_r05",
+        "task": 4,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612505,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p70x50_r05.json",
+      "sha256": "19d4a2a7274f7b7d7884db9ac59a3d3b34ce9fca07f29378a4719961c81a6e58",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": false,
+      "multinomial_log_likelihood": -7740.258993921171
+    },
+    {
+      "id": "task4_p94x68_r05",
+      "case": {
+        "id": "task4_p94x68_r05",
+        "task": 4,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612605,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p94x68_r05.json",
+      "sha256": "4804300a8d319f03f9d7e3bf205ae2d5d9fdc29224db15f1821edd82a8247573",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p50x40_r06",
+      "case": {
+        "id": "task4_p50x40_r06",
+        "task": 4,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612406,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p50x40_r06.json",
+      "sha256": "6a68712c7003a3adf44a33ec7c8eb5353080e1ca015e16415bf96a43780f5e56",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p70x50_r06",
+      "case": {
+        "id": "task4_p70x50_r06",
+        "task": 4,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612506,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p70x50_r06.json",
+      "sha256": "6b2491b006816af143ca98e043eed110bad7b04f7aab9bf29efb16de9f4dfd4d",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p94x68_r06",
+      "case": {
+        "id": "task4_p94x68_r06",
+        "task": 4,
+        "origin": 6,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612606,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "FAILED",
+      "artifact": "results/task4/task4_p94x68_r06.json",
+      "sha256": "b29269c2b7a6554a75bd72f69c7125294820190b96a3809319c6fb21c5247e2b",
+      "failure": "RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]"
+    },
+    {
+      "id": "task4_p50x40_r07",
+      "case": {
+        "id": "task4_p50x40_r07",
+        "task": 4,
+        "origin": 7,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612407,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p50x40_r07.json",
+      "sha256": "5420edbc8ffa6fe9618a9c183b656c2199d9b7b1bfc5fad6de2557e0c6d57674",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -9078.650086122263
+    },
+    {
+      "id": "task4_p70x50_r07",
+      "case": {
+        "id": "task4_p70x50_r07",
+        "task": 4,
+        "origin": 7,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612507,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p70x50_r07.json",
+      "sha256": "8bbea7b25f5afb2a73b9119bc13a1301836ca61ad846b7a26e2c0df858ef09f6",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -7740.259173755852
+    },
+    {
+      "id": "task4_p94x68_r07",
+      "case": {
+        "id": "task4_p94x68_r07",
+        "task": 4,
+        "origin": 7,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612607,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "state": "COMPLETED",
+      "artifact": "results/task4/task4_p94x68_r07.json",
+      "sha256": "b24b1a64f0a28412a022a221ac07b286cb87f5de763c9dd417700f7bd396cc96",
+      "eligible_for_best_effort": true,
+      "selected_restart_converged": true,
+      "multinomial_log_likelihood": -30477.420229674844
+    }
+  ],
+  "method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "complete_projection_set": true,
+  "scientifically_validated": false,
+  "release_qualified": false,
+  "submission_count": 0,
+  "intervals_generated": false,
+  "state": "BEST_EFFORT_CANDIDATE",
+  "selection": "componentwise physical projection median from all3fixed projections",
+  "prediction": {
+    "AFR_population_size": 15247.120714281818,
+    "EUR_population_size": 19135.421691466254,
+    "generations_since_split": 4981.438096154486,
+    "migration_rate": 0.00011636163915571935
+  },
+  "candidate": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/definitive_001/task4.final.yaml",
+  "candidate_sha256": "3ee0a388789a7969044456d82cec0bad9a49c17b04d227554f0308f12a408546",
+  "format_check": {
+    "challenge": 4,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "parameters": {
+      "AFR_population_size": 15247.120714281818,
+      "EUR_population_size": 19135.421691466254,
+      "generations_since_split": 4981.438096154486,
+      "migration_rate": 0.00011636163915571935
+    }
+  },
+  "selected_cases": [
+    "task4_p50x40_r02",
+    "task4_p70x50_r05",
+    "task4_p94x68_r03"
+  ],
+  "selected_convergence": [
+    true,
+    false,
+    false
+  ],
+  "selected_fits": [
+    {
+      "case": {
+        "id": "task4_p50x40_r02",
+        "task": 4,
+        "origin": 2,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            50,
+            40
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612402,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "fit": {
+        "AFR_population_size": 15134.668379612673,
+        "EUR_population_size": 19150.910638878944,
+        "generations_since_split": 4933.208449809891,
+        "migration_rate": 0.00011517336671110959,
+        "ancestral_population_size": 11851.8255551219,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.2769904778991668,
+          "EUR_size_ratio": 1.6158616704076159,
+          "split_duration_2N": 0.2081201932506486,
+          "migration_2N": 2.7300293017123094
+        },
+        "theta": 29816.605601390776,
+        "multinomial_log_likelihood": -4954.961084577447,
+        "optimizer_diagnostics": {
+          "near_boundary_parameter_indices": [],
+          "restarts_within_0_1_log_likelihood": 1,
+          "numerically_supported": false,
+          "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+        },
+        "best_restart": 0,
+        "best_restart_converged": true,
+        "converged_restarts": 1,
+        "restart_diagnostics": [
+          {
+            "ok": true,
+            "restart": 0,
+            "likelihood": -4954.961084577447,
+            "theta": 29816.605601390776,
+            "optimizer": {
+              "converged": true,
+              "warnflag": 0,
+              "iterations": 35,
+              "function_calls": 425,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+            }
+          }
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
+        "successful_restarts": 1,
+        "failed_restarts": [],
+        "projection": [
+          50,
+          40
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "sequence_length": 61965066.0,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false,
+        "initial_scaled": null
+      },
+      "artifact": "results/task4/task4_p50x40_r02.json",
+      "sha256": "f03b6f95417367fe2e004d9b95158a8c0b6a7591e6f08f1dafdf62fef24640fc"
+    },
+    {
+      "case": {
+        "id": "task4_p70x50_r05",
+        "task": 4,
+        "origin": 5,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            70,
+            50
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612505,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "fit": {
+        "AFR_population_size": 15247.120714281818,
+        "EUR_population_size": 19099.05439061313,
+        "generations_since_split": 4981.438096154486,
+        "migration_rate": 0.00011636163915571935,
+        "ancestral_population_size": 11829.654804669144,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.288889740744067,
+          "EUR_size_ratio": 1.6145064844220787,
+          "split_duration_2N": 0.21054875135444867,
+          "migration_2N": 2.7530360474352653
+        },
+        "theta": 29760.828833578747,
+        "multinomial_log_likelihood": -7740.258993921171,
+        "optimizer_diagnostics": {
+          "near_boundary_parameter_indices": [],
+          "restarts_within_0_1_log_likelihood": 1,
+          "numerically_supported": false,
+          "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+        },
+        "best_restart": 0,
+        "best_restart_converged": false,
+        "converged_restarts": 0,
+        "restart_diagnostics": [
+          {
+            "ok": true,
+            "restart": 0,
+            "likelihood": -7740.258993921171,
+            "theta": 29760.828833578747,
+            "optimizer": {
+              "converged": false,
+              "warnflag": 2,
+              "iterations": 17,
+              "function_calls": 315,
+              "message": "ABNORMAL: "
+            }
+          }
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
+        "successful_restarts": 1,
+        "failed_restarts": [],
+        "projection": [
+          70,
+          50
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "sequence_length": 61965066.0,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false,
+        "initial_scaled": null
+      },
+      "artifact": "results/task4/task4_p70x50_r05.json",
+      "sha256": "19d4a2a7274f7b7d7884db9ac59a3d3b34ce9fca07f29378a4719961c81a6e58"
+    },
+    {
+      "case": {
+        "id": "task4_p94x68_r03",
+        "task": 4,
+        "origin": 3,
+        "settings": {
+          "mutation_rate": 1.015e-08,
+          "projection": [
+            94,
+            68
+          ],
+          "restarts": 1,
+          "workers": 1,
+          "maxiter": 750,
+          "seed": 202612603,
+          "integration_dt_fac": 0.02,
+          "adaptive_integration": false
+        }
+      },
+      "fit": {
+        "AFR_population_size": 15381.826417362705,
+        "EUR_population_size": 19135.421691466254,
+        "generations_since_split": 5017.948986271096,
+        "migration_rate": 0.000117151452637117,
+        "ancestral_population_size": 11804.872199145997,
+        "scaled_parameters": {
+          "AFR_size_ratio": 1.3030066025175162,
+          "EUR_size_ratio": 1.6209766076798842,
+          "split_duration_2N": 0.2125372008107852,
+          "migration_2N": 2.765915852650943
+        },
+        "theta": 29698.48120863086,
+        "multinomial_log_likelihood": -20654.66544713318,
+        "optimizer_diagnostics": {
+          "near_boundary_parameter_indices": [],
+          "restarts_within_0_1_log_likelihood": 1,
+          "numerically_supported": false,
+          "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+        },
+        "best_restart": 0,
+        "best_restart_converged": false,
+        "converged_restarts": 0,
+        "restart_diagnostics": [
+          {
+            "ok": true,
+            "restart": 0,
+            "likelihood": -20654.66544713318,
+            "theta": 29698.48120863086,
+            "optimizer": {
+              "converged": false,
+              "warnflag": 2,
+              "iterations": 17,
+              "function_calls": 350,
+              "message": "ABNORMAL: "
+            }
+          }
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
+        "successful_restarts": 1,
+        "failed_restarts": [],
+        "projection": [
+          94,
+          68
+        ],
+        "restarts": 1,
+        "workers": 1,
+        "sequence_length": 61965066.0,
+        "mutation_rate": 1.015e-08,
+        "integration_dt_fac": 0.02,
+        "adaptive_integration": false,
+        "initial_scaled": null
+      },
+      "artifact": "results/task4/task4_p94x68_r03.json",
+      "sha256": "638aa2158943ac49d3f642d684449f43f92860b4c76b528aa6d045fe133d2e0d"
+    }
+  ],
+  "input_vcf_sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe",
+  "input_record": {
+    "task": 4,
+    "entity": "syn75193301",
+    "version": 5,
+    "current_version_confirmed": true,
+    "files": {
+      "vcf": {
+        "path": "inputs/task4.vcf.gz",
+        "sha256": "cfb2429c9528d583c7591c6e4ecb90cf7f0d03af12bfe999c1b400e89f97cebe",
+        "bytes": 10258964,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/task4.vcf.gz"
+      },
+      "download_provenance": {
+        "path": "inputs/task4.synapse_provenance.json",
+        "sha256": "edee135a0145a2c950ce6a5678475af35f40fd5815036f4c690372c90a806d78",
+        "bytes": 623,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/task4.synapse_provenance.json"
+      },
+      "coding": {
+        "path": "inputs/BGS_demography_challenge_coding_regions.bed",
+        "sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057",
+        "bytes": 973401,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/BGS_demography_challenge_coding_regions.bed"
+      },
+      "map": {
+        "path": "inputs/comeron2012v2_combined_map_dm6_scaled_0.5.txt",
+        "sha256": "8fd66697338340a6a73e47f7e0de97879d84c7ea3e403fa07ddae532f0d78ad7",
+        "bytes": 18281,
+        "resolved_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/inputs/comeron2012v2_combined_map_dm6_scaled_0.5.txt"
+      }
+    },
+    "old_inventory_checksum_not_used": true,
+    "reference_provenance": "Exact previously verified codingBEDv1 and recombinationmapv1; current metadata confirmation pending."
+  },
+  "spectrum_sha256": "f256c1876e599d14ed96d7f5d27143c8594f9c42e2cad7590731bdca637b256f",
+  "sequence_length": 61965066.0,
+  "uncertainty": "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established."
+}

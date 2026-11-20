@@ -1,0 +1,22 @@
+------------------------------------------------------------------------------------------------------------------------------
+                                                        Storage Quotas
+------------------------------------------------------------------------------------------------------------------------------
+| Src  | Path                                  | Used     | Limit    | INodes Used | INode Limit | Snapshots | State         |
+| home | /vast/home/k/korfmann                 | 35.86 GB | 50.00 GB | 268.78 K    | 250.00 K    | -         | GRACE_EXPIRED |
+| vast | /vast/projects/smathi/cohort/korfmann | 8.13 TB  | 10.00 TB | 18.74 M     | 50.00 M     | -         | OK            |
+------------------------------------------------------------------------------------------------------------------------------
+You can check your storage quotas at any time:
+
+	parcc_quota.py
+
+Or to check storage usage
+
+	parcc_du.py <folder_name>
+
+
+If you run into an issue, make sure your path contains /vast/parcc/sw/bin
+
+
+The following have been reloaded with a version change:
+  1) lmod/8.7.55 => lmod/8.7.55-AMD
+

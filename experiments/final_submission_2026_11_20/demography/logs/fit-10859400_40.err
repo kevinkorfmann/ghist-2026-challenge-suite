@@ -1,0 +1,12 @@
+/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Inference.py:340: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+  outputs = scipy.optimize.fmin_l_bfgs_b(
+Traceback (most recent call last):
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/run.py", line 233, in <module>
+    else: fit(args.index)
+          ^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/run.py", line 205, in fit
+    value = function(spectrum, sequence_length=length, **args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_snapshot/src/ghist_split_migration_bgs/spectrum.py", line 203, in fit_isolation_with_migration_spectrum
+    raise RuntimeError(f"all moments restarts failed: {results[:3]}")
+RuntimeError: all moments restarts failed: [{'ok': False, 'restart': 0, 'reason': 'ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins'}]

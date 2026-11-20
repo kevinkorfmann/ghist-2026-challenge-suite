@@ -1,0 +1,39 @@
+{
+  "status": "FAILED",
+  "started_utc": "2026-11-20T21:15:13.910000+00:00",
+  "lock_sha256": "d435fc770d7166cba633c9ce02f001660e43c8179600e3a18bf5decbc728004a",
+  "source_manifest_sha256": "183c3432a2a751c3c3e33dbe5661bc8742812b0ccc9b938822571ecfd215589c",
+  "input_binding_sha256": "464458c73fe755b34e73a5443ddc699333ae997f00b825cca70daba69148c14f",
+  "input": {
+    "entity_id": "syn75203676",
+    "version": 1,
+    "bytes": 11839031,
+    "md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+    "sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+    "original_provenance_sha256": "394701a4bac54a4368eacf472dc3a8be85664d1d3bd948dc42e6a16fc6e59e7e",
+    "original_provenance": {
+      "task": "12",
+      "entity": "syn75203676",
+      "version": 1,
+      "current_version_confirmed": true,
+      "filename": "relatedness4.final.vcf.gz",
+      "downloaded_via": "authenticated Synapse browser Download File",
+      "metadata_url": "https://www.synapse.org/Synapse:syn75203676",
+      "metadata_md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+      "md5": "64fb0bbeefddfa3d4ee5316048a68e8f",
+      "sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+      "bytes": 11839031,
+      "checked_utc": "2026-11-20T21:12:31.272311+00:00",
+      "path": "/private/tmp/ghist-final-submissions-20261120/task12/relatedness4.final.vcf.gz"
+    }
+  },
+  "scientific_limitations": [
+    "Full VCF-to-detector-to-family pipeline has not passed independent scientific validation.",
+    "Historical component accuracy approximately37.5%; not an estimate of final-data accuracy.",
+    "Historical correction retains documented top20 histogram truncation defect to preserve model feature semantics.",
+    "Zero-segment classification is forced to official supported labels, without an unrelated label; probabilities are uncalibrated.",
+    "Existing historical model outperformed both previous fixed refits on recorded comparisons; neither candidate was promoted."
+  ],
+  "completed_utc": "2026-11-20T21:15:23.174437+00:00",
+  "error": "ValueError('Line 49, id_143: missing allele; choose an explicit --missing-policy after validating its effects')"
+}
