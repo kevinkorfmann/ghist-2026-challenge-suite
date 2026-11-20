@@ -5,6 +5,12 @@ from typing import Mapping, Sequence
 
 import numpy as np
 
+from ghist_inference.validation import (
+    validate_spectrum,
+    validate_fit_settings,
+    optimizer_diagnostics,
+)
+
 
 def spectrum_from_counts(counts: Mapping[str, int], haplotypes: int) -> np.ndarray:
     """Convert a serialized unfolded SFS into a dense one-dimensional array."""
@@ -61,7 +67,9 @@ def _fit_restart(arguments: tuple) -> dict:
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     try:
-        model = growth_spectrum if convention == "exponential" else sudden_growth_spectrum
+        model = (
+            growth_spectrum if convention == "exponential" else sudden_growth_spectrum
+        )
         estimate = np.asarray(
             moments.Inference.optimize_log_lbfgsb(
                 start,
@@ -115,6 +123,17 @@ def fit_growth_spectrum(
         raise ValueError("restarts and workers must be positive")
     if convention not in {"exponential", "sudden"}:
         raise ValueError(f"unknown growth convention: {convention}")
+    spectrum = validate_spectrum(spectrum, 1)
+    validate_fit_settings(
+        sequence_length=sequence_length,
+        mutation_rate=mutation_rate,
+        restarts=restarts,
+        workers=workers,
+        maxiter=maxiter,
+        shape=spectrum.shape,
+        projection=None if projection is None else (projection,),
+        integration_dt_fac=0.02,
+    )
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     original_projection = int(data.sample_sizes[0])
     if projection is not None:
@@ -167,4 +186,11 @@ def fit_growth_spectrum(
         "mutation_rate": float(mutation_rate),
         "convention": convention,
         "bounds": {"lower": lower.tolist(), "upper": upper.tolist()},
+        "optimizer_diagnostics": optimizer_diagnostics(
+            best["estimate"],
+            lower,
+            upper,
+            [r["likelihood"] for r in successful],
+            best["likelihood"],
+        ),
     }

@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Iterable
 
 import msprime
+import math
 
 
 @dataclass(frozen=True)
@@ -17,11 +18,16 @@ class SecondaryContactParameters:
 
     def validate(self) -> None:
         sizes = (self.ancestral_size, self.population1_size, self.population2_size)
-        if any(size <= 0 for size in sizes):
+        if any(not math.isfinite(size) or size <= 0 for size in sizes):
             raise ValueError("population sizes must be positive")
-        if not 0 < self.contact_time < self.split_time:
-            raise ValueError("contact time must be positive and younger than split time")
-        if self.migration_rate < 0:
+        if (
+            not all(math.isfinite(t) for t in (self.contact_time, self.split_time))
+            or not 0 < self.contact_time < self.split_time
+        ):
+            raise ValueError(
+                "contact time must be positive and younger than split time"
+            )
+        if not math.isfinite(self.migration_rate) or self.migration_rate < 0:
             raise ValueError("migration rate cannot be negative")
 
 
@@ -40,17 +46,21 @@ def build_demography(
 ) -> msprime.Demography:
     """Build isolation followed by recent bidirectional migration.
 
-    ``migration_asymmetry`` is the forward-rate ratio between directions while
+    ``migration_asymmetry`` is the backward-time lineage-rate ratio between directions while
     preserving their geometric mean. A value of one gives symmetric migration.
     Additional size changes support generator-misspecification stress tests.
     """
     parameters.validate()
-    if migration_asymmetry <= 0:
+    if not math.isfinite(migration_asymmetry) or migration_asymmetry <= 0:
         raise ValueError("migration asymmetry must be positive")
     demography = msprime.Demography()
     demography.add_population(name="ancestral", initial_size=parameters.ancestral_size)
-    demography.add_population(name="population1", initial_size=parameters.population1_size)
-    demography.add_population(name="population2", initial_size=parameters.population2_size)
+    demography.add_population(
+        name="population1", initial_size=parameters.population1_size
+    )
+    demography.add_population(
+        name="population2", initial_size=parameters.population2_size
+    )
     root = migration_asymmetry**0.5
     demography.set_migration_rate(
         source="population1",
@@ -78,7 +88,11 @@ def build_demography(
     for change in size_changes:
         if change.population not in allowed:
             raise ValueError(f"unknown population {change.population!r}")
-        if change.time <= 0 or change.size <= 0:
+        if (
+            not all(math.isfinite(v) for v in (change.time, change.size))
+            or change.time <= 0
+            or change.size <= 0
+        ):
             raise ValueError("size-change times and sizes must be positive")
         if change.population == "ancestral" and change.time <= parameters.split_time:
             raise ValueError("ancestral size changes must predate the split")

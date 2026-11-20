@@ -8,6 +8,8 @@ from pathlib import Path
 import numpy as np
 import pysam
 
+from ghist_inference.vcf import diploid_alleles, validate_position
+
 
 WINDOW_SIZE = 100_000
 
@@ -146,7 +148,9 @@ def physical_stratum_lengths(
                 breakpoints.add(max(0, start - threshold))
                 breakpoints.add(min(length, end + threshold))
         positions, _ = recombination[contig]
-        breakpoints.update(int(position) for position in positions if 0 < position < length)
+        breakpoints.update(
+            int(position) for position in positions if 0 < position < length
+        )
         ordered = sorted(breakpoints)
         for left, right in zip(ordered[:-1], ordered[1:]):
             if right <= left:
@@ -182,9 +186,7 @@ def _serialize_stratum(stratum: dict) -> dict:
         "biallelic_sites": stratum["biallelic_sites"],
         "oriented_sites": stratum["oriented_sites"],
         "folded_sfs": {str(k): v for k, v in sorted(stratum["folded_sfs"].items())},
-        "unfolded_sfs": {
-            str(k): v for k, v in sorted(stratum["unfolded_sfs"].items())
-        },
+        "unfolded_sfs": {str(k): v for k, v in sorted(stratum["unfolded_sfs"].items())},
     }
 
 
@@ -213,17 +215,23 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
     positive_rates = np.concatenate(
         [rates[rates > 0] for _, rates in recombination.values()]
     )
-    rate_quartiles = np.quantile(positive_rates, (0.25, 0.5, 0.75))
+    rate_quartiles = (
+        np.quantile(positive_rates, (0.25, 0.5, 0.75))
+        if positive_rates.size
+        else np.zeros(3)
+    )
 
     def rate_label(rate: float | None) -> str:
         if rate is None:
             return "outside_map"
         if rate == 0:
             return "zero"
-        return f"positive_q{int(np.searchsorted(rate_quartiles, rate, side='left')) + 1}"
+        return (
+            f"positive_q{int(np.searchsorted(rate_quartiles, rate, side='left')) + 1}"
+        )
 
-    physical_distance_bp, physical_rate_bp, physical_joint_bp = physical_stratum_lengths(
-        contig_lengths, coding, recombination, rate_label
+    physical_distance_bp, physical_rate_bp, physical_joint_bp = (
+        physical_stratum_lengths(contig_lengths, coding, recombination, rate_label)
     )
 
     distance_strata: dict[str, dict] = collections.defaultdict(_empty_stratum)
@@ -245,6 +253,7 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
     records = biallelic = segregating = multiallelic = 0
     nonsegregating = collections.Counter()
     for record in vcf:
+        validate_position(record, contig_lengths)
         records += 1
         if len(record.alleles or ()) != 2 or any(
             len(allele) != 1 for allele in record.alleles or ()
@@ -252,13 +261,7 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
             multiallelic += int(len(record.alleles or ()) > 2)
             continue
         biallelic += 1
-        alleles = []
-        for sample in samples:
-            genotype = record.samples[sample].get("GT")
-            if genotype is not None:
-                alleles.extend(
-                    allele for allele in genotype if allele is not None and allele in (0, 1)
-                )
+        alleles = diploid_alleles(record, samples, require_complete=True)
         called = len(alleles)
         alternate = int(sum(alleles))
         if called == 0:
@@ -391,16 +394,19 @@ def audit_growth_resources(vcf_path: Path, bed_path: Path, map_path: Path) -> di
         "coding_bed": bed_summary,
         "recombination_map": map_summary,
         "distance_strata": {
-            key: _serialize_stratum(value) for key, value in sorted(distance_strata.items())
+            key: _serialize_stratum(value)
+            for key, value in sorted(distance_strata.items())
         },
         "recombination_strata": {
             key: _serialize_stratum(value) for key, value in sorted(rate_strata.items())
         },
         "joint_strata": {
-            key: _serialize_stratum(value) for key, value in sorted(joint_strata.items())
+            key: _serialize_stratum(value)
+            for key, value in sorted(joint_strata.items())
         },
         "contig_strata": {
-            key: _serialize_stratum(value) for key, value in sorted(contig_strata.items())
+            key: _serialize_stratum(value)
+            for key, value in sorted(contig_strata.items())
         },
         "windows_100kb": window_rows,
     }

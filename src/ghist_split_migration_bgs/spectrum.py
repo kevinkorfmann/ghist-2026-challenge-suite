@@ -5,7 +5,15 @@ from pathlib import Path
 from typing import Sequence
 
 import numpy as np
+
+from ghist_inference.validation import (
+    validate_spectrum,
+    validate_fit_settings,
+    optimizer_diagnostics,
+)
 import pysam
+
+from ghist_inference.vcf import diploid_alleles, validate_position
 from scipy.stats import hypergeom
 
 from ghist_growth_bgs.audit import coding_distance, load_coding_intervals
@@ -34,9 +42,7 @@ def isolation_with_migration_spectrum(
     spectrum = moments.Spectrum(moments.LinearSystem_1D.steady_state_1D(n1 + n2))
     spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
     matrix = np.asarray([[0.0, migration], [migration, 0.0]], dtype=np.float64)
-    spectrum.integrate(
-        [nu1, nu2], duration, m=matrix, dt_fac=dt_fac, adapt_dt=adapt_dt
-    )
+    spectrum.integrate([nu1, nu2], duration, m=matrix, dt_fac=dt_fac, adapt_dt=adapt_dt)
     return spectrum.fold() if folded else spectrum
 
 
@@ -70,7 +76,7 @@ def _fit_restart(arguments: tuple) -> dict:
         expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
-        if np.isfinite([*estimate, likelihood, theta]).all():
+        if np.isfinite([*estimate, likelihood, theta]).all() and theta > 0:
             return {
                 "ok": True,
                 "restart": restart,
@@ -104,6 +110,17 @@ def fit_isolation_with_migration_spectrum(
     """Fit the four-parameter split-and-migration joint spectrum."""
     import moments
 
+    spectrum = validate_spectrum(spectrum, 2)
+    validate_fit_settings(
+        sequence_length=sequence_length,
+        mutation_rate=mutation_rate,
+        restarts=restarts,
+        workers=workers,
+        maxiter=maxiter,
+        shape=spectrum.shape,
+        projection=projection,
+        integration_dt_fac=integration_dt_fac,
+    )
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     if projection is not None:
         data = data.project(list(projection))
@@ -112,12 +129,16 @@ def fit_isolation_with_migration_spectrum(
     rng = np.random.default_rng(seed)
     if initial_scaled is None:
         starts = [
-            np.exp(rng.uniform(np.log(lower), np.log(upper)))
-            for _ in range(restarts)
+            np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)
         ]
     else:
         initial = np.asarray(initial_scaled, dtype=np.float64)
-        if initial.shape != lower.shape or np.any(initial <= lower) or np.any(initial >= upper):
+        if (
+            initial.shape != lower.shape
+            or not np.isfinite(initial).all()
+            or np.any(initial <= lower)
+            or np.any(initial >= upper)
+        ):
             raise ValueError("initial_scaled must lie strictly within parameter bounds")
         starts = [initial]
         starts.extend(
@@ -166,6 +187,13 @@ def fit_isolation_with_migration_spectrum(
         },
         "theta": best["theta"],
         "multinomial_log_likelihood": best["likelihood"],
+        "optimizer_diagnostics": optimizer_diagnostics(
+            best["estimate"],
+            lower,
+            upper,
+            [r["likelihood"] for r in valid],
+            best["likelihood"],
+        ),
         "best_restart": int(best["restart"]),
         "successful_restarts": len(valid),
         "failed_restarts": [row for row in results if not row["ok"]],
@@ -193,7 +221,7 @@ def stratified_joint_spectra_from_vcf(
     vcf = pysam.VariantFile(str(vcf_path))
     afr = [sample for sample in vcf.header.samples if sample.startswith("AFR_")]
     eur = [sample for sample in vcf.header.samples if sample.startswith("EUR_")]
-    if len(afr) != 47 or len(eur) != 34:
+    if not afr or not eur or len(afr) + len(eur) != len(vcf.header.samples):
         raise ValueError(f"unexpected sample counts: AFR={len(afr)}, EUR={len(eur)}")
     maximum = (2 * len(afr), 2 * len(eur))
     labels = (
@@ -209,18 +237,25 @@ def stratified_joint_spectra_from_vcf(
     }
     counts = {label: 0 for label in labels}
     ancestral_reference = ancestral_alternate = skipped = 0
+    lengths = {c: vcf.header.contigs[c].length for c in vcf.header.contigs}
+    if set(lengths) != set(coding) or any(
+        length is None or length <= 0 for length in lengths.values()
+    ):
+        raise ValueError(
+            "VCF and coding BED need identical contigs with positive lengths"
+        )
+    for contig, intervals in coding.items():
+        if intervals and intervals[-1][1] > lengths[contig]:
+            raise ValueError("Coding interval exceeds chromosome length")
     for record in vcf:
+        validate_position(record, lengths)
         if len(record.alleles or ()) != 2 or any(len(a) != 1 for a in record.alleles):
             skipped += 1
             continue
         group_counts = []
         group_called = []
         for samples in (afr, eur):
-            alleles = []
-            for sample in samples:
-                genotype = record.samples[sample].get("GT")
-                if genotype is not None:
-                    alleles.extend(a for a in genotype if a in (0, 1))
+            alleles = diploid_alleles(record, samples, require_complete=True)
             group_called.append(len(alleles))
             group_counts.append(sum(alleles))
         if tuple(group_called) != maximum:
@@ -228,7 +263,7 @@ def stratified_joint_spectra_from_vcf(
             continue
         ancestral = record.info.get("AA")
         if isinstance(ancestral, tuple):
-            ancestral = ancestral[0]
+            ancestral = ancestral[0] if ancestral else None
         if ancestral == record.ref:
             ancestral_reference += 1
         elif ancestral == record.alts[0]:
@@ -252,6 +287,7 @@ def stratified_joint_spectra_from_vcf(
             label = "noncoding_gt100kb"
         spectra[label][tuple(group_counts)] += 1
         counts[label] += 1
+    vcf.close()
     metadata = {
         "diploid_samples": {"AFR": len(afr), "EUR": len(eur)},
         "haplotypes": {"AFR": maximum[0], "EUR": maximum[1]},

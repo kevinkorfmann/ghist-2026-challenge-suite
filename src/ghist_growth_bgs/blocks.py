@@ -6,6 +6,8 @@ from typing import Collection
 import numpy as np
 import pysam
 
+from ghist_inference.vcf import diploid_alleles, validate_position
+
 from .audit import coding_distance, distance_label, load_coding_intervals
 
 
@@ -71,12 +73,17 @@ def extract_block_spectra(
         for contig in vcf.header.contigs
         if vcf.header.contigs[contig].length is not None
     }
+    if set(contig_lengths) != set(coding) or not samples:
+        raise ValueError(
+            "VCF and coding BED must contain identical contigs and VCF needs samples"
+        )
+    for contig, intervals in coding.items():
+        if intervals and intervals[-1][1] > contig_lengths[contig]:
+            raise ValueError(f"Coding interval exceeds {contig} length")
     rows = []
     block_lookup = {}
     for contig, length in contig_lengths.items():
-        selected = distance_stratum_segments(
-            coding[contig], length, included_labels
-        )
+        selected = distance_stratum_segments(coding[contig], length, included_labels)
         for start in range(0, length, block_size):
             end = min(start + block_size, length)
             index = len(rows)
@@ -93,19 +100,12 @@ def extract_block_spectra(
 
     accepted = 0
     for record in vcf:
+        validate_position(record, contig_lengths)
         if len(record.alleles or ()) != 2 or any(
             len(allele) != 1 for allele in record.alleles or ()
         ):
             continue
-        alleles = []
-        for sample in samples:
-            genotype = record.samples[sample].get("GT")
-            if genotype is not None:
-                alleles.extend(
-                    allele for allele in genotype if allele is not None and allele in (0, 1)
-                )
-        if len(alleles) != haplotypes:
-            continue
+        alleles = diploid_alleles(record, samples, require_complete=True)
         alternate_count = int(sum(alleles))
         if alternate_count in (0, haplotypes):
             continue

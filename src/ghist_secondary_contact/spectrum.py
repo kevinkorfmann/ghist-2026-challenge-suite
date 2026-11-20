@@ -6,7 +6,15 @@ from pathlib import Path
 from typing import Mapping, Sequence
 
 import numpy as np
+
+from ghist_inference.validation import (
+    validate_spectrum,
+    validate_fit_settings,
+    optimizer_diagnostics,
+)
 import pysam
+
+from ghist_inference.vcf import diploid_alleles, validate_position
 from scipy.stats import hypergeom
 
 
@@ -47,13 +55,9 @@ def secondary_contact_spectrum(
     if isolation_duration <= 0 or contact_duration <= 0:
         raise ValueError("epoch durations must be positive")
     n1, n2 = (int(value) for value in sample_sizes)
-    spectrum = moments.Spectrum(
-        moments.LinearSystem_1D.steady_state_1D(n1 + n2)
-    )
+    spectrum = moments.Spectrum(moments.LinearSystem_1D.steady_state_1D(n1 + n2))
     spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
-    spectrum.integrate(
-        [nu1, nu2], isolation_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
-    )
+    spectrum.integrate([nu1, nu2], isolation_duration, dt_fac=dt_fac, adapt_dt=adapt_dt)
     migration_matrix = np.asarray([[0.0, migration], [migration, 0.0]])
     spectrum.integrate(
         [nu1, nu2],
@@ -85,19 +89,11 @@ def generator_matched_secondary_contact_spectrum(
         raise ValueError("split duration and contact fraction are invalid")
     n1, n2 = (int(value) for value in sample_sizes)
     contact_duration = split_duration * contact_fraction
-    spectrum = moments.Spectrum(
-        0.5 * moments.LinearSystem_1D.steady_state_1D(n1 + n2)
-    )
+    spectrum = moments.Spectrum(0.5 * moments.LinearSystem_1D.steady_state_1D(n1 + n2))
     # Forward through the three unreported ancestral epochs.
-    spectrum.integrate(
-        [1.5], 0.10 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
-    )
-    spectrum.integrate(
-        [2.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
-    )
-    spectrum.integrate(
-        [1.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt
-    )
+    spectrum.integrate([1.5], 0.10 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt)
+    spectrum.integrate([2.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt)
+    spectrum.integrate([1.0], 0.05 * split_duration, dt_fac=dt_fac, adapt_dt=adapt_dt)
     spectrum = moments.Manips.split_1D_to_2D(spectrum, n1, n2)
     # Integrate toward the present across every derived-population boundary.
     boundaries = sorted(
@@ -195,7 +191,7 @@ def _fit_restart(arguments: tuple) -> dict:
         expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
-        if np.isfinite([*estimate, likelihood, theta]).all():
+        if np.isfinite([*estimate, likelihood, theta]).all() and theta > 0:
             return {
                 "ok": True,
                 "restart": restart,
@@ -229,6 +225,17 @@ def fit_secondary_contact_spectrum(
     initial_scaled: Sequence[float] | None = None,
 ) -> dict:
     """Fit the five-parameter joint-SFS reference with independent restarts."""
+    spectrum = validate_spectrum(spectrum, 2)
+    validate_fit_settings(
+        sequence_length=sequence_length,
+        mutation_rate=mutation_rate,
+        restarts=restarts,
+        workers=workers,
+        maxiter=maxiter,
+        shape=spectrum.shape,
+        projection=projection,
+        integration_dt_fac=integration_dt_fac,
+    )
     fitting_spectrum = np.asarray(spectrum, dtype=float)
     if projection is not None:
         import moments
@@ -249,12 +256,16 @@ def fit_secondary_contact_spectrum(
     rng = np.random.default_rng(seed)
     if initial_scaled is None:
         starts = [
-            np.exp(rng.uniform(np.log(lower), np.log(upper)))
-            for _ in range(restarts)
+            np.exp(rng.uniform(np.log(lower), np.log(upper))) for _ in range(restarts)
         ]
     else:
         initial = np.asarray(initial_scaled, dtype=np.float64)
-        if initial.shape != lower.shape or np.any(initial <= lower) or np.any(initial >= upper):
+        if (
+            initial.shape != lower.shape
+            or not np.isfinite(initial).all()
+            or np.any(initial <= lower)
+            or np.any(initial >= upper)
+        ):
             raise ValueError("initial_scaled must lie strictly within parameter bounds")
         starts = [initial]
         starts.extend(
@@ -332,6 +343,9 @@ def fit_secondary_contact_spectrum(
         },
         "theta": theta,
         "multinomial_log_likelihood": likelihood,
+        "optimizer_diagnostics": optimizer_diagnostics(
+            estimate, lower, upper, [r[0] for r in fits], likelihood
+        ),
         "best_restart": int(best_restart),
         "successful_restarts": len(fits),
         "failed_restarts": failures,
@@ -370,27 +384,28 @@ def joint_spectrum_from_vcf(
     maximum = tuple(2 * len(group) for group in sample_groups)
     if projection is None:
         projection = maximum
-    if any(value < 2 or value > limit for value, limit in zip(projection, maximum)):
+    if len(projection) != 2 or any(
+        not isinstance(value, (int, np.integer)) or value < 2 or value > limit
+        for value, limit in zip(projection, maximum)
+    ):
         raise ValueError(f"invalid projection {projection}; maxima are {maximum}")
     result = np.zeros((projection[0] + 1, projection[1] + 1), dtype=float)
     usable = projected = ancestral_reference = ancestral_alternate = 0
+    lengths = {c: vcf.header.contigs[c].length for c in vcf.header.contigs}
     for record in vcf:
+        validate_position(record, lengths)
         if len(record.alleles or ()) != 2 or any(len(a) != 1 for a in record.alleles):
             continue
         derived = []
         called = []
         for group in sample_groups:
-            alleles = []
-            for sample in group:
-                genotype = record.samples[sample].get("GT")
-                if genotype is not None:
-                    alleles.extend(a for a in genotype if a is not None and a >= 0)
+            alleles = diploid_alleles(record, group)
             called.append(len(alleles))
             derived.append(sum(a == 1 for a in alleles))
         if polarized:
             ancestral = record.info.get("AA")
             if isinstance(ancestral, tuple):
-                ancestral = ancestral[0]
+                ancestral = ancestral[0] if ancestral else None
             if ancestral == record.ref:
                 ancestral_reference += 1
             elif ancestral == record.alts[0]:
@@ -408,6 +423,7 @@ def joint_spectrum_from_vcf(
             result += np.outer(weights[0], weights[1])
             projected += 1
         usable += 1
+    vcf.close()
     if projected == 0:
         raise ValueError("no biallelic records met the projection")
     metadata = {

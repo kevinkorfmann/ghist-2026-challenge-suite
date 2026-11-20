@@ -13,7 +13,9 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--archive", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--convention", choices=("simple", "generator_matched"))
+    parser.add_argument(
+        "--convention", choices=("simple", "generator_matched"), default="simple"
+    )
     parser.add_argument("--projection", type=int, nargs=2)
     parser.add_argument("--restarts", type=int, default=24)
     parser.add_argument("--workers", type=int, default=8)
@@ -46,14 +48,22 @@ def main() -> None:
     )
     result["truth"] = truth.tolist()
     result["relative_error"] = ((estimate - truth) / truth).tolist()
-    result["competition_rrmse"] = float(np.sqrt(np.sum(((estimate - truth) / truth) ** 2)))
+    result["competition_rrmse"] = float(
+        np.sqrt(np.sum(((estimate - truth) / truth) ** 2))
+    )
     result["ancestral_truth"] = float(archive["ancestral_size"])
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps({
-        key: value for key, value in result.items()
-        if key not in {"sfs", "failed_restarts"}
-    }, indent=2))
+    print(
+        json.dumps(
+            {
+                key: value
+                for key, value in result.items()
+                if key not in {"sfs", "failed_restarts"}
+            },
+            indent=2,
+        )
+    )
 
 
 if __name__ == "__main__":

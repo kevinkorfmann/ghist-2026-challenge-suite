@@ -1,12 +1,14 @@
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import json
 from collections import Counter
 from pathlib import Path
 
 from ghist_relatedness.labels import HUMAN_LABELS
+from ghist_submission.validate import all_pairs, vcf_samples, validate_submission
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +34,11 @@ def relative(path: Path) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sample-vcf", type=Path, required=True)
+    args = parser.parse_args()
+    cohort = vcf_samples(args.sample_vcf)
+    coverage = validate_submission(CANDIDATE, 12, "testing", all_pairs(cohort))
     previous = json.loads(FREEZE.read_text())
     development = json.loads(DEVELOPMENT.read_text())
     holdout = json.loads(HOLDOUT.read_text())
@@ -44,9 +51,9 @@ def main() -> None:
     labels = Counter(row["relation"] for row in rows)
     checks = {
         "empirical_background_holdout_gate": bool(holdout["gate"]["passed"]),
-        "all_50086_pairs_present": len(rows) == 50086,
+        "all_input_pairs_present": coverage["input_pair_coverage_verified"],
         "pairs_unique": len(set(pairs)) == len(pairs),
-        "all_317_individuals_present": len(samples) == 317,
+        "all_input_individuals_present": samples == set(cohort),
         "all_labels_accepted": set(labels).issubset(accepted),
         "official_relation_only_schema": set(rows[0])
         == {"indID1", "indID2", "relation"},
@@ -64,7 +71,10 @@ def main() -> None:
         "challenge": "Relatedness in a large human family with background relatedness",
         "status": "FROZEN",
         "betty_job_ids": ["7828946", "7828972", "7829025"],
-        "data_provenance": previous["data_provenance"],
+        "data_provenance": {
+            **previous["data_provenance"],
+            "sample_vcf_sha256": sha256(args.sample_vcf),
+        },
         "figures": [
             relative(FIGURE_ROOT / "task12_validation.pdf"),
             relative(FIGURE_ROOT / "task12_validation.png"),
@@ -75,19 +85,16 @@ def main() -> None:
             "selection_rule": "selected on empirical short-segment contamination regimes and promoted through 20 untouched paired comparisons",
             "topology_consensus": "branch reconstruction may refine relation type only when its meiosis degree agrees with the calibrated pair model",
         },
-        "source_artifacts": {
-            relative(path): sha256(path) for path in source_paths
-        },
+        "source_artifacts": {relative(path): sha256(path) for path in source_paths},
         "validation": {
+            "input_pair_coverage": coverage,
             "development_empirical_background_exact_accuracy": development[
                 "development_evaluation"
             ]["mean_exact_accuracy"],
             "development_empirical_background_meioses_accuracy": development[
                 "development_evaluation"
             ]["mean_meioses_accuracy"],
-            "untouched_empirical_background_replicates": holdout[
-                "holdout_replicates"
-            ],
+            "untouched_empirical_background_replicates": holdout["holdout_replicates"],
             "untouched_empirical_background_comparisons": holdout["comparisons"],
             "previous_exact_accuracy_on_untouched_empirical_background": holdout[
                 "baseline"
@@ -128,7 +135,11 @@ def main() -> None:
         "submission_count": 0,
     }
     FREEZE.write_text(json.dumps(payload, indent=2) + "\n")
-    print(json.dumps({"status": payload["status"], "validation": payload["validation"]}, indent=2))
+    print(
+        json.dumps(
+            {"status": payload["status"], "validation": payload["validation"]}, indent=2
+        )
+    )
 
 
 if __name__ == "__main__":

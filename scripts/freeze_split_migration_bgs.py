@@ -3,15 +3,18 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
+from ghist_inference.freeze import continuous_prediction
 
-TARGET = {
-    "AFR_population_size": 16000.0,
-    "EUR_population_size": 24000.0,
-    "generations_since_split": 4500.0,
-    "migration_rate": 0.00015,
-}
+
+PARAMETERS = (
+    "AFR_population_size",
+    "EUR_population_size",
+    "generations_since_split",
+    "migration_rate",
+)
 
 
 def load(path: Path) -> dict:
@@ -24,10 +27,6 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
-
-
-def contains(interval: list[float], value: float) -> bool:
-    return float(interval[0]) <= value <= float(interval[1])
 
 
 def main() -> None:
@@ -53,14 +52,10 @@ def main() -> None:
     bootstrap = load(args.bootstrap)
     calibration = load(args.calibration)
     recovery = load(args.near_recovery)
-    raw = baseline["projection_median"]
+    raw = continuous_prediction(baseline["projection_median"], PARAMETERS)
 
     if calibration.get("selected_model") != "identity":
         raise ValueError("held-out calibration selected a correction")
-    for parameter, target in TARGET.items():
-        q = bootstrap["parameters"][parameter]["quantiles"]
-        if not contains([q["0.025"], q["0.975"]], target):
-            raise ValueError(f"{parameter} target falls outside block interval")
     limits = {
         "AFR_population_size": 0.05,
         "EUR_population_size": 0.05,
@@ -68,14 +63,17 @@ def main() -> None:
         "migration_rate": 0.15,
     }
     for parameter, limit in limits.items():
-        if abs(recovery["relative_error"][parameter]) >= limit:
+        if (
+            not math.isfinite(recovery["relative_error"][parameter])
+            or abs(recovery["relative_error"][parameter]) >= limit
+        ):
             raise ValueError(f"{parameter} matched recovery exceeds tolerance")
 
-    refined_fit = refined.get("fit", refined)
-    reference = baseline["by_projection"]["50x40"]
+    refined_fit = continuous_prediction(refined.get("fit", refined), PARAMETERS)
+    reference = continuous_prediction(baseline["by_projection"]["50x40"], PARAMETERS)
     numerical_change = {
         parameter: refined_fit[parameter] / reference[parameter] - 1.0
-        for parameter in TARGET
+        for parameter in PARAMETERS
     }
     if max(abs(value) for value in numerical_change.values()) >= 0.01:
         raise ValueError("refined integration changes a parameter by at least 1%")
@@ -85,7 +83,7 @@ def main() -> None:
             bootstrap["parameters"][parameter]["quantiles"]["0.025"],
             bootstrap["parameters"][parameter]["quantiles"]["0.975"],
         ]
-        for parameter in TARGET
+        for parameter in PARAMETERS
     }
     source_paths = {
         "baseline": args.baseline,
@@ -104,11 +102,11 @@ def main() -> None:
             "model": "two-population isolation with continuous symmetric migration",
             "spectrum": "unfolded 1–100 kb noncoding joint frequency spectrum",
             "projections": [[50, 40], [70, 50], [94, 68]],
-            "aggregation": "projection median followed by generator-level rounding",
+            "aggregation": "continuous projection median; no preset rounding",
             "calibration": "identity; no correction",
         },
-        "testing_prediction": TARGET,
-        "raw_projection_median": {key: raw[key] for key in TARGET},
+        "testing_prediction": raw,
+        "raw_projection_median": {key: raw[key] for key in PARAMETERS},
         "linked_block_interval_95": interval,
         "validation": {
             "projection_fits": baseline["by_projection"],
@@ -128,7 +126,9 @@ def main() -> None:
             "coding_bed_sha256": args.coding_bed_sha256,
             "recombination_map_sha256": args.recombination_map_sha256,
             "final_vcf_sealed_sha256": args.final_sealed_sha256,
-            "segregating_biallelic_sites": baseline["metadata"]["ancestral_reference_records"],
+            "segregating_biallelic_sites": baseline["metadata"][
+                "ancestral_reference_records"
+            ],
             "haplotypes": baseline["metadata"]["haplotypes"],
             "middle_distance_exposure_bp": baseline["physical_exposure_bp"],
         },

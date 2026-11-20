@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from ghist_relatedness.labels import HUMAN_LABELS
+from ghist_submission.validate import all_pairs, vcf_samples, validate_submission
 
 
 def digest(path: Path) -> str:
@@ -23,6 +24,7 @@ def main() -> None:
     parser.add_argument("--holdout-summaries", type=Path, nargs="+", required=True)
     parser.add_argument("--candidate-summary", type=Path, required=True)
     parser.add_argument("--candidate", type=Path, required=True)
+    parser.add_argument("--sample-vcf", type=Path, required=True)
     parser.add_argument("--support-artifacts", type=Path, nargs="*", default=[])
     parser.add_argument("--figures", type=Path, nargs="*", default=[])
     parser.add_argument("--out", type=Path, required=True)
@@ -34,8 +36,11 @@ def main() -> None:
     topology = json.loads(args.candidate_summary.read_text())
     runs = [run for summary in holdouts for run in summary["runs"]]
 
-    rows = list(csv.DictReader(args.candidate.open()))
-    pairs = [(row["indID1"], row["indID2"]) for row in rows]
+    samples = vcf_samples(args.sample_vcf)
+    coverage = validate_submission(args.candidate, 10, "testing", all_pairs(samples))
+    with args.candidate.open() as handle:
+        rows = list(csv.DictReader(handle))
+    pairs = [tuple(sorted((row["indID1"], row["indID2"]))) for row in rows]
     people = {sample for pair in pairs for sample in pair}
     labels = Counter(row["relation"] for row in rows)
     exact_gain = np.asarray([run["exact_difference"] for run in runs])
@@ -46,13 +51,15 @@ def main() -> None:
     baseline_degree = np.asarray([run["baseline"]["meioses_accuracy"] for run in runs])
 
     gate = {
-        "all_eight_exact_gains_positive": bool(np.all(exact_gain > 0)),
+        "multiple_independent_exact_gains_positive": len(runs) >= 2
+        and bool(np.all(exact_gain > 0)),
         "pooled_mean_exact_gain_above_0.006": float(exact_gain.mean()) > 0.006,
         "pooled_meiosis_degree_non_regression": float(degree_gain.mean()) >= 0,
-        "official_relation_only_schema": list(rows[0]) == ["indID1", "indID2", "relation"],
-        "all_26106_pairs_present": len(rows) == 26106,
+        "official_relation_only_schema": list(rows[0])
+        == ["indID1", "indID2", "relation"],
+        "all_input_pairs_present": coverage["input_pair_coverage_verified"],
         "pairs_unique": len(set(pairs)) == len(pairs),
-        "all_229_individuals_present": len(people) == 229,
+        "all_input_individuals_present": people == set(samples),
         "all_labels_accepted": set(labels).issubset(set(HUMAN_LABELS.values())),
     }
     gate["passed"] = all(gate.values())
@@ -60,6 +67,7 @@ def main() -> None:
         raise ValueError(f"Freeze gate failed: {gate}")
 
     source_paths = [
+        args.sample_vcf,
         args.model_summary,
         *args.holdout_summaries,
         args.candidate_summary,
@@ -85,6 +93,7 @@ def main() -> None:
             "exact_score_policy": "preserve the calibrated pair call unless replicated topology resolves a same-degree relation ambiguity",
         },
         "validation": {
+            "input_pair_coverage": coverage,
             "untouched_replicates": len(runs),
             "candidate_mean_exact_accuracy": float(exact.mean()),
             "baseline_mean_exact_accuracy": float(baseline_exact.mean()),
@@ -94,7 +103,11 @@ def main() -> None:
             "candidate_mean_meioses_accuracy": float(degree.mean()),
             "baseline_mean_meioses_accuracy": float(baseline_degree.mean()),
             "mean_paired_meioses_gain": float(degree_gain.mean()),
-            "testing_calls_changed_by_topology": int(topology["source_counts"].get("background-guarded accepted pedigree tuple", 0)),
+            "testing_calls_changed_by_topology": int(
+                topology["source_counts"].get(
+                    "background-guarded accepted pedigree tuple", 0
+                )
+            ),
             "all_topology_changes_preserve_meiosis_degree": True,
             "robustness_gate": gate,
         },

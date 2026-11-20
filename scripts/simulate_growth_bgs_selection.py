@@ -9,7 +9,11 @@ import msprime
 import numpy as np
 import stdpopsim
 
-from ghist_growth_bgs.audit import coding_distance, distance_label, load_coding_intervals
+from ghist_growth_bgs.audit import (
+    coding_distance,
+    distance_label,
+    load_coding_intervals,
+)
 from ghist_growth_bgs.blocks import distance_stratum_segments
 from ghist_growth_bgs.spectrum import fit_growth_spectrum
 
@@ -37,6 +41,9 @@ def main() -> None:
     parser.add_argument("--ancestral-size", type=float, default=10_000)
     parser.add_argument("--generations", type=float, default=5_000)
     parser.add_argument("--scaling", type=float, default=2.0)
+    parser.add_argument(
+        "--convention", choices=("exponential", "sudden"), default="exponential"
+    )
     parser.add_argument("--slim-scaling-factor", type=float, default=10.0)
     parser.add_argument("--slim-burn-in", type=float, default=0.1)
     parser.add_argument("--mutation-rate", type=float, default=3.36e-8)
@@ -54,7 +61,11 @@ def main() -> None:
     modern_unscaled = ancestral_unscaled * args.scaling
     generations_unscaled = args.generations * scale
     mutation_unscaled = args.mutation_rate / scale
-    growth_rate = math.log(args.scaling) / generations_unscaled
+    growth_rate = (
+        math.log(args.scaling) / generations_unscaled
+        if args.convention == "exponential"
+        else 0.0
+    )
     demography = msprime.Demography()
     demography.add_population(
         name="population",
@@ -68,9 +79,9 @@ def main() -> None:
         population="population",
     )
     model = stdpopsim.DemographicModel(
-        id="ExpGrowth_1G",
-        description="Single-population exponential growth",
-        long_description="Exponential growth with a fixed ancestral epoch.",
+        id="Growth_1G",
+        description=f"Single-population {args.convention} growth",
+        long_description=f"{args.convention.capitalize()} growth with a fixed ancestral epoch.",
         generation_time=0.1,
         model=demography,
         mutation_rate=mutation_unscaled,
@@ -84,7 +95,10 @@ def main() -> None:
         mutation_rate=mutation_unscaled,
     )
     coding = load_coding_intervals(args.coding_bed)
-    contig.add_dfe(np.asarray(coding[args.chromosome], dtype=np.int64), species.get_dfe("Gamma_H17"))
+    contig.add_dfe(
+        np.asarray(coding[args.chromosome], dtype=np.int64),
+        species.get_dfe("Gamma_H17"),
+    )
     engine = stdpopsim.get_engine("slim")
     tree_sequence = engine.simulate(
         model,
@@ -143,6 +157,7 @@ def main() -> None:
         seed=args.seed + 2,
         convention="sudden",
     )
+    matched_fit = fit if args.convention == "exponential" else sudden_fit
     payload = {
         "truth_in_analysis_units": {
             "ancestral_effective_size": args.ancestral_size,
@@ -151,6 +166,7 @@ def main() -> None:
             "mutation_rate": args.mutation_rate,
         },
         "generator": {
+            "convention": args.convention,
             "stdpopsim": stdpopsim.__version__,
             "slim_scaling_factor": scale,
             "slim_burn_in": args.slim_burn_in,
@@ -168,14 +184,15 @@ def main() -> None:
             "physical_exposure_bp": exposure,
         },
         "fit": fit,
+        "matched_fit": matched_fit,
         "sudden_fit": sudden_fit,
         "log_likelihood_exponential_minus_sudden": (
-            fit["multinomial_log_likelihood"]
-            - sudden_fit["multinomial_log_likelihood"]
+            fit["multinomial_log_likelihood"] - sudden_fit["multinomial_log_likelihood"]
         ),
         "relative_error": {
-            "generations": fit["generations"] / args.generations - 1,
-            "post_growth_scaling": fit["post_growth_scaling"] / args.scaling - 1,
+            "generations": matched_fit["generations"] / args.generations - 1,
+            "post_growth_scaling": matched_fit["post_growth_scaling"] / args.scaling
+            - 1,
         },
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)

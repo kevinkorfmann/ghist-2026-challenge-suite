@@ -25,3 +25,22 @@ Model files produced under an older scikit-learn version must be loaded in their
 original environment unless their compatibility has been independently tested.
 The November 2026 lockfile is for new installations; it does not retroactively
 certify serialized model compatibility.
+
+### macOS editable-import troubleshooting
+
+If installed dependencies import but `ghist_submission` or another local package
+cannot be imported, inspect the virtual environment's `.pth` files with
+`ls -lO .venv/lib/python*/site-packages/*.pth`. Python 3.12 skips files marked
+with the macOS `hidden` flag. This occurred in the local review environment.
+Clear that flag on the startup path files, then verify imports in a new process:
+
+```bash
+chflags nohidden .venv/lib/python*/site-packages/*.pth
+.venv/bin/python -c 'import ghist_submission, ghist_inference'
+```
+
+If those flags return, build the environment outside the synced Documents tree
+with `UV_PROJECT_ENVIRONMENT=/absolute/local/cache/ghist-venv uv sync ...`.
+The review now uses a local cache environment with `.venv` pointing to it; the
+previous environment was preserved for rollback. This is an environment repair;
+adding pytest-only import paths would conceal the broken command-line installation.
