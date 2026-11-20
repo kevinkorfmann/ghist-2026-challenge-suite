@@ -287,7 +287,7 @@ def test_bottleneck_fit_survives_one_failed_restart(monkeypatch):
 
     monkeypatch.setattr(moments.Inference, "optimize_log_lbfgsb", optimizer)
     spectrum = np.asarray(moments.Demographics1D.two_epoch([0.4, 0.2], [10])) * 200
-    fit = fit_two_epoch_spectrum(spectrum, restarts=2)
+    fit = fit_two_epoch_spectrum(spectrum, restarts=2, optimizer_strategy="legacy_coarse_v1")
     assert fit["successful_restarts"] == 1
     assert len(fit["failed_restarts"]) == 1
     assert fit["post_decline_fraction"] == pytest.approx(0.4)

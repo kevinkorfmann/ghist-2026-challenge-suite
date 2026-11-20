@@ -1,0 +1,388 @@
+{
+  "case_name": "10mb_case_10",
+  "manifest_sha256": "b6c06c91222c09c63b43c179795409b6c9f946fa667b85487bd35b4dc703b3b2",
+  "parent_manifest_sha256": "8c2e403832193cb437e472baecc371aa9f4e6809122df5a027b0d136c16ae7ba",
+  "input_sha256": "7adef91223309ecef65b4b622e8bdb06c36a5905052576fac2b0c248ed38df6f",
+  "method": "moments",
+  "arm": "refined",
+  "restart": 3,
+  "start_log_parameters": [
+    -0.7034864233746475,
+    -2.1794798546192538
+  ],
+  "original_random_start_log_parameters": [
+    -1.1175067984221418,
+    -6.528440711427507
+  ],
+  "coarse_endpoint_sha256": "0975d7ad8dbd93d0a4537c63624759a1f04188a18a0edaea1ed5bdaa4711ac90",
+  "state": "COMPLETED",
+  "parameters": [
+    0.4950908724285875,
+    0.11330737433520059
+  ],
+  "initial_objective": 419.08988593925824,
+  "objective": 419.0874152816268,
+  "optimizer": {
+    "converged": true,
+    "status": 0,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "evaluations": 24,
+    "iterations": 6,
+    "gradient": [
+      -0.0001672560756568027,
+      -0.00023501343093658504
+    ]
+  },
+  "neighborhood": {
+    "maximum_tested_improvement": 9.864925232250243e-08,
+    "passes_finite_neighborhood_check": true,
+    "probes": [
+      {
+        "log_step": 0.001,
+        "direction": [
+          -1,
+          -1
+        ],
+        "actual_log_displacement": [
+          -0.0010000000000000009,
+          -0.0009999999999998899
+        ],
+        "objective_change": 0.008491174906339438
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          -1,
+          0
+        ],
+        "actual_log_displacement": [
+          -0.0010000000000000009,
+          0.0
+        ],
+        "objective_change": 0.00906418884096638
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          -1,
+          1
+        ],
+        "actual_log_displacement": [
+          -0.0010000000000000009,
+          0.0009999999999998899
+        ],
+        "objective_change": 0.01037335654382332
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          0,
+          -1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          -0.0009999999999998899
+        ],
+        "objective_change": 0.0003737181477845297
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          0,
+          1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          0.0009999999999998899
+        ],
+        "objective_change": 0.0003655935470305849
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          1,
+          -1
+        ],
+        "actual_log_displacement": [
+          0.0010000000000000009,
+          -0.0009999999999998899
+        ],
+        "objective_change": 0.010210025368905917
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          1,
+          0
+        ],
+        "actual_log_displacement": [
+          0.0010000000000000009,
+          0.0
+        ],
+        "objective_change": 0.00888738728735916
+      },
+      {
+        "log_step": 0.001,
+        "direction": [
+          1,
+          1
+        ],
+        "actual_log_displacement": [
+          0.0010000000000000009,
+          0.0009999999999998899
+        ],
+        "objective_change": 0.008307201826937671
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          -1,
+          -1
+        ],
+        "actual_log_displacement": [
+          -9.999999999998899e-05,
+          -0.00010000000000021103
+        ],
+        "objective_change": 9.337582014268264e-05
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          -1,
+          0
+        ],
+        "actual_log_displacement": [
+          -9.999999999998899e-05,
+          0.0
+        ],
+        "objective_change": 9.874905026663328e-05
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          -1,
+          1
+        ],
+        "actual_log_displacement": [
+          -9.999999999998899e-05,
+          0.00010000000000021103
+        ],
+        "objective_change": 0.0001115122568080551
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          0,
+          -1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          -0.00010000000000021103
+        ],
+        "objective_change": 4.089809408469591e-06
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          0,
+          1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          0.00010000000000021103
+        ],
+        "objective_change": 3.303333869553171e-06
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          1,
+          -1
+        ],
+        "actual_log_displacement": [
+          9.999999999998899e-05,
+          -0.00010000000000021103
+        ],
+        "objective_change": 9.43217546591768e-05
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          1,
+          0
+        ],
+        "actual_log_displacement": [
+          9.999999999998899e-05,
+          0.0
+        ],
+        "objective_change": 8.076673293544445e-05
+      },
+      {
+        "log_step": 0.0001,
+        "direction": [
+          1,
+          1
+        ],
+        "actual_log_displacement": [
+          9.999999999998899e-05,
+          0.00010000000000021103
+        ],
+        "objective_change": 7.460794313374208e-05
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          -1,
+          -1
+        ],
+        "actual_log_displacement": [
+          -9.99999999995449e-06,
+          -1.0000000000065512e-05
+        ],
+        "objective_change": 1.7784750525606796e-06
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          -1,
+          0
+        ],
+        "actual_log_displacement": [
+          -9.99999999995449e-06,
+          0.0
+        ],
+        "objective_change": 1.7968795873457566e-06
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          -1,
+          1
+        ],
+        "actual_log_displacement": [
+          -9.99999999995449e-06,
+          1.0000000000065512e-05
+        ],
+        "objective_change": 1.8891587387770414e-06
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          0,
+          -1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          -1.0000000000065512e-05
+        ],
+        "objective_change": 7.630660547874868e-08
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          0,
+          1
+        ],
+        "actual_log_displacement": [
+          0.0,
+          1.0000000000065512e-05
+        ],
+        "objective_change": -2.3501343093812466e-09
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          1,
+          -1
+        ],
+        "actual_log_displacement": [
+          9.99999999995449e-06,
+          -1.0000000000065512e-05
+        ],
+        "objective_change": 1.692415025900118e-07
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          1,
+          0
+        ],
+        "actual_log_displacement": [
+          9.99999999995449e-06,
+          0.0
+        ],
+        "objective_change": -1.672560756560415e-09
+      },
+      {
+        "log_step": 1e-05,
+        "direction": [
+          1,
+          1
+        ],
+        "actual_log_displacement": [
+          9.99999999995449e-06,
+          1.0000000000065512e-05
+        ],
+        "objective_change": -9.864925232250243e-08
+      }
+    ],
+    "axis_slopes": {
+      "0.001": [
+        {
+          "actual_lower_step": 0.0010000000000000009,
+          "actual_upper_step": 0.0010000000000000009,
+          "symmetric": true,
+          "centered_slope": -0.08840077680360983,
+          "forward_slope": 8.887387287359154,
+          "backward_slope": -9.064188840966372
+        },
+        {
+          "actual_lower_step": 0.0009999999999998899,
+          "actual_upper_step": 0.0009999999999998899,
+          "symmetric": true,
+          "centered_slope": -0.004062300376972864,
+          "forward_slope": 0.36559354703062513,
+          "backward_slope": -0.37371814778457085
+        }
+      ],
+      "0.0001": [
+        {
+          "actual_lower_step": 9.999999999998899e-05,
+          "actual_upper_step": 9.999999999998899e-05,
+          "symmetric": true,
+          "centered_slope": -0.08991158665595403,
+          "forward_slope": 0.8076673293545334,
+          "backward_slope": -0.9874905026664416
+        },
+        {
+          "actual_lower_step": 0.00010000000000021103,
+          "actual_upper_step": 0.00010000000000021103,
+          "symmetric": true,
+          "centered_slope": -0.003932377694573802,
+          "forward_slope": 0.033033338695462,
+          "backward_slope": -0.04089809408460961
+        }
+      ],
+      "1e-05": [
+        {
+          "actual_lower_step": 9.99999999995449e-06,
+          "actual_upper_step": 9.99999999995449e-06,
+          "symmetric": true,
+          "centered_slope": -0.0899276074055251,
+          "forward_slope": -0.0001672560756568027,
+          "backward_slope": -0.17968795873539342
+        },
+        {
+          "actual_lower_step": 1.0000000000065512e-05,
+          "actual_upper_step": 1.0000000000065512e-05,
+          "symmetric": true,
+          "centered_slope": -0.003932836989380731,
+          "forward_slope": -0.00023501343093658504,
+          "backward_slope": -0.0076306605478248775
+        }
+      ]
+    },
+    "scope": "feasible finite-neighborhood probes; no KKT/global stationarity certification"
+  },
+  "seconds": 0.1477056830190122
+}

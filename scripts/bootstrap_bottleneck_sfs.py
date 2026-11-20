@@ -13,9 +13,12 @@ from ghist_bottleneck.sfs_baseline import (
     fit_two_epoch_spectrum,
 )
 from ghist_inference.checkpoint import atomic_json, spectrum_digest
+from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
+from ghist_bottleneck.optimization import DEFAULT_STRATEGY, optimizer_contract, validate_optimizer_contract
 
 
-def validate_reference(reference, *, mutation_rate, sequence_length, folded):
+def validate_reference(reference, *, mutation_rate, sequence_length, folded, engine="moments"):
+    contract = validate_optimizer_contract(reference, engine=engine, require_agreement=True, require_neighborhood=True)
     if bool(reference["folded"]) != folded:
         raise ValueError("reference fit and bootstrap folding settings disagree")
     if reference.get('sequence_length') != sequence_length:
@@ -26,6 +29,7 @@ def validate_reference(reference, *, mutation_rate, sequence_length, folded):
     implied_rate = reference['theta'] / (4 * reference['ancestral_effective_size'] * sequence_length)
     if not np.isfinite(mutation_rate) or mutation_rate <= 0 or not np.isclose(implied_rate, mutation_rate, rtol=1e-10, atol=0):
         raise ValueError('reference fit and bootstrap mutation rates disagree')
+    return contract
 
 
 def validate_input_reference(reference, vcf, blocks, metadata, *, allow_unverified=False):
@@ -33,6 +37,8 @@ def validate_input_reference(reference, vcf, blocks, metadata, *, allow_unverifi
         vcf_hash = hashlib.file_digest(handle, 'sha256').hexdigest()
     spectrum_hash = spectrum_digest(blocks.sum(axis=0))
     reference_sfs = reference.get('sfs', {})
+    if reference.get("sample_haplotypes") != metadata["projection"]:
+        raise ValueError("reference sample_haplotypes and bootstrap projection disagree")
     if reference_sfs.get('projection') != metadata['projection']:
         raise ValueError('reference fit and bootstrap projections disagree')
     expected = {'input_vcf_sha256': reference.get('input_vcf_sha256'),
@@ -47,9 +53,21 @@ def validate_input_reference(reference, vcf, blocks, metadata, *, allow_unverifi
     return {**actual, 'reference_provenance': 'unverified_legacy_reference' if missing else 'verified_input_and_spectrum'}
 
 
+def file_sha256(path):
+    with Path(path).open("rb") as handle:
+        return hashlib.file_digest(handle, "sha256").hexdigest()
+
+
+def verify_unchanged(paths):
+    for path, expected in paths.items():
+        if file_sha256(path) != expected:
+            raise ValueError(f"Bootstrap input/source changed during execution: {path}")
+
+
 def _fit_replica(arguments: tuple) -> dict:
-    spectrum, mutation_rate, sequence_length, folded, initial, seed = arguments
-    return fit_two_epoch_spectrum(
+    spectrum, mutation_rate, sequence_length, folded, initial, seed, engine, contract = arguments
+    fit = fit_two_epoch_spectrum if engine == "moments" else fit_two_epoch_dadi_spectrum
+    result = fit(
         spectrum,
         mutation_rate=mutation_rate,
         sequence_length=sequence_length,
@@ -57,14 +75,19 @@ def _fit_replica(arguments: tuple) -> dict:
         seed=seed,
         folded=folded,
         initial=tuple(initial),
+        optimizer_strategy=DEFAULT_STRATEGY,
     )
+    validate_optimizer_contract(result, engine=engine, expected=contract, require_converged=False)
+    return result
 
 
-def record_replica(fit):
+def record_replica(fit, *, expected=None):
     """Retain estimates, but never turn failed optimizer termination into an interval."""
     result = {'fit': fit}
-    if fit.get('optimizer', {}).get('converged') is not True:
-        result['failure'] = 'Selected optimizer restart did not converge; intervals omitted'
+    try:
+        validate_optimizer_contract(fit, expected=expected, require_agreement=True, require_neighborhood=True)
+    except ValueError as error:
+        result['failure'] = f'{error}; intervals omitted'
     return result
 
 
@@ -77,6 +100,7 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--seed", type=int, default=83_771)
     parser.add_argument("--folded", action="store_true")
+    parser.add_argument("--engine", choices=("moments", "dadi"), default="moments")
     parser.add_argument("--mutation-rate", type=float, default=3.42e-8)
     parser.add_argument("--sequence-length", type=int, default=100_000_000)
     parser.add_argument("--block-length", type=int, default=2_000_000)
@@ -86,9 +110,20 @@ def main() -> None:
     if args.replicates < 2 or args.workers < 1 or args.seed < 0:
         parser.error('at least two replicates, positive workers, and a nonnegative seed required')
 
+    if args.out.exists():
+        raise FileExistsError("Bootstrap output already exists; use a new output path")
+    root = Path(__file__).resolve().parents[1]
+    source_paths = [Path(__file__), root / "src/ghist_bottleneck/sfs_baseline.py",
+                    root / "src/ghist_inference/vcf.py", root / "src/ghist_inference/checkpoint.py",
+                    root / "src/ghist_inference/validation.py", root / "src/ghist_bottleneck/dadi_reference.py",
+                    root / "src/ghist_bottleneck/optimization.py"]
+    source_hashes = {str(path.relative_to(root)): file_sha256(path) for path in source_paths}
+    locked_paths = {path: file_sha256(path) for path in [args.fit, args.vcf, *source_paths]}
     reference = json.loads(args.fit.read_text())
-    validate_reference(reference, mutation_rate=args.mutation_rate,
-                       sequence_length=args.sequence_length, folded=args.folded)
+    verify_unchanged(locked_paths)
+    contract = validate_reference(reference, mutation_rate=args.mutation_rate,
+                                  sequence_length=args.sequence_length, folded=args.folded, engine=args.engine)
+    assert contract == optimizer_contract(args.engine)
     blocks, metadata = complete_block_spectra_from_vcf(
         args.vcf,
         sequence_length=args.sequence_length,
@@ -99,7 +134,10 @@ def main() -> None:
         raise ValueError('bootstrap requires at least two independent resampling blocks')
     provenance = validate_input_reference(reference, args.vcf, blocks, metadata,
                                           allow_unverified=args.allow_unverified_reference)
-    provenance['reference_fit_sha256'] = hashlib.sha256(args.fit.read_bytes()).hexdigest()
+    verify_unchanged(locked_paths)
+    provenance['reference_fit_sha256'] = locked_paths[args.fit]
+    provenance['source_sha256'] = source_hashes
+    provenance.update(engine=args.engine, optimizer_contract=contract, bootstrap_schema='bottleneck_bootstrap_v2')
     rng = np.random.default_rng(args.seed)
     tasks = []
     initial = (reference["post_decline_fraction"], reference["scaled_time_2N"])
@@ -113,6 +151,8 @@ def main() -> None:
                 args.folded,
                 initial,
                 args.seed + replica * 7_919,
+                args.engine,
+                contract,
             )
         )
     completed = {}
@@ -121,11 +161,13 @@ def main() -> None:
         for future in as_completed(pending):
             index = pending[future]
             try:
-                completed[index] = record_replica(future.result())
+                completed[index] = record_replica(future.result(), expected=contract)
             except Exception as error:
                 completed[index] = {'failure': f'{type(error).__name__}: {error}'}
+            verify_unchanged(locked_paths)
             atomic_json(args.out, dict(status='incomplete', requested_replicates=args.replicates,
                                       completed_replicates=completed, seed=args.seed, **provenance))
+    verify_unchanged(locked_paths)
     failures = {index: result['failure'] for index, result in completed.items() if 'failure' in result}
     if failures:
         atomic_json(args.out, dict(status='failed', requested_replicates=args.replicates,
@@ -144,6 +186,8 @@ def main() -> None:
     result = {
         **provenance,
         "status": "complete",
+        "requested_replicates": args.replicates,
+        "completed_replicates": completed,
         "interval_kind": "block-bootstrap percentile; coverage has not been validated",
         "mutation_rate": args.mutation_rate,
         "sequence_length": args.sequence_length,
@@ -166,6 +210,7 @@ def main() -> None:
         },
         "values": values.tolist(),
     }
+    verify_unchanged(locked_paths)
     atomic_json(args.out, result)
     print(json.dumps({key: result[key] for key in ("replicates", "mean", "median", "interval_95")}, indent=2))
 

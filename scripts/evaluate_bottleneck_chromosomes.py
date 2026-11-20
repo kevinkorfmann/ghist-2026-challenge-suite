@@ -175,6 +175,8 @@ def main() -> None:
         default=Path("data/processed/task1_bottleneck/observed.blocks.npz"),
     )
     args = parser.parse_args()
+    if args.out.exists() or args.out.with_suffix(".npz").exists():
+        raise FileExistsError("Refusing to overwrite existing chromosome calibration evidence")
     data = np.load(args.dataset)
     require_diploid_scale(data, context="Chromosome validation dataset")
     cell_ids = np.unique(data["cell_id"])
@@ -296,6 +298,7 @@ def main() -> None:
         "generations": observed_result["generations"],
         "post_decline_fraction": observed_result["post_decline_fraction"],
     }
+    serializable["prediction_npz_sha256"] = sha256(args.out.with_suffix(".npz"))
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     print(json.dumps(serializable, indent=2))
 

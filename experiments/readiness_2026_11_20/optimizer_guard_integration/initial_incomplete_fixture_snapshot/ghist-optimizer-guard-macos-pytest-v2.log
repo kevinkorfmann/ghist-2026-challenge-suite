@@ -1,0 +1,1561 @@
+........................................................................ [  6%]
+........................................................................ [ 13%]
+........................................................................ [ 19%]
+........................................................................ [ 26%]
+........................................................................ [ 33%]
+........................................................F............... [ 39%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 59%]
+........................................................................ [ 66%]
+........................................................................ [ 72%]
+........................................................................ [ 79%]
+........................................................................ [ 85%]
+........................................................................ [ 92%]
+................................FE.......EEEEEEEEEEEEEEEEEEEFEEEEEEE.EEE [ 99%]
+EEEEEEEEE                                                                [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_offline_package_leaves_final_fields_pending_without_model _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_offline_package_leaves_fi0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+________ ERROR at setup of test_pinned_predictor_tampering_is_rejected _________
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_pinned_predictor_tamperin0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[runtime-value0] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[external_artifacts-value1] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[training_pairs-1] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma2')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[confirmation_pairs-1] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma3')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[submission_count-1] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma4')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[operational_passed-False] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma5')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[final_input-value6] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma6')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_manifest_metadata_must_match_pinned_files[status-LOCAL_FINAL_FILE_VALIDATED_NOT_SUBMITTED] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_metadata_must_ma7')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ ERROR at setup of test_external_manifest_pin_detects_manifest_replacement ___
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_external_manifest_pin_det0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ ERROR at setup of test_rehashed_evidence_with_different_model_is_rejected ___
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_rehashed_evidence_with_di0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+___ ERROR at setup of test_rehashed_nonfinite_operational_metric_is_rejected ___
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_rehashed_nonfinite_operat0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_package_symlink_is_refused_even_when_content_matches __
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_package_symlink_is_refuse0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ ERROR at setup of test_unpinned_import_files_are_refused[src/unpinned.py] ___
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_unpinned_import_files_are0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_unpinned_import_files_are_refused[src/ghist_relatedness/__pycache__/ibd.cpython-312.pyc] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_unpinned_import_files_are1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+______________ ERROR at setup of test_manifest_symlink_is_refused ______________
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_manifest_symlink_is_refus0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_dangling_output_symlink_does_not_create_target[prepare] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_dangling_output_symlink_d0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ ERROR at setup of test_dangling_output_symlink_does_not_create_target[run] __
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_dangling_output_symlink_d1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+___________ ERROR at setup of test_existing_package_is_not_replaced ____________
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_existing_package_is_not_r0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ ERROR at setup of test_stale_run_directory_is_refused_before_reading_input __
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_stale_run_directory_is_re0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_input_provenance_rejected_before_model_access[changes0] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_input_provenance_rejected0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_input_provenance_rejected_before_model_access[changes1] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_input_provenance_rejected1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_input_provenance_rejected_before_model_access[changes2] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_input_provenance_rejected2')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_input_provenance_rejected_before_model_access[changes3] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_input_provenance_rejected3')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_input_provenance_rejected_before_model_access[changes4] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_input_provenance_rejected4')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_incompatible_runtime_is_rejected_before_model_access __
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_incompatible_runtime_is_r0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_run_uses_pinned_predictor_and_independent_validator _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_run_uses_pinned0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[duplicate] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[reversed_duplicate] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[hbd] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment2')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[nan] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment3')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[bad_length] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment4')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_synthetic_invalid_segments_never_produce_a_handoff[unknown_chromosome] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_synthetic_invalid_segment5')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_changes_after_prediction_never_produce_a_handoff[model] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_changes_after_prediction_0')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_changes_after_prediction_never_produce_a_handoff[map] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_changes_after_prediction_1')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_changes_after_prediction_never_produce_a_handoff[roster] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_changes_after_prediction_2')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_changes_after_prediction_never_produce_a_handoff[input] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_changes_after_prediction_3')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ ERROR at setup of test_changes_after_prediction_never_produce_a_handoff[package] _
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_changes_after_prediction_4')
+
+    @pytest.fixture
+    def package(tmp_path):
+        destination = tmp_path / "package"
+>       prepare_package(ROOT, ROOT / RELEASE, destination)
+
+tests/test_task9_submission_package.py:31: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=================================== FAILURES ===================================
+_______ test_task4_export_keeps_fitted_values_instead_of_preset_targets ________
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_task4_export_keeps_fitted0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1269b2b70>
+
+    def test_task4_export_keeps_fitted_values_instead_of_preset_targets(
+        tmp_path, monkeypatch
+    ):
+        from scripts import freeze_split_migration_bgs as freeze
+    
+        directory = Path(__file__).resolve().parents[1] / "experiments/split_migration_bgs"
+        args = ["freeze", "--out", str(tmp_path / "freeze.json")]
+        for flag, name in (
+            ("baseline", "baseline_summary"),
+            ("refined", "refined_middle_p50_40"),
+            ("bootstrap", "bootstrap_1mb_summary"),
+            ("calibration", "selection_calibration"),
+            ("near-recovery", "selection_near_observed_aggregate"),
+        ):
+            args += ["--" + flag, str(directory / (name + ".json"))]
+        for flag in (
+            "testing-vcf-sha256",
+            "coding-bed-sha256",
+            "recombination-map-sha256",
+            "final-sealed-sha256",
+        ):
+            args += ["--" + flag, "0" * 64]
+        monkeypatch.setattr(sys, "argv", args)
+        with pytest.raises(ValueError, match="physical-unit"):
+>           freeze.main()
+
+tests/test_reliability.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/freeze_split_migration_bgs.py:56: in main
+    baseline = load(args.baseline)
+               ^^^^^^^^^^^^^^^^^^^
+scripts/freeze_split_migration_bgs.py:27: in load
+    return json.loads(path.read_text())
+                      ^^^^^^^^^^^^^^^^
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/split_migration_bgs/baseline_summary.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/split_migration_bgs/baseline_summary.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+____________ test_release_gate_rejects_model_or_provenance_mismatch ____________
+
+    def test_release_gate_rejects_model_or_provenance_mismatch():
+        folder = Path("experiments/scientific_2026_11_20/relatedness")
+>       training = json.loads((folder / "task9_current_training.json").read_text())
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_task9_release.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_____________________ test_mismatched_evidence_is_rejected _____________________
+
+tmp_path = PosixPath('/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/pytest-of-kevinkorfmann/pytest-1019/test_mismatched_evidence_is_re0')
+
+    def test_mismatched_evidence_is_rejected(tmp_path):
+        release = json.loads((ROOT / RELEASE).read_text())
+        release["evidence_sha256"] = {"not the evidence": "0" * 64}
+        path = tmp_path / "release.json"
+        write_json(path, release)
+        with pytest.raises(ValueError, match="evidence differs"):
+>           prepare_package(ROOT, path, tmp_path / "package")
+
+tests/test_task9_submission_package.py:159: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/prepare_task9_submission_package.py:172: in prepare_package
+    hashes = {name: digest(path) for name, path in sources.items()}
+                    ^^^^^^^^^^^^
+scripts/prepare_task9_submission_package.py:61: in digest
+    with Path(path).open("rb") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/Users/kevinkorfmann/.cache/ghist-2026/optimizer-guard-integration-20261120/experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+../../../.local/share/uv/python/cpython-3.12-macos-aarch64-none/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=============================== warnings summary ===============================
+tests/test_pipeline.py::PipelineTests::test_coalescent_and_network_contract
+tests/test_secondary_contact.py::SecondaryContactTests::test_multimodal_posterior_contract
+  enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_reliability.py::test_task4_export_keeps_fitted_values_instead_of_preset_targets
+FAILED tests/test_task9_release.py::test_release_gate_rejects_model_or_provenance_mismatch
+FAILED tests/test_task9_submission_package.py::test_mismatched_evidence_is_rejected
+ERROR tests/test_task9_submission_package.py::test_offline_package_leaves_final_fields_pending_without_model
+ERROR tests/test_task9_submission_package.py::test_pinned_predictor_tampering_is_rejected
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[runtime-value0]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[external_artifacts-value1]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[training_pairs-1]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[confirmation_pairs-1]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[submission_count-1]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[operational_passed-False]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[final_input-value6]
+ERROR tests/test_task9_submission_package.py::test_manifest_metadata_must_match_pinned_files[status-LOCAL_FINAL_FILE_VALIDATED_NOT_SUBMITTED]
+ERROR tests/test_task9_submission_package.py::test_external_manifest_pin_detects_manifest_replacement
+ERROR tests/test_task9_submission_package.py::test_rehashed_evidence_with_different_model_is_rejected
+ERROR tests/test_task9_submission_package.py::test_rehashed_nonfinite_operational_metric_is_rejected
+ERROR tests/test_task9_submission_package.py::test_package_symlink_is_refused_even_when_content_matches
+ERROR tests/test_task9_submission_package.py::test_unpinned_import_files_are_refused[src/unpinned.py]
+ERROR tests/test_task9_submission_package.py::test_unpinned_import_files_are_refused[src/ghist_relatedness/__pycache__/ibd.cpython-312.pyc]
+ERROR tests/test_task9_submission_package.py::test_manifest_symlink_is_refused
+ERROR tests/test_task9_submission_package.py::test_dangling_output_symlink_does_not_create_target[prepare]
+ERROR tests/test_task9_submission_package.py::test_dangling_output_symlink_does_not_create_target[run]
+ERROR tests/test_task9_submission_package.py::test_existing_package_is_not_replaced
+ERROR tests/test_task9_submission_package.py::test_stale_run_directory_is_refused_before_reading_input
+ERROR tests/test_task9_submission_package.py::test_input_provenance_rejected_before_model_access[changes0]
+ERROR tests/test_task9_submission_package.py::test_input_provenance_rejected_before_model_access[changes1]
+ERROR tests/test_task9_submission_package.py::test_input_provenance_rejected_before_model_access[changes2]
+ERROR tests/test_task9_submission_package.py::test_input_provenance_rejected_before_model_access[changes3]
+ERROR tests/test_task9_submission_package.py::test_input_provenance_rejected_before_model_access[changes4]
+ERROR tests/test_task9_submission_package.py::test_incompatible_runtime_is_rejected_before_model_access
+ERROR tests/test_task9_submission_package.py::test_synthetic_run_uses_pinned_predictor_and_independent_validator
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[duplicate]
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[reversed_duplicate]
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[hbd]
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[nan]
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[bad_length]
+ERROR tests/test_task9_submission_package.py::test_synthetic_invalid_segments_never_produce_a_handoff[unknown_chromosome]
+ERROR tests/test_task9_submission_package.py::test_changes_after_prediction_never_produce_a_handoff[model]
+ERROR tests/test_task9_submission_package.py::test_changes_after_prediction_never_produce_a_handoff[map]
+ERROR tests/test_task9_submission_package.py::test_changes_after_prediction_never_produce_a_handoff[roster]
+ERROR tests/test_task9_submission_package.py::test_changes_after_prediction_never_produce_a_handoff[input]
+ERROR tests/test_task9_submission_package.py::test_changes_after_prediction_never_produce_a_handoff[package]
+3 failed, 1047 passed, 2 warnings, 39 errors in 20.02s

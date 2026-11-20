@@ -11,6 +11,10 @@ import numpy as np
 from scipy.stats import qmc
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
+from scripts.bottleneck_consumer_guard import (
+    ROOT, bundle_metadata, capture_inputs, require_new_outputs, require_unchanged,
+    source_manifest,
+)
 
 
 BROAD_POINTS = 100
@@ -59,6 +63,43 @@ def parameter_design(seed: int = 20261117) -> tuple[np.ndarray, np.ndarray, np.n
 
 
 PARAMETER_POINTS, POINT_DOMAIN, POINT_SPLIT = parameter_design()
+
+
+def simulation_design(*, seed, blocks, block_length, mutation_rate, restarts):
+    if any(type(value) is not int or value < 1 for value in (seed, blocks, restarts)):
+        raise ValueError("Simulation seed, blocks and restarts must be positive integers")
+    if not np.isfinite([block_length, mutation_rate]).all() or min(block_length, mutation_rate) <= 0:
+        raise ValueError("Block length and mutation rate must be finite and positive")
+    return {
+        "schema": "multiscale_independent_blocks_v1", "seed": seed,
+        "blocks": blocks, "block_length": float(block_length),
+        "sequence_length": blocks * float(block_length), "mutation_rate": float(mutation_rate),
+        "recombination_rate": 1.87e-8, "restarts": restarts,
+        "sample_haplotypes": 114, "coalescent_ploidy": 2,
+        "parameter_design_seed": 20261117,
+        "parameter_design_sha256": hashlib.sha256(PARAMETER_POINTS.astype("<f8").tobytes()
+            + POINT_DOMAIN.tobytes() + POINT_SPLIT.tobytes()).hexdigest(),
+        "simulation_seed_rule": "default_rng(seed + cell_id * 104729), consecutive ancestry/mutation draws per block",
+        "optimizer_seed_rule": "seed + 900000 + cell_id",
+        "linkage": "independent ancestry simulation per block; not one linked chromosome",
+    }
+
+
+def require_simulation_design(array, fits, context):
+    design = context.get("simulation_design")
+    if not isinstance(design, dict):
+        raise ValueError("Recovery shard lacks its simulation/block design")
+    keys = ("seed", "blocks", "block_length", "mutation_rate", "restarts")
+    if any(key not in design for key in keys) or design != simulation_design(**{key: design[key] for key in keys}):
+        raise ValueError("Recovery shard simulation/block design is invalid or stale")
+    expected_data = {"folded": True, "mutation_rate": design["mutation_rate"],
+                     "sequence_length": design["sequence_length"], "sample_haplotypes": 114}
+    if context.get("fit_data_contract") != expected_data:
+        raise ValueError("Recovery fit exposure or sampling differs from its simulation design")
+    for cell, fit in zip(array["cell_id"], fits, strict=True):
+        if fit.get("optimizer_seed") != design["seed"] + 900000 + int(cell) or fit.get("restarts") != design["restarts"]:
+            raise ValueError("Recovery fit seed/restarts differ from the declared design")
+    return design
 
 
 def multiscale_parameters(cell_id: int) -> tuple[int, int, int, int, float, float, float]:
@@ -134,6 +175,7 @@ def simulate_cell(arguments: tuple[int, int, int, float, float, int]) -> dict:
         "theta": fit["theta"],
         "multinomial_log_likelihood": fit["multinomial_log_likelihood"],
         "segregating_sites": int(spectrum[1:-1].sum()),
+        "fit": fit,
     }
 
 
@@ -143,6 +185,13 @@ def sha256(path: Path) -> str:
         for chunk in iter(lambda: handle.read(8 * 1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def recorded_cell(arguments):
+    try:
+        return simulate_cell(arguments)
+    except Exception as error:
+        return {"cell_id": arguments[0], "failure": f"{type(error).__name__}: {error}"}
 
 
 def main() -> None:
@@ -157,6 +206,12 @@ def main() -> None:
     parser.add_argument("--restarts", type=int, default=8)
     parser.add_argument("--seed", type=int, default=20261117)
     args = parser.parse_args()
+    design = simulation_design(seed=args.seed, blocks=args.blocks, block_length=args.block_length,
+                               mutation_rate=args.mutation_rate, restarts=args.restarts)
+    diagnostics = args.out.with_suffix(args.out.suffix + ".fits.json")
+    require_new_outputs(args.out, args.out.with_suffix(args.out.suffix + ".json"), diagnostics)
+    source_hashes = capture_inputs(*(ROOT / name for name in source_manifest(
+        "scripts/run_multiscale_sfs_recovery.py")))
     stop = args.cell_start + args.cells
     if args.cell_start < 0 or stop > TOTAL_CELLS:
         raise ValueError(f"requested cells must lie within [0, {TOTAL_CELLS})")
@@ -165,7 +220,17 @@ def main() -> None:
         for cell_id in range(args.cell_start, stop)
     ]
     with ProcessPoolExecutor(max_workers=args.workers) as executor:
-        records = list(executor.map(simulate_cell, work))
+        records = list(executor.map(recorded_cell, work))
+    # Keep numerical failures inspectable; no incomplete/unsupported shard can
+    # enter calibration merely because its physical estimates are finite.
+    diagnostics.parent.mkdir(parents=True, exist_ok=True)
+    diagnostics.write_text(json.dumps({"planned_cells": [task[0] for task in work],
+                                      "cell_fits": records}, indent=2, allow_nan=False) + "\n")
+    if any("failure" in record for record in records):
+        raise ValueError(f"Recovery cells failed; diagnostics retained in {diagnostics}")
+    provenance = bundle_metadata([record["fit"] for record in records],
+                                 producer="scripts/run_multiscale_sfs_recovery.py", simulation_design=design)
+    require_unchanged(source_hashes)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         args.out,
@@ -183,10 +248,17 @@ def main() -> None:
         ),
         segregating_sites=np.asarray([record["segregating_sites"] for record in records]),
         coalescent_ploidy=np.int64(2),
+        **provenance,
     )
     metadata = {
         "output": str(args.out),
         "sha256": sha256(args.out),
+        "fit_diagnostics_sha256": sha256(diagnostics),
+        "optimizer_contract": json.loads(str(provenance["optimizer_contract_json"])),
+        "source_sha256": source_manifest("scripts/run_multiscale_sfs_recovery.py"),
+        "simulation_design": design,
+        "scientifically_validated": False,
+        "release_ready": False,
         "cell_start": args.cell_start,
         "cells": args.cells,
         "workers": args.workers,

@@ -1,0 +1,40 @@
+........................................................................ [  6%]
+........................................................................ [ 13%]
+........................................................................ [ 19%]
+........................................................................ [ 26%]
+........................................................................ [ 33%]
+........................................................................ [ 39%]
+........................................................................ [ 46%]
+........................................................................ [ 52%]
+........................................................................ [ 59%]
+........................................................................ [ 66%]
+........................................................................ [ 72%]
+........................................................................ [ 79%]
+........................................................................ [ 86%]
+........................................................................ [ 92%]
+........................................................................ [ 99%]
+.......                                                                  [100%]
+=============================== warnings summary ===============================
+../../.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+tests/test_pipeline.py::PipelineTests::test_coalescent_and_network_contract
+tests/test_secondary_contact.py::SecondaryContactTests::test_multimodal_posterior_contract
+  enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+  scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1087 passed, 11 warnings in 146.40s (0:02:26)

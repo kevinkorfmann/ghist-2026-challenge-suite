@@ -17,7 +17,7 @@ whose archived results and historical artifacts remain preserved.
 
 | Challenge | Current evidence | Status |
 |---|---|---|
-| 1 — bottleneck | Export checks pass; optimizer repair in development; completed weak-decline case has major recovery errors | Not ready; 24-case panel incomplete |
+| 1 — bottleneck | Export checks pass; versioned optimizer repair passes 1,089 tests on three platforms; original 24-case panel has major recovery errors | Not ready; recovery and uncertainty gaps |
 | 2 — secondary contact | All original cases now finish; hidden-history and contact-time errors remain | Runs, not scientifically ready |
 | 3 — growth/BGS | New 10 Mb neutral simulations recover strong growth; weak growth remains poorly identified | Runs, broader validation needed |
 | 4 — split/migration/BGS | Numerical stall fixed; Q1 fit finishes, but split-time error is +47% | Runs, accuracy/calibration gaps |
@@ -92,11 +92,34 @@ The [export proof](../experiments/readiness_2026_11_20/bottleneck/vcf_revalidati
 retains the exact validator source snapshot, separate from the original panel.
 This small diagnostic panel does not establish full-prior accuracy or confidence-interval coverage.
 
-The panel remains incomplete. Its completed weak-decline case 16 already shows
-large physical-parameter errors in both solvers despite reported convergence.
-Moments also flags poor restart agreement. This failure remains in the original
-results; numerical optimizer repair cannot by itself establish identifiability
-or reliable biological recovery.
+All 24 cases and 36 method problems completed under the original frozen coarse
+optimizer. Only 30 selected fits report convergence: 8/12 matched moments,
+10/12 matched dadi and 12/12 ancestral-history moments. Matched median absolute
+relative errors are 7.35% and 8.82% for time, 1.24% and 1.33% for the decline
+fraction, and 0.69% and 0.84% for ancestral size (moments and dadi respectively).
+These medians conceal the weak-decline case 16: time errors are +725% and +673%,
+and ancestral-size errors are +2,209% and +1,424%, despite reported convergence.
+Moments also flags poor restart agreement. Under the perturbed ancestral
+history, median time error is 21.16%; case 23 reaches +2,884% time and +4,675%
+ancestral-size error. These are diagnostic results on six parameter points,
+not a full-prior accuracy estimate. All unfavorable outcomes remain in the
+[completed original panel](../experiments/readiness_2026_11_20/bottleneck/full_panel_verification.json).
+
+The original VCF identity records remain rejected as legacy records; the
+separate corrected v2 export proof above supplies the verified export evidence.
+The original scientific results are not relabeled as outputs from the repaired
+optimizer. The [production optimizer review](bottleneck_optimizer_production_2026_11_20.md)
+records the coarse/fine/refinement development, source replay, residual agreement
+failure, and separate stress retry. Numerical repair alone does not establish
+identifiability, reliable biological recovery, or interval coverage.
+
+After the final source and all replay outcomes were fixed, a separate
+[descriptive truth comparison](../experiments/readiness_2026_11_20/bottleneck/production_stress_biological_context.json)
+confirmed that the repaired methods still misestimate the known stress case:
+about 218,057 and 216,381 generations, versus the simulated 28,000, despite
+passing the numerical gates. This single case was selected after its earlier
+poor recovery was known; it is development evidence, not fresh confirmation.
+No model, setting, or acceptance threshold was changed after this comparison.
 
 Spectrum projection now groups repeated allele counts and directly counts sites
 at the requested sample size. This preserves exact hypergeometric projection
@@ -129,6 +152,14 @@ attempts failed operationally; one has a confirmed out-of-memory kill. A
 bounded same-seed retry also exhausted its 22 GiB limit after 29 minutes 44 seconds;
 Slurm and stderr independently confirm the OOM event. No further simulation
 resource escalation is running.
+A separate paired synthetic software fixture checked more frequent ancestry
+simplification as a possible resource remedy. Both arms retained the same
+population/allele trajectory, sampled identities, selected genotypes and
+canonical marginal ancestry, including a forced checkpoint restore. Its original
+initialization-syntax failure and corrected run are both retained. This tiny
+fixture provides no credible full-case memory-savings estimate or biological
+recovery evidence; production defaults remain unchanged. See the
+[fixture review](../experiments/readiness_2026_11_20/sweeps/task5_simplification_fixture_review.json).
 The tiny completed subset cannot establish full-panel recovery. See the
 [sweep report](readiness_sweeps_2026_11_20.md) for failures and resource policy.
 
@@ -198,7 +229,8 @@ passes all **949 tests** on macOS/Python 3.12,
 Linux ARM/Python 3.12 and Betty/Linux x86-64/Python 3.11. Ruff and GitHub CI also
 pass. It integrates the completed submission and pedigree reviews; later
 Tasks 10–11 and 13–14 development is separate from that verified snapshot.
-A separate Task 7/12 repair snapshot passes **1,022 tests** on the same three
+The Task 7/12 repair merged in [PR #6](https://github.com/kevinkorfmann/ghist-2026-challenge-suite/pull/6)
+and passes **1,022 tests** on the same three
 platforms, with Ruff passing. This includes two new regressions for a
 floating-point tie in the Task 12 comparison scorer, corrected using integer
 correct-count differences. Exact source checks and test logs are recorded in the
@@ -210,6 +242,17 @@ nonfinite freeze values, unknown checkpoint status, unverified metric records,
 invalid sweep markers and mismatched download-manifest field names. Initial
 remote harness failures and their corrections are preserved in the verification
 records rather than omitted.
+
+The subsequent Task 1 optimizer and consumer snapshot passes **1,089 tests**
+on the same three platforms, with Ruff passing. The final two regressions reject
+duplicate original starting vectors and inconsistent paired starts, so repeated
+copies of one start cannot create restart agreement. Source hashes for all 465
+code/configuration files and 827 ancillary fixture files match on each platform.
+The [final integration record](../experiments/readiness_2026_11_20/optimizer_guard_integration/verification.json)
+preserves an initial test-snapshot packaging failure: required pre-existing data
+fixtures were missing. Restoring those unchanged fixtures resolved the failures;
+production source was identical in the failed and successful snapshots. The
+prior 1,087-test integration record remains preserved as a separate version.
 
 Compact protocols, checkpoints, job scripts and verification records are under
 [`experiments/readiness_2026_11_20`](../experiments/readiness_2026_11_20/).

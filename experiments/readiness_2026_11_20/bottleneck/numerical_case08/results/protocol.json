@@ -1,0 +1,153 @@
+{
+  "schema": "case08_numerical_diagnostic_v1",
+  "fresh_seed": 2026113008,
+  "restarts_per_variant": 8,
+  "planned_fits": 48,
+  "variants": [
+    {
+      "name": "lbfgsb_epsilon_1e-3",
+      "optimizer": "lbfgsb",
+      "epsilon": 0.001
+    },
+    {
+      "name": "lbfgsb_epsilon_1e-5",
+      "optimizer": "lbfgsb",
+      "epsilon": 1e-05
+    },
+    {
+      "name": "powell",
+      "optimizer": "powell",
+      "xtol": 1e-05,
+      "ftol": 1e-10
+    }
+  ],
+  "methods": [
+    "moments",
+    "dadi"
+  ],
+  "log_uniform_starts": [
+    [
+      -0.5230914142223138,
+      -7.356311591006947
+    ],
+    [
+      -2.85599717924696,
+      -5.298250609003063
+    ],
+    [
+      -1.4927065512583177,
+      -3.475097026583505
+    ],
+    [
+      -1.0993420970121965,
+      -7.804422017499138
+    ],
+    [
+      -2.5168348295127405,
+      -7.00867300957287
+    ],
+    [
+      -2.1050769074133036,
+      -3.748861649342719
+    ],
+    [
+      -0.04517627108790245,
+      -1.3590416670260819
+    ],
+    [
+      -0.9338501613656578,
+      -7.245912449176013
+    ]
+  ],
+  "parameter_bounds": [
+    [
+      0.02,
+      0.0001
+    ],
+    [
+      0.999,
+      5.0
+    ]
+  ],
+  "fixed_model": "folded two-epoch multinomial SFS; same fixed likelihood domain as original panel",
+  "dadi_grid_offsets": [
+    20,
+    30,
+    40
+  ],
+  "lbfgsb_controls": {
+    "pgtol": 1e-05,
+    "factr": 10000000.0,
+    "maxfun": 1000,
+    "maxiter": 500,
+    "maxls": 20
+  },
+  "powell_controls": {
+    "maxfev": 1000,
+    "maxiter": 500
+  },
+  "local_difference_steps": [
+    0.001,
+    0.0001,
+    1e-05
+  ],
+  "allocated_cpus": 1,
+  "slurm_wallclock_limit_seconds": 600,
+  "input_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/case08-numerical-20261120/input/spectrum.npz": "41d63e29c2073a611dec034beb14d2b66d41197fbf359bbb26a83a2a8af447a8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/case08-numerical-20261120/input/moments.json": "ca190a0500f8a09c0f011f9d4f779c292bd28c2f867290fdd7d43bb9a2d11c29",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/case08-numerical-20261120/input/dadi.json": "7bdfa6d54f5f3c9c506446c5066d67aeb186f7066fef52f9ffaa2f3b15abe286",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/case08-numerical-20261120/input/panel_protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+  },
+  "source_sha256": {
+    "diagnostic": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/case08-numerical-20261120/diagnose.py",
+      "sha256": "9e2a3809eef0ef494a2a831fdb9cca2f6d4bc9992b9ed7d3738a16dadc717d37"
+    },
+    "moments_demography": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Demographics1D.py",
+      "sha256": "ac29a564edbb63814429a021ae7a31160ee13218e49f48e09228dedffc7c2b8e"
+    },
+    "dadi_demography": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/dadi/Demographics1D.py",
+      "sha256": "f03db2ea64e292f8d4fe5e99b1bac39f612525bcfbb3d204bfad70dd4a2e87b7"
+    },
+    "scipy_lbfgsb": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/scipy/optimize/_lbfgsb_py.py",
+      "sha256": "b24ae44c2d63cd88a34b3a95b1380a219d274f87bb99b84faba2b44f6b6d6dd9"
+    },
+    "scipy_minimize": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/scipy/optimize/_minimize.py",
+      "sha256": "d477b6272da62e76ce0be3c58376e41dc502d1b3533dc85f1c931d0b13ad0f1b"
+    },
+    "likelihood_domain_guard": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-bottleneck-20261120/src/ghist_inference/validation.py",
+      "sha256": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb"
+    },
+    "spectrum_checkpoint_loader": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-bottleneck-20261120/src/ghist_inference/checkpoint.py",
+      "sha256": "137283a7dde1d969a87f66b98fb81d9aa44dca5046c5618cc92e84b81c286925"
+    }
+  },
+  "spectrum_sha256": "cccf5cd82153cd0326c349958a893657e0e8508f069a0c41551b3617ca0ace17",
+  "original_identity": {
+    "case": 8,
+    "point": 2,
+    "replicate": 0,
+    "scenario": "matched",
+    "ancestry_seed": 2026112925,
+    "mutation_seed": 2026112926,
+    "optimizer_seed": 2026112927,
+    "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+  },
+  "versions": {
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "scipy": "1.16.3",
+    "numpy": "2.4.6"
+  },
+  "selection": "Case selected for abnormal selected optimizers; diagnostic, not an independent recovery replicate",
+  "truth_used": false,
+  "panel_results_replaced": false,
+  "scope": "Compare numerical termination and objective agreement; no biological adequacy or promotion claim"
+}

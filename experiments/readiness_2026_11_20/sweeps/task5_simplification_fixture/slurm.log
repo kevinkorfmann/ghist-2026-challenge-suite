@@ -1,0 +1,7 @@
+{"schema": "paired_slim_simplification_software_result_v1", "protocol_sha256": "9587f3b7c90bba4f16a76ce451e5bbe770f08d6680b4a10b4419aafee490683a", "state": "FAILED", "arms": {"default": {"exit_code": 0, "elapsed_seconds": 0.07491221325471997, "log_sha256": "b55747472b5ebc414f9238120f9e36aba83065dbfd052628edec54d2269b952b", "tree_sha256": "dbc4f1edd8dd28a929738b0fdf34e0d29426de26f2ddb124ae4fb63155e3ad34", "canonical_sha256": "0e64c13783ad5850f2c41e1e3fd28fead63ab448bc9cd907e3a1ebaf9a06fdf0", "trajectory_records": 362, "restore_debug_records": 1, "forced_restore_records": 1}, "interval20": {"exit_code": 1, "elapsed_seconds": 0.027344462927430868, "log_sha256": "acbb5b8174a52610e08d7607740675c582c17c365d2bbe29042d701f93fd08f8"}}, "scientifically_validated": false, "scope": "Bookkeeping equivalence software fixture only; no full-chromosome resource or recovery claim.", "error": "RuntimeError: interval20 exited 1; original log preserved", "elapsed_seconds": 0.16720724711194634}
+Traceback (most recent call last):
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-simplification-fixture-20261120/run.py", line 115, in <module>
+    main()
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/sweep-simplification-fixture-20261120/run.py", line 87, in main
+    raise RuntimeError(f'{arm} exited {result.returncode}; original log preserved')
+RuntimeError: interval20 exited 1; original log preserved

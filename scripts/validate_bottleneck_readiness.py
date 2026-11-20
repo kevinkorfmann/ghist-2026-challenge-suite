@@ -22,6 +22,7 @@ from ghist_bottleneck.sfs_baseline import (
     complete_block_spectra_from_vcf, fit_two_epoch_spectrum, projected_sfs_from_vcf,
 )
 from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
+from ghist_bottleneck.optimization import optimizer_contract, validate_optimizer_contract
 from ghist_inference.checkpoint import atomic_json, load_spectrum_checkpoint, save_spectrum_checkpoint
 from scripts.validate_bottleneck_science import MU, RECOMBINATION, POINTS, panel_work
 
@@ -30,11 +31,13 @@ def protocol(length, seed, restarts):
     sources = [Path(__file__), Path('scripts/validate_bottleneck_science.py'),
                Path('src/ghist_bottleneck/sfs_baseline.py'),
                Path('src/ghist_bottleneck/dadi_reference.py'),
+               Path('src/ghist_bottleneck/optimization.py'),
                Path('src/ghist_inference/validation.py'),
                Path('src/ghist_inference/checkpoint.py'),
                Path('src/ghist_inference/vcf.py')]
     return dict(
-        schema='bottleneck_target_length_v2', sequence_length=length,
+        schema='bottleneck_target_length_v3',
+        optimizer_contracts={engine: optimizer_contract(engine) for engine in ('moments', 'dadi')}, sequence_length=length,
         block_length=length // 50, seed=seed, restarts=restarts,
         parameter_points=POINTS, replicates=2, cases=24, diploid_individuals=57,
         coalescent_ploidy=2, mutation_rate=MU, recombination_rate=RECOMBINATION,
@@ -54,7 +57,7 @@ def protocol(length, seed, restarts):
             'Continuous sites may share an integer VCF position after rounding',
         ],
         source_sha256={str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
-        versions={p: importlib.metadata.version(p) for p in ['msprime', 'tskit', 'moments-popgen', 'dadi', 'numpy']},
+        versions={p: importlib.metadata.version(p) for p in ['msprime', 'tskit', 'moments-popgen', 'dadi', 'numpy', 'scipy']},
     )
 
 
@@ -148,12 +151,15 @@ def run_case(index, out, config, *, vcf_only=False):
             old = json.loads(target.read_text())
             if old.get('identity') != identity or old.get('spectrum_sha256') != metadata['spectrum_sha256']:
                 raise ValueError('Fit checkpoint configuration mismatch')
+            if 'fit' in old:
+                validate_optimizer_contract(old['fit'], engine=name, expected=config['optimizer_contracts'][name], require_converged=False)
             continue
         started = time.monotonic()
         result = dict(identity=identity, truth=metadata['truth'], spectrum_sha256=metadata['spectrum_sha256'])
         try:
             estimate = fit(spectrum, mutation_rate=MU, sequence_length=length,
                            restarts=restarts, seed=seed+2, folded=True)
+            validate_optimizer_contract(estimate, engine=name, expected=config["optimizer_contracts"][name], require_converged=False)
             result.update(fit=estimate, relative_error={k: estimate[k]/v-1 for k, v in metadata['truth'].items()})
         except Exception as error:
             result['failure'] = f'{type(error).__name__}: {error}'

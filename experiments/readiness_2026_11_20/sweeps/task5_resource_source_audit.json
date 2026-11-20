@@ -1,0 +1,108 @@
+{
+  "schema": "task5_resource_source_audit_v1",
+  "completed_utc": "2026-11-20T18:45:25.951308+00:00",
+  "scope": "Read-only frozen-source and existing resource-evidence audit. No protocol changes, simulations, resource escalation, biological accuracy assessment, or challenge-answer reads.",
+  "conclusion": "Ancestry-table growth and simplification workspace are a source-backed plausible explanation for the sawtooth memory burden. The exact failing allocation and required peak remain unidentified; resource feasibility is unresolved.",
+  "observations": [
+    "Same-seed case5 retry used Q=1, full chromosome7 length159345973, 25 diploid samples, burn-in1, same catalog history and conditioning; scheduler and stderr confirm OOM under22GiB after1774.5612776959315 driver seconds.",
+    "Retry cgroup high-water mark reached23622320128 bytes. At1520.55s after monitoring began, current usage fell from19.3437GiB to5.6094GiB; at1690.61s it fell from18.4739GiB to5.9185GiB. These are measured aggregate cgroup drops, not identified simplification events.",
+    "Only failed status exists in retry output. SLiM failed before returning to Python, so recapitation, neutral overlay, VCF materialization, predictor and RAiSD were not running.",
+    "Frozen v4 driver and current driver differ only in downstream RAiSD peak validation/provenance; the simulation call is unchanged.",
+    "Current Betty stdpopsim engine and SLiM binary SHA256 match their frozen software manifest."
+  ],
+  "source_findings": [
+    {
+      "fact": "stdpopsim invokes initializeTreeSeq(timeUnit=\"generations\") without a simplification override. SLiM4.3 defaults to target pre/post table-row ratio10, initial interval20, adaptive interval bounded1..1000. Simplification is enabled, but the policy is not a memory-cap policy.",
+      "references": [
+        "stdpopsim/slim_engine.py:105",
+        "SLiM/core/species_eidos.cpp:1296",
+        "SLiM/core/species.cpp:4635"
+      ]
+    },
+    {
+      "fact": "Simplification retains ancestry of all extant diploid genomes as well as any remembered samples; final sample25 is not the live ancestral population size. Default retainCoalescentOnly is true and extinct unneeded individuals are filtered, so no intentional all-history retention was identified.",
+      "references": [
+        "SLiM/core/species.cpp:4162",
+        "SLiM/core/species.cpp:4172",
+        "SLiM/core/species.cpp:4251",
+        "SLiM/core/community_eidos.cpp:138",
+        "stdpopsim/slim_engine.py:531"
+      ]
+    },
+    {
+      "fact": "Bundled tskit simplifier allocates maps proportional to node count and copies input tables before truncating/rebuilding output tables; simplification can therefore require substantial temporary workspace above its steady table storage.",
+      "references": [
+        "SLiM/treerec/tskit/tables.c:9496",
+        "SLiM/treerec/tskit/tables.c:9513",
+        "SLiM/treerec/tskit/tables.c:9632"
+      ]
+    },
+    {
+      "fact": "No double demographic scaling found: driver supplies untouched catalog diploid sizes and Q=1; engine handles N/Q, growth*Q and time/Q. Catalog size ranges about7156..71560; full chromosome ancestry is expected to exceed constantN10000 burden.",
+      "references": [
+        "scripts/run_sweep_readiness_case.py:39",
+        "scripts/run_sweep_readiness_case.py:125",
+        "stdpopsim/slim_engine.py:103",
+        "stdpopsim/slim_engine.py:154",
+        "stdpopsim/slim_engine.py:166",
+        "stdpopsim/catalog/HomSap/demographic_models.py:811"
+      ]
+    },
+    {
+      "fact": "Engine buffers stdout/stderr using communicate(), including per-generation growth DEBUG lines at default verbosity2, but default verbosity does not enable the growing population-history dictionaries or per-mutation DEBUG3 records. No evidence establishes logs as the multi-GiB cause; the checkpoint had not yet been observed, so repeated rejection histories were not demonstrated.",
+      "references": [
+        "stdpopsim/slim_engine.py:75",
+        "stdpopsim/slim_engine.py:401",
+        "stdpopsim/slim_engine.py:631",
+        "stdpopsim/slim_engine.py:679",
+        "stdpopsim/slim_engine.py:1780"
+      ]
+    },
+    {
+      "fact": "Neutral mutations are added after forward simulation; only nonneutral DFE proportions enter forward mutation-rate maps. No unnecessary whole-chromosome neutral mutation population was identified in the failing forward stage.",
+      "references": [
+        "stdpopsim/slim_engine.py:759",
+        "stdpopsim/slim_engine.py:1914"
+      ]
+    }
+  ],
+  "inference": {
+    "plausible_mechanism": "Default ratio10 permits accumulating large unsimplified ancestry tables. Increasing inherited ancestry through the Zigzag history and temporary copy/map allocations during simplification can create rising peaks with large drops. Existing trace is consistent with this mechanism but does not prove which event killed the run.",
+    "not_established": [
+      "Exact failure tick/population phase",
+      "Tables sizes before/after simplification",
+      "Whether kill occurred during growth, sorting, copying or other allocation",
+      "Whether a shorter simplification interval would finish under22GiB",
+      "A finite upper memory requirement for the full history"
+    ]
+  },
+  "prospective_adaptation_not_authorized_or_executed": {
+    "candidate": "Separately version an exact generated-script transformation setting initializeTreeSeq(timeUnit=\"generations\", simplificationInterval=20); preserve every biological parameter, exact seed, maps, masks, selection/conditioning and Q=1. Assert the transformation replaces exactly one declaration.",
+    "biological_semantics": "The examined auto-simplification and simplifier paths perform deterministic ancestry bookkeeping; no RNG draws or demographic/selection changes appear there. A shorter interval is therefore a bookkeeping adaptation by source inspection, not a different biological model. It can alter internal node identifiers, ordering, provenance and possibly downstream neutral-overlay bitwise realization; exact VCF byte identity is not promised.",
+    "first_verification": "Before any chromosome retry, run a separately approved <=5min paired software fixture under the same binary with default versus interval20, identical seeded reproduction/selection, recorded sample pedigree identities, population/selected-allele trajectories and canonical marginal ancestry comparisons. Include checkpoint restore behavior. Treat as software evidence only; do not tune interval using recovery accuracy.",
+    "resource_verification": "Only after software equivalence checks and separate approval: at most one same-seed case5 bookkeeping retry within the SAME22GiB and original2h limits, with periodic tick/population logging streamed to a file and external cgroup monitoring. Preserve original OOM outcome and attempt denominator. A new OOM or timeout remains failure; no escalation or further cases assumed.",
+    "tradeoff": "Shorter intervals may lower transient table growth at additional CPU cost; neither completion nor peak reduction is guaranteed."
+  },
+  "source_sha256": {
+    "frozen_v4_driver": "e12a8af2873a712f10dc2c8c4dc2b581c31078b900dc4cff9226477c1c23e238",
+    "stdpopsim/slim_engine.py": "a58e4629196239970d0c593f71b324d3da831745a5e707fe83fdd214cea9a911",
+    "SLiM4.3/binary": "caaf10c365e4ae783251ab31f9d4b9d0425ba3417a7fbccbc76ce42eea94551e",
+    "SLiM/core/species_eidos.cpp": "4d302466d14ee61f8498ab6e2a925b0f3bd1006a5802fc70c50730ac3cecff12",
+    "SLiM/core/species.cpp": "e042d92c5b3b02cc7072fa51ba7999ce86c7d065d0bfdce710e72b6cf2ed0676",
+    "SLiM/core/community_eidos.cpp": "7991b3aa41af33f35986e5a177de3260ff8371c90f73da35f9d1783ffd5fca55",
+    "SLiM/treerec/tskit/tables.c": "64084c9763d99d59f6c336fa22b0e7bf0dcdb5b4564d08b9a570aaaeb2261801",
+    "stdpopsim/catalog/HomSap/demographic_models.py": "ca1adb03f251b7fc293323ef9fe4e77ec9e705a9ad38c21382946bed7c791e1c"
+  },
+  "evidence_sha256": {
+    "experiments/readiness_2026_11_20/sweeps/task5_design_v4.json": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+    "experiments/readiness_2026_11_20/sweeps/source_snapshot_v4.tar.gz": "78a8ae4bd6b5214541fe6eadb340c05434e79037713465f02610ef7f5e6980ac",
+    "experiments/readiness_2026_11_20/sweeps/software.json": "5ff52599f95391b3f9505dbc4a60690b99c6de2e25d15fd65615421aaa4996ed",
+    "experiments/readiness_2026_11_20/sweeps/resource_case5_retry.jsonl": "916b71a20a4f69ac3a6cf9c6b432a4a491af3341977a63f587500434b016748b",
+    "experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/status.json": "87c9c04c8baa7729313102f3cc11c81d161d6da5ee0df4b05e2ee4398698c3bf",
+    "experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/sacct.txt": "6413f0d20b8fa2f71c7b54760fba31ac30d76e60b7bcbcb3345bb5c41305e843",
+    "experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/slurm.log": "6643e94d2ecf519040736ffa2fe6d5e79e0f7288c0e2e0f7e0e3e9eaa8916871"
+  },
+  "resource_feasibility": "unresolved",
+  "scientifically_validated": false,
+  "simulations_launched": 0
+}

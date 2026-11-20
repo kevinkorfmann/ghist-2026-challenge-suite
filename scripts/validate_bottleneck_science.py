@@ -12,6 +12,7 @@ import msprime
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
 from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
+from ghist_bottleneck.optimization import optimizer_contract
 
 
 # Prespecified diagnostic points spanning recent/old and strong/weak declines.
@@ -102,6 +103,8 @@ def main() -> None:
         parser.error("all numeric settings must be positive")
     work = panel_work(args.replicates, args.sequence_length, args.seed, args.restarts)
     protocol = dict(
+        schema="bottleneck_science_v2",
+        optimizer_contracts={engine: optimizer_contract(engine) for engine in ("moments", "dadi")},
         seed_allocation="consecutive disjoint ancestry/mutation/optimizer triples",
         coalescent_ploidy=2, haplotypes=114, parameter_points=POINTS,
         replicates=args.replicates, sequence_length=args.sequence_length,
@@ -114,8 +117,10 @@ def main() -> None:
         rate_sensitivity="At fixed SFS, inferred N and time scale inversely with assumed mutation rate; decline fraction is invariant. This structural sensitivity is not a recovery experiment.",
         limitation="10 Mb diagnostic panel is not full-prior or target 100 Mb validation; dadi and moments share the same two-epoch biological model",
         source_sha256={str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in [
-            Path(__file__), Path('src/ghist_bottleneck/sfs_baseline.py'), Path('src/ghist_bottleneck/dadi_reference.py')]},
-        versions={p:importlib.metadata.version(p) for p in ['msprime','tskit','moments-popgen','dadi','numpy']},
+            Path(__file__), Path('src/ghist_bottleneck/sfs_baseline.py'), Path('src/ghist_bottleneck/dadi_reference.py'),
+            Path('src/ghist_bottleneck/optimization.py'), Path('src/ghist_inference/validation.py'),
+            Path('src/ghist_inference/checkpoint.py')]},
+        versions={p:importlib.metadata.version(p) for p in ['msprime','tskit','moments-popgen','dadi','numpy','scipy']},
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     existing = None

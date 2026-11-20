@@ -1,0 +1,149 @@
+{
+  "scope": "Numerical diagnostic selected for abnormal termination; no independent biological recovery or promotion claim",
+  "job_id": "10851187",
+  "elapsed_seconds": 107,
+  "allocated_cpus": 1,
+  "max_rss_kb": 236788,
+  "planned_fits": 48,
+  "recorded_fits": 48,
+  "censored_fits": 0,
+  "all_local_original_input_hashes_verified": true,
+  "raw_output_hashes_verified": true,
+  "groups": [
+    {
+      "method": "moments",
+      "variant": "lbfgsb_epsilon_1e-3",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 6,
+      "best_restart": 0,
+      "best_parameters": [
+        0.49782019667730426,
+        0.13951599353420563
+      ],
+      "best_objective": 507.85796099427535,
+      "best_reported_converged": true,
+      "best_termination": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "best_centered_gradient_inf_norm_h1e-5": 57.00778347116762,
+      "worst_finite_objective": 507.8636760676527,
+      "restarts_within_0_1_of_best": 8
+    },
+    {
+      "method": "moments",
+      "variant": "lbfgsb_epsilon_1e-5",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 8,
+      "best_restart": 5,
+      "best_parameters": [
+        0.4979886169534527,
+        0.13972334971382666
+      ],
+      "best_objective": 507.8415061769774,
+      "best_reported_converged": true,
+      "best_termination": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "best_centered_gradient_inf_norm_h1e-5": 0.8222676115147938,
+      "worst_finite_objective": 507.84150631270313,
+      "restarts_within_0_1_of_best": 8
+    },
+    {
+      "method": "moments",
+      "variant": "powell",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 8,
+      "best_restart": 6,
+      "best_parameters": [
+        0.49799103321737076,
+        0.13972408708558587
+      ],
+      "best_objective": 507.8415040933105,
+      "best_reported_converged": true,
+      "best_termination": "Optimization terminated successfully.",
+      "best_centered_gradient_inf_norm_h1e-5": 0.0036186975194305955,
+      "worst_finite_objective": 21017.320542901187,
+      "restarts_within_0_1_of_best": 5
+    },
+    {
+      "method": "dadi",
+      "variant": "lbfgsb_epsilon_1e-3",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 7,
+      "best_restart": 0,
+      "best_parameters": [
+        0.49698686883161475,
+        0.14128729196859538
+      ],
+      "best_objective": 508.2128621641896,
+      "best_reported_converged": true,
+      "best_termination": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "best_centered_gradient_inf_norm_h1e-5": 30.245471134686653,
+      "worst_finite_objective": 20165.708784992996,
+      "restarts_within_0_1_of_best": 5
+    },
+    {
+      "method": "dadi",
+      "variant": "lbfgsb_epsilon_1e-5",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 7,
+      "best_restart": 4,
+      "best_parameters": [
+        0.49707618460145503,
+        0.1413705342325774
+      ],
+      "best_objective": 508.2090348563288,
+      "best_reported_converged": true,
+      "best_termination": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "best_centered_gradient_inf_norm_h1e-5": 0.5036865331953962,
+      "worst_finite_objective": 20164.948399549045,
+      "restarts_within_0_1_of_best": 6
+    },
+    {
+      "method": "dadi",
+      "variant": "powell",
+      "planned_restarts": 8,
+      "finite_restarts": 8,
+      "reported_converged": 8,
+      "best_restart": 3,
+      "best_parameters": [
+        0.49707768348861436,
+        0.14137153529715019
+      ],
+      "best_objective": 508.2090339694623,
+      "best_reported_converged": true,
+      "best_termination": "Optimization terminated successfully.",
+      "best_centered_gradient_inf_norm_h1e-5": 0.0032570824259678726,
+      "worst_finite_objective": 17905.42544356756,
+      "restarts_within_0_1_of_best": 5
+    }
+  ],
+  "original_selected": {
+    "moments": {
+      "recomputed_minus_stored_objective": 0.0,
+      "coarse_forward_slopes": [
+        29.923283458629133,
+        -3.541836733348126
+      ],
+      "fine_centered_slopes": [
+        -54.879515301103865,
+        -6.632988879530077
+      ]
+    },
+    "dadi": {
+      "recomputed_minus_stored_objective": 0.0,
+      "coarse_forward_slopes": [
+        15.02049375994828,
+        2.5111074064628194
+      ],
+      "fine_centered_slopes": [
+        -69.62744810184486,
+        -0.6407761247786624
+      ]
+    }
+  },
+  "truth_used": false,
+  "original_panel_modified": false,
+  "production_source_modified": false
+}

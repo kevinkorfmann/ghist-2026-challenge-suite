@@ -1,0 +1,62 @@
+{
+  "schema": "task5_simplification_fixture_review_v1",
+  "completed_utc": "2026-11-20T18:54:28.373483+00:00",
+  "purpose": "Bounded software check of ancestry-bookkeeping equivalence; no full Task5 retry, biological recovery or readiness claim.",
+  "attempts": [
+    {
+      "directory": "experiments/readiness_2026_11_20/sweeps/task5_simplification_fixture",
+      "job": "10854518",
+      "state": "FAILED",
+      "elapsed_scheduler_seconds": 6,
+      "failure": "Default arm completed. Fixed-interval arm failed before simulation because Eidos requires named arguments in signature order. Frozen source/protocol/logs/output retained."
+    },
+    {
+      "directory": "experiments/readiness_2026_11_20/sweeps/task5_simplification_fixture_v2",
+      "job": "10854867",
+      "state": "PASSED",
+      "elapsed_scheduler_seconds": 6,
+      "repair": "Only changed named-argument order: initializeTreeSeq(simplificationInterval=20, timeUnit=\"generations\"). Default script and comparison runner bytes unchanged."
+    }
+  ],
+  "freeze_verification": {
+    "v1_protocol_sha256": "9587f3b7c90bba4f16a76ce451e5bbe770f08d6680b4a10b4419aafee490683a",
+    "v2_protocol_sha256": "52fb8147aba90613e08823c84dc1cacfa2f440f0b4b162e1db1cebfaec9f4f33",
+    "v2_verification_sha256": "52aa4a140c6d6fb844b2de5df53bf0eebfb0474ca17becd7798dc1508656e857",
+    "all_declared_source_and_output_hashes_match": true,
+    "paired_scripts_only_differ_in_simplification_interval": true
+  },
+  "results": {
+    "comparisons": {
+      "trajectory": true,
+      "sample_identities": true,
+      "marginal_ancestry": true,
+      "selected_genotypes": true,
+      "sequence_length": true,
+      "sample_haplotypes": true
+    },
+    "trajectory_records_per_arm": 362,
+    "forced_restores_per_arm": 1,
+    "remembered_diploids": 12,
+    "sample_haplotypes": 24,
+    "canonical_marginal_intervals": 7,
+    "selected_variant_count": 1,
+    "default_slim_seconds": 0.07201282912865281,
+    "interval20_slim_seconds": 0.07259069196879864,
+    "canonical_sha256": "0e64c13783ad5850f2c41e1e3fd28fead63ab448bc9cd907e3a1ebaf9a06fdf0",
+    "raw_tree_serializations_differ": true,
+    "postrun_tree_recomputation_on_Betty": "passed"
+  },
+  "limitations": [
+    "One fixed synthetic fixture and seed; it does not prove equivalence for every simulation or rejection path.",
+    "This fixture includes exactly one forced call to the existing generated stdpopsim restore function. It did not require additional natural rejection restores.",
+    "Canonical comparisons ignore tree-sequence serialization/provenance/internal IDs, while requiring sampled pedigree/genome identity, marginal ancestry and selected genotypes to match.",
+    "Neutral overlay after forward simulation was not performed; downstream bitwise VCF identity is not asserted.",
+    "The short-job scheduler RSS sampling is not a credible peak-memory measurement; no memory-savings estimate is reported.",
+    "Full-chromosome Task5 memory feasibility remains unresolved. The original22GiB OOM remains a failure. No production default or frozen biological protocol changed.",
+    "An additional local postrun recomputation was unavailable because the local review environment lacks pyslim; postrun recomputation against retained trees succeeded using the recorded Betty environment."
+  ],
+  "corrected_prospective_api": "initializeTreeSeq(simplificationInterval=20, timeUnit=\"generations\");",
+  "production_retry_authorized_or_launched": false,
+  "scientifically_validated": false,
+  "release_ready": false
+}

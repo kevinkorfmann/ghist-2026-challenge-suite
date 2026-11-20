@@ -1,0 +1,80 @@
+{
+  "verified_utc": "2026-11-20T19:04:45.859351+00:00",
+  "base_commit": "180220900de98f971f1c5ccf6bc618d187694a8c",
+  "scope": "Final Task1 optimizer and calibration consumers with duplicate-original-start guard; other-chat development excluded",
+  "tests": {
+    "macOS_arm64_python_3_12_11": {
+      "passed": 1089,
+      "warnings": 2,
+      "seconds": 38.27
+    },
+    "linux_arm64_python_3_12_3": {
+      "passed": 1089,
+      "warnings": 2,
+      "seconds": 50.49
+    },
+    "betty_linux_x86_64_python_3_11_11": {
+      "passed": 1089,
+      "warnings": 11,
+      "seconds": 192.81,
+      "slurm_job": 10855604,
+      "state": "COMPLETED",
+      "exit_code": "0:0"
+    }
+  },
+  "source_files_checked_per_platform": 465,
+  "source_manifest_sha256": "52798af9db8b98518cc6456a5d8921b5614416d235cc963368612c126c18faa4",
+  "source_mismatches": [],
+  "fixture_files_checked_per_platform": 827,
+  "fixture_manifest_sha256": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+  "fixture_mismatches": [],
+  "ruff": {
+    "command": "ruff check src scripts tests",
+    "passed": true
+  },
+  "test_count_reconciliation": {
+    "PR6_baseline": 1022,
+    "new_optimizer_tests": 26,
+    "new_consumer_tests": 41,
+    "total": 1089
+  },
+  "initial_harness_failure": {
+    "cause": "Initial isolated snapshot copied source/configuration/test files but omitted existing repository data fixtures required by Task4/Task9 tests",
+    "observed_per_attempt": {
+      "failed": 3,
+      "passed": 1047,
+      "setup_errors": 39
+    },
+    "attempts": [
+      "macOS first invocation",
+      "macOS absolute-PYTHONPATH retry",
+      "Linux ARM initial invocation",
+      "Betty10855553"
+    ],
+    "repair": "Restored all827 unmodified ancillary files from prior complete integration archive into a separate snapshot; retained identical465-file source manifest; no production source changes",
+    "records": "initial_incomplete_fixture_snapshot/"
+  },
+  "scientific_scope": "Unit/integration and artifact-consistency evidence; source replay and biological recovery reported separately; no accuracy/interval-coverage certification",
+  "evidence_sha256": {
+    "betty_environment.json": "e47e38711cb065dc46df6bba34e98fec69b83930bdf806ee7c4a0cb75b91d646",
+    "betty_fixture_verification.json": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be",
+    "betty_pytest.log": "714f3e52d11470f226e23a10c566ab2d1be85b55aa2001d3ca1fd9e807f6a636",
+    "fixture_snapshot.json": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+    "ghist-optimizer-guard-complete-betty.sbatch": "7a4815b9377e5b3a17e2f14ee8c24f0974c480b3d9185ea514fdfb3f68a58b83",
+    "ghist-optimizer-guard-macos-environment-v3.json": "a89dd8fb590e70e33eae6fd837ad3be58360fc3eada62b632347b0715220c787",
+    "ghist-optimizer-guard-macos-pytest-v3.log": "d97b538bcca0378058623c84464c76fcef06d140d247e895bed88cd3353511a9",
+    "initial_incomplete_fixture_snapshot/betty_pytest.log": "b0481e71e06f762016c78d15e6202cdd6e32aa0b3f2aec846ef3cc7e2fb4dfa3",
+    "initial_incomplete_fixture_snapshot/ghist-optimizer-guard-macos-environment.json": "a89dd8fb590e70e33eae6fd837ad3be58360fc3eada62b632347b0715220c787",
+    "initial_incomplete_fixture_snapshot/ghist-optimizer-guard-macos-pytest-v2.log": "2f9faf082ae08cbb44d2b409f83ca1d1944a2ad91e0948296e293f19b3afd3ae",
+    "initial_incomplete_fixture_snapshot/ghist-optimizer-guard-macos-pytest.log": "f4299f8332f61399157f2e98d9b0807298200e209412065b18de4f503ce9b537",
+    "initial_incomplete_fixture_snapshot/linux_pytest.log": "70c902042e65324377e1efb88c1abd766a4d4c47ef3e73ac3731677a779dc8e4",
+    "linux_environment.json": "daebcab8425ff5d2da01ec1f57f492ad397cdcc7573c4b795ccbc97f1cdad27e",
+    "linux_fixture_verification.json": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be",
+    "linux_pytest.log": "16b306797c1482949cdea7d00e6dcd1e469ad985a59d15f934b306905e1edfd4",
+    "macos_fixture_verification.json": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be",
+    "sacct.txt": "d194679e2a1d72bef14da92cd56e160a11565c5076810103a780774b574f5c21",
+    "slurm-10855604.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_snapshot.json": "52798af9db8b98518cc6456a5d8921b5614416d235cc963368612c126c18faa4",
+    "verify_snapshot_fixtures.py": "dcb91ccec269c590c7ef23f079637b960b0df04e777165f9ed6aab907fd1356a"
+  }
+}

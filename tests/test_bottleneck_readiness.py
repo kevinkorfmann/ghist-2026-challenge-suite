@@ -32,7 +32,7 @@ def test_finite_nonconverged_fit_is_not_reported_as_converged(monkeypatch):
     monkeypatch.setattr(moments.Inference, 'optimize_log_lbfgsb', lambda *a, **k: (
         np.array([.4, .2]), 0., dict(warnflag=1, task='ITERATION LIMIT', funcalls=99, nit=50),
     ))
-    fit = fit_two_epoch_spectrum(spectrum, restarts=2)
+    fit = fit_two_epoch_spectrum(spectrum, restarts=2, optimizer_strategy="legacy_coarse_v1")
     assert fit['successful_restarts'] == 2
     assert fit['converged_restarts'] == 0
     assert fit['optimizer']['converged'] is False
@@ -52,9 +52,16 @@ def test_boundary_reference_can_initialize_bootstrap():
 
 
 @pytest.mark.parametrize('changed', [dict(mutation_rate=2e-8), dict(sequence_length=2000), dict(folded=False)])
-def test_bootstrap_rejects_changed_physical_scale(changed):
+def test_bootstrap_rejects_changed_physical_scale(changed, monkeypatch):
+    # This test isolates scale checks; complete optimizer contracts are tested separately.
+    monkeypatch.setattr("scripts.bootstrap_bottleneck_sfs.validate_optimizer_contract", lambda *a, **k: {})
     from scripts.bootstrap_bottleneck_sfs import validate_reference
-    reference = dict(folded=True, sequence_length=1000, theta=.4, ancestral_effective_size=10000)
+    from ghist_bottleneck.optimization import optimizer_contract
+    reference = dict(folded=True, sequence_length=1000, theta=.4, ancestral_effective_size=10000,
+                     engine="moments", optimizer_contract=optimizer_contract("moments"),
+                     optimizer={"converged": True, "warnflag": 0}, best_restart_converged=True,
+                     optimizer_diagnostics={"restarts_within_0_1_log_likelihood": 2},
+                     optimizer_neighborhood={"passes_finite_neighborhood_check": True})
     settings = dict(mutation_rate=1e-8, sequence_length=1000, folded=True)
     validate_reference(reference, **settings)
     with pytest.raises(ValueError, match='disagree'):
@@ -68,7 +75,7 @@ def test_bootstrap_rejects_unrelated_input_and_records_legacy_status(tmp_path):
     path = tmp_path / 'input.vcf'
     path.write_text('first input')
     blocks = np.array([[0, 5, 2, 1, 0], [0, 8, 1, 2, 0]])
-    reference = {'sfs': {'projection': 4, 'spectrum_sha256': spectrum_digest(blocks.sum(axis=0))},
+    reference = {'sample_haplotypes': 4, 'sfs': {'projection': 4, 'spectrum_sha256': spectrum_digest(blocks.sum(axis=0))},
                  'input_vcf_sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
     check = validate_input_reference(reference, path, blocks, {'projection': 4})
     assert check['reference_provenance'] == 'verified_input_and_spectrum'
@@ -77,7 +84,7 @@ def test_bootstrap_rejects_unrelated_input_and_records_legacy_status(tmp_path):
     path.write_text('different input')
     with pytest.raises(ValueError, match='input_vcf_sha256'):
         validate_input_reference(reference, path, blocks, {'projection': 4}, allow_unverified=True)
-    legacy = {'sfs': {'projection': 4}}
+    legacy = {'sample_haplotypes': 4, 'sfs': {'projection': 4}}
     with pytest.raises(ValueError, match='lacks input provenance'):
         validate_input_reference(legacy, path, blocks, {'projection': 4})
     check = validate_input_reference(legacy, path, blocks, {'projection': 4}, allow_unverified=True)
