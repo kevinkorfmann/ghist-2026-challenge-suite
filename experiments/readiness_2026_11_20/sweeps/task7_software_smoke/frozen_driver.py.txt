@@ -1,0 +1,48 @@
+"""Fixed-seed synthetic software smoke; no biological recovery or truth target."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+import numpy as np
+
+from ghist_single_sweep.scan import VariantMatrix
+from scripts.freeze_task7_sweep_bgs import verify_candidate
+from scripts.predict_task7_sweep_bgs import sha256, source_manifest, write_masked_vcf
+
+out = Path(sys.argv[1])
+raisd = Path(sys.argv[2])
+out.mkdir(parents=True, exist_ok=False)
+started = time.monotonic()
+seed = 2026112071
+rng = np.random.default_rng(seed)
+positions = np.arange(1000, 600000, 1000, dtype=np.int64)
+probability = rng.beta(.6, .6, len(positions))
+haplotypes = (rng.random((len(positions), 50)) < probability[:, None]).astype(np.uint8)
+haplotypes[:, 0], haplotypes[:, 1] = 0, 1
+vcf, mask = out / 'synthetic.vcf', out / 'accessible.bed'
+write_masked_vcf(VariantMatrix('7', 600000, positions, haplotypes, 0), vcf)
+mask.write_text('7\t0\t250000\n7\t260000\t600000\n')
+protocol = {'purpose':'synthetic software and external-format integration only; no biological truth/recovery/readiness claim',
+            'seed':seed,'contig_length':600000,'haplotypes':50,'input_sites':len(positions),
+            'vcf_sha256':sha256(vcf),'mask_sha256':sha256(mask),'source_sha256':source_manifest(),
+            'driver_sha256':sha256(Path(__file__)),'raisd_binary_sha256':sha256(raisd),
+            'python':sys.version,'numpy':np.__version__,'slurm_job':os.environ.get('SLURM_JOB_ID')}
+(out/'protocol.json').write_text(json.dumps(protocol,indent=2)+'\n')
+with (out/'cli.log').open('w') as log:
+    subprocess.run([sys.executable,'-m','scripts.predict_task7_sweep_bgs','--vcf',str(vcf),'--accessible',str(mask),
+                    '--dataset','testing','--raisd',str(raisd),'--out-dir',str(out/'candidate')],
+                   stdout=log,stderr=subprocess.STDOUT,check=True)
+prediction=verify_candidate(out/'candidate/prediction.json')
+result={'status':'COMPLETED','purpose':protocol['purpose'],'protocol_sha256':sha256(out/'protocol.json'),
+        'elapsed_seconds':time.monotonic()-started,'method':prediction['method'],
+        'callable_sites':prediction['callable_sites'],'callable_bases':prediction['callable_bases'],
+        'raisd_windows_total':prediction['raisd_windows_total'],'raisd_windows_callable':prediction['raisd_windows_callable'],
+        'interval':prediction['interval'],'format_valid':prediction['format_validation']['format_valid'],
+        'verified_recomputation':True,'scientific_validation':False,'release_ready':False,
+        'prediction_sha256':sha256(out/'candidate/prediction.json'),'candidate_artifact_sha256':prediction['artifact_sha256']}
+(out/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result,indent=2))

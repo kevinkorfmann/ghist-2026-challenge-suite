@@ -1,0 +1,28 @@
+{
+  "reviewer": "relatedness_science independent of Task7 implementation",
+  "scope": "Bounded read-only code review; no challenge inputs or answers",
+  "source_sha256": {
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "scripts/freeze_task7_sweep_bgs.py": "1a045ccda245bc6f41887a257ead00cd28f835275607843fd2431c338de8d827",
+    "tests/test_task7_masked_pipeline.py": "5ec42e9525ad7a8d41d196c8d8a4332db992ddf0fa173695032645190bf87c9c"
+  },
+  "focused_tests": {
+    "passed": 28,
+    "seconds": 0.46
+  },
+  "findings": "No new concrete implementation defect identified in scoped paths",
+  "verified_contracts": [
+    "VCF one-based and RAiSD inclusive coordinates convert consistently to half-open intervals",
+    "Entire RAiSD spans and inclusive SNP gap endpoints must be callable",
+    "Retained heterozygotes require one consistent per-sample phase set; homozygotes do not join phase sets",
+    "Localization uses full observation-only scans; truth enters recovery scoring only",
+    "Freeze keeps scientifically_validated and release_ready false after mechanical gates"
+  ],
+  "limitations": [
+    "Native RAiSD normalization precedes report-window callability filtering",
+    "Median estimator,80kb interval and signal-ratio threshold lack matched exact-scale BGS recovery",
+    "Strict one-contig complete-diploid chromosome-wide phasing contract"
+  ]
+}

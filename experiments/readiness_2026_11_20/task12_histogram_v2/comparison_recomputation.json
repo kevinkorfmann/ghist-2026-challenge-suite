@@ -1,0 +1,201 @@
+{
+  "status": "POST_RUN_SCORER_CORRECTION_NO_MODEL_SELECTION",
+  "primary_confirmation_sha256": "78b1a925ddb2dc710a6c23089443b08cbffeb303299f9d1fc90f61b1e900fa64",
+  "primary_protocol_sha256": "ce2a51405f323807bd9c8e1eebe20ce7ea706b20e7b3176ef2e6b774ca3ad5ed",
+  "primary_source_sha256": "cdfb49686ac9fa46ffde04e24275cc6cc0d4424efb7dc66f294fde549b5271ab",
+  "corrected_source_sha256": "cd7ab237f27b012049cd7d26bb4aa3c12665a1aa7654e1fed72af180eccf84be",
+  "recomputation_script_sha256": "c711aa0da8092bdbe06e676b889288caed38be3058a17d20db7de7fa2d7d4458",
+  "correction": "Classify each seed gain from exact integer correct-count differences over equal paired/regime denominators; floating zero remains a tie.",
+  "primary_comparisons": {
+    "historical": {
+      "mean_exact_gain": -0.0037168171595066022,
+      "mean_exact_gain_by_seed": {
+        "2026115011": -0.002897702326942797,
+        "2026115012": 1.1102230246251566e-17,
+        "2026115013": -0.008268582319308016,
+        "2026115014": -0.0037009839917756084
+      },
+      "minimum_regime_exact_gain": -0.014660606949127686,
+      "mean_meioses_gain": -0.0023963038770626944,
+      "gate": {
+        "mean_exact_gain": false,
+        "positive_seed_fraction": false,
+        "worst_regime_exact_gain": false,
+        "mean_meioses_gain": true,
+        "passed": false
+      }
+    },
+    "independent_reference_v2": {
+      "mean_exact_gain": -0.003282818932124379,
+      "mean_exact_gain_by_seed": {
+        "2026115011": -0.004946582760134655,
+        "2026115012": 0.0012946888333088213,
+        "2026115013": -0.004574109368127832,
+        "2026115014": -0.004905272433543851
+      },
+      "minimum_regime_exact_gain": -0.011581879489810876,
+      "mean_meioses_gain": -0.0021914148294783,
+      "gate": {
+        "mean_exact_gain": false,
+        "positive_seed_fraction": false,
+        "worst_regime_exact_gain": false,
+        "mean_meioses_gain": true,
+        "passed": false
+      }
+    }
+  },
+  "corrected_comparisons": {
+    "historical": {
+      "mean_exact_gain": -0.0037168171595066022,
+      "mean_exact_gain_by_seed": {
+        "2026115011": -0.002897702326942778,
+        "2026115012": 0.0,
+        "2026115013": -0.00826858231930802,
+        "2026115014": -0.003700983991775591
+      },
+      "exact_correct_count_gain_by_seed": {
+        "2026115011": -99,
+        "2026115012": 0,
+        "2026115013": -282,
+        "2026115014": -126
+      },
+      "minimum_regime_exact_gain": -0.014660606949127686,
+      "mean_meioses_gain": -0.0023963038770626944,
+      "gate": {
+        "mean_exact_gain": false,
+        "positive_seed_fraction": false,
+        "worst_regime_exact_gain": false,
+        "mean_meioses_gain": true,
+        "passed": false
+      }
+    },
+    "independent_reference_v2": {
+      "mean_exact_gain": -0.003282818932124379,
+      "mean_exact_gain_by_seed": {
+        "2026115011": -0.004946582760134641,
+        "2026115012": 0.0012946888333088128,
+        "2026115013": -0.0045741093681278405,
+        "2026115014": -0.004905272433543839
+      },
+      "exact_correct_count_gain_by_seed": {
+        "2026115011": -169,
+        "2026115012": 44,
+        "2026115013": -156,
+        "2026115014": -167
+      },
+      "minimum_regime_exact_gain": -0.011581879489810876,
+      "mean_meioses_gain": -0.0021914148294783,
+      "gate": {
+        "mean_exact_gain": false,
+        "positive_seed_fraction": false,
+        "worst_regime_exact_gain": false,
+        "mean_meioses_gain": true,
+        "passed": false
+      }
+    }
+  },
+  "aggregate_metrics_unchanged": {
+    "historical": {
+      "accuracy": 0.3751333061826098,
+      "balanced_accuracy": 0.37597322762701224,
+      "meioses_accuracy": 0.533903304275699,
+      "template_accuracy_counting_unpredicted_as_wrong": 0.3652214285714286,
+      "negative_log_likelihood": 1.4943554110665465,
+      "multiclass_brier_sum": 0.6691827199286583,
+      "ece_10_equal_width_bins": 0.02620710041121115
+    },
+    "independent_reference_v2": {
+      "accuracy": 0.3746993079552276,
+      "balanced_accuracy": 0.37485253081600134,
+      "meioses_accuracy": 0.5336984152281146,
+      "template_accuracy_counting_unpredicted_as_wrong": 0.3648,
+      "negative_log_likelihood": 1.5008240870964673,
+      "multiclass_brier_sum": 0.6714212494552692,
+      "ece_10_equal_width_bins": 0.03278333876296872
+    },
+    "full_histogram_v2": {
+      "accuracy": 0.37141648902310326,
+      "balanced_accuracy": 0.3720547039725163,
+      "meioses_accuracy": 0.5315070003986362,
+      "template_accuracy_counting_unpredicted_as_wrong": 0.36160000000000003,
+      "negative_log_likelihood": 1.5085419591097036,
+      "multiclass_brier_sum": 0.6743258853902271,
+      "ece_10_equal_width_bins": 0.0396108103702557
+    }
+  },
+  "primary_gate_decisions_unchanged": true,
+  "verified_csv_sha256": {
+    "seed0_regime0_historical.csv": "c27c13ba6d4896259e4de15f4cef11bd1fb0a78dd266d2394396e65581ead7d4",
+    "seed0_regime0_independent_reference_v2.csv": "7764bfa7fbfd73642b941a82dfcf63aad4663cb452dda0c951c8f73f49c750f4",
+    "seed0_regime0_full_histogram_v2.csv": "6aa4891c763309dfda1427f5f72feb6141be6de48d0f01d3da9b48b024481490",
+    "seed0_regime1_historical.csv": "2802b319bca246d38909e8290c573c24df56ef6d0df0ba5e11d5b88223044f55",
+    "seed0_regime1_independent_reference_v2.csv": "cd1ab98f452c12b95c091b148ed13360d9515f8ede393c52b323217362efe118",
+    "seed0_regime1_full_histogram_v2.csv": "26cb8ab7a8c20ebb58f0e771812cdf0c71e635ac875f83655e5c0c893e7cdc74",
+    "seed0_regime2_historical.csv": "62aa25ea6463f6a1810e4afc7c9a467e3194d0363b750a450551ba773b3dd2bd",
+    "seed0_regime2_independent_reference_v2.csv": "eb4389ba10815234f6ce172267ae330b186a58f250b7418393b1d4aa4a15fac9",
+    "seed0_regime2_full_histogram_v2.csv": "151f9ffcab704317754271c81758f6c677fec4c50bf470cb34c17c0675201c15",
+    "seed0_regime3_historical.csv": "13452610d0d3d9299387fd3fd802c019639f5274e80579a22097ff0fd3450831",
+    "seed0_regime3_independent_reference_v2.csv": "d1081cdc01063cae8c98b190c476e0a9b5dd0b48a64a87b49f1a40065e6b253c",
+    "seed0_regime3_full_histogram_v2.csv": "d939c8d3bb0e8fdafce4686fdc0984214e0728ae90c7a6b1deb8539eb39b10f9",
+    "seed0_regime4_historical.csv": "4e931f1642b1a0ae36afbdb164e283ab088cdf326d96c03d3888308093be5228",
+    "seed0_regime4_independent_reference_v2.csv": "a3769ab154cdd5ba8546e283eedb09116effa5fd380460503a158fbe4030a0fe",
+    "seed0_regime4_full_histogram_v2.csv": "16eb604649d87f080b15c5d640fb68c32cf4d7dfebfcfc75c2cfd397e4a46e06",
+    "seed1_regime0_historical.csv": "f41f1f8c26c6606bfb8491b7ab2c6d95b45e22ee2fc5696aa2013ebd1dbf63a1",
+    "seed1_regime0_independent_reference_v2.csv": "6ee952a2c02c162aa7a22ca69adb740729c4b0fd1da4abc90e3b4405a91ff522",
+    "seed1_regime0_full_histogram_v2.csv": "dc6973c67e85a9a5228c903a2232c7eb98af5bd5f2bc43f80d5914ab628a2da5",
+    "seed1_regime1_historical.csv": "e23eca93338537527d671b3466ec5f2ca25864336396fa1232da786e79bb52fe",
+    "seed1_regime1_independent_reference_v2.csv": "00273b73cba828968455400d90d3cf5772d0fb9db18c1278d2b77bd76548838d",
+    "seed1_regime1_full_histogram_v2.csv": "feffbe217cccc549bd44332618feaa7a21998fc0cd3d4f84338a4ccd21a8aa89",
+    "seed1_regime2_historical.csv": "4b2bda74a0b1ee12cc691c19e1aa939dcb3f51f520a5ab8bb33b933f340f8a54",
+    "seed1_regime2_independent_reference_v2.csv": "5a3570ac16584605f2589a28767306989b5e9b527bfafa4880a2c2d312c05644",
+    "seed1_regime2_full_histogram_v2.csv": "28f0af2135f2b69b69181e4ec7f2dacbdcda98a8d9a04d2b8708769b035e9f57",
+    "seed1_regime3_historical.csv": "6cbfce0b0555ed9b4ec36581d27fcae94f4c386ed44e8578e6c38e4f01e10299",
+    "seed1_regime3_independent_reference_v2.csv": "e5f810ab61fbbbca072a5c545e05f882568a3ef75f81df22151e2514789f678d",
+    "seed1_regime3_full_histogram_v2.csv": "5782d7b8adb4eda8cd64114aa5ce7c64a4c8c72737a15aedeaa7a1c74c72c0e4",
+    "seed1_regime4_historical.csv": "28ffc5d93116ef27c69ef7abf1409b628d8ad8d8d312167893e43494b510cab8",
+    "seed1_regime4_independent_reference_v2.csv": "b477bcbffc8d1c88de6f21c0ece44e60b222ad7308aa9e9cb6926cc1d68bb219",
+    "seed1_regime4_full_histogram_v2.csv": "31b2c3175bc5b121a2ffd7b25d17618d36edffa829ab4988d7cc577fc66250ed",
+    "seed2_regime0_historical.csv": "0071890535e1dbd2731aeb739bd47b7170d4d2eec973fcd25206e328d9a63cc9",
+    "seed2_regime0_independent_reference_v2.csv": "4cbbd9fecb03cde2b43918f5939682017d6bceeb8169cafe55b7d7cd66153b3b",
+    "seed2_regime0_full_histogram_v2.csv": "06e4e3b416718eab3a2e8eee1e72ecf9eeda971ba0b2741c696241c7f64fa1f9",
+    "seed2_regime1_historical.csv": "cd539ac06f8df04992d1bcbb7b695998a2c70e2ffa0b7d67ea19065f2b5bba94",
+    "seed2_regime1_independent_reference_v2.csv": "91e5418b9deaf492760427045ab49fb1092836402a81a9cb5edaeadc3a136f33",
+    "seed2_regime1_full_histogram_v2.csv": "3b5d0ea77a84240d1d2a505e3e5aff618e2e9c8613e850e60c3368c5dbabf95f",
+    "seed2_regime2_historical.csv": "0a3cb2396f7ba140dd08aedb2430f8dd4bbdd5d9b6c947b9b474cd8d6b08e4df",
+    "seed2_regime2_independent_reference_v2.csv": "bdf8b42c630ee4181b7bc1dae685f0628d925f418b9075e3e0ec78a2f80224f6",
+    "seed2_regime2_full_histogram_v2.csv": "a8b22a2fd4d869fb3cda039897d7a88e813a5cc036238a6eca9fb8157980a911",
+    "seed2_regime3_historical.csv": "94750a5f4e24e2ce327b80b1ad2f5af88c687d5ea12f74588d8c89e88a0291ad",
+    "seed2_regime3_independent_reference_v2.csv": "a013a5b1ab234476e2654460bdf6ac9603347eaf8a077fa90950a13a1852769b",
+    "seed2_regime3_full_histogram_v2.csv": "1f74e4ef302f547e244cd9a34cbe962be8788eae01848b1991654b1e62c77aac",
+    "seed2_regime4_historical.csv": "29baa42699899b65c4a6861a698f4d7bb1e23ab01b31deca60a1144500f522ea",
+    "seed2_regime4_independent_reference_v2.csv": "13a66def7c439a32041ec4acd3054893fcce9939c53e738b4f3f42edd1a9d378",
+    "seed2_regime4_full_histogram_v2.csv": "50bb2dc9ece931467e1668b42101887622edd2dd0036a1279e58d2f541e7b569",
+    "seed3_regime0_historical.csv": "41161ac0e3e6da9894dd37a9d65a9f6002cd85661ab795559f986687646dff6d",
+    "seed3_regime0_independent_reference_v2.csv": "598a5acbf9c5241643679129e0b4235656807ee9efd66c1d26c9f680d65d6d17",
+    "seed3_regime0_full_histogram_v2.csv": "9bf12b2e0e06a0ee3ccfe547ad01c8250375aaff8ce82bf58c01a51effabd99d",
+    "seed3_regime1_historical.csv": "daf55a0d14199fdde42ce5bb3abbaee8dcf4b6df426dcf1172e04e91410f339b",
+    "seed3_regime1_independent_reference_v2.csv": "4960a47fa3a6a10dc615cc11f71b4a87682524aec8924862f42137997f143596",
+    "seed3_regime1_full_histogram_v2.csv": "cccffc948ebfcd683fd00e9c1e7339745e4583cc728fe5a152f8d28310581f66",
+    "seed3_regime2_historical.csv": "83478624c07fccb27780ccf0ba7fbfa5bca8feb7e57652da9b2bc31f77ad565a",
+    "seed3_regime2_independent_reference_v2.csv": "5e58bf95981b32faeb6661ebe870d4c4afff0c91cfd996c1bb9b6b2faabfe913",
+    "seed3_regime2_full_histogram_v2.csv": "20ba1355654c8d63a2e9ffa4d075b5a736c5f95a1c6ef69aad06bca97f92f10a",
+    "seed3_regime3_historical.csv": "31e0a3f7596e888d8dc4464d09910ef3ba55dbbcc4a3ec71485206b0fae97353",
+    "seed3_regime3_independent_reference_v2.csv": "33aa561709e5aa84e496797b066776bebee289c914ad7154e88d249b616c8def",
+    "seed3_regime3_full_histogram_v2.csv": "94b54c07e8e65b63b5b7c113da5e8bd3321b0b37b53fe66359208c5d771ecbcb",
+    "seed3_regime4_historical.csv": "c9254634c6ad4cce5868561bbe32ffb460726de369d7812c644d293b22fbc305",
+    "seed3_regime4_independent_reference_v2.csv": "b2e0e70d25214cf967721a7b82a1e72034970bbcf0f03801883bcc349cbe86c8",
+    "seed3_regime4_full_histogram_v2.csv": "d1bbf908869d943e3115132945f25205edd8558e45069d3f21b82e9b30ce1fb9"
+  },
+  "segment_present_pairs_by_seed": {
+    "2026115011": 6833,
+    "2026115012": 6797,
+    "2026115013": 6821,
+    "2026115014": 6809
+  },
+  "generated_pairs": 28000,
+  "segment_present_pairs": 27260,
+  "retraining": false,
+  "new_predictions": false,
+  "candidate_promoted": false,
+  "full_pipeline_validated": false
+}

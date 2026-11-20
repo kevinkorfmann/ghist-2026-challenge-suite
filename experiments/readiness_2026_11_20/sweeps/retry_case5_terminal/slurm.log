@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-sweeps-20261120/scripts/run_sweep_readiness_case.py", line 256, in <module>
+    main()
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-sweeps-20261120/scripts/run_sweep_readiness_case.py", line 126, in main
+    ts = stdpopsim.get_engine("slim").simulate(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py", line 1709, in simulate
+    self._run_slim(
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py", line 1808, in _run_slim
+    raise SLiMException(
+stdpopsim.slim_engine.SLiMException: /vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim exited with code -9.
+
+{"case": 5, "seed": 202612005, "state": "FAILED", "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1", "error": "SLiMException: /vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim exited with code -9.\n", "elapsed_seconds": 1774.5612776959315}
+slurmstepd: error: Detected 1 oom_kill event in StepId=10850911.batch. Some of the step tasks have been OOM Killed.

@@ -1,0 +1,37 @@
+{
+  "method": "blind_callable_median_ten_v1",
+  "base_integration": "e6340f0",
+  "scientific_validation": false,
+  "release_ready": false,
+  "files": {
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "scripts/freeze_task7_sweep_bgs.py": "1a045ccda245bc6f41887a257ead00cd28f835275607843fd2431c338de8d827",
+    "tests/test_task7_masked_pipeline.py": "5ec42e9525ad7a8d41d196c8d8a4332db992ddf0fa173695032645190bf87c9c",
+    "tests/test_sweep_scientific_validation.py": "d38f77ba1eb53b576f1378972480244e384aadfcb1fdea174c9e0201245b20cc",
+    "challenges/sweeps/single_sweep_background_selection/README.md": "a923cce59ae72e6a886084c53011fece13e4ed117e17bac5b7f40144eb3a09a0"
+  },
+  "software_test": {
+    "job": "10851876",
+    "seed": 2026112071,
+    "purpose": "synthetic software integration only",
+    "protocol_sha256": "9f847fd7b72493e003fa218cfa72e5bd445e0f56d37face77f78fe0dee6cf17b",
+    "source_archive_sha256": "d9e67ae6dbc949895d344faf48e76a2a4ba66b3a5f017820a34da6c2bb8c27df",
+    "output_archive_sha256": "35c445571772ca98124d6f84b094e42cd5ed68d46ac68af6219b9287f3e77dd3",
+    "driver_artifact": "task7_software_smoke/frozen_driver.py.txt; identical executed run.py is in source.tar.gz"
+  },
+  "tests": {
+    "passed": 58,
+    "seconds": 10.39,
+    "ruff": "pass"
+  },
+  "cross_review_findings_fixed": [
+    "legacy unmasked/caller-selected Task7 localization",
+    "full RAiSD span masking and missing distant baseline",
+    "mixed/multiple PS blocks",
+    "dataset/VCF chromosome mismatch",
+    "source/input/binary changed during inference",
+    "duplicate/stale/incomplete recovery artifacts"
+  ]
+}

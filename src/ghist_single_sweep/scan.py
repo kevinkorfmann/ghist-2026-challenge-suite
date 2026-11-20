@@ -20,6 +20,7 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
     positions: list[int] = []
     rows: list[list[int]] = []
     skipped = 0
+    phase_sets: dict[str, int | None] = {}
     with pysam.VariantFile(str(path)) as vcf:
         contigs = list(vcf.header.contigs)
         if len(contigs) != 1:
@@ -48,7 +49,8 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
                 )
             row: list[int] = []
             valid = True
-            for sample in record.samples.values():
+            row_phase_sets = {}
+            for sample_name, sample in record.samples.items():
                 gt = sample.get("GT")
                 if gt is None or len(gt) != 2 or None in gt:
                     raise ValueError(
@@ -61,6 +63,15 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
                 if gt[0] > 1 or gt[1] > 1:
                     valid = False
                     break
+                if gt[0] != gt[1]:
+                    phase_set = sample.get("PS")
+                    if phase_set is not None and (
+                        type(phase_set) is not int or not 0 <= phase_set <= 2**31 - 1
+                    ):
+                        raise ValueError(
+                            "PS must be a nonnegative 32-bit integer or missing"
+                        )
+                    row_phase_sets[sample_name] = phase_set
                 row.extend((int(gt[0]), int(gt[1])))
             if not valid:
                 skipped += 1
@@ -68,6 +79,14 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
             if sum(row) in (0, len(row)):
                 skipped += 1
                 continue
+            # Homozygotes and skipped records cannot connect phase blocks.
+            # Missing PS denotes one implicit chromosome-wide phase set.
+            for sample_name, phase_set in row_phase_sets.items():
+                if sample_name in phase_sets and phase_sets[sample_name] != phase_set:
+                    raise ValueError(
+                        f"Sample {sample_name} has mixed or multiple PS phase sets; sweep LD requires consistent chromosome-wide phase"
+                    )
+                phase_sets[sample_name] = phase_set
             positions.append(position)
             rows.append(row)
     matrix = np.asarray(rows, dtype=np.uint8)

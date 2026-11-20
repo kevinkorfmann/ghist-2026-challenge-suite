@@ -1,0 +1,2841 @@
+{
+  "scope": [
+    "configs",
+    "scripts",
+    "slurm",
+    "experiments/readiness_2026_11_20",
+    "experiments/scientific_2026_11_20"
+  ],
+  "reserved_seeds": [
+    2026115011,
+    2026115012,
+    2026115013,
+    2026115014,
+    2026115051,
+    2026115052,
+    2026115053,
+    2026115054,
+    2026115055,
+    2026115151,
+    2026115152,
+    2026115153,
+    2026115154,
+    2026115155,
+    2026115251,
+    2026115252,
+    2026115253,
+    2026115254,
+    2026115255,
+    2026115351,
+    2026115352,
+    2026115353,
+    2026115354,
+    2026115355
+  ],
+  "checked_files": [
+    {
+      "path": "configs/task9_current_release.json",
+      "sha256": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc"
+    },
+    {
+      "path": "configs/synapse_versions_2026_11_20.json",
+      "sha256": "0d2f1dbd98a86bb79b9a30e6ac12ecef6c29404d8b6722837ef20997c9398c73"
+    },
+    {
+      "path": "scripts/predict_task7_sweep_bgs.py",
+      "sha256": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a"
+    },
+    {
+      "path": "scripts/aggregate_secondary_contact_arg_training.py",
+      "sha256": "05c7e1ea026f4a577d3a3a6117476eb8701df40ae5f4cb61d6f38644bd6e1577"
+    },
+    {
+      "path": "scripts/inject_cxt_hazards.py",
+      "sha256": "33cc838d132de83eb27f9781039d3e6f499fd2f0ebe6a028173d2c9f30983433"
+    },
+    {
+      "path": "scripts/aggregate_split_migration_bgs_selection.py",
+      "sha256": "1e6e6efdbd79794308059bd76e3ca3a215529625ed0bba641dddd9975476bce8"
+    },
+    {
+      "path": "scripts/evaluate_human_background_robust.py",
+      "sha256": "ebef44b0326a6a7986b5dff362be758d401f36556256d9faa5c128b417e514ea"
+    },
+    {
+      "path": "scripts/merge_simulations.py",
+      "sha256": "b5c01f7b6e0d79b6a70525c05f990ec3798afe4d28e104cadb2af841ffe642c2"
+    },
+    {
+      "path": "scripts/train_task12_reference_candidate.py",
+      "sha256": "e8a4b4c98c2e4f1d006b6d25d25751ef261d77bc819d9e00b0de4164223512b9"
+    },
+    {
+      "path": "scripts/select_single_sweep_interval.py",
+      "sha256": "d6aa412221dcdaaf43c9913947dc8fee75a7011000d2243f2352dd5b1bed7b98"
+    },
+    {
+      "path": "scripts/run_bottleneck_experiment.py",
+      "sha256": "f95cca893ad127d8dd2a5c0f0c0641f070f4523fad9b611df8143f50640f6609"
+    },
+    {
+      "path": "scripts/freeze_task8_multiple_sweeps.py",
+      "sha256": "d1e34bb93af30880bdb0eaa6404ea87e5af3ab975b5bb0c5f747a3871dcee3bf"
+    },
+    {
+      "path": "scripts/detect_multiple_sweeps.py",
+      "sha256": "e03807d01b5abea9035a6e1ae7101a7bbd659a295b907e08677374f2a4f96c6c"
+    },
+    {
+      "path": "scripts/freeze_task12_large_family_background.py",
+      "sha256": "ec9e2ececa65bfc47e0b5f62ad6a952e4cd4d90a981460bed7fa49e5c92697ab"
+    },
+    {
+      "path": "scripts/verify_data_inventory.py",
+      "sha256": "b22c54f4f831a309ec7cc65547a70059c36fd38305c1546605810a585335ad19"
+    },
+    {
+      "path": "scripts/reconstruct_bonsai_pedigree.py",
+      "sha256": "1580ee9c7229abe7875d4cf421d2f46c1984f91f5858eaca583caf95a3144b5b"
+    },
+    {
+      "path": "scripts/fit_split_migration_bgs_baseline.py",
+      "sha256": "65978136ab06af9e3cf585a395dc14bed9658a5152e40d4739e83bff5328ab6d"
+    },
+    {
+      "path": "scripts/audit_secondary_contact_vcf.py",
+      "sha256": "6e5b317409468648019def78742a42090238663549bf34a5af760225e3e4de49"
+    },
+    {
+      "path": "scripts/fit_task9_ibd_classifier.py",
+      "sha256": "0bd23a5adfc0d6a7b90331d9559fbb4185da3b740322ea16216813f38ddcfda5"
+    },
+    {
+      "path": "scripts/fit_human_background_corrected.py",
+      "sha256": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc"
+    },
+    {
+      "path": "scripts/summarize_growth_bgs_selection_grid.py",
+      "sha256": "de3423423340230390719b1e91a67cd04166b1f2376d87921d6ea063740fd491"
+    },
+    {
+      "path": "scripts/validate_task12_reference_candidate.py",
+      "sha256": "92544275b57a793026fb4170b97952fa8f9ba921e03f03a75e9a7a78e1a0327c"
+    },
+    {
+      "path": "scripts/summarize_bottleneck_readiness.py",
+      "sha256": "418f8077ed746d27889328ab586a68d28b29221849473aece61d0299c7c4ffa4"
+    },
+    {
+      "path": "scripts/aggregate_secondary_contact_arg_tiles.py",
+      "sha256": "665454221f0d7b38380551746f32a27e16bd0098902af35f2a57dec7396674c6"
+    },
+    {
+      "path": "scripts/cluster_human_family_branches.py",
+      "sha256": "eed4db8127edcc13a88479b59ee108e69ba6c3a765ee2bd22b98940b31302a46"
+    },
+    {
+      "path": "scripts/prepare_secondary_contact_singer_tiles.py",
+      "sha256": "74970394b96d9e0bc5bb54b3ac335281b62ac531b9c31edf405f56f541ec251f"
+    },
+    {
+      "path": "scripts/evaluate_secondary_contact_correction_transfer.py",
+      "sha256": "e494545a0701f7aec011486b4e73e2f0e01132e954aff214cd93b762d59308ac"
+    },
+    {
+      "path": "scripts/summarize_split_migration_bgs_baseline.py",
+      "sha256": "637bf5461ac009dcb9ac550cecc181d0a51ad7681d33d64b5a8bf5fa49c00feb"
+    },
+    {
+      "path": "scripts/fit_task9_degree_factorized.py",
+      "sha256": "5d198f812405388e9bccf377fe64f23e7e9200df7aa0cb99dd8071f4cd495aee"
+    },
+    {
+      "path": "scripts/download_synapse.py",
+      "sha256": "5c5776de2818a5d718b4e1552fcf4ccad7f442928d6614ca09993a9e33fcdfe4"
+    },
+    {
+      "path": "scripts/evaluate_bottleneck_ensemble.py",
+      "sha256": "cbe497b1029f6d4059854e5755e5d8a5f9588a6e96063a1033157826b675adb0"
+    },
+    {
+      "path": "scripts/summarize_single_sweep_scale_stress.py",
+      "sha256": "0b8490515b8801fe29113fcb978ff4f7b872becee38cc07367a583f02ef922a6"
+    },
+    {
+      "path": "scripts/reconstruct_human_branch_pedigrees.py",
+      "sha256": "f8a594e6adc11937961fb2086267ef19856b6915083217dfd25793eea3d98c38"
+    },
+    {
+      "path": "scripts/summarize_split_migration_bgs_bootstrap.py",
+      "sha256": "b9915d3be2dd8c293ef0c61d8425e5d63ce79888610c5438fe96a5cac075893f"
+    },
+    {
+      "path": "scripts/freeze_single_sweep.py",
+      "sha256": "714cba582f098cfb8446ffa33e244ee6bf6a6292ad58d56dd0896570aa7ff422"
+    },
+    {
+      "path": "scripts/evaluate_secondary_contact_local_calibration.py",
+      "sha256": "2e22e009fd203a68105134e15bf141360b84d9a01f5a4bdd5768ed78201662c3"
+    },
+    {
+      "path": "scripts/summarize_hapibd_shape.py",
+      "sha256": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d"
+    },
+    {
+      "path": "scripts/localize_single_sweep.py",
+      "sha256": "386303ed91fa0dc72fb6620b5345dcc79bee78d610fdf1f1a596bd197ab5b53d"
+    },
+    {
+      "path": "scripts/fit_human_empirical_background.py",
+      "sha256": "d219b0d8e4b2e0e1464e1d2674ac012e49cbdd9a545f5273b230c21d94725f2f"
+    },
+    {
+      "path": "scripts/generate_secondary_contact_sfs_dataset.py",
+      "sha256": "130c9a2af3ee2535022d9932bcbb5a4a1a8b9afbd965f49fba47fdf20da8418b"
+    },
+    {
+      "path": "scripts/bootstrap_growth_bgs_blocks.py",
+      "sha256": "0c97674eed3f6ff1b0329d32a3db5db232aa3a052768e4ce472353e08cd24002"
+    },
+    {
+      "path": "scripts/audit_growth_bgs.py",
+      "sha256": "1ef2bfc52561ad76796f3b85e70a60c8159338bf4749f39b4c31ac9e190a428d"
+    },
+    {
+      "path": "scripts/predict_secondary_contact.py",
+      "sha256": "44f99617c5a946a8c0923bf6ee1e2d7733ce11b9e474b2cd1e34699be73c68e1"
+    },
+    {
+      "path": "scripts/bootstrap_bottleneck_sfs.py",
+      "sha256": "8013b01a9f594ae3a1c0182c8d45081855fa5b71ef0e3d5047c6d4d69e2cd3ee"
+    },
+    {
+      "path": "scripts/run_secondary_contact_moments.py",
+      "sha256": "6716bb060781ea0ccd2d4d57b619659974395cdd46307e59e5e08f596bab22db"
+    },
+    {
+      "path": "scripts/fit_secondary_contact_arg.py",
+      "sha256": "09a690680e2969eb5a37a75989a2d0e46546c7051bc9511e6d3da53b28041357"
+    },
+    {
+      "path": "scripts/summarize_sweep_readiness.py",
+      "sha256": "35f3fe0effc5f42cb8866c7de8e987569a010681e81e7390e4f0b99fb93ef3d7"
+    },
+    {
+      "path": "scripts/summarize_hapibd.py",
+      "sha256": "3ec5e3cb6e25a2b32c7725809e6f17ada82d5ddb7b45a18c148c10c2d583afac"
+    },
+    {
+      "path": "scripts/plot_growth_bgs_validation.py",
+      "sha256": "56d14d8619e138ec9b875e4b027c709f683a6a7622af3c0f9094b1b9f1c3fc56"
+    },
+    {
+      "path": "scripts/prepare_polegon_tree_sequence.py",
+      "sha256": "277833af27a403dc04ea6b10a2a31d57ed93bfff49917351c9846996093f05e5"
+    },
+    {
+      "path": "scripts/consensus_task11_dog_pedigrees.py",
+      "sha256": "6546a9b6ca8ca16c1c8b37a2ce116393c98b8d8e5eef80b1563b7107db837dc5"
+    },
+    {
+      "path": "scripts/plot_task12_validation.py",
+      "sha256": "f6bbac9db4aa5751e32064ff8520eb740c91b39aa5c2e3fe3bf97880c3de1acb"
+    },
+    {
+      "path": "scripts/evaluate_secondary_contact_ensemble.py",
+      "sha256": "a8e3ce96ad6ae58834c10b9c456a252218406fa5570d81c4c42a972763f10047"
+    },
+    {
+      "path": "scripts/evaluate_human_background_corrected_holdout.py",
+      "sha256": "7a0d29d4f4868a32fa4c4acc54b259994ebf6afd37d846da004f8f4cf75c2fbf"
+    },
+    {
+      "path": "scripts/simulate_growth_bgs_selection.py",
+      "sha256": "12fd3824dd49b2e3ed2163801afcdd6f093016a6b914d3173637dc3b6e2fedff"
+    },
+    {
+      "path": "scripts/select_background_sweep_candidates.py",
+      "sha256": "3d046886e8057e55a950bed13f87fddab6987520391b13d424da48082e893fd4"
+    },
+    {
+      "path": "scripts/predict_task9_current.py",
+      "sha256": "a79e83250266ff43df166549e1865e1b78338a793baf711269e7327090efc671"
+    },
+    {
+      "path": "scripts/compare_secondary_contact_arg_features.py",
+      "sha256": "b1fd0c520c4b4121ca4f54caea71bfd9531313cedd731c647204b7670a59485f"
+    },
+    {
+      "path": "scripts/fit_task11_dog_relationships.py",
+      "sha256": "4483b9c30fa6696379f030f76c2bb42f0752c6737c7d1a184e6de8ae281b903d"
+    },
+    {
+      "path": "scripts/simulate_single_sweep_selection.py",
+      "sha256": "db4b0e32fda741e9a317e7f815be7ee1b6ace24f18874f059de3fa12a63e9565"
+    },
+    {
+      "path": "scripts/train_task9_current_candidate.py",
+      "sha256": "1996f8511ce49ed374a099f01166f64d446d4afda6a32d2d21059d561ac9a02f"
+    },
+    {
+      "path": "scripts/plot_task6_validation.py",
+      "sha256": "710da9a44bc2105e4c750ea41d1879266addb2c21563c114334e0ad145895e40"
+    },
+    {
+      "path": "scripts/validate_sweep_background_smoke.py",
+      "sha256": "1ca3aecf1a9c813d24b393c215f69e6e5502cf7820536177bc0ae550fa6130c6"
+    },
+    {
+      "path": "scripts/run_sweep_readiness_case.py",
+      "sha256": "1070af026e873835a987f1b411470bb4989e7e5fad9a8e476be2516166146ff6"
+    },
+    {
+      "path": "scripts/plot_single_sweep_validation.py",
+      "sha256": "1f32392051fcca23d7291f587b59dd78add24dc04e25b5559858538931a2f795"
+    },
+    {
+      "path": "scripts/validate_human_background_correction.py",
+      "sha256": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6"
+    },
+    {
+      "path": "scripts/score_sweep_background_validation.py",
+      "sha256": "7aa91bda373cb54dc8446a4c0c1ccfaa93748a672e4aa084651ab0063075c274"
+    },
+    {
+      "path": "scripts/compare_secondary_contact_resolution_bootstraps.py",
+      "sha256": "e3a4b507559b0d27494982f5fd8864a5af544eaf9fb07bac372c4e365ec8a80d"
+    },
+    {
+      "path": "scripts/calibrate_growth_bgs_selection.py",
+      "sha256": "a24a5238b446bc30c8a1cf637d1bb55430a8cd6ed21d9b701e7feb065a6352d7"
+    },
+    {
+      "path": "scripts/fit_growth_bgs_strata.py",
+      "sha256": "53471615defac7c6324f7957f1b836c4ee6ca5de66776e93c0619f2685fed22e"
+    },
+    {
+      "path": "scripts/run_single_sweep_raisd_recovery.py",
+      "sha256": "56394b3175ed22ae0fce08e25d876aec3c9da4833c61e350208c45d6ca24473e"
+    },
+    {
+      "path": "scripts/validate_submission.py",
+      "sha256": "c88e3dbda34254996a070c13432237dc6bebbed7815749dcec1916668128602e"
+    },
+    {
+      "path": "scripts/fit_split_migration_bgs_arm.py",
+      "sha256": "bb2678d31b3cc0ff5e56d5d2008a8f03048c86f9e0f1e37c2bca149a5ec16b2d"
+    },
+    {
+      "path": "scripts/audit_single_sweep.py",
+      "sha256": "dd184be2386966e881fb9f59a2e498fc93b1973fbdd843e223eccbc238be5043"
+    },
+    {
+      "path": "scripts/summarize_single_sweep_selection_recovery.py",
+      "sha256": "143027459eb911680ce3de34423aa395ddda845a195f293c0dd471177a4b3b82"
+    },
+    {
+      "path": "scripts/summarize_growth_bgs_audit.py",
+      "sha256": "04c7a3271129e1e751239a3a78766538640fe07a0d46d1c2bb10ffd2b0b8dc49"
+    },
+    {
+      "path": "scripts/extract_split_migration_bgs_blocks.py",
+      "sha256": "969be6f1f20cf37dbe25ccf2b4b5c9cd6f2a65085434f26957ebff3cd0951136"
+    },
+    {
+      "path": "scripts/simulate_secondary_contact_arg_design.py",
+      "sha256": "a90a2d1f072830958a23ebac0c7718c2d2236e93baa67c8cf2450666aec5333f"
+    },
+    {
+      "path": "scripts/summarize_secondary_contact_resolution.py",
+      "sha256": "045d0acd9d6f40a73e89c87c3a312eaae70d6c4ecfcecaad7b599275b9471aea"
+    },
+    {
+      "path": "scripts/fit_task11_degree_factorized.py",
+      "sha256": "1c33a177332fb396d86316fcde713154be5e2e76a57958630baba78ef30de146"
+    },
+    {
+      "path": "scripts/evaluate_multiscale_sfs_recovery.py",
+      "sha256": "7d93cd85fdbcb4ff63536bf7eeaca4b0a009a7d59744796901b0ff53f4ef5348"
+    },
+    {
+      "path": "scripts/audit_relatedness_vcf.py",
+      "sha256": "93a4c9d70618ce2043e8f195436e5354e3b56f2680927329cad293332dcc2b16"
+    },
+    {
+      "path": "scripts/generate_secondary_contact_dataset.py",
+      "sha256": "67d7e1e02500ba7e00433182f34deff1436e380cfbed374a031a7c4c7ad1afbe"
+    },
+    {
+      "path": "scripts/validate_bottleneck_science.py",
+      "sha256": "18cfb6f93ca9fb6e790642bd428b0c0326a2146fece487a51286754b54468dfa"
+    },
+    {
+      "path": "scripts/freeze_task7_sweep_bgs.py",
+      "sha256": "1a045ccda245bc6f41887a257ead00cd28f835275607843fd2431c338de8d827"
+    },
+    {
+      "path": "scripts/fit_growth_bgs_selection_stress.py",
+      "sha256": "89c71ef83c662aa9e048cc05d955cdbbf5ea5192af240c909bea90e570ad9d1c"
+    },
+    {
+      "path": "scripts/run_multiscale_sfs_recovery.py",
+      "sha256": "b094cb3a196f1bf9bca5a8d0f406d62dc2c2133c1e8acf2b5c8791fe38c832e5"
+    },
+    {
+      "path": "scripts/build_fastcxt_bottleneck_dataset.py",
+      "sha256": "7f043015e1910c0385efc39110cba2176657173c792438b26bedeb379a3b687b"
+    },
+    {
+      "path": "scripts/evaluate_moments_chromosomes.py",
+      "sha256": "ad8ffdf365fcf5301f24230b060ecc1c01f16c0ee5fb106194e3bbe26a89b880"
+    },
+    {
+      "path": "scripts/predict_secondary_contact_arg_tabular.py",
+      "sha256": "6b566d83de86747e6f1293716edadde025939efab303fe8fead79953c77fdf3c"
+    },
+    {
+      "path": "scripts/bootstrap_secondary_contact_generator_fit.py",
+      "sha256": "ef7252397ab93ce0aec74084111ce1889b7e148c854a45db4d143da98a3dc625"
+    },
+    {
+      "path": "scripts/fit_human_background_robust.py",
+      "sha256": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19"
+    },
+    {
+      "path": "scripts/summarize_soft_sweep_recovery.py",
+      "sha256": "3b50cb1dec1967ea5e3b4f99e149a48ae174ce7288a69c54c335867e1ad31ef2"
+    },
+    {
+      "path": "scripts/evaluate_human_clean_spectrum_holdout.py",
+      "sha256": "e4552d0ec65f0d8f9c51cdb6851836179dd8f037913d01cb56a9d6affd720875"
+    },
+    {
+      "path": "scripts/plot_bottleneck_validation.py",
+      "sha256": "82e753337a5a7209151a88f5d647351d869ebece0e6cb10121f80aedac0ac9b3"
+    },
+    {
+      "path": "scripts/fit_secondary_contact_spectrum_archive.py",
+      "sha256": "7e8404a6a56b5b78676ba94f9e8fcee558b879a05f8a17a8de23f0ee41526b7f"
+    },
+    {
+      "path": "scripts/evaluate_bottleneck_chromosomes.py",
+      "sha256": "700fc1fffe416cc033f14921a70ba04a8e4dec4d476f72e4b6afdbc6b1cff724"
+    },
+    {
+      "path": "scripts/compare_growth_conventions.py",
+      "sha256": "883dfe9ff93a65ccd2cd8cac3c4055d33a30b53a5268fc58a4ca02e7663f80dd"
+    },
+    {
+      "path": "scripts/fit_human_background_deconvolution.py",
+      "sha256": "e549cdf81ec449941dee177338f49a9402c102e06a140d5ac40e0b2337b6a5df"
+    },
+    {
+      "path": "scripts/validate_task9_operationally.py",
+      "sha256": "844d96429a43540f6a044e3a5361837a363bfc4b788b9d314697f7f383ad3d70"
+    },
+    {
+      "path": "scripts/plot_task10_validation.py",
+      "sha256": "9ad6b5c856acee96b0f7f793fcc76f609d9c06c217efdc70062c7f31f4620e92"
+    },
+    {
+      "path": "scripts/run_fastcxt_observed.py",
+      "sha256": "225af12aa304a8b57ceddb9da9281809ad139cbce0f191955428d8b89dcd1167"
+    },
+    {
+      "path": "scripts/fit_human_family_relationships.py",
+      "sha256": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc"
+    },
+    {
+      "path": "scripts/summarize_secondary_contact_generator_bootstrap.py",
+      "sha256": "79f26cade992f119b10dc17a96febf8b6e7a84622dba7a4fc96b735c45a2e011"
+    },
+    {
+      "path": "scripts/diagnose_secondary_contact_sfs_manifold.py",
+      "sha256": "457a0d0d2a0f9a7b8fd07902c8062ed00afe4cff81f431437fdff3679bfcd070"
+    },
+    {
+      "path": "scripts/prepare_task9_release.py",
+      "sha256": "4f985ab5e0dc324ccaf3f4cc67ecdb6d787f60560bd97267fd8a4192d834be0e"
+    },
+    {
+      "path": "scripts/freeze_task11_multifamily_inbreeding.py",
+      "sha256": "722cc9952d4157939202f400f25c1dde7095af8f13016fc7f3a0cad405420691"
+    },
+    {
+      "path": "scripts/validate_relatedness_missingness.py",
+      "sha256": "7f52b55820a1b485551b50e3c72320d28cd3bd0ea1f62865871359f267359851"
+    },
+    {
+      "path": "scripts/freeze_growth_bgs.py",
+      "sha256": "ddd4b9bf2944b2f98d5a179f8146f720ada8440d0952f809608b8821c9b0df97"
+    },
+    {
+      "path": "scripts/prepare_hapibd_vcf.py",
+      "sha256": "c303f1f471e9b1ebaafc4842c2f922e65b9906aede4e9b5f209917e953222157"
+    },
+    {
+      "path": "scripts/smoke_bottleneck.py",
+      "sha256": "305f13a62e740caf0a857f7ff1fd85432eed03a8cb5d8fb5c741829353df6ff1"
+    },
+    {
+      "path": "scripts/simulate_split_migration_bgs_selection.py",
+      "sha256": "ac2b1978524b11d5741d2d37152f5e83c29d172920bd75377e365751a78af882"
+    },
+    {
+      "path": "scripts/consensus_human_family_pedigree.py",
+      "sha256": "df0a2b289f9079a4cfbdfc0c44fb8513b58a4e3e6bd1ec9d195ac02e5002ea21"
+    },
+    {
+      "path": "scripts/predict_secondary_contact_tabular.py",
+      "sha256": "31e13df3e9984cf44247b2ac886b6122bbc2def56f43b7ba0f815bbd36b57f18"
+    },
+    {
+      "path": "scripts/simulate_secondary_contact_arg_calibration.py",
+      "sha256": "8d570345e123814b62590d8e75651a19204a8ee61414947c112f04d5cb68167a"
+    },
+    {
+      "path": "scripts/revalidate_bottleneck_vcf.py",
+      "sha256": "7a358b212c8a532a2f823a8fb4f08346c91defedf6502c5acc4cc533968ea7d8"
+    },
+    {
+      "path": "scripts/bootstrap_split_migration_bgs_blocks.py",
+      "sha256": "e66cd9c9c433b6311ba517b5854c3143fe3a66f622a51ebe17cb84a7ba7fba7d"
+    },
+    {
+      "path": "scripts/prepare_secondary_contact_singer_window.py",
+      "sha256": "1e06f1610f5a559a41d98bec4807a79a20221939e43fe230eed5eecd641f552e"
+    },
+    {
+      "path": "scripts/generate_secondary_contact_local_design.py",
+      "sha256": "16f16a238042c798cef6d0194e1ca0a4bfe34c2f0c105056931994c3798b434e"
+    },
+    {
+      "path": "scripts/audit_frozen_answers.py",
+      "sha256": "80552174acd748be41152e019802665bf5c50bfb841ae488e7d75a6a41470f2b"
+    },
+    {
+      "path": "scripts/evaluate_task9_degree_factorized.py",
+      "sha256": "5306ad64c3224f777ba5226c84733833a78de801e5423eafa2be61091a1a101a"
+    },
+    {
+      "path": "scripts/dog_maps_to_plink.py",
+      "sha256": "1afdc1e11eb045376de1d29a91f5a48b0cfdf02b1b5b6c95717c1fc8ec78b509"
+    },
+    {
+      "path": "scripts/freeze_split_migration_bgs.py",
+      "sha256": "d9963fc9929943bc0ece9bcaf124b26d736a68c1cf44cb860e681d294610ba6c"
+    },
+    {
+      "path": "scripts/plot_secondary_contact_validation.py",
+      "sha256": "331d869538f3b300e53b88a0587c098aacef6ede70f630dd0d5d178318090dcb"
+    },
+    {
+      "path": "scripts/fit_human_clean_spectrum.py",
+      "sha256": "584cd7e59856d036ac0f339a75152926ea8b691caa86b64ca97a272f1c2e6eaf"
+    },
+    {
+      "path": "scripts/validate_task11_complete_pipeline.py",
+      "sha256": "e084464f40fd73836179e84c7901ed7b3805bc919d854ff64fca11c8f16cb7c3"
+    },
+    {
+      "path": "scripts/develop_soft_sweep.py",
+      "sha256": "e23d3d794c9ba6542a5e7211c62dab75bc0a6758626eaf73f25515d1297e1b35"
+    },
+    {
+      "path": "scripts/summarize_growth_bgs_bootstrap.py",
+      "sha256": "ce19b45f458ed13650290a48c6ca238370a09cd08fc0fa4a4c9f0234fb688357"
+    },
+    {
+      "path": "scripts/compare_single_sweep_demographies.py",
+      "sha256": "2620473a56333a6a853dacd08b5a75228fdddaf487233ca656b6dae1953abe4f"
+    },
+    {
+      "path": "scripts/plot_split_migration_bgs_validation.py",
+      "sha256": "19d617589b2fa643932005a7893c92566c135141f932d855b40f7715f882a2ba"
+    },
+    {
+      "path": "scripts/freeze_secondary_contact.py",
+      "sha256": "66ea063b8e9de4e53d0fbd29e38989282f5897f14e5d83b37ea55f09197d3dc5"
+    },
+    {
+      "path": "scripts/freeze_task9_ibd.py",
+      "sha256": "52c5d606b415dd16ee54f6dc3bae9f9690338feada7d9dcd5cab6289d21f31e4"
+    },
+    {
+      "path": "scripts/audit_vcf.py",
+      "sha256": "69734ecea4b75771daee8137eb079007ab8a26e31e7198e02f2666c40f80570f"
+    },
+    {
+      "path": "scripts/summarize_growth_bgs_fits.py",
+      "sha256": "373beb5d5429ce9af5b6c2130876fceb986549a5660feb3cbcfdaebf489775c0"
+    },
+    {
+      "path": "scripts/summarize_single_sweep_raisd.py",
+      "sha256": "7f0428f31f4d00f75d069179b5ebc5ffde78c55f746f0a3b3d4cc8ffaaf0c1ed"
+    },
+    {
+      "path": "scripts/summarize_soft_sweep_development.py",
+      "sha256": "7eddd10fc9f702c167e818826e02334b811d09ca10360659dfad786146d1ce0c"
+    },
+    {
+      "path": "scripts/reconstruct_task11_pedigrees.py",
+      "sha256": "846896388a7130f1e36afbbe9a64d7decf78583f412e4ea15b9f5fa309615ffa"
+    },
+    {
+      "path": "scripts/train_secondary_contact.py",
+      "sha256": "282e941dd072dce58d8af2be1b87c93882dfeb6648f10f22415ce7aa1cb0c84f"
+    },
+    {
+      "path": "scripts/extract_havana_exons.py",
+      "sha256": "70925c5e47b2661ade0b7f3dabcd24ce39019ed401355c9cf1d3bb05dcbebf4e"
+    },
+    {
+      "path": "scripts/sex_map_to_plink.py",
+      "sha256": "e42314bfdccf0e502f1555e7c909e0c66f5cbe3c1dc5654e597de1f438745fbe"
+    },
+    {
+      "path": "scripts/predict_single_sweep.py",
+      "sha256": "f49fdad7a78cad2ac9470f37cefa2b0e70ec106d0bbba2b62f5cc9c42daa0f91"
+    },
+    {
+      "path": "scripts/gpu_smoke.py",
+      "sha256": "3b8d0d7b1b3a7282fbe410e3dcac5861af481393403a2331951a0ad303bfcbf2"
+    },
+    {
+      "path": "scripts/task12_background_correction.py",
+      "sha256": "017a7f2e96e52ef9d025768436aa8aa4f89959520d6c8835590642bcb9ab105d"
+    },
+    {
+      "path": "scripts/compare_growth_bgs_selection_smoke.py",
+      "sha256": "fe1947dcefed0c690fb5402127e8296a4b9afc689475e71b8e7d16e27df8889f"
+    },
+    {
+      "path": "scripts/predict_secondary_contact_arg.py",
+      "sha256": "5ce8d29ecefd581cfb48125c7b62d8ff26e5b615c7af0c9f3408720ff3bdb903"
+    },
+    {
+      "path": "scripts/validate_relatedness_scientifically.py",
+      "sha256": "218245700682118db96d21e8e34266cecf5e3504ae91046d01a21b30fbf0cdf7"
+    },
+    {
+      "path": "scripts/plink_map_to_simmap.py",
+      "sha256": "e53d0252489372bb89532c0e289931e1c1549290ecd8a43686b382e9ff7ca55c"
+    },
+    {
+      "path": "scripts/summarize_single_sweep_exact_recovery.py",
+      "sha256": "f3a02f5df2e31aa48b5a67cb5089f49cf97032fd9e01e115f6c940737acffd13"
+    },
+    {
+      "path": "scripts/validate_bottleneck_readiness.py",
+      "sha256": "46f1655294c9ef15f0c7cb18de566ea2764b35b7ef25ee15d10aade645c319e2"
+    },
+    {
+      "path": "scripts/validate_task10_complete_pipeline.py",
+      "sha256": "f7eb731f0d4845bbd9f8f8455f0a171653f00bbadb10235bb4f5b563c2e92943"
+    },
+    {
+      "path": "scripts/evaluate_task11_degree_factorized.py",
+      "sha256": "1ca4bdf87324a5081cbc6536029bcb42ba245192277d5fb6193c2b77757313fe"
+    },
+    {
+      "path": "scripts/validate_secondary_contact_generator_spectrum.py",
+      "sha256": "4c69a68c40629ad2ffb791138aa3f3687ae6f32952335a165e89a2c8cb61b8bc"
+    },
+    {
+      "path": "scripts/calibrate_split_migration_bgs_selection.py",
+      "sha256": "0e1cd31af378dea82217308a138c210dc94ab09a04056f09114d80f2e6d6ddb9"
+    },
+    {
+      "path": "scripts/extract_growth_bgs_blocks.py",
+      "sha256": "78827f269c5a624fb8717efc21957ef21be654ccaee2ec575d09c9bc59ccdc75"
+    },
+    {
+      "path": "scripts/evaluate_human_empirical_background_holdout.py",
+      "sha256": "3f7643704826a400a9474b4ed690d0bd238554030932f3910fadee8a1c391e9c"
+    },
+    {
+      "path": "scripts/compare_growth_models.py",
+      "sha256": "dd4913ef16f70465b7d86c41a4a459325afd8796b6105f2eb23461ad547263f6"
+    },
+    {
+      "path": "scripts/cluster_task11_families.py",
+      "sha256": "6189685ee57702c6576e6231c27533ce9923ac11ac309489b5b95d4fa8695ce8"
+    },
+    {
+      "path": "scripts/extract_secondary_contact_arg_features.py",
+      "sha256": "4e8425ffa0583973c1c199d447b18dfe16197a9ab23138ca29ffefe92b0722a9"
+    },
+    {
+      "path": "scripts/freeze_task10_clean_spectrum.py",
+      "sha256": "a6072bdf37015f418efd838e0dec3f45f8d7932333d4c4bb652309a0d99506fe"
+    },
+    {
+      "path": "scripts/plot_secondary_contact_correction.py",
+      "sha256": "a47ea6d13e1232d3f562b37b3e8a9863ed862682efeffaec667ad092e549d1d9"
+    },
+    {
+      "path": "scripts/validate_demography_independently.py",
+      "sha256": "f2f489476f5ab2bfdc50fb129b6b8c4281aaceeba9577205ada96af7fbb9f2c3"
+    },
+    {
+      "path": "scripts/prepare_task9_submission_package.py",
+      "sha256": "9c18f68ffaea8f4456281bed2dec90680e8e6fd5c425cf72f1c25027d0b49d81"
+    },
+    {
+      "path": "scripts/recompute_sweep_recovery.py",
+      "sha256": "6aa7da82d4b3786df5cdd2ffb87fd593597a5b74f0867a29248b519fbe5c2527"
+    },
+    {
+      "path": "scripts/fit_growth_bgs_selection_aggregate.py",
+      "sha256": "fc9e8fbc26f48b59bbcbde75d32ca424f7c83fabc50f22486854188830277a9f"
+    },
+    {
+      "path": "scripts/summarize_bottleneck_science.py",
+      "sha256": "4632e3b6bf86e1a52841c5139942cd39fc30736638eacfa5e06b15aa1df06075"
+    },
+    {
+      "path": "scripts/summarize_soft_sweep_observed_transfer.py",
+      "sha256": "288775d1850ef1863a960ba99448e31d3cfe9bc178d1216598663c3e3be996d9"
+    },
+    {
+      "path": "scripts/train_secondary_contact_tabular.py",
+      "sha256": "0aa59dbe6793165e67249f3fe5657fc5133845b080d3802a820422f878f4a033"
+    },
+    {
+      "path": "scripts/inject_fastcxt_hazards.py",
+      "sha256": "714c2dd8a547e3ee2ec92ba1a5cac1b0807a7fd2673362df8a946a6cdbefb62b"
+    },
+    {
+      "path": "scripts/select_bottleneck_candidate.py",
+      "sha256": "95a60b9356dedf350ff00fa84cf598eca20504ceb8ba161d3b1e090f2765e788"
+    },
+    {
+      "path": "scripts/plot_task1_freeze.py",
+      "sha256": "89549b1add114025de996cd8aaeef23199185b3b6dbbb315b2fe27414e927ba5"
+    },
+    {
+      "path": "scripts/train_secondary_contact_arg_tabular.py",
+      "sha256": "f4c060b9b38d7fbf8cde99c9c74b60e4b281fa6e4d476a8e1005edbbf4b4e988"
+    },
+    {
+      "path": "scripts/consensus_task11_guarded_candidate.py",
+      "sha256": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318"
+    },
+    {
+      "path": "scripts/remote/sync_to_betty.sh",
+      "sha256": "7f36cfbcca69fb9fd279fcc297c19e4667a9eb03059993378af4e0b0f4ce04a3"
+    },
+    {
+      "path": "slurm/single_sweep_raisd.sbatch",
+      "sha256": "b272e1fc38b45710b38cd5ae7b20edade2f0adffcc0da49bda69f4f39070121b"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_candidate.sbatch",
+      "sha256": "ef64de9c00ad6e88ec66ca99007c336327eec72089dab19f2de076b6b44b1c0e"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_grid_aggregate.sbatch",
+      "sha256": "a8e2a2550e1ef119fbd5bdc5e255e44212f7789fc5cf2c48650cd8c051f67593"
+    },
+    {
+      "path": "slurm/split_migration_bgs_block_bootstrap.sbatch",
+      "sha256": "722df8ecfc798a886b11864b5dc125f6ee4c2876bf07ba9e20addf55930a77b1"
+    },
+    {
+      "path": "slurm/human_branch_pedigrees.sbatch",
+      "sha256": "00c62a1378db40abf944a84ddcb9c43cdda00bfc561d7900afd2a5d9ec0d32d1"
+    },
+    {
+      "path": "slurm/bottleneck_fastcxt_observed.sbatch",
+      "sha256": "e2e434449fe1f1d7e3869b874744d05d7440b2d8a2f55ffcdf7bab15faa32bb7"
+    },
+    {
+      "path": "slurm/task9_ibd_fit.sbatch",
+      "sha256": "7d7dfb699dea83437ec90aa51245b080a26f17edbed22b6d4fa34f5f4745372b"
+    },
+    {
+      "path": "slurm/single_sweep_raisd_recovery.sbatch",
+      "sha256": "ad73a750e4dea376853d6c9fe6baae110ea7d2511406d0315addac8ce14df7ea"
+    },
+    {
+      "path": "slurm/bottleneck_dadi.sbatch",
+      "sha256": "ba2d19f766f0bdd3457873bd4b220700bcdc53a799dd4df94e05cc00a4e2a44e"
+    },
+    {
+      "path": "slurm/secondary_contact_sfs_simulate.sbatch",
+      "sha256": "452d11b925971e06c564b6b330265e63dfef3cc51113a4db048bf17e667b98de"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_aggregate.sbatch",
+      "sha256": "ce3254320691a500fca7b2d9e43e950481ce37afeffc6b1865e3c84b63eb0b2e"
+    },
+    {
+      "path": "slurm/task12_empirical_background.sbatch",
+      "sha256": "019d3d3214c136de627731ddf97e95c9c70dae3deb92f5ae43109e810df7b536"
+    },
+    {
+      "path": "slurm/bottleneck_experiments.sbatch",
+      "sha256": "5c57e10d0c825067a91e8cbcd55fa8752006b83b1c6284bfaa6d337470d3f601"
+    },
+    {
+      "path": "slurm/bootstrap_ped_sim.sbatch",
+      "sha256": "1b35cc41787f32a3d1e2ec9ea2894f6b809ab54ba3d8e04de329802343019357"
+    },
+    {
+      "path": "slurm/bottleneck_fastcxt_train.sbatch",
+      "sha256": "5143a32423f854169cf83a54bf911b8c253262c0abdcd5824fa43f92b3d904f1"
+    },
+    {
+      "path": "slurm/secondary_contact_train.sbatch",
+      "sha256": "71c98b248c1ea149328061b0c8479fbebfbd8463bbe5f5e38071813dd1245312"
+    },
+    {
+      "path": "slurm/soft_sweep_recovery.sbatch",
+      "sha256": "d4649408072de643824afc797f7c0cca0e9c1ffecaa1c39309bd79ad2d304375"
+    },
+    {
+      "path": "slurm/bottleneck_select_screen.sbatch",
+      "sha256": "3b4502728ef0a02185106b73a10dabf6814943dfe7326ebb69c792153208a59b"
+    },
+    {
+      "path": "slurm/task11_degree_factorized.sbatch",
+      "sha256": "1465d682301cbcf19eeb8dfbc4037d43520bc1b2078492f4a78d2f56bb9444c2"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_near_aggregate.sbatch",
+      "sha256": "f93e598361600200bef470846f5fbdd89b50c41234ac4e41e1a26b66516b6927"
+    },
+    {
+      "path": "slurm/bottleneck_promotion.sbatch",
+      "sha256": "acffc0b0e47e6594af5cbb387a7cff9e2954868f0436034c4a0ab65dbf207de5"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_fit.sbatch",
+      "sha256": "b940ca34bd9fd374a2653019259e84c675ea90ca57119281e4a1d3ea13db8912"
+    },
+    {
+      "path": "slurm/bottleneck_momentsld_fit.sbatch",
+      "sha256": "edfaac70c936560bd6250ad23d3ed4d3f083dee8e59852d5c6b2774f45290956"
+    },
+    {
+      "path": "slurm/split_migration_bgs_refined_convergence.sbatch",
+      "sha256": "9571166ffe183cac3a6b10b199b9d299753cba6d7dc2c6ee957fd915d4337e4a"
+    },
+    {
+      "path": "slurm/summarize_relatedness_hapibd.sbatch",
+      "sha256": "c445b638387ed0bc679a90bdc46fc5132d31a480054ea3c404bee6a385ede321"
+    },
+    {
+      "path": "slurm/secondary_contact_singer_smoke.sbatch",
+      "sha256": "5efc596fae4b24798b220e0af9c8c4804288b0e94d086259b6ef81c3984fec21"
+    },
+    {
+      "path": "slurm/single_sweep_selection_scale_stress.sbatch",
+      "sha256": "055915dd8c410d9e40dce1cb32dcc48cbb263d120a77547f2155801b5f5da0d3"
+    },
+    {
+      "path": "slurm/human_hapibd.sbatch",
+      "sha256": "2aafbb64c6e0ea18d66c782f614dd7c1ff4bb43885602b482863cd145c773cb8"
+    },
+    {
+      "path": "slurm/single_sweep_selection_smoke.sbatch",
+      "sha256": "32efc2d507ab96236afdc3820c7a77545756b5846c9901d7ad8aaf4fa217e591"
+    },
+    {
+      "path": "slurm/bonsai_pedigree.sbatch",
+      "sha256": "9ee9b2ea303d99a41d5fd9f508347478b910f75e6acd0ed553e58f3f7f8fe72e"
+    },
+    {
+      "path": "slurm/task9_ibd_shape_fit.sbatch",
+      "sha256": "b6d024ed0077360d1130b4f0c023840f25a789263ae3998c7fff916823e87cd6"
+    },
+    {
+      "path": "slurm/task10_branch_fast.sbatch",
+      "sha256": "03ffd0f37aa2a1cfd466d376af1b0abf1440991740800ef0a5fae677c138f753"
+    },
+    {
+      "path": "slurm/single_sweep_selection_chr7_summary.sbatch",
+      "sha256": "747759f3f60fdc00c7715ebf469c1637bc89a2b8d098ec7ad8faf9340c1f15cf"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_extract.sbatch",
+      "sha256": "32a024bf4ae48611fee93ee7936fee9e3b74af2394903a47cbc30ab669bbb1f3"
+    },
+    {
+      "path": "slurm/secondary_contact_predict.sbatch",
+      "sha256": "439b7be5994b4fcc39227b4de3c8721185199a07385262e37c0b79662b685441"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_stress.sbatch",
+      "sha256": "fa6310e1525d7e6f4032632fe649452d3e5439ca531c719483500fdabadd5668"
+    },
+    {
+      "path": "slurm/task9_ibd_calibration_holdout.sbatch",
+      "sha256": "ddd809fc12fca2830192b24780734f49494534e541733135251e12be3694a98e"
+    },
+    {
+      "path": "slurm/secondary_contact_polegon_tiles.sbatch",
+      "sha256": "5542f50df1f74a465cc4377727b4944ac228ea7ba92a4e029864203f02e22e31"
+    },
+    {
+      "path": "slurm/split_migration_bgs_distance_fit.sbatch",
+      "sha256": "18b6d8bb82c48618edcbf26c86c4a5f2cab6700f573fa0aa9214b14eb1f7a494"
+    },
+    {
+      "path": "slurm/task11_ibd_calibration_holdout.sbatch",
+      "sha256": "50b52d8e9bd3f10a7ee6d316fbb9aa35a1fb3acf9226349f90d11167690b0aa8"
+    },
+    {
+      "path": "slurm/human_background_validation.sbatch",
+      "sha256": "20418c7a11d7234cd76a5985e0a4f6ca9bb165914a2eccdb71f5364b30601bab"
+    },
+    {
+      "path": "slurm/split_migration_bgs_refined_fallback.sbatch",
+      "sha256": "0028aa13b24f6d61423107a5859e01ddd3856373ba46ffaa1059169488dd8165"
+    },
+    {
+      "path": "slurm/growth_bgs_summarize_audit.sbatch",
+      "sha256": "f8bde9f4e2ce850430b8e15b9cab871664fc4a991227b9c81193f99e45e71bac"
+    },
+    {
+      "path": "slurm/single_sweep_raisd_chr7_summary.sbatch",
+      "sha256": "c4e312386b0baf583d6d2e1c86594c0f740abfd3f8e916157f9f981e567f4be2"
+    },
+    {
+      "path": "slurm/bottleneck_momentsld_prepare.sbatch",
+      "sha256": "ca5a68229c7c3150633001d6ded82395bd954e45b27d646c042175c696d028b4"
+    },
+    {
+      "path": "slurm/bootstrap_selection_stack.sbatch",
+      "sha256": "54ef29a4b66be47ff0c0a191fd5c0ca48775a59013da8c470f3b5742eb309a68"
+    },
+    {
+      "path": "slurm/bottleneck_experiment_smoke.sbatch",
+      "sha256": "9422bdf22b67b842e2b6cf5bc1265d7279dd9ecf784fd1e7996362627e16e0de"
+    },
+    {
+      "path": "slurm/task9_ibd_calibration.sbatch",
+      "sha256": "18e0f1a0d62afeb39cd195fb8868e34f5104e33b3e2f08c7fe80904a6a06a006"
+    },
+    {
+      "path": "slurm/secondary_contact_tabular_predict.sbatch",
+      "sha256": "2c0bb5e34a4f683c19f718f66bef12184bf5808df554c5f535c67cc00370dafc"
+    },
+    {
+      "path": "slurm/secondary_contact_audit.sbatch",
+      "sha256": "7ff5c3555718f1c32362955f1855a60aa41ce609ce6112a016005e88236ef79f"
+    },
+    {
+      "path": "slurm/task12_background_corrected_holdout.sbatch",
+      "sha256": "991f4fb68e28934c86d63e9fdc66a210d68751a9cc833331b4381f26778d5009"
+    },
+    {
+      "path": "slurm/task12_empirical_background_holdout.sbatch",
+      "sha256": "434928cee6d88ba49f149822d09d0c6610931687cf7835c032d1ac10a233591e"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_near_observed.sbatch",
+      "sha256": "dc838da23ef8c0f52337f195fb8d1b00a72cceb411735e05234cfee36d7f4d2a"
+    },
+    {
+      "path": "slurm/task12_background_deconvolution.sbatch",
+      "sha256": "6e0042beeef482097d29ab38e06cc5ede6418a8ffc13795d6580210d422a72a1"
+    },
+    {
+      "path": "slurm/task12_background_robust_fit.sbatch",
+      "sha256": "569550a6fb656c56b7b665ac6a8cef897d5e5887cbf554714bcdb08964ae25fc"
+    },
+    {
+      "path": "slurm/split_migration_bgs_arm_fit.sbatch",
+      "sha256": "c7e598b10901b66d04b537e2bc70ba609329ce6ce9c3be59d66e712652cdf711"
+    },
+    {
+      "path": "slurm/task12_bonsai_long.sbatch",
+      "sha256": "6ff2fbe803757e9567c66053cb71eddeaeea89552d266970c7edfd46a3670af0"
+    },
+    {
+      "path": "slurm/single_sweep_selection_recovery.sbatch",
+      "sha256": "f7b3ffd4620f745450d7eb7c61ae91a012355c96759c4f4688b1bef658bf9333"
+    },
+    {
+      "path": "slurm/task12_background_corrected.sbatch",
+      "sha256": "a51c0ddf4f0895da9712ea37d3cbca5f164a290824d9ebd5f1ecd00f4685ac2a"
+    },
+    {
+      "path": "slurm/soft_sweep_raisd.sbatch",
+      "sha256": "914a9c70f147a8647fe11d5d18f902aafd14b767c387ddf1e76ddc9fa3be58b1"
+    },
+    {
+      "path": "slurm/bottleneck_sfs_bootstrap.sbatch",
+      "sha256": "7d45b5539f164b0363cffda7d5d9ba2b7d5f5eb9060f9d5923351f9496cf2151"
+    },
+    {
+      "path": "slurm/split_migration_bgs_baseline.sbatch",
+      "sha256": "1943769d7010f208be66e63b4e719d290ab92847b9d6568193956e4d4aa1d7ee"
+    },
+    {
+      "path": "slurm/growth_bgs_stratum_fit.sbatch",
+      "sha256": "cf672ee1eb342be7670f9c36ee9da2855d919918d38056367f53033fbd6adc96"
+    },
+    {
+      "path": "slurm/bottleneck_chromosome_validation.sbatch",
+      "sha256": "0a2d4ecfabfb616827f177fe772786b398926617065a0aecd8cd82c105c5a3fa"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_predict.sbatch",
+      "sha256": "206b3d2f3d1f6f1eb4a9222a42c17558423669e9d28927c844f6527a43d4f71c"
+    },
+    {
+      "path": "slurm/human_hapibd_shape.sbatch",
+      "sha256": "0b0aa4571712a8193aafca1304b2a5e3a0c4dfdf314240e93b0c8e82904d992b"
+    },
+    {
+      "path": "slurm/probe_torchao.sbatch",
+      "sha256": "13e9d0ce27c156a1eaf4a9b35b754282f7a8ef0f354b668d5fe3ca8f5e4361b6"
+    },
+    {
+      "path": "slurm/bottleneck_simulate.sbatch",
+      "sha256": "353066d17bf2680601081711a61bded29732c4dfddbeaaea53cb5fbb3a2fa218"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_aggregate.sbatch",
+      "sha256": "46e6d5275f91d1ff6b94f1d0022e6d4aadc0068c729e7ea1a031c8d9ea288dcb"
+    },
+    {
+      "path": "slurm/background_sweeps_audit.sbatch",
+      "sha256": "19f19c632b2c1c2182f0480c5e06877a2a9e85693c260cf56c4faa1c59ebdfbd"
+    },
+    {
+      "path": "slurm/split_migration_bgs_refined_fit.sbatch",
+      "sha256": "80f613adaa7bc2ddf3bf769dcf0478f206a8743a0303aa97580700513653a778"
+    },
+    {
+      "path": "slurm/split_migration_bgs_selection_grid.sbatch",
+      "sha256": "1a9299cd530605e100c89adee2dea457df534743c16358fe95d74f23cf0dde6f"
+    },
+    {
+      "path": "slurm/background_sweeps_raisd.sbatch",
+      "sha256": "541449e364bfbf7fd2beeb9447335443a5b4b85fa96165b5dc77f09e9cd028f5"
+    },
+    {
+      "path": "slurm/human_family_relationship_fit.sbatch",
+      "sha256": "2c9c0a03ca8b75530ee09977fc5bc90f98a63273b624f5abc244da34f3307a77"
+    },
+    {
+      "path": "slurm/bottleneck_multiscale_sfs_evaluate.sbatch",
+      "sha256": "8d80005e4d7cbd6d89d9a8b60399c7802829096a9c829198e6898d6cf6262cc6"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_stress_aggregate.sbatch",
+      "sha256": "06b9a5d28c6de737db26c2cfc84379191e4631ea8c911a0689a5a02ab2a89030"
+    },
+    {
+      "path": "slurm/single_sweep_selection_scale_summary.sbatch",
+      "sha256": "4d5e6a0768998530499dbeb3dfb953ac79a35790ada231f757213993b00ac47c"
+    },
+    {
+      "path": "slurm/bottleneck_audit.sbatch",
+      "sha256": "43fba7d71b625c5c885b5962ad4c898d6c9e10f02af8904279bd8ef97f89c860"
+    },
+    {
+      "path": "slurm/bottleneck_chromosome_evaluate.sbatch",
+      "sha256": "b1edcb16a0bf7d8c30f6d208761edcaac58a1ad408fb46b651cf947028f36ddb"
+    },
+    {
+      "path": "slurm/task11_dog_relationship_fit.sbatch",
+      "sha256": "2527714641f8fcf82d81d4b6e2ea871b6d2ef290b940114a8be2c2d6e90054f2"
+    },
+    {
+      "path": "slurm/secondary_contact_generator_validation.sbatch",
+      "sha256": "8fa053da85e00f685dfef50f7a8254b212303e1eea69f49181360f09158192cd"
+    },
+    {
+      "path": "slurm/task10_clean_spectrum.sbatch",
+      "sha256": "b55d60d034d57b4884a219938061bc56e5f8924ab25e33931f260dca7648509d"
+    },
+    {
+      "path": "slurm/soft_sweep_audit.sbatch",
+      "sha256": "ad16c0825201cc8ce40d131965269e9d8575722fe759e465d4fe5f36011929e1"
+    },
+    {
+      "path": "slurm/single_sweep_selection_exact_recovery.sbatch",
+      "sha256": "40b0c4661d9c2718423b00ee65793583ba7f734c594a342971336bf416d2d91b"
+    },
+    {
+      "path": "slurm/bottleneck_moments_chromosome_evaluate.sbatch",
+      "sha256": "596b669cd0b695f98094dcd7461510119fe4cb9082978e3a48caf265c4b87d2a"
+    },
+    {
+      "path": "slurm/secondary_contact_tabular.sbatch",
+      "sha256": "935d14d4f4615cbc1abfc48d2ad09304c94075ce4f9fa9a832abf74b44b23679"
+    },
+    {
+      "path": "slurm/task12_background_trim_fit.sbatch",
+      "sha256": "336b1f6741a0df1483c246c4cdb66878655093af1e608c075ec5915b4edd9a19"
+    },
+    {
+      "path": "slurm/split_migration_bgs_block_extract.sbatch",
+      "sha256": "18781c40e5efb3f6069b592d025731ee3acf08ac36a7a424c64e80aacca5de22"
+    },
+    {
+      "path": "slurm/secondary_contact_polegon_smoke.sbatch",
+      "sha256": "6b20f7f103db4f4c01abf98fdd1d009b03397f05d6f640c6d2fe38bd3c4d76a1"
+    },
+    {
+      "path": "slurm/dog_hapibd.sbatch",
+      "sha256": "3394e493d45f0ab28a14eebb9ce9f49b4f438f15e4448c33ab1f508f3a4df631"
+    },
+    {
+      "path": "slurm/bottleneck_smoke.sbatch",
+      "sha256": "2bb250d0354c5798bc67ad909897e10073396230cbe4872bf96006e867070748"
+    },
+    {
+      "path": "slurm/bootstrap_cxt.sbatch",
+      "sha256": "4e2b9e78da592197d43420e07a733436fd15b36a92cc12358e8588a05508002a"
+    },
+    {
+      "path": "slurm/bootstrap_env.sbatch",
+      "sha256": "cd4e0670ab83de158ee011f7340f384d957174a9f4aa70765e2d9e67e8af54d0"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_aggregate.sbatch",
+      "sha256": "4c25c5bffca6f4c2fae4d4ca64834680f37f407b0a71c2c039650e80ca7d970c"
+    },
+    {
+      "path": "slurm/secondary_contact_generator_bootstrap.sbatch",
+      "sha256": "6f3084ae2ad1b9a014ff8fa0be8373e14ef4a56baf3850010c9a7111c2f79f93"
+    },
+    {
+      "path": "slurm/bootstrap_havana_exons.sbatch",
+      "sha256": "663accafb6247467e6b02997885c5b6b8a7a5a44088ad497ba0807f3f148a626"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_tabular.sbatch",
+      "sha256": "7f35f778f37071d396571dcdb6b4acc2bc384073c584ae72a1694c0807cfc7ca"
+    },
+    {
+      "path": "slurm/task11_pedigrees.sbatch",
+      "sha256": "2d940a622e11741fa9b0a4fe054a96ffcbf73077ac85482189ddbef964367445"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_training.sbatch",
+      "sha256": "e4a2744298e6a7d6cbb654a2f427d5469c216ea34726c2d9a202a3ed5aa574eb"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_calibration.sbatch",
+      "sha256": "226fdf584fe958c7c2b4740d44f6a2e3d1949f3e1e979910975e89cc671302b4"
+    },
+    {
+      "path": "slurm/task9_degree_factorized.sbatch",
+      "sha256": "40a6f01266c9c477d3032f918ea595d37b6001b8124afece90072bfdc47f9972"
+    },
+    {
+      "path": "slurm/single_sweep_raisd_summary.sbatch",
+      "sha256": "dd0b311ba2557da28b6b1fefb440b190e182347464c999cfe8cd7979230397f5"
+    },
+    {
+      "path": "slurm/single_sweep_selection_recovery_summary.sbatch",
+      "sha256": "9a7ec2dd93ec80798ffd22d66f4ed6f15680b596988580733c5f05c190d66a80"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_grid.sbatch",
+      "sha256": "76bbf97df24276190dcb232792c12465f7e0bc2e9626595835dd871bfdd196c1"
+    },
+    {
+      "path": "slurm/soft_sweep_recovery_summary.sbatch",
+      "sha256": "6ce56a210a931dab068803c9d184cf7157dd3a8db72753ec6cb70ec248ee7408"
+    },
+    {
+      "path": "slurm/bootstrap_references.sbatch",
+      "sha256": "067af0515048a4aa959c1d0d5a1155607e6e219725c066f3477bbfccf817f37e"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_smoke_compare.sbatch",
+      "sha256": "03f27ab425fe1d72eebe950c1beeea91c996faa471a2ab86df6c711e407619f6"
+    },
+    {
+      "path": "slurm/soft_sweep_localize.sbatch",
+      "sha256": "22cfc52f0009263c28e912d2f6c9a3f53c90e3c6a39fde66592893946f57841a"
+    },
+    {
+      "path": "slurm/task11_ibd_calibration.sbatch",
+      "sha256": "73b67dd0b8dd8a7ba4e866823df643847009f592f6068a41ac9f33c86d02c15e"
+    },
+    {
+      "path": "slurm/secondary_contact_sfs_manifold.sbatch",
+      "sha256": "0e148252296ba49a31514d2712b749c6cef033d0e1994e7d381cc9d8e5b14ca9"
+    },
+    {
+      "path": "slurm/single_sweep_selection_chr7_recovery.sbatch",
+      "sha256": "5ece2ddc59695912e2273bd9e3cb35e4ac3a8b8bb1bce95f685690da9b404534"
+    },
+    {
+      "path": "slurm/secondary_contact_arg_training_aggregate.sbatch",
+      "sha256": "eec50ed5b0475841cc75e047574decd99fea444c64d373ff62e2e5c9560b24a2"
+    },
+    {
+      "path": "slurm/bottleneck_normalize.sbatch",
+      "sha256": "b0edfb7d6bcc8079030776217ad96d6c43585f9b2884d35eb86884d92401aa02"
+    },
+    {
+      "path": "slurm/secondary_contact_generator_recovery.sbatch",
+      "sha256": "254ed7bef3d4405c94d98e64c0f2c896e5a584ce5318f080580916cf8ef43904"
+    },
+    {
+      "path": "slurm/growth_bgs_resource_audit.sbatch",
+      "sha256": "5d75412560748a363d8d3d90d7f67499fad16649f33c619731acd38fd9bc6c2d"
+    },
+    {
+      "path": "slurm/bottleneck_observed.sbatch",
+      "sha256": "32a4f332068aebc1cf5e52cd5aaaeae19afa810070edf766095d92b7267da964"
+    },
+    {
+      "path": "slurm/secondary_contact_ensemble_evaluate.sbatch",
+      "sha256": "9b1d752b474b0c162c5db464dcf4ca350d3a0088a85c72751b3e77c7be3142c2"
+    },
+    {
+      "path": "slurm/single_sweep_demography_compare.sbatch",
+      "sha256": "783e5edc334fe349dcc66eaec29c173263817249252177d2b29af312ab54f01a"
+    },
+    {
+      "path": "slurm/bottleneck_train.sbatch",
+      "sha256": "7348259b6cbb509d84b3133febbf770d8a5b81a2ccbc41ab26400df18ad6ebf9"
+    },
+    {
+      "path": "slurm/growth_bgs_selection_smoke.sbatch",
+      "sha256": "55e34589904ba08088a75df448165c66558b617c67315d3898c3469757fa14e1"
+    },
+    {
+      "path": "slurm/task10_branch_medium.sbatch",
+      "sha256": "e0dd36e1e790147d32adf8345cff3a90bb9558879f2446cdbb8dfa8562cfe987"
+    },
+    {
+      "path": "slurm/secondary_contact_moments.sbatch",
+      "sha256": "2b7da4f2226cbb401f1647896f2e56ae408298e13fbcf7144c2014d70b6e39e3"
+    },
+    {
+      "path": "slurm/task12_background_robust_holdout.sbatch",
+      "sha256": "d6a9ff6ea8dcae7e5ea8085f0024e56502cbddd9fa964e90a1af237d0f770e95"
+    },
+    {
+      "path": "slurm/bottleneck_genotype_matrix.sbatch",
+      "sha256": "631dafc06b19f9a04f7fb636d8b812db194c96120fd1c020131bf368e6642081"
+    },
+    {
+      "path": "slurm/bottleneck_mamba_smoke.sbatch",
+      "sha256": "fc1668c47d766daeb43548113ad2271c764e90ac6f33e1294673e15a0aaaa080"
+    },
+    {
+      "path": "slurm/bottleneck_merge_search.sbatch",
+      "sha256": "c1bf12652015909b4a12257c338c7347c4190853d900e9cb08bac71b2c99cb26"
+    },
+    {
+      "path": "slurm/secondary_contact_singer_prepare_tiles.sbatch",
+      "sha256": "1506da1754929bad0fe41813695e50520a2358e92b7105b9f766aaaae124959a"
+    },
+    {
+      "path": "slurm/relatedness_vcf_audit.sbatch",
+      "sha256": "6502c0b5de7b56fa170b5e1bed49da9a74386dd55f8975cc85bab5b190191932"
+    },
+    {
+      "path": "slurm/gpu_smoke.sbatch",
+      "sha256": "2783363ab0bbd4fcc89126a519283365b9c86a1a706087d767210f46764333e6"
+    },
+    {
+      "path": "slurm/secondary_contact_singer_tiles.sbatch",
+      "sha256": "a9501f3f85ee1cffcbb5714479617bfe49d5a161ec3a6acf28ce2b3160969ef6"
+    },
+    {
+      "path": "slurm/growth_bgs_audit.sbatch",
+      "sha256": "0e36e99391e5255bc567ebfa6093ea354a9607346a63de4a3e957e1489746e9f"
+    },
+    {
+      "path": "slurm/background_sweeps_localize.sbatch",
+      "sha256": "bee92ee162bbddf294b85cc7b71c6df8527f75a894dd92d16a9300f9aa83ae2e"
+    },
+    {
+      "path": "slurm/bottleneck_momentsld_regions.sbatch",
+      "sha256": "d2e86c51989a696717bd97514af42787a5af414bf6e96cadfe44a0193cd8dbe5"
+    },
+    {
+      "path": "slurm/growth_bgs_blocks.sbatch",
+      "sha256": "f8c88208f3e26962f5737077511e3f77ce011a8e62b9dda88f6b50528c47b5c8"
+    },
+    {
+      "path": "slurm/bottleneck_fastcxt_dataset.sbatch",
+      "sha256": "0550d2d8cc400d8d33b22157982e9ac78e5dd8fa3914ae7950dbf1041bd3e4a1"
+    },
+    {
+      "path": "slurm/secondary_contact_simulate.sbatch",
+      "sha256": "170413f8c1854e402d5c473121f7e116a4544fe265e0e9df88d320914a26ea16"
+    },
+    {
+      "path": "slurm/task10_human_relationship_calibration.sbatch",
+      "sha256": "f94460da3de68c73c7347b737286d1fc66badc7288de6b48263baa97b8a456a9"
+    },
+    {
+      "path": "slurm/split_migration_bgs_block_summary.sbatch",
+      "sha256": "7e14771af4c2301396c83797cc9fb81001f83ac68d2b8fc95fa17c8abdc3ed18"
+    },
+    {
+      "path": "slurm/single_sweep_audit.sbatch",
+      "sha256": "28ee133db002aefa54a9390de6f76e357b28dd747f12f251dc7415549c47e21d"
+    },
+    {
+      "path": "slurm/task12_background_corrected_thresholds.sbatch",
+      "sha256": "fbe41cd5e2b9f08aba044984eb93b61575a026f01268836dfe91f5c934589dcc"
+    },
+    {
+      "path": "slurm/bottleneck_multiscale_sfs_recovery.sbatch",
+      "sha256": "3a27b444bbc6cdf920c1751289ebdf2ddb4151aa801640899da48c9177387ee6"
+    },
+    {
+      "path": "slurm/secondary_contact_generator_bootstrap_aggregate.sbatch",
+      "sha256": "1de91b3f48b2f04af670c044a8259ca1fa1e0001ea47e35bdad5a968cdbcfce9"
+    },
+    {
+      "path": "slurm/growth_bgs_block_bootstrap.sbatch",
+      "sha256": "91a924cb17d890178ea05855b74b6576e465c2e7f32bc68f9384c7296d70cdd0"
+    },
+    {
+      "path": "slurm/single_sweep_selection_exact_summary.sbatch",
+      "sha256": "4646a4c5a7ac6cd3dc2d1827cbdeff01f1febf769cb20ad6068e4b756d511486"
+    },
+    {
+      "path": "slurm/bootstrap_fastcxt.sbatch",
+      "sha256": "7b8806d98263e6fd62ee24b7caa668ae49a3ebf83554b6b366cf8ede08651c74"
+    },
+    {
+      "path": "slurm/single_sweep_localize.sbatch",
+      "sha256": "1ff7f682b5f8056289b70c8ac4950b43a72b4bcc9f0d121a2c57cb3a98836d74"
+    },
+    {
+      "path": "slurm/task10_clean_spectrum_holdout.sbatch",
+      "sha256": "4e8628e086daf8f9fc55e658232cd51867297add99ffbd82a05eecf5b3f3aaf1"
+    },
+    {
+      "path": "slurm/single_sweep_raisd_chr7_recovery.sbatch",
+      "sha256": "93aec46b915bb2b66b56e575859713f11f787e4a3d1a58e28454170464d10128"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/verify_betty.sbatch",
+      "sha256": "b72f1de6274a4007ff32488fd319806b7a589991e8599288cc8de9582d99728c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/compatibility_operational.json",
+      "sha256": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/operational_versioned.json",
+      "sha256": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/compatibility.json",
+      "sha256": "f8d6de8e5be7fae93d322c4886fc4bc41756316f6b833ae8371101b091f5debc"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/run.sbatch",
+      "sha256": "0700adc329fd4905bd1a8c882b804b491b0fefe342aaf7c9cd3a5a8e4800ff5f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/official_input_contract.json",
+      "sha256": "bf207f596dd55c667bf5ff3704218fb546b1d478c24b3f975154cab41c1a384f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/verification.json",
+      "sha256": "f2577544b43fb75da469945e6de07a4713fa3bf3e8fbdcaf4d668523350ee7cf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/operational_unversioned.json",
+      "sha256": "f11d96d8d9d8217ae74a3d1304f4c031ad887a787ad8891f7d6c13d36d0ad954"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task9/compatibility.sbatch",
+      "sha256": "f7e07a321fe733310bfe900f38c5ed6bd6ea1e9de0489c6361f340391cc83e6f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/macos_pytest.log",
+      "sha256": "4d8837e7154ef54dd8f233176808c16aafa57f5fd24faed574bab898a8f86253"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/linux_pytest.log",
+      "sha256": "5320b1e4ccb78abffc2bb47809b8bcd1e12567728c51b1de24925b6055933a5b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/betty_incomplete_fixture_attempt.log",
+      "sha256": "66eb12c0035a24771a9e98c00568d9556f9126743b655e2b4840c341079890d0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/betty_pytest.log",
+      "sha256": "3a5ea1d2264ef7b7fde62ad487fdbcd3a98f5f5af230deb6f440475a9d95b79c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/linux_missing_pythonpath_attempt.log",
+      "sha256": "8906e28e5014e3ca585bc90c65d905269fd54be14d6054fb18d975c845f07b0a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/progress.json",
+      "sha256": "b1b3d114a9efcf56754829e02507c6df4579b970c44549c71cbb409b98f8b45f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/integration/source_snapshot.json",
+      "sha256": "a4791a288b6a29c062a8dc373810057b5a62f7179771fb656c4fb096d12886fd"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/claude/access_probe_1750.json",
+      "sha256": "43d4df9d0f064251069797ebe12b9b36b756d8dbe152a1af3b53ad0d0406497e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/claude/access_probe_1806.json",
+      "sha256": "4cacc7c5fed2182e1987079b6196f2d7d2129c5b666e493361e7abe0833455ee"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/summary.json",
+      "sha256": "148db018f318b0f1e18ba7643bbb89bf55f173a73edf046161735ad27075ccf7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/revalidate_vcf.sbatch",
+      "sha256": "fbaaf4aeda7a753ad9babbde065c011d7430c30812d07bc6d479927cb436c084"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/target_length.sbatch",
+      "sha256": "114e233249cfcacce44f6d416fdfdf93c509014cfced9bed102c10f7b7a0fbfb"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/software_smoke.json",
+      "sha256": "1ceb1a31edde5e865061d9e12c51508e1909b1a875d39c655745c345204fe782"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/execution.json",
+      "sha256": "232f60fae4bf496a08f8927321ffa7328ec501e54d906759c89da7113ac576c5"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_design.json",
+      "sha256": "c66ed96e0f2279b28016d7cafb4a5c749ff82157a0f3f5ebf738d1d2dd03a4f0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_postreview_verification.json",
+      "sha256": "6839c24467c095ad3d24817ca0940a74201a21d330e99bf53be3de4f12bf72e3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/check_export_contract.py",
+      "sha256": "20bb77ab12cb3cc6dba571271a498aa52ccebd260ab183c2b39e82e530a79eb4"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_initial_attempt_summary.json",
+      "sha256": "8cdfa99424c8200c4e530bc177ba72076a119ef70dfa9abd24e735967f87ef16"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_development_v2.sbatch",
+      "sha256": "393fba8b4ad046f443971fb51431994928f7fc0174c381e621fb6801d4c68675"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/current_source_manifest.json",
+      "sha256": "47ff427f49c36f22e7d5a1a1d67debdf06254d47b76b0854b9c35f9f112be16a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_legacy_development_comparison.json",
+      "sha256": "4501b568ca2f5d6cf69cab4535bd1b01b071f88e7e752338bfcc473639382881"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_postreview_replay.sbatch",
+      "sha256": "b7a39690feb698526b7402076aa5057a714707bd493be235d90b5d319e8c9d0c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_development.json",
+      "sha256": "d987808a25667d6a03c5399e748199c412c31d8a4e196975640657267c4ad866"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_design_v3.json",
+      "sha256": "ff4269580c92f4097a56671428c6abff73527477a25abb55a3a42e51b667fb05"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_development_strata.json",
+      "sha256": "503f96efe3f0bcbb6c57f260ba2d20a71cc2ecfa3c3f39f7aa830e81d5330dd5"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_design_v2.json",
+      "sha256": "a5608c5cc565bed7d431f70d05b31269d4dc5913ba5c6a545795a66d29cbf2bf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/resource_policy.json",
+      "sha256": "60dba970341616a168f33d5dd02702237b30a848c9c2300c4e26ce1666432e7a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5.sbatch",
+      "sha256": "9495f163eb55276e246dfc310dfff279cb0fb914c5365abea0e953e07da9e01c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/verification.json",
+      "sha256": "f7daf6e27742f70395649f8a42d79e0d2100d15cea0f3b0efa691ec257f0f4ed"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_development.sbatch",
+      "sha256": "55824ac5d297f6c54794141c864d16b667d1dd4ed0f202183bb7d7f4b7870d1a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/monitor_cgroup.py",
+      "sha256": "f8af7f359341783c6f139a386e734b4f1364a0821fa1abaa0a275c54aec691f8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_memory_retry.sbatch",
+      "sha256": "1873d66e2008f6a5952812f468cac8076bbf4cb0a9516222353117052d0ee2b7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/software.json",
+      "sha256": "5ff52599f95391b3f9505dbc4a60690b99c6de2e25d15fd65615421aaa4996ed"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_reexport.sbatch",
+      "sha256": "9133f970914963a5db1a0d5ec67e57319311e2305b845870ee8e6958a52b8f8f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task6_development_v2.json",
+      "sha256": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/export_contract_original.json",
+      "sha256": "971bc5c2a7dfcb696209bf9a1ec0a18871c99d83cff0155bc953a283182cd252"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/task5_design_v4.json",
+      "sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/summary.json",
+      "sha256": "bfb7c9e8ef9d70ca2db25d13f0e62e96bec2743ac6956137f00a928d479f2606"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/native_nonprogress.json",
+      "sha256": "44c34de8feaf2dc4b169a1a83dabb9b8dc62a8060093ba756486cadeb4968f70"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/profile_censored_bounded.py",
+      "sha256": "3d5f6d11b8e80962eb6b164020c8f256fbc78adb803dcad024e8c007edcf1ef1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/resume_split_q1.sbatch",
+      "sha256": "738368e3795fe4e16aeed30cc07fabcda73f129b37321cb13bb6ba78b59dd6ec"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/linux_runtime.json",
+      "sha256": "23a796e47baef8405db09f7b920430057bdd59fb767235a021c5af89eac7403a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/profile_censored.py",
+      "sha256": "bb468a09d3918a02995a81306223e3cb25183869e6c4077eecd565f3d22e49e1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/pathological_refinement.json",
+      "sha256": "b8cef1f7a6c96ec7e4749161423991a101cb8bba72c994280180622f55e2d868"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/check_likelihood_refinement.py",
+      "sha256": "cb235e2179eb3ca24a571ac624030433ec4145a1320b0c06812c20f161a8971e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/likelihood_refinement.json",
+      "sha256": "6d06c88f0f82c09bd1242811333c890c481bd0443e46152d4cecda8ac068af35"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/summarize.py",
+      "sha256": "6f3b06c5e64971e774b74e6cb388831b0a95d14d35c0cd91325a38e59d270bde"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status.log",
+      "sha256": "6000bcaaa57b9be0da874c0ec58cd44a1e4c7de7de065c9f247ea8c4aea313e7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/betty_runtime.json",
+      "sha256": "42f141772eecbda984791e7916f4f6bf011801fd29fafc5f940bde2a589eadbf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/reproduce_native_nonprogress.py",
+      "sha256": "86cf34ec988af51857c5d6cc3ae37215b2b7ea5f0670b6b1753d420775deb67e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/record_verification.py",
+      "sha256": "4f2b509f83313ed60d3f110a57cabddc3557b0b67e49a4da6755274207570ebe"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb.log",
+      "sha256": "9f035482ce392507fd3ab2ce75920899c3c43bcd42a909830817c73a74825e0e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/verification.json",
+      "sha256": "dcca13704e16446c7fb16e33582f3063e89313f7723895276f1b584f904651cf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral.log",
+      "sha256": "a95d1235607e13f64b350791668ea6f3741b2ba92176267596f3e3cf4106c742"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/aggregate.py",
+      "sha256": "5cca8385cdcc932f7a575b60af4313022988bfee7a6199f14e49dc3bfd857374"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/runtime.json",
+      "sha256": "7cb957e70de2d75f56fe556fa6cf9f26c507a3ca8861793b937d87a9c77137ff"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/training.json",
+      "sha256": "a071a6aeefc1237e3ddee553a275d03eb2bbcc3867c8b5a65104e66456c3e07d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/scheduler_adjustment.json",
+      "sha256": "80cb390d74fe798791b8aa35ceb575738d296eac449d60133ba3a4bec9a36527"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/run.sbatch",
+      "sha256": "d074798b98f61918a1a1f4d2ecc049e0acb24aee44e37427dfdfc905b09f86e7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/aggregate.json",
+      "sha256": "f795efe9d43e0bf4aa1a4308cc8c3c84c72f51bd17d8b9a316c793e8fb0a4de9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/protocol.json",
+      "sha256": "725002be6830bd9455957e182a8d383d4d068defbbbdb01aa78f80135d268f89"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/verification.json",
+      "sha256": "db96f209f9c200c0d7875b64b262a4550fd21f0f98bcc0bbb410ccc3dde4fb2b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/task12/holdout.json",
+      "sha256": "fd9e8ad64ef18d492833e75e5d8ebc235fde7de4a120c886b53a60fdfbf22fd1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/bgs/split_q1.fit.json",
+      "sha256": "40b29cfa9940799d72bd7bff208b4eec9a5433473c2d2b5701fd12e5896b943b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/bgs/split_q1.json",
+      "sha256": "fe1ea011ccf44e4f8d23025fb6123a2248c38998e8591d87a7cfe42cdef7870c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/bgs/split_q1.simulation.json",
+      "sha256": "d4161e0e648b6fc4a26348a8acce268163978a3dabda4f96ded28ae2982e4ec1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/bgs/split-q1-10850252.log",
+      "sha256": "becdd674c4f2fb93b1b335e90b27a503abbc7ab41f577f46d2b3bddac8cf5a84"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep0.fit0.json",
+      "sha256": "0ae1a130dbbe0377c14810a674bfc5b430be72bab694a9ea20cc5b77c6e5f2e7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep1.json",
+      "sha256": "e1d1e11f9d38ee6bbd3ac5c3391893b11259e4e20bafcb772ad9e886fdb3fd91"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep0.json",
+      "sha256": "9df211d7169860d3ead89e0c68994cbeb01560ff747f5a9fe3d6161583b42e44"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep0.fit1.json",
+      "sha256": "234635a1137c3ff4c9643c49607e49154350e04a72f8bf2e610476b40c50c590"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep1.fit0.json",
+      "sha256": "438e8f86b4ca688486d2b12b86ec5a298b478479719813b2094488af099b9a98"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep0.fit1.json",
+      "sha256": "24876de7b056081b0b37b6e9dc08bb4ba896f992ef98eca6d32cea76fea1ef7f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep0.json",
+      "sha256": "fbbf6e6ee6bda37e30621ddc33cae5275c344cfee2cf6969a772be7c3856e9ee"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep1.json",
+      "sha256": "2f9c5e2b1d54662f400a4bbd36b9b81ad66c799234fcb41b0e61110c4efdd5e2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep0.json",
+      "sha256": "a91239e1380ea9d0dd3567ec3d3c554def2efc9872a42134409dee40cf7d16c1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep1.json",
+      "sha256": "d52da1e0a32369fa49b150a28761c762c9ae46120c89a8e7e577f3f030fa0e95"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep0.fit0.json",
+      "sha256": "d559fcbfe75bc8a2b1b9323c3d52e9ac974b05a680e990cfbe5eb06468db3948"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep1.fit1.json",
+      "sha256": "282f90adc221dcc09d5607ab96d2d69dd0aac68ad490d5addd91e9bf7d3253ec"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep0.fit0.json",
+      "sha256": "67d6ba3212e6e2b394506b21c660113abd1b58019066f08e0dcc588690b42887"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep0.json",
+      "sha256": "3d441e4f5ade721316913049e547f5e9b35fb560525514718fcb9eb5501dda4d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep1.json",
+      "sha256": "bcf3edf35a41afad54396e0e4a232936892e811a20eb55870d5df1dc8bb3d5d2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep0.fit1.json",
+      "sha256": "efe3a95a26c7bac27a3aa9c1c1a050bf53fb2ec6bda18104f2524e57c7271b55"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep1.fit0.json",
+      "sha256": "15dd5235ead0748b5e46aa37aec250bd2a54ca2022b268d54d7b40eea3077749"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep1.json",
+      "sha256": "e41cb4038cb37842d3482476ce9416fcd7c2c6d8498ee2457c820cd93c25182b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep1.json",
+      "sha256": "eb83a4960dbf7269ce916f7db460f5ea43ee86e73fcaf88f1cfafa14dbcf0add"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep1.fit1.json",
+      "sha256": "a1642881d7f6c02171e953d9925f66aec15ea0a48290524849aaac09c372cd2b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep0.fit0.json",
+      "sha256": "075838664e5ebadfcdc37c1523e7ecf36a5526f06dc19cdb64806c7018537a21"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep1.fit1.json",
+      "sha256": "24b8c2ac94cf8b18b2eeeadc633d8f2a19b5323e38016c965976eee8f5dbd820"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep1.fit0.json",
+      "sha256": "98effda9c51dc1dc67d5374735488ad0cc91e3988ffa7f2ff78e9a9aed64222a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep0.fit1.json",
+      "sha256": "4499d7e4440cb6e23119b5d74ae0fda8e71948f0f7a7c793e21b9eb2ce22f467"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_exponential_rep0.json",
+      "sha256": "ee1c735f8b0d9705970ab3ac7dafc101e1fb6003e6266e0862e506f87b40f507"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep1.fit0.json",
+      "sha256": "308acb9fe29c1c4012ac293f3930d102b3cd22ba3b28052c47eece9013c1f36c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point0_sudden_rep0.json",
+      "sha256": "0d233b44706309168d6ba0154ebca9070e2a4eed31d59b72ed582583a7392af9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_asymmetric_rep1.fit1.json",
+      "sha256": "ef5001a29a97b23172dc4f5eeaa12e81e69340834b04c575438536470dd10449"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep0.fit1.json",
+      "sha256": "f1bd6898cfaa46f829479d61b97faad6c72552cfbf05ce5141dea86cb1d9937c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep1.fit0.json",
+      "sha256": "20ec46cabef15b240aaefc1d111d33a4bc13391eda3d8c50f2bb42c5402003c4"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep0.fit1.json",
+      "sha256": "92fc09092efa69b584eac8976f2c8a288fa119034238e3e685610a7279e2bef8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep0.fit1.json",
+      "sha256": "bf10f178789f9f4b58cc9a31afce05fd101f25d13e23e7d71709bd312138d66f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep1.fit0.json",
+      "sha256": "fc6781711c5040cba9a4d21440e0e6a7845a2e0dbe57cb68e5bd69a8b720cc73"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep1.fit0.json",
+      "sha256": "446abdb0a50c1632015a2fea57bfee161fa461aa406150e3a07cef5def8ebdfc"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep1.fit0.json",
+      "sha256": "47ca6da8c3bc9502824fca9312d8fcaffc4a01367bb9a2dd6e3ccb8b2cad6450"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep1.fit1.json",
+      "sha256": "9facce2bac84deff2fc2eb2f278ea9a701e640938c05937ff94018bba8f561a7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep1.fit1.json",
+      "sha256": "72727d3ab855ee4c519108868fbf788ebde2216b527f40f54133731d36226432"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep1.fit1.json",
+      "sha256": "b2abddb9f612f9b33f4f99460ecc8e03404b53c9c9f1590afad2aa3b4c2c0836"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep0.fit0.json",
+      "sha256": "8f5b8f138fc840de5c7c353960327fb4c8f58d223fbea101eef003a3ddbbbacb"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep0.fit0.json",
+      "sha256": "4ba1da203a3ee6ce20b8f9a1fff6fdeddbd17c447b0d792cc4a5f4e591c2a81d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep1.fit1.json",
+      "sha256": "dc0d6d654289239215de81e2bf7273d28aabe94e0d009159ec347ea162724b63"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep0.fit0.json",
+      "sha256": "bea4477b7619ae3aabd2ea9532808a2575214a39da5605ac8bae6b66253e2e96"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep1.fit1.json",
+      "sha256": "a858d5938140e1e69a9e7032ff334b24738e8272e14cb6d85d3826b035c77fda"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep1.fit1.json",
+      "sha256": "8d0bb37399dcc6130f913a4b708a9ea9ba93b00df23c572cd3ef264e367faef3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep0.fit0.json",
+      "sha256": "a07addced4619d359eb8abe87a23aea3b100d558556638a1e809fae963bd9d93"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep1.fit1.json",
+      "sha256": "ec834e53762b907789b122f9e0305b7f86270c546bcdd9a4f84f709ce4bdac5c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep0.fit0.json",
+      "sha256": "5115539b8ffa0fb6049bfb4c6d67b5625d1b90fabb3c0d4dcbd86c0a89cd3597"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep0.fit0.json",
+      "sha256": "0e89e7f0bbddcd8c0a7efcc9929bde7d417b1572dbcab7500e3671e2107765f9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep0.fit0.json",
+      "sha256": "ac27bbd38678eb5b724cb2c88ab55aabf7a09542f4d06407ea34257a3ee3dc9e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep1.json",
+      "sha256": "a043626a450adcc908c19c702f6547230cff7cdc1377410a7af437b1a4a2a553"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep1.json",
+      "sha256": "df058ab692d7c120c27abdf73601760c4d82f617be1a91f6fecb9728ffe7ccbc"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep1.json",
+      "sha256": "0ad5b91035b129cffa3751da22248909ac63d817ed928aad1ac0732728592b32"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep0.json",
+      "sha256": "83da04e1184a4f68e92260932e8f922470e442fe93e2bade13ff1db67bdddfc2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep1.json",
+      "sha256": "7a2f07a613c3341f85a3505a6945b652d626646b020eb533103636a4a51f2378"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_exponential_rep0.json",
+      "sha256": "7e9bbb4403f0c711fde2472f89442fe6aa598fe88af9197f2649ea5e30d7ffa6"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep1.json",
+      "sha256": "34da4a0e01b30085d3a21be95f50d29fe033a9a2fec415ef742264bc4fd034a4"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep0.json",
+      "sha256": "b32fa49055a8b65266178e097e64f6acc8319d51c5d4c2fa236cfd758a567125"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep0.json",
+      "sha256": "9bd4af5843f4cc6af247fb2e80ae62bf222e1642f90b90db1b47325d67069425"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_asymmetric_rep0.fit1.json",
+      "sha256": "af26d848caefadebf02624aca0613328e013048a42c606cbe3b98132fb16a579"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep0.json",
+      "sha256": "6596734f12532a48a3b1856bd314cee0320cb88d2725832501cf2a12eb353bfc"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_hidden_epochs_rep0.fit1.json",
+      "sha256": "c82347bb5604c216e05d10a803b7357df15f99c60078cf18f2614512beb388c1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point1_matched_rep0.fit1.json",
+      "sha256": "73f42b6899d2bcaecb1bce002bc8d3292f5638563b818be87964abaac3a2386f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point1_matched_rep1.fit0.json",
+      "sha256": "dc08c44547e2477c75b5876392443bdca16fe7a7e0f4b670642ac9f91701a172"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task2_point0_matched_rep0.fit1.json",
+      "sha256": "d0522b2c8b6e8fb1f4d7428ba365b1d842b8bcce06f6a2230c7df69c739987b5"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task3_point1_sudden_rep1.fit0.json",
+      "sha256": "ae4b30f4bb90d315eb3e170843fd59843e3539700d31a7ffc9d1b37aad01b538"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral/task4_point0_matched_rep1.fit0.json",
+      "sha256": "3414c73d59df306583edf027a8b6bbc2a7fdc757cd55b35a66b800605976e981"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/profile/task2_bounded.log",
+      "sha256": "589c9c1febc321939b06b57bc8f641fd4811bf82dcc61d38851afc0e5e59e34d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/profile/task2.log",
+      "sha256": "4445915e1e1d090f08bf1804d3e18f39b6c323f489fd554bc9ae7c2128df0f75"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/profile/task4.log",
+      "sha256": "2c6ffb4c9c38d5e69acd99f23b06e4d3657923622943e7e002ff2b9ee558c5ae"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep1.json",
+      "sha256": "94cf054364647ba721dc38424fe38b93080f38bd6a23c05389395239a46c6c40"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep0.fit1.json",
+      "sha256": "0f30012d6b3717b7a20a36a180684a6b595b1f98746f0848bae762b6ae22a9e8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep1.fit0.json",
+      "sha256": "6f23b202a5d322ae4fc25a0ac8c19f28d2a4524c7bee0231084fcd69c31b78cf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep0.fit1.json",
+      "sha256": "9d804584abcbcbe291c18b2e1f5e2931457b68aa378f7c731cbe0145fca08baf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep0.fit0.json",
+      "sha256": "889b9166a0efe2d5eaae172f4b9bc078e93692bec62b5e4ac69e519f86909aa2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep1.fit1.json",
+      "sha256": "85d58f38d1158cac5078dec670dc603f73354c482a1894412be2d44a29f62cee"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep0.fit0.json",
+      "sha256": "7ce5f59080e1685eb7bd9aa0d90d4c6b4307c4e100e063c533729101b1bdd05d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep0.json",
+      "sha256": "68f39dce0beca355df4a75c67194392cd7a12f02a4f04e129131d6b21906bfa0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep1.json",
+      "sha256": "d3a508b64dd6f3d0c5eeda6533a7709bccead8db199d9ba676b878288763ea63"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep1.json",
+      "sha256": "08ef744745d6ecb26beed8300451fbcc1b78cc9508bda27594030d778e824e80"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep1.fit1.json",
+      "sha256": "f09adb622ea92a7662ccacad4d017f618a5c91bc5b2c041e986ad40cd954b5f3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep0.fit0.json",
+      "sha256": "8fb2e1368e4ca43ef1055b33f0c3d26342fd1f4895cc4f8a4a171cbbd100f353"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep1.fit1.json",
+      "sha256": "0cd1b11e2b513e4f309b50e170ee61244f064dca7cb601d96c8ccbb9349a5a90"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep1.fit0.json",
+      "sha256": "155c7578273a32478d8a0e1b76310ead951660d466516ac7803768df4525b048"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep0.fit1.json",
+      "sha256": "c052c2befe55ae49ba0fb8ea5c456b1244319ed5f62227c3454b5d5d4730999e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_exponential_rep0.json",
+      "sha256": "098835ac00ab3f0bd0c4ac69cbf345cd29fbc831e7668618f33f8719115d11c0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep1.fit0.json",
+      "sha256": "29b98ba0619362ee2c350909b880733ceb32c0815f4a681f5d9e553743de5e01"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point0_sudden_rep0.json",
+      "sha256": "b867b57e22b50fa8d8d3421456abaea50ba719c7a82c6bc610066e62c28d4dc9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep0.fit1.json",
+      "sha256": "1690b3453767d08183ad48c2c34600ba439c2d52b8236dc70b10fc970342c528"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep0.fit0.json",
+      "sha256": "438fc231538d44590ffb4b1e1a38843c87dfac390da97453050b18406e4ab455"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep1.fit1.json",
+      "sha256": "7398e00d1c1593fc6479443f6b514da0250a5b079f4bd65ca381e6ad8be4bc3f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep1.json",
+      "sha256": "dee9e4751176f01b0035a68640928d6c25b47701f32c8e9499eb6d3a33989913"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_exponential_rep0.json",
+      "sha256": "66bbded1d128dff4386176fada08ce0eea58cd1665a1f854a226dca459781241"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/growth_optimizer_status/task3_point1_sudden_rep1.fit0.json",
+      "sha256": "6dcd1553ccda21d0c5920994eccea85b43b635b76b7ed8a1da6b9815a75dc4b2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep3.json",
+      "sha256": "5acb0fb4b08e60a0f8653d7f5ebc3f7b5ff3792b7c98dc2446b5e88459e524ca"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep3.fit0.json",
+      "sha256": "0d327e255755bfb24cdda0a907776b715171be025e760599edfce5aa333ebf04"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep1.json",
+      "sha256": "402b0634a167e12a2c931451adc6698d708a9df294b2337df621ad219aaed8ed"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep0.json",
+      "sha256": "630aeb31eef0508ffac1c1baf791368623422f194262923947dd1aaaabab783b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep3.fit0.json",
+      "sha256": "7574ac7e8d2089dc9aa5438e2b422b06272b136fc6402b07c185eee95a9eacb5"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep2.fit1.json",
+      "sha256": "891b3e5d8b730f0d6c1804851bab0721d54ce7be9af1f124810beadf7c3d75cf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep0.fit1.json",
+      "sha256": "46480607043709dc1e4263f99bc6fe4c4d64b8ebe75fbe6bd24cf7ffd8056f85"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep2.fit1.json",
+      "sha256": "e3a56c5c53779a73a5e8e28eb7186b2d987047e0deb2ded5a3fbe12972a59e81"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep3.json",
+      "sha256": "5b22f1359a50f725f2d66453eed13df5f2c1abba4305c4fe2d0337003f74c3a0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep1.fit0.json",
+      "sha256": "27cbef6ed72668b27bd241ca1ebf73abd3fa5a9cb26c0338485861b424574d4a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep0.fit1.json",
+      "sha256": "040c707703b50ae285b1dca4a9ac40f22e35a7faad02441f7a72281f149cb9b3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep1.json",
+      "sha256": "842ae312e0964c2a92f223c1e8adbf73b898fde75b5bedeb28c12d4157554ab7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep0.json",
+      "sha256": "190b926ff5a221bc0c53eae0645c4d2c97452a7f2b1f50d77708f5dd3d10c341"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep0.fit0.json",
+      "sha256": "37df5e60e28e337810f61767ced793842c3bd22ff688c1abbfa15d83da838394"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep2.json",
+      "sha256": "eb7fd979e4bdfacf03a8408d0822cb2068699dcf5508f1209e8a4de95f02ecb3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep1.fit1.json",
+      "sha256": "389384dee9f6cf1024fdf3180ac6c83b5f1192d6381c8efa216cfc62155a7c90"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep2.fit0.json",
+      "sha256": "f60470532788db2f0540a218d54831114a62136eae5cb234863918fad59a499c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep0.fit0.json",
+      "sha256": "4a41f1fbe74a1bf98a8979c11801d4c74337370756ec74f90d7d024dda109c8d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep2.fit0.json",
+      "sha256": "d0f93a9376f45fbfcf67dadefded1cfa4b49c7353a2f699ef864ea030ff7259f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep3.fit1.json",
+      "sha256": "b1b725fb4cdc28b3c5f309e8818f10fa156ab214a130ff05be4448148af3a7d7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep0.json",
+      "sha256": "02b5ef61861fa2fe0e31c0ba636f721f2753f3109c82cc9b76d92bffe682144e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep1.json",
+      "sha256": "e4f8eb4f3d15d34860254c1c9d0978d24c5b6cf1ee392b9554e305d44bf22b7b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep3.fit1.json",
+      "sha256": "5cf8417b29867dc750b7cc7cab4edc5b5e497f2c140436c4f4a110b562182a21"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep2.json",
+      "sha256": "8d5f2b9da9b1cd53acaf6a0ff547f587669b225b5bae7214d7c49b42f12cd723"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep2.fit0.json",
+      "sha256": "b1040bab22785e6fa16348326e04054a48f1b999c1292e6051706d8a4fe97b72"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep3.fit1.json",
+      "sha256": "fdea6b2bd79d4924ff3b193047201d1f079bec4ba93d6e3ba1c1b6dd52aa7fd4"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep1.json",
+      "sha256": "e883503fd54d0963f6ce41cdc1aec376ff368c28c0713cc6dd4b742fbec392bd"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep1.json",
+      "sha256": "31a3e04477876e8d41b798cf82e53a1c40105241d8a3454b00a1278dd84f3ab7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep1.fit1.json",
+      "sha256": "1c27a991793b577e16d457aea24d28546a898d95ba35d02107ad7a28ecf51421"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep3.fit1.json",
+      "sha256": "9836e96edea6c981779a624a21267acf7b6a4c48d3e3e412fedda1c73ebde76a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep2.fit0.json",
+      "sha256": "3084d26ba16873a7e41448bccdc64d353afb1bae651e1b62925774e6d9b3cd54"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep0.fit0.json",
+      "sha256": "678d2b17a63c25946804901e8cfd14aba4be95674dec2357d405b18d2331538c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep1.fit1.json",
+      "sha256": "dc75eec2bccbc37ad5f49427e3fc9e41aaa5ecf5a8242c39c8e12c49a6029b2d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep1.fit0.json",
+      "sha256": "519d07066ca4b92803932e8544d3a0862cf9e1ca038035babf6e802cf5d4b9e3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep0.fit1.json",
+      "sha256": "dfea0d3b20f0760de25b0226eab7283e36e42b75936dc06e092521192c8903d5"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep2.fit1.json",
+      "sha256": "ddc8f11e6ede7ec6b47c33e483f28d271ece1ab3912757566c059391da6a9ec9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep0.json",
+      "sha256": "27eea81ae97782444e2a9c092ba1cfbac343e2a76956baa684b2956a1b87824f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep3.fit0.json",
+      "sha256": "ad8118184e57060dde1f511c1544d549a31bc55656aeb154d3d5c0d4ba51d237"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep1.fit0.json",
+      "sha256": "0f9624323b3004893bcadf7e6d6276e70d3a94164220a71b76d781a58a69342b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep0.json",
+      "sha256": "01200a61c05bd6b991c739281eac1b43476786ff1196bcc9363cfa0b99dc6b5b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep3.fit0.json",
+      "sha256": "71f57b7d6aa862546afa8b29be18c68560cc3dec87c74d82710eba521ea094b0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep2.fit1.json",
+      "sha256": "8d1483370e8a2a10173774bc224fa5e416dc43143acdf332f2bff8796f4fb093"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep1.fit0.json",
+      "sha256": "ceb98f4671a66ea3ee6abe1294813729ce10eab8290d830b05598598a1a8ec4d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep3.json",
+      "sha256": "c4d94d48de8b16120d71335c74a038f069d63e8e1ed5ec60d13e21d96d66b21c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep0.fit1.json",
+      "sha256": "83eab3e2b6c8e1998d3b5433ba76ab49eade14f7a7eb417d8d22ee4df13523a6"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep3.json",
+      "sha256": "315cb09b0e9b1d3c3aace842a024d742849be2916b8f279cc60c2795673cd664"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep2.fit1.json",
+      "sha256": "8c1d14f651e7d662a378bfb275ec077ded3e2426cc6212f6bdb3962d64f34c1d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep0.fit1.json",
+      "sha256": "67723e69dc3692a9441d1e7ecefb10d9dc177bda01b6aeda3cc8931ace742409"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep1.fit0.json",
+      "sha256": "54276d494c0e7e0a183c2408a34e0fe461c8fed53bc1153612b7ed0dea5a496a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep3.fit0.json",
+      "sha256": "760566275411e97c69869399f796706c9c887f6f246c1e34483749dc137ab137"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep2.fit1.json",
+      "sha256": "3ed78eb9885ba6f1c310872222e5e28f8f1426917ea6c641f039521de5102a20"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep2.fit0.json",
+      "sha256": "27b658d8198b763839045d53fa0c85ea9e02a23267b590aa52ca171c25a93fef"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep3.fit1.json",
+      "sha256": "2d958700c486eefed9cb87a8d0066eb56e92006aa66935767cfe99a36beb3bce"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep1.fit1.json",
+      "sha256": "dcb55104b81015e4730e931b19b6fdad89f94f18132e4f7dd9ec8148f2540b3e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep2.json",
+      "sha256": "a04c4f82b48ec1d9c1102bd741506844a213e8e45968cc25789c9a21005502ee"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep0.fit0.json",
+      "sha256": "27e0d89b24a40ec15345a0e9228654cf95683408b3a180b9c58037c97bf7c4a0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep2.fit0.json",
+      "sha256": "554d4620e43b9be102ba3a7fff4566c203bf05725ca9a954a8ef0ee1ee26dab3"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep0.fit0.json",
+      "sha256": "4352c28bee7ee270f553333935f41792ee1d4dd5a88b96a0c316fa1c857a04e1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep2.json",
+      "sha256": "87243efb6d8ec13346035b128670641076993d618800c75241db1a2778cba14c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep1.fit1.json",
+      "sha256": "d2dd5f4d2da1a314ef5b9cdaf620040c3f426ebe2bcdcc943b8ca594d1e8ec7f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep1.fit1.json",
+      "sha256": "18e7d66816b160a8ff937019ddcccf93ccb9b53ec3f1b375b1741dce6689ce4e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep3.fit1.json",
+      "sha256": "ebabc765eb101ddab25ea895ed71c88370f7d6ef669bdf0c47342f30e0c81b7d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep1.fit1.json",
+      "sha256": "c32b6b95e0002843f4a006c57811dd2dfd4b7f160e4314b0a69866a6e9e89936"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep0.fit0.json",
+      "sha256": "848544874fece17dae9173ad6a9e75cd9ffefc19836019e7b3eb91e2e41f822d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep2.json",
+      "sha256": "7a742c7fe159bd63a0fd8117699c4990bee5be3512027a69a05f9e434e81e1fc"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep3.json",
+      "sha256": "38e1443aa54e7ad4e98b6c18928f6114a1b2c5874da2fbb4c8e5b797e283ce7d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep0.fit0.json",
+      "sha256": "a63709bffdfda4320e932a4e1a0957c4767ed155495e347b961ca4a5c36fd1b4"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep1.json",
+      "sha256": "36967203a8b6ef9ac5d21b6afc53886823f54ba2e3aad5c254e503b85e29242f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep3.json",
+      "sha256": "44f01cddb9c605e01e09d4d4f247101cae016deaa28640fff146d27de5affd43"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep2.fit0.json",
+      "sha256": "9425cde32e1bb99b74bc1320d6ac99614baf0a5215ac292c440a112a7511586a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep3.fit1.json",
+      "sha256": "42435cd4d36236d23c68aac525f6b794b4f4c83e5aee3fb92bcae1f1ce9b369c"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep1.json",
+      "sha256": "5fdd672c90381a7a0ad340ecf1dae4888f78c0f761ec9eb1c5f5b580743cead6"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_sudden_rep3.fit0.json",
+      "sha256": "77cc751cb859d2b5f11b63ad9dbb2177f7ca4d48a5ca4662f4491035fd9d5179"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep0.json",
+      "sha256": "82fb6c212e8db3cdaae4176f94386ce074d3afbd6842969467c6464ed5160683"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point0_exponential_rep2.fit1.json",
+      "sha256": "590dc23ef9cd9b212425a98b1b1ebbf3e6f4c12be0813a9a04b5bf95eee196fd"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep2.json",
+      "sha256": "947ce5a645ecc0564711fc5421d422bd234854904a5550e504a6aeae2011c547"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep0.json",
+      "sha256": "e512fda3a6635a8d4e2966c61e970ca674ccd935e657a12ed5ff372faeb8281a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_asymmetric_rep0.fit1.json",
+      "sha256": "d7873c6b2cdbfd0de71b08b7772393d0cc47f81d47c89fb4db7f2ea95438b18a"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep3.json",
+      "sha256": "a42c3446e40d66be28484896ae882d86c31c57fe2a9389095c339b970314507d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep2.json",
+      "sha256": "ff8340a8b0f4f29d3cc280bb3aeca1930ee11c4db3713346b950c229afc47e15"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point1_matched_rep0.fit1.json",
+      "sha256": "70e7f870b121bbe3b66d333294d7bd331392dbc5b90f9fc6d94008f1e7794afe"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_sudden_rep1.fit0.json",
+      "sha256": "1c011562fea21632ba85dcecf238f632bc698c77ab25d2ebb75a3ac3b020eef0"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task3_point1_exponential_rep3.fit0.json",
+      "sha256": "0760aeda624c2a6e1c9d5fac1ab430f55395cf9ce8adc8eae016a0ffb383bac1"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/demography/neutral_10mb/task4_point0_matched_rep1.fit0.json",
+      "sha256": "ccb5e529a7715c6158c1cdcb7b82010548531269cebb017717e204380961cfce"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/slurm.log",
+      "sha256": "6643e94d2ecf519040736ffa2fe6d5e79e0f7288c0e2e0f7e0e3e9eaa8916871"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/status.json",
+      "sha256": "87c9c04c8baa7729313102f3cc11c81d161d6da5ee0df4b05e2ee4398698c3bf"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/protocol.json",
+      "sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/source_snapshot/validate_bottleneck_readiness_v1.py",
+      "sha256": "8e642980b3ad3f5c56dbc06a9eb0bc9c9df36d48a9a95730535f1f8d5a999bf7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/source_snapshot/sfs_baseline_v1.py",
+      "sha256": "6799c109208172f5645960548043a6fe875fd73ff8ecd564db4352880b0c5ed6"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/revalidate_vcf.sbatch",
+      "sha256": "fbaaf4aeda7a753ad9babbde065c011d7430c30812d07bc6d479927cb436c084"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/vcf-10850629.log",
+      "sha256": "b0adad80eb9bdbe3fca431edfa849a59cc02bc137e0bfafa0977d17ec175f119"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/verification.json",
+      "sha256": "617705c44ae4389b032622004caef5702b9a2b27438cdee119227c5b47d9482f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/case12_vcf_contract.json",
+      "sha256": "b0adad80eb9bdbe3fca431edfa849a59cc02bc137e0bfafa0977d17ec175f119"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/results/protocol.json",
+      "sha256": "c1ced515763182a9fecaaa67e22e7bc0981765a642476efdd64cd8282ddba8f7"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/source_snapshot/scripts/revalidate_bottleneck_vcf.py",
+      "sha256": "7a358b212c8a532a2f823a8fb4f08346c91defedf6502c5acc4cc533968ea7d8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/source_snapshot/scripts/validate_bottleneck_readiness.py",
+      "sha256": "af81546d1e50daeaf18cdf4091afeff68cd99410057aab3a0c2bc4d0283513d2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/source_snapshot/src/ghist_inference/checkpoint.py",
+      "sha256": "d25bbd83c6af3bc226d23fee65a5437fff8144ce9051b0ddeb688213b2d7a9f2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/source_snapshot/src/ghist_bottleneck/sfs_baseline.py",
+      "sha256": "bc50c8cacfb08d7e1d81f95434984f982f24b7a4809d254cec879144ea9cffd8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/vcf_revalidation_v2/results/case_00/vcf_contract.json",
+      "sha256": "f62b6a58c993bfe42dc4f72f463e0806c9a3bad7ae69d10478cbba965250d62f"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_05/moments.json",
+      "sha256": "9b22dea744a961932c41786d0a81f3751ee28545f21923b6f86eaefcef1e861b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_02/moments.json",
+      "sha256": "68aa06a9a917a3cd4761805547a3223ab7980325d164c2f0240c1a89cb398018"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_02/dadi.json",
+      "sha256": "22e9946fd1f404f599b74132ea85aa5a174837282fbb036806c25f17c2db6553"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_03/moments.json",
+      "sha256": "1f0cb78d2cbff084351616414e7827136eba076ebc7e7651768eace78a7b32cb"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_04/moments.json",
+      "sha256": "852fd73d1ccf23bbe9e4b55fe819f07fb83ff60be834f0c78f7f99949b59283b"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_04/dadi.json",
+      "sha256": "5de9015ce3699ec5bc8cd293cb8ed3744ad013cbde6d93d32c9cfa186ee48e7d"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_08/moments.json",
+      "sha256": "ca190a0500f8a09c0f011f9d4f779c292bd28c2f867290fdd7d43bb9a2d11c29"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_08/dadi.json",
+      "sha256": "7bdfa6d54f5f3c9c506446c5066d67aeb186f7066fef52f9ffaa2f3b15abe286"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_01/moments.json",
+      "sha256": "462971d3cbe2d0930b18e6dd0f6e7f7bca537f92dad95ec66c60cee64264a4b8"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_06/moments.json",
+      "sha256": "2fa2587c42e2ea611f8f7eaa709ef3ba012ab0e9d193b327e74f154a7598f8b2"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_06/dadi.json",
+      "sha256": "434de2361af5efbf6293232abd396cb932cdbd8b5ee005ff25b130d753d727d9"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_07/moments.json",
+      "sha256": "df3c46c8b28b4acd303dab29da2d3877a46aec453f68e600376b6a3ed593721e"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_00/vcf_contract.json",
+      "sha256": "51f773dca7895215fe828021952ff9c4e673c625ce33fe07206cf7e1f3c6a500"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_00/moments.json",
+      "sha256": "c8cc8163c351cdaf9e1c0554cbd2bdac2cc8370f9ad431e9a46c62ab62033a91"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_00/dadi.json",
+      "sha256": "cd3a9a42aa7dfe6612e5c4879f1f6ae1bf4b8cd3ca0f46c04f5579446ebb5613"
+    },
+    {
+      "path": "experiments/readiness_2026_11_20/bottleneck/results/case_09/moments.json",
+      "sha256": "c5196f6b926d792f210de3e13ef42df1863b307c41b2537754238475a7915c43"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/verify_betty.sbatch",
+      "sha256": "73027f96d94e291ee2858cbf5ccf4eb6bb084a2b591e911aa6c066f95f236c9a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/verification.json",
+      "sha256": "f4fa4427563f8abc50d0d5b4b8068cb0bf8f4d18481b2d3e8705e13d26fdfb95"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_poisson_3.json",
+      "sha256": "a75cc754c66d55d2c5274eb2da58778a716259cd6d22a54c7c6f9ca43b497948"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/summary.json",
+      "sha256": "0823569334556b7b49f6522f60a2cd9827a4056747a32a54d58caca728c1db55"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_interference_12.json",
+      "sha256": "748baa2706aed4b775c2ab45fc0ec9711d0fe35cc5f661d88152fce7ef591325"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_confirmation_frozen_interference.json",
+      "sha256": "ca3bcd6ce710e8bffae29bb5b778f7b27610ac8066fad4e9654d288a925b8929"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_interference_0.json",
+      "sha256": "6eac2957f5c8fb273b8a46c4639f71c2671e5968c8cd68ce75c0e906be4ee1ed"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_interference_1.json",
+      "sha256": "a42455edca8739af1d7d6746407f91a3b8291ee822d77a0a77db055c67e15987"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/dog_poisson_9.json",
+      "sha256": "67f4f349277677c16baa185bb59bba0c5cbd5e62b0fbc97517a1a6c1d788c705"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_interference_13.json",
+      "sha256": "d5cf9daa8880314db01a154deec15981eb7b19bb92e859c8e3b71cf6ed5929b2"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_interference_2.json",
+      "sha256": "8f2f2c1d9cca7ee45c919a4751e7f4afe5144175b15650302d6a25f31d0bb7d9"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_poisson.json",
+      "sha256": "dff5621092456d9aa5af92f2257973eae8f47ba659b5710a57948217f94eef8b"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_training.json",
+      "sha256": "e1843e32acd3262752369c4c8d9d4354efb1ffc2cd632a9a81ad2d2a1aa64ce0"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_interference_14.json",
+      "sha256": "912de6dfb86b0ee392efd9d03e8f5f7d8ff898e259358766f5a94a0a945a0085"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_poisson_5.json",
+      "sha256": "85a0a441a9240be2ee3c217e94508c15f3a2814b4e09eecb6393122edf3f25d3"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/current_labels.sbatch",
+      "sha256": "c30c1b76c5d45c9f89755f1ec867aec2b2852cf8bf437ed77736247f056d10e6"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_poisson_8.json",
+      "sha256": "153737166f19299fbaacafbfcc6481d080831700646c6219435c127acab2eaae"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_poisson_4.json",
+      "sha256": "b3eb2984532acbe5432dd5c4107413af3fb889881131bc7917a5339f5cf58f72"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/summarize.py",
+      "sha256": "4359681232051ae72c33b498fd87f8fa1e0736a87ab18124b2ea2aacaf213ebc"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/run.sbatch",
+      "sha256": "9a868ea07695857dff7c8fed0df747f80783a0466346bb52f2459b2c3f12a8ba"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/rescore.sbatch",
+      "sha256": "306fea9828e9fc7b706bfefb129534a803ed6c44077d6985389561b3012e24bb"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_poisson_7.json",
+      "sha256": "982314476762179fa2fb6a59bee1ceebc9656bf1b2c717f61e984c5f51741561"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_poisson_4.json",
+      "sha256": "56b933b6dfcac4a9881ec64d116c6d9d1af457516022507e01c44be437671439"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_poisson_5.json",
+      "sha256": "5cd1f30da3d6301f61749f4a1e3fb80a19ca567fab32c7a23d6490c038dabec4"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/confirmation.sbatch",
+      "sha256": "c2e6e78c584282b2d11ab75d2a2893eddf35783ea27f2a92424f84daa736bc19"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_confirmation_frozen_poisson.json",
+      "sha256": "d8eb8d1b52327dfc7254ba67b877b5e0ff56ebfe21f4bf1bf9c0544f3eb58ca4"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_poisson_6.json",
+      "sha256": "aa67d55340fd51285d60b29a7b41c7b343ef4c6cde4cd213a95ff6c3bcbdfe8a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/verification.json",
+      "sha256": "d835e67f2d596e690719e5ad7864eca69c9f661d80895b04133e93e73bc49e55"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/dog_poisson_11.json",
+      "sha256": "5fe4500e8e37a5ebd322e4ac53884d77b86028154ea541a6696d5562ff932501"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_interference_2.json",
+      "sha256": "d1708c6815fe9226f1095dd6781d9afb6c2978978e4fa586f6e41c688b3ff395"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_interference_1.json",
+      "sha256": "ae0c9ccf65fc36397d9e9c733b312d1d5df85c45c9108f6e92980208c9b513b5"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_current_interference_0.json",
+      "sha256": "74205f15c30c15ea0f8bda1ba2bbae8696eb5e6bae5ddc2f9074cde4aeb21d53"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/human_interference.sbatch",
+      "sha256": "65da6d9e3a3b695b0f6595dec4c3e55427ccce30c9cf3eb24d784cbf0496be78"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_interference.json",
+      "sha256": "1a25fcc5d791bcf40a2d4836c1b57146c86ff2d21fc587c15e1d040559e01703"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/task9_poisson_3.json",
+      "sha256": "730fa1ad81c2a19beb7154892306efc2295263214f5ee106a9371a5f94f5517a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/relatedness/dog_poisson_10.json",
+      "sha256": "8b638b18af10114edd041477ae86351d994f8c76298974fc81fd64b49430d5d3"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/claude/attempts.json",
+      "sha256": "1c6e2aaaf7c07d9f3185f5fc39481a037e2f77dd30c4dea66cd36975a5bb2274"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/bottleneck/summary.json",
+      "sha256": "070e781e66f96af29fc91b0312ebb5440cde7fb05a1ba727e2c26237e15867b9"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/bottleneck/recovery_pre_reference_fix.json",
+      "sha256": "f05de61daa015380288b7e8168425ea4954d2ed19115ae83225db5636452b13a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/bottleneck/recovery.json",
+      "sha256": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/bottleneck/recovery.protocol.json",
+      "sha256": "543f57aef4a84b1a5172bf276ee2b55e54d3f740e5c7b0b46ef4e8151f6009db"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps-blind.sbatch",
+      "sha256": "bd1c526241723ea980e168d376d47fb0b060088b4f9769683232b92ad3069f31"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps-exact-grid.sbatch",
+      "sha256": "50cc06e2b1118c046224ddb8fc70407720d86bc4e6ab73815ff72e59cbae2b46"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps-soft-blind.sbatch",
+      "sha256": "2a899f50ff00a9b374503e703ae8d781d6df881af5d336be771251ff6e036eb0"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps-grid.sbatch",
+      "sha256": "91b9924f5689b76b488e1924cd4fdbebc60e36f366ccdb9e42a0a72d72f24fa7"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps-exact.sbatch",
+      "sha256": "267f5d99ed2e71868bde4471f9fd36d65713d73c5b3ca1e75118597bfdd1401c"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/exact_background_2.json",
+      "sha256": "37a328003d240fd009fe15a5f43fb5e4e61034e9d4b28ba426ce06f2c344fe73"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/task5_blind_recovery.json",
+      "sha256": "afe2fdc03c58d4045a60577e8dcbf491d33f0734e4c726bb5a66fff73f2617c1"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/task6_blind_recovery.json",
+      "sha256": "919cb3bc98642ed16467ebea10ec42a359f36e587d26c8fc9c5f68dd6ec54738"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/uncertainty.json",
+      "sha256": "ddfa2b06f9c6ac827bb49e8af3f72a48d62081addfcb62ecfb733879f1759b68"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/scientific-sweeps.sbatch",
+      "sha256": "8cff01fb988fcceba54f4fde91f8587b47b47d54bf59cf8e6941bb35cdaa38e3"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/verification.json",
+      "sha256": "1a5019c14cb8dc9ac0dfe69a8e764dc10275238de86b435fb599658888e4c738"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/exact_background_1.json",
+      "sha256": "d20533d6ab43b61f6ad89c9750ccbe203c71a74f0f2c602bd69047b39fa0515a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/design.json",
+      "sha256": "8423b5b484de041fad309d81a4e174bcb923228357ada0ba31a118c1fb99db53"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/background_0.json",
+      "sha256": "0b38a8d9eb9a3786e0051b50cfaad7db38db154ea5f18d0193ccbb58d733edb1"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/exact_background_0.json",
+      "sha256": "f77bddc56d1058650dd4c5e3df7818379d7729a66c2859e3a0cf4cd79fb181b2"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/sweeps/design_exact.json",
+      "sha256": "e7960c0bf2215d3e373c1e50bee149b0a27392fd1f9f2e1edfddfaf67941c65a"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral_execution_stop.json",
+      "sha256": "d2115ca83f8cf8334a21494e85a5df1a8b1aae1e0a5e54f6a0d0e0312b97d069"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral_unchecked_interrupted.log",
+      "sha256": "c624dbf6ef975f16c921473333f7afa74d430cc7a4f2d92c3e2386923b5f2591"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/summary.json",
+      "sha256": "fee31df7d739165b6850db022db9869d638f6e5481967f2c93d3307268522b24"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/physical_units_bgs.sbatch",
+      "sha256": "2b190e01278af58a67bc04b298a132ca6e6c8661d2140cf728438a6771179908"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/physical_units_bgs_q1.sbatch",
+      "sha256": "f0370f8965e5425d5f1475b0cd1cfd5ee3e2269607c717cff050f70c0eb8e988"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/summarize.py",
+      "sha256": "5109d4a293cebedd9f8afdda039be92a718ab38fb382fdb6815f9819b922a688"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/verification.json",
+      "sha256": "3931413fd717bbe41a6c184ee048e157e5603dca9c06dc970e9787126e4b335d"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/hidden_epoch_consistency.json",
+      "sha256": "e7e659a8155a4f7baaeedefdcccc836e51245c31b503af9449459223a457f46f"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/execution.json",
+      "sha256": "5e42b8ea66b6a438ffd98a058521eac62704b237298dadddc8a099fba9756902"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/validate_hidden_epochs.py",
+      "sha256": "5277dc76fd2e4f7a12742418b78de315ab170fc7ac6f7ac3ea4b3956c0a3538c"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849487_0.log",
+      "sha256": "ad14d8b050aa5828acd8f99a594192a70927cf51559f1e494fc3cdad4a445230"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849487_1.log",
+      "sha256": "dd83e60b406811898967861d1020ef3812699e63b862397f70b25f183274bcd0"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/likelihood_domain_checks.json",
+      "sha256": "9f61c97e2a1f821e2effa361fb5c8e12448ff95e7b50a3cc196ada2b0b2d7293"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/split_q10.json",
+      "sha256": "93fc530099b8d7343274136836e6112a22e2465e634af15606187cdfed850aa7"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/growth_q5.json",
+      "sha256": "b644990d842e5bca09122a762d7c1428ece21d6864b42fc21a044f92a053018e"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849222_1.log",
+      "sha256": "7e60c6234a6b4874c96e76a27bc239539d09a75aac663af682a79ca0d4be191c"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849222_0.log",
+      "sha256": "a0525d36a41ad6400129a3265aa7198dbcec05b4e0b5781474df6a017819c5f5"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/split_q1_execution_stop.json",
+      "sha256": "2e3c7c9d89c7011b8a2f8b944356062ade039787a25e74ceedbff16afde77e3d"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849222_2.log",
+      "sha256": "0bb2379700299303a14eb17cfd65b23e4564fc5a74374750e2ff625833e4d8ee"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/bgs-10849222_3.log",
+      "sha256": "a5588f17de668e436560ee472e3d5216e5658c5493807bf6e95c04a5bfabcada"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/growth_q10.json",
+      "sha256": "83ccbb3c415f272f4e9a27f29bb80935c6d19160f67105a6d6a14bdbe77a07eb"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/growth_q1.json",
+      "sha256": "7009ca8cae45fb9861398c92706c57b4c24ae8b2aec959e3ec36d40285f20c6e"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/bgs/split_q5.json",
+      "sha256": "491cebb7a3e7ea3f2200bbf4c3a9f41d8da10d2ea4e06281c4c11b836163932c"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point1_sudden_rep1.json",
+      "sha256": "4735df2aed2b13ff9836bd253d9b7698b590956bf32e4949a920c6aea2ec3414"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task2_point0_asymmetric_rep0.json",
+      "sha256": "0821bf801e9927276b7488e6c9b2a34bcf3c9b2be34e8e423ff9e18ac6703317"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task4_point0_matched_rep1.json",
+      "sha256": "e1de419da4e6da09d8541ee6a39506a34ac3b3a5ca66bb7fb9acfa15cecd6ee4"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task4_point0_matched_rep0.json",
+      "sha256": "0b91072731cc5a271e1abdef00abc24f04d5bc800897109935c2da6aed76dc42"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point1_sudden_rep0.json",
+      "sha256": "fbbac42cfc8a3d51b8e768a4d90779303896d8b2b7f9bf640f6b8181cf1fa648"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point0_sudden_rep1.json",
+      "sha256": "0fb8251dcd9a4babc0756733b9ea9af574f68cb2ce4b5129e09313e76e4a39f1"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point0_exponential_rep1.json",
+      "sha256": "7f6ac83bd8740de3dbd1ed8126f5a6f1357e734e1cbcc160c911e13c90d13886"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point0_exponential_rep0.json",
+      "sha256": "41d0f7549a9c3008c7136bd01507cebcbef0ce079a8842cf53cc2dfe1ed7f1a8"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point0_sudden_rep0.json",
+      "sha256": "391dfb437b2578ef68ca4c43babf647ee27a2996038ddcd9abdac97dad410d8b"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task4_point0_asymmetric_rep1.json",
+      "sha256": "82205ca11b9b5ddde77537199a9a79a15e44ee9046b522e188ac303a87c042e9"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point1_exponential_rep1.json",
+      "sha256": "8005c9b2a8e40e644d270d06b6a6e65e9f6e63e6d9ae4ae6d7dfeb4e927a4403"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task3_point1_exponential_rep0.json",
+      "sha256": "4c74e968d8ad386911e7457cf845ae32ccfa7cd94feb52981213e515b1fe0abe"
+    },
+    {
+      "path": "experiments/scientific_2026_11_20/demography/neutral/task4_point0_asymmetric_rep0.json",
+      "sha256": "4809a8a2fcf4904ded906be42c21c6ad163cbc2a3f576d58784f9583f152efaf"
+    }
+  ],
+  "collisions": [],
+  "excluded": [
+    "this new Task12 proposal/implementation",
+    "wiki caches",
+    "benchmarks",
+    "testing answers"
+  ],
+  "limitation": "No central registry exists; unseen external plans cannot be certified. Root reports no reservations in this range."
+}

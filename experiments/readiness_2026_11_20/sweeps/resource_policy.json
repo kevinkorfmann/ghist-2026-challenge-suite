@@ -1,5 +1,5 @@
 {
-  "status": "first-six pass scope locked before accuracy inspection; resource retry ongoing",
+  "status": "first-six resource pass complete; no further retries or simulations",
   "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
   "initial_case_subset": [
     0,
@@ -39,7 +39,23 @@
     "memory_bytes": 23622320128,
     "time_limit_seconds": 7200,
     "dependency": "afterany:10850775",
-    "output_directory": "scientific/readiness_sweeps/task5_v4_memory_retry"
+    "output_directory": "scientific/readiness_sweeps/task5_v4_memory_retry",
+    "terminal": {
+      "state": "OUT_OF_MEMORY",
+      "driver_elapsed_seconds": 1774.5612776959315,
+      "scheduler_elapsed": "00:29:44",
+      "slim_exit_code": -9,
+      "batch_max_rss_kib": 23059596,
+      "cgroup_peak_bytes": 23622320128,
+      "kernel_oom_evidence": "slurmstepd: Detected 1 oom_kill event in StepId=10850911.batch",
+      "sampled_parent_cgroup_oom_counter": 0,
+      "biological_output_produced": false,
+      "artifacts": {
+        "retry_case5_terminal/slurm.log": "6643e94d2ecf519040736ffa2fe6d5e79e0f7288c0e2e0f7e0e3e9eaa8916871",
+        "retry_case5_terminal/sacct.txt": "6413f0d20b8fa2f71c7b54760fba31ac30d76e60b7bcbcb3345bb5c41305e843",
+        "retry_case5_terminal/status.json": "87c9c04c8baa7729313102f3cc11c81d161d6da5ee0df4b05e2ee4398698c3bf"
+      }
+    }
   },
   "expansion_beyond_first_six": "forbidden for this pass after resource-based scope lock",
   "accuracy_used_for_resource_decisions": false,
@@ -72,5 +88,30 @@
     "decision_before_accuracy_inspection": true,
     "rationale": "Three Zigzag first-attempt signal9 failures, one directly confirmed OOM; rough73min/case work proxy implies multi-hour-per-block and ~15h full48 at bounded concurrency. Original48 remains reporting denominator; no further42 launches authorized."
   },
-  "resource_retry_policy": "case5 on22GiB/4CPUs/2h first; cases3/4 may receive matching-resource same-seed retries only after feasibility established; total concurrency<=8CPUs"
+  "resource_retry_policy": "Terminated after confirmed22GiB OOM. No additional resource retries, no cases3/4 retry, no cases6-47 launch.",
+  "terminal_denominators": {
+    "original_planned_cases": 48,
+    "unique_cases_attempted": 6,
+    "unique_cases_completed": 3,
+    "unique_cases_failed": 3,
+    "not_run_due_to_scope_lock": 42,
+    "v4_workflow_attempts_including_same_seed_retry": 7,
+    "completed_v4_workflow_attempts": 3,
+    "failed_v4_workflow_attempts": 4,
+    "scope": "Setup failures and the superseded v3 resource pilot are separately retained; re-export of that pilot is the v4 initial case0 attempt, not an independent biological replicate."
+  },
+  "phase_diagnosis": {
+    "generated_slim_scaling_factor": 1,
+    "generated_burn_in": 1,
+    "generated_generation_time": 30,
+    "catalog_diploid_size_range_approx": [
+      7156,
+      71560
+    ],
+    "total_forward_ticks_approx": 41290,
+    "checkpoint_not_yet_created_at_last_inspection": true,
+    "current_tick_or_epoch_known": false,
+    "memory_high_water_stabilized": false,
+    "limitation": "stdpopsim0.3.0 communicate buffers SLiM stdout then routes progress to DEBUG; frozen driver does not retain it. No pipe consumption/debugger attachment or active process modification attempted. Increasing22GiB high-water cannot establish a bounded future peak."
+  }
 }

@@ -1,0 +1,463 @@
+{
+  "status": "FROZEN_BEFORE_FIT",
+  "protocol_id": "task12-full-histogram-v2-confirmation-2026-11-20",
+  "scope": "Fixed component repair; not full genotype/detector/topology validation",
+  "source_snapshot": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task12-histogram-v2-20261120",
+  "training": {
+    "calibration": [
+      "artifacts/task10_human_calibration/replicate_0.seg",
+      "artifacts/task10_human_calibration/replicate_1.seg",
+      "artifacts/task10_human_calibration/replicate_2.seg",
+      "artifacts/task10_human_calibration/replicate_3.seg",
+      "artifacts/task10_human_calibration/replicate_4.seg",
+      "artifacts/task10_human_calibration/replicate_5.seg"
+    ],
+    "calibration_sha256": {
+      "artifacts/task10_human_calibration/replicate_0.seg": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+      "artifacts/task10_human_calibration/replicate_1.seg": "c297c3032aee7d7e2f878fe314505ffca5ee257f5784a13d55ec4c2eb3d3c906",
+      "artifacts/task10_human_calibration/replicate_2.seg": "c129c356c8287c2ffb47c5296c7c898b8a48f2647de4e77798a6abe6e4e0aa18",
+      "artifacts/task10_human_calibration/replicate_3.seg": "3989fc232df744fcdf7b52f1b6cc0e17e7fe847ee274e11d444cac6b3ea2bcb1",
+      "artifacts/task10_human_calibration/replicate_4.seg": "32581c9d7afc4ba5f459a8547a93776623dcfaa4260ccab8e61b37c386902602",
+      "artifacts/task10_human_calibration/replicate_5.seg": "dc6a785cbfdb56bc7c26a35e5c9d59ceb9ed950387f7e47bc33fd5b1e5f36294"
+    },
+    "training_seed": 122226,
+    "augmentations": 4,
+    "max_iter": 240,
+    "early_stopping": false,
+    "architecture": "clone original direct HGB, all recorded hyperparameters including random_state122228 unchanged",
+    "class_weighting": "balanced sample weights as original",
+    "minimum_cm": 5,
+    "genome_cm": 3346.298892538,
+    "blend": 1.0,
+    "correction_reference": "other five calibration replicates only, leaving out current replicate",
+    "background_profile": [
+      83.0,
+      49.0,
+      14.0,
+      3.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "background_profile_provenance": "Frozen unlabeled empirical profile stored in the historical model; inherited from prior challenge/reference cohorts. No new challenge inputs or public answers used.",
+    "selection": "single fixed correction/model, no hyperparameter/feature/weight search and no confirmation reads",
+    "artifact_directory": "artifacts/task12_histogram_v2_20261120",
+    "metadata": {
+      "version": "task12-full-histogram-v2",
+      "minimum_cm": 5,
+      "genome_cm": 3346.298892538
+    },
+    "metadata_key": "task12_background_correction",
+    "calibration_checks": [
+      "independent input/content/provenance identity",
+      "finite nonnegative raw features and full-bin/count consistency",
+      "unchanged labels and segment-pair coverage",
+      "full-histogram removal mass and no mutation of source records"
+    ]
+  },
+  "confirmation": {
+    "seeds": [
+      2026115011,
+      2026115012,
+      2026115013,
+      2026115014
+    ],
+    "augmentation_seed": 2026115051,
+    "disjointness": "Reserved seeds have no matches in 699 preserved local and 2915 Betty protocol/source/log files; six calibration seeds are explicitly verified at runtime. Scope and exclusions are in hashed audits. Root reports no own reservation conflict; undisclosed other-chat plans are unknown.",
+    "generate_after": "candidate, protocol, full source/input manifest and runtime hashes locked",
+    "template": "configs/task10_human_pedigrees.def",
+    "template_sha256": "bb83f8d5c6aa432abca356226af14eb9231bd2d569cb766a762d641d240932f4",
+    "simulator_inputs": {
+      "external/ped-sim/ped-sim": "2872021e82936de9815f1e0c28f86f823abdbcdbd4f9fd60d6150ae8da387acd",
+      "external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1",
+      "external/ped-sim/interfere/nu_p_campbell.tsv": "825648443c400c89103295dc0a29804c969164c54e2570a3084403bb778ca1a1"
+    },
+    "regimes": [
+      {
+        "intensity": 0.55,
+        "pair_heterogeneity": 0.25,
+        "within_bin_shape": 0.75
+      },
+      {
+        "intensity": 0.8,
+        "pair_heterogeneity": 0.35,
+        "within_bin_shape": 1.25
+      },
+      {
+        "intensity": 1.0,
+        "pair_heterogeneity": 0.45,
+        "within_bin_shape": 0.85
+      },
+      {
+        "intensity": 1.2,
+        "pair_heterogeneity": 0.55,
+        "within_bin_shape": 1.15
+      },
+      {
+        "intensity": 1.45,
+        "pair_heterogeneity": 0.65,
+        "within_bin_shape": 1.0
+      }
+    ],
+    "correction_reference": "original calibration replicate0 only for all three models",
+    "comparators": [
+      {
+        "name": "historical",
+        "path": "artifacts/task12_large_family_background/empirical_background_v1/model.joblib",
+        "sha256": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+        "correction": "task12-top20-v1"
+      },
+      {
+        "name": "independent_reference_v2",
+        "path": "reviews/readiness-task12-20261120/artifacts/task12_reference_v2/model.joblib",
+        "sha256": "84c573b49a0230d5937f5557d0f2780c1f5f0dbafeb614b7dd55360a05a0b1dc",
+        "correction": "task12-top20-v1"
+      },
+      {
+        "name": "full_histogram_v2",
+        "path": "artifacts/task12_histogram_v2_20261120/model.joblib",
+        "correction": "task12-full-histogram-v2"
+      }
+    ],
+    "paired_inputs": "exact same augmented records supplied to each model-specific correction; three predictions per seed/regime",
+    "denominators": {
+      "expected_template_pairs_per_seed": 7000,
+      "expected_pairs_per_label_per_seed": 500,
+      "record": "segment-present count plus omitted zero-IBD count by seed/label; conditional segment accuracy and total-template accuracy counting unpredicted pairs as failures are separate"
+    },
+    "metrics": [
+      "exact/balanced/meiosis accuracy",
+      "per-label recall and complete confusion matrix",
+      "negative log likelihood",
+      "multiclass Brier sum",
+      "10-bin confidence ECE",
+      "CSV schema and exact supplied-pair coverage"
+    ],
+    "averaging": "equal seeds/regimes; regimes are repeated measurements, not independent replicates",
+    "relative_gate": "same prespecified prior relative gate against each comparator separately",
+    "gate": {
+      "mean_exact_gain_min": 0.02,
+      "positive_mean_gain_fraction_by_seed_min": 0.8,
+      "worst_regime_exact_gain_min": -0.01,
+      "mean_meioses_gain_min": -0.005,
+      "comparator": "each of historical and independent-reference-v2 separately"
+    },
+    "promotion": "none automatic; even relative improvement cannot establish adequate absolute or full-pipeline accuracy",
+    "forbidden_inputs": "prior four confirmation seeds2026114011\u20134014, public answers, new challenge/final inputs"
+  },
+  "execution": {
+    "slurm_only": true,
+    "partition": "genoa-std-mem",
+    "cpus": 8,
+    "mem_per_cpu_mb": 5632,
+    "training_wallclock_minutes": 15,
+    "confirmation_wallclock_minutes": 15,
+    "estimated_total_elapsed_minutes": "3\u20136 based on prior2m17s one-fit/four-seed job; bound is not a completion claim",
+    "stop_on": "any source/input/model/runtime/seed provenance mismatch; existing destination; invalid feature/probability/pair contract",
+    "full_source_manifest_required_before_launch": true,
+    "commands": [
+      "python scripts/train_task12_histogram_candidate.py --root \"$TASK_ROOT\" --protocol \"$PROTOCOL\" --out-dir artifacts/task12_histogram_v2_20261120",
+      "python scripts/validate_task12_histogram_candidate.py --root \"$TASK_ROOT\" --protocol \"$PROTOCOL\" --candidate-dir artifacts/task12_histogram_v2_20261120 --out-dir results/task12_histogram_v2_20261120"
+    ],
+    "training_script": "experiments/readiness_2026_11_20/task12_histogram_v2/train.sbatch",
+    "confirmation_script": "experiments/readiness_2026_11_20/task12_histogram_v2/confirm.sbatch"
+  },
+  "implemented_repair_sha256": {
+    "scripts/task12_background_correction.py": "017a7f2e96e52ef9d025768436aa8aa4f89959520d6c8835590642bcb9ab105d",
+    "tests/test_task12_background_correction.py": "570e9887ce3b42299de4e6dce26fa0f19d0776c5d5421f75292c3c1393c6f003"
+  },
+  "public_answers_used": false,
+  "model_runs_started": false,
+  "historical_evidence_replaced": false,
+  "submission_count": 0,
+  "frozen_at_utc": "2026-11-20T18:20:08.375991+00:00",
+  "proposed_protocol_sha256": "e61cccf001e09b24a6d8c045a1cab741057f31276b8d8568ec5888d076412759",
+  "source_sha256": {
+    "scripts/task12_background_correction.py": "017a7f2e96e52ef9d025768436aa8aa4f89959520d6c8835590642bcb9ab105d",
+    "scripts/task12_histogram_protocol.py": "cdfb49686ac9fa46ffde04e24275cc6cc0d4424efb7dc66f294fde549b5271ab",
+    "scripts/train_task12_histogram_candidate.py": "33a5a82c95d433aced1ba0f638464cf893f031245eab1893cba25e07d33b8f90",
+    "scripts/validate_task12_histogram_candidate.py": "afd463215a8757e9c84145ca9781f5b168b7ac881e0e3a6bbd590ee2800c3439",
+    "scripts/fit_human_background_corrected.py": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+    "scripts/fit_human_background_robust.py": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+    "scripts/fit_human_empirical_background.py": "d219b0d8e4b2e0e1464e1d2674ac012e49cbdd9a545f5273b230c21d94725f2f",
+    "scripts/fit_human_family_relationships.py": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+    "scripts/summarize_hapibd_shape.py": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+    "scripts/validate_human_background_correction.py": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/validation.py": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "configs/task10_human_pedigrees.def": "bb83f8d5c6aa432abca356226af14eb9231bd2d569cb766a762d641d240932f4",
+    "tests/test_task12_background_correction.py": "570e9887ce3b42299de4e6dce26fa0f19d0776c5d5421f75292c3c1393c6f003",
+    "tests/test_task12_histogram_experiment.py": "cb3f4619e5893a3bcb5ae56518ac2b23ece8ef0d426609960a8bf665a9f9e623",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/proposed_protocol.json": "e61cccf001e09b24a6d8c045a1cab741057f31276b8d8568ec5888d076412759",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/seed_audit_local.json": "1d03dd777bd907be3c47675c60024731078112a2a07e1fb1aa877013a5e9c891",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/seed_audit_betty.json": "f4ce10c4b4b86a238f2c54d51992f5d3d8a24d8b80e0a54221b86da3d5280ba7",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/train.sbatch": "f7bf6a7615473d0632e61e25f7f19e4c001cd53dac8a42119ed93acea0c55f7c",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/confirm.sbatch": "d5cf4338002a3715027d60a14a5897b99f6c3947112e825294df54611d11c62f"
+  },
+  "input_sha256": {
+    "artifacts/task10_human_calibration/replicate_0.seg": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+    "artifacts/task10_human_calibration/replicate_1.seg": "c297c3032aee7d7e2f878fe314505ffca5ee257f5784a13d55ec4c2eb3d3c906",
+    "artifacts/task10_human_calibration/replicate_2.seg": "c129c356c8287c2ffb47c5296c7c898b8a48f2647de4e77798a6abe6e4e0aa18",
+    "artifacts/task10_human_calibration/replicate_3.seg": "3989fc232df744fcdf7b52f1b6cc0e17e7fe847ee274e11d444cac6b3ea2bcb1",
+    "artifacts/task10_human_calibration/replicate_4.seg": "32581c9d7afc4ba5f459a8547a93776623dcfaa4260ccab8e61b37c386902602",
+    "artifacts/task10_human_calibration/replicate_5.seg": "dc6a785cbfdb56bc7c26a35e5c9d59ceb9ed950387f7e47bc33fd5b1e5f36294",
+    "external/ped-sim/ped-sim": "2872021e82936de9815f1e0c28f86f823abdbcdbd4f9fd60d6150ae8da387acd",
+    "external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1",
+    "external/ped-sim/interfere/nu_p_campbell.tsv": "825648443c400c89103295dc0a29804c969164c54e2570a3084403bb778ca1a1",
+    "artifacts/task12_large_family_background/empirical_background_v1/model.joblib": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+    "artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib": "742986c9fe0ae7738732c7350e63d5aaa8985237479c5a050e9b5c1cd797acef",
+    "reviews/readiness-task12-20261120/artifacts/task12_reference_v2/model.joblib": "84c573b49a0230d5937f5557d0f2780c1f5f0dbafeb614b7dd55360a05a0b1dc",
+    "artifacts/task10_human_calibration/replicate_0.log": "f9adacee5fcbcf79bb72b0267ea04d3ee02fd19c742fe50ba5b52a9e0abbe279",
+    "artifacts/task10_human_calibration/replicate_1.log": "c0dbd297c2745ff60385abffd6a4c61ddf12b4ca2e799d774d0a8d52a3f1303d",
+    "artifacts/task10_human_calibration/replicate_2.log": "751cd1a58632d0e54862bdcc347badb42b9ea226c85210c014158e9427d8bad4",
+    "artifacts/task10_human_calibration/replicate_3.log": "b7c3b063fa477a4bd632600595c52268724589145a999a10484840addb8b00b3",
+    "artifacts/task10_human_calibration/replicate_4.log": "f40f9e33f3de70ba57a877a2b3a41fb75bf60adfca12e4957855c9a84a540c86",
+    "artifacts/task10_human_calibration/replicate_5.log": "27f21774adbc506f0a5ebbc30020b3504a5a4c24f91da70ac3d650d4efbd7a00"
+  },
+  "baseline_model": "artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib",
+  "fixed_hyperparameters": {
+    "categorical_features": "from_dtype",
+    "class_weight": null,
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 1.0,
+    "learning_rate": 0.08,
+    "loss": "log_loss",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 240,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 30,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "random_state": 122228,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "training_regimes_reference": [
+    {
+      "intensity": 0.9824317086696215,
+      "pair_heterogeneity": 0.4832317842308981,
+      "within_bin_shape": 1.1138166201786306
+    },
+    {
+      "intensity": 1.6577689873239727,
+      "pair_heterogeneity": 0.2959101220518897,
+      "within_bin_shape": 1.3256991870313777
+    },
+    {
+      "intensity": 1.2924174004119382,
+      "pair_heterogeneity": 0.2797438262356985,
+      "within_bin_shape": 0.7280080343263489
+    },
+    {
+      "intensity": 1.5874974593773004,
+      "pair_heterogeneity": 0.5867408467800805,
+      "within_bin_shape": 0.8532090448987413
+    },
+    {
+      "intensity": 0.391248234463432,
+      "pair_heterogeneity": 0.5891355446803955,
+      "within_bin_shape": 1.2136762563954844
+    },
+    {
+      "intensity": 1.138136979495014,
+      "pair_heterogeneity": 0.2564870132043965,
+      "within_bin_shape": 0.8467644837271536
+    },
+    {
+      "intensity": 1.0139467600608736,
+      "pair_heterogeneity": 0.10166101224330606,
+      "within_bin_shape": 1.2817663140632019
+    },
+    {
+      "intensity": 1.0119406546470555,
+      "pair_heterogeneity": 0.2687839522133805,
+      "within_bin_shape": 1.0474027905746435
+    },
+    {
+      "intensity": 1.2605411463429124,
+      "pair_heterogeneity": 0.19586410650289032,
+      "within_bin_shape": 1.2962974316050735
+    },
+    {
+      "intensity": 0.8039317403571606,
+      "pair_heterogeneity": 0.13624876149174897,
+      "within_bin_shape": 0.7061831400976128
+    },
+    {
+      "intensity": 0.9134234630081526,
+      "pair_heterogeneity": 0.5080081547484822,
+      "within_bin_shape": 0.738501952188667
+    },
+    {
+      "intensity": 1.7387399523998157,
+      "pair_heterogeneity": 0.5778571785254978,
+      "within_bin_shape": 1.2894131322953544
+    },
+    {
+      "intensity": 0.33246178427492495,
+      "pair_heterogeneity": 0.157955519220872,
+      "within_bin_shape": 0.8026048727074433
+    },
+    {
+      "intensity": 1.519743352594497,
+      "pair_heterogeneity": 0.13752836520124462,
+      "within_bin_shape": 0.8967097747620114
+    },
+    {
+      "intensity": 0.5719289201763749,
+      "pair_heterogeneity": 0.28259969427057985,
+      "within_bin_shape": 1.057417033291223
+    },
+    {
+      "intensity": 1.541404341402638,
+      "pair_heterogeneity": 0.16096083503464703,
+      "within_bin_shape": 0.8153677912694408
+    },
+    {
+      "intensity": 1.4860287507360685,
+      "pair_heterogeneity": 0.6639800154522308,
+      "within_bin_shape": 1.4000654914086281
+    },
+    {
+      "intensity": 0.9716583753695653,
+      "pair_heterogeneity": 0.6969169156390791,
+      "within_bin_shape": 1.4558889750496864
+    },
+    {
+      "intensity": 0.5067421084168107,
+      "pair_heterogeneity": 0.6870243802511484,
+      "within_bin_shape": 1.2122141845572738
+    },
+    {
+      "intensity": 1.1356572706696633,
+      "pair_heterogeneity": 0.17291937382197659,
+      "within_bin_shape": 0.8346961453675034
+    },
+    {
+      "intensity": 1.4385482393828972,
+      "pair_heterogeneity": 0.4852586419115559,
+      "within_bin_shape": 1.226214837290211
+    },
+    {
+      "intensity": 1.1595251904365058,
+      "pair_heterogeneity": 0.3656245698224886,
+      "within_bin_shape": 1.467162447189883
+    },
+    {
+      "intensity": 0.5785922120110678,
+      "pair_heterogeneity": 0.39263045097870697,
+      "within_bin_shape": 0.8192012348036204
+    },
+    {
+      "intensity": 0.4539831536906575,
+      "pair_heterogeneity": 0.6929421213680047,
+      "within_bin_shape": 0.6253575310834322
+    }
+  ],
+  "expected_training_rows": 203950,
+  "runtime_manifest": "experiments/readiness_2026_11_20/task12_histogram_v2/runtime.json",
+  "runtime_manifest_sha256": "93fe023d3e4e109ab6d90528fc4ec7bfe97dc5c47ddb4af888c4850e1fd9fdd2",
+  "prior_confirmation_seeds_excluded": [
+    2026114011,
+    2026114012,
+    2026114013,
+    2026114014
+  ],
+  "superseded_prelaunch": {
+    "protocol_sha256": "463bd49a143fd5bc56d23ffddf03c8d6f1afc09c55b65dbe7e82cd785a270a65",
+    "job": 10851898,
+    "state": "CANCELLED",
+    "elapsed_seconds": 2,
+    "candidate_directory_existed_after_cancellation": false,
+    "fit_started": false,
+    "holdout_generation_started": false,
+    "reason": "Scorer contract generalized to score the emitted label when multiple classes share the exact maximum. No current prediction bug established; model outputs/settings/seeds unchanged.",
+    "preserved_remote_snapshot": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task12-histogram-v2-pre-scoring-fix-20261120"
+  },
+  "seed_registry": {
+    "calibration_logs": [
+      {
+        "path": "artifacts/task10_human_calibration/replicate_0.log",
+        "sha256": "f9adacee5fcbcf79bb72b0267ea04d3ee02fd19c742fe50ba5b52a9e0abbe279",
+        "seed": 101226000
+      },
+      {
+        "path": "artifacts/task10_human_calibration/replicate_1.log",
+        "sha256": "c0dbd297c2745ff60385abffd6a4c61ddf12b4ca2e799d774d0a8d52a3f1303d",
+        "seed": 101226001
+      },
+      {
+        "path": "artifacts/task10_human_calibration/replicate_2.log",
+        "sha256": "751cd1a58632d0e54862bdcc347badb42b9ea226c85210c014158e9427d8bad4",
+        "seed": 101226002
+      },
+      {
+        "path": "artifacts/task10_human_calibration/replicate_3.log",
+        "sha256": "b7c3b063fa477a4bd632600595c52268724589145a999a10484840addb8b00b3",
+        "seed": 101226003
+      },
+      {
+        "path": "artifacts/task10_human_calibration/replicate_4.log",
+        "sha256": "f40f9e33f3de70ba57a877a2b3a41fb75bf60adfca12e4957855c9a84a540c86",
+        "seed": 101226004
+      },
+      {
+        "path": "artifacts/task10_human_calibration/replicate_5.log",
+        "sha256": "27f21774adbc506f0a5ebbc30020b3504a5a4c24f91da70ac3d650d4efbd7a00",
+        "seed": 101226005
+      }
+    ],
+    "confirmation_seeds": [
+      2026115011,
+      2026115012,
+      2026115013,
+      2026115014
+    ],
+    "augmentation_seeds": [
+      2026115051,
+      2026115052,
+      2026115053,
+      2026115054,
+      2026115055,
+      2026115151,
+      2026115152,
+      2026115153,
+      2026115154,
+      2026115155,
+      2026115251,
+      2026115252,
+      2026115253,
+      2026115254,
+      2026115255,
+      2026115351,
+      2026115352,
+      2026115353,
+      2026115354,
+      2026115355
+    ]
+  },
+  "superseded_pre_binding": {
+    "protocol_sha256": "9af163dcfe3254ee1b8a48ec0c75f395b42714580a0dcb38626da4dfb298b547",
+    "training_job": 10851952,
+    "confirmation_job": 10851959,
+    "state": "CANCELLED",
+    "training_elapsed_seconds": 40,
+    "confirmation_elapsed_seconds": 0,
+    "candidate_directory_existed_after_cancellation": false,
+    "fit_started": false,
+    "holdout_generation_started": false,
+    "reason": "Bind parsed protocol bytes to a captured SHA throughout both runs; execute calibration seed/log disjointness checks; allowlist candidate metadata. No model settings, input records or random streams changed. Training stopped during startup runtime verification; confirmation was pending its dependency.",
+    "preserved_remote_snapshot": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task12-histogram-v2-pre-binding-fix-20261120"
+  }
+}

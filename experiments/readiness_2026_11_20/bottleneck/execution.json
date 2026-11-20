@@ -45,5 +45,19 @@
   },
   "vcf_revalidation_job": "10850629",
   "vcf_revalidation_dependency": "afterok:10850236",
-  "vcf_revalidation_tree": "case12-revalidation-verified.trees (copy only after atomic spectrum checkpoint exists)"
+  "vcf_revalidation_tree": "case12-revalidation-verified.trees (copy only after atomic spectrum checkpoint exists)",
+  "case12_tree_preservation": {
+    "status": "copied_after_atomic_spectrum_checkpoint",
+    "watcher_completed": true,
+    "remote_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-bottleneck-20261120/case12-revalidation-verified.trees",
+    "vcf_revalidation_pending": false,
+    "sha256": "2d956c372c9efbca200462809dd3d91f27c0b56003d4d3488d758a9478a58cbc"
+  },
+  "initial_case12_elapsed_seconds": 3477,
+  "vcf_revalidation_result": {
+    "job": "10850629",
+    "state": "COMPLETED",
+    "elapsed_seconds": 481,
+    "proof": "vcf_revalidation_v2/verification.json"
+  }
 }
