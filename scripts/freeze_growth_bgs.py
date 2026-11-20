@@ -6,7 +6,9 @@ import json
 import math
 from pathlib import Path
 
-from ghist_inference.freeze import continuous_prediction, require_projection_convergence
+from ghist_inference.bootstrap import require_summary
+from ghist_inference.checkpoint import atomic_json
+from ghist_inference.freeze import verified_projection_median, validate_physical_identity
 from ghist_growth_bgs.simulation import require_physical_scaling
 
 
@@ -67,12 +69,15 @@ def main() -> None:
     calibration = sources["calibration"]
     stress = sources["stress"]
     require_physical_scaling([smoke, grid, calibration, stress])
-    require_projection_convergence(
-        middle.get("by_projection"), "growth fit projections",
+    observed = verified_projection_median(
+        middle.get("by_projection"), middle.get("median"), PARAMETERS,
+        label="growth fit projections",
         expected_projections=PROJECTIONS,
     )
-
-    observed = continuous_prediction(middle["median"], PARAMETERS)
+    if any(float(fit["post_growth_scaling"]) <= 1 for fit in middle["by_projection"].values()):
+        raise ValueError("Growth projection fits must have scaling greater than one")
+    for fit in middle["by_projection"].values():
+        validate_physical_identity(fit, 3)
     comparison = sources["model_comparison"]
     # All legacy middle-distance, bootstrap, and SLiM calibration artifacts fit
     # exponential growth. They cannot certify a different selected convention.
@@ -101,16 +106,7 @@ def main() -> None:
     if not stress.get("freeze_gate_passed"):
         raise ValueError("selection-strength and burn-in stress gate did not pass")
 
-    interval = {
-        "generations": [
-            bootstrap["generations"]["quantiles"]["0.025"],
-            bootstrap["generations"]["quantiles"]["0.975"],
-        ],
-        "post_growth_scaling": [
-            bootstrap["post_growth_scaling"]["quantiles"]["0.025"],
-            bootstrap["post_growth_scaling"]["quantiles"]["0.975"],
-        ],
-    }
+    interval = require_summary(bootstrap, 3, observed_fits=middle["by_projection"])
     audit = sources["audit"]
     result = {
         "challenge": "Growth with background selection",
@@ -133,6 +129,9 @@ def main() -> None:
         "validation": {
             "projection_fits": middle["by_projection"],
             "linked_block_replicates": bootstrap["replicates"],
+            "bootstrap_contract": bootstrap["bootstrap_contract"],
+            "bootstrap_planned_replicates": bootstrap["planned_replicates"],
+            "interval_coverage_validated": False,
             "known_truth_smoke": smoke,
             "all_grid_recovery": grid["results"],
             "chromosome_holdout_comparison": comparison,
@@ -164,9 +163,8 @@ def main() -> None:
             {"path": str(path), "sha256": sha256(path)} for path in args.figure
         ],
     }
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps(result, indent=2))
+    atomic_json(args.out, result)
+    print(json.dumps(result, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":

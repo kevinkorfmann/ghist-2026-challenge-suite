@@ -1,0 +1,22 @@
+{
+  "scope": "Independent frozen v1 bootstrap contract review; no model evaluation or optimization.",
+  "verdict": "Blocking retained-parameter arithmetic consistency gap; repair requested before integration.",
+  "handoff_sha256": "efcf8bba866f70eb547392e29c05c3f9be4239a8cecab84c7f1870fb2c665291",
+  "archive_sha256": "166dc1a4a54fb2ae3e36cc6b8579163dc0d6e08db6f1aa9f25344ff4d9cf82ba",
+  "all_13_source_hashes_and_10_existing_baseline_hashes_verified": true,
+  "focused_actual_entrypoint_tests": "77 passed in isolated baseline import closure",
+  "slurm_wrapper_checks": "Actual frozen shell bodies executed with Python invocation intercepted; correct default128/64 and overrides16/4; sparse/nonzero-min arrays rejected before Python.",
+  "finding": {
+    "location": "src/ghist_inference/bootstrap.py validate_fit",
+    "mechanism": "Reported physical parameter fields are checked for domain but not against already-retained theta, ancestral size, sequence length, and scaled duration/parameter identities.",
+    "reproduction": "Both actual freeze mains accept replica0 generations times10 with selected theta and all scaled values held fixed; exported interval changes from [1002.5,1097.5] to [1322.5,9777.5].",
+    "repair": "Bind selected restart theta to fit theta; theta/(4*mutation_rate*sequence_length) to ancestral size; scaled/physical parameter transforms to reported fields, rejecting invalid domains and nonfinite derived arithmetic. No fitting or model change needed.",
+    "evidence_limit": "No finding that existing fitted artifacts are wrong. Existing restart diagnostics omit estimate arrays, so this repair cannot establish full selected endpoint identity."
+  },
+  "additional_caveats": [
+    "Exact stored statistic equality rejects a one-ULP change. This review did not reproduce a naturally occurring cross-platform or runtime-version difference; not classified as a blocking numerical regression.",
+    "Seed/settings/source contracts and retained denominators are validated, but this does not validate empirical interval coverage, model adequacy or complete upstream extraction provenance."
+  ],
+  "reproducer": "Use reproduce_physical_mismatch.py with the isolated frozen source root as its sole argument. It uses only synthetic fit records and actual summary/freeze entrypoints.",
+  "review_environment_root": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-bootstrap-independent-dhqxnp5f"
+}

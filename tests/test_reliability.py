@@ -188,6 +188,10 @@ def test_task4_export_keeps_fitted_values_instead_of_preset_targets(
     from ghist_growth_bgs.simulation import SIMULATION_SCALING_SCHEME
     original_load = freeze.load
     def marked_fixture(path):
+        if path.stem == "bootstrap_1mb_summary":
+            from test_demography_bootstrap_contract import bootstrap_fixture
+            from ghist_inference.bootstrap import summarize_payloads
+            return summarize_payloads([bootstrap_fixture(tmp_path, 4)], 4)
         result = original_load(path)
         result["simulation_scaling_scheme"] = SIMULATION_SCALING_SCHEME
         for fit in result.get("by_projection", {}).values():

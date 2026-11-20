@@ -1,0 +1,16 @@
+{
+  "scope": "Preserved pre-review-correction Task3/4 integrity snapshot; not final production validation",
+  "source_manifest_sha256": "92b92119c0003a171388ab3c1e2ac71bdeeb35bb85d8121684a8d89808657cc6",
+  "source_overlay_sha256": "166dc1a4a54fb2ae3e36cc6b8579163dc0d6e08db6f1aa9f25344ff4d9cf82ba",
+  "base_commit": "471cd8d8be8b3c43cc67b1dc50e3d40add4e98a2",
+  "source_files": 468,
+  "fixture_files": 827,
+  "macos_tests": 1166,
+  "arm_tests": 1166,
+  "betty_job": 10857876,
+  "betty_result": "Failed before pytest because Ruff module was absent; source and fixture checks passed",
+  "betty_harness_remedy": "Ruff0.17.6 installed into isolated .lint-deps directory; no production source/dependency environment altered",
+  "blocking_review": "../root_independent_reviews/bootstrap_v1/review.json",
+  "blocking_review_summary": "Physical generations could disagree with stored scaled/ancestral parameters and enter interval; v2 correction required",
+  "scientifically_validated": false
+}

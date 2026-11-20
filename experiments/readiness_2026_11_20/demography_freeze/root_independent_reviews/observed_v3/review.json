@@ -1,0 +1,99 @@
+{
+  "status": "no_blocking_defect_found_in_bounded_v3_review",
+  "reviewer": "demography_science independent of v3 implementation",
+  "source_handoff_sha256": "d5d85fb86a463c95c1cb998569e9f8d881ea0103fd1abf14fb3e21c71e0a7ed0",
+  "source_archive_sha256": "4c873320446eb724871bb73e796779ed8ddca75ee757b900902796f0822553bf",
+  "baseline_commit": "471cd8d8be8b3c43cc67b1dc50e3d40add4e98a2",
+  "verified_owned_files": {
+    "src/ghist_inference/freeze.py": {
+      "sha256": "64d88f137ba2dbe33be47cbd6cd1a9cd7b1d9818462d5d042b7cf2fc809b9f0e",
+      "bytes": 8867
+    },
+    "src/ghist_inference/bootstrap.py": {
+      "sha256": "f3c2c83e7b2256069e8db94a11694430cf78e9b20d3e167fca04d55f1d2ff87f",
+      "bytes": 16033
+    },
+    "scripts/freeze_growth_bgs.py": {
+      "sha256": "a6bb262a121e52143de2417a6f8192766b93a392eae6c47aeb5f44c064b3d04e",
+      "bytes": 7343
+    },
+    "scripts/freeze_split_migration_bgs.py": {
+      "sha256": "1abb7fc331f7af3bd48642b4ac990804bf0185df945b13b71232e07f5079b786",
+      "bytes": 6737
+    },
+    "scripts/bootstrap_growth_bgs_blocks.py": {
+      "sha256": "e95397f036281a63fabbe82032a63904d22fcb0e50cb3fda34d51bff7e5d43a8",
+      "bytes": 4554
+    },
+    "scripts/bootstrap_split_migration_bgs_blocks.py": {
+      "sha256": "b1f837c0d8fe49eba3a373f1c64bb8bcfaff5be9aaa5e11e64413478a8495dc4",
+      "bytes": 4009
+    },
+    "scripts/summarize_growth_bgs_bootstrap.py": {
+      "sha256": "60981a83e02724b3c733bf64d4c7502696d1528b9abaeef254939a84a0548574",
+      "bytes": 1464
+    },
+    "scripts/summarize_split_migration_bgs_bootstrap.py": {
+      "sha256": "ee7628f1f2efe8876e94ba7f731268dd70898ed85fc1b49fd50fd29deb7305ca",
+      "bytes": 1637
+    },
+    "slurm/growth_bgs_block_bootstrap.sbatch": {
+      "sha256": "1c85f05b0263d7fee0b289037dff6ff584170a101a6a3f51fe9d5201efb6b3ce",
+      "bytes": 1296
+    },
+    "slurm/split_migration_bgs_block_bootstrap.sbatch": {
+      "sha256": "b1af428065db3f343e5d0cc042232208027085f5495a986c25b18fc01a256baa",
+      "bytes": 1060
+    },
+    "tests/test_demography_freeze_integrity.py": {
+      "sha256": "1ba3647add3012f7fbc8fcb5f97683753be9a2cc4c2a1f00aa43b4707576c0fe",
+      "bytes": 12805
+    },
+    "tests/test_demography_bootstrap_contract.py": {
+      "sha256": "d4aec89635d04969ecfc9e54af9a330be5fed2ca1fc1275160725e24de2bd368",
+      "bytes": 18278
+    },
+    "tests/test_reliability.py": {
+      "sha256": "11849ff4efd2187384a0e44378ad7f801c042bef2bffd7fecb08bd333cbd6e7e",
+      "bytes": 11605
+    }
+  },
+  "baseline_hashes_verified_against_git": true,
+  "final_report_sha256": "6e9e52f39261e129cb909a3f7fee1152fa0492a1f4f7f4110c17eac3fb1f4259",
+  "focused_tests": {
+    "count": 171,
+    "elapsed_seconds": 1.28,
+    "files": [
+      "tests/test_demography_freeze_integrity.py",
+      "tests/test_demography_bootstrap_contract.py"
+    ],
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src:. python -m pytest -p no:cacheprovider -q tests/test_demography_freeze_integrity.py tests/test_demography_bootstrap_contract.py"
+  },
+  "independent_actual_entrypoint_checks": {
+    "cases": 9,
+    "valid_accepted": 3,
+    "corrupt_rejected_with_output_preservation": 6,
+    "results_sha256": "bfaecc40ff6ce949012eafb7ba3813be75db4accfbee74592e48448467af632d",
+    "runner_sha256": "1c79f0cf99d46ef40bce94b124cb9eb1d0d6bd0da314597700a2a9edab0346ab"
+  },
+  "findings": [
+    "Original bootstrap timing corruption is rejected for both tasks.",
+    "Coordinated observed timing and cached-median corruption is rejected for both tasks, including Task4 corruption restricted to 70x50/94x68.",
+    "Both flat and nested Task4 refined formats accept coherent values and reject arithmetic mismatch below the existing1percent numerical-comparison gate.",
+    "Every individual projection receives the shared arithmetic guard; componentwise medians are not treated as physical model vectors.",
+    "Bootstrap retains required selected-theta binding; optional supplied observed restart rows bind their unique selected theta.",
+    "No model, optimizer, resampling, threshold or Slurm-setting changes in v3."
+  ],
+  "nonblocking_report_wording": "Replace exactly one retained task record for every planned replica with every planned replica occurs exactly once among retained task records; growth tasks contain several replicas.",
+  "limits": [
+    "Arithmetic completeness and consistency do not reconstruct omitted restart parameter vectors or model likelihoods.",
+    "Historical arithmetic-complete observed fits without restart rows retain the existing selected-convergence flag policy; no stronger endpoint provenance claimed.",
+    "No empirical coverage or scientific recovery certification.",
+    "No production source edits, simulation, optimization or challenge data reads during review."
+  ],
+  "preserved_previous_evidence": [
+    "v1",
+    "v2",
+    "observed_v2"
+  ]
+}

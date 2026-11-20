@@ -13,10 +13,16 @@ module load python/3.11.11
 PROJECT_ROOT="/vast/projects/smathi/cohort/korfmann/ghist2026"
 cd "$PROJECT_ROOT"
 
+# Preserve the complete submitted plan in every replica artifact.
+if (( SLURM_ARRAY_TASK_MIN != 0 || SLURM_ARRAY_TASK_MAX + 1 != SLURM_ARRAY_TASK_COUNT )); then
+  echo "Bootstrap requires a contiguous zero-based declared array" >&2
+  exit 2
+fi
 PYTHONPATH=src .venv/bin/python scripts/bootstrap_split_migration_bgs_blocks.py \
   --blocks artifacts/task4_split_migration_bgs/blocks_1mb.npz \
   --initial-fit experiments/split_migration_bgs/baseline_p50_40.json \
   --replicate "$SLURM_ARRAY_TASK_ID" \
+  --planned-replicates "$SLURM_ARRAY_TASK_COUNT" \
   --restarts 8 \
   --out "artifacts/task4_split_migration_bgs/bootstrap_1mb/task_${SLURM_ARRAY_TASK_ID}.json"
 

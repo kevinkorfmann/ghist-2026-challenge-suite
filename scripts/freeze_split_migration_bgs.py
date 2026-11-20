@@ -6,10 +6,13 @@ import json
 import math
 from pathlib import Path
 
+from ghist_inference.bootstrap import require_summary
+from ghist_inference.checkpoint import atomic_json
 from ghist_inference.freeze import (
     continuous_prediction,
     require_optimizer_convergence,
-    require_projection_convergence,
+    verified_projection_median,
+    validate_physical_identity,
 )
 from ghist_growth_bgs.simulation import require_physical_scaling
 
@@ -59,12 +62,15 @@ def main() -> None:
     calibration = load(args.calibration)
     recovery = load(args.near_recovery)
     require_physical_scaling([calibration, recovery])
-    require_projection_convergence(
-        baseline.get("by_projection"), "split fit projections",
+    raw = verified_projection_median(
+        baseline.get("by_projection"), baseline.get("projection_median"), PARAMETERS,
+        label="split fit projections",
         expected_projections=[f"{left}x{right}" for left, right in PROJECTIONS],
     )
+    for fit in baseline["by_projection"].values():
+        validate_physical_identity(fit, 4)
     require_optimizer_convergence(refined.get("fit", refined), "refined split fit")
-    raw = continuous_prediction(baseline["projection_median"], PARAMETERS)
+    validate_physical_identity(refined.get("fit", refined), 4)
 
     if calibration.get("selected_model") != "identity":
         raise ValueError("held-out calibration selected a correction")
@@ -90,13 +96,7 @@ def main() -> None:
     if max(abs(value) for value in numerical_change.values()) >= 0.01:
         raise ValueError("refined integration changes a parameter by at least 1%")
 
-    interval = {
-        parameter: [
-            bootstrap["parameters"][parameter]["quantiles"]["0.025"],
-            bootstrap["parameters"][parameter]["quantiles"]["0.975"],
-        ]
-        for parameter in PARAMETERS
-    }
+    interval = require_summary(bootstrap, 4, observed_fits=baseline["by_projection"])
     source_paths = {
         "baseline": args.baseline,
         "refined": args.refined,
@@ -130,6 +130,9 @@ def main() -> None:
                 "evaluations": calibration["evaluations"],
             },
             "linked_block_replicates": bootstrap["replicates"],
+            "bootstrap_contract": bootstrap["bootstrap_contract"],
+            "bootstrap_planned_replicates": bootstrap["planned_replicates"],
+            "interval_coverage_validated": False,
             "chromosome_arm_fits": [load(path) for path in args.arm],
             "numerical_refinement_relative_change": numerical_change,
         },
@@ -153,9 +156,8 @@ def main() -> None:
             {"path": str(path), "sha256": sha256(path)} for path in args.figure
         ],
     }
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps(result, indent=2))
+    atomic_json(args.out, result)
+    print(json.dumps(result, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":
