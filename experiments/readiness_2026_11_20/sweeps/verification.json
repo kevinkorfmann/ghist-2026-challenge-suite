@@ -1,7 +1,8 @@
 {
   "tests": {
-    "command": ".venv/bin/python -m pytest tests/test_sweep_readiness.py tests/test_single_sweep.py tests/test_sweep_scientific_validation.py tests/test_freeze_single_sweep.py tests/test_soft_sweep_recovery.py tests/test_single_sweep_exact_recovery.py tests/test_background_sweep_selection.py tests/test_single_sweep_interval.py tests/test_single_sweep_scale_stress.py -q",
-    "passed": 41
+    "command": ".venv/bin/python -m pytest tests/test_task7_masked_pipeline.py tests/test_sweep_readiness.py tests/test_single_sweep.py tests/test_sweep_scientific_validation.py tests/test_freeze_single_sweep.py tests/test_soft_sweep_recovery.py tests/test_single_sweep_exact_recovery.py tests/test_background_sweep_selection.py tests/test_single_sweep_interval.py tests/test_single_sweep_scale_stress.py -q",
+    "passed": 58,
+    "seconds": 10.39
   },
   "ruff": "all sweep source/new scripts/tests pass",
   "shell": "all sweep Slurm templates pass bash -n",
@@ -54,20 +55,25 @@
     {
       "id": "10850911",
       "purpose": "same-seed case5 memory retry,4CPUs/22GiB,time limit2h",
-      "outcome": "running same case5 on22GiB; no broader expansion"
+      "outcome": "OUT_OF_MEMORY confirmed by scheduler and slurmstepd oom_kill event;1774.56s driver,29:44scheduler;22GiBcap reached; no output,no further retries"
     },
     {
       "id": "10851047",
       "purpose": "Current strict-reader replay of3 completedTask5 VCFs and raw-reference validated summary",
       "outcome": "completed; exact prediction compatibility on3; original panel3completed/3failed/42notrun, coverage2of3,consensus0of3"
+    },
+    {
+      "id": "10851876",
+      "purpose": "fixedseed2026112071 synthetic600kb phased VCF through actual Task7 CLI/RAiSD/BED/recomputation; no recovery claim",
+      "outcome": "completed1.988s;589matchedSNPs,540RAiSDwindows\u2192491fullycallable;formatvalid,recomputationpassed"
     }
   ],
   "current_design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
   "final_data_runs": 0,
   "submissions": 0,
-  "integration_manifest": "current_source_manifest.json",
+  "integration_manifest": "current_source_manifest.json records pre-Task7 integration; task7_implementation_manifest.json records later scoped changes",
   "frozen_runtime_snapshot_sha256": "78a8ae4bd6b5214541fe6eadb340c05434e79037713465f02610ef7f5e6980ac",
-  "cross_review": "demography_science independent read-only review; duplicate/non-SNP parser, development metric origin/provenance and raw RAiSD metric-link findings repaired",
+  "cross_review": "demography_science independent read-only review; duplicate/non-SNP parser, development metric origin/provenance and raw RAiSD metric-link findings repaired; parent Task7 read-only review: PS blocks, dataset identity and pre-run hash binding repaired with regressions",
   "task6_provenance_regeneration": {
     "records": 48,
     "candidate_predictions": 384,
@@ -81,6 +87,12 @@
   "evidence_sha256": {
     "task5_initial_attempt_summary.json": "8cdfa99424c8200c4e530bc177ba72076a119ef70dfa9abd24e735967f87ef16",
     "task5_postreview_verification.json": "6839c24467c095ad3d24817ca0940a74201a21d330e99bf53be3de4f12bf72e3",
-    "task6_development_v2.json": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3"
-  }
+    "task6_development_v2.json": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3",
+    "resource_policy.json": "f0762d89d9846599bac66702bb53db40735f0dd50d21b35a8a5d313435ee457a",
+    "resource_case5_retry.jsonl": "916b71a20a4f69ac3a6cf9c6b432a4a491af3341977a63f587500434b016748b",
+    "task7_implementation_manifest.json": "f245a93afc8c4a2f94d9da920261fe30f60d1ab08f43d672ba7e8f0f8e3465b9",
+    "task7_software_smoke/verification.json": "3575384a9c8b7957c85981a9dbca639d640678e75634234b4dfcfdb9f9642ecf"
+  },
+  "task7_implementation": "task7_implementation_manifest.json; synthetic software checks only, no matched biological confirmation",
+  "resource_terminal": "retry_case5_terminal; resource_policy.json retains6distinct cases,7v4workflow attempts,3completions,3distinctfailures,42notrun"
 }

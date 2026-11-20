@@ -58,6 +58,14 @@ pairs across two datasets. Both model-selection paths reproduced the original
 scores exactly and every pair was present once in each output. The 54 targeted
 local tests, critical Ruff checks and Slurm shell syntax checks also passed.
 
+The later compatibility run, Betty job 10850916, repeated four versioned
+production executions using the current manifest-compatible predictor and
+shared validator. Every prediction CSV is byte-identical to its original
+confirmation output. This reuses the same 20,023 pairs and is not new independent
+biological evidence. The separately rebuilt
+[v2 handoff package](task9_submission_handoff_2026_11_20.md) passed its pinned
+runtime/model/map preflight in job 10851132; the original package is preserved.
+
 The manifest pins the model checksum, feature order, feature-extractor and label
 code, genetic map, genome normalization and scikit-learn version. A mismatch
 fails before prediction. The predictor rejects duplicate segments, malformed or
@@ -118,11 +126,10 @@ class probabilities are not calibrated posteriors. The fixed pedigree templates
 and crossover/map stresses cannot certify every possible generating pedigree.
 Current input provenance and a final-input run remain separate release steps.
 
-Task 12's next feasible step is to rerun its existing six-replicate calibration
-with the corrected leave-one-replicate-out correction references, separate
-selection/development replicates, and a new versioned artifact directory. It can
-reuse the cached unlabeled empirical background profile without a new final-data
-run. At least four untouched simulation replicates must then evaluate the fixed
-candidate against an independent correction reference. This would repair the
-training/evaluation protocol; whole-family background genealogy and consensus
-validation would still remain necessary.
+The proposed Task 12 independent-reference refit has now been completed in a
+separate artifact directory. It used the six existing calibration replicates
+and four new confirmation seeds. Exact accuracy decreased from 37.64% to 37.37%,
+so the candidate was not promoted. This corrected the evaluation protocol but
+did not improve the method. Whole-family background genealogy, detected-IBD and
+consensus validation remain outstanding; see the
+[Task 12 outcome](task12_readiness_2026_11_20.md).

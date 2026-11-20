@@ -5,7 +5,8 @@
 # GHIST 2026 challenge suite
 
 Inference methods for the original 12 GHIST 2026 challenges. The two later
-low-coverage challenges are not implemented.
+low-coverage challenges are under development in a separate continuation; they
+are not yet scientifically validated.
 
 **November 20: Task 9 has a validated versioned candidate; other scientific release gates remain open.**
 

@@ -1,0 +1,28 @@
+{
+  "stage": "Final provenance guards before fit or fresh confirmation",
+  "focused_tests": 74,
+  "seconds": 14.35,
+  "ruff": "passed",
+  "source_sha256": {
+    "scripts/task12_background_correction.py": "017a7f2e96e52ef9d025768436aa8aa4f89959520d6c8835590642bcb9ab105d",
+    "scripts/task12_histogram_protocol.py": "cdfb49686ac9fa46ffde04e24275cc6cc0d4424efb7dc66f294fde549b5271ab",
+    "scripts/train_task12_histogram_candidate.py": "33a5a82c95d433aced1ba0f638464cf893f031245eab1893cba25e07d33b8f90",
+    "scripts/validate_task12_histogram_candidate.py": "afd463215a8757e9c84145ca9781f5b168b7ac881e0e3a6bbd590ee2800c3439",
+    "tests/test_task12_background_correction.py": "570e9887ce3b42299de4e6dce26fa0f19d0776c5d5421f75292c3c1393c6f003",
+    "tests/test_task12_histogram_experiment.py": "cb3f4619e5893a3bcb5ae56518ac2b23ece8ef0d426609960a8bf665a9f9e623"
+  },
+  "frozen_protocol_sha256": "c09fe9bb57bc1a543046be12e178dd1e8fe0b68f0a7301a18d48e19682f18201",
+  "superseded_attempts": [
+    10851898,
+    10851952,
+    10851959
+  ],
+  "fit_started": false,
+  "holdout_generation_started": false,
+  "model_settings_changed": false,
+  "guards": [
+    "single-read protocol bytes/digest checked before and after fit, generation and evidence publication",
+    "calibration log hashes and parsed seeds checked against registry; calibration/confirmation/augmentation streams disjoint",
+    "historical metadata allowlist; new candidate provenance does not inherit validation scores"
+  ]
+}

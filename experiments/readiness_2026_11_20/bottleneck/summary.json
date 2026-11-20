@@ -1009,10 +1009,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 10,
+            "point": 2,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112931,
+            "mutation_seed": 2026112932,
+            "optimizer_seed": 2026112933,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 8500,
+            "post_decline_fraction": 0.5,
+            "ancestral_effective_size": 32000
+          },
+          "fit": {
+            "generations": 8844.052321517107,
+            "post_decline_fraction": 0.49401826859834147,
+            "ancestral_effective_size": 32162.13070619617,
+            "scaled_time_2N": 0.13749170417700687,
+            "theta": 439977.94806076365,
+            "multinomial_log_likelihood": -548.7667319968095,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 4,
+            "converged_restarts": 7,
+            "optimizer": {
+              "warnflag": 2,
+              "converged": false,
+              "message": "ABNORMAL: ",
+              "evaluations": 186,
+              "iterations": 12
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 4,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.040476743707895,
+            "post_decline_fraction": -0.01196346280331706,
+            "ancestral_effective_size": 0.005066584568630406
+          },
+          "seconds": 6.23205564613454
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 10,
+            "point": 2,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112931,
+            "mutation_seed": 2026112932,
+            "optimizer_seed": 2026112933,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 8500,
+            "post_decline_fraction": 0.5,
+            "ancestral_effective_size": 32000
+          },
+          "fit": {
+            "generations": 8940.17626402023,
+            "post_decline_fraction": 0.4932324576910562,
+            "ancestral_effective_size": 32205.127621512445,
+            "scaled_time_2N": 0.1388005097990724,
+            "theta": 440566.1458622903,
+            "multinomial_log_likelihood": -547.0928291344972,
+            "best_restart": 5,
+            "successful_restarts": 8,
+            "converged_restarts": 7,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 144
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 0.05178544282590947,
+            "post_decline_fraction": -0.01353508461788755,
+            "ancestral_effective_size": 0.006410238172263938
+          },
+          "seconds": 26.45311402902007
         }
       }
     },
@@ -1023,7 +1118,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 11,
+            "point": 2,
+            "replicate": 1,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112934,
+            "mutation_seed": 2026112935,
+            "optimizer_seed": 2026112936,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 8500,
+            "post_decline_fraction": 0.5,
+            "ancestral_effective_size": 32000
+          },
+          "fit": {
+            "generations": 9179.88732751556,
+            "post_decline_fraction": 0.43087798192000026,
+            "ancestral_effective_size": 36918.10079075993,
+            "scaled_time_2N": 0.12432772990604592,
+            "theta": 505039.6188175958,
+            "multinomial_log_likelihood": -536.9886848948372,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 3,
+            "converged_restarts": 6,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 129,
+              "iterations": 19
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 4,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.07998674441359532,
+            "post_decline_fraction": -0.13824403615999947,
+            "ancestral_effective_size": 0.1536906497112478
+          },
+          "seconds": 7.05157875828445
         }
       }
     },
@@ -1034,14 +1178,183 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 12,
+            "point": 3,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112937,
+            "mutation_seed": 2026112938,
+            "optimizer_seed": 2026112939,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 16590.32898034857,
+            "post_decline_fraction": 0.7212477923972305,
+            "ancestral_effective_size": 43940.37757290195,
+            "scaled_time_2N": 0.1887822760833516,
+            "theta": 601104.3651972987,
+            "multinomial_log_likelihood": -546.4174022888619,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 5,
+            "converged_restarts": 5,
+            "optimizer": {
+              "warnflag": 2,
+              "converged": false,
+              "message": "ABNORMAL: ",
+              "evaluations": 144,
+              "iterations": 6
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 6,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.036895561271785615,
+            "post_decline_fraction": 0.0017330449961534544,
+            "ancestral_effective_size": -0.0013550551613193962
+          },
+          "seconds": 8.330361898057163
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 12,
+            "point": 3,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112937,
+            "mutation_seed": 2026112938,
+            "optimizer_seed": 2026112939,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 16838.46268928613,
+            "post_decline_fraction": 0.7206364488256612,
+            "ancestral_effective_size": 43985.212214833744,
+            "scaled_time_2N": 0.19141049731718085,
+            "theta": 601717.7030989256,
+            "multinomial_log_likelihood": -547.5747264131642,
+            "best_restart": 5,
+            "successful_restarts": 8,
+            "converged_restarts": 6,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 84
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 0.05240391808038325,
+            "post_decline_fraction": 0.0008839567023073425,
+            "ancestral_effective_size": -0.00033608602650581076
+          },
+          "seconds": 32.1145677510649
         }
       },
       "vcf_contract": {
-        "passed": false
+        "passed": false,
+        "verification_status": "unverified_legacy_identity",
+        "original_record": {
+          "passed": true,
+          "projected_sfs": {
+            "projection": 114,
+            "segregating_records": 2720365,
+            "projected_records": 2720365,
+            "maximum_called_haplotypes": 114,
+            "incomplete_genotype_records": 0,
+            "polarized": false,
+            "ancestral_reference_records": 0,
+            "ancestral_alternate_records": 0
+          },
+          "block_sfs": {
+            "projection": 114,
+            "blocks": 50,
+            "block_length": 2000000,
+            "records_per_block": [
+              54922,
+              54290,
+              54761,
+              54929,
+              54271,
+              54615,
+              54200,
+              54195,
+              54978,
+              54939,
+              54928,
+              52832,
+              53386,
+              53231,
+              53468,
+              53673,
+              54022,
+              55358,
+              54526,
+              53025,
+              52877,
+              54182,
+              54146,
+              54711,
+              54519,
+              56494,
+              54570,
+              53878,
+              55271,
+              53891,
+              55065,
+              54352,
+              54616,
+              55405,
+              54147,
+              55259,
+              54962,
+              54413,
+              54183,
+              53448,
+              54878,
+              54427,
+              54583,
+              55091,
+              54528,
+              54658,
+              55059,
+              53748,
+              54438,
+              54017
+            ],
+            "polarized": false
+          },
+          "diploid_individuals": 57,
+          "haplotypes": 114
+        }
       }
     },
     {
@@ -1087,10 +1400,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 16,
+            "point": 4,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112949,
+            "mutation_seed": 2026112950,
+            "optimizer_seed": 2026112951,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 231090.676469888,
+            "post_decline_fraction": 0.03873729367720429,
+            "ancestral_effective_size": 484923.1408323172,
+            "scaled_time_2N": 0.23827557092165813,
+            "theta": 6633748.5665861,
+            "multinomial_log_likelihood": -477.46987935184006,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 0,
+            "converged_restarts": 8,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 84,
+              "iterations": 10
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 1,
+              "numerically_supported": false,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 7.253238445353144,
+            "post_decline_fraction": -0.9564749509244895,
+            "ancestral_effective_size": 22.091578134872247
+          },
+          "seconds": 10.698726071044803
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 16,
+            "point": 4,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112949,
+            "mutation_seed": 2026112950,
+            "optimizer_seed": 2026112951,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 216417.0693682187,
+            "post_decline_fraction": 0.05874265883706309,
+            "ancestral_effective_size": 320058.47203875025,
+            "scaled_time_2N": 0.33808989337113465,
+            "theta": 4378399.897490104,
+            "multinomial_log_likelihood": -477.9338932394385,
+            "best_restart": 7,
+            "successful_restarts": 8,
+            "converged_restarts": 8,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 117
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 6.729181048864954,
+            "post_decline_fraction": -0.9339970125426258,
+            "ancestral_effective_size": 14.24087962089287
+          },
+          "seconds": 48.61392462439835
         }
       }
     },
@@ -1101,7 +1509,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 17,
+            "point": 4,
+            "replicate": 0,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112952,
+            "mutation_seed": 2026112953,
+            "optimizer_seed": 2026112954,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 186745.21032621444,
+            "post_decline_fraction": 0.06192025882948652,
+            "ancestral_effective_size": 301854.47301677265,
+            "scaled_time_2N": 0.3093298708809226,
+            "theta": 4129369.1908694506,
+            "multinomial_log_likelihood": -466.2803309148803,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 4,
+            "converged_restarts": 6,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 192,
+              "iterations": 9
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 1,
+              "numerically_supported": false,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 5.6694717973648014,
+            "post_decline_fraction": -0.930426675472487,
+            "ancestral_effective_size": 13.374022524608222
+          },
+          "seconds": 8.562586129643023
         }
       }
     },
@@ -1112,10 +1569,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 18,
+            "point": 4,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112955,
+            "mutation_seed": 2026112956,
+            "optimizer_seed": 2026112957,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 15370.731767006546,
+            "post_decline_fraction": 0.9163751985775432,
+            "ancestral_effective_size": 20385.749059343623,
+            "scaled_time_2N": 0.37699698260441183,
+            "theta": 278877.0471318208,
+            "multinomial_log_likelihood": -443.5063086027003,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 7,
+            "converged_restarts": 5,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 144,
+              "iterations": 18
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 5,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": -0.45104529403548055,
+            "post_decline_fraction": 0.029635054581509168,
+            "ancestral_effective_size": -0.029250044793160845
+          },
+          "seconds": 10.8819883428514
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 18,
+            "point": 4,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112955,
+            "mutation_seed": 2026112956,
+            "optimizer_seed": 2026112957,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 15569.13780756823,
+            "post_decline_fraction": 0.9160423689946202,
+            "ancestral_effective_size": 20396.56556376143,
+            "scaled_time_2N": 0.38166076928240095,
+            "theta": 279025.01691225637,
+            "multinomial_log_likelihood": -443.5225848909977,
+            "best_restart": 6,
+            "successful_restarts": 8,
+            "converged_restarts": 7,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 2,
+              "converged": false,
+              "message": "ABNORMAL: ",
+              "evaluations": 264
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": -0.44395936401542035,
+            "post_decline_fraction": 0.029261088758000264,
+            "ancestral_effective_size": -0.02873497315421769
+          },
+          "seconds": 40.47189922910184
         }
       }
     },
@@ -1184,76 +1736,76 @@
   "summary": {
     "matched/moments": {
       "planned": 12,
-      "fitted": 5,
+      "fitted": 9,
       "failed": 0,
-      "incomplete": 7,
-      "optimizer_converged": 4,
+      "incomplete": 3,
+      "optimizer_converged": 6,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
           "median": 0.043777671750655944,
-          "p90": 0.07663067798559915,
-          "maximum": 0.0892934063730384
+          "p90": 1.8114839242990144,
+          "maximum": 7.253238445353144
         },
         "post_decline_fraction": {
-          "median": 0.008456696942509279,
-          "p90": 0.020764676019011906,
-          "maximum": 0.020776549429409097
+          "median": 0.01196346280331706,
+          "p90": 0.2150030338501054,
+          "maximum": 0.9564749509244895
         },
         "ancestral_effective_size": {
           "median": 0.006439559147035867,
-          "p90": 0.024545671743467737,
-          "maximum": 0.03220588264202351
+          "p90": 4.444080333088072,
+          "maximum": 22.091578134872247
         }
       }
     },
     "matched/dadi": {
       "planned": 12,
-      "fitted": 5,
+      "fitted": 9,
       "failed": 0,
-      "incomplete": 7,
-      "optimizer_converged": 4,
+      "incomplete": 3,
+      "optimizer_converged": 7,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
           "median": 0.0577512453746829,
-          "p90": 0.0911815251166598,
-          "maximum": 0.10318965472460095
+          "p90": 1.7010037009853285,
+          "maximum": 6.729181048864954
         },
         "post_decline_fraction": {
-          "median": 0.009806656396137758,
-          "p90": 0.025335237440680624,
-          "maximum": 0.025362837917335068
+          "median": 0.01353508461788755,
+          "p90": 0.21020827351492552,
+          "maximum": 0.9339970125426258
         },
         "ancestral_effective_size": {
           "median": 0.0083723541302958,
-          "p90": 0.025468330292590526,
-          "maximum": 0.03593977595419462
+          "p90": 2.876927744941932,
+          "maximum": 14.24087962089287
         }
       }
     },
     "ancestral_epoch/moments": {
       "planned": 12,
-      "fitted": 5,
+      "fitted": 7,
       "failed": 0,
-      "incomplete": 7,
-      "optimizer_converged": 5,
+      "incomplete": 5,
+      "optimizer_converged": 7,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
           "median": 0.1264657728068347,
-          "p90": 0.17711717534361038,
-          "maximum": 0.19231137422209954
+          "p90": 2.383175543479182,
+          "maximum": 5.6694717973648014
         },
         "post_decline_fraction": {
-          "median": 0.08309534853446132,
-          "p90": 0.12296130486911443,
-          "maximum": 0.13687811095109403
+          "median": 0.10208609574614502,
+          "p90": 0.4551170918849948,
+          "maximum": 0.930426675472487
         },
         "ancestral_effective_size": {
-          "median": 0.06535260455352332,
-          "p90": 0.11944232340319938,
-          "maximum": 0.15258028993117834
+          "median": 0.06973537361123094,
+          "p90": 5.441823399670042,
+          "maximum": 13.374022524608222
         }
       }
     }

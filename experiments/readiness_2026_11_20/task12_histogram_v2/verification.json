@@ -1,0 +1,23 @@
+{
+  "status": "SYNTHETIC_CONTRACT_TESTED_NOT_FITTED",
+  "source_and_report_sha256": {
+    "scripts/task12_background_correction.py": "017a7f2e96e52ef9d025768436aa8aa4f89959520d6c8835590642bcb9ab105d",
+    "tests/test_task12_background_correction.py": "570e9887ce3b42299de4e6dce26fa0f19d0776c5d5421f75292c3c1393c6f003",
+    "docs/task12_histogram_repair_2026_11_20.md": "bcf663efa08b6bb8515155d340f4ba736c9d27bf7bea6bbe565028e9bccb5ad9",
+    "experiments/readiness_2026_11_20/task12_histogram_v2/proposed_protocol.json": "e61cccf001e09b24a6d8c045a1cab741057f31276b8d8568ec5888d076412759"
+  },
+  "tests": {
+    "command": "PYTHONPATH=.:src /Users/kevinkorfmann/Documents/ChatGPT/ghist/.venv/bin/python -m pytest -q tests/test_task12_background_correction.py tests/test_task12_reference_candidate.py tests/test_human_background_corrected.py tests/test_human_empirical_background.py tests/test_relatedness_scientific_validation.py",
+    "passed": 53,
+    "runtime_seconds": 1.85
+  },
+  "ruff": "passed",
+  "historical_confirmation_csv_hashes_verified": 40,
+  "historical_confirmation_report_sha256": "fd9e8ad64ef18d492833e75e5d8ebc235fde7de4a120c886b53a60fdfbf22fd1",
+  "historical_source_changed": false,
+  "training_entry_points_changed": false,
+  "model_runs_started": false,
+  "confirmation_runs_started": false,
+  "challenge_data_used": false,
+  "submission_count": 0
+}

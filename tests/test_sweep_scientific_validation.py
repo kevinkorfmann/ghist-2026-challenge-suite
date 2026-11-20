@@ -56,30 +56,22 @@ def test_legacy_oracle_recovery_and_duplicate_seeds_rejected():
         recovery.validate_blind_records([record, record])
 
 
-def test_task7_cannot_transfer_non_bgs_recovery():
-    payload = {
-        "inference_method": "median_multiscale_raisd_gap_ld",
-        "records": [
+def test_task7_cannot_transfer_legacy_recovery():
+    # Even correctly labeled BGS records from the old ten-estimator assembly
+    # cannot calibrate the new full-input, callable-masked method.
+    with pytest.raises(ValueError, match="Legacy"):
+        validate_matched_recovery(
             {
-                "seed": 1,
-                "localization": {
-                    "truth_used_for_inference": False,
-                    "region_source": "full_scan_composite_maximum",
-                },
-                "background_selection": False,
-                "demography": "Zigzag_1S14",
+                "inference_method": "median_multiscale_raisd_gap_ld",
+                "records": [
+                    {
+                        "seed": 1,
+                        "background_selection": True,
+                        "demography": "constant_10000",
+                    }
+                ],
             }
-        ],
-    }
-    with pytest.raises(ValueError, match="BGS"):
-        validate_matched_recovery(payload)
-    # Task 7 itself does not mandate Task 8's bottleneck/growth history.
-    payload["records"][0]["background_selection"] = True
-    payload["records"][0]["demography"] = "constant_10000"
-    validate_matched_recovery(payload)
-    payload["records"][0].pop("demography")
-    with pytest.raises(ValueError, match="demographic history"):
-        validate_matched_recovery(payload)
+        )
 
 
 def test_raisd_reference_matches_filename_not_lexical_position(tmp_path):

@@ -42,9 +42,9 @@ score even though their own final scores were discarded. Fine localization now
 uses the same callable variants as the scan, rejects gaps spanning missing
 sequence, and requires sufficient callable exposure on both LD flanks. The old
 Task 5 freeze's interval-membership tests now follow BED's `start <= point < end`
-convention. Task 7's recovery guard still requires BGS simulations of its exact
-estimator, but no longer incorrectly describes bottleneck/growth as a Task 7
-specification requirement; the tested demographic history must be explicit.
+convention. Task 7's initial recovery guard corrected the specification: bottleneck/growth is
+not mandatory for Task 7. The later full-input repair below supersedes its
+legacy ten-estimator assembly; historical artifacts remain unchanged.
 
 Example for an explicitly authorized testing run:
 
@@ -117,11 +117,29 @@ The constant-population pilot and next two cases completed in 432.4, 425.8 and
 trace directly confirms out-of-memory termination for the last case: memory
 reached its 11 GiB limit and `oom_kill` increased from zero to one. The other two
 terminated with signal 9; their precise cause is not independently established.
-A same-seed, unchanged-model retry uses 22 GiB and four CPUs with a two-hour
+A same-seed, unchanged-model retry used 22 GiB and four CPUs with a two-hour
 limit. This pass was then locked to the first six balanced cases, before any
 accuracy was inspected; the remaining 42 will not run in this pass. The
 [resource record](../experiments/readiness_2026_11_20/sweeps/resource_policy.json)
 preserves these decisions before inspecting localization accuracy.
+
+The 22 GiB retry also failed: driver elapsed time was 1,774.56 seconds and
+Slurm elapsed time 29:44. Scheduler state `OUT_OF_MEMORY` and stderr's explicit
+`oom_kill` event confirm the cause; the live cgroup peak reached exactly
+23,622,320,128 bytes. The sampled parent cgroup counter remained zero, so the
+terminal diagnosis relies on scheduler/stderr as well as the trace. The
+[terminal records](../experiments/readiness_2026_11_20/sweeps/retry_case5_terminal/sacct.txt)
+retain this failed attempt. No larger retry, cases 3/4 retry, or additional
+simulation was launched. Across the six distinct v4 cases there are three
+completions and three failures; adding the same-seed retry gives seven workflow
+attempts, three completed and four failed. There are still 42 unrun planned cases.
+
+Read-only process inspection confirmed the unchanged Q1 catalog trajectory of
+approximately 7,156–71,560 diploids. Memory fluctuated while its high-water mark
+continued increasing. The generated script contained no current tick, the sweep
+checkpoint was not yet written, and the engine did not retain its buffered DEBUG
+progress. We therefore cannot identify the exact failing demographic phase or
+justify a larger memory tier from an assumed stable peak.
 
 ## Completed Task 5 evidence
 
@@ -143,7 +161,7 @@ block, only half of first attempts produced predictions. Higher-memory retries
 are retained separately and do not erase these failed attempts.
 
 The [post-review compatibility run](../experiments/readiness_2026_11_20/sweeps/task5_postreview_verification.json)
-passed the same three real VCFs through the current stricter production parser
+passed the same three real VCFs through the then-current stricter production parser
 and reproduced all prediction fields exactly. This establishes implementation
 compatibility on those observations; it does not add independent replicates.
 The fresh evidence supports retaining Task 5 as provisional, not promoting it to
@@ -206,6 +224,102 @@ replicates. The same 48 development trees were rerun into separate
 All 384 candidate predictions and errors exactly match the archived original
 records; the scientific conclusion is unchanged.
 
+## Task 7 full-input repair and remaining Task 8 work
+
+A second read-only audit found that the legacy Task 7 localizer accepted a
+caller-specified region and ignored accessibility when choosing variant gaps
+and split-flank LD. Its freeze script assembled ten estimates from hardcoded
+archived JSON and wrote an unclipped BED without the production validator.
+These paths could not be justified by the earlier three-estimator BGS benchmark.
+
+The new `blind_callable_median_ten_v1` is explicitly a new provisional method.
+It combines five global composite maxima (25/50/100/250/500 kb, steps one fifth
+of each width), a RAiSD maximum, a fully callable variant gap and three masked
+LD estimates (50/100/250 kb flanks). The fine region is selected mechanically
+from the 100 kb composite maximum, within ±750 kb; no caller region or truth
+argument exists. Each LD flank requires 80% callable exposure. The median gets
+a clipped ±80 kb BED and the production Task 7 format check. Absence of a
+secondary RAiSD peak more than 2 Mb away yields an undefined signal ratio and
+abstention, rather than an exception or fabricated confidence.
+
+The new CLI first creates a retained canonical A/C VCF containing exactly the
+callable phased SNPs and verifies its genotype/coordinate round trip. RAiSD
+receives that same VCF; its usable SNP count must agree. RAiSD `-R` reports
+1-based inclusive SNP-window endpoints (verified against the installed
+`RAiSD_MuStatistic.c` implementation). Each report span is converted to
+`[start-1,end)` and discarded if it crosses any inaccessible base. Native
+chromosome-wide RAiSD normalization remains; this is not equivalence to the old
+unmasked estimator and needs matched mask/exposure in future recovery.
+
+Parent cross-review additionally found that PS blocks were ignored. The shared
+sweep reader now requires one explicit or implicit phase set per sample and
+chromosome across retained heterozygotes, and rejects mixed/multiple blocks.
+Homozygotes do not connect phase blocks. The new CLI binds original inputs,
+source and RAiSD binary hashes before inference and checks them afterward;
+freeze verification also binds the VCF chromosome to the requested dataset.
+Frozen earlier runtimes and evidence are unchanged.
+
+```bash
+python -m scripts.predict_task7_sweep_bgs --vcf INPUT.vcf.gz \
+  --accessible ACCESSIBLE.bed --dataset testing --raisd /absolute/path/RAiSD \
+  --out-dir NEW_OUTPUT_DIRECTORY
+```
+
+The Task 7 freeze API now requires explicit `--candidate`, `--matched-recovery`,
+`--bed` and `--out` paths. It rejects the old archive schema. A future recovery
+must supply a hashed prespecified design, complete disjoint calibration and
+evaluation seed groups, matching exposure/software/model provenance, distinct
+simulation trees and input VCFs, and retained raw prediction/truth artifacts.
+Predictions and errors are recomputed rather than trusting cached metrics.
+There is currently no compatible matched biological recovery producer. Even a
+future package passing declared numerical criteria is explicitly marked
+`scientifically_validated: false` and `release_ready: false`; arbitrarily weak
+self-declared criteria are not a separately reviewed scientific protocol.
+
+A bounded actual external-tool smoke completed as Slurm job 10851876. With seed
+2026112071 fixed before execution, a synthetic 600 kb, 25-diploid VCF and a
+10 kb mask hole passed the real CLI, installed RAiSD, BED validation and
+`verify_candidate` recomputation in 1.99 seconds. RAiSD used the same 589 SNPs;
+491 of 540 report windows were fully callable, and 49 crossing the hole were
+excluded. This is software/format evidence with artificial genotypes, not
+recovery evidence. The [frozen protocol and hashes](../experiments/readiness_2026_11_20/sweeps/task7_software_smoke/protocol.json),
+[source archive](../experiments/readiness_2026_11_20/sweeps/task7_software_smoke/source.tar.gz)
+and [raw output archive](../experiments/readiness_2026_11_20/sweeps/task7_software_smoke/output.tar.gz)
+retain the complete test. Extract the source archive to recover its executed
+`run.py` and `run.sbatch`; the plain-text driver copy has the identical hash.
+
+The cheapest next Task 7 check is a development-only replay of existing exact-Q1
+BGS trees through canonical export, the new CLI, raw RAiSD and the BED validator.
+This would test end-to-end interoperability without new simulation and cannot
+provide untouched recovery. Short segments lack the >2 Mb reference baseline,
+so their consensus abstention would be expected; they cannot exercise or
+calibrate the whole-chromosome eligibility rule. No such replay was launched in
+this follow-up. Subsequent confirmation needs a prespecified full-chromosome
+BGS generator and new seeds after the implementation is fixed, with the real
+map, mask, exon annotation, mutation rate, ploidy, DFE and burn-in recorded.
+
+Task 8's variable-count detector is implemented, but its current context and
+freeze metrics are still declarations rather than a complete linked simulation
+pipeline. The earlier exact-Q1 benchmark supplied independent 1 Mb nulls and
+0/1/2-sweep evaluations, not full-chromosome null maxima. Its old exporter also
+lacks the new canonical allele/header/SNP-parity contract. The specific next
+steps are to reuse the canonical masked export/report checks, create a manifest
+linking every full-chromosome null to its seed and model/map/mask/exon/DFE
+configuration, and recompute held-out region coverage/precision from the same
+production detector. A single full-chromosome null resource pilot would establish
+feasibility before any larger panel; it would not calibrate error rates.
+
+At alpha .05 the detector's strict finite-sample maximum rule needs at least
+19 independent exchangeable *whole-chromosome* null replicates. Small segments
+cannot be relabeled or concatenated to satisfy that requirement. An independent
+held-out null set is then needed to assess the resulting false-positive rate,
+plus new one/multiple-sweep cases for power, precision and interval coverage.
+For scale, even zero errors in 59 independent null evaluations are needed for
+a one-sided 95% binomial upper bound at or below .05; the earlier zero of eight
+is insufficient. Burn-in adequacy for BGS must be assessed before declaring the
+generator matched. These are specific future dependencies, not experiments
+launched or claims closed in this pass.
+
 ## Reproduction and code checks
 
 The [verification record](../experiments/readiness_2026_11_20/sweeps/verification.json)
@@ -217,7 +331,9 @@ validators. Extract the snapshot in an isolated directory, set its `src` and
 root on `PYTHONPATH`, and use the committed Slurm templates with the matching
 frozen design. Heavy simulation and reference scans run through Slurm only.
 
-Forty-one focused sweep tests pass, including genotype/coordinate round trips,
+Fifty-eight focused sweep tests now pass. The expanded Task 7 checks add
+callable RAiSD endpoint/hole cases, phase-set integrity, chromosome/dataset
+binding, pre/post inference provenance and legacy-recovery refusal. Tests include genotype/coordinate round trips,
 callable-mask invariance, source/identity guard behavior, half-open interval
 semantics, matching Task 6 score windows, empty-stratum handling, duplicate and
 non-SNP input rejection, and corrupt reference/development-metric rejection. Sweep Ruff

@@ -1,0 +1,32 @@
+{
+  "slurm_job": "10850629",
+  "state": "COMPLETED",
+  "elapsed_seconds": 481,
+  "exit_code": "0:0",
+  "cases": [
+    0,
+    12
+  ],
+  "checks": {
+    "exact_100Mb_contig": true,
+    "57_diploids_114_haplotypes": true,
+    "full_sfs_and_50_blocks_equal": true,
+    "case0_old_and_new_export_block_spectra_equal": true,
+    "case12_bound_to_original_frozen_spectrum": true,
+    "retained_validation_source_hashes_match": true
+  },
+  "case12_tree_sha256": "2d956c372c9efbca200462809dd3d91f27c0b56003d4d3488d758a9478a58cbc",
+  "scope": "Export/readers on two existing panel cases. No new biological replication or optimizer validation; original v1 panel contracts remain unchanged.",
+  "files_sha256": {
+    "case12_vcf_contract.json": "b0adad80eb9bdbe3fca431edfa849a59cc02bc137e0bfafa0977d17ec175f119",
+    "results/case_00/spectrum.npz": "5ec5d650818abe195120fcd1846c6c13c35766afd21469269086051be8335f64",
+    "results/case_00/vcf_contract.json": "f62b6a58c993bfe42dc4f72f463e0806c9a3bad7ae69d10478cbba965250d62f",
+    "results/protocol.json": "c1ced515763182a9fecaaa67e22e7bc0981765a642476efdd64cd8282ddba8f7",
+    "revalidate_vcf.sbatch": "fbaaf4aeda7a753ad9babbde065c011d7430c30812d07bc6d479927cb436c084",
+    "source_snapshot/scripts/revalidate_bottleneck_vcf.py": "7a358b212c8a532a2f823a8fb4f08346c91defedf6502c5acc4cc533968ea7d8",
+    "source_snapshot/scripts/validate_bottleneck_readiness.py": "af81546d1e50daeaf18cdf4091afeff68cd99410057aab3a0c2bc4d0283513d2",
+    "source_snapshot/src/ghist_bottleneck/sfs_baseline.py": "bc50c8cacfb08d7e1d81f95434984f982f24b7a4809d254cec879144ea9cffd8",
+    "source_snapshot/src/ghist_inference/checkpoint.py": "d25bbd83c6af3bc226d23fee65a5437fff8144ce9051b0ddeb688213b2d7a9f2",
+    "vcf-10850629.log": "b0adad80eb9bdbe3fca431edfa849a59cc02bc137e0bfafa0977d17ec175f119"
+  }
+}
