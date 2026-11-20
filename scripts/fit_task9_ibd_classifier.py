@@ -10,6 +10,8 @@ import numpy as np
 from sklearn.ensemble import ExtraTreesClassifier, HistGradientBoostingClassifier, RandomForestClassifier
 from sklearn.metrics import accuracy_score, balanced_accuracy_score, confusion_matrix
 
+from ghist_relatedness.labels import IBD_LABEL_MEIOSES
+
 from ghist_relatedness.ibd import (
     SexMap,
     matrix,
@@ -46,6 +48,10 @@ def load_simulations(
             label2 = relationship_from_sample(str(record["indID2"]))
             if label1 != label2:
                 raise ValueError(f"Mismatched simulated pair in {path}")
+            if label1 not in MEIOSES:
+                raise ValueError(f"Unknown simulated relationship: {label1}")
+            if label1 not in IBD_LABEL_MEIOSES:
+                continue
             record["label"] = label1
             records.append(record)
     return records
@@ -55,7 +61,7 @@ def score(model, records: list[dict[str, object]], feature_names: list[str]) -> 
     features, _ = matrix(records, feature_names)
     truth = np.asarray([record["label"] for record in records])
     predicted = model.predict(features)
-    labels = sorted(MEIOSES)
+    labels = sorted(IBD_LABEL_MEIOSES)
     return {
         "pairs": len(records),
         "accuracy": float(accuracy_score(truth, predicted)),

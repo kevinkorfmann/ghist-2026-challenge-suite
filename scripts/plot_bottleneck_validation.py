@@ -91,7 +91,6 @@ def plot_validation(input_path: Path, output_stem: Path) -> None:
             ax.legend(frameon=False, loc="upper left")
 
     relative_time_error = np.abs(deep[:, 0] - truth[:, 0]) / truth[:, 0]
-    fraction_error = np.abs(deep[:, 1] - truth[:, 1])
     scenario_ids = sorted(np.unique(scenarios))
     positions = np.arange(len(scenario_ids))
     ax = axes[1, 0]

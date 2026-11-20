@@ -6,7 +6,6 @@ import json
 import os
 from pathlib import Path
 
-import synapseclient
 import yaml
 
 
@@ -30,23 +29,30 @@ def main() -> None:
     parser.add_argument("--challenge", required=True, help="Dotted registry key")
     parser.add_argument("--dataset", choices=("testing", "final"), default="testing")
     parser.add_argument("--registry", default="configs/challenges.yaml")
+    parser.add_argument("--version", type=int, help="Pin an entity version; default is the current version")
+    parser.add_argument("--data-root", type=Path, default=Path("data/current"))
     args = parser.parse_args()
     token = os.environ.get("SYNAPSE_AUTH_TOKEN")
     if not token:
         raise RuntimeError("SYNAPSE_AUTH_TOKEN is not set")
+    import synapseclient
     registry = yaml.safe_load(Path(args.registry).read_text())
     entry = nested_get(registry, args.challenge)
     entity_id = entry[args.dataset]
-    destination = Path("data/raw") / entry["path"].removeprefix("challenges/") / args.dataset
-    destination.mkdir(parents=True, exist_ok=True)
     syn = synapseclient.Synapse()
     syn.login(authToken=token, silent=True)
-    entity = syn.get(entity_id, downloadLocation=str(destination))
+    metadata = syn.get(entity_id, version=args.version, downloadFile=False)
+    version = int(metadata.versionNumber)
+    destination = args.data_root / entry["path"].removeprefix("challenges/") / args.dataset / f"v{version}"
+    destination.mkdir(parents=True, exist_ok=True)
+    entity = syn.get(entity_id, version=version, downloadLocation=str(destination))
     path = Path(entity.path)
     manifest = {
         "challenge": args.challenge,
         "dataset": args.dataset,
         "entity_id": entity_id,
+        "version": version,
+        "file_handle_id": str(entity.dataFileHandleId),
         "name": path.name,
         "size_bytes": path.stat().st_size,
         "sha256": sha256(path),

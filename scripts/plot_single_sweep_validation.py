@@ -67,9 +67,10 @@ def main() -> None:
     args = parser.parse_args()
 
     scan = np.genfromtxt(args.scan, delimiter=",", names=True)
-    ld = np.genfromtxt(args.flank_ld, delimiter=",", names=True)
-    localization = load(args.localization)
-    raisd = load(args.raisd)
+    # Keep validating the supporting inputs supplied by the historical CLI.
+    np.genfromtxt(args.flank_ld, delimiter=",", names=True)
+    load(args.localization)
+    load(args.raisd)
     generic = load(args.generic_recovery)
     chromosome = load(args.chromosome_recovery)
     exact = load(args.exact_recovery)

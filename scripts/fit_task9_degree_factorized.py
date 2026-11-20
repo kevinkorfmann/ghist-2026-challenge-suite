@@ -13,13 +13,14 @@ from sklearn.metrics import balanced_accuracy_score
 from sklearn.utils.class_weight import compute_sample_weight
 
 from ghist_relatedness.ibd import matrix, pair_features, read_segment_rows, read_sex_map
+from ghist_relatedness.labels import IBD_LABEL_MEIOSES
 try:
     from scripts.fit_task9_ibd_classifier import MEIOSES, load_simulations
 except ModuleNotFoundError:
     from fit_task9_ibd_classifier import MEIOSES, load_simulations
 
 
-LABELS = tuple(sorted(MEIOSES))
+LABELS = tuple(sorted(IBD_LABEL_MEIOSES))
 
 
 def classifier(seed: int, leaves: int, minimum_leaf: int):
@@ -38,8 +39,12 @@ def aligned(classes, probabilities):
     output = np.zeros((len(probabilities), len(LABELS)), dtype=float)
     indices = {label: index for index, label in enumerate(LABELS)}
     for source, label in enumerate(classes):
-        output[:, indices[str(label)]] = probabilities[:, source]
-    return output
+        if str(label) in indices:
+            output[:, indices[str(label)]] = probabilities[:, source]
+    totals = output.sum(axis=1, keepdims=True)
+    if np.any(totals <= 0):
+        raise ValueError("Model assigned no probability to accepted Task 9 labels")
+    return output / totals
 
 
 def fit_models(x, y, seed, leaves, minimum_leaf):
@@ -69,7 +74,7 @@ def factorized_probabilities(bundle, x):
     output = np.zeros((len(x), len(LABELS)), dtype=float)
     indices = {label: index for index, label in enumerate(LABELS)}
     for column, meioses in enumerate(bundle["degree"].classes_):
-        labels = [label for label in LABELS if MEIOSES[label] == int(meioses)]
+        labels = [str(label) for label in bundle["exact"].classes_ if MEIOSES[str(label)] == int(meioses)]
         if len(labels) == 1:
             output[:, indices[labels[0]]] = degree_probabilities[:, column]
         else:

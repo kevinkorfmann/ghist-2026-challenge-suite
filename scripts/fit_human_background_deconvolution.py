@@ -19,7 +19,6 @@ try:
     )
     from scripts.fit_human_family_relationships import (
         BIN_EDGES,
-        LABELS,
         MEIOSES,
         ORDERED,
         background_correct,
@@ -37,7 +36,6 @@ except ModuleNotFoundError:
     )
     from fit_human_family_relationships import (
         BIN_EDGES,
-        LABELS,
         MEIOSES,
         ORDERED,
         background_correct,

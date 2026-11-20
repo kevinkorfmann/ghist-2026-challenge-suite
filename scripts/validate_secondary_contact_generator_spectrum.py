@@ -59,7 +59,6 @@ def main() -> None:
             discrete_genome=False,
             random_seed=args.seed + 2 * replicate + 1,
         )
-        samples = mutated.samples()
         for variant in mutated.variants():
             genotypes = variant.genotypes
             count1 = int(genotypes[:86].sum())

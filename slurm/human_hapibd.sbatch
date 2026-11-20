@@ -2,7 +2,7 @@
 #SBATCH --job-name=human-hapibd
 #SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=4096M
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=04:00:00
 #SBATCH --array=0-1
 #SBATCH --output=logs/%x-%A_%a.out

@@ -348,3 +348,16 @@ chr1\t20\t.\tC\tT\t.\tPASS\tAA=T\tGT\t0|0\t0|1
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_fast_scanner_rejects_legacy_zero_position_and_malformed_gt(tmp_path):
+    import pytest
+    for position, gt, message in [(0, '0|1', '1-based'), (100000001, '0|1', '1-based'),
+                                   (1, '01|', 'layout validation'),
+                                   (1, '|||', 'layout validation')]:
+        path = tmp_path / 'invalid.vcf.gz'
+        record = f'1\t{position}\t.\tA\tG\t.\tPASS\tAA=A\tGT\t' + '\t'.join([gt] * 67) + '\n'
+        with gzip.open(path, 'wt') as handle:
+            handle.write(record)
+        with pytest.raises(ValueError, match=message):
+            scan_secondary_contact_vcf(path)

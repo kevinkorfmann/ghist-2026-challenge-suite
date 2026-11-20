@@ -1,6 +1,22 @@
 from __future__ import annotations
 
 
+# Current Task 9 contract, verified against Synapse wiki 640950 on 2026-11-20.
+# Half siblings and half second cousins are no longer accepted for Task 9.
+IBD_LABEL_MEIOSES = {
+    "siblings": 2,
+    "grandparent_grandchild": 2,
+    "avuncular": 3,
+    "double_cousin": 4,
+    "full_1st_cousin": 4,
+    "half_1st_cousin": 4,
+    "full_2nd_cousin": 6,
+    "full_3rd_cousin": 8,
+    "full_4th_cousin": 10,
+    "full_5th_cousin": 12,
+}
+
+
 HUMAN_LABELS = {
     (1, 1, 2): "siblings",
     (1, 2, 2): "avuncular",
