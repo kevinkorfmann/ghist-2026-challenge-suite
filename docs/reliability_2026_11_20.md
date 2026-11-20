@@ -48,6 +48,11 @@ checks, and ten installed CLI help entry points pass. The committed
 [verification records](../experiments/reliability_2026_11_20/verification.json)
 include source hashes, logs, and simulation job IDs.
 
+The updated Challenge 2 scanner also reread the entire archived testing VCF
+(4,812,034 retained records, job **10848437**, exit 0). Its joint spectrum
+is exactly identical to the archived extractor output. This verifies the
+header-driven parser change on real historical input, not current final data.
+
 The new macOS environment is outside the synced Documents directory because
 its hidden-file flags repeatedly broke Python's editable import paths. The old
 environment is preserved, `.venv` points to the working replacement, and a fresh
