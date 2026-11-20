@@ -1,0 +1,1458 @@
+{
+  "description": "Report evidence extracted from retained records. Full score emails, raw final CSVs, and machine-specific execution paths are retained separately; they are not embedded here. This is an unofficial, timestamped participant analysis, not organizer certification.",
+  "audit": {
+    "verified_at_utc": "2026-11-20T22:41:52.587544+00:00",
+    "scope": "Local evidence identity, counts, score-receipt linkage, and saved public standings. No model execution or biological rescoring.",
+    "passed": true,
+    "package_files_rehashed": 16,
+    "run_files_rehashed": 10,
+    "training_pairs": 60266,
+    "feature_count": 218,
+    "confirmation": {
+      "interference": {
+        "seed": 2026112307,
+        "expected_pairs": 11000,
+        "runs": {
+          "unchanged": {
+            "pairs": 10038,
+            "independent_pedigrees": 9038,
+            "accuracy": 0.8910141462442718,
+            "balanced_accuracy": 0.833457599327426,
+            "meioses_accuracy": 0.8941024108388125,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.8845335757617735,
+              0.8969565403126059
+            ],
+            "multiclass_brier_sum": 0.14592997152230006,
+            "negative_log_likelihood": 0.2558876504410492,
+            "ece_10_equal_width_bins": 0.008765913891496968,
+            "recall_by_label": {
+              "avuncular": 0.997,
+              "double_cousin": 1.0,
+              "full_1st_cousin": 0.978,
+              "full_2nd_cousin": 0.838,
+              "full_3rd_cousin": 0.7583417593528817,
+              "full_4th_cousin": 0.5665760869565217,
+              "full_5th_cousin": 0.33865814696485624,
+              "grandparent_grandchild": 1.0,
+              "half_1st_cousin": 0.858,
+              "siblings": 1.0
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 10038,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.8910141462442718,
+            "mendelian_expected_sharing_class_accuracy": 0.8754732018330345,
+            "classifier_expected_sharing_class_accuracy": 0.8911137676828054
+          },
+          "map_length_minus10pct": {
+            "pairs": 10038,
+            "independent_pedigrees": 9038,
+            "accuracy": 0.8803546523211795,
+            "balanced_accuracy": 0.8228978172840542,
+            "meioses_accuracy": 0.8841402669854552,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.8739896611125068,
+              0.8868429904942041
+            ],
+            "multiclass_brier_sum": 0.15971238959628328,
+            "negative_log_likelihood": 0.2818271868934973,
+            "ece_10_equal_width_bins": 0.013664532315846963,
+            "recall_by_label": {
+              "avuncular": 0.966,
+              "double_cousin": 1.0,
+              "full_1st_cousin": 0.968,
+              "full_2nd_cousin": 0.887,
+              "full_3rd_cousin": 0.7553083923154702,
+              "full_4th_cousin": 0.5557065217391305,
+              "full_5th_cousin": 0.3354632587859425,
+              "grandparent_grandchild": 0.9935,
+              "half_1st_cousin": 0.773,
+              "siblings": 0.995
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 10038,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.8803546523211795,
+            "mendelian_expected_sharing_class_accuracy": 0.8614265789998008,
+            "classifier_expected_sharing_class_accuracy": 0.8804542737597131
+          },
+          "map_length_plus10pct": {
+            "pairs": 10038,
+            "independent_pedigrees": 9038,
+            "accuracy": 0.8887228531579996,
+            "balanced_accuracy": 0.8314378824416828,
+            "meioses_accuracy": 0.8923092249452083,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.882370253323204,
+              0.8947009977367163
+            ],
+            "multiclass_brier_sum": 0.15113501350021746,
+            "negative_log_likelihood": 0.284431194676677,
+            "ece_10_equal_width_bins": 0.009803601671131762,
+            "recall_by_label": {
+              "avuncular": 0.998,
+              "double_cousin": 0.998,
+              "full_1st_cousin": 0.971,
+              "full_2nd_cousin": 0.769,
+              "full_3rd_cousin": 0.7522750252780587,
+              "full_4th_cousin": 0.5774456521739131,
+              "full_5th_cousin": 0.33865814696485624,
+              "grandparent_grandchild": 1.0,
+              "half_1st_cousin": 0.91,
+              "siblings": 1.0
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 10038,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.8887228531579996,
+            "mendelian_expected_sharing_class_accuracy": 0.8593345287905957,
+            "classifier_expected_sharing_class_accuracy": 0.8889220960350668
+          }
+        }
+      },
+      "poisson": {
+        "seed": 2026112308,
+        "expected_pairs": 11000,
+        "runs": {
+          "unchanged": {
+            "pairs": 9985,
+            "independent_pedigrees": 8985,
+            "accuracy": 0.872008012018027,
+            "balanced_accuracy": 0.8147718827206418,
+            "meioses_accuracy": 0.8771156735102654,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.8652720431273998,
+              0.8787278305744518
+            ],
+            "multiclass_brier_sum": 0.17296776371275463,
+            "negative_log_likelihood": 0.3014829095535571,
+            "ece_10_equal_width_bins": 0.019679752187267707,
+            "recall_by_label": {
+              "avuncular": 0.988,
+              "double_cousin": 1.0,
+              "full_1st_cousin": 0.974,
+              "full_2nd_cousin": 0.776,
+              "full_3rd_cousin": 0.7007150153217568,
+              "full_4th_cousin": 0.5563480741797432,
+              "full_5th_cousin": 0.36065573770491804,
+              "grandparent_grandchild": 0.991,
+              "half_1st_cousin": 0.802,
+              "siblings": 0.999
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 9985,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.872008012018027,
+            "mendelian_expected_sharing_class_accuracy": 0.8495743615423135,
+            "classifier_expected_sharing_class_accuracy": 0.8736104156234351
+          },
+          "map_length_minus10pct": {
+            "pairs": 9985,
+            "independent_pedigrees": 8985,
+            "accuracy": 0.85678517776665,
+            "balanced_accuracy": 0.8055024637568542,
+            "meioses_accuracy": 0.8620931397095644,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.849841551589006,
+              0.8638590342143032
+            ],
+            "multiclass_brier_sum": 0.19383622772054312,
+            "negative_log_likelihood": 0.3841582951454078,
+            "ece_10_equal_width_bins": 0.02428262209400832,
+            "recall_by_label": {
+              "avuncular": 0.949,
+              "double_cousin": 1.0,
+              "full_1st_cousin": 0.958,
+              "full_2nd_cousin": 0.82,
+              "full_3rd_cousin": 0.6996935648621042,
+              "full_4th_cousin": 0.5534950071326676,
+              "full_5th_cousin": 0.4098360655737705,
+              "grandparent_grandchild": 0.965,
+              "half_1st_cousin": 0.715,
+              "siblings": 0.985
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 9985,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.85678517776665,
+            "mendelian_expected_sharing_class_accuracy": 0.8343515272909364,
+            "classifier_expected_sharing_class_accuracy": 0.8590886329494242
+          },
+          "map_length_plus10pct": {
+            "pairs": 9985,
+            "independent_pedigrees": 8985,
+            "accuracy": 0.8703054581872809,
+            "balanced_accuracy": 0.8142457450500643,
+            "meioses_accuracy": 0.8761141712568853,
+            "pedigree_bootstrap_accuracy_95pct": [
+              0.864001895822442,
+              0.8768554801063836
+            ],
+            "multiclass_brier_sum": 0.1803482954992982,
+            "negative_log_likelihood": 0.3375164239241668,
+            "ece_10_equal_width_bins": 0.019810289940355445,
+            "recall_by_label": {
+              "avuncular": 0.995,
+              "double_cousin": 0.994,
+              "full_1st_cousin": 0.957,
+              "full_2nd_cousin": 0.714,
+              "full_3rd_cousin": 0.6976506639427987,
+              "full_4th_cousin": 0.5549215406562055,
+              "full_5th_cousin": 0.38688524590163936,
+              "grandparent_grandchild": 0.997,
+              "half_1st_cousin": 0.846,
+              "siblings": 1.0
+            },
+            "confidence_is_uncalibrated": true,
+            "zero_accepted_probability_pairs": 0,
+            "eligible_pairs_before_probability_failure": 9985,
+            "strict_production_predictor_would_abort": false,
+            "accuracy_counting_probability_failures_wrong": 0.8703054581872809,
+            "mendelian_expected_sharing_class_accuracy": 0.8348522784176264,
+            "classifier_expected_sharing_class_accuracy": 0.871407110665999
+          }
+        }
+      }
+    },
+    "final": {
+      "segments": 39916,
+      "pairs": 997,
+      "individuals": 1894,
+      "label_counts": {
+        "avuncular": 101,
+        "double_cousin": 100,
+        "full_1st_cousin": 99,
+        "full_2nd_cousin": 96,
+        "full_3rd_cousin": 89,
+        "full_4th_cousin": 74,
+        "full_5th_cousin": 33,
+        "grandparent_grandchild": 200,
+        "half_1st_cousin": 105,
+        "siblings": 100
+      },
+      "scores": {
+        "meioses_count": 0.8423845484005662,
+        "relation": 0.8337060077932977
+      },
+      "submission_id": "9785353"
+    },
+    "leaderboard": {
+      "observed_at": "2026-11-20T22:39:34.927Z",
+      "entries": [
+        {
+          "createdBy": "austin.t.daigle",
+          "id": "9785389",
+          "name": "final r1",
+          "createdOn": "11/20/2026 11:30 PM",
+          "meioses_count": "0.849",
+          "relation": "0.838"
+        },
+        {
+          "createdBy": "ancestrum",
+          "id": "9785353",
+          "name": "Task9 ten-label RF 2026-11-20",
+          "createdOn": "11/20/2026 8:18 PM",
+          "meioses_count": "0.842",
+          "relation": "0.834"
+        },
+        {
+          "createdBy": "rgollnisch",
+          "id": "9785324",
+          "name": "relatedness1_final.csv",
+          "createdOn": "11/17/2026 12:25 AM",
+          "meioses_count": "0.827",
+          "relation": "0.822"
+        },
+        {
+          "createdBy": "paiksca",
+          "id": "9783981",
+          "name": "ibd:final_ibd.csv",
+          "createdOn": "10/22/2026 6:34 AM",
+          "meioses_count": "0.84",
+          "relation": "0.828"
+        }
+      ],
+      "own_rank": {
+        "relation": 2,
+        "meioses_count": 2
+      },
+      "denominator": 4
+    },
+    "participation": {
+      "scored_tasks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "lowcoverage_scores": {
+        "13": {
+          "RRMSE": 0.6172118592711575
+        },
+        "14": {
+          "RRMSE": 0.042643298573969445
+        }
+      },
+      "sole_valid_entry_counts_as_win": true,
+      "tasks13_14_competitor_counts": "unknown"
+    },
+    "not_reverified": [
+      "Remote model and map bytes (hashes retained in original preflight)",
+      "Raw calibration and confirmation simulations",
+      "Final truth and organizer scoring implementation",
+      "Other participants in Tasks 13 and 14"
+    ],
+    "files_sha256": {
+      "experiments/submission_package_2026_11_20/task9_v2/package/package.json": "4c0ec8f9ae12b00b77506b803812c3378f1d43bf873ff206a1db2bffeca5da9e",
+      "experiments/final_submission_2026_11_20/task9/run_v1/handoff.json": "844a7762344f177b2a39360ce48c1c0fe9106eb7c4e96bb73d395008b17ba668",
+      "experiments/submission_package_2026_11_20/task9_v2/package/configs/task9_current_release.json": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc",
+      "experiments/submission_package_2026_11_20/task9_v2/package/experiments/readiness_2026_11_20/task9/operational_unversioned.json": "f11d96d8d9d8217ae74a3d1304f4c031ad887a787ad8891f7d6c13d36d0ad954",
+      "experiments/submission_package_2026_11_20/task9_v2/package/experiments/readiness_2026_11_20/task9/operational_versioned.json": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928",
+      "experiments/submission_package_2026_11_20/task9_v2/package/experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_interference.json": "1a25fcc5d791bcf40a2d4836c1b57146c86ff2d21fc587c15e1d040559e01703",
+      "experiments/submission_package_2026_11_20/task9_v2/package/experiments/scientific_2026_11_20/relatedness/task9_confirmation_current_poisson.json": "dff5621092456d9aa5af92f2257973eae8f47ba659b5710a57948217f94eef8b",
+      "experiments/submission_package_2026_11_20/task9_v2/package/experiments/scientific_2026_11_20/relatedness/task9_current_training.json": "e1843e32acd3262752369c4c8d9d4354efb1ffc2cd632a9a81ad2d2a1aa64ce0",
+      "experiments/submission_package_2026_11_20/task9_v2/package/requirements/task9-release-2026-11-20.txt": "44375e0cb2fbab9788eeac9f7cc612a7b3d370b7541db3e21e180110f37a757f",
+      "experiments/submission_package_2026_11_20/task9_v2/package/scripts/predict_task9_current.py": "a79e83250266ff43df166549e1865e1b78338a793baf711269e7327090efc671",
+      "experiments/submission_package_2026_11_20/task9_v2/package/scripts/prepare_task9_submission_package.py": "9c18f68ffaea8f4456281bed2dec90680e8e6fd5c425cf72f1c25027d0b49d81",
+      "experiments/submission_package_2026_11_20/task9_v2/package/scripts/validate_submission.py": "c88e3dbda34254996a070c13432237dc6bebbed7815749dcec1916668128602e",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+      "experiments/submission_package_2026_11_20/task9_v2/package/src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+      "experiments/final_submission_2026_11_20/task9/run_v1/commands.json": "924871848811067122b70d7168203e26e585dde86a669e328e76e3136880a493",
+      "experiments/final_submission_2026_11_20/task9/run_v1/expected_pairs.csv": "0022e5d565ce13fc3a526b5d39394118f7c36e68beb467dd3e6f05292af6246e",
+      "experiments/final_submission_2026_11_20/task9/run_v1/input.csv": "ff7031bc00a96f7d38131e010f1168f95fb4a8efad5849c904b2d7e77e4de394",
+      "experiments/final_submission_2026_11_20/task9/run_v1/input_provenance.json": "76d670403bf4ae8c8a2fa47c91a1b406ce1ea575265d8ab52c8562d4012a08e2",
+      "experiments/final_submission_2026_11_20/task9/run_v1/prediction/summary.json": "601562151a72c7010ed8d7191283ad85f3b468b9d9fd3696b6cc06b8fdf60c1d",
+      "experiments/final_submission_2026_11_20/task9/run_v1/prediction/task9_final_candidate.csv": "d2810e81b74591c3d10c5305643c3ed4494ab416e44e4f98c37ff6df92b16c6d",
+      "experiments/final_submission_2026_11_20/task9/run_v1/predictor.log": "601562151a72c7010ed8d7191283ad85f3b468b9d9fd3696b6cc06b8fdf60c1d",
+      "experiments/final_submission_2026_11_20/task9/run_v1/preflight.json": "6be8a745d47528ad370dfd107e244e05f4418e03e5a13640574f1efc2acb6442",
+      "experiments/final_submission_2026_11_20/task9/run_v1/validation.json": "5235190ded4ee1128e3103451ed42ea6acc042a0c419332b5ffb998b25f82c1e",
+      "experiments/final_submission_2026_11_20/task9/run_v1/validator.log": "5235190ded4ee1128e3103451ed42ea6acc042a0c419332b5ffb998b25f82c1e",
+      "experiments/final_submission_2026_11_20/task9/independent_final_audit.json": "7415a5f755e76ce8dd32b841ea83309172a89bce6b1ae444027f4369cc08f4e3",
+      "experiments/final_submission_2026_11_20/task9/submission_receipt.json": "7a61441a48564417a30b02d60e60b5e171ac318658a0bbf735434c133f535dc2",
+      "experiments/final_submission_2026_11_20/task9/score_record_exact.json": "e9fd2d33a7ab8371da59a56be64a9f4d47565e51390a34c779e3d9803bc0c865",
+      "experiments/final_submission_2026_11_20/task9/score_email_evidence_9785353.json": "63e66d8105e403897580ba0f048e6d99162e244ca364c63528a285ac215ea5c6",
+      "experiments/final_submission_2026_11_20/task9/task9_final_candidate.csv": "d2810e81b74591c3d10c5305643c3ed4494ab416e44e4f98c37ff6df92b16c6d",
+      "experiments/task9_documentation_2026_11_20/public_sources_snapshot.json": "eb239ff9f7875d6b7b1bb53071f95b94c5b3a8ce24d2372f37a95b46fbc07661",
+      "experiments/final_submission_2026_11_20/task1/submission_receipt.json": "5b07b12b00ee9ddf08de3f11ada54b72ab1f917fe285bd4ec06d3990f43bed76",
+      "experiments/final_submission_2026_11_20/task2/submission_receipt.json": "a9f27930a4675718b97c98a9f5ff09cb7cc5ee17c8d86afd4486a6ce465b0e9c",
+      "experiments/final_submission_2026_11_20/task3/submission_receipt.json": "18eb47ae83726f16ab966614b059e2aa0222422339cbc0f6f69f677c3cf734de",
+      "experiments/final_submission_2026_11_20/task4/submission_receipt.json": "c71b70f58c8ea56df430b395322e35d7d4341623db86e86ae8bdf070c2ee5cc6",
+      "experiments/final_submission_2026_11_20/task5/submission_receipt.json": "1b68d2bdf22843ca68249ec360b70140175f99f2d6237ad6ddb1bd4d494397b9",
+      "experiments/final_submission_2026_11_20/task6/submission_receipt.json": "b1d3abad9fed0907a77031da0386421b57d4ac713c4e3e2f5af6640e245a8b39",
+      "experiments/final_submission_2026_11_20/task7/submission_receipt.json": "3260f634ed555ec723b1d21c4388db284f8a43d552cd034a0319dd4345d5f83f",
+      "experiments/final_submission_2026_11_20/task8/submission_receipt.json": "e1ee34ffb6800453ae3eeffa6c0ab2d796ed976b2f591190430a58e8cdd0ba4b",
+      "experiments/final_submission_2026_11_20/task10/submission_receipt.json": "116029c7868576b3b0b2ac90cbc49e60396644a3d38321b150b81ddac2663d5b",
+      "experiments/final_submission_2026_11_20/task11/submission_receipt.json": "67704495d8de79320c01db56f3db53f52b820a0880d409e28f8aca3974e2a412",
+      "experiments/final_submission_2026_11_20/task12/submission_receipt.json": "612a10b266a6455e0f29ba4be00e458929222021e20c663ca22c36ccf2b7ebe0",
+      "experiments/final_submission_2026_11_20/task13/submission_receipt.json": "261c6d5fb7ae3097997f32cc27a1931b853079644d1651ff7bd6b7b50379e315",
+      "experiments/final_submission_2026_11_20/task14/submission_receipt.json": "ce3b23e0e8a7f5b61322033e1a8f6dd948863b964fd08f76c123378ad5c3739c"
+    }
+  },
+  "refreshed_public_boards": [
+    {
+      "task": 1,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640737",
+      "observed_at": "2026-11-20T22:52:43.709Z",
+      "table": "createdBy \t id \t name \t createdOn \t RRMSE @ancestrum \t 9785374 \t Task1 frozen demography schema correction 2026-11-20 \t 11/20/2026 10:55 PM \t 0.733 @candicewu \t 9785337 \t bottleneck.final.yaml \t 11/18/2026 6:12 PM \t 0.723 @rgollnisch \t 9785332 \t bottleneck_final.yaml \t 11/17/2026 11:46 PM \t 0.727 @tstentella \t 9785288 \t final \t 11/10/2026 6:03 PM \t 0.688 @wisezeal \t 9784284 \t bottleneck.final.submission.yaml \t 10/26/2026 8:50 PM \t 0.061 @paiksca \t 9783956 \t bottleneck:bottleneck.final.yaml \t 10/21/2026 10:23 PM \t 0.725"
+    },
+    {
+      "task": 2,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640747",
+      "observed_at": "2026-11-20T22:52:58.355Z",
+      "table": "createdBy \t id \t name \t createdOn \t RRMSE @ancestrum \t 9785375 \t Task2 frozen demography schema correction 2026-11-20 \t 11/20/2026 10:55 PM \t 2.138 @rgollnisch \t 9785343 \t secondary_contact.submission.final.yaml \t 11/19/2026 6:27 PM \t 3.77 @wisezeal \t 9784561 \t secondary_contact.final.submission.yaml \t 10/29/2026 9:19 PM \t 1.528 @paiksca \t 9783959 \t seccontact:secondary_contact.final.yaml \t 10/21/2026 10:24 PM \t 1.83"
+    },
+    {
+      "task": 3,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640742",
+      "observed_at": "2026-11-20T22:53:21.554Z",
+      "table": "createdBy \t id \t name \t createdOn \t RRMSE @ancestrum \t 9785376 \t Task3 frozen demography schema correction 2026-11-20 \t 11/20/2026 10:55 PM \t 0.797 @wisezeal \t 9784362 \t growth.final.submission.yaml \t 10/27/2026 6:14 PM \t 0.02 @paiksca \t 9783957 \t growth:growth.final.yaml \t 10/21/2026 10:23 PM \t 0.034"
+    },
+    {
+      "task": 4,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640750",
+      "observed_at": "2026-11-20T22:53:21.700Z",
+      "table": "createdBy \t id \t name \t createdOn \t RRMSE @ancestrum \t 9785377 \t Task4 frozen demography schema correction 2026-11-20 \t 11/20/2026 10:55 PM \t 0.517 @wisezeal \t 9784289 \t split_migration.final.submission.yaml \t 10/26/2026 9:12 PM \t 0.311 @paiksca \t 9783958 \t splitmig:split_migration.final.yaml \t 10/21/2026 10:23 PM \t 0.229"
+    },
+    {
+      "task": 5,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640748",
+      "observed_at": "2026-11-20T22:53:21.926Z",
+      "table": "createdBy \t id \t name \t createdOn \t f1 @wisezeal \t 9784285 \t onesweep.final.bed \t 10/26/2026 8:50 PM \t 0.5 @srong \t 9776871 \t srong_onesweep_final \t 8/21/2026 12:54 AM \t 0 @paiksca \t 9783960 \t onesweep:onesweep.final.bed \t 10/21/2026 10:24 PM \t 0 @rgollnisch \t 9785323 \t GHIST2026_onesweep_final.bed \t 11/17/2026 12:13 AM \t 0 @lzong \t 9785355 \t gh_one_final_call_p.bed \t 11/20/2026 10:22 PM \t 0 @ancestrum \t 9785369 \t Task5 frozen sweep estimate 2026-11-20 \t 11/20/2026 10:45 PM \t 0 @austin.t.daigle \t 9785383 \t final \t 11/20/2026 11:07 PM \t 0"
+    },
+    {
+      "task": 6,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640744",
+      "observed_at": "2026-11-20T22:53:22.158Z",
+      "table": "createdBy \t id \t name \t createdOn \t f1 @austin.t.daigle \t 9785384 \t final \t 11/20/2026 11:07 PM \t 0.952 @rgollnisch \t 9785325 \t softsweep_final.bed \t 11/17/2026 12:37 AM \t 0.829 @srong \t 9776873 \t srong_softsweep_final \t 8/21/2026 1:03 AM \t 0.813 @paiksca \t 9783961 \t softsweep:softsweep.final.bed \t 10/21/2026 10:24 PM \t 0.775 @wisezeal \t 9784287 \t softsweep.final.bed \t 10/26/2026 8:52 PM \t 0.5 @lzong \t 9785357 \t gh_soft_final_call_p.bed \t 11/20/2026 10:25 PM \t 0 @ancestrum \t 9785370 \t Task6 frozen sweep estimate 2026-11-20 \t 11/20/2026 10:45 PM \t 0"
+    },
+    {
+      "task": 7,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640749",
+      "observed_at": "2026-11-20T22:53:22.335Z",
+      "table": "createdBy \t id \t name \t createdOn \t f1 @austin.t.daigle \t 9785385 \t final \t 11/20/2026 11:07 PM \t 0.952 @rgollnisch \t 9785345 \t onesweep_bgs_final.bed \t 11/20/2026 12:22 AM \t 0.911 @srong \t 9776874 \t srong_onesweep_bgs_final \t 8/21/2026 1:06 AM \t 0.909 @paiksca \t 9783962 \t onesweep_bgs:onesweep_bgs.final.bed \t 10/21/2026 10:24 PM \t 0.775 @ancestrum \t 9785371 \t Task7 frozen sweep estimate 2026-11-20 \t 11/20/2026 10:45 PM \t 0.556 @lzong \t 9785358 \t gh_onebgs_final_call_p.bed \t 11/20/2026 10:26 PM \t 0.526 @wisezeal \t 9784286 \t onesweep_bgs.final.bed \t 10/26/2026 8:51 PM \t 0.5"
+    },
+    {
+      "task": 8,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640745",
+      "observed_at": "2026-11-20T22:53:22.502Z",
+      "table": "createdBy \t id \t name \t createdOn \t f1 @austin.t.daigle \t 9785386 \t final \t 11/20/2026 11:07 PM \t 0.892 @paiksca \t 9783963 \t multisweep_bgs:multisweep_bgs.final.bed \t 10/21/2026 10:24 PM \t 0.873 @rgollnisch \t 9785346 \t multisweep_bgs_final.bed \t 11/20/2026 12:33 AM \t 0.774 @wisezeal \t 9784288 \t multisweep_bgs.final.bed \t 10/26/2026 8:52 PM \t 0.296 @srong \t 9776875 \t srong_multisweep_bgs_final \t 8/21/2026 1:09 AM \t 0.288 @ancestrum \t 9785372 \t Task8 frozen sweep estimate 2026-11-20 \t 11/20/2026 10:45 PM \t 0.107 @lzong \t 9785359 \t gh_multibgs_final_call_p.bed \t 11/20/2026 10:26 PM \t 0.088"
+    },
+    {
+      "task": 9,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640981",
+      "observed_at": "2026-11-20T22:52:36.272Z",
+      "table": "createdBy \t id \t name \t createdOn \t meioses_count \t relation @austin.t.daigle \t 9785389 \t final r1 \t 11/20/2026 11:30 PM \t 0.849 \t 0.838 @ancestrum \t 9785353 \t Task9 ten-label RF 2026-11-20 \t 11/20/2026 8:18 PM \t 0.842 \t 0.834 @rgollnisch \t 9785324 \t relatedness1_final.csv \t 11/17/2026 12:25 AM \t 0.827 \t 0.822 @paiksca \t 9783981 \t ibd:final_ibd.csv \t 10/22/2026 6:34 AM \t 0.84 \t 0.828"
+    },
+    {
+      "task": 10,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640982",
+      "observed_at": "2026-11-20T22:53:22.692Z",
+      "table": "createdBy \t id \t name \t createdOn \t meioses_count \t relation @ancestrum \t 9785368 \t Task10 structural pedigree schema correction 2026-11-20 \t 11/20/2026 10:44 PM \t 0.128 \t 0.122 @paiksca \t 9783964 \t family:final_family.csv \t 10/21/2026 10:24 PM \t 0.997 \t 0.997"
+    },
+    {
+      "task": 11,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640984",
+      "observed_at": "2026-11-20T22:53:23.000Z",
+      "table": "createdBy \t id \t name \t createdOn \t meioses_count \t relation @ancestrum \t 9785361 \t Task11 corrected family context 2026-11-20 \t 11/20/2026 10:35 PM \t 0.572 \t 0.425 @paiksca \t 9783966 \t inbreed:final_inbreed.csv \t 10/21/2026 10:24 PM \t 0.815 \t 0.791"
+    },
+    {
+      "task": 12,
+      "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640983",
+      "observed_at": "2026-11-20T22:53:23.162Z",
+      "table": "createdBy \t id \t name \t createdOn \t meioses_count \t relation @ancestrum \t 9785373 \t Task12 frozen relatedness schema correction 2026-11-20 \t 11/20/2026 10:49 PM \t 0.136 \t 0.112 @paiksca \t 9783965 \t bgrel:final_bgrel.csv \t 10/21/2026 10:24 PM \t 1 \t 1"
+    }
+  ],
+  "ranking": {
+    "method": "Wins first, ties preserved. Optional ordering uses total normalized midrank points. Sole valid entrant earns one win and one point. Metrics within relatedness tasks are averaged; both have identical ordering. Missing entries earn zero total points. Tasks 13/14 competitor counts unknown.",
+    "participants": [
+      {
+        "participant": "paiksca",
+        "entered": 12,
+        "wins": [
+          4,
+          10,
+          11,
+          12
+        ],
+        "points": 8.15,
+        "wins_rank": 1,
+        "wins_then_points_rank": 1,
+        "mean_rank_points_pct": 67.91666666666667
+      },
+      {
+        "participant": "wisezeal",
+        "entered": 8,
+        "wins": [
+          1,
+          2,
+          3,
+          5
+        ],
+        "points": 5.333333333333333,
+        "wins_rank": 1,
+        "wins_then_points_rank": 2,
+        "mean_rank_points_pct": 66.66666666666667
+      },
+      {
+        "participant": "austin.t.daigle",
+        "entered": 5,
+        "wins": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "points": 4.416666666666667,
+        "wins_rank": 1,
+        "wins_then_points_rank": 3,
+        "mean_rank_points_pct": 88.33333333333333
+      },
+      {
+        "participant": "rgollnisch",
+        "entered": 7,
+        "wins": [],
+        "points": 2.95,
+        "wins_rank": 4,
+        "wins_then_points_rank": 4,
+        "mean_rank_points_pct": 42.142857142857146
+      },
+      {
+        "participant": "srong",
+        "entered": 4,
+        "wins": [],
+        "points": 2.0833333333333335,
+        "wins_rank": 4,
+        "wins_then_points_rank": 5,
+        "mean_rank_points_pct": 52.083333333333336
+      },
+      {
+        "participant": "ancestrum",
+        "entered": 12,
+        "wins": [],
+        "points": 2.0,
+        "wins_rank": 4,
+        "wins_then_points_rank": 6,
+        "mean_rank_points_pct": 16.666666666666668
+      },
+      {
+        "participant": "tstentella",
+        "entered": 1,
+        "wins": [],
+        "points": 0.8,
+        "wins_rank": 4,
+        "wins_then_points_rank": 7,
+        "mean_rank_points_pct": 80.0
+      },
+      {
+        "participant": "lzong",
+        "entered": 4,
+        "wins": [],
+        "points": 0.6666666666666666,
+        "wins_rank": 4,
+        "wins_then_points_rank": 8,
+        "mean_rank_points_pct": 16.666666666666668
+      },
+      {
+        "participant": "candicewu",
+        "entered": 1,
+        "wins": [],
+        "points": 0.6,
+        "wins_rank": 4,
+        "wins_then_points_rank": 9,
+        "mean_rank_points_pct": 60.0
+      }
+    ],
+    "tasks": [
+      {
+        "task": 1,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640737",
+        "observed_at": "2026-11-20T22:52:43.709Z",
+        "winners": [
+          "wisezeal"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785374",
+            "scores": {
+              "RRMSE": "0.733"
+            },
+            "average_rank": 6.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "candicewu",
+            "submission_id": "9785337",
+            "scores": {
+              "RRMSE": "0.723"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.6
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785332",
+            "scores": {
+              "RRMSE": "0.727"
+            },
+            "average_rank": 5.0,
+            "rank_points": 0.2
+          },
+          {
+            "participant": "tstentella",
+            "submission_id": "9785288",
+            "scores": {
+              "RRMSE": "0.688"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.8
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784284",
+            "scores": {
+              "RRMSE": "0.061"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783956",
+            "scores": {
+              "RRMSE": "0.725"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.4
+          }
+        ]
+      },
+      {
+        "task": 2,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640747",
+        "observed_at": "2026-11-20T22:52:58.355Z",
+        "winners": [
+          "wisezeal"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785375",
+            "scores": {
+              "RRMSE": "2.138"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.3333333333333333
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785343",
+            "scores": {
+              "RRMSE": "3.77"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784561",
+            "scores": {
+              "RRMSE": "1.528"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783959",
+            "scores": {
+              "RRMSE": "1.83"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.6666666666666666
+          }
+        ]
+      },
+      {
+        "task": 3,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640742",
+        "observed_at": "2026-11-20T22:53:21.554Z",
+        "winners": [
+          "wisezeal"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785376",
+            "scores": {
+              "RRMSE": "0.797"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784362",
+            "scores": {
+              "RRMSE": "0.02"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783957",
+            "scores": {
+              "RRMSE": "0.034"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.5
+          }
+        ]
+      },
+      {
+        "task": 4,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640750",
+        "observed_at": "2026-11-20T22:53:21.700Z",
+        "winners": [
+          "paiksca"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785377",
+            "scores": {
+              "RRMSE": "0.517"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784289",
+            "scores": {
+              "RRMSE": "0.311"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.5
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783958",
+            "scores": {
+              "RRMSE": "0.229"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          }
+        ]
+      },
+      {
+        "task": 5,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640748",
+        "observed_at": "2026-11-20T22:53:21.926Z",
+        "winners": [
+          "wisezeal"
+        ],
+        "entries": [
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784285",
+            "scores": {
+              "f1": "0.5"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "srong",
+            "submission_id": "9776871",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783960",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785323",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          },
+          {
+            "participant": "lzong",
+            "submission_id": "9785355",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          },
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785369",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          },
+          {
+            "participant": "austin.t.daigle",
+            "submission_id": "9785383",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 4.5,
+            "rank_points": 0.4166666666666667
+          }
+        ]
+      },
+      {
+        "task": 6,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640744",
+        "observed_at": "2026-11-20T22:53:22.158Z",
+        "winners": [
+          "austin.t.daigle"
+        ],
+        "entries": [
+          {
+            "participant": "austin.t.daigle",
+            "submission_id": "9785384",
+            "scores": {
+              "f1": "0.952"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785325",
+            "scores": {
+              "f1": "0.829"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.8333333333333334
+          },
+          {
+            "participant": "srong",
+            "submission_id": "9776873",
+            "scores": {
+              "f1": "0.813"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.6666666666666666
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783961",
+            "scores": {
+              "f1": "0.775"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.5
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784287",
+            "scores": {
+              "f1": "0.5"
+            },
+            "average_rank": 5.0,
+            "rank_points": 0.3333333333333333
+          },
+          {
+            "participant": "lzong",
+            "submission_id": "9785357",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 6.5,
+            "rank_points": 0.08333333333333333
+          },
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785370",
+            "scores": {
+              "f1": "0"
+            },
+            "average_rank": 6.5,
+            "rank_points": 0.08333333333333333
+          }
+        ]
+      },
+      {
+        "task": 7,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640749",
+        "observed_at": "2026-11-20T22:53:22.335Z",
+        "winners": [
+          "austin.t.daigle"
+        ],
+        "entries": [
+          {
+            "participant": "austin.t.daigle",
+            "submission_id": "9785385",
+            "scores": {
+              "f1": "0.952"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785345",
+            "scores": {
+              "f1": "0.911"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.8333333333333334
+          },
+          {
+            "participant": "srong",
+            "submission_id": "9776874",
+            "scores": {
+              "f1": "0.909"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.6666666666666666
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783962",
+            "scores": {
+              "f1": "0.775"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.5
+          },
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785371",
+            "scores": {
+              "f1": "0.556"
+            },
+            "average_rank": 5.0,
+            "rank_points": 0.3333333333333333
+          },
+          {
+            "participant": "lzong",
+            "submission_id": "9785358",
+            "scores": {
+              "f1": "0.526"
+            },
+            "average_rank": 6.0,
+            "rank_points": 0.16666666666666666
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784286",
+            "scores": {
+              "f1": "0.5"
+            },
+            "average_rank": 7.0,
+            "rank_points": 0.0
+          }
+        ]
+      },
+      {
+        "task": 8,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640745",
+        "observed_at": "2026-11-20T22:53:22.502Z",
+        "winners": [
+          "austin.t.daigle"
+        ],
+        "entries": [
+          {
+            "participant": "austin.t.daigle",
+            "submission_id": "9785386",
+            "scores": {
+              "f1": "0.892"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783963",
+            "scores": {
+              "f1": "0.873"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.8333333333333334
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785346",
+            "scores": {
+              "f1": "0.774"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.6666666666666666
+          },
+          {
+            "participant": "wisezeal",
+            "submission_id": "9784288",
+            "scores": {
+              "f1": "0.296"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.5
+          },
+          {
+            "participant": "srong",
+            "submission_id": "9776875",
+            "scores": {
+              "f1": "0.288"
+            },
+            "average_rank": 5.0,
+            "rank_points": 0.3333333333333333
+          },
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785372",
+            "scores": {
+              "f1": "0.107"
+            },
+            "average_rank": 6.0,
+            "rank_points": 0.16666666666666666
+          },
+          {
+            "participant": "lzong",
+            "submission_id": "9785359",
+            "scores": {
+              "f1": "0.088"
+            },
+            "average_rank": 7.0,
+            "rank_points": 0.0
+          }
+        ]
+      },
+      {
+        "task": 9,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640981",
+        "observed_at": "2026-11-20T22:52:36.272Z",
+        "winners": [
+          "austin.t.daigle"
+        ],
+        "entries": [
+          {
+            "participant": "austin.t.daigle",
+            "submission_id": "9785389",
+            "scores": {
+              "relation": "0.838",
+              "meioses_count": "0.849"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          },
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785353",
+            "scores": {
+              "relation": "0.834",
+              "meioses_count": "0.842"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.6666666666666666
+          },
+          {
+            "participant": "rgollnisch",
+            "submission_id": "9785324",
+            "scores": {
+              "relation": "0.822",
+              "meioses_count": "0.827"
+            },
+            "average_rank": 4.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783981",
+            "scores": {
+              "relation": "0.828",
+              "meioses_count": "0.84"
+            },
+            "average_rank": 3.0,
+            "rank_points": 0.3333333333333333
+          }
+        ]
+      },
+      {
+        "task": 10,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640982",
+        "observed_at": "2026-11-20T22:53:22.692Z",
+        "winners": [
+          "paiksca"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785368",
+            "scores": {
+              "relation": "0.122",
+              "meioses_count": "0.128"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783964",
+            "scores": {
+              "relation": "0.997",
+              "meioses_count": "0.997"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          }
+        ]
+      },
+      {
+        "task": 11,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640984",
+        "observed_at": "2026-11-20T22:53:23.000Z",
+        "winners": [
+          "paiksca"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785361",
+            "scores": {
+              "relation": "0.425",
+              "meioses_count": "0.572"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783966",
+            "scores": {
+              "relation": "0.791",
+              "meioses_count": "0.815"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          }
+        ]
+      },
+      {
+        "task": 12,
+        "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640983",
+        "observed_at": "2026-11-20T22:53:23.162Z",
+        "winners": [
+          "paiksca"
+        ],
+        "entries": [
+          {
+            "participant": "ancestrum",
+            "submission_id": "9785373",
+            "scores": {
+              "relation": "0.112",
+              "meioses_count": "0.136"
+            },
+            "average_rank": 2.0,
+            "rank_points": 0.0
+          },
+          {
+            "participant": "paiksca",
+            "submission_id": "9783965",
+            "scores": {
+              "relation": "1",
+              "meioses_count": "1"
+            },
+            "average_rank": 1.0,
+            "rank_points": 1.0
+          }
+        ]
+      }
+    ]
+  },
+  "all_fourteen_scored_submission_extracts": [
+    {
+      "task": 1,
+      "submission_id": "9785374",
+      "submission_name": "Task1 frozen demography schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.7330006155047631
+      },
+      "evaluation_name": "GHIST 2026 Bottleneck Final",
+      "evaluation_queue_id": "9619646",
+      "uploaded_entity_id": "syn78780560",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "e968b0a392312fb7130945371dc16d02c42e240544a0ee75cfdbf1ae30183387",
+      "recorded_at_utc": "2026-11-20T21:58:11.292987+00:00",
+      "scientific_limitations": "Release qualification remains false; selected fit convergence flags were [True]. The schema-only retry added the official YAML wrapper while retaining all original parameter names and numeric values. No model refit, selection change or scientific score feedback was used.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "5b07b12b00ee9ddf08de3f11ada54b72ab1f917fe285bd4ec06d3990f43bed76"
+    },
+    {
+      "task": 2,
+      "submission_id": "9785375",
+      "submission_name": "Task2 frozen demography schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 2.1376729777837356
+      },
+      "evaluation_name": "GHIST 2026 Secondary Contact Final",
+      "evaluation_queue_id": "9619648",
+      "uploaded_entity_id": "syn78780559",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "61715cf626885fdb320bea33b3ba3ff3de4ac9a129b98a10e5fec1af8a8e866f",
+      "recorded_at_utc": "2026-11-20T21:58:11.292987+00:00",
+      "scientific_limitations": "Release qualification remains false; selected fit convergence flags were [False]. The schema-only retry added the official YAML wrapper while retaining all original parameter names and numeric values. No model refit, selection change or scientific score feedback was used.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "a9f27930a4675718b97c98a9f5ff09cb7cc5ee17c8d86afd4486a6ce465b0e9c"
+    },
+    {
+      "task": 3,
+      "submission_id": "9785376",
+      "submission_name": "Task3 frozen demography schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.796883521581379
+      },
+      "evaluation_name": "GHIST 2026 Growth Final",
+      "evaluation_queue_id": "9619650",
+      "uploaded_entity_id": "syn78780558",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "2cf47f30d0700a47e298037107ae32d9acc5618d3e5d638345101bf2c6d3a984",
+      "recorded_at_utc": "2026-11-20T21:58:11.292987+00:00",
+      "scientific_limitations": "Release qualification remains false; selected fit convergence flags were [True, True, True]. The schema-only retry added the official YAML wrapper while retaining all original parameter names and numeric values. No model refit, selection change or scientific score feedback was used.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "18eb47ae83726f16ab966614b059e2aa0222422339cbc0f6f69f677c3cf734de"
+    },
+    {
+      "task": 4,
+      "submission_id": "9785377",
+      "submission_name": "Task4 frozen demography schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.5169210928553797
+      },
+      "evaluation_name": "GHIST 2026 Split Migration Final",
+      "evaluation_queue_id": "9619652",
+      "uploaded_entity_id": "syn78780561",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "1ea34ac7d80503ef3b890554ed3f6b8c4615185ff5b45345613bc934782ed5d2",
+      "recorded_at_utc": "2026-11-20T21:58:11.292987+00:00",
+      "scientific_limitations": "Release qualification remains false; selected fit convergence flags were [True, False, False]. The schema-only retry added the official YAML wrapper while retaining all original parameter names and numeric values. No model refit, selection change or scientific score feedback was used.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "c71b70f58c8ea56df430b395322e35d7d4341623db86e86ae8bdf070c2ee5cc6"
+    },
+    {
+      "task": 5,
+      "submission_id": "9785369",
+      "submission_name": "Task5 frozen sweep estimate 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "f1": 0.0,
+        "recall": 0.0,
+        "size": 1.2
+      },
+      "evaluation_name": "GHIST 2026 Single Sweep Final",
+      "evaluation_queue_id": "9619656",
+      "uploaded_entity_id": "syn78780365",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "ccb8653bc988e4e399665539adeff046bb98d8d50f48a562b9cdb652f591a390",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Technical preparation passed; scientific qualification remained false. Submitted under deadline-first authorization.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "1b68d2bdf22843ca68249ec360b70140175f99f2d6237ad6ddb1bd4d494397b9"
+    },
+    {
+      "task": 6,
+      "submission_id": "9785370",
+      "submission_name": "Task6 frozen sweep estimate 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "f1": 0.0,
+        "recall": 0.0,
+        "size": 1.5
+      },
+      "evaluation_name": "GHIST 2026 Soft Sweep Final",
+      "evaluation_queue_id": "9619680",
+      "uploaded_entity_id": "syn78780364",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "44836daae988246d2c42af96dc5402c66358ce5f743193901be5b99d19f780d1",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Technical preparation passed; scientific qualification remained false. Submitted under deadline-first authorization.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "b1d3abad9fed0907a77031da0386421b57d4ac713c4e3e2f5af6640e245a8b39"
+    },
+    {
+      "task": 7,
+      "submission_id": "9785371",
+      "submission_name": "Task7 frozen sweep estimate 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "f1": 0.5555555555555556,
+        "recall": 1.0,
+        "size": 1.6
+      },
+      "evaluation_name": "GHIST 2026 Single Sweep with Background Selection Final",
+      "evaluation_queue_id": "9619658",
+      "uploaded_entity_id": "syn78780360",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "feefe01b2c6a97bb9434136f39df7bfbd502911518aa4a7a1ddb69920d2b01c7",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Technical preparation passed; scientific qualification remained false. Submitted under deadline-first authorization.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "3260f634ed555ec723b1d21c4388db284f8a43d552cd034a0319dd4345d5f83f"
+    },
+    {
+      "task": 8,
+      "submission_id": "9785372",
+      "submission_name": "Task8 frozen sweep estimate 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "f1": 0.10695187165775401,
+        "recall": 0.06060606060606061,
+        "size": 2.4
+      },
+      "evaluation_name": "GHIST 2026 Multi Sweep with Background Selection Final",
+      "evaluation_queue_id": "9619662",
+      "uploaded_entity_id": "syn78780362",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "c4a726508c069347627a331117069083768da97b747eb4f68bea44f23a7b8274",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Technical preparation passed; scientific qualification remained false. Submitted under deadline-first authorization.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "e1ee34ffb6800453ae3eeffa6c0ab2d796ed976b2f591190430a58e8cdd0ba4b"
+    },
+    {
+      "task": 9,
+      "submission_id": "9785353",
+      "submission_name": "Task9 ten-label RF 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.8423845484005662,
+        "relation": 0.8337060077932977
+      },
+      "evaluation_name": "GHIST 2026 Relatedness 1 Final",
+      "evaluation_queue_id": "9619673",
+      "uploaded_entity_id": "syn78778815",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "d2810e81b74591c3d10c5305643c3ed4494ab416e44e4f98c37ff6df92b16c6d",
+      "recorded_at_utc": "2026-11-20T22:00:39.131139+00:00",
+      "scientific_limitations": "Historical method qualification remains unchanged. This receipt establishes server scoring and exact artifact identity, not a new scientific certification. The original UI receipt is historical, not invalid.",
+      "strict_qualification": null,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "7a61441a48564417a30b02d60e60b5e171ac318658a0bbf735434c133f535dc2"
+    },
+    {
+      "task": 10,
+      "submission_id": "9785368",
+      "submission_name": "Task10 structural pedigree schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.1283610601352386,
+        "relation": 0.12225889450060641
+      },
+      "evaluation_name": "GHIST 2026 Relatedness 2 Final",
+      "evaluation_queue_id": "9619674",
+      "uploaded_entity_id": "syn78780379",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "42ac7e0de7953d7f79f7cd6ad3fcc356c963f43fae6ee636646797fb90639eb8",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Strict scientific qualification remained false. Same-meiosis server-accepted label projection preserves the original pair IDs and implied meioses, but merges different pedigree relationships; it does not establish biological equivalence. No fitting or scientific score feedback was used for correction.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "116029c7868576b3b0b2ac90cbc49e60396644a3d38321b150b81ddac2663d5b"
+    },
+    {
+      "task": 11,
+      "submission_id": "9785361",
+      "submission_name": "Task11 corrected family context 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.5724422540498211,
+        "relation": 0.42540795348737687
+      },
+      "evaluation_name": "GHIST 2026 Relatedness 3 Final",
+      "evaluation_queue_id": "9619676",
+      "uploaded_entity_id": "syn78780263",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "8ab80bd7d7c39a7ec95de49290b71ab1edcfa53c206ee431386625fe4fea951f",
+      "recorded_at_utc": "2026-11-20T21:42:43.004443+00:00",
+      "scientific_limitations": "Strict qualification did not pass. The corrected context candidate was selected using frozen synthetic development comparisons under deadline-first authorization. Reserved stress and confirmation cohorts were not run.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "67704495d8de79320c01db56f3db53f52b820a0880d409e28f8aca3974e2a412"
+    },
+    {
+      "task": 12,
+      "submission_id": "9785373",
+      "submission_name": "Task12 frozen relatedness schema correction 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "meioses_count": 0.13564060673696537,
+        "relation": 0.11235515689383353
+      },
+      "evaluation_name": "GHIST 2026 Relatedness 4 Final",
+      "evaluation_queue_id": "9619678",
+      "uploaded_entity_id": "syn78780477",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "fc9c18c0ea1629d12d8f54ad7a45a0eb89a8df26f37a13693e51cb7e47bdec80",
+      "recorded_at_utc": "2026-11-20T21:53:02.025364+00:00",
+      "scientific_limitations": "Strict scientific qualification remained false. Same-meiosis server-accepted label projection preserves the original pair IDs and implied meioses, but merges different pedigree relationships; it does not establish biological equivalence. No fitting or scientific score feedback was used for correction.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "612a10b266a6455e0f29ba4be00e458929222021e20c663ca22c36ccf2b7ebe0"
+    },
+    {
+      "task": 13,
+      "submission_id": "9785362",
+      "submission_name": "Task13 likelihood spectrum 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.6172118592711575
+      },
+      "evaluation_name": "GHIST 2026 Bottleneck with Low Coverage Final",
+      "evaluation_queue_id": "9620084",
+      "uploaded_entity_id": "syn78780262",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "0f29d672c7262ce5499201f72773ba8bcdaad0866d2f96a1b40d146a2e2fd269",
+      "recorded_at_utc": "2026-11-20T21:45:16.498691+00:00",
+      "scientific_limitations": "Final numerical target_stability gate failed; strict qualification remains false. Submitted under deadline-first authorization. No post-score model or prediction changes.",
+      "strict_qualification": false,
+      "source_receipt_sha256": "261c6d5fb7ae3097997f32cc27a1931b853079644d1651ff7bd6b7b50379e315"
+    },
+    {
+      "task": 14,
+      "submission_id": "9785360",
+      "submission_name": "Task14 likelihood spectrum 2026-11-20",
+      "status": "SCORED",
+      "scores": {
+        "RRMSE": 0.042643298573969445
+      },
+      "evaluation_name": "GHIST 2026 Split Isolation with Low Coverage Final",
+      "evaluation_queue_id": "9620086",
+      "uploaded_entity_id": "syn78780264",
+      "uploaded_entity_version": 1,
+      "candidate_sha256": "350de6e7b9f48463c3bab3f4ea2b2aa266530d80ae3f17cc0cb7b9ea94f2ccbe",
+      "recorded_at_utc": "2026-11-20T21:42:43.004443+00:00",
+      "scientific_limitations": "Strict qualification did not pass. All final numerical checks passed, but original development failures and absence of fresh cap-500 confirmation remain documented.",
+      "strict_qualification": false,
+      "post_score_model_or_prediction_changes": false,
+      "source_receipt_sha256": "ce3b23e0e8a7f5b61322033e1a8f6dd948863b964fd08f76c123378ad5c3739c"
+    }
+  ],
+  "task9_runtime": {
+    "python": "3.11.11",
+    "platform": "Linux x86_64",
+    "scikit-learn": "1.9.0",
+    "numpy": "2.4.6",
+    "scipy": "1.16.3",
+    "joblib": "1.5.3",
+    "threadpoolctl": "3.6.0",
+    "PyYAML": "6.0.3",
+    "slurm_job": "10856122",
+    "cpus": 2,
+    "elapsed_seconds": 23
+  },
+  "scoring_formula": "For each label k, J_k=TP_k/(TP_k+FN_k+FP_k), weighted by N_k=TP_k+FN_k and divided by sum(N_k). Relation and meioses_count are scored separately.",
+  "lowcoverage_standings_status": "Public dashboard checked again after the board refresh; no Task 13/14 standings listed. Earlier anonymous final evaluation reads returned 403. A missing leaderboard is not evidence of no competitors."
+}

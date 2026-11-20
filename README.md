@@ -7,6 +7,8 @@ Methods, code, development evidence and final outputs for all **14 GHIST 2026 ch
 [Detailed methods and figure caption](figures/methods_2026_11_20/README.md) ·
 [Submitted methods writeup](experiments/final_submission_2026_11_20/writeup_deadline/ghist2026_methods_wiki.md) ·
 [Final scores and submission records](docs/final_scored_summary_2026_11_20.md) ·
+[Results and participant ranking](docs/ghist_participant_report_2026_11_20.md) ·
+[Detailed Challenge 9 report](docs/task9_method_and_results_2026_11_20.md) ·
 [Archive and reproduction guide](docs/final_archive_2026_11_20.md) ·
 [Setup](docs/setup.md)
 
