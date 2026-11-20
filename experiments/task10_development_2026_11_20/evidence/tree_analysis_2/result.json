@@ -1,0 +1,661 @@
+{
+  "results": {
+    "5": {
+      "score": {
+        "expected_pairs": 28,
+        "predicted_pairs": 28,
+        "missing_pairs": 0,
+        "all_pairs_present": true,
+        "exact_accuracy": 0.5714285714285714,
+        "meioses_accuracy": 0.5714285714285714,
+        "strata": {
+          "siblings": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular_once_removed": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular_twice_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "meioses_correct": 0
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "meioses_correct": 0
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "meioses_correct": 0
+          }
+        }
+      },
+      "tree": {
+        "state": "COMPLETED",
+        "root": 14,
+        "valid_roots": 4,
+        "root_score_margin": 2.4043533873253367,
+        "root_invariant_pairs": 8,
+        "root_ambiguous_pairs": 20,
+        "root_ambiguity": [
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_4",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_4",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_5",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_5",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          }
+        ],
+        "uncertainty_calibrated": false,
+        "abstention_policy": "Only root-invariant labels qualify as structurally resolved; ranked labels remain exploratory",
+        "score_interpretation": "composite pair log score; not an independent likelihood or calibrated posterior",
+        "threshold_cm": 5,
+        "raw_edges": [
+          [
+            8,
+            12,
+            2.429595173856028
+          ],
+          [
+            6,
+            8,
+            1.0742730650405499
+          ],
+          [
+            7,
+            8,
+            0.9257269349594501
+          ],
+          [
+            9,
+            11,
+            2.1231374257182654
+          ],
+          [
+            4,
+            9,
+            0.7142262607526639
+          ],
+          [
+            5,
+            9,
+            1.285773739247336
+          ],
+          [
+            10,
+            13,
+            0.9729513835399395
+          ],
+          [
+            2,
+            10,
+            0.9768226703869614
+          ],
+          [
+            3,
+            10,
+            1.0954932564963347
+          ],
+          [
+            11,
+            13,
+            0.15768441809308387
+          ],
+          [
+            1,
+            11,
+            0.8981461213395742
+          ],
+          [
+            12,
+            13,
+            0.06027026109035338
+          ],
+          [
+            0,
+            12,
+            0.9151435373350327
+          ]
+        ],
+        "integer_edges": [
+          [
+            8,
+            14
+          ],
+          [
+            12,
+            14
+          ],
+          [
+            12,
+            15
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            2,
+            10
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            1,
+            12
+          ],
+          [
+            0,
+            12
+          ]
+        ]
+      }
+    },
+    "10": {
+      "score": {
+        "expected_pairs": 28,
+        "predicted_pairs": 28,
+        "missing_pairs": 0,
+        "all_pairs_present": true,
+        "exact_accuracy": 0.7142857142857143,
+        "meioses_accuracy": 1.0,
+        "strata": {
+          "siblings": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular_once_removed": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "avuncular_twice_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "meioses_correct": 4
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 4,
+            "correct": 4,
+            "meioses_correct": 4
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "meioses_correct": 4
+          }
+        }
+      },
+      "tree": {
+        "state": "COMPLETED",
+        "root": 14,
+        "valid_roots": 4,
+        "root_score_margin": 1.673385810185021,
+        "root_invariant_pairs": 12,
+        "root_ambiguous_pairs": 16,
+        "root_ambiguity": [
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_0",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_4",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_5",
+            "admissible_labels": [
+              "avuncular_once_removed",
+              "full_1st_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_1",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "avuncular_twice_removed",
+              "full_1st_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_2",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_3",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_twice_removed",
+              "full_2nd_cousin"
+            ]
+          },
+          {
+            "indID1": "sample_4",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_thrice_removed",
+              "full_2nd_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_4",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_thrice_removed",
+              "full_2nd_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_5",
+            "indID2": "sample_6",
+            "admissible_labels": [
+              "full_1st_cousin_thrice_removed",
+              "full_2nd_cousin_once_removed"
+            ]
+          },
+          {
+            "indID1": "sample_5",
+            "indID2": "sample_7",
+            "admissible_labels": [
+              "full_1st_cousin_thrice_removed",
+              "full_2nd_cousin_once_removed"
+            ]
+          }
+        ],
+        "uncertainty_calibrated": false,
+        "abstention_policy": "Only root-invariant labels qualify as structurally resolved; ranked labels remain exploratory",
+        "score_interpretation": "composite pair log score; not an independent likelihood or calibrated posterior",
+        "threshold_cm": 10,
+        "raw_edges": [
+          [
+            8,
+            13,
+            2.6188002341557914
+          ],
+          [
+            6,
+            8,
+            1.1293064927774032
+          ],
+          [
+            7,
+            8,
+            0.9198322287429825
+          ],
+          [
+            9,
+            11,
+            2.2069745844431496
+          ],
+          [
+            4,
+            9,
+            0.7049504505157064
+          ],
+          [
+            5,
+            9,
+            1.2999243367099749
+          ],
+          [
+            10,
+            12,
+            0.9901459235635646
+          ],
+          [
+            2,
+            10,
+            1.046324353265386
+          ],
+          [
+            3,
+            10,
+            1.112658944552412
+          ],
+          [
+            11,
+            12,
+            0.19954353017304283
+          ],
+          [
+            1,
+            11,
+            0.873651184439801
+          ],
+          [
+            12,
+            13,
+            0.0526473915890473
+          ],
+          [
+            0,
+            13,
+            0.9057898839299718
+          ]
+        ],
+        "integer_edges": [
+          [
+            8,
+            14
+          ],
+          [
+            14,
+            15
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            11,
+            16
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            9,
+            16
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            2,
+            10
+          ],
+          [
+            3,
+            10
+          ],
+          [
+            1,
+            11
+          ],
+          [
+            0,
+            11
+          ]
+        ]
+      }
+    }
+  },
+  "submission_ready": false
+}

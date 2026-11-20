@@ -1,36 +1,18 @@
-<p align="center">
-  <img src="assets/ghist-2026-logo.png" alt="GHIST 2026 logo" width="240">
-</p>
-
 # GHIST 2026 challenge suite
 
-Inference methods for the original 12 GHIST 2026 challenges. The two later
-low-coverage challenges are under development in a separate continuation; they
-are not yet scientifically validated.
+Methods, code, development evidence and final outputs for all **14 GHIST 2026 challenges**. All fourteen final entries were submitted and scored on November 20, 2026.
 
-**November 20: Task 9 has a validated versioned candidate; other scientific release gates remain open.**
+![GHIST 2026 inference methods](figures/methods_2026_11_20/ghist_methods.png)
 
-[Current readiness and follow-up validation](docs/readiness_2026_11_20.md) ·
-[Complete pedigree pipelines and input checks](docs/parallel_followup_2026_11_20.md) ·
-[Task 9 package and offline final-run handoff](docs/task9_submission_handoff_2026_11_20.md) ·
-[Parallel scientific validation and measured limitations](docs/scientific_validation_2026_11_20.md) ·
-[Latest reliability fixes and limitations](docs/reliability_2026_11_20.md) ·
-[Initial review and submission blockers](docs/review_2026_11_20.md) ·
-[Reproducible setup](docs/setup.md) ·
-[Post-freeze testing-answer audit](docs/testing_answer_audit_2026_11_20.json)
+[Detailed methods and figure caption](figures/methods_2026_11_20/README.md) ·
+[Submitted methods writeup](experiments/final_submission_2026_11_20/writeup_deadline/ghist2026_methods_wiki.md) ·
+[Final scores and submission records](docs/final_scored_summary_2026_11_20.md) ·
+[Archive and reproduction guide](docs/final_archive_2026_11_20.md) ·
+[Setup](docs/setup.md)
 
-The August freezes below are historical testing results. The scientific review
-found scaling, simulation/extraction mismatches and validation leakage that
-invalidate several historical promotion gates. Their archived metrics are not
-current evidence of submission readiness. The old Challenge 9 candidate uses
-two retired labels; its corrected candidate now passes the separately versioned
-[Task 9 release checks](docs/task9_readiness_2026_11_20.md). This review covers
-code and scientific qualification; final-data runs and submission activity are
-managed separately and are not established by these validation reports.
+The current methods include demographic spectrum fitting, genome-wide sweep scans, exact/detected-IBD relationship inference, and low-coverage genotype-likelihood pipelines. The final task records include candidate hashes, model/source bindings, execution evidence and server receipts. The older August results below describe earlier versions; current method choices and scientific checks are documented in the linked November reports.
 
-[Challenge registry](configs/challenges.yaml) ·
-[Validation protocol](docs/validation_protocol.md) ·
-[Method comparison](docs/method_comparison.md)
+[Challenge registry](configs/challenges.yaml) · [Validation protocol](docs/validation_protocol.md) · [Scientific validation](docs/scientific_validation_2026_11_20.md)
 
 ## Historical simulation validation (August 2026)
 

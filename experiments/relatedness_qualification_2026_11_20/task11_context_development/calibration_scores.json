@@ -1,0 +1,934 @@
+{
+  "schema_version": "relatedness-cohort-score-v1",
+  "cohorts": [
+    {
+      "pairs": 203,
+      "correct": 176,
+      "exact_accuracy": 0.8669950738916257,
+      "balanced_accuracy": 0.7291666666666666,
+      "observed_label_macro_recall": 0.7291666666666666,
+      "all_labels_represented": true,
+      "per_label": {
+        "siblings": {
+          "pairs": 111,
+          "correct": 111,
+          "recall": 1.0
+        },
+        "half_sibling": {
+          "pairs": 15,
+          "correct": 15,
+          "recall": 1.0
+        },
+        "avuncular": {
+          "pairs": 6,
+          "correct": 6,
+          "recall": 1.0
+        },
+        "half_avuncular": {
+          "pairs": 12,
+          "correct": 1,
+          "recall": 0.08333333333333333
+        },
+        "avuncular_once_removed": {
+          "pairs": 8,
+          "correct": 1,
+          "recall": 0.125
+        },
+        "avuncular_twice_removed": {
+          "pairs": 15,
+          "correct": 15,
+          "recall": 1.0
+        },
+        "full_1st_cousin": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "half_1st_cousin": {
+          "pairs": 24,
+          "correct": 15,
+          "recall": 0.625
+        }
+      },
+      "confusion": [
+        [
+          111,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          5,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          8,
+          15,
+          0
+        ]
+      ],
+      "confusion_rows": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin"
+      ],
+      "confusion_columns": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin",
+        "missing_or_abstained"
+      ],
+      "cohort_id": "calibration_00",
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "pairs": 167,
+      "correct": 162,
+      "exact_accuracy": 0.9700598802395209,
+      "balanced_accuracy": 0.9010416666666666,
+      "observed_label_macro_recall": 0.9010416666666666,
+      "all_labels_represented": true,
+      "per_label": {
+        "siblings": {
+          "pairs": 100,
+          "correct": 100,
+          "recall": 1.0
+        },
+        "half_sibling": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "avuncular": {
+          "pairs": 10,
+          "correct": 10,
+          "recall": 1.0
+        },
+        "half_avuncular": {
+          "pairs": 8,
+          "correct": 7,
+          "recall": 0.875
+        },
+        "avuncular_once_removed": {
+          "pairs": 10,
+          "correct": 10,
+          "recall": 1.0
+        },
+        "avuncular_twice_removed": {
+          "pairs": 6,
+          "correct": 2,
+          "recall": 0.3333333333333333
+        },
+        "full_1st_cousin": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "half_1st_cousin": {
+          "pairs": 9,
+          "correct": 9,
+          "recall": 1.0
+        }
+      },
+      "confusion": [
+        [
+          100,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          7,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          9,
+          0
+        ]
+      ],
+      "confusion_rows": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin"
+      ],
+      "confusion_columns": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin",
+        "missing_or_abstained"
+      ],
+      "cohort_id": "calibration_01",
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "pairs": 208,
+      "correct": 201,
+      "exact_accuracy": 0.9663461538461539,
+      "balanced_accuracy": 0.9635416666666667,
+      "observed_label_macro_recall": 0.9635416666666667,
+      "all_labels_represented": true,
+      "per_label": {
+        "siblings": {
+          "pairs": 108,
+          "correct": 108,
+          "recall": 1.0
+        },
+        "half_sibling": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "avuncular": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "half_avuncular": {
+          "pairs": 24,
+          "correct": 17,
+          "recall": 0.7083333333333334
+        },
+        "avuncular_once_removed": {
+          "pairs": 9,
+          "correct": 9,
+          "recall": 1.0
+        },
+        "avuncular_twice_removed": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "full_1st_cousin": {
+          "pairs": 16,
+          "correct": 16,
+          "recall": 1.0
+        },
+        "half_1st_cousin": {
+          "pairs": 15,
+          "correct": 15,
+          "recall": 1.0
+        }
+      },
+      "confusion": [
+        [
+          108,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          12,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          17,
+          7,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          9,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          16,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          15,
+          0
+        ]
+      ],
+      "confusion_rows": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin"
+      ],
+      "confusion_columns": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin",
+        "missing_or_abstained"
+      ],
+      "cohort_id": "calibration_02",
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    },
+    {
+      "pairs": 157,
+      "correct": 134,
+      "exact_accuracy": 0.8535031847133758,
+      "balanced_accuracy": 0.734375,
+      "observed_label_macro_recall": 0.734375,
+      "all_labels_represented": true,
+      "per_label": {
+        "siblings": {
+          "pairs": 87,
+          "correct": 87,
+          "recall": 1.0
+        },
+        "half_sibling": {
+          "pairs": 8,
+          "correct": 8,
+          "recall": 1.0
+        },
+        "avuncular": {
+          "pairs": 10,
+          "correct": 10,
+          "recall": 1.0
+        },
+        "half_avuncular": {
+          "pairs": 12,
+          "correct": 6,
+          "recall": 0.5
+        },
+        "avuncular_once_removed": {
+          "pairs": 12,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "avuncular_twice_removed": {
+          "pairs": 12,
+          "correct": 12,
+          "recall": 1.0
+        },
+        "full_1st_cousin": {
+          "pairs": 8,
+          "correct": 4,
+          "recall": 0.5
+        },
+        "half_1st_cousin": {
+          "pairs": 8,
+          "correct": 7,
+          "recall": 0.875
+        }
+      },
+      "confusion": [
+        [
+          87,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          6,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          4,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          7,
+          0
+        ]
+      ],
+      "confusion_rows": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin"
+      ],
+      "confusion_columns": [
+        "siblings",
+        "half_sibling",
+        "avuncular",
+        "half_avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "half_1st_cousin",
+        "missing_or_abstained"
+      ],
+      "cohort_id": "calibration_03",
+      "missing_pairs": 0,
+      "extra_pairs": 0,
+      "abstained_pairs": 0,
+      "pair_coverage_passed": true
+    }
+  ],
+  "cohort_count": 4,
+  "pooled": {
+    "pairs": 735,
+    "correct": 673,
+    "exact_accuracy": 0.9156462585034013,
+    "balanced_accuracy": 0.8394497863247863,
+    "observed_label_macro_recall": 0.8394497863247863,
+    "all_labels_represented": true,
+    "per_label": {
+      "siblings": {
+        "pairs": 406,
+        "correct": 406,
+        "recall": 1.0
+      },
+      "half_sibling": {
+        "pairs": 47,
+        "correct": 47,
+        "recall": 1.0
+      },
+      "avuncular": {
+        "pairs": 38,
+        "correct": 38,
+        "recall": 1.0
+      },
+      "half_avuncular": {
+        "pairs": 56,
+        "correct": 31,
+        "recall": 0.5535714285714286
+      },
+      "avuncular_once_removed": {
+        "pairs": 39,
+        "correct": 20,
+        "recall": 0.5128205128205128
+      },
+      "avuncular_twice_removed": {
+        "pairs": 45,
+        "correct": 41,
+        "recall": 0.9111111111111111
+      },
+      "full_1st_cousin": {
+        "pairs": 48,
+        "correct": 44,
+        "recall": 0.9166666666666666
+      },
+      "half_1st_cousin": {
+        "pairs": 56,
+        "correct": 46,
+        "recall": 0.8214285714285714
+      }
+    },
+    "confusion": [
+      [
+        406,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        47,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        38,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        31,
+        13,
+        0,
+        12,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        17,
+        20,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        41,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        44,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        8,
+        46,
+        0
+      ]
+    ],
+    "confusion_rows": [
+      "siblings",
+      "half_sibling",
+      "avuncular",
+      "half_avuncular",
+      "avuncular_once_removed",
+      "avuncular_twice_removed",
+      "full_1st_cousin",
+      "half_1st_cousin"
+    ],
+    "confusion_columns": [
+      "siblings",
+      "half_sibling",
+      "avuncular",
+      "half_avuncular",
+      "avuncular_once_removed",
+      "avuncular_twice_removed",
+      "full_1st_cousin",
+      "half_1st_cousin",
+      "missing_or_abstained"
+    ]
+  },
+  "pair_coverage_passed": true,
+  "missing_pairs": 0,
+  "extra_pairs": 0,
+  "abstained_pairs": 0,
+  "calibration": {
+    "ece": 0.026948126462941705,
+    "bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "pairs": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "pairs": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.3,
+        "pairs": 0,
+        "mean_confidence": null,
+        "accuracy": null
+      },
+      {
+        "lower": 0.3,
+        "upper": 0.4,
+        "pairs": 7,
+        "mean_confidence": 0.37337506314682267,
+        "accuracy": 0.14285714285714285
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "pairs": 24,
+        "mean_confidence": 0.4588405587242026,
+        "accuracy": 0.25
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6,
+        "pairs": 33,
+        "mean_confidence": 0.5500984508113423,
+        "accuracy": 0.5151515151515151
+      },
+      {
+        "lower": 0.6,
+        "upper": 0.7,
+        "pairs": 36,
+        "mean_confidence": 0.6588428159934974,
+        "accuracy": 0.6944444444444444
+      },
+      {
+        "lower": 0.7,
+        "upper": 0.8,
+        "pairs": 32,
+        "mean_confidence": 0.757081566535345,
+        "accuracy": 0.84375
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "pairs": 63,
+        "mean_confidence": 0.8532262444533897,
+        "accuracy": 0.9206349206349206
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "pairs": 540,
+        "mean_confidence": 0.9912480923564079,
+        "accuracy": 0.9981481481481481
+      }
+    ],
+    "pairs": 735,
+    "confidence_definition": "Reported probability of the actual emitted label",
+    "scope": "Descriptive pair-weighted calibration; ECE alone is not a release gate"
+  },
+  "calibration_available": true,
+  "bootstrap": {
+    "unit": "whole cohort",
+    "seed": 20301120,
+    "replicates_requested": 2000,
+    "replicates_evaluated": 2000,
+    "replicates_missing_labels": 0,
+    "confidence_level": 0.95,
+    "exact_accuracy_interval": [
+      0.8611111111111112,
+      0.968
+    ],
+    "balanced_accuracy_interval": [
+      0.7286458333333334,
+      0.9409722222222222
+    ],
+    "status": "computed",
+    "limitations": "Percentile bootstrap is descriptive; few cohorts or unrepresentative models cannot establish generalization."
+  },
+  "release_authorized": false,
+  "scope": "Scoring only; caller must establish prospective freezing, independence, biological coverage and acceptance criteria."
+}

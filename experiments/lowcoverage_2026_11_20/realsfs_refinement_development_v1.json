@@ -1,0 +1,33 @@
+{
+  "registered_at_utc": "2026-11-20T19:06:28.953142+00:00",
+  "scope": "Task13 already-inspected full10Mb development SAFs only; separate full-batch diagnostic, not fresh confirmation and not a replacement for recorded v7 failures.",
+  "input": "Three globally folded winsfs spectra seed1/seed2/continued from window_full_bottleneck_v7, each matched to the same population_0 GL2 SAF files.",
+  "interface_verification": {
+    "source_commit": "b3099ed756e7aff87d2d1dd4fd30cdf36998380b",
+    "evidence": [
+      "realSFS_shared.cpp readSFS lines237-280 explicitly reads counts and normalizes internally",
+      "realSFS_optim.cpp lines545-583 reads -sfs and remaps globally folded bins",
+      "realSFS.cpp make_folder lines138-174 preserves already-folded allowed bins and self-complement weights"
+    ],
+    "conversion": "Remove winsfs SHAPE header; preserve41-bin globally folded ordering and monomorphic count. Floor only allowed bins0..20 to at least1e-8 count before normalization to prevent zero-locked EM; bins21..40 stayzero. Record any changed bins and input hashes. This is initialization only; final measured exposure always comes from realSFS output."
+  },
+  "method": {
+    "gl_model": 2,
+    "saf_source": "Unchanged full v7 BAM-derived SAFs",
+    "realSFS": "Pinned default accelerated full-batch EM, -fold1 -P4 -seed20261120 -tole1e-8 -maxIter250; then another250 at identical tolerance initialized from its own output.",
+    "demography": "Unchanged source_v7/pipeline.py v5 eight starts each L-BFGS-B andPowell; no extra optimizer starts or altered tolerances."
+  },
+  "gates": {
+    "exposure_min": 0.99,
+    "convergence": "Both initial/refined and continued runs require observed abs likelihood change<1e-8 or probability update norm<1e-8. Hitting a cap is failure, not convergence.",
+    "continuation_stability": {
+      "frequency_L1_max_exclusive": 1e-05,
+      "segregating_relative_L1_max_exclusive": 0.01,
+      "each_target_relative_change_max_exclusive": 0.01
+    },
+    "between_initializations": "Compare all final continued spectra/targets to refined seed1 using the same stability thresholds; unchanged independent optimizer agreement required for all fits.",
+    "recovery": "Every target absolute relative error<=0.30, retained unchanged. Earlier winsfs fraction-recovery and truth-control failures remain explicit even if this diagnostic differs."
+  },
+  "budget": "Three4CPU Slurm tasks,5632M/CPU,45min cap each, concurrency<=2 only after Task14 confirmation arrays are finished. Maximum9 CPU-hours and90min elapsed without queueing. Submit only if all current confirmation jobs are finished and clock<=22:10UTC; otherwise preserve pending status before23:59.",
+  "release_rule": "No readiness or fresh-confirmation claim from this development diagnostic; diagnose spectrum-start instability versus demographic instability before selecting further method changes."
+}

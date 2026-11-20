@@ -1,0 +1,109 @@
+{
+  "comparison": {
+    "callable_fraction": {
+      "continued": 0.999993000008,
+      "seed1": 0.9999929999929998,
+      "seed2": 0.9999930000040002
+    },
+    "comparisons": {
+      "continued": {
+        "frequency_L1": 0.0001151864166706977,
+        "target_relative_change": {
+          "generations_since_split": -4.139240267841959e-05,
+          "pop1_population_size": -2.7267160831789816e-05,
+          "pop2_population_size": -6.38260841702154e-05
+        }
+      },
+      "seed2": {
+        "frequency_L1": 0.003160160920804763,
+        "target_relative_change": {
+          "generations_since_split": 0.03645672405460654,
+          "pop1_population_size": 0.0499644498761187,
+          "pop2_population_size": 0.03962430437301134
+        }
+      }
+    },
+    "early_stop_observed": {
+      "continued": true,
+      "seed1": false,
+      "seed2": false
+    },
+    "estimates": {
+      "continued": {
+        "generations_since_split": 4936.075898782507,
+        "pop1_population_size": 5271.712001571839,
+        "pop2_population_size": 10433.010841678875
+      },
+      "seed1": {
+        "generations_since_split": 4936.280223281242,
+        "pop1_population_size": 5271.85575011046,
+        "pop2_population_size": 10433.676782411394
+      },
+      "seed2": {
+        "generations_since_split": 5116.240829237618,
+        "pop1_population_size": 5535.261122490982,
+        "pop2_population_size": 10847.103966967285
+      }
+    },
+    "optimizer_agreement": {
+      "continued": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B",
+          "Powell"
+        ],
+        "passed": true
+      },
+      "seed1": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B",
+          "Powell"
+        ],
+        "passed": true
+      },
+      "seed2": {
+        "log_likelihood_tolerance": 0.01,
+        "log_parameter_tolerance": 0.01,
+        "methods": [
+          "L-BFGS-B",
+          "Powell"
+        ],
+        "passed": true
+      }
+    },
+    "release_gate_policy": "v1 realSFS gates remain unpassed; separate development comparison only",
+    "scientifically_ready": false,
+    "task": "split_isolation"
+  },
+  "final_data_access": false,
+  "input_likelihood_protocol_sha256": "9e72b091ed54c50658a080377fbda5022adaae81e61d7b39a8d234e11ce09518",
+  "relative_errors": {
+    "continued": {
+      "generations_since_split": -0.012784820243498696,
+      "pop1_population_size": 0.05434240031436777,
+      "pop2_population_size": -0.304465943888075
+    },
+    "seed1": {
+      "generations_since_split": -0.012743955343751612,
+      "pop1_population_size": 0.05437115002209203,
+      "pop2_population_size": -0.30442154783924036
+    },
+    "seed2": {
+      "generations_since_split": 0.023248165847523428,
+      "pop1_population_size": 0.1070522244981964,
+      "pop2_population_size": -0.27685973553551435
+    }
+  },
+  "scientifically_ready": false,
+  "simulation_sha256": "d95dd2be127a7eb718344defe9ea66fc2a08d59b6f57534f9c26a955bf942a58",
+  "source_sha256": "dff075b2d68de27fad6074cbc23000c09adf3866790a14aa8eb4dbf0902feb0e",
+  "testing_data_access": false,
+  "truth": {
+    "generations_since_split": 5000,
+    "pop1_population_size": 5000,
+    "pop2_population_size": 15000
+  }
+}

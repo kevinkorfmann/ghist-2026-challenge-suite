@@ -1,0 +1,46 @@
+{
+  "state": "SUBMITTED_BY_ROOT_WITH_PRESERVED_QUALIFICATION_FAILURES",
+  "root_reported_submission": "syn78780148v1",
+  "root_reported_submission_time_utc": "2026-11-20 21:24",
+  "final_candidate_sha256": "ee9bace7bfc086281be0b243c5b440db9542277466b4722a14cb32523ef059be",
+  "strict_v3_status": "FAILED_UNCHANGED",
+  "new_policy_prospective_pragmatic_passed": false,
+  "large_pooled": {
+    "structural": {
+      "pairs": 52212,
+      "correct": 35384,
+      "exact_accuracy": 0.677698613345591,
+      "macro_recall": 0.7737132454091287,
+      "minimum_label_recall": 0.15079365079365079,
+      "weighted_jaccard": 0.5244111851735387
+    },
+    "pair_only": {
+      "pairs": 52212,
+      "correct": 21122,
+      "exact_accuracy": 0.4045430169309737,
+      "macro_recall": 0.5583702241634546,
+      "minimum_label_recall": 0.15369897959183673,
+      "weighted_jaccard": 0.289045333399249
+    },
+    "baseline": {
+      "pairs": 52212,
+      "correct": 17197,
+      "exact_accuracy": 0.32936872749559487,
+      "macro_recall": 0.3778252165190637,
+      "minimum_label_recall": 0.09375,
+      "weighted_jaccard": 0.232080358646252
+    }
+  },
+  "raw_export_manifest_sha256": "19b57b168b8f05165e815ef4ea56544a2177d4ff1e3ad0b70cb6d6940b0ebdeb",
+  "raw_export_path": "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task10_development_2026_11_20/structural_fallback_scaling_evidence",
+  "all_29_exported_hashes_verified": true,
+  "missing_files": [],
+  "final_data_access_scope": "Frozen metadata/predictions for deterministic CSV packaging only; no VCF access, modeling, tuning, upload or UI by this agent",
+  "limitations": [
+    "Original strict policy failed one small cohort with no accepted initial root.",
+    "Fallback policy used now-observed small cohorts as development, not independent qualification.",
+    "Both fresh229-person cohorts missed pragmatic exact accuracy>=0.70; no post-outcome tuning.",
+    "229-person complete-call synthetic evidence does not establish arbitrary263-person structured-missingness performance.",
+    "Constant confidence has zero individual resolution and is not a root posterior."
+  ]
+}

@@ -1,0 +1,5801 @@
+{
+  "scope": "Verified design confounding; causal effect on classification remains a hypothesis",
+  "retained_cohorts": 76,
+  "retained_families": 608,
+  "all_recorded_kinds_match_source": true,
+  "each_split_label_population_cell_has_one_ancestry_kind": true,
+  "old_to_new_label_population_cells_rotated": 24,
+  "total_label_population_cells": 24,
+  "cross_tab": [
+    {
+      "split": "calibration",
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 1
+      }
+    },
+    {
+      "split": "calibration",
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 1
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 2
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 3
+      }
+    },
+    {
+      "split": "exposed",
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 2
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 16
+      }
+    },
+    {
+      "split": "new_train",
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 16
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_counts": {
+        "siblings": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "unrelated": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "first_cousins": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_counts": {
+        "first_cousins": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "unrelated": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_counts": {
+        "unrelated": 6
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_counts": {
+        "first_cousins": 5
+      }
+    },
+    {
+      "split": "old_train",
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_counts": {
+        "siblings": 5
+      }
+    }
+  ],
+  "rows": [
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120100,
+      "cohort_index": 0,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120101,
+      "cohort_index": 1,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120102,
+      "cohort_index": 2,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120103,
+      "cohort_index": 3,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120104,
+      "cohort_index": 4,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120105,
+      "cohort_index": 5,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120106,
+      "cohort_index": 6,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120107,
+      "cohort_index": 7,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120108,
+      "cohort_index": 8,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120109,
+      "cohort_index": 9,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120110,
+      "cohort_index": 10,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120111,
+      "cohort_index": 11,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120112,
+      "cohort_index": 12,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120113,
+      "cohort_index": 13,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120114,
+      "cohort_index": 14,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "old_train",
+      "cohort_seed": 2026120115,
+      "cohort_index": 15,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121000,
+      "cohort_index": 16,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121001,
+      "cohort_index": 17,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121002,
+      "cohort_index": 18,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121003,
+      "cohort_index": 19,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121004,
+      "cohort_index": 20,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121005,
+      "cohort_index": 21,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121006,
+      "cohort_index": 22,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121007,
+      "cohort_index": 23,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121008,
+      "cohort_index": 24,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121009,
+      "cohort_index": 25,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121010,
+      "cohort_index": 26,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121011,
+      "cohort_index": 27,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121012,
+      "cohort_index": 28,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121013,
+      "cohort_index": 29,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121014,
+      "cohort_index": 30,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121015,
+      "cohort_index": 31,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121016,
+      "cohort_index": 32,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121017,
+      "cohort_index": 33,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121018,
+      "cohort_index": 34,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121019,
+      "cohort_index": 35,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121020,
+      "cohort_index": 36,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121021,
+      "cohort_index": 37,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121022,
+      "cohort_index": 38,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121023,
+      "cohort_index": 39,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121024,
+      "cohort_index": 40,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121025,
+      "cohort_index": 41,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121026,
+      "cohort_index": 42,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121027,
+      "cohort_index": 43,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121028,
+      "cohort_index": 44,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121029,
+      "cohort_index": 45,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121030,
+      "cohort_index": 46,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121031,
+      "cohort_index": 47,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121032,
+      "cohort_index": 48,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121033,
+      "cohort_index": 49,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121034,
+      "cohort_index": 50,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121035,
+      "cohort_index": 51,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121036,
+      "cohort_index": 52,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121037,
+      "cohort_index": 53,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121038,
+      "cohort_index": 54,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121039,
+      "cohort_index": 55,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121040,
+      "cohort_index": 56,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121041,
+      "cohort_index": 57,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121042,
+      "cohort_index": 58,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121043,
+      "cohort_index": 59,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121044,
+      "cohort_index": 60,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121045,
+      "cohort_index": 61,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121046,
+      "cohort_index": 62,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "new_train",
+      "cohort_seed": 2026121047,
+      "cohort_index": 63,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120200,
+      "cohort_index": 0,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120201,
+      "cohort_index": 1,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120202,
+      "cohort_index": 2,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "calibration",
+      "cohort_seed": 2026120203,
+      "cohort_index": 3,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120300,
+      "cohort_index": 0,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120301,
+      "cohort_index": 1,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120302,
+      "cohort_index": 2,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120303,
+      "cohort_index": 3,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120304,
+      "cohort_index": 4,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "siblings",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "half_sibling",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "half_avuncular",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 2000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "full_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120305,
+      "cohort_index": 5,
+      "focal_label": "half_1st_cousin",
+      "population_size": 2000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "siblings",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "half_sibling",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "avuncular",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "half_avuncular",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 500,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "full_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120306,
+      "cohort_index": 6,
+      "focal_label": "half_1st_cousin",
+      "population_size": 500,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "siblings",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "half_sibling",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "half_avuncular",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "avuncular_once_removed",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "avuncular_twice_removed",
+      "population_size": 1000,
+      "ancestry_kind": "unrelated"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "full_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "first_cousins"
+    },
+    {
+      "split": "exposed",
+      "cohort_seed": 2026120307,
+      "cohort_index": 7,
+      "focal_label": "half_1st_cousin",
+      "population_size": 1000,
+      "ancestry_kind": "siblings"
+    }
+  ],
+  "inputs_sha256": {
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_00/truth.json": "6a3130b30674a1f662efa65993597b58052aca1b7ff9f87a35b9486297af533f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_00/result.json": "9d55ae72d8218d66e65c8a2ba0b3b73bf332f7031938282befd869648b191c67",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_01/truth.json": "e1a3c4c3edf68423a0089e2eaf3b33eae572d23e98b57c5a4b3ca8196723b668",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_01/result.json": "510acc888f8b5cdd2ece4fa5125b789327ed9c29022b46330c40d17eaea02198",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_02/truth.json": "8a84f8cce9a311076e08a41962b5848a3bca51ec29da90a3f92618f8b7b3dd2f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_02/result.json": "c088605ed9dcb2abea3663a8e0b862107afc33a47d2a47da7b7c02656228733e",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_03/truth.json": "ad5c53b60d5a2d72ad4c7c58419bca88796f3cbf2f0f2cf8a1147fa8ae62af10",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_03/result.json": "c4b0a30efab3cee63eb85c5bb38b1d29d577e7621084f842b00caa08cbc4fb24",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_04/truth.json": "25f7aea56257fc4a8fb59e4738e5168ac2342780f90187a805c1b433ac8b1b89",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_04/result.json": "3f8f0c68814c306fd7de69abd2f660671b15eeb4bb77dce7c6a1a33f1a030652",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_05/truth.json": "7b6b278527ecf3f70123e34f078d7072de1bec8ec2709eccdba18a2322b5b586",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_05/result.json": "84d7e27b107a15bfb44f46d2829c81601ad806a78e996f2bab2f606356ed2bf9",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_06/truth.json": "97201ad970e8147b8de2aae3df4e102d7b361a88b5298a6749ab47defee33cc0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_06/result.json": "6eea1ebc78bdff3f7a0e80cb399b47e99ba558d4f76f64251826d50ce736bc11",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_07/truth.json": "ce6fff9286039a99d1207317fbd50989a84410866b33450fe9206850fdaa3239",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_07/result.json": "5e4490d8c327f09658b7680a4da369148f057ce49bb8facd20e6f09d9402fa0e",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_08/truth.json": "d004e6eda3b940ace8498b31dd8c1d5671622b1e08525c2cc7f4879668766ce6",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_08/result.json": "7fd665ac1c63ef0274766336d4badf96055e8c768f2315ce1956c92d47dc1472",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_09/truth.json": "2443f2e7cf997fcf60ebbf6cafb7656428eb2ef18706a19e6d693e7d8f67f311",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_09/result.json": "82282c476d41aa48757fc69cd5eb7a97d263e058f8f7d4fa1ce7bf5d3813b5d3",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_10/truth.json": "5c0ba29c02bc8247233a1f1a2551358e8b0491f26ea1de802368212d2913d2db",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_10/result.json": "89d6c10bb812cb7fccfa9401e0c3c8a8f4fa7a8fc92930b4d5d3eade3196725a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_11/truth.json": "dde74169cc169af3ce718db10c40445f5be338c97ba82055ebe0f892cac98379",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_11/result.json": "ebab8c56760f3aa43b821df06560ab50aa34096b8bf68e6e54b754aaad2519a7",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_12/truth.json": "fd09337186c554492f5e990577ee66f564e6485f36853134047d0219352abb75",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_12/result.json": "f132c9f75033a0ce15a882dc48af46ce5de100b51e72b0fe55aea5203c7683ea",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_13/truth.json": "fa188735962ad5a957ced5c9d45741e3d2fc689eca66b2cbeddcca517da5866a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_13/result.json": "340b94610de50f2c40510831f470e37f83ba27096a285734b6c1a58c2bbd8b6a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_14/truth.json": "b5d74712d101dc7a2ade352e06de65a6bd9e315b68fc4e78d4c759fd7137fdc6",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_14/result.json": "89d40b45fdaea17e5f090df519f2313466f31ff61c68157491c1412d08472b9a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_15/truth.json": "5b2b04d2bb87c9bdde9dd12a11c5c98408e5f2ccedf39df0b8eb217cd71db67e",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_15/result.json": "2fd66a4759832bc0118a3a31d6c0ea3d3bf447fff6616312a98ce0c7396f2626",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_16/truth.json": "20c4f6d92a0fe665a6a58cba41eee806d4d9cd9d757562ce3a7804f432aed4a1",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_16/result.json": "99f5394a42b8b6120e4c6a401838e7bef707448d132ee32c5f11177e59104f7d",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_17/truth.json": "fb8fd1738360f4064282903d998627bcb72b8f9c05181f790f3c61e85d3de4bd",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_17/result.json": "bcccc46e2ee2c88d5c6c923f4d0080fa26d543aa5f89f72d52dd163a555d4235",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_18/truth.json": "d034b4cfe782c19715538e3abbb161a4427e820aaba9b679cd36c08f01f43078",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_18/result.json": "572b81072f606ea45869e2b3d7ac0de556e87345fffb3db444177b7e51086904",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_19/truth.json": "9ef8ea107d0e3fc1a144608d4c550e6ca9961b04dfbfc3a2154429a05937b4cd",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_19/result.json": "0b8160193c72d207a041e9988fb47f78780cf0e8dd3cdc84416dbe5722cb8fc8",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_20/truth.json": "9eba110c9d6edb847f2e318699b4b8c428264ab7efc15450f647619201ac01a0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_20/result.json": "0d5cdfa9dc45d0c804d786c38d1fdee1dad2f00e729b251cc1a3a59cbdde8be0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_21/truth.json": "2a25a221d4e751a9c9cbb63feac5f3df1a034eea658039894974431a69c9388b",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_21/result.json": "198a8359ddf48e4c16933413627113f6f1028eaa87bc50c7fb58c5d8b9222ad9",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_22/truth.json": "e9f18416befd7b26a054cb2ba954df66a216aded4d548111842d684de9b49a79",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_22/result.json": "326dc299eb2fe964dcda16e3e37099796c767930cd4e1588e9c9be1f833474e3",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_23/truth.json": "1b136200fa08c577fc22c194ab6746a2efa37545985fe0bf459492953952f5c5",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_23/result.json": "c8d9aa4de6a4fde3542edbaabca0692ac6697a7465f101824d9915d9b5c87560",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_24/truth.json": "6849df240c3b6dbbdf7d7f2ae6e078665cc0b9836984a9974f091efb2540c06b",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_24/result.json": "26bf10779586f01ee3ba65ed74d9b515661015c5463d440f0e0bdc17b76bbd70",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_25/truth.json": "f90d4b04fe2c2c509077c440d93372d3999e2a732889e72a567a5fb4583455fc",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_25/result.json": "dde3f73b7f1cd4cfbf6bb71372f2216f642dcd07ea021c7ab4fea2360de4c676",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_26/truth.json": "7f706cd2dc9cd2ba635bf3c69c74f971b79a64d26ab8719ba1d303eb458fcb8c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_26/result.json": "b997ef1b34eeabac3a87ad0296a216c5e4a14228208a6a96bdbbc6c23019c4a6",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_27/truth.json": "43b615d8a957dbad0a16ee61f47de40ae8adb2c53ad1b063faca897f4a501778",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_27/result.json": "643d56039bdf6915bcdbff9ff3b7ab35797c13a83f932cb616715b4223cd7372",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_28/truth.json": "3cc8c0c6a50872b2bd092a470d401e0c5b6f567c19babe707785f0ed80f1af3a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_28/result.json": "5b253dca73dcb6cb9c33809206f94b014ed465d1d3000126c031b1484460cc9f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_29/truth.json": "82babd7d3b89ccd54b908e1a1ca775ccb1b1cc05b0ef87950454acbf36e06fc9",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_29/result.json": "3b840fbc488162403ed669a2b8a44c86fad65b4199f9611638c5a9b1bd32c59f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_30/truth.json": "020201cd13929a248f53251c66d34bdd5eed7abc44cbfd24f061b38f1524bfdf",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_30/result.json": "7e1efb8142f574be93127b9d587b4ffb199d64e3834c9790c5e4722604ce56e4",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_31/truth.json": "9d0becfe9aea5c79725395d80c8046f95314e3e3b1b51bff3854b1b22b353d6c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_31/result.json": "98f61603ae0fca5207c712941e3f7b01664b6fa084343fe79fb96b4e48a52109",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_32/truth.json": "26e60a66a3e7d5fc645f2a591bad338baef7f7a128f946e2927317130e153f16",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_32/result.json": "e0c9a91689fc1802c39d7234e6c5f4618432eed5944246b2d295700e18dd8b45",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_33/truth.json": "104b6bf4bb9441be06b85754b87a311614d42342d701ff6a0de4b67c9432b160",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_33/result.json": "2bc97c8987098d95177f82e7c3d2ec02458de5e6fada8097f561965be1628b7e",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_34/truth.json": "42b40629238a5d08b89c209337e621486b981995830e914cb015bea83af48c07",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_34/result.json": "6f78597ee850f30269f79f7f24f8eecec4b24439bc561dd88abbb8f47acb4353",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_35/truth.json": "cbfa4350a682702f676fb9346cebf4e9ec5f80669169b24d90051bca06e5b9b0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_35/result.json": "a94f439aca0f241d1e7d97ff9dba2601a56ba16960e26a96e6d6278d0ee00f82",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_36/truth.json": "667369025ec66d35b2b6d174ebcc2703a0a7ba4b74bbcf6e34bd774ad9eed7c6",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_36/result.json": "8c947648b88403b5a28d5fd5e88317b07ed5d6c394e38f93f310b46cce39af94",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_37/truth.json": "927c10220e69a5e52a36dd62c37681fb5bf7108481b542d97bb7d16b3bdaafda",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_37/result.json": "73468bf8bee6397f901364b6dc64c8d5c15cf7627ad0aae833ebba3cdd7f3dad",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_38/truth.json": "39119d2443204c826b11d433a6070ae7aafa647443236dffa356b6e1ba8dda62",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_38/result.json": "25d1c9e27262ac7403b51625d811614ae2bc088140c930563ea67c374692703a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_39/truth.json": "c9ec7272616f784463d2d7eff51fc0d0f4cbaed4e38ecfffb950eb05a213312f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_39/result.json": "479715088cfa34eedb8d91f54081be31ad8f6bcc344866af91525b4c05b4abb5",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_40/truth.json": "123eda9def7e4d516f620de2d2dee7b8170faf97cf73eee160b16a6b4cd12df8",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_40/result.json": "061f8b650a8d553ad8b1ffc4875d72cae14693feab98b1ef359f3534ce2b00db",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_41/truth.json": "4ca5ea59a47c14fd58dd3e1acd28efe9f1b4d3a99ad826d374f4037460b18195",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_41/result.json": "95213c9332393dea54d37856fbdca162a137ea1d776b87583203efa972d9319c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_42/truth.json": "449466334243d37104e6ad96025cbb1cf4ee96aca58e40bc6190060b132457fb",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_42/result.json": "6829f5479b195b5114cf543e2703813ac83369b6371afa8c1983eeca711df2c2",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_43/truth.json": "3ac80bbe9981bcacc90dc2d06a5689fa8a8491c5b0e87440ea4e9b376a9a6a46",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_43/result.json": "c5764e2d6be2e39c37174b7874ca3937a9ce9755e39991fd6f0c1193da5dfb8b",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_44/truth.json": "880b093d8b461a29f510a22a9cf6e0c684b5882b46d11ab1d3679e66d33e7456",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_44/result.json": "f25a7c277f9a0dd6b56f74653465f4232418fe8128264e63554dd96272d31cd7",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_45/truth.json": "eb5cd6eb0d1ea86934dbf978673e2c19cbc07eeb408ef3f6eba27007a1e8c843",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_45/result.json": "aeb7e39bbed9fc1ae805cdf63b93c8f452d120a6966cd5343960139dc0a4f0e8",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_46/truth.json": "df1239f8b89ad53f70e6e84581e1d0165c79b7eb643f44290b09cd1afcacef30",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_46/result.json": "25fc2130fb1b65787af04447ed1ae6b2ea786daecb8309db8539bea774d6ad86",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_47/truth.json": "faad9c148e77030db0cf6d0a6f9b96def018f3c75e7c80a42d5e75eac8488442",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_47/result.json": "5705ca7f2a61daa7bee3b7abd5f60d58b64774077b037c84370f62c81478355a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_48/truth.json": "3c1a0f8a23c2694f02a7890bdf20f71807696437fbf537a599b7cbc3a91b988e",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_48/result.json": "dd90157c2a05845285a19c152053e96fd55c8cb252a26263dbf584ba8989e4a6",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_49/truth.json": "89f9fa0bc4e82d116d03f54a23d78544c54754b48b05af30b20c6807ba8018a8",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_49/result.json": "0593a9a96129e7a788451a770e2080269deb68e52de0de969ee81cf3ade38bde",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_50/truth.json": "e10ac41658c245f69239766fe450d432b07c6dee15da7de08c4bfaf71c79a0ec",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_50/result.json": "7658dad449ef50d2ddd93fe464be06ad6d4c9cd9fe9bc360f5f445fd8464c8cb",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_51/truth.json": "a35a3d0354a4988a187f60886781d68f2da15ece54bfff76661f161dc044aad4",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_51/result.json": "ec71416fd4dc2095d73622ef40c273273a902981dcbdd8bba0f66c8a7491b7f1",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_52/truth.json": "81354ce47dd35aa4fc30ff8a5a3917def4b722ff369f907986769f50f69471f0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_52/result.json": "c1b2032494186832ff14fee33d8ef250cced07474811f46269caff56e001e715",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_53/truth.json": "a167504685e429a4a3d68eb6b6ed1cb38dd7f7c5ce81c4daa10f00d68abb2bf1",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_53/result.json": "62533eb99b882ccb7b8abc1674ecebfc21186d3e06adf0118ec5e777cbea3b2c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_54/truth.json": "d521b773264321009fb189722935889233a6f36fc2fc5597925557b819ed522f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_54/result.json": "e56a7dc5977a9810dc9c3f56f861a9542029368dd51c6517ac3df97606409307",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_55/truth.json": "f50d0e63042d453ca50c436a28b8c4cf568f66aeb853a04f889cefd47b258e45",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_55/result.json": "bf48f08e9b6d213f7401431c9a31c625005a5308514919117391b58b838ca784",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_56/truth.json": "874db9d638701b257539af49f6e485bc6299eb7f54fc9cf2407aed183285cf42",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_56/result.json": "c7c4cdfbbd2db68abacab5d7daffe5053f7a8db941e192f3db827634de332c8f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_57/truth.json": "1aa66d9b54c40de1944807dbc03ab6086088a4cbb1b72b18623d468b4c50cb48",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_57/result.json": "082cb68cc20af5f027d3cacfcab545ad6d5bb11c614d9e8fd48c7c026ab9ad86",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_58/truth.json": "5ec59636a159388ec7b66286e2470fc2e5ebef0ef63f2f8505ce777b10f13904",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_58/result.json": "6c7db004ffd963cf85905a7be0c6a8865d74ac4dd608915bfc35eb59b8ec5ef0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_59/truth.json": "5608a39fc82c3198b9b73c1cf00adc68daab22ec12625878537fc536cffd6680",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_59/result.json": "49e822b76873641bc0fc12067a656aafbc5c5c902ff369a6b812f6a4d8f76329",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_60/truth.json": "2bf313c08d3b7a24742eaa6cbbb30a0dc8f4901ece2c66a076e723ab8f23d440",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_60/result.json": "f9d04990bb14a5f85a399e254c54323abac6f22617715a9a960997c2d66ef7fc",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_61/truth.json": "d796fa340b0f881dee269a3a90e7bf3c4e7fa957027a5a2e85492074852b50cc",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_61/result.json": "2316f177d949b665e93591f1d03ec204e63ad17d32015fe64a77c4db27a53cd5",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_62/truth.json": "d120ff84ae47336aaf32fa708b36d2e94220c2ada9273ccad5b81ba022989755",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_62/result.json": "e4dcf5f67cb067018dda9620a4f0fd2d3b148d3d9ef57d5fbac73087f11ed8c0",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_63/truth.json": "fe4c879ade88f1a8418d503df6326ad8adeb7d070ffe9587f5888fa973996b9a",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_training_raw_metadata_v1/train_63/result.json": "2e5906a4d4f3b3a39916c3d45ed469f288df0b9bac6c3ecef7d683dc81cbd1e9",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_00_truth.json": "5b64b1397ca65fda4213cce9d5752d0e04d049625aa497ae29fa702aca13a43f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_00_result.json": "ed0a02513f7130d031e4640c43b717794a64e7e3aa8c07db761a78b5dd32b442",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_01_truth.json": "d6a94fa8e2973ba76c8f03bed2c7400f308a2a7d30f57826d385e4e800becd9b",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_01_result.json": "660bc47c9936a459fdb27b4af1590dbb685fae2dff7cb6489c5db35854810dd5",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_02_truth.json": "6d6ef21a2af700b7e28db2b56e8c84b7bab9feda4ef369c4fcc8848a8a376f48",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_02_result.json": "cce94e9e7425fc95a1f4f4018216c2243b2f4f4b1541e68e38dcff14ac714a47",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_03_truth.json": "9a691eed02cf135bf585bec842c259dbaa7e8f61c2ef84d4adeade274f410abf",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/calibration_03_result.json": "97da289274580a0df4c81ecd4ee0f9c8c23974d88844db3e5437f97899209e7f",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_00_truth.json": "14d962f749c1f63c420f98a4d83c83bc970946cdf9aea2b78840edc5342cd1e5",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_00_result.json": "8d361e26c079bd404c5bae7e4009027e08dc8bdbab75184b4f6d1dca1c1878f1",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_01_truth.json": "4688c8833138aca5758b31e8099487c4f6b2ff6b0e5bf6a012adfca5ae22139d",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_01_result.json": "fd152a8ad790ddb7faf5c8dbfb9f4ab86630483c5d54b10ebf524a393ed5684c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_02_truth.json": "8ca047ae498943f77390e7496f145828ef0a65557d1ae573883cbcb7b93bc307",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_02_result.json": "3ff62593f4dad33d43cb4f0f6b4cdc8f91d8d40cc8c1ba48e109ba9b9caeafaa",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_03_truth.json": "506292576837bfbc0ce985bc3961191532bc4134bd1416338f7c634ef10e7dc7",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_03_result.json": "a9d7a86fca8a440d36f341f22a4e17426a0b7e00e07064685346dc3f421feb4c",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_04_truth.json": "5567ed155a0f24cb7aee77a4e47ab63862df52347eef9c365382a92b8f1ff219",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_04_result.json": "60c915868c0f0653cd37359c756fa5797c00fdb4a60d41692999b87a06030d63",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_05_truth.json": "deb664e025d4fd36469f127de2898ec59181067b2bba4060a0774a32a2ef8e08",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_05_result.json": "4b45c8b7ee1144e661a3dfcee473349b3f9dfd2d9d51e1b0f7974895f62e09d8",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_06_truth.json": "3c3e8606af575218ba0d44f2258f7e594f5eeee39f0193ea7301ee1a30aceebb",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_06_result.json": "613aeda9cab620fe262c8a7481de8528db7e6b967ddfdc2c281e8e3fe2d531cb",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_07_truth.json": "b1adda6f12187d3227e84a9aa6c955332daf045d4977dd1070d5abd56d819c52",
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/task11_development_2026_11_20/expanded_development_audit_v1/exposed_07_result.json": "c637753f21751412800bcd075d5839d30dd6daa34933d3202a220804031fcd0c"
+  },
+  "script_sha256": "95c048ed2310674e5a943054f67cb46acc7fa99e986fc9ecd639891ede93074b",
+  "interpretation": "Ne and ancestry kind are perfectly coupled conditional on focal label in each old/new block. All24 label\u00d7Ne cells rotate in added training. Corrected training must cross or independently randomize nuisance assignments. This audit does not prove how much regression this caused."
+}

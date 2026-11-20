@@ -1,0 +1,45 @@
+{
+  "stage": "PAIRED_DEVELOPMENT_DIAGNOSTIC",
+  "command": [
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/ped-sim",
+    "-d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/family.def",
+    "-m",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap",
+    "-i",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/founders/founders.vcf.gz",
+    "-o",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/paired_phase_diagnostic/cohort_1/family",
+    "--intf",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/interfere/nu_p_campbell.tsv",
+    "--seed",
+    "2248451488",
+    "--fam",
+    "--keep_phase",
+    "--err_rate",
+    "0",
+    "--miss_rate",
+    "0",
+    "--seg_haps"
+  ],
+  "hashes": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/commands.json": "6adefa5cb2790aef8243381fd9d3ba9692c84d50e30c85b2337742d52168c257",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/identifiers.json": "5d900ba0ce8439a3e4692bcf3cd708cdc71e3960eb18412981c4396b05d25fe7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/truth.json": "30922ac3b82f0bdffdb38e9bf74a5b5ca8fec9ba97badad6229b7e9d23451f37",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/family.vcf.gz": "ba223cc25089f428af4ef6d3420762f313c67ef44846796c46c03374743fad11",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/family-everyone.fam": "d777bcdb088bb0a0533c8f60b2d735a579fdba477390045c95a3cf874c8692dc",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_development_cohort_1/founders/founders.vcf.gz": "8e9f52798df41a23f9604eddc683315708a3a4061b61313e6e85b050328e5b97",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_training/phase_model.joblib": "d6e160288801321765ada8c93e92ec12ce3fdcb7139d3934f7b6239799b88d51",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_training/phase_free_model.joblib": "05e05666b6320c0c7c620cb2efd9262ef6759db5ece1ca9a95673377851d7c1e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/phase_predictions/cohort_1/phase/features.json": "59021d396341d2eb71aa6181fe7f5c0936a81fd216ad5970a71ee14ef9bedf2c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/paired_phase_diagnostic.py": "6fee627ba6e55c1ca732232000ce065778cfb64064b5035df494619f7a49d3d2"
+  },
+  "feature_swaps": [
+    "raw_",
+    "state_",
+    "phase_",
+    "ibd2_"
+  ],
+  "submission_ready": false
+}

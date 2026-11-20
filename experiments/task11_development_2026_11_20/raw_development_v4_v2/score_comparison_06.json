@@ -1,0 +1,150 @@
+{
+  "recomputed": {
+    "truth_pairs": 224,
+    "correct": 189,
+    "accuracy": 0.84375,
+    "balanced_accuracy": 0.7372023809523809,
+    "recall": {
+      "siblings": 1.0,
+      "half_sibling": 0.9166666666666666,
+      "avuncular": 0.5,
+      "half_avuncular": 0.1,
+      "avuncular_once_removed": 0.8571428571428571,
+      "avuncular_twice_removed": 0.8571428571428571,
+      "full_1st_cousin": 1.0,
+      "half_1st_cousin": 0.6666666666666666
+    },
+    "counts": {
+      "siblings": 106,
+      "half_sibling": 24,
+      "avuncular": 24,
+      "avuncular_once_removed": 14,
+      "half_avuncular": 10,
+      "avuncular_twice_removed": 14,
+      "full_1st_cousin": 8,
+      "half_1st_cousin": 24
+    },
+    "correct_counts": {
+      "siblings": 106,
+      "half_sibling": 22,
+      "avuncular": 12,
+      "avuncular_once_removed": 12,
+      "half_avuncular": 1,
+      "avuncular_twice_removed": 12,
+      "full_1st_cousin": 8,
+      "half_1st_cousin": 16
+    },
+    "confusion": {
+      "siblings": {
+        "siblings": 106
+      },
+      "half_sibling": {
+        "half_sibling": 22,
+        "avuncular": 2
+      },
+      "avuncular": {
+        "half_sibling": 12,
+        "avuncular": 12
+      },
+      "avuncular_once_removed": {
+        "avuncular_once_removed": 12,
+        "avuncular": 1,
+        "avuncular_twice_removed": 1
+      },
+      "half_avuncular": {
+        "full_1st_cousin": 9,
+        "half_avuncular": 1
+      },
+      "avuncular_twice_removed": {
+        "avuncular_twice_removed": 12,
+        "half_avuncular": 1,
+        "half_1st_cousin": 1
+      },
+      "full_1st_cousin": {
+        "full_1st_cousin": 8
+      },
+      "half_1st_cousin": {
+        "avuncular_twice_removed": 3,
+        "half_1st_cousin": 16,
+        "half_avuncular": 5
+      }
+    },
+    "missing_true_pairs": 0,
+    "extra_cross_family_pairs": 0,
+    "ece_10_equal_width": 0.04671148214179202
+  },
+  "original": {
+    "truth_pairs": 224,
+    "correct": 189,
+    "accuracy": 0.84375,
+    "balanced_accuracy": 0.7372023809523809,
+    "recall": {
+      "siblings": 1.0,
+      "half_sibling": 0.9166666666666666,
+      "avuncular": 0.5,
+      "half_avuncular": 0.1,
+      "avuncular_once_removed": 0.8571428571428571,
+      "avuncular_twice_removed": 0.8571428571428571,
+      "full_1st_cousin": 1.0,
+      "half_1st_cousin": 0.6666666666666666
+    },
+    "counts": {
+      "siblings": 106,
+      "half_sibling": 24,
+      "avuncular": 24,
+      "avuncular_once_removed": 14,
+      "half_avuncular": 10,
+      "avuncular_twice_removed": 14,
+      "full_1st_cousin": 8,
+      "half_1st_cousin": 24
+    },
+    "correct_counts": {
+      "siblings": 106,
+      "half_sibling": 22,
+      "avuncular": 12,
+      "avuncular_once_removed": 12,
+      "half_avuncular": 1,
+      "avuncular_twice_removed": 12,
+      "full_1st_cousin": 8,
+      "half_1st_cousin": 16
+    },
+    "confusion": {
+      "siblings": {
+        "siblings": 106
+      },
+      "half_sibling": {
+        "half_sibling": 22,
+        "avuncular": 2
+      },
+      "avuncular": {
+        "half_sibling": 12,
+        "avuncular": 12
+      },
+      "avuncular_once_removed": {
+        "avuncular_once_removed": 12,
+        "avuncular": 1,
+        "avuncular_twice_removed": 1
+      },
+      "half_avuncular": {
+        "full_1st_cousin": 9,
+        "half_avuncular": 1
+      },
+      "avuncular_twice_removed": {
+        "avuncular_twice_removed": 12,
+        "half_avuncular": 1,
+        "half_1st_cousin": 1
+      },
+      "full_1st_cousin": {
+        "full_1st_cousin": 8
+      },
+      "half_1st_cousin": {
+        "avuncular_twice_removed": 3,
+        "half_1st_cousin": 16,
+        "half_avuncular": 5
+      }
+    },
+    "missing_true_pairs": 0,
+    "extra_cross_family_pairs": 0,
+    "ece_10_equal_width": 0.04671148214179202
+  }
+}

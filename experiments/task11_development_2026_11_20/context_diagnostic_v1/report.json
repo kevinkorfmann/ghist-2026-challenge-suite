@@ -1,0 +1,3426 @@
+{
+  "parameters": {
+    "version": "task11-context-information-diagnostic-v1",
+    "sibling_probability_min": 0.95,
+    "cohort_folds": 4,
+    "fold_assignment": "training cohort index modulo four",
+    "phase_min_cm": 10.0,
+    "hbd_cutoffs_cm": [
+      2.0,
+      5.0,
+      10.0
+    ],
+    "ambiguous_component_policy": "all members become singletons",
+    "edge_filter": "merge each homolog edge then require at least10cM; union eligible edges",
+    "ibd0_exclusion": "all detected IBD between siblings, including short edges",
+    "mask": "union of all participating individuals' HBD at each fixed cutoff",
+    "zero_exposure": "IBD011 ratio, numerator and denominator are zero; union remains measurable",
+    "model": {
+      "n_estimators": 800,
+      "min_samples_leaf": 3,
+      "max_features": 0.75,
+      "n_jobs": 4,
+      "random_state": 20300111
+    },
+    "temperature_grid": [
+      0.75,
+      1.0,
+      1.25,
+      1.5,
+      2.0
+    ],
+    "selection": "single fixed diagnostic; all results reported, no outcome-selected feature/model variant",
+    "scope": "training only fitting, four separate calibration cohorts, exposed8 development only",
+    "submission_ready": false
+  },
+  "temperature": 0.75,
+  "calibration_losses": {
+    "0.75": 0.19592961463006922,
+    "1.0": 0.21386563253976737,
+    "1.25": 0.2389607427565363,
+    "1.5": 0.2661981121891702,
+    "2.0": 0.31921169933801974
+  },
+  "reports": {
+    "train": {
+      "base": {
+        "truth_pairs": 2848,
+        "correct": 2845,
+        "accuracy": 0.9989466292134831,
+        "balanced_accuracy": 0.9981036606371995,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.995475113122172,
+          "avuncular": 1.0,
+          "half_avuncular": 1.0,
+          "avuncular_once_removed": 0.994535519125683,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 0.9948186528497409,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 1490,
+          "half_sibling": 221,
+          "avuncular": 168,
+          "half_avuncular": 168,
+          "avuncular_once_removed": 183,
+          "avuncular_twice_removed": 199,
+          "full_1st_cousin": 193,
+          "half_1st_cousin": 226
+        },
+        "correct_counts": {
+          "siblings": 1490,
+          "half_sibling": 220,
+          "avuncular": 168,
+          "half_avuncular": 168,
+          "avuncular_once_removed": 182,
+          "avuncular_twice_removed": 199,
+          "full_1st_cousin": 192,
+          "half_1st_cousin": 226
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 1490
+          },
+          "half_sibling": {
+            "half_sibling": 220,
+            "full_1st_cousin": 1
+          },
+          "avuncular": {
+            "avuncular": 168
+          },
+          "half_avuncular": {
+            "half_avuncular": 168
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 182,
+            "avuncular_twice_removed": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 199
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 192,
+            "half_1st_cousin": 1
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 226
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.029837347325024986
+      },
+      "context": {
+        "truth_pairs": 2848,
+        "correct": 2848,
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 1.0,
+          "avuncular_once_removed": 1.0,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 1490,
+          "half_sibling": 221,
+          "avuncular": 168,
+          "half_avuncular": 168,
+          "avuncular_once_removed": 183,
+          "avuncular_twice_removed": 199,
+          "full_1st_cousin": 193,
+          "half_1st_cousin": 226
+        },
+        "correct_counts": {
+          "siblings": 1490,
+          "half_sibling": 221,
+          "avuncular": 168,
+          "half_avuncular": 168,
+          "avuncular_once_removed": 183,
+          "avuncular_twice_removed": 199,
+          "full_1st_cousin": 193,
+          "half_1st_cousin": 226
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 1490
+          },
+          "half_sibling": {
+            "half_sibling": 221
+          },
+          "avuncular": {
+            "avuncular": 168
+          },
+          "half_avuncular": {
+            "half_avuncular": 168
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 183
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 199
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 193
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 226
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.010818010054141198
+      },
+      "flips": {
+        "base_correct_to_wrong": 0,
+        "base_wrong_to_correct": 3,
+        "strong_base_correct_to_wrong": 0
+      },
+      "strata": {
+        "hbd_under_005": {
+          "base": {
+            "truth_pairs": 1307,
+            "correct": 1305,
+            "accuracy": 0.9984697781178271,
+            "balanced_accuracy": 0.995995995995996,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.9864864864864865,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 0.9814814814814815,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 1.0,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 761,
+              "half_avuncular": 20,
+              "half_1st_cousin": 142,
+              "avuncular": 58,
+              "avuncular_twice_removed": 54,
+              "full_1st_cousin": 144,
+              "half_sibling": 74,
+              "avuncular_once_removed": 54
+            },
+            "correct_counts": {
+              "siblings": 761,
+              "half_avuncular": 20,
+              "half_1st_cousin": 142,
+              "avuncular": 58,
+              "avuncular_twice_removed": 54,
+              "full_1st_cousin": 144,
+              "half_sibling": 73,
+              "avuncular_once_removed": 53
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 761
+              },
+              "half_avuncular": {
+                "half_avuncular": 20
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 142
+              },
+              "avuncular": {
+                "avuncular": 58
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 54
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 144
+              },
+              "half_sibling": {
+                "half_sibling": 73,
+                "full_1st_cousin": 1
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 53,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.024611523952180255
+          },
+          "context": {
+            "truth_pairs": 1307,
+            "correct": 1307,
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 1.0,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 761,
+              "half_avuncular": 20,
+              "half_1st_cousin": 142,
+              "avuncular": 58,
+              "avuncular_twice_removed": 54,
+              "full_1st_cousin": 144,
+              "half_sibling": 74,
+              "avuncular_once_removed": 54
+            },
+            "correct_counts": {
+              "siblings": 761,
+              "half_avuncular": 20,
+              "half_1st_cousin": 142,
+              "avuncular": 58,
+              "avuncular_twice_removed": 54,
+              "full_1st_cousin": 144,
+              "half_sibling": 74,
+              "avuncular_once_removed": 54
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 761
+              },
+              "half_avuncular": {
+                "half_avuncular": 20
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 142
+              },
+              "avuncular": {
+                "avuncular": 58
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 54
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 144
+              },
+              "half_sibling": {
+                "half_sibling": 74
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 54
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.00834890928293786
+          }
+        },
+        "simple": {
+          "base": {
+            "truth_pairs": 2848,
+            "correct": 2845,
+            "accuracy": 0.9989466292134831,
+            "balanced_accuracy": 0.9981036606371995,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.995475113122172,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 0.994535519125683,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.9948186528497409,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 1490,
+              "half_sibling": 221,
+              "avuncular": 168,
+              "half_avuncular": 168,
+              "avuncular_once_removed": 183,
+              "avuncular_twice_removed": 199,
+              "full_1st_cousin": 193,
+              "half_1st_cousin": 226
+            },
+            "correct_counts": {
+              "siblings": 1490,
+              "half_sibling": 220,
+              "avuncular": 168,
+              "half_avuncular": 168,
+              "avuncular_once_removed": 182,
+              "avuncular_twice_removed": 199,
+              "full_1st_cousin": 192,
+              "half_1st_cousin": 226
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 1490
+              },
+              "half_sibling": {
+                "half_sibling": 220,
+                "full_1st_cousin": 1
+              },
+              "avuncular": {
+                "avuncular": 168
+              },
+              "half_avuncular": {
+                "half_avuncular": 168
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 182,
+                "avuncular_twice_removed": 1
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 199
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 192,
+                "half_1st_cousin": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 226
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.029837347325025187
+          },
+          "context": {
+            "truth_pairs": 2848,
+            "correct": 2848,
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 1.0,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 1490,
+              "half_sibling": 221,
+              "avuncular": 168,
+              "half_avuncular": 168,
+              "avuncular_once_removed": 183,
+              "avuncular_twice_removed": 199,
+              "full_1st_cousin": 193,
+              "half_1st_cousin": 226
+            },
+            "correct_counts": {
+              "siblings": 1490,
+              "half_sibling": 221,
+              "avuncular": 168,
+              "half_avuncular": 168,
+              "avuncular_once_removed": 183,
+              "avuncular_twice_removed": 199,
+              "full_1st_cousin": 193,
+              "half_1st_cousin": 226
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 1490
+              },
+              "half_sibling": {
+                "half_sibling": 221
+              },
+              "avuncular": {
+                "avuncular": 168
+              },
+              "half_avuncular": {
+                "half_avuncular": 168
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 183
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 199
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 193
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 226
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.010818010054141089
+          }
+        },
+        "hbd_005_to_015": {
+          "base": {
+            "truth_pairs": 1006,
+            "correct": 1005,
+            "accuracy": 0.9990059642147118,
+            "balanced_accuracy": 0.9974489795918368,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.9795918367346939,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 529,
+              "half_sibling": 69,
+              "half_avuncular": 103,
+              "avuncular_once_removed": 51,
+              "full_1st_cousin": 49,
+              "half_1st_cousin": 84,
+              "avuncular": 50,
+              "avuncular_twice_removed": 71
+            },
+            "correct_counts": {
+              "siblings": 529,
+              "half_sibling": 69,
+              "half_avuncular": 103,
+              "avuncular_once_removed": 51,
+              "full_1st_cousin": 48,
+              "half_1st_cousin": 84,
+              "avuncular": 50,
+              "avuncular_twice_removed": 71
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 529
+              },
+              "half_sibling": {
+                "half_sibling": 69
+              },
+              "half_avuncular": {
+                "half_avuncular": 103
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 51
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 48,
+                "half_1st_cousin": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 84
+              },
+              "avuncular": {
+                "avuncular": 50
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 71
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.0362569157394864
+          },
+          "context": {
+            "truth_pairs": 1006,
+            "correct": 1006,
+            "accuracy": 1.0,
+            "balanced_accuracy": 1.0,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 1.0,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 529,
+              "half_sibling": 69,
+              "half_avuncular": 103,
+              "avuncular_once_removed": 51,
+              "full_1st_cousin": 49,
+              "half_1st_cousin": 84,
+              "avuncular": 50,
+              "avuncular_twice_removed": 71
+            },
+            "correct_counts": {
+              "siblings": 529,
+              "half_sibling": 69,
+              "half_avuncular": 103,
+              "avuncular_once_removed": 51,
+              "full_1st_cousin": 49,
+              "half_1st_cousin": 84,
+              "avuncular": 50,
+              "avuncular_twice_removed": 71
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 529
+              },
+              "half_sibling": {
+                "half_sibling": 69
+              },
+              "half_avuncular": {
+                "half_avuncular": 103
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 51
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 49
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 84
+              },
+              "avuncular": {
+                "avuncular": 50
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 71
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.013669275658164767
+          }
+        },
+        "hbd_at_least_015": {
+          "base": {
+            "truth_pairs": 535,
+            "correct": 535,
+            "accuracy": 1.0,
+            "balanced_accuracy": 0.75,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 200,
+              "avuncular": 60,
+              "avuncular_twice_removed": 74,
+              "half_sibling": 78,
+              "avuncular_once_removed": 78,
+              "half_avuncular": 45
+            },
+            "correct_counts": {
+              "siblings": 200,
+              "avuncular": 60,
+              "avuncular_twice_removed": 74,
+              "half_sibling": 78,
+              "avuncular_once_removed": 78,
+              "half_avuncular": 45
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 200
+              },
+              "avuncular": {
+                "avuncular": 60
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 74
+              },
+              "half_sibling": {
+                "half_sibling": 78
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 78
+              },
+              "half_avuncular": {
+                "half_avuncular": 45
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.03053279652756715
+          },
+          "context": {
+            "truth_pairs": 535,
+            "correct": 535,
+            "accuracy": 1.0,
+            "balanced_accuracy": 0.75,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 1.0,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 200,
+              "avuncular": 60,
+              "avuncular_twice_removed": 74,
+              "half_sibling": 78,
+              "avuncular_once_removed": 78,
+              "half_avuncular": 45
+            },
+            "correct_counts": {
+              "siblings": 200,
+              "avuncular": 60,
+              "avuncular_twice_removed": 74,
+              "half_sibling": 78,
+              "avuncular_once_removed": 78,
+              "half_avuncular": 45
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 200
+              },
+              "avuncular": {
+                "avuncular": 60
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 74
+              },
+              "half_sibling": {
+                "half_sibling": 78
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 78
+              },
+              "half_avuncular": {
+                "half_avuncular": 45
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.01148855493323502
+          }
+        }
+      },
+      "context_medians_by_label": {
+        "siblings": [
+          0.9259004093997155,
+          0.9434109211681818,
+          0.6726821047863415,
+          0.6960950163116725,
+          0.23315865303057298,
+          0.27242735893450315,
+          0.42233749370006923,
+          0.48597233792056677,
+          0.1773777123816936,
+          0.1891579410652033,
+          0.07468594602341413,
+          0.08947409317685769,
+          0.9520415872507271,
+          0.9705498252589215,
+          0.6975773743494298,
+          0.7224996890486718,
+          0.24037342192640515,
+          0.28267157212242594,
+          0.42404169588881707,
+          0.4890926146581739,
+          0.18571561921711602,
+          0.1980692410502185,
+          0.07847731750052575,
+          0.09424372237908481,
+          0.9639692369254441,
+          0.9816750205467822,
+          0.7093392255569796,
+          0.734120293284738,
+          0.2510184888685495,
+          0.2858487655282529,
+          0.42514588338030934,
+          0.48834117441819397,
+          0.18985772108954374,
+          0.20373172366074244,
+          0.08035866621448665,
+          0.09584566803270464
+        ],
+        "half_sibling": [
+          0.7785782941947431,
+          0.8564126503540729,
+          0.4443016520388457,
+          0.47246271509423204,
+          0.00048473893371979557,
+          0.037700522273966634,
+          0.0009881293144945683,
+          0.06372722175030637,
+          0.1130549618599774,
+          0.1775825850633596,
+          0.00013032938947072996,
+          0.008667908491162755,
+          0.8081635192877265,
+          0.8830419542560115,
+          0.4621497621931788,
+          0.4876009637442969,
+          0.00048473893371979557,
+          0.04167207233569975,
+          0.0012363449200211252,
+          0.06469095218044602,
+          0.12578453704846906,
+          0.1873787813792781,
+          0.00014939320106535807,
+          0.009752449635840026,
+          0.8206144646634779,
+          0.9023260044644865,
+          0.47098891161672385,
+          0.5013511084543625,
+          0.00048473893371979557,
+          0.043857465116650486,
+          0.0010696044691993847,
+          0.07353720317985034,
+          0.13491218914955946,
+          0.19795938877021563,
+          0.00014939320106535807,
+          0.010833048229308187
+        ],
+        "avuncular": [
+          0.647358578779326,
+          0.8221509566672224,
+          0.43856759685332086,
+          0.4724265029008242,
+          0.0006463797393831356,
+          0.15574148615942962,
+          0.0025930862185636282,
+          0.2653778663356173,
+          0.1509524081846155,
+          0.2016445610339113,
+          0.00039862230612530973,
+          0.04446593217693804,
+          0.6648661397818434,
+          0.8433602653408545,
+          0.4585800044271164,
+          0.49093627159253855,
+          0.0006463797393831356,
+          0.1632407356177796,
+          0.002394968266030928,
+          0.26115631435508824,
+          0.15309456384404707,
+          0.20716351189396687,
+          0.00039862230612530973,
+          0.045095211232896365,
+          0.6780024362796367,
+          0.8627165494219856,
+          0.4754475816358221,
+          0.5015323764707057,
+          0.0006463797393831356,
+          0.16615602371314003,
+          0.0024558299901925175,
+          0.2623765658567626,
+          0.15584508280022036,
+          0.20879314098608764,
+          0.00039862230612530973,
+          0.04549953365853387
+        ],
+        "half_avuncular": [
+          0.3824570462817899,
+          0.471295339040115,
+          0.224027460610048,
+          0.2509275278290628,
+          0.0,
+          0.0020909119751376746,
+          0.0,
+          0.0019382518800894583,
+          0.14938071505195638,
+          0.18992804004339478,
+          0.0,
+          0.00035131091440555434,
+          0.39206425679419177,
+          0.4877040500402088,
+          0.23518214097316698,
+          0.26591776186791916,
+          0.0,
+          0.0020909119751376746,
+          0.0,
+          0.001855386484437295,
+          0.1584082530837299,
+          0.20206111365036744,
+          0.0,
+          0.00035131091440555434,
+          0.40112391940640535,
+          0.4980295276850124,
+          0.2458693220025981,
+          0.26945353722665977,
+          0.0,
+          0.0020909119751376746,
+          0.0,
+          0.0018245192270342557,
+          0.1686920294178197,
+          0.2066167520251037,
+          0.0,
+          0.00035131091440555434
+        ],
+        "avuncular_once_removed": [
+          0.37433126509490044,
+          0.4346689021644336,
+          0.20939327744520192,
+          0.23713728984975826,
+          2.194601280615262e-06,
+          0.003910452432446003,
+          4.9661670712474456e-05,
+          0.0033864568606779217,
+          0.12440097946230276,
+          0.16041791183307932,
+          2.194601280615262e-06,
+          0.000526752468694663,
+          0.39046958763822986,
+          0.4538832945642799,
+          0.21308505243043954,
+          0.24625181977703298,
+          2.194601280615262e-06,
+          0.003910452432446003,
+          4.823599015553717e-05,
+          0.003378156413508707,
+          0.1339973980715643,
+          0.1731482981550353,
+          2.194601280615262e-06,
+          0.0005478748970446368,
+          0.3944861824452946,
+          0.4637812970852032,
+          0.2205024727562777,
+          0.2536094799733911,
+          8.607709983455113e-06,
+          0.003910452432446003,
+          5.0309498408000014e-05,
+          0.003232283702449617,
+          0.14817732797053026,
+          0.18507319861100047,
+          8.607709983455113e-06,
+          0.0005478748970446368
+        ],
+        "avuncular_twice_removed": [
+          0.20083091325569585,
+          0.24664575182255472,
+          0.11040841117531439,
+          0.13270478252674006,
+          0.0,
+          0.00043054158926215654,
+          0.0,
+          0.0006085650530757735,
+          0.15523124053630818,
+          0.2072015130092998,
+          0.0,
+          9.765348962503505e-05,
+          0.20737311969431488,
+          0.2557616704058062,
+          0.11427483895347094,
+          0.13706562912395145,
+          0.0,
+          0.00043054158926215654,
+          0.0,
+          0.000588355443925822,
+          0.16478102426545302,
+          0.21431874399004086,
+          0.0,
+          9.765348962503505e-05,
+          0.21113949084479333,
+          0.2619277628453931,
+          0.11558945708107914,
+          0.14016990488868325,
+          0.0,
+          0.00043054158926215654,
+          0.0,
+          0.0005733385558074617,
+          0.16803294102412908,
+          0.21993218227631364,
+          0.0,
+          9.765348962503505e-05
+        ],
+        "full_1st_cousin": [
+          0.38926218546058844,
+          0.4445788192358808,
+          0.22417501456970243,
+          0.24545743109820906,
+          2.2014406913462486e-05,
+          0.0017111843602671927,
+          3.622675895824843e-05,
+          0.0031000930490875343,
+          0.1669680622095952,
+          0.19202492300994428,
+          5.839332631281993e-06,
+          0.0005855705124893582,
+          0.40341209459475935,
+          0.4667317768322927,
+          0.23669674448116093,
+          0.25726951749400107,
+          3.9929237396999055e-05,
+          0.0017111843602671927,
+          6.7815822025125e-05,
+          0.003388495248948886,
+          0.18038561220652652,
+          0.20261168658106293,
+          1.3309745798999685e-05,
+          0.0006789391503904738,
+          0.40959105404957474,
+          0.4794272637109218,
+          0.2436994755037913,
+          0.2636621641604517,
+          3.9929237396999055e-05,
+          0.0017344860203138408,
+          6.716970302016581e-05,
+          0.0031545967519506237,
+          0.18792869289836273,
+          0.20947076805750642,
+          1.3309745798999685e-05,
+          0.0006789391503904738
+        ],
+        "half_1st_cousin": [
+          0.2345107922103486,
+          0.27621626063633625,
+          0.12903615396362247,
+          0.15737394038937283,
+          0.0,
+          0.0007533972469972375,
+          0.0,
+          0.0009970532677579316,
+          0.16033957148020647,
+          0.2083657577173508,
+          0.0,
+          0.0001818415299855787,
+          0.24134010485771207,
+          0.27834749950464227,
+          0.13476814747311067,
+          0.1639095437861315,
+          0.0,
+          0.0009650773117441582,
+          0.0,
+          0.0009217411216962767,
+          0.1776293154921211,
+          0.2189966973780143,
+          0.0,
+          0.00018273472864788732,
+          0.24523811778047833,
+          0.28510990318616825,
+          0.1403759566294788,
+          0.16745077048528273,
+          0.0,
+          0.0009704414901587598,
+          0.0,
+          0.0008761148702293792,
+          0.18398626178566285,
+          0.22066819295877155,
+          0.0,
+          0.00020551726840751519
+        ]
+      }
+    },
+    "calibration": {
+      "base": {
+        "truth_pairs": 735,
+        "correct": 673,
+        "accuracy": 0.9156462585034013,
+        "balanced_accuracy": 0.8382390847378949,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9361702127659575,
+          "avuncular": 0.8157894736842105,
+          "half_avuncular": 0.6785714285714286,
+          "avuncular_once_removed": 0.7692307692307693,
+          "avuncular_twice_removed": 0.9555555555555556,
+          "full_1st_cousin": 0.7291666666666666,
+          "half_1st_cousin": 0.8214285714285714
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 44,
+          "avuncular": 31,
+          "half_avuncular": 38,
+          "avuncular_once_removed": 30,
+          "avuncular_twice_removed": 43,
+          "full_1st_cousin": 35,
+          "half_1st_cousin": 46
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 44,
+            "full_1st_cousin": 3
+          },
+          "avuncular": {
+            "avuncular": 31,
+            "half_avuncular": 2,
+            "full_1st_cousin": 1,
+            "half_sibling": 4
+          },
+          "half_avuncular": {
+            "half_avuncular": 38,
+            "full_1st_cousin": 7,
+            "half_1st_cousin": 3,
+            "avuncular_once_removed": 5,
+            "avuncular_twice_removed": 3
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 30,
+            "avuncular_twice_removed": 2,
+            "half_1st_cousin": 5,
+            "half_avuncular": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 43,
+            "half_1st_cousin": 2
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 35,
+            "half_1st_cousin": 7,
+            "half_avuncular": 4,
+            "avuncular_once_removed": 2
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 46,
+            "half_avuncular": 3,
+            "full_1st_cousin": 6,
+            "avuncular_twice_removed": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.021961295647946993
+      },
+      "context": {
+        "truth_pairs": 735,
+        "correct": 673,
+        "accuracy": 0.9156462585034013,
+        "balanced_accuracy": 0.8394497863247863,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 0.5535714285714286,
+          "avuncular_once_removed": 0.5128205128205128,
+          "avuncular_twice_removed": 0.9111111111111111,
+          "full_1st_cousin": 0.9166666666666666,
+          "half_1st_cousin": 0.8214285714285714
+        },
+        "counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 56,
+          "avuncular_once_removed": 39,
+          "avuncular_twice_removed": 45,
+          "full_1st_cousin": 48,
+          "half_1st_cousin": 56
+        },
+        "correct_counts": {
+          "siblings": 406,
+          "half_sibling": 47,
+          "avuncular": 38,
+          "half_avuncular": 31,
+          "avuncular_once_removed": 20,
+          "avuncular_twice_removed": 41,
+          "full_1st_cousin": 44,
+          "half_1st_cousin": 46
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 406
+          },
+          "half_sibling": {
+            "half_sibling": 47
+          },
+          "avuncular": {
+            "avuncular": 38
+          },
+          "half_avuncular": {
+            "half_avuncular": 31,
+            "full_1st_cousin": 12,
+            "avuncular_once_removed": 13
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 17,
+            "avuncular_once_removed": 20,
+            "full_1st_cousin": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 41,
+            "half_1st_cousin": 4
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 44,
+            "half_1st_cousin": 4
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 46,
+            "full_1st_cousin": 8,
+            "half_avuncular": 1,
+            "avuncular_twice_removed": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.026948126462941705
+      },
+      "flips": {
+        "base_correct_to_wrong": 33,
+        "base_wrong_to_correct": 33,
+        "strong_base_correct_to_wrong": 0
+      },
+      "strata": {
+        "hbd_005_to_015": {
+          "base": {
+            "truth_pairs": 336,
+            "correct": 301,
+            "accuracy": 0.8958333333333334,
+            "balanced_accuracy": 0.7882745726495726,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 0.8333333333333334,
+              "half_avuncular": 0.5555555555555556,
+              "avuncular_once_removed": 0.85,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.375,
+              "half_1st_cousin": 0.6923076923076923
+            },
+            "counts": {
+              "siblings": 204,
+              "half_sibling": 19,
+              "half_avuncular": 27,
+              "avuncular_once_removed": 20,
+              "full_1st_cousin": 16,
+              "half_1st_cousin": 26,
+              "avuncular": 12,
+              "avuncular_twice_removed": 12
+            },
+            "correct_counts": {
+              "siblings": 204,
+              "half_sibling": 19,
+              "half_avuncular": 15,
+              "avuncular_once_removed": 17,
+              "full_1st_cousin": 6,
+              "half_1st_cousin": 18,
+              "avuncular": 10,
+              "avuncular_twice_removed": 12
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 204
+              },
+              "half_sibling": {
+                "half_sibling": 19
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 6,
+                "half_avuncular": 15,
+                "half_1st_cousin": 3,
+                "avuncular_once_removed": 3
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 17,
+                "half_avuncular": 2,
+                "half_1st_cousin": 1
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 6,
+                "half_1st_cousin": 5,
+                "half_avuncular": 3,
+                "avuncular_once_removed": 2
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 18,
+                "half_avuncular": 3,
+                "full_1st_cousin": 5
+              },
+              "avuncular": {
+                "avuncular": 10,
+                "half_sibling": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 12
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.03242633015241783
+          },
+          "context": {
+            "truth_pairs": 336,
+            "correct": 290,
+            "accuracy": 0.8630952380952381,
+            "balanced_accuracy": 0.7449207621082621,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.48148148148148145,
+              "avuncular_once_removed": 0.05,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.8125,
+              "half_1st_cousin": 0.6153846153846154
+            },
+            "counts": {
+              "siblings": 204,
+              "half_sibling": 19,
+              "half_avuncular": 27,
+              "avuncular_once_removed": 20,
+              "full_1st_cousin": 16,
+              "half_1st_cousin": 26,
+              "avuncular": 12,
+              "avuncular_twice_removed": 12
+            },
+            "correct_counts": {
+              "siblings": 204,
+              "half_sibling": 19,
+              "half_avuncular": 13,
+              "avuncular_once_removed": 1,
+              "full_1st_cousin": 13,
+              "half_1st_cousin": 16,
+              "avuncular": 12,
+              "avuncular_twice_removed": 12
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 204
+              },
+              "half_sibling": {
+                "half_sibling": 19
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 10,
+                "avuncular_once_removed": 4,
+                "half_avuncular": 13
+              },
+              "avuncular_once_removed": {
+                "half_avuncular": 17,
+                "avuncular_once_removed": 1,
+                "full_1st_cousin": 2
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 13,
+                "half_1st_cousin": 3
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 16,
+                "full_1st_cousin": 8,
+                "half_avuncular": 1,
+                "avuncular_twice_removed": 1
+              },
+              "avuncular": {
+                "avuncular": 12
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 12
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.03914960341780737
+          }
+        },
+        "simple": {
+          "base": {
+            "truth_pairs": 735,
+            "correct": 673,
+            "accuracy": 0.9156462585034013,
+            "balanced_accuracy": 0.8382390847378949,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.9361702127659575,
+              "avuncular": 0.8157894736842105,
+              "half_avuncular": 0.6785714285714286,
+              "avuncular_once_removed": 0.7692307692307693,
+              "avuncular_twice_removed": 0.9555555555555556,
+              "full_1st_cousin": 0.7291666666666666,
+              "half_1st_cousin": 0.8214285714285714
+            },
+            "counts": {
+              "siblings": 406,
+              "half_sibling": 47,
+              "avuncular": 38,
+              "half_avuncular": 56,
+              "avuncular_once_removed": 39,
+              "avuncular_twice_removed": 45,
+              "full_1st_cousin": 48,
+              "half_1st_cousin": 56
+            },
+            "correct_counts": {
+              "siblings": 406,
+              "half_sibling": 44,
+              "avuncular": 31,
+              "half_avuncular": 38,
+              "avuncular_once_removed": 30,
+              "avuncular_twice_removed": 43,
+              "full_1st_cousin": 35,
+              "half_1st_cousin": 46
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 406
+              },
+              "half_sibling": {
+                "half_sibling": 44,
+                "full_1st_cousin": 3
+              },
+              "avuncular": {
+                "avuncular": 31,
+                "half_avuncular": 2,
+                "full_1st_cousin": 1,
+                "half_sibling": 4
+              },
+              "half_avuncular": {
+                "half_avuncular": 38,
+                "full_1st_cousin": 7,
+                "half_1st_cousin": 3,
+                "avuncular_once_removed": 5,
+                "avuncular_twice_removed": 3
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 30,
+                "avuncular_twice_removed": 2,
+                "half_1st_cousin": 5,
+                "half_avuncular": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 43,
+                "half_1st_cousin": 2
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 35,
+                "half_1st_cousin": 7,
+                "half_avuncular": 4,
+                "avuncular_once_removed": 2
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 46,
+                "half_avuncular": 3,
+                "full_1st_cousin": 6,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.021961295647946973
+          },
+          "context": {
+            "truth_pairs": 735,
+            "correct": 673,
+            "accuracy": 0.9156462585034013,
+            "balanced_accuracy": 0.8394497863247863,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.5535714285714286,
+              "avuncular_once_removed": 0.5128205128205128,
+              "avuncular_twice_removed": 0.9111111111111111,
+              "full_1st_cousin": 0.9166666666666666,
+              "half_1st_cousin": 0.8214285714285714
+            },
+            "counts": {
+              "siblings": 406,
+              "half_sibling": 47,
+              "avuncular": 38,
+              "half_avuncular": 56,
+              "avuncular_once_removed": 39,
+              "avuncular_twice_removed": 45,
+              "full_1st_cousin": 48,
+              "half_1st_cousin": 56
+            },
+            "correct_counts": {
+              "siblings": 406,
+              "half_sibling": 47,
+              "avuncular": 38,
+              "half_avuncular": 31,
+              "avuncular_once_removed": 20,
+              "avuncular_twice_removed": 41,
+              "full_1st_cousin": 44,
+              "half_1st_cousin": 46
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 406
+              },
+              "half_sibling": {
+                "half_sibling": 47
+              },
+              "avuncular": {
+                "avuncular": 38
+              },
+              "half_avuncular": {
+                "half_avuncular": 31,
+                "full_1st_cousin": 12,
+                "avuncular_once_removed": 13
+              },
+              "avuncular_once_removed": {
+                "half_avuncular": 17,
+                "avuncular_once_removed": 20,
+                "full_1st_cousin": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 41,
+                "half_1st_cousin": 4
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 44,
+                "half_1st_cousin": 4
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 46,
+                "full_1st_cousin": 8,
+                "half_avuncular": 1,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.026948126462941705
+          }
+        },
+        "hbd_under_005": {
+          "base": {
+            "truth_pairs": 269,
+            "correct": 250,
+            "accuracy": 0.929368029739777,
+            "balanced_accuracy": 0.7750868055555555,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.75,
+              "avuncular": 0.7,
+              "half_avuncular": 0.8,
+              "avuncular_once_removed": 0.4444444444444444,
+              "avuncular_twice_removed": 0.6666666666666666,
+              "full_1st_cousin": 0.90625,
+              "half_1st_cousin": 0.9333333333333333
+            },
+            "counts": {
+              "siblings": 165,
+              "half_avuncular": 5,
+              "full_1st_cousin": 32,
+              "half_1st_cousin": 30,
+              "avuncular": 10,
+              "avuncular_twice_removed": 6,
+              "half_sibling": 12,
+              "avuncular_once_removed": 9
+            },
+            "correct_counts": {
+              "siblings": 165,
+              "half_avuncular": 4,
+              "full_1st_cousin": 29,
+              "half_1st_cousin": 28,
+              "avuncular": 7,
+              "avuncular_twice_removed": 4,
+              "half_sibling": 9,
+              "avuncular_once_removed": 4
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 165
+              },
+              "half_avuncular": {
+                "half_avuncular": 4,
+                "full_1st_cousin": 1
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 29,
+                "half_1st_cousin": 2,
+                "half_avuncular": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 28,
+                "full_1st_cousin": 1,
+                "avuncular_twice_removed": 1
+              },
+              "avuncular": {
+                "half_avuncular": 2,
+                "full_1st_cousin": 1,
+                "avuncular": 7
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 4,
+                "half_1st_cousin": 2
+              },
+              "half_sibling": {
+                "half_sibling": 9,
+                "full_1st_cousin": 3
+              },
+              "avuncular_once_removed": {
+                "half_1st_cousin": 4,
+                "avuncular_once_removed": 4,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.029118204131136954
+          },
+          "context": {
+            "truth_pairs": 269,
+            "correct": 260,
+            "accuracy": 0.966542750929368,
+            "balanced_accuracy": 0.8127604166666667,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.2,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 0.3333333333333333,
+              "full_1st_cousin": 0.96875,
+              "half_1st_cousin": 1.0
+            },
+            "counts": {
+              "siblings": 165,
+              "half_avuncular": 5,
+              "full_1st_cousin": 32,
+              "half_1st_cousin": 30,
+              "avuncular": 10,
+              "avuncular_twice_removed": 6,
+              "half_sibling": 12,
+              "avuncular_once_removed": 9
+            },
+            "correct_counts": {
+              "siblings": 165,
+              "half_avuncular": 1,
+              "full_1st_cousin": 31,
+              "half_1st_cousin": 30,
+              "avuncular": 10,
+              "avuncular_twice_removed": 2,
+              "half_sibling": 12,
+              "avuncular_once_removed": 9
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 165
+              },
+              "half_avuncular": {
+                "half_avuncular": 1,
+                "avuncular_once_removed": 2,
+                "full_1st_cousin": 2
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 31,
+                "half_1st_cousin": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 30
+              },
+              "avuncular": {
+                "avuncular": 10
+              },
+              "avuncular_twice_removed": {
+                "half_1st_cousin": 4,
+                "avuncular_twice_removed": 2
+              },
+              "half_sibling": {
+                "half_sibling": 12
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 9
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.03054025336137918
+          }
+        },
+        "hbd_at_least_015": {
+          "base": {
+            "truth_pairs": 130,
+            "correct": 122,
+            "accuracy": 0.9384615384615385,
+            "balanced_accuracy": 0.6958333333333333,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 0.875,
+              "half_avuncular": 0.7916666666666666,
+              "avuncular_once_removed": 0.9,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 37,
+              "avuncular": 16,
+              "avuncular_twice_removed": 27,
+              "half_sibling": 16,
+              "avuncular_once_removed": 10,
+              "half_avuncular": 24
+            },
+            "correct_counts": {
+              "siblings": 37,
+              "avuncular": 14,
+              "avuncular_twice_removed": 27,
+              "half_sibling": 16,
+              "avuncular_once_removed": 9,
+              "half_avuncular": 19
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 37
+              },
+              "avuncular": {
+                "avuncular": 14,
+                "half_sibling": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 27
+              },
+              "half_sibling": {
+                "half_sibling": 16
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 9,
+                "avuncular_twice_removed": 1
+              },
+              "half_avuncular": {
+                "half_avuncular": 19,
+                "avuncular_once_removed": 2,
+                "avuncular_twice_removed": 3
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.07261996040511269
+          },
+          "context": {
+            "truth_pairs": 130,
+            "correct": 123,
+            "accuracy": 0.9461538461538461,
+            "balanced_accuracy": 0.7135416666666667,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.7083333333333334,
+              "avuncular_once_removed": 1.0,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 37,
+              "avuncular": 16,
+              "avuncular_twice_removed": 27,
+              "half_sibling": 16,
+              "avuncular_once_removed": 10,
+              "half_avuncular": 24
+            },
+            "correct_counts": {
+              "siblings": 37,
+              "avuncular": 16,
+              "avuncular_twice_removed": 27,
+              "half_sibling": 16,
+              "avuncular_once_removed": 10,
+              "half_avuncular": 17
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 37
+              },
+              "avuncular": {
+                "avuncular": 16
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 27
+              },
+              "half_sibling": {
+                "half_sibling": 16
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 10
+              },
+              "half_avuncular": {
+                "half_avuncular": 17,
+                "avuncular_once_removed": 7
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.035205027047113625
+          }
+        }
+      },
+      "context_medians_by_label": {
+        "siblings": [
+          0.9260769701910023,
+          0.9445030989070881,
+          0.6694900390850366,
+          0.6914525581780141,
+          0.3330994441709199,
+          0.3612655536203665,
+          0.4189665000396473,
+          0.4818769353694283,
+          0.17436391830511827,
+          0.18380446869941086,
+          0.07565202991470314,
+          0.08785498420790566,
+          0.9562780495107692,
+          0.9744525274312419,
+          0.6970061349059555,
+          0.7202353168436779,
+          0.3503616351522955,
+          0.3848284803090117,
+          0.42332410690302646,
+          0.4814132018532972,
+          0.18392206048136409,
+          0.1956315518826266,
+          0.08009338230323865,
+          0.09285858866048666,
+          0.9716277570070109,
+          0.9845437430194729,
+          0.7131983403727911,
+          0.7319551815813788,
+          0.35419415897397605,
+          0.39580732498562754,
+          0.4249486609748071,
+          0.4807266327349083,
+          0.18892873653630674,
+          0.20215849164470967,
+          0.08118559231238914,
+          0.09517066806683823
+        ],
+        "half_sibling": [
+          0.7197220922800955,
+          0.8341859981242457,
+          0.454434050699587,
+          0.47007143786486755,
+          0.0002383129175762602,
+          0.06420007131409945,
+          0.0014389384309791572,
+          0.10518758854329983,
+          0.1195580381481775,
+          0.15927479315632423,
+          0.00015887527838417346,
+          0.01657998000786637,
+          0.7387066378845243,
+          0.8742270249885196,
+          0.47893149635087084,
+          0.49568463378127575,
+          0.0002383129175762602,
+          0.07362964865950426,
+          0.002025096833174818,
+          0.11302971309363917,
+          0.1293161826795842,
+          0.1725201518352818,
+          0.00015887527838417346,
+          0.019436432687080635,
+          0.7666526952431111,
+          0.8908742844227651,
+          0.49271031375386093,
+          0.5087235368445788,
+          0.0002383129175762602,
+          0.07667198563211103,
+          0.0018592665176109852,
+          0.11734360122292029,
+          0.13319207773644254,
+          0.18235770906746987,
+          0.00015887527838417346,
+          0.021398510292738496
+        ],
+        "avuncular": [
+          0.6349129867025568,
+          0.6837070375451477,
+          0.41743672585297104,
+          0.4422819200475132,
+          0.0019736885242928126,
+          0.1381645240570616,
+          0.014025245503326494,
+          0.23056103708551307,
+          0.17248239778405433,
+          0.19903302747007043,
+          0.0019297060898183505,
+          0.035975920185045245,
+          0.6488039995497721,
+          0.7162648576387288,
+          0.43692423458868707,
+          0.45533378767586874,
+          0.0022661159666108074,
+          0.14055281045429735,
+          0.013286682567449238,
+          0.22585793806534735,
+          0.18090618128401453,
+          0.21000914708675705,
+          0.0019674377287812405,
+          0.03598742271772162,
+          0.6631377665022016,
+          0.7352561885199859,
+          0.4436532932272792,
+          0.4657320631792862,
+          0.0022661159666108074,
+          0.14444283995551283,
+          0.013084775908063409,
+          0.22949903871583072,
+          0.1835972066705487,
+          0.21254027126505787,
+          0.0019674377287812405,
+          0.038303604058820745
+        ],
+        "half_avuncular": [
+          0.373192526454762,
+          0.4668421869889013,
+          0.1952621780976423,
+          0.2365230283892415,
+          0.0,
+          0.004739272439148574,
+          0.0,
+          0.007639126816783037,
+          0.1189362998184233,
+          0.173447985371967,
+          0.0,
+          0.0011866567771452732,
+          0.389979573825255,
+          0.48195033482505933,
+          0.2045691623798386,
+          0.24072667757463923,
+          0.0,
+          0.004739272439148574,
+          0.0,
+          0.007298564736713521,
+          0.1271149099375833,
+          0.1904701598821555,
+          0.0,
+          0.0011866567771452732,
+          0.39498817295357747,
+          0.4958653702017781,
+          0.21257522907916615,
+          0.24680684535079495,
+          0.0,
+          0.004739272439148574,
+          0.0,
+          0.007102690095046755,
+          0.13589382723326754,
+          0.19377936671725893,
+          0.0,
+          0.0011866567771452732
+        ],
+        "avuncular_once_removed": [
+          0.3494716990193731,
+          0.45065878706343576,
+          0.21438316155749237,
+          0.22567062851788616,
+          0.0,
+          0.005234165833341069,
+          0.0,
+          0.014937198538120436,
+          0.15017934656718981,
+          0.1769034118954083,
+          0.0,
+          0.0021378830367124175,
+          0.36473235912539925,
+          0.4662139917188465,
+          0.22424881964349372,
+          0.23997089575866898,
+          0.0,
+          0.005234165833341069,
+          0.0,
+          0.01382968654815477,
+          0.16635495857788643,
+          0.19107022970850912,
+          0.0,
+          0.0021378830367124175,
+          0.37262703093272176,
+          0.4844068073223575,
+          0.23367424373328952,
+          0.24374805878936462,
+          0.0,
+          0.005234165833341069,
+          0.0,
+          0.013353130233426422,
+          0.17690541995283438,
+          0.19788928433708225,
+          0.0,
+          0.0021378830367124175
+        ],
+        "avuncular_twice_removed": [
+          0.18427864155576745,
+          0.2262248337776333,
+          0.09434909268140221,
+          0.12564624340568364,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.06232147240345996,
+          0.15877097104170063,
+          0.0,
+          0.0,
+          0.1937856600545821,
+          0.23422967201473927,
+          0.10238829163933878,
+          0.13491279558935196,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.06937572650572385,
+          0.17362775320628407,
+          0.0,
+          0.0,
+          0.1937856600545821,
+          0.2352969696150192,
+          0.10465862654295442,
+          0.1386023819281544,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.07585826941230528,
+          0.18073712836891848,
+          0.0,
+          0.0
+        ],
+        "full_1st_cousin": [
+          0.3556320493498857,
+          0.4461426900486321,
+          0.22976277397092293,
+          0.2517772029786093,
+          0.00014290013600111914,
+          0.0009197478500419787,
+          0.0002438897674990557,
+          0.0009683064411884965,
+          0.1683786133044726,
+          0.20065670214817438,
+          4.56919617088717e-05,
+          0.0001826822427588503,
+          0.37292821380305996,
+          0.4689846402687807,
+          0.23701346076326912,
+          0.2634491713780967,
+          0.00014290013600111914,
+          0.0009197478500419787,
+          0.00024111443511568113,
+          0.0008940972359720085,
+          0.1742507547055582,
+          0.2134866443710994,
+          4.56919617088717e-05,
+          0.0001826822427588503,
+          0.38257179068137304,
+          0.4765110069683639,
+          0.2386476739878979,
+          0.2729072728583162,
+          0.00014290013600111914,
+          0.0009197478500419787,
+          0.00024111443511568113,
+          0.0008527133703322727,
+          0.1876608351857417,
+          0.21930517061116628,
+          4.56919617088717e-05,
+          0.0001826822427588503
+        ],
+        "half_1st_cousin": [
+          0.27826260373533684,
+          0.31470275975705003,
+          0.1520262445059105,
+          0.17628466198889947,
+          0.0,
+          0.005109855793017166,
+          0.0,
+          0.007555081142586184,
+          0.16755403589573895,
+          0.2025503009471888,
+          0.0,
+          0.0012549536609204512,
+          0.28042289435337014,
+          0.3267535196717367,
+          0.1597276357110738,
+          0.1789846214197153,
+          0.0,
+          0.005109855793017166,
+          0.0,
+          0.007480070858014548,
+          0.1772008242474596,
+          0.2137185097703982,
+          0.0,
+          0.001338475291355205,
+          0.2853274855157122,
+          0.3267535196717367,
+          0.1638033199324689,
+          0.1829399470275242,
+          0.0,
+          0.005109855793017166,
+          0.0,
+          0.007188438285623089,
+          0.1827545905899029,
+          0.22271498454096056,
+          0.0,
+          0.001338475291355205
+        ]
+      }
+    },
+    "exposed": {
+      "base": {
+        "truth_pairs": 1443,
+        "correct": 1254,
+        "accuracy": 0.8690228690228691,
+        "balanced_accuracy": 0.7676074272392938,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.8953488372093024,
+          "avuncular": 0.8142857142857143,
+          "half_avuncular": 0.5512820512820513,
+          "avuncular_once_removed": 0.5689655172413793,
+          "avuncular_twice_removed": 0.7916666666666666,
+          "full_1st_cousin": 0.813953488372093,
+          "half_1st_cousin": 0.7053571428571429
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 77,
+          "avuncular": 114,
+          "half_avuncular": 43,
+          "avuncular_once_removed": 66,
+          "avuncular_twice_removed": 76,
+          "full_1st_cousin": 70,
+          "half_1st_cousin": 79
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "half_sibling": 77,
+            "avuncular": 5,
+            "full_1st_cousin": 4
+          },
+          "avuncular": {
+            "avuncular": 114,
+            "half_sibling": 20,
+            "half_avuncular": 2,
+            "full_1st_cousin": 3,
+            "avuncular_once_removed": 1
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 23,
+            "half_avuncular": 43,
+            "avuncular_once_removed": 6,
+            "half_1st_cousin": 6
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 66,
+            "half_avuncular": 22,
+            "half_1st_cousin": 9,
+            "full_1st_cousin": 11,
+            "avuncular_twice_removed": 6,
+            "half_sibling": 1,
+            "avuncular": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 76,
+            "avuncular_once_removed": 8,
+            "half_1st_cousin": 12
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 70,
+            "half_1st_cousin": 3,
+            "half_avuncular": 12,
+            "avuncular_twice_removed": 1
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 79,
+            "avuncular_once_removed": 1,
+            "full_1st_cousin": 22,
+            "avuncular_twice_removed": 7,
+            "half_avuncular": 3
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.021254702963779393
+      },
+      "context": {
+        "truth_pairs": 1443,
+        "correct": 1312,
+        "accuracy": 0.9092169092169092,
+        "balanced_accuracy": 0.8290556860274182,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9186046511627907,
+          "avuncular": 0.9428571428571428,
+          "half_avuncular": 0.5,
+          "avuncular_once_removed": 0.6120689655172413,
+          "avuncular_twice_removed": 0.8958333333333334,
+          "full_1st_cousin": 0.8255813953488372,
+          "half_1st_cousin": 0.9375
+        },
+        "counts": {
+          "siblings": 729,
+          "half_sibling": 86,
+          "avuncular": 140,
+          "half_avuncular": 78,
+          "avuncular_once_removed": 116,
+          "avuncular_twice_removed": 96,
+          "full_1st_cousin": 86,
+          "half_1st_cousin": 112
+        },
+        "correct_counts": {
+          "siblings": 729,
+          "half_sibling": 79,
+          "avuncular": 132,
+          "half_avuncular": 39,
+          "avuncular_once_removed": 71,
+          "avuncular_twice_removed": 86,
+          "full_1st_cousin": 71,
+          "half_1st_cousin": 105
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 729
+          },
+          "half_sibling": {
+            "half_sibling": 79,
+            "avuncular": 7
+          },
+          "avuncular": {
+            "avuncular": 132,
+            "half_sibling": 6,
+            "full_1st_cousin": 2
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 32,
+            "half_avuncular": 39,
+            "avuncular_once_removed": 6,
+            "half_1st_cousin": 1
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 24,
+            "full_1st_cousin": 9,
+            "avuncular_once_removed": 71,
+            "half_1st_cousin": 7,
+            "avuncular_twice_removed": 5
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 86,
+            "half_1st_cousin": 10
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 71,
+            "avuncular_once_removed": 6,
+            "half_avuncular": 7,
+            "half_1st_cousin": 2
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 105,
+            "avuncular_once_removed": 1,
+            "half_avuncular": 3,
+            "full_1st_cousin": 2,
+            "avuncular_twice_removed": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.023237502865269842
+      },
+      "flips": {
+        "base_correct_to_wrong": 39,
+        "base_wrong_to_correct": 97,
+        "strong_base_correct_to_wrong": 2
+      },
+      "strata": {
+        "hbd_005_to_015": {
+          "base": {
+            "truth_pairs": 549,
+            "correct": 478,
+            "accuracy": 0.8706739526411658,
+            "balanced_accuracy": 0.7457485912855173,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.9,
+              "avuncular": 0.75,
+              "half_avuncular": 0.5813953488372093,
+              "avuncular_once_removed": 0.5217391304347826,
+              "avuncular_twice_removed": 0.9615384615384616,
+              "full_1st_cousin": 0.5263157894736842,
+              "half_1st_cousin": 0.725
+            },
+            "counts": {
+              "siblings": 311,
+              "half_sibling": 40,
+              "half_avuncular": 43,
+              "avuncular_once_removed": 46,
+              "full_1st_cousin": 19,
+              "half_1st_cousin": 40,
+              "avuncular": 24,
+              "avuncular_twice_removed": 26
+            },
+            "correct_counts": {
+              "siblings": 311,
+              "half_sibling": 36,
+              "half_avuncular": 25,
+              "avuncular_once_removed": 24,
+              "full_1st_cousin": 10,
+              "half_1st_cousin": 29,
+              "avuncular": 18,
+              "avuncular_twice_removed": 25
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 311
+              },
+              "half_sibling": {
+                "half_sibling": 36,
+                "full_1st_cousin": 1,
+                "avuncular": 3
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 13,
+                "half_avuncular": 25,
+                "half_1st_cousin": 5
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 24,
+                "half_avuncular": 19,
+                "half_1st_cousin": 1,
+                "avuncular_twice_removed": 2
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 10,
+                "half_1st_cousin": 2,
+                "half_avuncular": 7
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 29,
+                "avuncular_twice_removed": 6,
+                "full_1st_cousin": 2,
+                "half_avuncular": 3
+              },
+              "avuncular": {
+                "avuncular": 18,
+                "half_sibling": 6
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 25,
+                "half_1st_cousin": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.02903334367740535
+          },
+          "context": {
+            "truth_pairs": 549,
+            "correct": 492,
+            "accuracy": 0.8961748633879781,
+            "balanced_accuracy": 0.8164730686335111,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.4186046511627907,
+              "avuncular_once_removed": 0.4782608695652174,
+              "avuncular_twice_removed": 0.9230769230769231,
+              "full_1st_cousin": 0.7368421052631579,
+              "half_1st_cousin": 0.975
+            },
+            "counts": {
+              "siblings": 311,
+              "half_sibling": 40,
+              "half_avuncular": 43,
+              "avuncular_once_removed": 46,
+              "full_1st_cousin": 19,
+              "half_1st_cousin": 40,
+              "avuncular": 24,
+              "avuncular_twice_removed": 26
+            },
+            "correct_counts": {
+              "siblings": 311,
+              "half_sibling": 40,
+              "half_avuncular": 18,
+              "avuncular_once_removed": 22,
+              "full_1st_cousin": 14,
+              "half_1st_cousin": 39,
+              "avuncular": 24,
+              "avuncular_twice_removed": 24
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 311
+              },
+              "half_sibling": {
+                "half_sibling": 40
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 21,
+                "half_avuncular": 18,
+                "avuncular_once_removed": 3,
+                "half_1st_cousin": 1
+              },
+              "avuncular_once_removed": {
+                "half_avuncular": 18,
+                "full_1st_cousin": 2,
+                "avuncular_once_removed": 22,
+                "avuncular_twice_removed": 4
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 14,
+                "avuncular_once_removed": 3,
+                "half_avuncular": 2
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 39,
+                "avuncular_twice_removed": 1
+              },
+              "avuncular": {
+                "avuncular": 24
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 24,
+                "half_1st_cousin": 2
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.01636861947527595
+          }
+        },
+        "simple": {
+          "base": {
+            "truth_pairs": 717,
+            "correct": 654,
+            "accuracy": 0.9121338912133892,
+            "balanced_accuracy": 0.825625,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.9047619047619048,
+              "avuncular": 0.9583333333333334,
+              "half_avuncular": 0.5714285714285714,
+              "avuncular_once_removed": 0.6904761904761905,
+              "avuncular_twice_removed": 0.86,
+              "full_1st_cousin": 0.76,
+              "half_1st_cousin": 0.86
+            },
+            "counts": {
+              "siblings": 393,
+              "half_sibling": 42,
+              "avuncular": 48,
+              "half_avuncular": 42,
+              "avuncular_once_removed": 42,
+              "avuncular_twice_removed": 50,
+              "full_1st_cousin": 50,
+              "half_1st_cousin": 50
+            },
+            "correct_counts": {
+              "siblings": 393,
+              "half_sibling": 38,
+              "avuncular": 46,
+              "half_avuncular": 24,
+              "avuncular_once_removed": 29,
+              "avuncular_twice_removed": 43,
+              "full_1st_cousin": 38,
+              "half_1st_cousin": 43
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 393
+              },
+              "half_sibling": {
+                "half_sibling": 38,
+                "avuncular": 1,
+                "full_1st_cousin": 3
+              },
+              "avuncular": {
+                "avuncular": 46,
+                "half_sibling": 2
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 11,
+                "half_avuncular": 24,
+                "avuncular_once_removed": 3,
+                "half_1st_cousin": 4
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 29,
+                "half_avuncular": 9,
+                "half_1st_cousin": 4
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 43,
+                "avuncular_once_removed": 3,
+                "half_1st_cousin": 4
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 38,
+                "half_1st_cousin": 2,
+                "half_avuncular": 10
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 43,
+                "avuncular_once_removed": 1,
+                "full_1st_cousin": 6
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.013223337949481578
+          },
+          "context": {
+            "truth_pairs": 717,
+            "correct": 662,
+            "accuracy": 0.9232914923291492,
+            "balanced_accuracy": 0.8463095238095238,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 1.0,
+              "half_avuncular": 0.5476190476190477,
+              "avuncular_once_removed": 0.6428571428571429,
+              "avuncular_twice_removed": 0.92,
+              "full_1st_cousin": 0.78,
+              "half_1st_cousin": 0.88
+            },
+            "counts": {
+              "siblings": 393,
+              "half_sibling": 42,
+              "avuncular": 48,
+              "half_avuncular": 42,
+              "avuncular_once_removed": 42,
+              "avuncular_twice_removed": 50,
+              "full_1st_cousin": 50,
+              "half_1st_cousin": 50
+            },
+            "correct_counts": {
+              "siblings": 393,
+              "half_sibling": 42,
+              "avuncular": 48,
+              "half_avuncular": 23,
+              "avuncular_once_removed": 27,
+              "avuncular_twice_removed": 46,
+              "full_1st_cousin": 39,
+              "half_1st_cousin": 44
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 393
+              },
+              "half_sibling": {
+                "half_sibling": 42
+              },
+              "avuncular": {
+                "avuncular": 48
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 13,
+                "half_avuncular": 23,
+                "avuncular_once_removed": 5,
+                "half_1st_cousin": 1
+              },
+              "avuncular_once_removed": {
+                "half_avuncular": 10,
+                "full_1st_cousin": 2,
+                "avuncular_once_removed": 27,
+                "half_1st_cousin": 3
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 46,
+                "half_1st_cousin": 4
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 39,
+                "avuncular_once_removed": 5,
+                "half_avuncular": 6
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 44,
+                "avuncular_once_removed": 1,
+                "half_avuncular": 3,
+                "full_1st_cousin": 2
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.02521227847716107
+          }
+        },
+        "hbd_under_005": {
+          "base": {
+            "truth_pairs": 631,
+            "correct": 537,
+            "accuracy": 0.8510301109350238,
+            "balanced_accuracy": 0.6168743215352785,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.8125,
+              "avuncular": 0.7906976744186046,
+              "half_avuncular": 0.0,
+              "avuncular_once_removed": 0.35294117647058826,
+              "avuncular_twice_removed": 0.3888888888888889,
+              "full_1st_cousin": 0.8955223880597015,
+              "half_1st_cousin": 0.6944444444444444
+            },
+            "counts": {
+              "siblings": 327,
+              "half_avuncular": 11,
+              "half_1st_cousin": 72,
+              "avuncular": 86,
+              "avuncular_twice_removed": 18,
+              "full_1st_cousin": 67,
+              "half_sibling": 16,
+              "avuncular_once_removed": 34
+            },
+            "correct_counts": {
+              "siblings": 327,
+              "half_avuncular": 0,
+              "half_1st_cousin": 50,
+              "avuncular": 68,
+              "avuncular_twice_removed": 7,
+              "full_1st_cousin": 60,
+              "half_sibling": 13,
+              "avuncular_once_removed": 12
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 327
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 10,
+                "half_1st_cousin": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 50,
+                "avuncular_once_removed": 1,
+                "full_1st_cousin": 20,
+                "avuncular_twice_removed": 1
+              },
+              "avuncular": {
+                "avuncular": 68,
+                "half_sibling": 12,
+                "half_avuncular": 2,
+                "full_1st_cousin": 3,
+                "avuncular_once_removed": 1
+              },
+              "avuncular_twice_removed": {
+                "half_1st_cousin": 11,
+                "avuncular_twice_removed": 7
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 60,
+                "half_avuncular": 5,
+                "avuncular_twice_removed": 1,
+                "half_1st_cousin": 1
+              },
+              "half_sibling": {
+                "half_sibling": 13,
+                "full_1st_cousin": 3
+              },
+              "avuncular_once_removed": {
+                "half_1st_cousin": 8,
+                "avuncular_once_removed": 12,
+                "full_1st_cousin": 11,
+                "avuncular": 1,
+                "avuncular_twice_removed": 2
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.04173660108496234
+          },
+          "context": {
+            "truth_pairs": 631,
+            "correct": 574,
+            "accuracy": 0.9096671949286846,
+            "balanced_accuracy": 0.7228266017155445,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 1.0,
+              "avuncular": 0.9302325581395349,
+              "half_avuncular": 0.0,
+              "avuncular_once_removed": 0.5294117647058824,
+              "avuncular_twice_removed": 0.5555555555555556,
+              "full_1st_cousin": 0.8507462686567164,
+              "half_1st_cousin": 0.9166666666666666
+            },
+            "counts": {
+              "siblings": 327,
+              "half_avuncular": 11,
+              "half_1st_cousin": 72,
+              "avuncular": 86,
+              "avuncular_twice_removed": 18,
+              "full_1st_cousin": 67,
+              "half_sibling": 16,
+              "avuncular_once_removed": 34
+            },
+            "correct_counts": {
+              "siblings": 327,
+              "half_avuncular": 0,
+              "half_1st_cousin": 66,
+              "avuncular": 80,
+              "avuncular_twice_removed": 10,
+              "full_1st_cousin": 57,
+              "half_sibling": 16,
+              "avuncular_once_removed": 18
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 327
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 11
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 66,
+                "avuncular_once_removed": 1,
+                "half_avuncular": 3,
+                "full_1st_cousin": 2
+              },
+              "avuncular": {
+                "avuncular": 80,
+                "half_sibling": 4,
+                "full_1st_cousin": 2
+              },
+              "avuncular_twice_removed": {
+                "half_1st_cousin": 8,
+                "avuncular_twice_removed": 10
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 57,
+                "avuncular_once_removed": 3,
+                "half_avuncular": 5,
+                "half_1st_cousin": 2
+              },
+              "half_sibling": {
+                "half_sibling": 16
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 18,
+                "half_1st_cousin": 7,
+                "full_1st_cousin": 7,
+                "half_avuncular": 1,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.021661853366803433
+          }
+        },
+        "hbd_at_least_015": {
+          "base": {
+            "truth_pairs": 263,
+            "correct": 239,
+            "accuracy": 0.908745247148289,
+            "balanced_accuracy": 0.6620192307692307,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.9333333333333333,
+              "avuncular": 0.9333333333333333,
+              "half_avuncular": 0.75,
+              "avuncular_once_removed": 0.8333333333333334,
+              "avuncular_twice_removed": 0.8461538461538461,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 91,
+              "half_sibling": 30,
+              "avuncular": 30,
+              "avuncular_twice_removed": 52,
+              "avuncular_once_removed": 36,
+              "half_avuncular": 24
+            },
+            "correct_counts": {
+              "siblings": 91,
+              "half_sibling": 28,
+              "avuncular": 28,
+              "avuncular_twice_removed": 44,
+              "avuncular_once_removed": 30,
+              "half_avuncular": 18
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 91
+              },
+              "half_sibling": {
+                "half_sibling": 28,
+                "avuncular": 2
+              },
+              "avuncular": {
+                "avuncular": 28,
+                "half_sibling": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 44,
+                "avuncular_once_removed": 8
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 30,
+                "half_avuncular": 3,
+                "avuncular_twice_removed": 2,
+                "half_sibling": 1
+              },
+              "half_avuncular": {
+                "half_avuncular": 18,
+                "avuncular_once_removed": 6
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.05187252242559855
+          },
+          "context": {
+            "truth_pairs": 263,
+            "correct": 246,
+            "accuracy": 0.935361216730038,
+            "balanced_accuracy": 0.679513888888889,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.7666666666666667,
+              "avuncular": 0.9333333333333333,
+              "half_avuncular": 0.875,
+              "avuncular_once_removed": 0.8611111111111112,
+              "avuncular_twice_removed": 1.0,
+              "full_1st_cousin": 0.0,
+              "half_1st_cousin": 0.0
+            },
+            "counts": {
+              "siblings": 91,
+              "half_sibling": 30,
+              "avuncular": 30,
+              "avuncular_twice_removed": 52,
+              "avuncular_once_removed": 36,
+              "half_avuncular": 24
+            },
+            "correct_counts": {
+              "siblings": 91,
+              "half_sibling": 23,
+              "avuncular": 28,
+              "avuncular_twice_removed": 52,
+              "avuncular_once_removed": 31,
+              "half_avuncular": 21
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 91
+              },
+              "half_sibling": {
+                "half_sibling": 23,
+                "avuncular": 7
+              },
+              "avuncular": {
+                "avuncular": 28,
+                "half_sibling": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 52
+              },
+              "avuncular_once_removed": {
+                "avuncular_once_removed": 31,
+                "half_avuncular": 5
+              },
+              "half_avuncular": {
+                "half_avuncular": 21,
+                "avuncular_once_removed": 3
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.06398509560238626
+          }
+        },
+        "complex": {
+          "base": {
+            "truth_pairs": 726,
+            "correct": 600,
+            "accuracy": 0.8264462809917356,
+            "balanced_accuracy": 0.7300246504313825,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.8863636363636364,
+              "avuncular": 0.7391304347826086,
+              "half_avuncular": 0.5277777777777778,
+              "avuncular_once_removed": 0.5,
+              "avuncular_twice_removed": 0.717391304347826,
+              "full_1st_cousin": 0.8888888888888888,
+              "half_1st_cousin": 0.5806451612903226
+            },
+            "counts": {
+              "siblings": 336,
+              "half_sibling": 44,
+              "avuncular": 92,
+              "avuncular_once_removed": 74,
+              "half_avuncular": 36,
+              "avuncular_twice_removed": 46,
+              "full_1st_cousin": 36,
+              "half_1st_cousin": 62
+            },
+            "correct_counts": {
+              "siblings": 336,
+              "half_sibling": 39,
+              "avuncular": 68,
+              "avuncular_once_removed": 37,
+              "half_avuncular": 19,
+              "avuncular_twice_removed": 33,
+              "full_1st_cousin": 32,
+              "half_1st_cousin": 36
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 336
+              },
+              "half_sibling": {
+                "half_sibling": 39,
+                "avuncular": 4,
+                "full_1st_cousin": 1
+              },
+              "avuncular": {
+                "avuncular": 68,
+                "half_avuncular": 2,
+                "full_1st_cousin": 3,
+                "half_sibling": 18,
+                "avuncular_once_removed": 1
+              },
+              "avuncular_once_removed": {
+                "full_1st_cousin": 11,
+                "avuncular_once_removed": 37,
+                "half_1st_cousin": 5,
+                "avuncular_twice_removed": 6,
+                "half_avuncular": 13,
+                "half_sibling": 1,
+                "avuncular": 1
+              },
+              "half_avuncular": {
+                "half_avuncular": 19,
+                "full_1st_cousin": 12,
+                "avuncular_once_removed": 3,
+                "half_1st_cousin": 2
+              },
+              "avuncular_twice_removed": {
+                "avuncular_once_removed": 5,
+                "avuncular_twice_removed": 33,
+                "half_1st_cousin": 8
+              },
+              "full_1st_cousin": {
+                "full_1st_cousin": 32,
+                "avuncular_twice_removed": 1,
+                "half_1st_cousin": 1,
+                "half_avuncular": 2
+              },
+              "half_1st_cousin": {
+                "full_1st_cousin": 16,
+                "avuncular_twice_removed": 7,
+                "half_1st_cousin": 36,
+                "half_avuncular": 3
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.03861923680815893
+          },
+          "context": {
+            "truth_pairs": 726,
+            "correct": 650,
+            "accuracy": 0.8953168044077136,
+            "balanced_accuracy": 0.816914585278891,
+            "recall": {
+              "siblings": 1.0,
+              "half_sibling": 0.8409090909090909,
+              "avuncular": 0.9130434782608695,
+              "half_avuncular": 0.4444444444444444,
+              "avuncular_once_removed": 0.5945945945945946,
+              "avuncular_twice_removed": 0.8695652173913043,
+              "full_1st_cousin": 0.8888888888888888,
+              "half_1st_cousin": 0.9838709677419355
+            },
+            "counts": {
+              "siblings": 336,
+              "half_sibling": 44,
+              "avuncular": 92,
+              "avuncular_once_removed": 74,
+              "half_avuncular": 36,
+              "avuncular_twice_removed": 46,
+              "full_1st_cousin": 36,
+              "half_1st_cousin": 62
+            },
+            "correct_counts": {
+              "siblings": 336,
+              "half_sibling": 37,
+              "avuncular": 84,
+              "avuncular_once_removed": 44,
+              "half_avuncular": 16,
+              "avuncular_twice_removed": 40,
+              "full_1st_cousin": 32,
+              "half_1st_cousin": 61
+            },
+            "confusion": {
+              "siblings": {
+                "siblings": 336
+              },
+              "half_sibling": {
+                "half_sibling": 37,
+                "avuncular": 7
+              },
+              "avuncular": {
+                "avuncular": 84,
+                "half_sibling": 6,
+                "full_1st_cousin": 2
+              },
+              "avuncular_once_removed": {
+                "full_1st_cousin": 7,
+                "avuncular_once_removed": 44,
+                "half_avuncular": 14,
+                "avuncular_twice_removed": 5,
+                "half_1st_cousin": 4
+              },
+              "half_avuncular": {
+                "full_1st_cousin": 19,
+                "half_avuncular": 16,
+                "avuncular_once_removed": 1
+              },
+              "avuncular_twice_removed": {
+                "avuncular_twice_removed": 40,
+                "half_1st_cousin": 6
+              },
+              "full_1st_cousin": {
+                "half_1st_cousin": 2,
+                "full_1st_cousin": 32,
+                "avuncular_once_removed": 1,
+                "half_avuncular": 1
+              },
+              "half_1st_cousin": {
+                "half_1st_cousin": 61,
+                "avuncular_twice_removed": 1
+              }
+            },
+            "missing_true_pairs": 0,
+            "extra_cross_family_pairs": 0,
+            "ece_10_equal_width": 0.02621546741659736
+          }
+        }
+      },
+      "context_medians_by_label": {
+        "siblings": [
+          0.9152665109662224,
+          0.9356392714443834,
+          0.6701739428282154,
+          0.6930522508687637,
+          0.2649507687062105,
+          0.29612037330156454,
+          0.42696699338619154,
+          0.48457894572499705,
+          0.1639691180465716,
+          0.17777370103202275,
+          0.07261929952705828,
+          0.08366984822334893,
+          0.946761540802768,
+          0.9640392860442871,
+          0.6954342407279666,
+          0.7197532112204804,
+          0.28755285986274226,
+          0.3062350916359302,
+          0.42735332530917386,
+          0.48432500700671294,
+          0.17303395384652623,
+          0.18502677041967014,
+          0.07589998019628769,
+          0.08841107792396359,
+          0.9551533882359913,
+          0.9768482036525913,
+          0.711022692979482,
+          0.7317434329337754,
+          0.2904174201778499,
+          0.31363604873691986,
+          0.43003998971372087,
+          0.4834226187135094,
+          0.17988729175817386,
+          0.18985790097008365,
+          0.07704531860267463,
+          0.09027527548827614
+        ],
+        "half_sibling": [
+          0.7495406609974818,
+          0.8387071546189305,
+          0.42619562867739746,
+          0.4515479395067571,
+          0.0001753954373493895,
+          0.04185073018379188,
+          0.0006097373532003465,
+          0.06451233630242721,
+          0.11439286768512155,
+          0.17849210481171815,
+          9.203062771488002e-05,
+          0.011076863726058142,
+          0.787316527815681,
+          0.8782267475245423,
+          0.44720241466945854,
+          0.48091615132147636,
+          0.00024463535380781875,
+          0.04442717040019991,
+          0.0006880439422669663,
+          0.06589085056700562,
+          0.12851171652818724,
+          0.18832376697264427,
+          9.203062771488002e-05,
+          0.0118684721882204,
+          0.8009421201276634,
+          0.8890613273559543,
+          0.4601726984135639,
+          0.49342403590516026,
+          0.00024463535380781875,
+          0.04639732829851679,
+          0.0006058039784423307,
+          0.06453968476277303,
+          0.13092454485000488,
+          0.19326566357423136,
+          9.203062771488002e-05,
+          0.012216820952469945
+        ],
+        "avuncular": [
+          0.6038099205593861,
+          0.8209426611786981,
+          0.43354779618854333,
+          0.4601931373116095,
+          0.0005304678200415498,
+          0.07463718754378837,
+          0.0018503099444783229,
+          0.26973234821593284,
+          0.16012329335109304,
+          0.19199997340974675,
+          0.00020668453304239934,
+          0.04292520322175563,
+          0.6209139073046308,
+          0.8551224877719423,
+          0.4546755868012519,
+          0.47731133061980546,
+          0.0006214420089662358,
+          0.07616115017123454,
+          0.0018013588444106186,
+          0.26241641856375075,
+          0.16768195980625614,
+          0.20124870580309695,
+          0.00020827987953963832,
+          0.04342396404218148,
+          0.6306623408715568,
+          0.8597841662071809,
+          0.46234936294149565,
+          0.48727551494857846,
+          0.0006229122838175316,
+          0.07616115017123454,
+          0.0017090279871366408,
+          0.2544651132690188,
+          0.17196449188638954,
+          0.2035740627998917,
+          0.00020827987953963832,
+          0.04513082933072933
+        ],
+        "half_avuncular": [
+          0.36911567313806726,
+          0.4454147597487543,
+          0.21146044462512043,
+          0.24828545789707598,
+          0.0,
+          0.0008872946621389072,
+          0.0,
+          0.0010147526025514615,
+          0.1315222546858468,
+          0.1995264046351161,
+          0.0,
+          0.00016384043736963362,
+          0.3789180502959908,
+          0.4724429390734665,
+          0.22451102998049088,
+          0.25633750723212834,
+          0.0,
+          0.0009830426242178017,
+          0.0,
+          0.0009509424594837869,
+          0.14810464445580734,
+          0.20883207495922304,
+          0.0,
+          0.00016384043736963362,
+          0.3937929904462739,
+          0.4796589029871752,
+          0.22728347230931734,
+          0.26535277663270745,
+          0.0,
+          0.0009830426242178017,
+          0.0,
+          0.0008945430365274627,
+          0.15332344016900337,
+          0.21248471454631176,
+          0.0,
+          0.00016384043736963362
+        ],
+        "avuncular_once_removed": [
+          0.3607854165766783,
+          0.4416422523702505,
+          0.21383346826999436,
+          0.2434601676735935,
+          0.0,
+          0.0017467090421656943,
+          0.0,
+          0.0015621293513331884,
+          0.13413153785659843,
+          0.1870342936335247,
+          0.0,
+          0.00023830546018632372,
+          0.3732379700565294,
+          0.46026178956610597,
+          0.22662717064535454,
+          0.24809903101927042,
+          0.0,
+          0.0017467090421656943,
+          0.0,
+          0.0014584585582979952,
+          0.14489380518256922,
+          0.20049649547901433,
+          0.0,
+          0.00023830546018632372,
+          0.37986272252511133,
+          0.468922544930804,
+          0.23069883822139314,
+          0.2600341914058153,
+          0.0,
+          0.0017467090421656943,
+          0.0,
+          0.0013261416415096317,
+          0.16236525265962734,
+          0.20719353555466444,
+          0.0,
+          0.00023830546018632372
+        ],
+        "avuncular_twice_removed": [
+          0.17708065017569838,
+          0.2256799963938745,
+          0.10861313894035124,
+          0.12793953489690024,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.09170456243249056,
+          0.15388481953464805,
+          0.0,
+          0.0,
+          0.1867041782693623,
+          0.2305342699670411,
+          0.1140558241484433,
+          0.1298281843645413,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.09567739660925763,
+          0.16339587310410922,
+          0.0,
+          0.0,
+          0.19031329072383274,
+          0.23815453882713855,
+          0.11618666498491098,
+          0.13289894668104651,
+          0.0,
+          7.398577711971659e-05,
+          0.0,
+          6.237219411643258e-05,
+          0.09567739660925763,
+          0.1674280261990988,
+          0.0,
+          1.300259824891597e-05
+        ],
+        "full_1st_cousin": [
+          0.43510227881569263,
+          0.5043898950983817,
+          0.26345383190455574,
+          0.30530985115888853,
+          0.0,
+          0.0037594419225837543,
+          0.0,
+          0.004632983041088417,
+          0.1667910598236467,
+          0.17995001729805823,
+          0.0,
+          0.000866993500585894,
+          0.45130605428031867,
+          0.5067447487538197,
+          0.2741522546409033,
+          0.3127777761835402,
+          0.0,
+          0.004471756193337157,
+          0.0,
+          0.006938850901626834,
+          0.17123540087997313,
+          0.18819154372575705,
+          0.0,
+          0.0011726088933022285,
+          0.46264154504405747,
+          0.5183544756571623,
+          0.27857981016542,
+          0.31533999138602964,
+          1.896245347577182e-05,
+          0.004498646910020977,
+          1.9424635259581056e-05,
+          0.006914449090097873,
+          0.17224628065440944,
+          0.19377546894076142,
+          3.5851889705447383e-06,
+          0.0011726088933022285
+        ],
+        "half_1st_cousin": [
+          0.24155189785081532,
+          0.30910629017306845,
+          0.14146871127034946,
+          0.15734292449322002,
+          0.0,
+          0.004742169750128626,
+          0.0,
+          0.004760419829903737,
+          0.16947176999506397,
+          0.19051444473879145,
+          0.0,
+          0.001036793484608393,
+          0.24705589925478638,
+          0.3151279308672005,
+          0.1490987567040643,
+          0.16754995585327676,
+          0.0,
+          0.005363535348225875,
+          0.0,
+          0.004595684441038208,
+          0.18358412923503153,
+          0.20751812065185077,
+          0.0,
+          0.001036793484608393,
+          0.2512406008224286,
+          0.32196862977847107,
+          0.1496021628152045,
+          0.17224324508753516,
+          0.0,
+          0.005363535348225875,
+          0.0,
+          0.004493594206841254,
+          0.1847652441924016,
+          0.21474203353066176,
+          0.0,
+          0.001036793484608393
+        ]
+      }
+    }
+  },
+  "inputs_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/protocol_v5.json": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/candidate_v5/candidate.json": "354e49276bdee2643eb2b2827a397a0435c80553b7767139f7c0b07228c8a933",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/context_diagnostic_plan_v1.json": "40ba7775182af3e3f1c05a14be2db84793b30b507d90592f4c848be61fd905a3",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/context_diagnostic_source_v1/diagnose_family_context.py": "4b347c189e0a5799c99e158715c236934485e618db44cb231e84a27535fd396b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_00/result.json": "9d55ae72d8218d66e65c8a2ba0b3b73bf332f7031938282befd869648b191c67",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_01/result.json": "510acc888f8b5cdd2ece4fa5125b789327ed9c29022b46330c40d17eaea02198",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_02/result.json": "c088605ed9dcb2abea3663a8e0b862107afc33a47d2a47da7b7c02656228733e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_03/result.json": "c4b0a30efab3cee63eb85c5bb38b1d29d577e7621084f842b00caa08cbc4fb24",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_04/result.json": "3f8f0c68814c306fd7de69abd2f660671b15eeb4bb77dce7c6a1a33f1a030652",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_05/result.json": "84d7e27b107a15bfb44f46d2829c81601ad806a78e996f2bab2f606356ed2bf9",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_06/result.json": "6eea1ebc78bdff3f7a0e80cb399b47e99ba558d4f76f64251826d50ce736bc11",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_07/result.json": "5e4490d8c327f09658b7680a4da369148f057ce49bb8facd20e6f09d9402fa0e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_08/result.json": "7fd665ac1c63ef0274766336d4badf96055e8c768f2315ce1956c92d47dc1472",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_09/result.json": "82282c476d41aa48757fc69cd5eb7a97d263e058f8f7d4fa1ce7bf5d3813b5d3",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_10/result.json": "89d6c10bb812cb7fccfa9401e0c3c8a8f4fa7a8fc92930b4d5d3eade3196725a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_11/result.json": "ebab8c56760f3aa43b821df06560ab50aa34096b8bf68e6e54b754aaad2519a7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_12/result.json": "f132c9f75033a0ce15a882dc48af46ce5de100b51e72b0fe55aea5203c7683ea",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_13/result.json": "340b94610de50f2c40510831f470e37f83ba27096a285734b6c1a58c2bbd8b6a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_14/result.json": "89d40b45fdaea17e5f090df519f2313466f31ff61c68157491c1412d08472b9a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/train_15/result.json": "2fd66a4759832bc0118a3a31d6c0ea3d3bf447fff6616312a98ce0c7396f2626",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_00/result.json": "ed0a02513f7130d031e4640c43b717794a64e7e3aa8c07db761a78b5dd32b442",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_01/result.json": "660bc47c9936a459fdb27b4af1590dbb685fae2dff7cb6489c5db35854810dd5",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_02/result.json": "cce94e9e7425fc95a1f4f4018216c2243b2f4f4b1541e68e38dcff14ac714a47",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v5/calibration_03/result.json": "97da289274580a0df4c81ecd4ee0f9c8c23974d88844db3e5437f97899209e7f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_00.npz": "913c50241f8c545f0a0d81f37da4c12793eaf99a89fd64a1f967013f418adbbd",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_00/result.json": "8d361e26c079bd404c5bae7e4009027e08dc8bdbab75184b4f6d1dca1c1878f1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_01.npz": "a202f887aa5b1167e7ce6980b2133f43100ef397761a7516782aced91931a33f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_01/result.json": "fd152a8ad790ddb7faf5c8dbfb9f4ab86630483c5d54b10ebf524a393ed5684c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_02.npz": "9d7562a3c14262d8615f7bc26f4aaf42e8bcdfcb1d1ff3b9db5ad64798dfc59c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_02/result.json": "3ff62593f4dad33d43cb4f0f6b4cdc8f91d8d40cc8c1ba48e109ba9b9caeafaa",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_03.npz": "2e5cb02ba4ee2ea5a8cdd5c3b4a8b74fa8ac9583b9824efcfc6176039605fa16",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_03/result.json": "a9d7a86fca8a440d36f341f22a4e17426a0b7e00e07064685346dc3f421feb4c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_04.npz": "5b29003bd284a1638e4e156d1605cb9cec6d2231d38d6ef46de99e44ad7938f7",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_04/result.json": "60c915868c0f0653cd37359c756fa5797c00fdb4a60d41692999b87a06030d63",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_05.npz": "8dde71afe27901e6a8bd56b2677abde96507aa9fd3dfb7f36e4a167d00210cb2",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_05/result.json": "4b45c8b7ee1144e661a3dfcee473349b3f9dfd2d9d51e1b0f7974895f62e09d8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_06.npz": "613f49f5a42a67ba0c0107c161f50ed3ad7d4788ca60258918b88666dd2a4267",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_06/result.json": "613aeda9cab620fe262c8a7481de8528db7e6b967ddfdc2c281e8e3fe2d531cb",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v5/exposed_cohort_07.npz": "ddeb01a132402eca875417146f8f834bbf0b06ebf0d51d7fac3ecc83ee69f201",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_07/result.json": "c637753f21751412800bcd075d5839d30dd6daa34933d3202a220804031fcd0c"
+  },
+  "outputs_sha256": {
+    "context_calibration_00.npz": "8ecacdcfbaad91988146e4f5b5218038b53bfb2a1402b478d55cf71f43a7a64a",
+    "context_calibration_01.npz": "3df65bdbc1416d1f5cbdfdd53704d7e1d2dce6d76e4a396b502f665a8219567d",
+    "context_calibration_02.npz": "33934470d1c34a52f1db39278da4fc13942aef64375aabf11af21ff354ddfc90",
+    "context_calibration_03.npz": "d335efa9e37ade529993082357a3cb7deeeb42d9590f60009b05f80d25b52a5c",
+    "context_exposed_00.npz": "ec2e43a010ccfebf1e8a07af89e31797f04c3c6e3022f7e514794f8a3a3cac54",
+    "context_exposed_01.npz": "33ea801f4bf17724c149362c566870c107f2f0e61990f0429e46bd1c8ee467cf",
+    "context_exposed_02.npz": "6549bd3956fc03fe303a1c76f5b3ceac0831e8c9777ac0b713784473d5bca6a0",
+    "context_exposed_03.npz": "043c2ee15056ead8c8b13288aef83f7faecf04a081c0f1524b6fd2c0a0630ae6",
+    "context_exposed_04.npz": "403f9d71b002b634389dbaceb9c600c6ce3797510518a2d38d8f2236a40f2a25",
+    "context_exposed_05.npz": "13fb603d97e3a1951d90bb8c8e4f8933b2a965047bab324ebfd1768fdb37b974",
+    "context_exposed_06.npz": "31682a12c97979a77848d04b6e193cef44b20785cc17d52b4e42000c85a7e85b",
+    "context_exposed_07.npz": "d2c3fecce750d4cac575da8b08845841fb48c5c5301e824be6698bb53b9aed74",
+    "context_train_00.npz": "4c42a23fa69e0eccd1084e51811421a73196f201a47fb12d567dbe0be7e50b7b",
+    "context_train_01.npz": "a307215ccc7ae4c5051dd2eac7b0321b4d0a134b6f1d6dc34fbfa95679fc3557",
+    "context_train_02.npz": "4029f6de06ada19ff86af791982a0adb5d18751eea1ec411a6ac395509336057",
+    "context_train_03.npz": "9f58e8977fbdb4f5beee764ebd4dad55ce6c69b6feb2025ca9bcb359d2f5542f",
+    "context_train_04.npz": "09d3109bc23263b6b7865e36018c7e2b948a2795e2653c4c4826cb0d99dc556d",
+    "context_train_05.npz": "0365ae3dfde13192e1b9b76b16d295997e583446cf4b1b0d40888f8f3d3e1ec9",
+    "context_train_06.npz": "5c146f0951d500c30cf5da1f89b02423831b5c5b45403cc96ac1a554242d285d",
+    "context_train_07.npz": "50739f38e3858dafb8d8fd3ac4df1c9f75b4a4d965551e36279f1dc32d7a6076",
+    "context_train_08.npz": "b71ba0c8f6a6cdf6e5fb67edec058e088415741bc2c5911ce221867591b690a8",
+    "context_train_09.npz": "0c2de85828bc1c62dc3f472e1cf0109661af58e2c833fbc323bf04b485374bb6",
+    "context_train_10.npz": "9ffa40d9f8be94c6df8eb65e23d035ccefebe69530f8fee247e04c0b502722e7",
+    "context_train_11.npz": "aecfa94208dc9f985c813f735ca56bf0cff5cd5286fd39add3e7c94d8e72c645",
+    "context_train_12.npz": "ea52c213bfad11d8f3669fc8666e055a756b9fda2e2041eec43ff050b13eb50e",
+    "context_train_13.npz": "e6ddfda0f56c086ccc53f10ec27bf9edfdf684bb476ed14edcc3a9f5d2a6b168",
+    "context_train_14.npz": "55628bad18af4658aa39a9e00d043a5fe5e80069e58d8761c1588000b70502df",
+    "context_train_15.npz": "9812795ffe927438d4f133b6b27d776731e0c4c500095ef8f0faa4ed55a8e990",
+    "diagnostic_model.joblib": "746d2715fdb875097b27b40082218a35cd5d5beb9c0dd68bef0d0aedf686b37a",
+    "groups_calibration_00.json": "9ba9729b63409a9cbe621677097661073015e5251cf7a36f58b68d6fd552ad9b",
+    "groups_calibration_01.json": "b99e7656fa3d81585cdb8df8b91c5496d0557b787fd46be781d5f963896d7295",
+    "groups_calibration_02.json": "6a028ef92e10a0da4dd538411ce83dfd6ee6ca0bb080ec22b46c223a841324ae",
+    "groups_calibration_03.json": "59f1f21c9f10d22498708ecde926aef9555371d6805dc9ea9b0329c7070bfa23",
+    "groups_exposed_00.json": "afa499fbe45300f53615e5721a50e6a89b2876500a08a31e7f4f302e31f190fc",
+    "groups_exposed_01.json": "ccd2ba0fcd5e485172c982eb9ff73e22757e331601b7c5bc5bcd6346e9d785c9",
+    "groups_exposed_02.json": "5ea1d8c80f0566a1c7a2e9814f9b0ffde3b68d472a04ab0801841bfe45041ad6",
+    "groups_exposed_03.json": "c5e01ff91a30be4b4e56e079856654b8f4b1767b2a0fa9dd550169837dd2ab1f",
+    "groups_exposed_04.json": "cc4b964931393b618080caaa82058d3a8e6af9c8071038604a8858d89d15094a",
+    "groups_exposed_05.json": "088083c5a7a9d3be21d2b96833271977aec56ecdd75902ba6c8d84e0a95202f2",
+    "groups_exposed_06.json": "f7a7e88d89d768d3d5fb7bd8b2de3c878c822e972bfc303fd86f0f161da17502",
+    "groups_exposed_07.json": "06a8e5bffbe58c6591073b5266ca7a8aee90b06ebd3b4110a6b95f1c486a5fea",
+    "groups_train_00.json": "4bd98e725532a96edfe01095d3373104542ee5bac4822d60b3e6f6504723384b",
+    "groups_train_01.json": "b0c146e42f6da145ccffc98b55498a96593baba2fababd9903de4597d15c5b24",
+    "groups_train_02.json": "e0b6e24dcfe51e5ff2fdc53c72421658c13023a42ec9052d0b2a3326387d1643",
+    "groups_train_03.json": "0da97a902ed0c8ba9f34c69fb753fb9bf8faac385e716d619257bd0a0657e07b",
+    "groups_train_04.json": "703180fb780d141dfde284287aa8e0e705b9cf63871670201f6e3820d0beebfa",
+    "groups_train_05.json": "1847f7905725d1aba25260919982622d930be46f34665de340c9f39688621375",
+    "groups_train_06.json": "2e18d200e82d620a727041fd34155d94205aa48365bbfec72adf00544f6a645e",
+    "groups_train_07.json": "4612fba7609a4a799b38a3d224e813018799a88b7366736a7ea10600469d422c",
+    "groups_train_08.json": "619b8fd865587068939290f5d177738bc24d50bfcd4214f12147d2346060819e",
+    "groups_train_09.json": "3a02969e3e17963d57805814372b0ae31c37060f3d6bdd06bb0a742c30c916f3",
+    "groups_train_10.json": "32ff77c12d4eb2e376776d9e5c182eeb1030bf1ed852a0d50add8c008a122396",
+    "groups_train_11.json": "21d87d42c3c4f4f913d20d7f13a21f453c5c0cc2d45793d015966d2f12893cc4",
+    "groups_train_12.json": "5ce232d7174ce9340dc96c1ad27bd95737d6edc5b71717a07d269fac719aa4ab",
+    "groups_train_13.json": "681d34ac15f53ad0f9809c8e6e8c3b2ff69f34e53f56dbdbe06d1836d1160914",
+    "groups_train_14.json": "ba912505d182e19ed15a059339337b47fdf4a29209b4a7d7d0c1e821dbc2da68",
+    "groups_train_15.json": "d07cbd05851cc25ac46f642e7f2e7445d80ad733578595c8fe41de20493c6e52",
+    "parameters_before_results.json": "ae106e65fdf2f23ff01d9d793d63bfaa41ec3fee4f9db1733535eb39b555a59a",
+    "prospective_plan.json": "40ba7775182af3e3f1c05a14be2db84793b30b507d90592f4c848be61fd905a3",
+    "scoring_calibration.json": "f300fd1f4b866ab30db7c871ad14ae659c1b41ff471921bde62ea468a2a154c7",
+    "scoring_exposed.json": "18962f32754371b88f473bb0faa123c41f5bb0993930cb71eabbf2cc8ce912ef",
+    "scoring_train.json": "dd9b34bc22646e7abe9555a5cbca566812d5d51592d6b8c598b2f418784e9907",
+    "sibling_fold_0.joblib": "b21907d40faf39f34f0f2c5d44038497e4a5e474f05b03736336386a92dcd237",
+    "sibling_fold_1.joblib": "09c4d9c102b03e86177105098d6c05c0626515b12d562aa47d1a9f607116dd8a",
+    "sibling_fold_2.joblib": "9051d1efe41d30dce6c6f54f4a8d7b886f3e9912804ad7a7a9e4fd62a079d609",
+    "sibling_fold_3.joblib": "543f6d6f243343c58fb59e77c5ce0fa0fd35b8dee78d8ac9c052c2168a9aa0f6"
+  },
+  "limitations": [
+    "All cohorts use sibling-rich finite generator templates; general pedigree coverage not established.",
+    "Exposed8 are development checks, not independent confirmation.",
+    "Training pair model scores are in-sample; only sibling grouping is out-of-fold.",
+    "No final candidate or qualification created; context model may damage strong correct pair calls."
+  ],
+  "submission_ready": false
+}

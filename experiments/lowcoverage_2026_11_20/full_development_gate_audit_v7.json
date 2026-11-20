@@ -1,0 +1,168 @@
+{
+  "assessor_sha256": "773cf668a048a52ee568301a9cbba71994eb3292dff266268f393c4935e485a9",
+  "fresh_confirmation_completed": false,
+  "protocol_sha256": "6bb7811d87d0028dfa5d817886e5d26dbe171585e7939b4fc027e8e28d4415f6",
+  "scientifically_ready": false,
+  "tasks": {
+    "bottleneck": {
+      "callable_fraction": {
+        "continued": 0.9999996000001,
+        "seed1": 0.9999996000000002,
+        "seed2": 0.9999995999999
+      },
+      "comparisons": {
+        "continued": {
+          "frequency_L1": 8.914090585741594e-05,
+          "segregating_relative_L1": 0.009442907840667179,
+          "target_relative_change": {
+            "generations": -0.04494500627733966,
+            "post_decline_fraction": -0.006897026704953624
+          }
+        },
+        "seed2": {
+          "frequency_L1": 0.0001437920175173342,
+          "segregating_relative_L1": 0.01534111836737143,
+          "target_relative_change": {
+            "generations": -0.17384566440470195,
+            "post_decline_fraction": 0.011593668438954152
+          }
+        }
+      },
+      "documented_demography_root_sum_squared_relative_errors": {
+        "continued": 0.41432692051225767,
+        "seed1": 0.4218819541979002,
+        "seed2": 0.47101422503997314
+      },
+      "estimates": {
+        "continued": {
+          "generations": 1913.6482087428294,
+          "post_decline_fraction": 0.28241423156174916
+        },
+        "seed1": {
+          "generations": 2003.704730429938,
+          "post_decline_fraction": 0.28437557751410053
+        },
+        "seed2": {
+          "generations": 1655.3693502975013,
+          "post_decline_fraction": 0.2876725336719351
+        }
+      },
+      "execution_binding_sha256": "76858f36dd5ec1b6c1de68b01650a98189953fc1dd9501805e1611eee376276a",
+      "failed_gates": [
+        "two_optimizer_agreement",
+        "target_stability",
+        "parameter_recovery"
+      ],
+      "full_bam_development_gates_passed": false,
+      "gates": {
+        "exposure": true,
+        "frequency_L1": true,
+        "observed_stopping": true,
+        "parameter_recovery": false,
+        "pre_post_binding": true,
+        "segregating_relative_L1": true,
+        "target_stability": false,
+        "two_optimizer_agreement": false
+      },
+      "metric_applicability": "Published demographic-history formula; application to added Tasks13/14 inferred, not separately confirmed.",
+      "relative_errors": {
+        "continued": {
+          "generations": -0.04317589562858526,
+          "post_decline_fraction": 0.4120711578087457
+        },
+        "seed1": {
+          "generations": 0.0018523652149691205,
+          "post_decline_fraction": 0.4218778875705025
+        },
+        "seed2": {
+          "generations": -0.17231532485124934,
+          "post_decline_fraction": 0.4383626683596755
+        }
+      },
+      "scientifically_ready": false,
+      "scored_sha256": "1bba193c77b76b983c1e319f2e70e3e5d5a2e0a5b8887defcce7a8b45227c376"
+    },
+    "split_isolation": {
+      "callable_fraction": {
+        "continued": 0.9999992000006998,
+        "seed1": 0.9999991999994999,
+        "seed2": 0.9999992000010995
+      },
+      "comparisons": {
+        "continued": {
+          "frequency_L1": 0.0001543310584280752,
+          "segregating_relative_L1": 0.007096972821753333,
+          "target_relative_change": {
+            "generations_since_split": 6.8069626311118014e-06,
+            "pop1_population_size": 3.12895561438431e-06,
+            "pop2_population_size": 1.2512720215518414e-07
+          }
+        },
+        "seed2": {
+          "frequency_L1": 0.0007019832219466803,
+          "segregating_relative_L1": 0.02985692440814802,
+          "target_relative_change": {
+            "generations_since_split": 0.007843043374145209,
+            "pop1_population_size": 0.000386878171563243,
+            "pop2_population_size": -7.661149494964103e-05
+          }
+        }
+      },
+      "documented_demography_root_sum_squared_relative_errors": {
+        "continued": 0.11032868020201757,
+        "seed1": 0.11033334751225338,
+        "seed2": 0.10793560344882175
+      },
+      "estimates": {
+        "continued": {
+          "generations_since_split": 4832.4022022586705,
+          "pop1_population_size": 4474.444432116038,
+          "pop2_population_size": 14989.281500683677
+        },
+        "seed1": {
+          "generations_since_split": 4832.369308501368,
+          "pop1_population_size": 4474.430431821817,
+          "pop2_population_size": 14989.279625117055
+        },
+        "seed2": {
+          "generations_since_split": 4870.269790587833,
+          "pop1_population_size": 4476.161491286068,
+          "pop2_population_size": 14988.131273996756
+        }
+      },
+      "execution_binding_sha256": "c71cb95a2e8ba44b4738d563c9ebe0a81c4412baa4b3df5d5879407c56dc5c6d",
+      "failed_gates": [],
+      "full_bam_development_gates_passed": true,
+      "gates": {
+        "exposure": true,
+        "frequency_L1": true,
+        "observed_stopping": true,
+        "parameter_recovery": true,
+        "pre_post_binding": true,
+        "segregating_relative_L1": true,
+        "target_stability": true,
+        "two_optimizer_agreement": true
+      },
+      "metric_applicability": "Published demographic-history formula; application to added Tasks13/14 inferred, not separately confirmed.",
+      "relative_errors": {
+        "continued": {
+          "generations_since_split": -0.03351955954826591,
+          "pop1_population_size": -0.10511111357679237,
+          "pop2_population_size": -0.0007145666210881529
+        },
+        "seed1": {
+          "generations_since_split": -0.03352613829972628,
+          "pop1_population_size": -0.10511391363563649,
+          "pop2_population_size": -0.0007146916588630647
+        },
+        "seed2": {
+          "generations_since_split": -0.025946041882433435,
+          "pop1_population_size": -0.10476770174278649,
+          "pop2_population_size": -0.0007912484002162712
+        }
+      },
+      "scientifically_ready": false,
+      "scored_sha256": "53357487772d5252ce4a5f5f3e6ad63ea18a69aa5c306474ae5418989f78c02e"
+    }
+  }
+}

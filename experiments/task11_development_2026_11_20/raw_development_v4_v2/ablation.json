@@ -1,0 +1,1780 @@
+{
+  "scope": "Development-only reuse of eight previously exposed failed-confirmation cohorts; neither fitted nor used as fresh confirmation",
+  "matched_base_features": [
+    {
+      "split": "train",
+      "index": 0,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 1,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 2,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 3,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 4,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 5,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 6,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 7,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 8,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 9,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 10,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 11,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 12,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 13,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 14,
+      "base_features_equal": true
+    },
+    {
+      "split": "train",
+      "index": 15,
+      "base_features_equal": true
+    },
+    {
+      "split": "calibration",
+      "index": 0,
+      "base_features_equal": true
+    },
+    {
+      "split": "calibration",
+      "index": 1,
+      "base_features_equal": true
+    },
+    {
+      "split": "calibration",
+      "index": 2,
+      "base_features_equal": true
+    },
+    {
+      "split": "calibration",
+      "index": 3,
+      "base_features_equal": true
+    }
+  ],
+  "base": {
+    "truth_pairs": 1443,
+    "correct": 1223,
+    "accuracy": 0.8475398475398476,
+    "balanced_accuracy": 0.7381598368134805,
+    "recall": {
+      "siblings": 1.0,
+      "half_sibling": 0.7790697674418605,
+      "avuncular": 0.6857142857142857,
+      "half_avuncular": 0.6153846153846154,
+      "avuncular_once_removed": 0.4482758620689655,
+      "avuncular_twice_removed": 0.8020833333333334,
+      "full_1st_cousin": 0.8604651162790697,
+      "half_1st_cousin": 0.7142857142857143
+    },
+    "counts": {
+      "siblings": 729,
+      "half_sibling": 86,
+      "avuncular": 140,
+      "half_avuncular": 78,
+      "avuncular_once_removed": 116,
+      "avuncular_twice_removed": 96,
+      "full_1st_cousin": 86,
+      "half_1st_cousin": 112
+    },
+    "correct_counts": {
+      "siblings": 729,
+      "half_sibling": 67,
+      "avuncular": 96,
+      "half_avuncular": 48,
+      "avuncular_once_removed": 52,
+      "avuncular_twice_removed": 77,
+      "full_1st_cousin": 74,
+      "half_1st_cousin": 80
+    },
+    "confusion": {
+      "siblings": {
+        "siblings": 729
+      },
+      "half_sibling": {
+        "half_sibling": 67,
+        "avuncular": 17,
+        "full_1st_cousin": 2
+      },
+      "avuncular": {
+        "avuncular": 96,
+        "half_sibling": 37,
+        "full_1st_cousin": 7
+      },
+      "half_avuncular": {
+        "full_1st_cousin": 20,
+        "half_avuncular": 48,
+        "avuncular_twice_removed": 1,
+        "half_1st_cousin": 5,
+        "avuncular_once_removed": 4
+      },
+      "avuncular_once_removed": {
+        "half_avuncular": 28,
+        "avuncular_once_removed": 52,
+        "half_1st_cousin": 11,
+        "avuncular_twice_removed": 6,
+        "full_1st_cousin": 17,
+        "avuncular": 1,
+        "half_sibling": 1
+      },
+      "avuncular_twice_removed": {
+        "avuncular_twice_removed": 77,
+        "avuncular_once_removed": 8,
+        "half_1st_cousin": 10,
+        "half_avuncular": 1
+      },
+      "full_1st_cousin": {
+        "half_avuncular": 9,
+        "full_1st_cousin": 74,
+        "half_1st_cousin": 2,
+        "avuncular_twice_removed": 1
+      },
+      "half_1st_cousin": {
+        "half_1st_cousin": 80,
+        "full_1st_cousin": 21,
+        "avuncular_once_removed": 2,
+        "avuncular_twice_removed": 6,
+        "half_avuncular": 3
+      }
+    },
+    "missing_true_pairs": 0,
+    "extra_cross_family_pairs": 0,
+    "ece_10_equal_width": 0.038009764905934273
+  },
+  "phase": {
+    "truth_pairs": 1443,
+    "correct": 1254,
+    "accuracy": 0.8690228690228691,
+    "balanced_accuracy": 0.7685258539909703,
+    "recall": {
+      "siblings": 1.0,
+      "half_sibling": 0.9418604651162791,
+      "avuncular": 0.8428571428571429,
+      "half_avuncular": 0.5384615384615384,
+      "avuncular_once_removed": 0.5,
+      "avuncular_twice_removed": 0.7708333333333334,
+      "full_1st_cousin": 0.8488372093023255,
+      "half_1st_cousin": 0.7053571428571429
+    },
+    "counts": {
+      "siblings": 729,
+      "half_sibling": 86,
+      "avuncular": 140,
+      "half_avuncular": 78,
+      "avuncular_once_removed": 116,
+      "avuncular_twice_removed": 96,
+      "full_1st_cousin": 86,
+      "half_1st_cousin": 112
+    },
+    "correct_counts": {
+      "siblings": 729,
+      "half_sibling": 81,
+      "avuncular": 118,
+      "half_avuncular": 42,
+      "avuncular_once_removed": 58,
+      "avuncular_twice_removed": 74,
+      "full_1st_cousin": 73,
+      "half_1st_cousin": 79
+    },
+    "confusion": {
+      "siblings": {
+        "siblings": 729
+      },
+      "half_sibling": {
+        "half_sibling": 81,
+        "full_1st_cousin": 2,
+        "avuncular": 3
+      },
+      "avuncular": {
+        "avuncular": 118,
+        "full_1st_cousin": 6,
+        "half_sibling": 16
+      },
+      "half_avuncular": {
+        "full_1st_cousin": 22,
+        "half_avuncular": 42,
+        "avuncular_once_removed": 7,
+        "half_1st_cousin": 7
+      },
+      "avuncular_once_removed": {
+        "half_avuncular": 22,
+        "avuncular_once_removed": 58,
+        "half_1st_cousin": 10,
+        "avuncular_twice_removed": 6,
+        "full_1st_cousin": 18,
+        "avuncular": 2
+      },
+      "avuncular_twice_removed": {
+        "avuncular_twice_removed": 74,
+        "avuncular_once_removed": 9,
+        "half_1st_cousin": 11,
+        "half_avuncular": 2
+      },
+      "full_1st_cousin": {
+        "half_avuncular": 9,
+        "full_1st_cousin": 73,
+        "half_1st_cousin": 3,
+        "avuncular_twice_removed": 1
+      },
+      "half_1st_cousin": {
+        "half_1st_cousin": 79,
+        "full_1st_cousin": 20,
+        "avuncular_twice_removed": 8,
+        "half_avuncular": 5
+      }
+    },
+    "missing_true_pairs": 0,
+    "extra_cross_family_pairs": 0,
+    "ece_10_equal_width": 0.035344994252185555
+  },
+  "cohorts": [
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 0,
+        "seed": 2026120300,
+        "population_size": 500,
+        "missing_rate": 0.0,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "base": {
+        "truth_pairs": 183,
+        "correct": 163,
+        "accuracy": 0.8907103825136612,
+        "balanced_accuracy": 0.6197916666666667,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 0.75,
+          "half_avuncular": 0.125,
+          "avuncular_once_removed": 0.0,
+          "avuncular_twice_removed": 0.9166666666666666,
+          "full_1st_cousin": 0.16666666666666666,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 99,
+          "half_sibling": 16,
+          "avuncular": 8,
+          "half_avuncular": 8,
+          "avuncular_once_removed": 4,
+          "avuncular_twice_removed": 24,
+          "full_1st_cousin": 6,
+          "half_1st_cousin": 18
+        },
+        "correct_counts": {
+          "siblings": 99,
+          "half_sibling": 16,
+          "avuncular": 6,
+          "half_avuncular": 1,
+          "avuncular_once_removed": 0,
+          "avuncular_twice_removed": 22,
+          "full_1st_cousin": 1,
+          "half_1st_cousin": 18
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 99
+          },
+          "half_sibling": {
+            "half_sibling": 16
+          },
+          "avuncular": {
+            "avuncular": 6,
+            "half_sibling": 2
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 7,
+            "half_avuncular": 1
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 4
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 22,
+            "avuncular_once_removed": 2
+          },
+          "full_1st_cousin": {
+            "half_avuncular": 4,
+            "full_1st_cousin": 1,
+            "half_1st_cousin": 1
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 18
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.05522258723959285
+      },
+      "phase": {
+        "truth_pairs": 183,
+        "correct": 163,
+        "accuracy": 0.8907103825136612,
+        "balanced_accuracy": 0.640625,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 0.125,
+          "avuncular_once_removed": 0.0,
+          "avuncular_twice_removed": 0.8333333333333334,
+          "full_1st_cousin": 0.16666666666666666,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 99,
+          "half_sibling": 16,
+          "avuncular": 8,
+          "half_avuncular": 8,
+          "avuncular_once_removed": 4,
+          "avuncular_twice_removed": 24,
+          "full_1st_cousin": 6,
+          "half_1st_cousin": 18
+        },
+        "correct_counts": {
+          "siblings": 99,
+          "half_sibling": 16,
+          "avuncular": 8,
+          "half_avuncular": 1,
+          "avuncular_once_removed": 0,
+          "avuncular_twice_removed": 20,
+          "full_1st_cousin": 1,
+          "half_1st_cousin": 18
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 99
+          },
+          "half_sibling": {
+            "half_sibling": 16
+          },
+          "avuncular": {
+            "avuncular": 8
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 7,
+            "half_avuncular": 1
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 4
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 20,
+            "avuncular_once_removed": 4
+          },
+          "full_1st_cousin": {
+            "half_avuncular": 3,
+            "full_1st_cousin": 1,
+            "half_1st_cousin": 2
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 18
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.05196240155278667
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_00.npz",
+      "phase_features_sha256": "7924e88fcfec18ee33a9caa6fa6717479659f2a0537d99b55d17e27d1acb1aab",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.3501824469730999,
+          0.7521974050844327,
+          0.8480414753376886,
+          0.8810644317478815,
+          0.9526863702651626
+        ],
+        "5.0": [
+          0.39518538900437183,
+          0.8179777791769423,
+          0.9332141827529089,
+          0.9625119018996173,
+          1.0000000000000002
+        ],
+        "10.0": [
+          0.4529878832851558,
+          0.8516878335756777,
+          0.9565336696255191,
+          0.9886546430877037,
+          1.0000000000000007
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 1,
+        "seed": 2026120301,
+        "population_size": 1000,
+        "missing_rate": 0.0,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "base": {
+        "truth_pairs": 141,
+        "correct": 128,
+        "accuracy": 0.9078014184397163,
+        "balanced_accuracy": 0.7708333333333333,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 1.0,
+          "avuncular_once_removed": 0.6666666666666666,
+          "avuncular_twice_removed": 0.5,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.0
+        },
+        "counts": {
+          "siblings": 80,
+          "half_sibling": 6,
+          "avuncular": 15,
+          "half_avuncular": 4,
+          "avuncular_once_removed": 12,
+          "avuncular_twice_removed": 6,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 80,
+          "half_sibling": 6,
+          "avuncular": 15,
+          "half_avuncular": 4,
+          "avuncular_once_removed": 8,
+          "avuncular_twice_removed": 3,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 0
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 80
+          },
+          "half_sibling": {
+            "half_sibling": 6
+          },
+          "avuncular": {
+            "avuncular": 15
+          },
+          "half_avuncular": {
+            "half_avuncular": 4
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 8,
+            "half_avuncular": 4
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 3,
+            "half_1st_cousin": 3
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 12
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 6
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.038008215645928906
+      },
+      "phase": {
+        "truth_pairs": 141,
+        "correct": 128,
+        "accuracy": 0.9078014184397163,
+        "balanced_accuracy": 0.7604166666666666,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 1.0,
+          "avuncular_once_removed": 0.75,
+          "avuncular_twice_removed": 0.3333333333333333,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.0
+        },
+        "counts": {
+          "siblings": 80,
+          "half_sibling": 6,
+          "avuncular": 15,
+          "half_avuncular": 4,
+          "avuncular_once_removed": 12,
+          "avuncular_twice_removed": 6,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 80,
+          "half_sibling": 6,
+          "avuncular": 15,
+          "half_avuncular": 4,
+          "avuncular_once_removed": 9,
+          "avuncular_twice_removed": 2,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 0
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 80
+          },
+          "half_sibling": {
+            "half_sibling": 6
+          },
+          "avuncular": {
+            "avuncular": 15
+          },
+          "half_avuncular": {
+            "half_avuncular": 4
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 9,
+            "half_avuncular": 3
+          },
+          "avuncular_twice_removed": {
+            "half_1st_cousin": 4,
+            "avuncular_twice_removed": 2
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 12
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 6
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.054513802730760175
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_01.npz",
+      "phase_features_sha256": "566e38230ad99070be2fee2bd4793ed07d00f596614e05ca2659587319328b70",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.34597746735514817,
+          0.7876023076421081,
+          0.91556653339818,
+          0.939342649932176,
+          0.9735788640064419
+        ],
+        "5.0": [
+          0.36375069444674063,
+          0.8391330898886366,
+          0.9490479619950196,
+          0.9782873787949307,
+          1.0000000000000002
+        ],
+        "10.0": [
+          0.4114794314886273,
+          0.8709746710105589,
+          0.9773812706922205,
+          0.9999999999999999,
+          1.0000000000000004
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 2,
+        "seed": 2026120302,
+        "population_size": 2000,
+        "missing_rate": 0.0,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "base": {
+        "truth_pairs": 195,
+        "correct": 181,
+        "accuracy": 0.9282051282051282,
+        "balanced_accuracy": 0.8138888888888889,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.6666666666666666,
+          "avuncular": 0.6666666666666666,
+          "half_avuncular": 0.9444444444444444,
+          "avuncular_once_removed": 0.3333333333333333,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.9
+        },
+        "counts": {
+          "siblings": 102,
+          "half_sibling": 12,
+          "avuncular": 9,
+          "half_avuncular": 18,
+          "avuncular_once_removed": 6,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 20
+        },
+        "correct_counts": {
+          "siblings": 102,
+          "half_sibling": 8,
+          "avuncular": 6,
+          "half_avuncular": 17,
+          "avuncular_once_removed": 2,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 18
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 102
+          },
+          "half_sibling": {
+            "half_sibling": 8,
+            "avuncular": 2,
+            "full_1st_cousin": 2
+          },
+          "avuncular": {
+            "half_sibling": 3,
+            "avuncular": 6
+          },
+          "half_avuncular": {
+            "half_avuncular": 17,
+            "avuncular_twice_removed": 1
+          },
+          "avuncular_once_removed": {
+            "half_1st_cousin": 3,
+            "avuncular_twice_removed": 1,
+            "avuncular_once_removed": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 12
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 16
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 18,
+            "avuncular_once_removed": 2
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.042458621515966605
+      },
+      "phase": {
+        "truth_pairs": 195,
+        "correct": 185,
+        "accuracy": 0.9487179487179487,
+        "balanced_accuracy": 0.8680555555555556,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.8333333333333334,
+          "avuncular": 1.0,
+          "half_avuncular": 0.7777777777777778,
+          "avuncular_once_removed": 0.3333333333333333,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 102,
+          "half_sibling": 12,
+          "avuncular": 9,
+          "half_avuncular": 18,
+          "avuncular_once_removed": 6,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 20
+        },
+        "correct_counts": {
+          "siblings": 102,
+          "half_sibling": 10,
+          "avuncular": 9,
+          "half_avuncular": 14,
+          "avuncular_once_removed": 2,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 20
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 102
+          },
+          "half_sibling": {
+            "half_sibling": 10,
+            "full_1st_cousin": 2
+          },
+          "avuncular": {
+            "avuncular": 9
+          },
+          "half_avuncular": {
+            "half_avuncular": 14,
+            "avuncular_once_removed": 4
+          },
+          "avuncular_once_removed": {
+            "half_1st_cousin": 2,
+            "avuncular_twice_removed": 2,
+            "avuncular_once_removed": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 12
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 16
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 20
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.029939898117260746
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_02.npz",
+      "phase_features_sha256": "7c32632ea9e5a4f5f469365811f271da006de38c2dc77a01005fe5aeed1898ab",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.3088561431815644,
+          0.8468699119260776,
+          0.9574824340655073,
+          0.9688937300811598,
+          0.9957538833519477
+        ],
+        "5.0": [
+          0.3295009846589113,
+          0.8848609507982421,
+          0.9857232011354639,
+          0.9999999999999997,
+          1.0000000000000004
+        ],
+        "10.0": [
+          0.377040946205308,
+          0.8920509695035428,
+          0.9999999999999998,
+          1.0,
+          1.0000000000000004
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 3,
+        "seed": 2026120303,
+        "population_size": 500,
+        "missing_rate": 0.005,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": false
+      },
+      "base": {
+        "truth_pairs": 198,
+        "correct": 178,
+        "accuracy": 0.898989898989899,
+        "balanced_accuracy": 0.8260416666666667,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 0.9375,
+          "half_avuncular": 0.5,
+          "avuncular_once_removed": 0.65,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 0.6875,
+          "half_1st_cousin": 0.8333333333333334
+        },
+        "counts": {
+          "siblings": 112,
+          "half_sibling": 8,
+          "avuncular": 16,
+          "half_avuncular": 12,
+          "avuncular_once_removed": 20,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 112,
+          "half_sibling": 8,
+          "avuncular": 15,
+          "half_avuncular": 6,
+          "avuncular_once_removed": 13,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 11,
+          "half_1st_cousin": 5
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 112
+          },
+          "half_sibling": {
+            "half_sibling": 8
+          },
+          "avuncular": {
+            "avuncular": 15,
+            "half_sibling": 1
+          },
+          "half_avuncular": {
+            "half_1st_cousin": 4,
+            "half_avuncular": 6,
+            "avuncular_once_removed": 2
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 13,
+            "half_avuncular": 5,
+            "half_1st_cousin": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 8
+          },
+          "full_1st_cousin": {
+            "half_avuncular": 5,
+            "full_1st_cousin": 11
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 5,
+            "full_1st_cousin": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.05162700332165014
+      },
+      "phase": {
+        "truth_pairs": 198,
+        "correct": 181,
+        "accuracy": 0.9141414141414141,
+        "balanced_accuracy": 0.8447916666666667,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 1.0,
+          "half_avuncular": 0.5,
+          "avuncular_once_removed": 0.8,
+          "avuncular_twice_removed": 1.0,
+          "full_1st_cousin": 0.625,
+          "half_1st_cousin": 0.8333333333333334
+        },
+        "counts": {
+          "siblings": 112,
+          "half_sibling": 8,
+          "avuncular": 16,
+          "half_avuncular": 12,
+          "avuncular_once_removed": 20,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 16,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 112,
+          "half_sibling": 8,
+          "avuncular": 16,
+          "half_avuncular": 6,
+          "avuncular_once_removed": 16,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 10,
+          "half_1st_cousin": 5
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 112
+          },
+          "half_sibling": {
+            "half_sibling": 8
+          },
+          "avuncular": {
+            "avuncular": 16
+          },
+          "half_avuncular": {
+            "half_1st_cousin": 4,
+            "half_avuncular": 6,
+            "avuncular_once_removed": 1,
+            "full_1st_cousin": 1
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 16,
+            "full_1st_cousin": 1,
+            "half_1st_cousin": 2,
+            "half_avuncular": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 8
+          },
+          "full_1st_cousin": {
+            "half_avuncular": 6,
+            "full_1st_cousin": 10
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 5,
+            "full_1st_cousin": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.05103571064784552
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_03.npz",
+      "phase_features_sha256": "69d240cb2265793cb1ab378a87b6e62d63ee6d7aa2513638bfdbba8328577c4a",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.3174818102611567,
+          0.7998552158073895,
+          0.8356951387226972,
+          0.8705181015632151,
+          0.9418586557315889
+        ],
+        "5.0": [
+          0.35146912913434103,
+          0.8814148144809896,
+          0.9242871342527788,
+          0.9520377920433478,
+          1.0
+        ],
+        "10.0": [
+          0.39020942767601935,
+          0.922202024670921,
+          0.9646399026975685,
+          0.9887696978479301,
+          1.0000000000000007
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 4,
+        "seed": 2026120304,
+        "population_size": 1000,
+        "missing_rate": 0.005,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "base": {
+        "truth_pairs": 182,
+        "correct": 142,
+        "accuracy": 0.7802197802197802,
+        "balanced_accuracy": 0.665625,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.6,
+          "avuncular": 0.7916666666666666,
+          "half_avuncular": 0.625,
+          "avuncular_once_removed": 0.35,
+          "avuncular_twice_removed": 0.625,
+          "full_1st_cousin": 0.75,
+          "half_1st_cousin": 0.5833333333333334
+        },
+        "counts": {
+          "siblings": 80,
+          "half_sibling": 10,
+          "avuncular": 24,
+          "avuncular_once_removed": 20,
+          "half_avuncular": 8,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 24
+        },
+        "correct_counts": {
+          "siblings": 80,
+          "half_sibling": 6,
+          "avuncular": 19,
+          "avuncular_once_removed": 7,
+          "half_avuncular": 5,
+          "avuncular_twice_removed": 5,
+          "full_1st_cousin": 6,
+          "half_1st_cousin": 14
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 80
+          },
+          "half_sibling": {
+            "avuncular": 4,
+            "half_sibling": 6
+          },
+          "avuncular": {
+            "avuncular": 19,
+            "full_1st_cousin": 5
+          },
+          "avuncular_once_removed": {
+            "full_1st_cousin": 11,
+            "half_1st_cousin": 1,
+            "avuncular_once_removed": 7,
+            "avuncular_twice_removed": 1
+          },
+          "half_avuncular": {
+            "half_avuncular": 5,
+            "full_1st_cousin": 3
+          },
+          "avuncular_twice_removed": {
+            "avuncular_once_removed": 1,
+            "avuncular_twice_removed": 5,
+            "half_1st_cousin": 2
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 6,
+            "avuncular_twice_removed": 1,
+            "half_1st_cousin": 1
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 8,
+            "avuncular_twice_removed": 2,
+            "half_1st_cousin": 14
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.08689865245056036
+      },
+      "phase": {
+        "truth_pairs": 182,
+        "correct": 146,
+        "accuracy": 0.8021978021978022,
+        "balanced_accuracy": 0.709375,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9,
+          "avuncular": 0.8333333333333334,
+          "half_avuncular": 0.625,
+          "avuncular_once_removed": 0.4,
+          "avuncular_twice_removed": 0.625,
+          "full_1st_cousin": 0.75,
+          "half_1st_cousin": 0.5416666666666666
+        },
+        "counts": {
+          "siblings": 80,
+          "half_sibling": 10,
+          "avuncular": 24,
+          "avuncular_once_removed": 20,
+          "half_avuncular": 8,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 24
+        },
+        "correct_counts": {
+          "siblings": 80,
+          "half_sibling": 9,
+          "avuncular": 20,
+          "avuncular_once_removed": 8,
+          "half_avuncular": 5,
+          "avuncular_twice_removed": 5,
+          "full_1st_cousin": 6,
+          "half_1st_cousin": 13
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 80
+          },
+          "half_sibling": {
+            "half_sibling": 9,
+            "avuncular": 1
+          },
+          "avuncular": {
+            "avuncular": 20,
+            "full_1st_cousin": 4
+          },
+          "avuncular_once_removed": {
+            "full_1st_cousin": 11,
+            "half_1st_cousin": 1,
+            "avuncular_once_removed": 8
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 3,
+            "half_avuncular": 5
+          },
+          "avuncular_twice_removed": {
+            "half_avuncular": 1,
+            "avuncular_twice_removed": 5,
+            "half_1st_cousin": 2
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 6,
+            "avuncular_twice_removed": 1,
+            "half_1st_cousin": 1
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 7,
+            "avuncular_twice_removed": 4,
+            "half_1st_cousin": 13
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.10245553696278592
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_04.npz",
+      "phase_features_sha256": "d5ea215c8eb70b249775be5180a493cec4231ae5ebd0a13c677d33eac36face8",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.42575598925486574,
+          0.8835393931622904,
+          0.9172875704073058,
+          0.9372421836697038,
+          0.9792018493790002
+        ],
+        "5.0": [
+          0.46955460565850027,
+          0.9244543998936383,
+          0.9702167157466576,
+          0.9843985504344637,
+          1.0000000000000002
+        ],
+        "10.0": [
+          0.5156649612971969,
+          0.954442212395578,
+          0.9999999999999996,
+          1.0,
+          1.0000000000000007
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 5,
+        "seed": 2026120305,
+        "population_size": 2000,
+        "missing_rate": 0.005,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "base": {
+        "truth_pairs": 159,
+        "correct": 115,
+        "accuracy": 0.7232704402515723,
+        "balanced_accuracy": 0.6927083333333333,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.75,
+          "avuncular": 0.3333333333333333,
+          "half_avuncular": 0.6666666666666666,
+          "avuncular_once_removed": 0.125,
+          "avuncular_twice_removed": 0.6666666666666666,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 1.0
+        },
+        "counts": {
+          "siblings": 71,
+          "half_sibling": 4,
+          "avuncular": 24,
+          "avuncular_once_removed": 24,
+          "half_avuncular": 6,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 71,
+          "half_sibling": 3,
+          "avuncular": 8,
+          "avuncular_once_removed": 3,
+          "half_avuncular": 4,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 6
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 71
+          },
+          "half_sibling": {
+            "half_sibling": 3,
+            "avuncular": 1
+          },
+          "avuncular": {
+            "avuncular": 8,
+            "half_sibling": 14,
+            "full_1st_cousin": 2
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 15,
+            "avuncular_once_removed": 3,
+            "half_1st_cousin": 3,
+            "full_1st_cousin": 2,
+            "avuncular_twice_removed": 1
+          },
+          "half_avuncular": {
+            "half_avuncular": 4,
+            "avuncular_once_removed": 2
+          },
+          "avuncular_twice_removed": {
+            "half_1st_cousin": 4,
+            "avuncular_twice_removed": 8
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 12
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 6
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.15832538767829674
+      },
+      "phase": {
+        "truth_pairs": 159,
+        "correct": 126,
+        "accuracy": 0.7924528301886793,
+        "balanced_accuracy": 0.7604166666666666,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 0.7916666666666666,
+          "half_avuncular": 0.6666666666666666,
+          "avuncular_once_removed": 0.125,
+          "avuncular_twice_removed": 0.6666666666666666,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.8333333333333334
+        },
+        "counts": {
+          "siblings": 71,
+          "half_sibling": 4,
+          "avuncular": 24,
+          "avuncular_once_removed": 24,
+          "half_avuncular": 6,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 6
+        },
+        "correct_counts": {
+          "siblings": 71,
+          "half_sibling": 4,
+          "avuncular": 19,
+          "avuncular_once_removed": 3,
+          "half_avuncular": 4,
+          "avuncular_twice_removed": 8,
+          "full_1st_cousin": 12,
+          "half_1st_cousin": 5
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 71
+          },
+          "half_sibling": {
+            "half_sibling": 4
+          },
+          "avuncular": {
+            "avuncular": 19,
+            "half_sibling": 3,
+            "full_1st_cousin": 2
+          },
+          "avuncular_once_removed": {
+            "half_avuncular": 14,
+            "full_1st_cousin": 3,
+            "half_1st_cousin": 3,
+            "avuncular_once_removed": 3,
+            "avuncular_twice_removed": 1
+          },
+          "half_avuncular": {
+            "half_avuncular": 4,
+            "avuncular_once_removed": 2
+          },
+          "avuncular_twice_removed": {
+            "half_1st_cousin": 4,
+            "avuncular_twice_removed": 8
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 12
+          },
+          "half_1st_cousin": {
+            "half_1st_cousin": 5,
+            "avuncular_twice_removed": 1
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.11619939114482598
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_05.npz",
+      "phase_features_sha256": "57730a37e17d0ea0a7931b96962ce6fc411cdc654b9cd0cfecd6cc7aac5e96a6",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.36304036482063645,
+          0.800537996532435,
+          0.9399299583443084,
+          0.9709750795232209,
+          1.0000000000000004
+        ],
+        "5.0": [
+          0.384252742471027,
+          0.8330457829818304,
+          0.9711249582719159,
+          0.9944355540658345,
+          1.0000000000000004
+        ],
+        "10.0": [
+          0.4092176851790734,
+          0.8609619013524112,
+          0.977487397823542,
+          1.0,
+          1.0000000000000004
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 6,
+        "seed": 2026120306,
+        "population_size": 500,
+        "missing_rate": 0.02,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "base": {
+        "truth_pairs": 224,
+        "correct": 179,
+        "accuracy": 0.7991071428571429,
+        "balanced_accuracy": 0.6886904761904762,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.5833333333333334,
+          "avuncular": 0.4166666666666667,
+          "half_avuncular": 0.2,
+          "avuncular_once_removed": 0.7857142857142857,
+          "avuncular_twice_removed": 0.8571428571428571,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.6666666666666666
+        },
+        "counts": {
+          "siblings": 106,
+          "half_sibling": 24,
+          "avuncular": 24,
+          "avuncular_once_removed": 14,
+          "half_avuncular": 10,
+          "avuncular_twice_removed": 14,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 24
+        },
+        "correct_counts": {
+          "siblings": 106,
+          "half_sibling": 14,
+          "avuncular": 10,
+          "avuncular_once_removed": 11,
+          "half_avuncular": 2,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 16
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 106
+          },
+          "half_sibling": {
+            "half_sibling": 14,
+            "avuncular": 10
+          },
+          "avuncular": {
+            "half_sibling": 14,
+            "avuncular": 10
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 11,
+            "avuncular": 1,
+            "avuncular_twice_removed": 1,
+            "half_sibling": 1
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 8,
+            "half_avuncular": 2
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 12,
+            "half_avuncular": 1,
+            "half_1st_cousin": 1
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 8
+          },
+          "half_1st_cousin": {
+            "avuncular_twice_removed": 4,
+            "half_1st_cousin": 16,
+            "full_1st_cousin": 1,
+            "half_avuncular": 3
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.0791263911417822
+      },
+      "phase": {
+        "truth_pairs": 224,
+        "correct": 189,
+        "accuracy": 0.84375,
+        "balanced_accuracy": 0.7372023809523809,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 0.9166666666666666,
+          "avuncular": 0.5,
+          "half_avuncular": 0.1,
+          "avuncular_once_removed": 0.8571428571428571,
+          "avuncular_twice_removed": 0.8571428571428571,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.6666666666666666
+        },
+        "counts": {
+          "siblings": 106,
+          "half_sibling": 24,
+          "avuncular": 24,
+          "avuncular_once_removed": 14,
+          "half_avuncular": 10,
+          "avuncular_twice_removed": 14,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 24
+        },
+        "correct_counts": {
+          "siblings": 106,
+          "half_sibling": 22,
+          "avuncular": 12,
+          "avuncular_once_removed": 12,
+          "half_avuncular": 1,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 16
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 106
+          },
+          "half_sibling": {
+            "half_sibling": 22,
+            "avuncular": 2
+          },
+          "avuncular": {
+            "half_sibling": 12,
+            "avuncular": 12
+          },
+          "avuncular_once_removed": {
+            "avuncular_once_removed": 12,
+            "avuncular": 1,
+            "avuncular_twice_removed": 1
+          },
+          "half_avuncular": {
+            "full_1st_cousin": 9,
+            "half_avuncular": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_twice_removed": 12,
+            "half_avuncular": 1,
+            "half_1st_cousin": 1
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 8
+          },
+          "half_1st_cousin": {
+            "avuncular_twice_removed": 3,
+            "half_1st_cousin": 16,
+            "half_avuncular": 5
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.04671148214179202
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_06.npz",
+      "phase_features_sha256": "6a5d5cc450fe0b48a6656e71499a0b7e16a925bc525cd45456eb0c6f2b67cc1f",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.36808141232933755,
+          0.809435126177576,
+          0.8530025282962165,
+          0.8819996495929622,
+          0.9426313187955526
+        ],
+        "5.0": [
+          0.37934011413871027,
+          0.8761285451949489,
+          0.9219036856319847,
+          0.9492615437047336,
+          0.9995842091675309
+        ],
+        "10.0": [
+          0.4164060931386703,
+          0.9205136362433322,
+          0.9630970544478822,
+          0.98542026355041,
+          1.0000000000000004
+        ]
+      }
+    },
+    {
+      "cohort": {
+        "split": "confirmation",
+        "index": 7,
+        "seed": 2026120307,
+        "population_size": 1000,
+        "missing_rate": 0.02,
+        "min_branch_size": 2,
+        "max_branch_size": 4,
+        "complex_topology": true
+      },
+      "base": {
+        "truth_pairs": 161,
+        "correct": 137,
+        "accuracy": 0.8509316770186336,
+        "balanced_accuracy": 0.7572916666666667,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 0.85,
+          "half_avuncular": 0.75,
+          "avuncular_once_removed": 0.5,
+          "avuncular_twice_removed": 0.5833333333333334,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.375
+        },
+        "counts": {
+          "siblings": 79,
+          "half_sibling": 6,
+          "avuncular": 20,
+          "avuncular_once_removed": 16,
+          "half_avuncular": 12,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 8
+        },
+        "correct_counts": {
+          "siblings": 79,
+          "half_sibling": 6,
+          "avuncular": 17,
+          "avuncular_once_removed": 8,
+          "half_avuncular": 9,
+          "avuncular_twice_removed": 7,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 3
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 79
+          },
+          "half_sibling": {
+            "half_sibling": 6
+          },
+          "avuncular": {
+            "half_sibling": 3,
+            "avuncular": 17
+          },
+          "avuncular_once_removed": {
+            "full_1st_cousin": 4,
+            "half_1st_cousin": 2,
+            "avuncular_once_removed": 8,
+            "avuncular_twice_removed": 2
+          },
+          "half_avuncular": {
+            "half_avuncular": 9,
+            "full_1st_cousin": 2,
+            "half_1st_cousin": 1
+          },
+          "avuncular_twice_removed": {
+            "avuncular_once_removed": 5,
+            "avuncular_twice_removed": 7
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 8
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 5,
+            "half_1st_cousin": 3
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.05713252004603295
+      },
+      "phase": {
+        "truth_pairs": 161,
+        "correct": 136,
+        "accuracy": 0.84472049689441,
+        "balanced_accuracy": 0.7333333333333334,
+        "recall": {
+          "siblings": 1.0,
+          "half_sibling": 1.0,
+          "avuncular": 0.95,
+          "half_avuncular": 0.5833333333333334,
+          "avuncular_once_removed": 0.5,
+          "avuncular_twice_removed": 0.5833333333333334,
+          "full_1st_cousin": 1.0,
+          "half_1st_cousin": 0.25
+        },
+        "counts": {
+          "siblings": 79,
+          "half_sibling": 6,
+          "avuncular": 20,
+          "avuncular_once_removed": 16,
+          "half_avuncular": 12,
+          "avuncular_twice_removed": 12,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 8
+        },
+        "correct_counts": {
+          "siblings": 79,
+          "half_sibling": 6,
+          "avuncular": 19,
+          "avuncular_once_removed": 8,
+          "half_avuncular": 7,
+          "avuncular_twice_removed": 7,
+          "full_1st_cousin": 8,
+          "half_1st_cousin": 2
+        },
+        "confusion": {
+          "siblings": {
+            "siblings": 79
+          },
+          "half_sibling": {
+            "half_sibling": 6
+          },
+          "avuncular": {
+            "avuncular": 19,
+            "half_sibling": 1
+          },
+          "avuncular_once_removed": {
+            "full_1st_cousin": 3,
+            "avuncular": 1,
+            "half_1st_cousin": 2,
+            "avuncular_once_removed": 8,
+            "avuncular_twice_removed": 2
+          },
+          "half_avuncular": {
+            "half_avuncular": 7,
+            "full_1st_cousin": 2,
+            "half_1st_cousin": 3
+          },
+          "avuncular_twice_removed": {
+            "avuncular_once_removed": 5,
+            "avuncular_twice_removed": 7
+          },
+          "full_1st_cousin": {
+            "full_1st_cousin": 8
+          },
+          "half_1st_cousin": {
+            "full_1st_cousin": 6,
+            "half_1st_cousin": 2
+          }
+        },
+        "missing_true_pairs": 0,
+        "extra_cross_family_pairs": 0,
+        "ece_10_equal_width": 0.0639512489342629
+      },
+      "phase_features_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/phase_ablation_v4/exposed_cohort_07.npz",
+      "phase_features_sha256": "145c7c41fa866a69966ee4476cf26ba5e1a3fc24f01d2944370a556afda94de7",
+      "zero_endpoint_denominators": {
+        "2.0": 0,
+        "5.0": 0,
+        "10.0": 0
+      },
+      "retained_fraction_quantiles": {
+        "2.0": [
+          0.3224394189371871,
+          0.7255186839020191,
+          0.8663785918631179,
+          0.9188855004170362,
+          0.9682714463688131
+        ],
+        "5.0": [
+          0.3529167572740791,
+          0.7637555899513576,
+          0.9324322244487251,
+          0.9721339111300987,
+          1.0000000000000004
+        ],
+        "10.0": [
+          0.410570399223304,
+          0.7910884714424077,
+          0.9581434284280148,
+          0.9966367696033561,
+          1.0000000000000004
+        ]
+      }
+    }
+  ],
+  "protocol_sha256": "da6f44548fdf8e02844221b780bc8585d7b2cddc1ba369fa2000de364acff4e5",
+  "candidate_sha256": "3824eaf919e1938215a9072055e6fea36b920a0025a8d300ba3e64bc2fe15151",
+  "baseline_candidate_sha256": "c966d2f676057ebaf60b862b73f2b69d076e92a7574457497e339f855c262f50",
+  "script_sha256": "e222fbdc479e595560a4e5bdb2386173d3cdabac0fa0f4b4f9b197493f78b1dd",
+  "submission_ready": false
+}

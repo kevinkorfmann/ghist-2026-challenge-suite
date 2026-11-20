@@ -1,0 +1,216 @@
+{
+  "cases": {
+    "window_full_bottleneck_v7": {
+      "comparisons": {
+        "continued": {
+          "frequency_L1": 8.914090585741594e-05,
+          "segregating_relative_L1": 0.009442907840667179,
+          "target_relative_change": {
+            "generations": -0.04494500627733966,
+            "post_decline_fraction": -0.006897026704953624
+          }
+        },
+        "seed2": {
+          "frequency_L1": 0.0001437920175173342,
+          "segregating_relative_L1": 0.01534111836737143,
+          "target_relative_change": {
+            "generations": -0.17384566440470195,
+            "post_decline_fraction": 0.011593668438954152
+          }
+        }
+      },
+      "practical_5percent_target_stability": false,
+      "runs": {
+        "continued": {
+          "callable_fraction": 0.9999996000001,
+          "epochs": 2,
+          "last_delta": 3.9751e-05,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations": 1913.6482087428294,
+            "post_decline_fraction": 0.28241423156174916
+          }
+        },
+        "seed1": {
+          "callable_fraction": 0.9999996000000002,
+          "epochs": 6,
+          "last_delta": 9.8334e-05,
+          "optimizer_agreement": false,
+          "stopping_passed": true,
+          "targets": {
+            "generations": 2003.704730429938,
+            "post_decline_fraction": 0.28437557751410053
+          }
+        },
+        "seed2": {
+          "callable_fraction": 0.9999995999999,
+          "epochs": 7,
+          "last_delta": 4.7228e-05,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations": 1655.3693502975013,
+            "post_decline_fraction": 0.2876725336719351
+          }
+        }
+      },
+      "strict_numerical_gates": {
+        "exposure": true,
+        "frequency_L1": true,
+        "observed_stopping": true,
+        "segregating_relative_L1": true,
+        "target_stability": false,
+        "two_optimizer_agreement": false
+      },
+      "strict_qualification": false,
+      "task": "bottleneck",
+      "truth_or_recovery_checked_on_final": false
+    },
+    "window_pragmatic_development_split_r0_p0_v1": {
+      "comparisons": {
+        "continued": {
+          "frequency_L1": 1.8964898938211738e-05,
+          "segregating_relative_L1": 0.0014156688897062708,
+          "target_relative_change": {
+            "generations_since_split": 1.4310680554130428e-05,
+            "pop1_population_size": 2.3787633614658077e-05,
+            "pop2_population_size": 1.1355374110344485e-05
+          }
+        },
+        "seed2": {
+          "frequency_L1": 6.432596651348981e-05,
+          "segregating_relative_L1": 0.004750610521169552,
+          "target_relative_change": {
+            "generations_since_split": 3.6724678085464646e-05,
+            "pop1_population_size": -0.0001476611471429301,
+            "pop2_population_size": -0.0001789673936444247
+          }
+        }
+      },
+      "practical_5percent_target_stability": true,
+      "runs": {
+        "continued": {
+          "callable_fraction": 0.9999984000000002,
+          "epochs": 7,
+          "last_delta": 6.4278e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.5597144820665,
+            "pop1_population_size": 3833.1271927310822,
+            "pop2_population_size": 3875.38301900184
+          }
+        },
+        "seed1": {
+          "callable_fraction": 0.9999983999995997,
+          "epochs": 235,
+          "last_delta": 9.9383e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.5462260041186,
+            "pop1_population_size": 3833.0360138747524,
+            "pop2_population_size": 3875.3390130775415
+          }
+        },
+        "seed2": {
+          "callable_fraction": 0.9999984000002,
+          "epochs": 260,
+          "last_delta": 9.9373e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.5808407108493,
+            "pop1_population_size": 3832.4700233799035,
+            "pop2_population_size": 3874.6454537548825
+          }
+        }
+      },
+      "strict_numerical_gates": {
+        "exposure": true,
+        "frequency_L1": true,
+        "observed_stopping": true,
+        "segregating_relative_L1": true,
+        "target_stability": true,
+        "two_optimizer_agreement": true
+      },
+      "strict_qualification": false,
+      "task": "split_isolation",
+      "truth_or_recovery_checked_on_final": false
+    },
+    "window_pragmatic_development_split_r0_p1_v1": {
+      "comparisons": {
+        "continued": {
+          "frequency_L1": 1.785927709578127e-05,
+          "segregating_relative_L1": 0.0013031941669748041,
+          "target_relative_change": {
+            "generations_since_split": 0.0001548930944625937,
+            "pop1_population_size": 0.00012098523388859306,
+            "pop2_population_size": 0.00014247285232404927
+          }
+        },
+        "seed2": {
+          "frequency_L1": 9.9960707188721e-05,
+          "segregating_relative_L1": 0.007318077840562976,
+          "target_relative_change": {
+            "generations_since_split": -0.0003867734098772502,
+            "pop1_population_size": 9.998124202370562e-05,
+            "pop2_population_size": -0.00034445697325513613
+          }
+        }
+      },
+      "practical_5percent_target_stability": true,
+      "runs": {
+        "continued": {
+          "callable_fraction": 0.9999992000000002,
+          "epochs": 6,
+          "last_delta": 8.6278e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.860400672005,
+            "pop1_population_size": 4216.713603192085,
+            "pop2_population_size": 4288.2417612177505
+          }
+        },
+        "seed1": {
+          "callable_fraction": 0.9999992000005999,
+          "epochs": 431,
+          "last_delta": 9.9812e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.7143807243802,
+            "pop1_population_size": 4216.203504824933,
+            "pop2_population_size": 4287.630890215109
+          }
+        },
+        "seed2": {
+          "callable_fraction": 0.9999991999991001,
+          "epochs": 395,
+          "last_delta": 9.9799e-07,
+          "optimizer_agreement": true,
+          "stopping_passed": true,
+          "targets": {
+            "generations_since_split": 942.3497638688071,
+            "pop1_population_size": 4216.62504608797,
+            "pop2_population_size": 4286.15398585623
+          }
+        }
+      },
+      "strict_numerical_gates": {
+        "exposure": true,
+        "frequency_L1": true,
+        "observed_stopping": true,
+        "segregating_relative_L1": true,
+        "target_stability": true,
+        "two_optimizer_agreement": true
+      },
+      "strict_qualification": false,
+      "task": "split_isolation",
+      "truth_or_recovery_checked_on_final": false
+    }
+  },
+  "scope": "Existing synthetic evidence only; no final input or results accessed."
+}

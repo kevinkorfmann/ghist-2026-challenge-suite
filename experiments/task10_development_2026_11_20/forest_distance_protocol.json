@@ -1,0 +1,27 @@
+{
+  "candidate": "frozen-forest-mean-meiosis-nj-decoder",
+  "stage": "POST_V2_FAILURE_DEVELOPMENT_DIAGNOSTIC",
+  "v2_and_nj10_outcomes_already_observed": true,
+  "candidate_source_manifest_sha256": "7d4c00c9cfd9d197fce722e5de566078336ff0e6c2d7a39a84504e28a3bd9489",
+  "decoder_source_sha256": "11db5433e315682a2fdd3ce7ce4596306c8c72517340832d154d50ed2fb7a39f",
+  "variants": [
+    "context",
+    "pair_only"
+  ],
+  "distance_rule": "Sum each frozen temperature-adjusted model probability times the accepted label up+down meiosis count; no new model fitting, calibrator, prior correction, threshold or tuning. Encode r=2**(1-mean) solely to reuse the frozen NJ decoder distance API d=1-log2(r). Synthetic r is not observed IBD or measured kinship.",
+  "structural_policy": "Frozen neighbor joining, integer edge conversion, accepted-label valid roots, composite log score, ties and no-valid-root fallback. No truth, age, midpoint, generation or topology oracle enters inference.",
+  "cohorts": "The same eight v2 development cohorts, now explicitly reused development data. All prior results retained. Old reserved confirmation and nested qualification remain untouched.",
+  "uncertainty": "No root posterior or calibrated-root-confidence claim. Return only exploratory labels and retain complete valid-root ambiguity.",
+  "budget": {
+    "cpus": 2,
+    "minutes": 10,
+    "hard_cpu_hours": 0.3333333333333333
+  },
+  "tests": {
+    "count": 29,
+    "test_source_sha256": "3e4043844cafbd45156fea1834a6881b55c7599f22cdddd8234a261b1dd6f8f4",
+    "checks": "Exact mean-distance inversion, complete probability validation, exact deterministic tree recovery and input pair/order invariance; preceding component and phase invariants retained."
+  },
+  "advance_to_confirmation": false,
+  "submission_ready": false
+}

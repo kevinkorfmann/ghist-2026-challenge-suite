@@ -1,0 +1,24 @@
+{
+  "recorded_utc": "2026-11-20T20:20:41.798041+00:00",
+  "generation_array": 10856905,
+  "fixed_fit": 10856907,
+  "raw_audit": 10856920,
+  "compact_export": 10857242,
+  "dependencies": {
+    "10856907": "afterok:10856905",
+    "10856920": "afterok:10856907",
+    "10857242": "afterok:10856920"
+  },
+  "max_generation_concurrency": 4,
+  "generation_cpus_per_task": 4,
+  "remote_root": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120",
+  "plan_sha256": "e90d2235de805d17a6c1d0176cab2132c2626b5ef04d3c97b4a4e12c67850016",
+  "scientific_bundle_sha256": "93bab1df576b945936aa69bf273e7e56b24757e93b2d73d0c09a7b2abec042fb",
+  "future_operational_bundle_sha256": "42664820c770e0db852f94ac044b363e3525cc94ebb1ce1bf4490ed23cd0980c",
+  "independent_source_plan_review_passed": true,
+  "independent_operational_review_passed": true,
+  "reserved_stress_or_confirmation_launched": false,
+  "candidate_created": false,
+  "final_data_accessed": false,
+  "next_step": "Require all corrected development/calibration launch gates and independent root raw rescore; then freeze fixed candidate, run synthetic alias/order adapter smoke, and only then reserved stress. Require all stress gates+independent audit before reserved confirmation. All sources/model/T remain fixed."
+}

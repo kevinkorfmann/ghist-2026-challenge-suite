@@ -1,0 +1,59 @@
+[
+  {
+    "name": "pedsim",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/assets/external/ped-sim/ped-sim",
+      "-d",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/family.def",
+      "-m",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/assets/external/ped-sim-map/refined_mf.simmap",
+      "-i",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/founders/founders.vcf.gz",
+      "-o",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/family",
+      "--intf",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/assets/external/ped-sim/interfere/nu_p_campbell.tsv",
+      "--seed",
+      "3301870062",
+      "--fam",
+      "--seg_haps",
+      "--keep_phase",
+      "--err_rate",
+      "0",
+      "--miss_rate",
+      "0"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "prepare",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/scripts/prepare_hapibd_vcf.py",
+      "--input",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/family.normalized.vcf.gz",
+      "--output",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/prepared.vcf.gz"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "detector",
+    "command": [
+      "java",
+      "-Xmx14g",
+      "-jar",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/assets/external/hap-ibd/hap-ibd.jar",
+      "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/prepared.vcf.gz",
+      "map=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected-panel-source/assets/external/ped-sim-map/refined_average.plink.map",
+      "out=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/detected_panel_v2/cohort_011/detected",
+      "min-seed=1.0",
+      "min-extend=0.2",
+      "min-output=2.0",
+      "min-markers=100",
+      "max-gap=1000",
+      "nthreads=4"
+    ],
+    "exit_code": 0
+  }
+]

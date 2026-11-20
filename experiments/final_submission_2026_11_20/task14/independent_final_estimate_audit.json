@@ -1,0 +1,86 @@
+{
+  "comparisons": {
+    "continued": {
+      "frequency_L1": 2.8581635622818742e-05,
+      "segregating_relative_L1": 0.0006947901618997671,
+      "target_relative_change": {
+        "generations_since_split": 3.903630166224303e-06,
+        "pop1_population_size": 2.7856783175739253e-06,
+        "pop2_population_size": 2.2152148861920296e-06
+      }
+    },
+    "seed2": {
+      "frequency_L1": 5.271608387295288e-05,
+      "segregating_relative_L1": 0.0012057618373338913,
+      "target_relative_change": {
+        "generations_since_split": 0.00035781160246428634,
+        "pop1_population_size": 0.0003462188195575422,
+        "pop2_population_size": -0.0001492952141924908
+      }
+    }
+  },
+  "draft_sha256": "350de6e7b9f48463c3bab3f4ea2b2aa266530d80ae3f17cc0cb7b9ea94f2ccbe",
+  "execution_binding_sha256": "e15ce56c35c20509a816f65f9a06c550f76d3e9c78649a7f202eadb244c85b47",
+  "numeric_schema_binding_audit_passed": true,
+  "practical_5percent_target_stability": true,
+  "primary_label": "seed1",
+  "raw_input_and_runtime_rehash": "Root must separately retain pre/post hash audit; this helper does not repeat large input/runtime reads.",
+  "reported_numerical_gates": {
+    "exposure": true,
+    "frequency_L1": true,
+    "observed_stopping": true,
+    "segregating_relative_L1": true,
+    "target_stability": true,
+    "two_optimizer_agreement": true
+  },
+  "root_decision_sha256": "89ef66cd01bfd843ab922eda7517919abdbe464932a49c03a45e761b002257cb",
+  "runs": {
+    "continued": {
+      "callable_fraction": 0.9999984000012999,
+      "epochs": 8,
+      "last_delta": 5.5665e-07,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations_since_split": 5287.4574176045935,
+        "pop1_population_size": 8631.077042486771,
+        "pop2_population_size": 22450.40898393725
+      }
+    },
+    "seed1": {
+      "callable_fraction": 0.9999983999991,
+      "epochs": 331,
+      "last_delta": 9.9898e-07,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations_since_split": 5287.436777406887,
+        "pop1_population_size": 8631.052999149573,
+        "pop2_population_size": 22450.359251567235
+      }
+    },
+    "seed2": {
+      "callable_fraction": 0.9999984000007,
+      "epochs": 326,
+      "last_delta": 9.9649e-07,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations_since_split": 5289.32868363314,
+        "pop1_population_size": 8634.041232130478,
+        "pop2_population_size": 22447.007520374074
+      }
+    }
+  },
+  "strict_numerical_gates": {
+    "exposure": true,
+    "frequency_L1": true,
+    "observed_stopping": true,
+    "segregating_relative_L1": true,
+    "target_stability": true,
+    "two_optimizer_agreement": true
+  },
+  "strict_qualification": false,
+  "task": "split_isolation",
+  "truth_or_recovery_checked_on_final": false
+}

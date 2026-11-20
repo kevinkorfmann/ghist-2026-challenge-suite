@@ -1,0 +1,25 @@
+{
+  "registered_at_utc": "2026-11-20T20:31:22.798017+00:00",
+  "authorization": "User asked to submit additional candidates if somewhat ok; strict research readiness remains separately reported.",
+  "strict_qualification_passed": false,
+  "scope": "Practical one-time submission decision; no fresh confirmation claim and no final truth access.",
+  "development": {
+    "cohorts": "Both existing r0 Q30/Q20; all three fixed estimator runs retained",
+    "callable_fraction_min": 0.99,
+    "all_targets_all_runs_absolute_relative_error_max": 0.3,
+    "target_relative_change_max": 0.05,
+    "optimizer_agreement_required": true,
+    "complete_source_runtime_input_provenance_required": true
+  },
+  "final": {
+    "callable_fraction_min": 0.99,
+    "target_relative_change_max": 0.05,
+    "optimizer_agreement_required": true,
+    "fixed_primary": "seed1",
+    "source_runtime_input_output_hash_audit_required": true,
+    "official_schema_validation_required": true,
+    "latest_start_utc": "2026-11-20T22:00:00Z",
+    "hard_wall_minutes": 55
+  },
+  "limitations": "Cap stopping, spectrum differences, and each unchanged strict gate are reported individually; practical acceptance does not mark any failed strict gate passed. No choice among seeds, no retries on outcomes, no six-fresh-cohort claim."
+}

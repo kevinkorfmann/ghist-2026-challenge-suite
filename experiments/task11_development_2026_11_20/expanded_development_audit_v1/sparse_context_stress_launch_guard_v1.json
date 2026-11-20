@@ -1,0 +1,38 @@
+{
+  "schema": "task11-sparse-stress-launch-guard-v1",
+  "stress_design_sha256": "2b4f32a1f8b1083e119ebde8351c16921028f5ce79f4ec4b13c5b4c969897b0c",
+  "exposed_development_required": "All nine original gates, recomputed from retained raw predictions and full family partitions.",
+  "exposed_gates": {
+    "accuracy_min": 0.8,
+    "balanced_accuracy_min": 0.75,
+    "each_label_recall_min": 0.6,
+    "bootstrap_balanced_lower95_min": 0.7,
+    "exact_family_recovery_min": 0.95,
+    "expected_calibration_error_max": 0.1,
+    "missing_samples_max": 0,
+    "missing_true_pairs_max": 0,
+    "extra_cross_family_pairs_max": 0
+  },
+  "calibration_required": {
+    "each_label_recall_min": 0.6,
+    "expected_calibration_error_max": 0.1
+  },
+  "calibration_bootstrap_required": false,
+  "candidate_policy": "Freeze expanded context model, matched pair grouping model and calibrated temperatures before stress, with no intervening refit.",
+  "order": [
+    "expanded development gates",
+    "eight sparse-context stress cohorts with all nine gates",
+    "reserved independent confirmation with all nine gates"
+  ],
+  "confirmation_seeds_reserved": [
+    2026120400,
+    2026120401,
+    2026120402,
+    2026120403,
+    2026120404,
+    2026120405,
+    2026120406,
+    2026120407
+  ],
+  "submission_ready": false
+}

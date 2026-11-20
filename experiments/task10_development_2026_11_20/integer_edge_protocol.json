@@ -1,0 +1,40 @@
+{
+  "candidate": "fixed-topology-integer-edge-degree-score-optimization",
+  "stage": "REUSED_DEVELOPMENT_DIAGNOSTIC",
+  "all_prior_v2_nj10_mean_distance_outcomes_already_observed": true,
+  "candidate_source_manifest_sha256": "7d4c00c9cfd9d197fce722e5de566078336ff0e6c2d7a39a84504e28a3bd9489",
+  "decoder_source_sha256": "85b2ac391883df1796c7f9b7829f360b315c047b09912a0bceff92438b2025fb",
+  "variants": [
+    "context",
+    "pair_only"
+  ],
+  "initial_trees": "Corresponding fixed forest-mean-distance decoder outputs, inferred from observed detected features. No true topology or truth-derived root.",
+  "topology": "Compress only degree-two internal nodes into positive integer-length edges; topology and observed leaves remain fixed. No edge contraction, new branching, NNI, subtree moves, or alternative topology search.",
+  "edge_objective": "Composite sum over roster pairs of log(sum of frozen model P(label) over labels with the inferred path meiosis count). Probability floor 1e-12, matching frozen root score. Pair dependence is acknowledged; this is not an independent likelihood or calibrated posterior.",
+  "edge_moves": "At each step enumerate +/-1 changes to one edge, lengths1..10, all pair distances2..10. Accept the highest strictly improving score (>1e-12) whose expanded tree has at least one accepted-label rooting. Tie order fixed by sorted inferred edge endpoints then -1 before +1. Never revisit an accepted length vector.",
+  "max_accepted_moves": 20,
+  "max_feasibility_checks": 200,
+  "root_policy": "After edge optimization enumerate all accepted roots and apply the frozen full-label composite log score and tie rule. Root pruning only excludes roots with an observed leaf farther than five meioses: such a root necessarily violates the accepted label domain because every internal root has at least two leaf-containing branches. This is a logical domain constraint, not midpoint/generation/age preference.",
+  "uncertainty": "Retain all valid-root ambiguity conditional on chosen edge lengths. This does not cover other length assignments or other topologies. No calibrated root-probability claim.",
+  "data": "Same eight explicitly reused development cohorts. Frozen models, calibration, previous results, old reserved confirmation and nested qualification remain unchanged.",
+  "budget": {
+    "cpus": 2,
+    "minutes": 10,
+    "hard_cpu_hours": 0.3333333333333333
+  },
+  "unchanged_advancement_gates": {
+    "complete_pair_and_14_label_coverage": true,
+    "exact_accuracy_min": 0.8,
+    "macro_recall_min": 0.7,
+    "minimum_label_recall_min": 0.5,
+    "gain_over_original_baseline_min": 0.1,
+    "no_individual_cohort_regression": true
+  },
+  "tests": {
+    "count": 32,
+    "test_source_sha256": "c3b3e1bc1b402392619a790ee4f570d2c513e953747e3eb633ce57a2460259ab",
+    "checks": "Known integer-length correction preserves topology; pair/sample/edge-order invariance; move cap; cycle/leaf contract; pruned roots equal unpruned accepted roots on25 random trees; previous phase/component/model-distance invariants retained."
+  },
+  "advance_to_confirmation": false,
+  "submission_ready": false
+}

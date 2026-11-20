@@ -1,0 +1,55 @@
+{
+  "audit_time_utc": "2026-11-20T21:52:24.553057+00:00",
+  "auditor": "audit_relatedness_lowcoverage",
+  "scope": "Read-only independent task12 correction verification; no imported correction code and no model fitting",
+  "status": "PASS",
+  "task": 12,
+  "original_path": "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/task12.final.csv",
+  "corrected_path": "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/task12/task12_final_schema_corrected.csv",
+  "original_sha256": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+  "corrected_sha256": "fc9c18c0ea1629d12d8f54ad7a45a0eb89a8df26f37a13693e51cb7e47bdec80",
+  "original_columns": [
+    "indID1",
+    "indID2",
+    "relation"
+  ],
+  "corrected_columns": [
+    "indID1",
+    "indID2",
+    "relation",
+    "meioses_count"
+  ],
+  "rows": 43956,
+  "people": 297,
+  "changed_labels": {
+    "full_1st_cousin_thrice_removed": 4275,
+    "avuncular_twice_removed": 3025
+  },
+  "checks": {
+    "rows_same": true,
+    "original_sha256_matches_rejected": true,
+    "corrected_sha256_matches_staged": true,
+    "pair_order_and_ids_preserved": true,
+    "implied_original_meioses_preserved": true,
+    "only_documented_label_map_applied": true,
+    "corrected_labels_accepted": true,
+    "corrected_labels_agree_with_meioses": true,
+    "no_self_pairs": true,
+    "no_duplicate_unordered_pairs": true,
+    "complete_unordered_pair_coverage": true
+  },
+  "mapping": {
+    "full_1st_cousin_thrice_removed": "full_2nd_cousin_once_removed",
+    "avuncular_twice_removed": "full_1st_cousin_once_removed"
+  },
+  "mapping_caveat": "Same-meiosis category merging preserves meioses but does not establish biological equivalence.",
+  "server_receipt": {
+    "submission_id": "9785373",
+    "status": "SCORED",
+    "evidence_path": "/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/task12/received_score_9785373.json",
+    "email_id": "1a1faefd34d52c68",
+    "server_time_utc": "2026-11-20T21:49:43.000Z"
+  },
+  "scientific_qualification": false,
+  "submission_or_shared_receipt_mutation_performed": false
+}

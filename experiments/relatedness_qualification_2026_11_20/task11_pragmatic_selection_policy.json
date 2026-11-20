@@ -1,0 +1,30 @@
+{
+  "frozen_utc": "2026-11-20T20:57:33.097362+00:00",
+  "scope": "Pragmatic single-model selection on all54 matched corrected syntheticdevelopment cohorts; no final truth or final score feedback",
+  "candidates": [
+    "old_context",
+    "new_context",
+    "old_base",
+    "new_base"
+  ],
+  "eligibility": {
+    "complete_valid_all54_outputs": true,
+    "exact_accuracy_min": 0.7,
+    "macro_recall_min": 0.6,
+    "minimum_label_recall_min": 0.3,
+    "exact_family_match_min": 0.95,
+    "valid_resources_and_provenance": true
+  },
+  "selection": "Highest pooled published truth-class-size-weighted Jaccard among eligible candidates",
+  "tie_tolerance": 1e-12,
+  "tie_order": [
+    "old_context",
+    "new_context",
+    "old_base",
+    "new_base"
+  ],
+  "strict_qualification": "Report every original gate independently; this policy does not imply a strict pass",
+  "method_changes": "None after matched comparison; no per-pair ensemble, retuning or outcome-selected cohort exclusions",
+  "if_none_eligible": "Do not submit without a separately justified explicit decision; do not silently lower thresholds",
+  "timing": "Root has not viewed corrected54 candidate scores; asked agent to confirm output status"
+}

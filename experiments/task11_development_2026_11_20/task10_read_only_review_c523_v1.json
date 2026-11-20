@@ -1,0 +1,88 @@
+{
+  "scope": "Read-only independent review of supplied Task10 local bundle; no execution or edits to Task10",
+  "utc": "2026-11-20T20:14:30.031686+00:00",
+  "protocol_sha256": "9b9ebaa12e95ce0cd85c0be8056c33ede2a7dc1af5c717594c21383cd46d5803",
+  "source_sha256_verified": {
+    "structural_pair_candidate.py": "ecf677b580d0a80fa4272a7ee22d9f0836bd00dc85db0486c531b168c1b75561",
+    "integer_edge_decoder.py": "85b2ac391883df1796c7f9b7829f360b315c047b09912a0bceff92438b2025fb",
+    "forest_distance_decoder.py": "11db5433e315682a2fdd3ce7ce4596306c8c72517340832d154d50ed2fb7a39f",
+    "structural_confidence.py": "f579fb276f7412855bdc017dc5b5e26a3056368f64008d9ad37cafbd4da797e5",
+    "calibrate_structural_candidate.py": "cd13d5dc693eba1948d0b54a41ecf04bd63fff5580b6957df2ea80bfe07aa3f1",
+    "run_structural_qualification.py": "e8074971b6544e4cf96f758d53852dcfd35760b1408873d0614a21dce69592c2",
+    "nested_qualification_design.py": "4697503f9020549f81f4bc6f1fa50d7245eb18e2f8bca9d698e90a8725158706",
+    "verify_missingness_contract.py": "0852d3a73a83ebc97b7a404973571d23ddde9e4fc311a69c927c5fe8968c05b7",
+    "assess_structural_qualification.py": "0736174876abbb0bab969e1d6d00ab84906ed8074976205bd9fbc5beea5fb99a",
+    "structural_calibration.sbatch": "847e9684b5fc72d29b26c4c3700b320140b61c6967ba8da56b0ab0084f5252a8",
+    "structural_qualification_small.sbatch": "d9fe87627fe6761b8ee4dc8b0eac0bbb61b34a3a2ecef0a976e799d1a280bc42",
+    "structural_qualification_large.sbatch": "97978d6bca0f84a9359922facfb94061540b1fe0ac31dca38bde178c105e9ca8"
+  },
+  "cohorts": [
+    {
+      "index": 0,
+      "people": 16,
+      "pairs": 120,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 1,
+      "people": 16,
+      "pairs": 120,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 2,
+      "people": 20,
+      "pairs": 190,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 3,
+      "people": 20,
+      "pairs": 190,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 4,
+      "people": 20,
+      "pairs": 190,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 5,
+      "people": 20,
+      "pairs": 190,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 6,
+      "people": 24,
+      "pairs": 276,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 7,
+      "people": 24,
+      "pairs": 276,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 8,
+      "people": 229,
+      "pairs": 26106,
+      "independent_label_counts_match": true
+    },
+    {
+      "index": 9,
+      "people": 229,
+      "pairs": 26106,
+      "independent_label_counts_match": true
+    }
+  ],
+  "no_truth_input_to_inference_found": true,
+  "confidence_limit": "Constant q gives zero individual resolution; ECE equals marginal confidence-versus-accuracy mismatch. Uniform alternative probabilities are not calibrated label posteriors. Root ambiguity is conditional on fixed topology/edge lengths.",
+  "missingness": "Strict default rejection verified in source; checks are contract-only and do not establish missingness robustness.",
+  "stage_budget": "5min calibration + 2x45min small waves +90min concurrent large =185min before audits/final inference/queues. At20:10UTC worst no-queue completion23:15UTC; only44min remain. Late queue delays need absolute cutoff.",
+  "binding_followup": "Final launch input hashes must include confidence/model freeze/model/protocol/manifests; supplied eight-source bundle omits launch artifacts. Remote wrapper has frozen-source-first PYTHONPATH. Remote protocol changed after supplied bundle; final version requires delta/hash verification.",
+  "transfer_limits": "Four small shapes and one repeated229-person shape, outbred/unrelated-spouse/clean-phase domain only. Rare avuncular labels in each large family have8\u201324 pairs despite26106 total.",
+  "no_scientific_blocker_found_in_supplied_bundle": true
+}

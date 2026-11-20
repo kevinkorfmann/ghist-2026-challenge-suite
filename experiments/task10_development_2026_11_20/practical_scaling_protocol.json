@@ -1,0 +1,31 @@
+{
+  "status": "PROSPECTIVE_PRACTICAL_SCALING_NOT_STRICT_QUALIFICATION",
+  "declared_utc": "2026-11-20T20:38:22.777864+00:00",
+  "trigger": "All eight small nested results complete and independently audited, including failures, before dispatch",
+  "launch_gates": {
+    "overall_exact_accuracy_minimum": 0.7,
+    "macro_recall_minimum": 0.6,
+    "weighted_jaccard_strictly_exceeds_matched_baseline": true,
+    "all_outputs_and_resources_valid": true
+  },
+  "small_strict_result": "Preserve unchanged original fixed-gate report, including ECE/min-label/nonregression failures; no strict pass claim",
+  "cohort_indices": [
+    8,
+    9
+  ],
+  "cohort_source": "structural-qualification-source-v3/structural_qualification_protocol_v3.json",
+  "cohort_protocol_sha256": "9b9ebaa12e95ce0cd85c0be8056c33ede2a7dc1af5c717594c21383cd46d5803",
+  "model_or_method_changes": false,
+  "candidate": "Same pair-only detected forest, mean NJ, fixed integer-edge optimizer, constantq.7744",
+  "resources": {
+    "jobs": 2,
+    "cpus_per_job": 8,
+    "wall_minutes": 90,
+    "memory_GiB_per_job": 44,
+    "hard_cpu_hours": 24,
+    "latest_actual_start_utc": "2026-11-20T21:50:00Z"
+  },
+  "evaluation": "Every26106pair in both fixed229person cohorts; retain baseline/pair/structural raw predictions, strict gates and pragmatic diagnostics; no selected subset",
+  "domain": "Complete calls only; optional missingness diagnostic is separate",
+  "approval": "Parent explicitly proposed pragmatic gate after relaxed user quality target; dispatch still requires independent raw small audit and root launch handoff"
+}

@@ -1,0 +1,55 @@
+{
+  "verified_at_utc": "2026-11-20T19:33:40.900115+00:00",
+  "archive_sha256": "00198dbd33b0a8764a2d4656e422295eb28cea992fbd51a9ec9c51c39d014670",
+  "archive_files": 475,
+  "exported_fit_bindings_verified": 158,
+  "audit_source_sha256": "4c9da1598f26b30ac6d2bca1e016c4a51085a25c16c60e214a011b246345f2bf",
+  "summary": {
+    "calibration_base": {
+      "correct": 610,
+      "pairs": 735,
+      "accuracy": 0.8299319727891157,
+      "balanced_accuracy": 0.674933079083415,
+      "minimum_label_recall": 0.17857142857142858,
+      "weighted_jaccard": 0.7586367775081546,
+      "ece": 0.019887200754522313,
+      "bootstrap_lower": 0.5919457197883216,
+      "exact_families": 32
+    },
+    "calibration_context": {
+      "correct": 662,
+      "pairs": 735,
+      "accuracy": 0.9006802721088435,
+      "balanced_accuracy": 0.8097590112077795,
+      "minimum_label_recall": 0.5,
+      "weighted_jaccard": 0.8512128965984114,
+      "ece": 0.00862771822357926,
+      "bootstrap_lower": 0.706838768115942,
+      "exact_families": 32
+    },
+    "exposed_base": {
+      "correct": 1166,
+      "pairs": 1443,
+      "accuracy": 0.808038808038808,
+      "balanced_accuracy": 0.6512843002693645,
+      "minimum_label_recall": 0.1794871794871795,
+      "weighted_jaccard": 0.7296145895483979,
+      "ece": 0.028334344081560013,
+      "bootstrap_lower": 0.5952696392017638,
+      "exact_families": 64
+    },
+    "exposed_context": {
+      "correct": 1231,
+      "pairs": 1443,
+      "accuracy": 0.853083853083853,
+      "balanced_accuracy": 0.7186039213893564,
+      "minimum_label_recall": 0.24358974358974358,
+      "weighted_jaccard": 0.7808939584998119,
+      "ece": 0.03909138199265891,
+      "bootstrap_lower": 0.6264825255664355,
+      "exact_families": 64
+    }
+  },
+  "scope": "Independent raw-row rescoring and exact family-partition checks on existing development/calibration. Models and omitted raw inputs require separate remote hash audit.",
+  "release_authorized": false
+}

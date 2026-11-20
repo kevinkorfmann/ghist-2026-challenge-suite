@@ -1,0 +1,58 @@
+{
+  "purpose": "DEVELOPMENT_ONLY_FEATURE_EQUIVALENCE_AND_RUNTIME",
+  "frozen_manifest_sha256": "7d4c00c9cfd9d197fce722e5de566078336ff0e6c2d7a39a84504e28a3bd9489",
+  "optimization_source_sha256": {
+    "fast_multiway_features.py": "a434bda7f0c6450b7681d1c01cfbd7ddeb78417056236c09995944dc7ffb1ae2",
+    "benchmark_fast_features.py": "89aa6e0d743eb539bddc4d400b41774bda5465e4925dd546e1a20141123d2c37",
+    "optimized_scaling.sbatch": "dd1fed3daeca26daf83a1427a1e61ee51f705b9e57fedb9783fb424160bd0897"
+  },
+  "training_cohort_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "profiles": [
+    [
+      32,
+      180
+    ],
+    [
+      64,
+      240
+    ],
+    [
+      128,
+      300
+    ],
+    [
+      229,
+      420
+    ]
+  ],
+  "equivalence_tolerance": {
+    "relative": 1e-12,
+    "absolute": 1e-12
+  },
+  "tests": {
+    "passing": 26,
+    "includes": "All4096three-person diploid graphs;20random multiperson overlap/nonlinear-map cases; chromosome homolog and sample/order invariance; complete features compared",
+    "test_sha256": "b9e228541eafa9884f67c4480de7eaf8f60dfa882e43c5898a480f81eba6db96"
+  },
+  "resource_hard_cap": {
+    "cpus": 4,
+    "minutes": 30,
+    "CPU_hours": 2
+  },
+  "adoption_requires": [
+    "Every declared training feature and inferred group agrees within tolerance",
+    "229-person same-input fixed runtime gate passes",
+    "Freeze final model hashes and compare actual forest probabilities from original and optimized training features exactly before any qualification",
+    "No biological qualification from runtime tests; v2 development gates still control advance"
+  ],
+  "unchanged": "Biological policy, thresholds, frozen sibling model, 500-tree model training, calibration and running v2 source remain unchanged."
+}

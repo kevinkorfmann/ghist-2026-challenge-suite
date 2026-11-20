@@ -1,0 +1,91 @@
+{
+  "task": 5,
+  "protocol_sha256": "acc0ce4de87e4e99c282b97947dbe87b5748a2d8034dd519eb33410237a4fd17",
+  "source_freeze_sha256": "1fdcaf559e3f6233001438f5680414ba4bbfef29f6b5da99484872fa9701aeaf",
+  "runner_sha256": "76feb2e2e27bba5bfc60cc7d7cdf690e49c7c93bb38d0d3b108673a09ee09209",
+  "source_sha256": {
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "src/ghist_single_sweep/peaks.py": "41a48bb7147477462fcfb2dc7a4b67208933ff95b8ee9209af47a5eda5a35c3e",
+    "src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+    "src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+    "src/ghist_single_sweep/soft.py": "993ffdd555d7a9ec747661199267cfeba73f5c9c62d4db439600d5e47fb852e2",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "src/ghist_single_sweep/__init__.py": "b0f7371b157005db3c8027224f6b8bd052c42685bed20e62454cc1cb60958f8d",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "inputs": {
+    "vcf": {
+      "path": "/home/kkor/ghist-final-sweeps-20261120-2120/inputs/onesweep.final.vcf.gz",
+      "sha256": "1a11d96cc0a2742e6bb5428c2f72a21278bdb9b3eafc0e5612788eda9100eff0"
+    },
+    "mask": {
+      "path": "/home/kkor/ghist-final-sweeps-20261120-2120/inputs/9.accessible.bed",
+      "sha256": "9f5235a687683eec6a7f19b0cf1334f545bda23497ff8e715658b1086778ec33"
+    }
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "executable_sha256": "c86f21d0da9290ece2d7d49a3f7ed52aed59cb029abdf0ea25c79634f6cbe960",
+    "packages": {
+      "numpy": "2.5.5",
+      "pysam": "0.24.1",
+      "PyYAML": "6.0.3"
+    },
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307"
+  },
+  "started_unix": 1795210070.542763,
+  "scientifically_validated": false,
+  "release_ready": false,
+  "external_submissions": 0,
+  "state": "COMPLETED",
+  "completed_unix": 1795210090.105167,
+  "duration_seconds": 19.5624041557312,
+  "contig": "9",
+  "contig_length": 138394717,
+  "samples_diploid": 25,
+  "final_intervals": [
+    [
+      104670000,
+      104790000
+    ]
+  ],
+  "geometry_adjustments": [
+    {
+      "raw_center": 104730000,
+      "final_center": 104730000,
+      "callable_component": [
+        40910,
+        138394717
+      ],
+      "interval": [
+        104670000,
+        104790000
+      ],
+      "center_adjusted": false,
+      "boundary_clipped": false
+    }
+  ],
+  "format_validation": {
+    "challenge": 5,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "chromosome": "9",
+    "intervals": [
+      [
+        104670000,
+        104790000
+      ]
+    ]
+  },
+  "artifact_sha256": {
+    "deadline_submission.bed": "ccb8653bc988e4e399665539adeff046bb98d8d50f48a562b9cdb652f591a390",
+    "raw/prediction.json": "6e5506dd7bd4548654469fbe3e2c148e917558cbff2decdc24b72a7b1180f237",
+    "started.json": "c08c40220da242abada2771720d8689f151adf5b58d8157049de274967dc1286"
+  },
+  "limitation": "Best-effort deadline candidate only. Scientific qualification and matched calibration absent; original validation failures remain."
+}

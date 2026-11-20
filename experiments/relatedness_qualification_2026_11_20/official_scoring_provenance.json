@@ -1,0 +1,17 @@
+{
+  "retrieved_at_utc": "2026-11-20T18:20:46.286878+00:00",
+  "source_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640739",
+  "api_url": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn74803798/wiki/640739",
+  "api_response_sha256": "6fef230cf15b95d21d7055ff96d9f8749de416801acc2ea3cbd9e70f0dba6068",
+  "wiki_id": "640739",
+  "wiki_etag": "1d3eb9a0-6834-4486-bb86-a052a7332632",
+  "modified_on": "2026-05-29T23:55:34.403Z",
+  "details_blocks_removed_before_inspection": true,
+  "demography_formula": "sqrt(sum_i ((estimate_i - truth_i) / truth_i)^2)",
+  "demography_note": "Published formula has no division by parameter count. Page says demographic history/admixture generally; specific applicability to later-added low-coverage Tasks13/14 is inferred, not separately stated.",
+  "relatedness_formula": "sum_k N_k * TP_k / (TP_k + FN_k + FP_k) / sum_k N_k",
+  "relatedness_weight": "N_k = TP_k + FN_k, the true class count",
+  "implementation_scope": "Independent formula reproduction, not executable parity with organizer scoring server",
+  "existing_acceptance_gates_changed": false,
+  "format_note": "General page says relationship column; specific verified task templates use relation and take precedence."
+}

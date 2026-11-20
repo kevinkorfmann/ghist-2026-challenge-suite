@@ -1,0 +1,168 @@
+{
+  "verified_at_utc": "2026-11-20T19:06:27.871102+00:00",
+  "archive_sha256": "143baed0746831ded2b90abe7d65abffdca63d8eb81e1eb51bbdd6a49e6b11f0",
+  "manifest_bound_files_verified": 340,
+  "total_files_including_manifest": 341,
+  "tasks": {
+    "bottleneck": {
+      "gates": {
+        "exposure": true,
+        "observed_stopping": true,
+        "two_optimizer_agreement": false,
+        "target_stability": false,
+        "frequency_L1": true,
+        "segregating_relative_L1": true,
+        "parameter_recovery": false,
+        "pre_post_binding": true
+      },
+      "full_bam_development_gates_passed": false,
+      "targets": {
+        "seed1": {
+          "generations": 2003.704730429938,
+          "post_decline_fraction": 0.28437557751410053
+        },
+        "seed2": {
+          "generations": 1655.3693502975013,
+          "post_decline_fraction": 0.2876725336719351
+        },
+        "continued": {
+          "generations": 1913.6482087428294,
+          "post_decline_fraction": 0.28241423156174916
+        }
+      },
+      "relative_errors": {
+        "seed1": {
+          "generations": 0.0018523652149691205,
+          "post_decline_fraction": 0.4218778875705025
+        },
+        "seed2": {
+          "generations": -0.17231532485124934,
+          "post_decline_fraction": 0.4383626683596755
+        },
+        "continued": {
+          "generations": -0.04317589562858526,
+          "post_decline_fraction": 0.4120711578087457
+        }
+      },
+      "comparisons": {
+        "seed2": {
+          "frequency_L1": 0.0001437920175175565,
+          "segregating_relative_L1": 0.01534111836737143,
+          "target_relative_change": {
+            "generations": -0.17384566440470195,
+            "post_decline_fraction": 0.011593668438954152
+          }
+        },
+        "continued": {
+          "frequency_L1": 8.914090585719406e-05,
+          "segregating_relative_L1": 0.009442907840667179,
+          "target_relative_change": {
+            "generations": -0.04494500627733966,
+            "post_decline_fraction": -0.006897026704953624
+          }
+        }
+      },
+      "optimizer_agreement": {
+        "seed1": false,
+        "seed2": true,
+        "continued": true
+      },
+      "last_epoch": {
+        "seed1": 6,
+        "seed2": 7,
+        "continued": 2
+      },
+      "documented_demography_root_sum_squared_relative_error": {
+        "seed1": 0.4218819541979002,
+        "seed2": 0.47101422503997314,
+        "continued": 0.41432692051225767
+      }
+    },
+    "split_isolation": {
+      "gates": {
+        "exposure": true,
+        "observed_stopping": true,
+        "two_optimizer_agreement": true,
+        "target_stability": true,
+        "frequency_L1": true,
+        "segregating_relative_L1": true,
+        "parameter_recovery": true,
+        "pre_post_binding": true
+      },
+      "full_bam_development_gates_passed": true,
+      "targets": {
+        "seed1": {
+          "generations_since_split": 4832.369308501368,
+          "pop1_population_size": 4474.430431821817,
+          "pop2_population_size": 14989.279625117055
+        },
+        "seed2": {
+          "generations_since_split": 4870.269790587833,
+          "pop1_population_size": 4476.161491286068,
+          "pop2_population_size": 14988.131273996756
+        },
+        "continued": {
+          "generations_since_split": 4832.4022022586705,
+          "pop1_population_size": 4474.444432116038,
+          "pop2_population_size": 14989.281500683677
+        }
+      },
+      "relative_errors": {
+        "seed1": {
+          "pop1_population_size": -0.10511391363563671,
+          "pop2_population_size": -0.0007146916588631758,
+          "generations_since_split": -0.033526138299726504
+        },
+        "seed2": {
+          "pop1_population_size": -0.10476770174278716,
+          "pop2_population_size": -0.0007912484002168263,
+          "generations_since_split": -0.0259460418824341
+        },
+        "continued": {
+          "pop1_population_size": -0.10511111357679259,
+          "pop2_population_size": -0.000714566621088597,
+          "generations_since_split": -0.03351955954826613
+        }
+      },
+      "comparisons": {
+        "seed2": {
+          "frequency_L1": 0.0007019832219471234,
+          "segregating_relative_L1": 0.029856924408148022,
+          "target_relative_change": {
+            "generations_since_split": 0.007843043374145209,
+            "pop1_population_size": 0.000386878171563243,
+            "pop2_population_size": -7.661149494964103e-05
+          }
+        },
+        "continued": {
+          "frequency_L1": 0.00015433105842818756,
+          "segregating_relative_L1": 0.007096972821753333,
+          "target_relative_change": {
+            "generations_since_split": 6.8069626311118014e-06,
+            "pop1_population_size": 3.12895561438431e-06,
+            "pop2_population_size": 1.2512720215518414e-07
+          }
+        }
+      },
+      "optimizer_agreement": {
+        "seed1": true,
+        "seed2": true,
+        "continued": true
+      },
+      "last_epoch": {
+        "seed1": 11,
+        "seed2": 11,
+        "continued": 3
+      },
+      "documented_demography_root_sum_squared_relative_error": {
+        "seed1": 0.11033334751225365,
+        "seed2": 0.10793560344882257,
+        "continued": 0.11032868020201785
+      }
+    }
+  },
+  "audit_source_sha256": "e2296f854bf008971c53925a56ae50abc872ad3956cc3970c891ac55f0b765c0",
+  "scope": "Independent archive/source/provenance checks, raw-spectrum and log diagnostics, optimizer-record and target arithmetic. No independent raw-BAM likelihood rerun; one development cohort per task.",
+  "fresh_confirmation_verified": false,
+  "release_authorized": false
+}

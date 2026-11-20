@@ -1,0 +1,50 @@
+{
+  "state": "SERVER_ALLOWLIST_SCHEMA_CORRECTED_PENDING_ROOT_REVIEW",
+  "created_utc": "2026-11-20T21:34:58.203776+00:00",
+  "server_evidence": {
+    "source": "Root-reported rejection email",
+    "email_id": "1a1fad9451a8e239",
+    "time_utc": "2026-11-20T21:25",
+    "submission_id": "9785356",
+    "queue_id": "9619674",
+    "invalid_submission_not_scored": true
+  },
+  "server_allowed_labels": [
+    "full_1st_cousin",
+    "full_2nd_cousin",
+    "siblings",
+    "avuncular",
+    "full_1st_cousin_once_removed",
+    "full_2nd_cousin_once_removed",
+    "full_3rd_cousin",
+    "full_2nd_cousin_twice_removed",
+    "full_3rd_cousin_once_removed",
+    "full_1st_cousin_twice_removed",
+    "full_4th_cousin",
+    "avuncular_once_removed"
+  ],
+  "mapping": {
+    "full_1st_cousin_thrice_removed": "full_2nd_cousin_once_removed",
+    "avuncular_twice_removed": "full_1st_cousin_once_removed"
+  },
+  "mapping_rule": "Unique server-accepted label with identical frozen meiosis count; this merges different pedigree labels, not biological equivalence",
+  "replacement_counts": {
+    "full_1st_cousin_thrice_removed": 3040
+  },
+  "pairs": 34453,
+  "people": 263,
+  "all_pair_ids_order_and_meioses_preserved": true,
+  "all_other_relations_preserved": true,
+  "no_model_or_threshold_changes": true,
+  "no_truth_or_scientific_score_feedback_used": true,
+  "input_sha256_before_after": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task10-root-20261120-2028/task10_final_candidate.csv": "ee9bace7bfc086281be0b243c5b440db9542277466b4722a14cb32523ef059be",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task10-root-20261120-2028/task10_final_packaging_provenance.json": "1643526d98cb9d270f53f493c66271500cff94164a718049123f99a6e16bb931",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task10-root-20261120-2028/vcf_preflight.json": "887824c624816f0d3964fec88bf43fc30d8b01ae29c3a24140bd2027ee5bebbe",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task10-development-20261120/correct_task10_server_schema_v1.py": "0beecdb98d56e371ca92248a883f11754816a74fa89d816996d172d8310c1f84"
+  },
+  "output_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task10-root-20261120-2028/task10_final_schema_corrected.csv",
+  "output_sha256": "42ac7e0de7953d7f79f7cd6ad3fcc356c963f43fae6ee636646797fb90639eb8",
+  "scientific_qualification": false,
+  "submission_performed": false
+}

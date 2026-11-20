@@ -1,0 +1,19 @@
+{
+  "stage": "DEVELOPMENT_NOT_CONFIRMATION",
+  "candidate": "frozen-classifier-diploid-state-whole-family-v1",
+  "cohorts": [
+    {"index": 0, "topology": "cousins", "seed": 2026124010},
+    {"index": 1, "topology": "avuncular", "seed": 2026125010}
+  ],
+  "founders": {"generator": "independent msprime constant Ne 10000", "mutation_rate": 1.25e-8, "minimum_minor_allele_frequency": 0.07142857142857142, "minimum_spacing_bp": 500},
+  "transmission": "Ped-sim sex-specific crossover interference, seed = cohort seed+9000",
+  "genotypes": "phased; no errors; no missing calls",
+  "detector": {"min_seed_cm": 1, "min_extend_cm": 0.2, "min_output_cm": 2, "min_markers": 100, "max_gap_bp": 1000},
+  "candidate_change": "all genotype roster members reconstructed as the single family; true diploid-state IBD pieces as frozen-model features",
+  "whole_family_bonsai_settings": [[5, 2], [5, 3]],
+  "consensus": "replicated topology and flat pair-model meiosis agreement",
+  "future_confirmation_gates": {"coverage": 1.0, "exact_accuracy": 0.8, "macro_recall": 0.7, "minimum_label_recall": 0.5, "minimum_gain_over_baseline": 0.1, "all_14_labels_required": true, "no_cohort_regression": true},
+  "gate_interpretation": "prospective development advancement only; not official challenge threshold or scientific release certification",
+  "submission_ready": false,
+  "submission_count": 0
+}

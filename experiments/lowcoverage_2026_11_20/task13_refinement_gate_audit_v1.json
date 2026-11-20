@@ -1,0 +1,243 @@
+{
+  "all_initializations_completed": true,
+  "all_registered_diagnostic_gates_passed": false,
+  "assessor_sha256": "971ed3632bd72abc44c2636423d9d591fd04044d6a63cd07a92229594bc61189",
+  "between_initializations": {
+    "continued": {
+      "all_stability_gates_passed": false,
+      "frequency_L1": 0.00020471680608675347,
+      "segregating_relative_L1": 0.023179995432312778,
+      "target_relative_change": {
+        "generations": 0.0038335714560129297,
+        "post_decline_fraction": 0.00046609463071756174
+      }
+    },
+    "seed1": {
+      "all_stability_gates_passed": false,
+      "frequency_L1": 0.00019001687080783732,
+      "segregating_relative_L1": 0.02151221369782942,
+      "target_relative_change": {
+        "generations": 0.003879067238769851,
+        "post_decline_fraction": 0.00047139057651945926
+      }
+    },
+    "seed2": {
+      "all_stability_gates_passed": false,
+      "frequency_L1": 0.0001995122106030717,
+      "segregating_relative_L1": 0.02259020552381148,
+      "target_relative_change": {
+        "generations": 0.003783024729275164,
+        "post_decline_fraction": 0.00045949547302526206
+      }
+    }
+  },
+  "initializations": {
+    "continued": {
+      "all_gates_passed": false,
+      "continuation_comparison": {
+        "all_stability_gates_passed": false,
+        "frequency_L1": 0.00018299695260145688,
+        "segregating_relative_L1": 0.020718057194550984,
+        "target_relative_change": {
+          "generations": 0.0036649118394633806,
+          "post_decline_fraction": 0.00044588093003095075
+        }
+      },
+      "estimates": {
+        "continued": {
+          "generations": 2005.265397104066,
+          "post_decline_fraction": 0.3034746285700956
+        },
+        "refined": {
+          "generations": 1997.9431117392787,
+          "post_decline_fraction": 0.30333937532730965
+        }
+      },
+      "evidence_sha256": {
+        "full_refinement_bottleneck_continued_v1/continued.estimate.json": "ec7c605afdc9d1c470ab92f5e989f86b7c259d5faca26ff93ba7f9e169040d6b",
+        "full_refinement_bottleneck_continued_v1/continued.sfs": "11f27c7661c69d4f19ce58fabb3af7270c2d472276cc92d6dbb16e354393a41e",
+        "full_refinement_bottleneck_continued_v1/refined.estimate.json": "18a62eb24f4335a40f84e605cff16d33ddd36fecb392a6b11d5392abec78b841",
+        "full_refinement_bottleneck_continued_v1/refined.sfs": "5063c8231b49790d1dba444b97f3ad34e6b91cbceb6ea8789ed6895308137b3e",
+        "full_refinement_bottleneck_continued_v1/scored.json": "faf7dc484952be6cb9525425215ee8182281a7f4c3acddc0a6ebe5cb3d249529"
+      },
+      "failed_gates": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ],
+      "gates": {
+        "continuation_stability": false,
+        "exposure": true,
+        "observed_stopping_before_cap": false,
+        "parameter_recovery": false,
+        "pre_post_provenance": true,
+        "two_optimizer_agreement": true
+      },
+      "relative_errors": {
+        "continued": {
+          "generations": 0.002632698552033075,
+          "post_decline_fraction": 0.517373142850478
+        },
+        "refined": {
+          "generations": -0.0010284441303606284,
+          "post_decline_fraction": 0.5166968766365481
+        }
+      },
+      "stopping_diagnostics": {
+        "continued": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.001361796,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        },
+        "refined": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.003275402,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        }
+      }
+    },
+    "seed1": {
+      "all_gates_passed": false,
+      "continuation_comparison": {
+        "all_stability_gates_passed": false,
+        "frequency_L1": 0.00019001687080783732,
+        "segregating_relative_L1": 0.02151221369782942,
+        "target_relative_change": {
+          "generations": 0.003879067238769851,
+          "post_decline_fraction": 0.00047139057651945926
+        }
+      },
+      "estimates": {
+        "continued": {
+          "generations": 2005.3562798175667,
+          "post_decline_fraction": 0.30347623500652937
+        },
+        "refined": {
+          "generations": 1997.607426294305,
+          "post_decline_fraction": 0.30333324657255
+        }
+      },
+      "evidence_sha256": {
+        "full_refinement_bottleneck_seed1_v1/continued.estimate.json": "b51082cf62d0d19c4e1d44e4a9ec9e1e01cb6d920c0bceb5bdfa647eeadf0864",
+        "full_refinement_bottleneck_seed1_v1/continued.sfs": "57c570b2a8d4a8a63ed656b173b43cb4a20e21617b0ba737f5b2789ecf0ded03",
+        "full_refinement_bottleneck_seed1_v1/refined.estimate.json": "0e4abe13de282ef4e5f43ee723acbcc99d3f51bf84828e499941c72982d052ac",
+        "full_refinement_bottleneck_seed1_v1/refined.sfs": "f9b004954dfb0a65eac4b3edbfcb9b8424efe32d9e840ea98c9000774ca83f9c",
+        "full_refinement_bottleneck_seed1_v1/scored.json": "961f30f529cb13839824c35e5fde943b2c06ecf2cfbf56b6f30a19517ff8a1e1"
+      },
+      "failed_gates": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ],
+      "gates": {
+        "continuation_stability": false,
+        "exposure": true,
+        "observed_stopping_before_cap": false,
+        "parameter_recovery": false,
+        "pre_post_provenance": true,
+        "two_optimizer_agreement": true
+      },
+      "relative_errors": {
+        "continued": {
+          "generations": 0.0026781399087834057,
+          "post_decline_fraction": 0.5173811750326467
+        },
+        "refined": {
+          "generations": -0.0011962868528474502,
+          "post_decline_fraction": 0.51666623286275
+        }
+      },
+      "stopping_diagnostics": {
+        "continued": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.001429737,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        },
+        "refined": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.003577772,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        }
+      }
+    },
+    "seed2": {
+      "all_gates_passed": false,
+      "continuation_comparison": {
+        "all_stability_gates_passed": false,
+        "frequency_L1": 0.0001850322558118112,
+        "segregating_relative_L1": 0.02095103421323478,
+        "target_relative_change": {
+          "generations": 0.0034912447678869807,
+          "post_decline_fraction": 0.0004230033556942292
+        }
+      },
+      "estimates": {
+        "continued": {
+          "generations": 2005.1644245873601,
+          "post_decline_fraction": 0.30347262682616816
+        },
+        "refined": {
+          "generations": 1998.18826027841,
+          "post_decline_fraction": 0.30334431116461474
+        }
+      },
+      "evidence_sha256": {
+        "full_refinement_bottleneck_seed2_v1/continued.estimate.json": "23558210d29a7dbe6e969cf0cfb840d1a6c1f52674b38debe024bf73849b79a7",
+        "full_refinement_bottleneck_seed2_v1/continued.sfs": "d4b6a2ba60840de257ec8cfeb3c00c239ef59d81671c671acec2a7b74d49fb3a",
+        "full_refinement_bottleneck_seed2_v1/refined.estimate.json": "8cb082b6cf6d38b108c9fd3f4f4ee744f6e2fe1424466f5a3cdf178c35598889",
+        "full_refinement_bottleneck_seed2_v1/refined.sfs": "a982ff402c56aa979af55f25e7742886fc0314ecd01bcee5ac63c1ab5fcea15a",
+        "full_refinement_bottleneck_seed2_v1/scored.json": "9691e87488ba892463a34cde037b9ebe76ce8b62b7ae80ae77d14405fdae605f"
+      },
+      "failed_gates": [
+        "observed_stopping_before_cap",
+        "parameter_recovery",
+        "continuation_stability"
+      ],
+      "gates": {
+        "continuation_stability": false,
+        "exposure": true,
+        "observed_stopping_before_cap": false,
+        "parameter_recovery": false,
+        "pre_post_provenance": true,
+        "two_optimizer_agreement": true
+      },
+      "relative_errors": {
+        "continued": {
+          "generations": 0.002582212293680053,
+          "post_decline_fraction": 0.5173631341308407
+        },
+        "refined": {
+          "generations": -0.0009058698607949944,
+          "post_decline_fraction": 0.5167215558230736
+        }
+      },
+      "stopping_diagnostics": {
+        "continued": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.001376978,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        },
+        "refined": {
+          "convergence_observed": false,
+          "last_iteration": 250,
+          "last_likelihood_change": 0.003380645,
+          "probability_update_norm": null,
+          "tolerance": 1e-08
+        }
+      }
+    }
+  },
+  "registered_protocol_sha256": "d25f94eae94fd168c6bb845f295ceb6eba2b97d7af10e16ad669c0f9667c7120",
+  "scientifically_ready": false,
+  "scope": "Previously inspected development only; prior v7/truth-control failures remain unchanged."
+}

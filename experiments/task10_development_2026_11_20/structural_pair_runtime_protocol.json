@@ -1,0 +1,38 @@
+{
+  "status": "PROSPECTIVE_RUNTIME_AND_PARITY_ONLY",
+  "candidate": "pair-only-forest-mean-NJ-integer-edge-v3",
+  "created_utc": "2026-11-20T20:02:00Z",
+  "people": 229,
+  "training_parity_cohorts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "integration_parity": "All eight reused development cohorts retain exact inferred labels after serial forest reduction and integrated inference. Truth is not passed to inference.",
+  "data": "Existing scaling_preflight exact ancestral segments only; no new genomes or independent qualification outcomes.",
+  "source_sha256": {
+    "structural_pair_candidate.py": "ecf677b580d0a80fa4272a7ee22d9f0836bd00dc85db0486c531b168c1b75561",
+    "profile_structural_pair_candidate.py": "ac9326d7ce339e281769bf37260aedb8236c0bd4eb77c14e7dbac6a9f643bbbd",
+    "integer_edge_decoder.py": "85b2ac391883df1796c7f9b7829f360b315c047b09912a0bceff92438b2025fb",
+    "forest_distance_decoder.py": "11db5433e315682a2fdd3ce7ce4596306c8c72517340832d154d50ed2fb7a39f"
+  },
+  "original_source_manifest_sha256": "7d4c00c9cfd9d197fce722e5de566078336ff0e6c2d7a39a84504e28a3bd9489",
+  "pair_model_sha256": "bdfecf8dc908d1222b43c2b16731f4cbe2f465ed7dc93a8a090ecd4b224d4159",
+  "inference": "Exactly the frozen direct pair features and scalar T=1; serial forest reduction; unchanged forest mean meioses NJ plus fixed topology, max20 accepted unit edge moves/max200 feasible-root checks. Fail explicitly if initial NJ has no valid root.",
+  "runtime_gate": {
+    "total_seconds_max": 600,
+    "memory_GiB_max": 10,
+    "complete_pairs": 26106
+  },
+  "budget": {
+    "cpus": 2,
+    "minutes": 15,
+    "hard_CPU_hours": 0.5
+  },
+  "biological_qualification": false
+}

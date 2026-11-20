@@ -1,0 +1,81 @@
+{
+  "comparisons": {
+    "continued": {
+      "frequency_L1": 0.00011680906370533701,
+      "segregating_relative_L1": 0.006615503178984099,
+      "target_relative_change": {
+        "generations": -0.044630082620043976,
+        "post_decline_fraction": -0.028520211940238238
+      }
+    },
+    "seed2": {
+      "frequency_L1": 0.00023517311585580784,
+      "segregating_relative_L1": 0.012048306009332072,
+      "target_relative_change": {
+        "generations": 0.06226424431626887,
+        "post_decline_fraction": 0.08044134057856112
+      }
+    }
+  },
+  "draft_sha256": "0f29d672c7262ce5499201f72773ba8bcdaad0866d2f96a1b40d146a2e2fd269",
+  "execution_binding_sha256": "80ec2f12cafa45bf90c9408890ff9ba1e8d66d6f38ed02c73fd11f34db8dad2a",
+  "numeric_schema_binding_audit_passed": true,
+  "practical_5percent_target_stability": false,
+  "primary_label": "continued",
+  "raw_input_and_runtime_rehash": "Root must separately retain pre/post hash audit; this helper does not repeat large input/runtime reads.",
+  "reported_numerical_gates": {
+    "exposure": true,
+    "frequency_L1": true,
+    "observed_stopping": true,
+    "segregating_relative_L1": true,
+    "target_stability": false,
+    "two_optimizer_agreement": true
+  },
+  "root_decision_sha256": "e7b185bae731afd7f7bdade46de9c9672449099bd883aae18b94a98720b96195",
+  "runs": {
+    "continued": {
+      "callable_fraction": 0.9999973999999998,
+      "epochs": 2,
+      "last_delta": 7.4426e-06,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations": 905.9200949069289,
+        "post_decline_fraction": 0.13135330610359056
+      }
+    },
+    "seed1": {
+      "callable_fraction": 0.9999973999999001,
+      "epochs": 7,
+      "last_delta": 8.4567e-05,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations": 948.2401302642643,
+        "post_decline_fraction": 0.13520950998468967
+      }
+    },
+    "seed2": {
+      "callable_fraction": 0.9999974000002001,
+      "epochs": 7,
+      "last_delta": 5.1721e-05,
+      "optimizer_agreement": true,
+      "stopping_passed": true,
+      "targets": {
+        "generations": 1007.2815854055291,
+        "post_decline_fraction": 0.14608594422682844
+      }
+    }
+  },
+  "strict_numerical_gates": {
+    "exposure": true,
+    "frequency_L1": true,
+    "observed_stopping": true,
+    "segregating_relative_L1": true,
+    "target_stability": false,
+    "two_optimizer_agreement": true
+  },
+  "strict_qualification": false,
+  "task": "bottleneck",
+  "truth_or_recovery_checked_on_final": false
+}

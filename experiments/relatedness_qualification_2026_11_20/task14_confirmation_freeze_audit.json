@@ -1,0 +1,22 @@
+{
+  "verified_at_utc": "2026-11-20T19:09:03.550791+00:00",
+  "freeze_sha256": "1f61090830f5d33cd62eb117488d32f906e670d8819add5f30edb1b26b0b11bc",
+  "total_remote_files_independently_rehashed": 3194,
+  "runtime_files": 3166,
+  "mismatches": [],
+  "designs_match_prespecified_six_cohorts": true,
+  "unchanged_noise_profiles": {
+    "replicate0": {
+      "depth_sigma": 0.25,
+      "quality": 30
+    },
+    "replicate1": {
+      "depth_sigma": 0.5,
+      "quality": 20
+    }
+  },
+  "reviewed_execution_guard": "Pre/post source/runtime/binaries/template and raw BAM/index bindings; simulation design and noise equality, separate synthetic formatter schema check.",
+  "gate_scope": "Six independent synthetic cohorts; all frozen numerical/recovery checks required; no challenge inference.",
+  "limits": "Runtime files cover recorded installed package files and Python interpreter/shared library; operating-system files outside this manifest are not asserted immutable.",
+  "scientifically_ready": false
+}

@@ -1,0 +1,2526 @@
+{
+  "raw_cohort_scores": {
+    "schema_version": "relatedness-cohort-score-v1",
+    "cohorts": [
+      {
+        "pairs": 120,
+        "correct": 27,
+        "exact_accuracy": 0.225,
+        "balanced_accuracy": null,
+        "observed_label_macro_recall": 0.25,
+        "all_labels_represented": false,
+        "per_label": {
+          "siblings": {
+            "pairs": 8,
+            "correct": 8,
+            "recall": 1.0
+          },
+          "avuncular": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "avuncular_once_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "avuncular_twice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_1st_cousin": {
+            "pairs": 4,
+            "correct": 3,
+            "recall": 0.75
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 6,
+            "recall": 0.375
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 16,
+            "correct": 10,
+            "recall": 0.625
+          },
+          "full_1st_cousin_thrice_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin_twice_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_3rd_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_3rd_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_4th_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          }
+        },
+        "confusion": [
+          [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            10,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            3,
+            0,
+            2,
+            10,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9,
+            0,
+            5,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            1,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "confusion_rows": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin"
+        ],
+        "confusion_columns": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin",
+          "missing_or_abstained"
+        ],
+        "cohort_id": "phase_development_0",
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "pairs": 28,
+        "correct": 15,
+        "exact_accuracy": 0.5357142857142857,
+        "balanced_accuracy": null,
+        "observed_label_macro_recall": 0.5357142857142857,
+        "all_labels_represented": false,
+        "per_label": {
+          "siblings": {
+            "pairs": 4,
+            "correct": 4,
+            "recall": 1.0
+          },
+          "avuncular": {
+            "pairs": 4,
+            "correct": 4,
+            "recall": 1.0
+          },
+          "avuncular_once_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "avuncular_twice_removed": {
+            "pairs": 4,
+            "correct": 3,
+            "recall": 0.75
+          },
+          "full_1st_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 2,
+            "recall": 0.5
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_1st_cousin_thrice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_2nd_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 2,
+            "recall": 0.5
+          },
+          "full_2nd_cousin_twice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_3rd_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_3rd_cousin_once_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_4th_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          }
+        },
+        "confusion": [
+          [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "confusion_rows": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin"
+        ],
+        "confusion_columns": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin",
+          "missing_or_abstained"
+        ],
+        "cohort_id": "phase_development_1",
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "pairs": 120,
+        "correct": 26,
+        "exact_accuracy": 0.21666666666666667,
+        "balanced_accuracy": null,
+        "observed_label_macro_recall": 0.21022727272727273,
+        "all_labels_represented": false,
+        "per_label": {
+          "siblings": {
+            "pairs": 8,
+            "correct": 8,
+            "recall": 1.0
+          },
+          "avuncular": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "avuncular_once_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "avuncular_twice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_1st_cousin": {
+            "pairs": 4,
+            "correct": 1,
+            "recall": 0.25
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 5,
+            "recall": 0.3125
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 16,
+            "correct": 12,
+            "recall": 0.75
+          },
+          "full_1st_cousin_thrice_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin_twice_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_3rd_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_3rd_cousin_once_removed": {
+            "pairs": 16,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_4th_cousin": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          }
+        },
+        "confusion": [
+          [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            3,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            11,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            12,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            9,
+            0,
+            4,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            12,
+            0,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            9,
+            0,
+            3,
+            3,
+            1,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "confusion_rows": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin"
+        ],
+        "confusion_columns": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin",
+          "missing_or_abstained"
+        ],
+        "cohort_id": "phase_development_2",
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "pairs": 28,
+        "correct": 13,
+        "exact_accuracy": 0.4642857142857143,
+        "balanced_accuracy": null,
+        "observed_label_macro_recall": 0.4642857142857143,
+        "all_labels_represented": false,
+        "per_label": {
+          "siblings": {
+            "pairs": 4,
+            "correct": 4,
+            "recall": 1.0
+          },
+          "avuncular": {
+            "pairs": 4,
+            "correct": 4,
+            "recall": 1.0
+          },
+          "avuncular_once_removed": {
+            "pairs": 4,
+            "correct": 1,
+            "recall": 0.25
+          },
+          "avuncular_twice_removed": {
+            "pairs": 4,
+            "correct": 2,
+            "recall": 0.5
+          },
+          "full_1st_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_1st_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 2,
+            "recall": 0.5
+          },
+          "full_1st_cousin_twice_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_1st_cousin_thrice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_2nd_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_2nd_cousin_once_removed": {
+            "pairs": 4,
+            "correct": 0,
+            "recall": 0.0
+          },
+          "full_2nd_cousin_twice_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_3rd_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_3rd_cousin_once_removed": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          },
+          "full_4th_cousin": {
+            "pairs": 0,
+            "correct": 0,
+            "recall": null
+          }
+        },
+        "confusion": [
+          [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "confusion_rows": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin"
+        ],
+        "confusion_columns": [
+          "siblings",
+          "avuncular",
+          "avuncular_once_removed",
+          "avuncular_twice_removed",
+          "full_1st_cousin",
+          "full_1st_cousin_once_removed",
+          "full_1st_cousin_twice_removed",
+          "full_1st_cousin_thrice_removed",
+          "full_2nd_cousin",
+          "full_2nd_cousin_once_removed",
+          "full_2nd_cousin_twice_removed",
+          "full_3rd_cousin",
+          "full_3rd_cousin_once_removed",
+          "full_4th_cousin",
+          "missing_or_abstained"
+        ],
+        "cohort_id": "phase_development_3",
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      }
+    ],
+    "cohort_count": 4,
+    "pooled": {
+      "pairs": 296,
+      "correct": 81,
+      "exact_accuracy": 0.27364864864864863,
+      "balanced_accuracy": 0.30178571428571427,
+      "observed_label_macro_recall": 0.30178571428571427,
+      "all_labels_represented": true,
+      "per_label": {
+        "siblings": {
+          "pairs": 24,
+          "correct": 24,
+          "recall": 1.0
+        },
+        "avuncular": {
+          "pairs": 8,
+          "correct": 8,
+          "recall": 1.0
+        },
+        "avuncular_once_removed": {
+          "pairs": 8,
+          "correct": 1,
+          "recall": 0.125
+        },
+        "avuncular_twice_removed": {
+          "pairs": 8,
+          "correct": 5,
+          "recall": 0.625
+        },
+        "full_1st_cousin": {
+          "pairs": 8,
+          "correct": 4,
+          "recall": 0.5
+        },
+        "full_1st_cousin_once_removed": {
+          "pairs": 40,
+          "correct": 15,
+          "recall": 0.375
+        },
+        "full_1st_cousin_twice_removed": {
+          "pairs": 40,
+          "correct": 22,
+          "recall": 0.55
+        },
+        "full_1st_cousin_thrice_removed": {
+          "pairs": 32,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "full_2nd_cousin": {
+          "pairs": 8,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "full_2nd_cousin_once_removed": {
+          "pairs": 40,
+          "correct": 2,
+          "recall": 0.05
+        },
+        "full_2nd_cousin_twice_removed": {
+          "pairs": 32,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "full_3rd_cousin": {
+          "pairs": 8,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "full_3rd_cousin_once_removed": {
+          "pairs": 32,
+          "correct": 0,
+          "recall": 0.0
+        },
+        "full_4th_cousin": {
+          "pairs": 8,
+          "correct": 0,
+          "recall": 0.0
+        }
+      },
+      "confusion": [
+        [
+          24,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          8,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          5,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          4,
+          0,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          25,
+          0,
+          15,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5,
+          0,
+          10,
+          22,
+          0,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          18,
+          0,
+          9,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          24,
+          0,
+          14,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          25,
+          0,
+          4,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          0,
+          4,
+          10,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          0,
+          0,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_rows": [
+        "siblings",
+        "avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "full_1st_cousin_once_removed",
+        "full_1st_cousin_twice_removed",
+        "full_1st_cousin_thrice_removed",
+        "full_2nd_cousin",
+        "full_2nd_cousin_once_removed",
+        "full_2nd_cousin_twice_removed",
+        "full_3rd_cousin",
+        "full_3rd_cousin_once_removed",
+        "full_4th_cousin"
+      ],
+      "confusion_columns": [
+        "siblings",
+        "avuncular",
+        "avuncular_once_removed",
+        "avuncular_twice_removed",
+        "full_1st_cousin",
+        "full_1st_cousin_once_removed",
+        "full_1st_cousin_twice_removed",
+        "full_1st_cousin_thrice_removed",
+        "full_2nd_cousin",
+        "full_2nd_cousin_once_removed",
+        "full_2nd_cousin_twice_removed",
+        "full_3rd_cousin",
+        "full_3rd_cousin_once_removed",
+        "full_4th_cousin",
+        "missing_or_abstained"
+      ]
+    },
+    "pair_coverage_passed": true,
+    "missing_pairs": 0,
+    "extra_pairs": 0,
+    "abstained_pairs": 0,
+    "calibration": {
+      "ece": 0.1901556708494209,
+      "bins": [
+        {
+          "lower": 0.0,
+          "upper": 0.1,
+          "pairs": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "pairs": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 46,
+          "mean_confidence": 0.2739341489428448,
+          "accuracy": 0.021739130434782608
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 103,
+          "mean_confidence": 0.34745973745779574,
+          "accuracy": 0.10679611650485436
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 60,
+          "mean_confidence": 0.4467829761904761,
+          "accuracy": 0.2833333333333333
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 49,
+          "mean_confidence": 0.5302968415937804,
+          "accuracy": 0.3877551020408163
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 5,
+          "mean_confidence": 0.6572922222222222,
+          "accuracy": 0.2
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 1,
+          "mean_confidence": 0.7647507936507941,
+          "accuracy": 0.0
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 0,
+          "mean_confidence": null,
+          "accuracy": null
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 32,
+          "mean_confidence": 0.9983119047619047,
+          "accuracy": 1.0
+        }
+      ],
+      "pairs": 296,
+      "confidence_definition": "Reported probability of the actual emitted label",
+      "scope": "Descriptive pair-weighted calibration; ECE alone is not a release gate"
+    },
+    "calibration_available": true,
+    "bootstrap": {
+      "unit": "whole cohort",
+      "seed": 20261120,
+      "replicates_requested": 2000,
+      "replicates_evaluated": 1749,
+      "replicates_missing_labels": 251,
+      "confidence_level": 0.95,
+      "exact_accuracy_interval": null,
+      "balanced_accuracy_interval": null,
+      "status": "missing_label_support",
+      "limitations": "Percentile bootstrap is descriptive; few cohorts or unrepresentative models cannot establish generalization."
+    },
+    "release_authorized": false,
+    "scope": "Scoring only; caller must establish prospective freezing, independence, biological coverage and acceptance criteria."
+  },
+  "published_metric": {
+    "schema": "ghist2026-published-relatedness-metric-v1",
+    "source_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640739",
+    "formula": "sum_k N_k * TP_k / (TP_k + FN_k + FP_k) / sum_k N_k",
+    "scope": "Independent implementation of the published formula; not organizer-executable parity or scientific release authorization",
+    "pooled": {
+      "truth_pairs": 296,
+      "weighted_jaccard": 0.182996237115237,
+      "per_label": {
+        "siblings": {
+          "truth": 24,
+          "true_positive": 24,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.08108108108108109
+        },
+        "avuncular": {
+          "truth": 8,
+          "true_positive": 8,
+          "false_negative": 0,
+          "false_positive": 0,
+          "jaccard": 1.0,
+          "weight": 0.02702702702702703
+        },
+        "avuncular_once_removed": {
+          "truth": 8,
+          "true_positive": 1,
+          "false_negative": 7,
+          "false_positive": 5,
+          "jaccard": 0.07692307692307693,
+          "weight": 0.02702702702702703
+        },
+        "avuncular_twice_removed": {
+          "truth": 8,
+          "true_positive": 5,
+          "false_negative": 3,
+          "false_positive": 32,
+          "jaccard": 0.125,
+          "weight": 0.02702702702702703
+        },
+        "full_1st_cousin": {
+          "truth": 8,
+          "true_positive": 4,
+          "false_negative": 4,
+          "false_positive": 8,
+          "jaccard": 0.25,
+          "weight": 0.02702702702702703
+        },
+        "full_1st_cousin_once_removed": {
+          "truth": 40,
+          "true_positive": 15,
+          "false_negative": 25,
+          "false_positive": 15,
+          "jaccard": 0.2727272727272727,
+          "weight": 0.13513513513513514
+        },
+        "full_1st_cousin_twice_removed": {
+          "truth": 40,
+          "true_positive": 22,
+          "false_negative": 18,
+          "false_positive": 99,
+          "jaccard": 0.15827338129496402,
+          "weight": 0.13513513513513514
+        },
+        "full_1st_cousin_thrice_removed": {
+          "truth": 32,
+          "true_positive": 0,
+          "false_negative": 32,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.10810810810810811
+        },
+        "full_2nd_cousin": {
+          "truth": 8,
+          "true_positive": 0,
+          "false_negative": 8,
+          "false_positive": 34,
+          "jaccard": 0.0,
+          "weight": 0.02702702702702703
+        },
+        "full_2nd_cousin_once_removed": {
+          "truth": 40,
+          "true_positive": 2,
+          "false_negative": 38,
+          "false_positive": 21,
+          "jaccard": 0.03278688524590164,
+          "weight": 0.13513513513513514
+        },
+        "full_2nd_cousin_twice_removed": {
+          "truth": 32,
+          "true_positive": 0,
+          "false_negative": 32,
+          "false_positive": 1,
+          "jaccard": 0.0,
+          "weight": 0.10810810810810811
+        },
+        "full_3rd_cousin": {
+          "truth": 8,
+          "true_positive": 0,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.02702702702702703
+        },
+        "full_3rd_cousin_once_removed": {
+          "truth": 32,
+          "true_positive": 0,
+          "false_negative": 32,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.10810810810810811
+        },
+        "full_4th_cousin": {
+          "truth": 8,
+          "true_positive": 0,
+          "false_negative": 8,
+          "false_positive": 0,
+          "jaccard": 0.0,
+          "weight": 0.02702702702702703
+        }
+      }
+    },
+    "cohorts": [
+      {
+        "cohort_id": "phase_development_0",
+        "truth_pairs": 120,
+        "weighted_jaccard": 0.15543478260869564,
+        "per_label": {
+          "siblings": {
+            "truth": 8,
+            "true_positive": 8,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.06666666666666667
+          },
+          "avuncular": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "avuncular_once_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 1,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "avuncular_twice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 13,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "full_1st_cousin": {
+            "truth": 4,
+            "true_positive": 3,
+            "false_negative": 1,
+            "false_positive": 0,
+            "jaccard": 0.75,
+            "weight": 0.03333333333333333
+          },
+          "full_1st_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 6,
+            "false_negative": 10,
+            "false_positive": 2,
+            "jaccard": 0.3333333333333333,
+            "weight": 0.13333333333333333
+          },
+          "full_1st_cousin_twice_removed": {
+            "truth": 16,
+            "true_positive": 10,
+            "false_negative": 6,
+            "false_positive": 53,
+            "jaccard": 0.14492753623188406,
+            "weight": 0.13333333333333333
+          },
+          "full_1st_cousin_thrice_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_2nd_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 12,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          },
+          "full_2nd_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 12,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_2nd_cousin_twice_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_3rd_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          },
+          "full_3rd_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_4th_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          }
+        },
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "cohort_id": "phase_development_1",
+        "truth_pairs": 28,
+        "weighted_jaccard": 0.4583333333333333,
+        "per_label": {
+          "siblings": {
+            "truth": 4,
+            "true_positive": 4,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.14285714285714285
+          },
+          "avuncular": {
+            "truth": 4,
+            "true_positive": 4,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.14285714285714285
+          },
+          "avuncular_once_removed": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 1,
+            "jaccard": 0.0,
+            "weight": 0.14285714285714285
+          },
+          "avuncular_twice_removed": {
+            "truth": 4,
+            "true_positive": 3,
+            "false_negative": 1,
+            "false_positive": 4,
+            "jaccard": 0.375,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 4,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "full_1st_cousin_once_removed": {
+            "truth": 4,
+            "true_positive": 2,
+            "false_negative": 2,
+            "false_positive": 2,
+            "jaccard": 0.3333333333333333,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin_twice_removed": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 2,
+            "jaccard": 0.0,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin_thrice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_2nd_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_2nd_cousin_once_removed": {
+            "truth": 4,
+            "true_positive": 2,
+            "false_negative": 2,
+            "false_positive": 0,
+            "jaccard": 0.5,
+            "weight": 0.14285714285714285
+          },
+          "full_2nd_cousin_twice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_3rd_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_3rd_cousin_once_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_4th_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          }
+        },
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "cohort_id": "phase_development_2",
+        "truth_pairs": 120,
+        "weighted_jaccard": 0.132889237199582,
+        "per_label": {
+          "siblings": {
+            "truth": 8,
+            "true_positive": 8,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.06666666666666667
+          },
+          "avuncular": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "avuncular_once_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 3,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "avuncular_twice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 13,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "full_1st_cousin": {
+            "truth": 4,
+            "true_positive": 1,
+            "false_negative": 3,
+            "false_positive": 0,
+            "jaccard": 0.25,
+            "weight": 0.03333333333333333
+          },
+          "full_1st_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 5,
+            "false_negative": 11,
+            "false_positive": 6,
+            "jaccard": 0.22727272727272727,
+            "weight": 0.13333333333333333
+          },
+          "full_1st_cousin_twice_removed": {
+            "truth": 16,
+            "true_positive": 12,
+            "false_negative": 4,
+            "false_positive": 42,
+            "jaccard": 0.20689655172413793,
+            "weight": 0.13333333333333333
+          },
+          "full_1st_cousin_thrice_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_2nd_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 20,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          },
+          "full_2nd_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 9,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_2nd_cousin_twice_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 1,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_3rd_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          },
+          "full_3rd_cousin_once_removed": {
+            "truth": 16,
+            "true_positive": 0,
+            "false_negative": 16,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.13333333333333333
+          },
+          "full_4th_cousin": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.03333333333333333
+          }
+        },
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      },
+      {
+        "cohort_id": "phase_development_3",
+        "truth_pairs": 28,
+        "weighted_jaccard": 0.40079365079365076,
+        "per_label": {
+          "siblings": {
+            "truth": 4,
+            "true_positive": 4,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.14285714285714285
+          },
+          "avuncular": {
+            "truth": 4,
+            "true_positive": 4,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": 1.0,
+            "weight": 0.14285714285714285
+          },
+          "avuncular_once_removed": {
+            "truth": 4,
+            "true_positive": 1,
+            "false_negative": 3,
+            "false_positive": 0,
+            "jaccard": 0.25,
+            "weight": 0.14285714285714285
+          },
+          "avuncular_twice_removed": {
+            "truth": 4,
+            "true_positive": 2,
+            "false_negative": 2,
+            "false_positive": 2,
+            "jaccard": 0.3333333333333333,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 4,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "full_1st_cousin_once_removed": {
+            "truth": 4,
+            "true_positive": 2,
+            "false_negative": 2,
+            "false_positive": 5,
+            "jaccard": 0.2222222222222222,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin_twice_removed": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 2,
+            "jaccard": 0.0,
+            "weight": 0.14285714285714285
+          },
+          "full_1st_cousin_thrice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_2nd_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 2,
+            "jaccard": 0.0,
+            "weight": 0.0
+          },
+          "full_2nd_cousin_once_removed": {
+            "truth": 4,
+            "true_positive": 0,
+            "false_negative": 4,
+            "false_positive": 0,
+            "jaccard": 0.0,
+            "weight": 0.14285714285714285
+          },
+          "full_2nd_cousin_twice_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_3rd_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_3rd_cousin_once_removed": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          },
+          "full_4th_cousin": {
+            "truth": 0,
+            "true_positive": 0,
+            "false_negative": 0,
+            "false_positive": 0,
+            "jaccard": null,
+            "weight": 0.0
+          }
+        },
+        "missing_pairs": 0,
+        "extra_pairs": 0,
+        "abstained_pairs": 0,
+        "pair_coverage_passed": true
+      }
+    ],
+    "pair_coverage_passed": true,
+    "release_authorized": false
+  },
+  "verified_manifest_sha256": "a06d8d89cff5345a52f0b39a075ce2553299daf597aafa2d96037d4561a2dd8e",
+  "input_sha256_before_and_after": {
+    "phase_evidence/phase_development_cohort_0/truth.json": "b6477f29c97decca9c9917cc6c4b9b730d1c838513ec5db3e01fc6995ac4927b",
+    "phase_evidence/phase_predictions/cohort_0/phase_free/predictions.json": "be431b222353775419af78b2c43392d8d9fcbd809b948ddc68cfae2640f9859e",
+    "phase_evidence/phase_development_cohort_1/truth.json": "30922ac3b82f0bdffdb38e9bf74a5b5ca8fec9ba97badad6229b7e9d23451f37",
+    "phase_evidence/phase_predictions/cohort_1/phase_free/predictions.json": "26af6584ba5b8ae624e78cced7a43b9b8a60fc5ee956bf2d0fd3dde113bdcca7",
+    "phase_evidence/phase_development_cohort_2/truth.json": "b6477f29c97decca9c9917cc6c4b9b730d1c838513ec5db3e01fc6995ac4927b",
+    "phase_evidence/phase_predictions/cohort_2/phase_free/predictions.json": "8bcd86fd2c1b963ae8e2bc2cbe5dd13853964a57b05bf70a57647cb9e4ab71a1",
+    "phase_evidence/phase_development_cohort_3/truth.json": "30922ac3b82f0bdffdb38e9bf74a5b5ca8fec9ba97badad6229b7e9d23451f37",
+    "phase_evidence/phase_predictions/cohort_3/phase_free/predictions.json": "5a9532ed3bb366c62c9acc5a5c6ca7b5ef24aeb3618b859c501a8d3b255b45ff",
+    "phase_evidence/phase_calibration/phase_free_scorer_input.json": "17f95027e67b808a97ef5c4a6241c5433931936cd08e471c3dbb2a57fe8c566a"
+  },
+  "calibration_scope": "Raw model probabilities, before the separately selected development temperature; not confirmation",
+  "audit_source_sha256": "cab77c9a6b9940ca90c015c643b41caf7097ba8d62c0b291fc370e7c168fe3eb",
+  "scorer_sha256": "afcaa584a8e390f7ffa4b44803f8e1aa49bd6b2575fd5e3a0b500d7bd16d604c",
+  "published_metric_scorer_sha256": "5a862a3a6b2787d375549dcb6dc0f27ca3219b01b654fedfa1339d112632d153"
+}

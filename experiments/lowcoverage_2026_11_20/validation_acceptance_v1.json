@@ -1,0 +1,89 @@
+{
+  "registered_at_utc": "2026-11-20T18:13:20.211635+00:00",
+  "status": "prespecified_before_full_10Mb_inference; development method still being selected",
+  "not_blinded_development": "Public testing-answer exposure disclosed; no values retained or used. Inspected 1Mb cohorts are development only.",
+  "development": [
+    "Existing 1Mb cohorts: GL1 versus GL2, continuation, derivative-free optimizer check.",
+    "Prepared 10Mb cohorts with offset10000 are full-width development execution checks, not unseen-demography confirmation."
+  ],
+  "selection_rule": "Choose a likelihood model based on the declared read-error mechanism plus development diagnostics, then freeze all numerical/source settings before fresh confirmation. Any later change invalidates confirmation status.",
+  "numerical_gates": {
+    "contract": "All20 diploids, exact population roster, coherent FASTA/BAM dictionary of10Mb, sorted indexed BAMs; exact hashes.",
+    "exposure": "Measured retained SAF/realSFS sites over full10Mb; synthetic callable_fraction>=0.99. No complete-case requirement, no full-length substitution.",
+    "sfs_convergence": "Original tolerance1e-8 with observed absolute-likelihood-change or probability-update norm stop; followed by separate continuation with same tolerance.",
+    "sfs_stability": "After continuation, total L1 frequency change<1e-5, segregating-bin relative L1 change<0.01, each requested target relative change<0.01.",
+    "optimizer": "At least8 starts each for L-BFGS-B(log-coordinate eps1e-4) and Powell; both yield interior successful solutions within0.01 log units in parameters and0.01 log-likelihood. Any better boundary or non-converged solution invalidates agreement."
+  },
+  "scientific_gates": {
+    "independent_truth": "No challenge truth or final/testing data. Seeds and demographic regimes fixed below. Truth scored only after frozen inference.",
+    "recovery": "Each target absolute relative error <=0.30 in every confirmatory cohort, and median absolute relative error <=0.20 over each task. These conservative development gates are not the official metric.",
+    "replication": "Three independently prespecified regimes per task, two independent genealogies/read seeds each, 10Mb andBWA-MEM mapping throughout.",
+    "noise": "Replicate1 uses individual depth CV from lognormal sigma0.25 and matchedQ30/iid0.001 errors. Replicate2 uses sigma0.5 and matchedQ20/iid0.01 errors. Both retain challenge mean depth2x/4x.",
+    "limits": "These tests cannot establish identifiability over all unknown demographies or calibration. Wider bounds/recent events/repeats/indels need explicit follow-up and no readiness claim beyond tested domain."
+  },
+  "confirmation_designs": {
+    "bottleneck": [
+      {
+        "ancestral_size": 8000,
+        "fraction": 0.05,
+        "generations": 500,
+        "seeds": [
+          842001,
+          842002
+        ]
+      },
+      {
+        "ancestral_size": 10000,
+        "fraction": 0.2,
+        "generations": 2000,
+        "seeds": [
+          842011,
+          842012
+        ]
+      },
+      {
+        "ancestral_size": 20000,
+        "fraction": 0.6,
+        "generations": 8000,
+        "seeds": [
+          842021,
+          842022
+        ]
+      }
+    ],
+    "split_isolation": [
+      {
+        "ancestral_size": 8000,
+        "size1": 4000,
+        "size2": 4000,
+        "generations": 1000,
+        "seeds": [
+          853001,
+          853002
+        ]
+      },
+      {
+        "ancestral_size": 10000,
+        "size1": 5000,
+        "size2": 15000,
+        "generations": 5000,
+        "seeds": [
+          853011,
+          853012
+        ]
+      },
+      {
+        "ancestral_size": 20000,
+        "size1": 30000,
+        "size2": 10000,
+        "generations": 12000,
+        "seeds": [
+          853021,
+          853022
+        ]
+      }
+    ]
+  },
+  "compute_budget": "Gate further work on development diagnostics first. Maximum2 concurrent Slurm jobs,4CPUs and5632M/CPU each. Each initial inference<=2h; continuation<=2h. Twelve confirmation cohorts would cost at most192 CPU-hours for inference/continuation plus<=36 CPU-hours preparation, and are not yet launched. Stop escalation if systematic failure persists.",
+  "release_rule": "No scientific readiness unless all numerical and scientific gates pass under one frozen policy. Timeouts, changed tolerance, or a single successful cohort do not pass."
+}

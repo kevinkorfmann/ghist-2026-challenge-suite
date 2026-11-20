@@ -1,0 +1,169 @@
+{
+  "source_manifest_sha256": "43a608f4bde3334fc8239f48b4dd4834ee3a87ee547acb15b379bfc4838e21f4",
+  "source_hashes_verified": {
+    "src/ghist_lowcoverage/remap.py": "3be7755f805e24cf13f7fb627feae67da136389d9fecbb7e496788f591d32185",
+    "src/ghist_lowcoverage/winsfs.py": "3fb657c03dff9086cbaad24c4328005f106097f4891778465976a922e4723bd0",
+    "src/ghist_lowcoverage/submission.py": "b75531e8cbc3c03fff78b0d0b38adb3262c21c8137133979a95f56e8a54277bf",
+    "src/ghist_lowcoverage/__init__.py": "07d182837d9bb3f65344d79572554799ee9bbfe48bc97b386b6eebdd9cd6c821",
+    "src/ghist_lowcoverage/pipeline.py": "3a994ec9ea14b38012b7528f959f0ee6fdd82c5a3ca23bb863f1d44ef73b3ba0",
+    "scripts/lowcoverage_profile_truth.py": "1e09850ababf608f4737394bef5a57900634cdab59e1bd89eed5392efa4d4df9",
+    "scripts/lowcoverage_prepare_full.py": "05c381ce8ec6495432ad887e2797b6641fe97001024381b416ac6be526d02f46",
+    "scripts/lowcoverage_infer.py": "133f91a23924538011b676ef24ee6fb206f0dd304f796c64e6d19c131b0bf3c1",
+    "scripts/lowcoverage_realsfs_from_saf.py": "dff3810492049cb9969156102b71df278ae9037a4ba30b395b42040d87d94887",
+    "scripts/lowcoverage_collect.py": "4fc37c4daed1c33725f036f82fc98b672f94e31b76111abf49e2e3127f91946a",
+    "scripts/lowcoverage_audit_spectra.py": "f88395f631b6fb15ca0e1f8f15f8219a438c0a2a5ad7c2f13699c87eeacd9df2",
+    "scripts/lowcoverage_winsfs.py": "1717ea6672756ac64878ccde980e4a3f03f30daa3a8670922cb3534013a9b8bc",
+    "scripts/lowcoverage_prepare_confirmation.py": "3adfdcc8ddfdf41500ca17048dda451c9424a60da1faaf292d5162ddbfa6bf5e",
+    "scripts/lowcoverage_reinfer.py": "890ca0628d0b050e2ebffb922538af6d01d39df1d5d1f08e7da5aedd78ede403",
+    "scripts/lowcoverage_continue.py": "24bcdc64f8e8d3f5a519b15db5c3c485ca44171e72024aa6640c57c3f7c7a655",
+    "scripts/lowcoverage_validate.py": "fbb6d4b3c98a2954fe64b0e038a361d2f31b3429622ca669359853cd9d268ee8"
+  },
+  "protocol_sha256": "6bb7811d87d0028dfa5d817886e5d26dbe171585e7939b4fc027e8e28d4415f6",
+  "launch_script_sha256": "9b6b9420838a679ae50bea971b81c5063221185c57efbc0ea13e391334320ce6",
+  "input_audit": {
+    "task": "bottleneck",
+    "reference": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/reference.fasta",
+    "reference_sha256": "8527d72bf10514084e0ead6a7e90bf7db60d86b0342954c281a32a4f293095f1",
+    "popfile_sha256": "7bb981a30936f8b0da499fef1d155ce243ca2e656ca352d8f45c3c158eb8502e",
+    "length": 10000000,
+    "contig": "1",
+    "population_order": [
+      "pop1"
+    ],
+    "sample_sizes": [
+      40
+    ],
+    "samples": {
+      "synthetic_00": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_00.bam",
+        "sha256": "837a166b8a9ce9b9cf7c922bfdfd10325162ee3edc7261f656d0039cee049ab2",
+        "population": "pop1"
+      },
+      "synthetic_01": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_01.bam",
+        "sha256": "c11b75bdfd9c5f8639eb99f52d583f1c5de6888ea4f8ca0c932f01c5b5102744",
+        "population": "pop1"
+      },
+      "synthetic_02": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_02.bam",
+        "sha256": "db4e3188c8519a2b5254b508950178debc451eba07539ca636d0b9fcfb2667e1",
+        "population": "pop1"
+      },
+      "synthetic_03": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_03.bam",
+        "sha256": "01fb7f1edfc219dccce77be8914dfcec89645c247a29b023c91dc9bcad5e7eba",
+        "population": "pop1"
+      },
+      "synthetic_04": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_04.bam",
+        "sha256": "7383c3d04084a3ddf62f13302da32c04c615d2825fa743df29ac5f335cbcc667",
+        "population": "pop1"
+      },
+      "synthetic_05": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_05.bam",
+        "sha256": "c64a48eb9559d51fb65405d9cfdb48c8931f2e7e6be01a52bedf16a3e5b2d0d2",
+        "population": "pop1"
+      },
+      "synthetic_06": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_06.bam",
+        "sha256": "2ff59d252e5798b50cb2054be0fe64c66c715e498a8c7f97ee0ddf5d9c2366ae",
+        "population": "pop1"
+      },
+      "synthetic_07": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_07.bam",
+        "sha256": "dca529c2bb600b5acc9e4d7e868bd89b700e84e5d0319591ebe6faa35711f12f",
+        "population": "pop1"
+      },
+      "synthetic_08": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_08.bam",
+        "sha256": "67578bbb9dfe9823ece058a7d7e387fcfe8c575f76aaad4ff1d332916dffbe9e",
+        "population": "pop1"
+      },
+      "synthetic_09": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_09.bam",
+        "sha256": "dd02c169213ca25567bbd9056c1b40f7cfe98ae0984aa043bf7cf56e5254eaa7",
+        "population": "pop1"
+      },
+      "synthetic_10": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_10.bam",
+        "sha256": "559529052c729c4f870c7fb36a921120d0258c97bb0af06b438c81cd20eaa9a6",
+        "population": "pop1"
+      },
+      "synthetic_11": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_11.bam",
+        "sha256": "1980cc7cae891a0ce93a42c955ba0335af0ca3ecf8d4f835bcec6265a5039aac",
+        "population": "pop1"
+      },
+      "synthetic_12": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_12.bam",
+        "sha256": "3396485bed596e94549d9a9b6d1c6baf3be4222968f0d41b75130325fa2e95e5",
+        "population": "pop1"
+      },
+      "synthetic_13": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_13.bam",
+        "sha256": "3f1821b57936cc624baa7993ea6908bb216457ff8ec9049eac6b98293fa388a2",
+        "population": "pop1"
+      },
+      "synthetic_14": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_14.bam",
+        "sha256": "2917793de700fc945609a5991e948163033f2635e2b1ef6cb366b77fd6c3e41c",
+        "population": "pop1"
+      },
+      "synthetic_15": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_15.bam",
+        "sha256": "64e00c46cf5abd9a1c476ba443b4335ca1c3cc6d98fc1741e133f522021dbfa5",
+        "population": "pop1"
+      },
+      "synthetic_16": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_16.bam",
+        "sha256": "1b35da7acb8160c4158060b6c8afeec4d7a52ef50f49fe43b904ff8503326737",
+        "population": "pop1"
+      },
+      "synthetic_17": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_17.bam",
+        "sha256": "2eebcbb037c3a73c1a4a167e86e18014d944415beb80b59d29a0b79f1d469622",
+        "population": "pop1"
+      },
+      "synthetic_18": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_18.bam",
+        "sha256": "e61df610c1ca6f27bc68fd554c305afd22ba4b83f46461db6bd14a96e06b282e",
+        "population": "pop1"
+      },
+      "synthetic_19": {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_19.bam",
+        "sha256": "3f948fd0c8b5ad8e9eb0aad17c03255474523ea9e911f25f52097290d24c07fe",
+        "population": "pop1"
+      }
+    }
+  },
+  "input_index_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/reference.fasta.fai": "45770bf7f00e86faf0e9daa6763088e5765cb079f4a12314c254b6f9a65b566b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_00.bam.bai": "12b94242508d0bf324817a6dffd61d8d6675371e28e8ca5c55fff86ccb251b3d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_01.bam.bai": "4d1d02b12ecc4a7a277f587fe7d47b925f5dcd294afa668a224b97c72e189caf",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_02.bam.bai": "5f01bc05f9208610f35497d0ee267f18fbb5248913898a44b06c5bde34b2b068",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_03.bam.bai": "3b2d69e473c65d7f6b49346acf5f7deeabfaf9d3216113a570ba6a7f1e27db6b",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_04.bam.bai": "c2511ed666e6f1081045669f2f8ccb6061b5fe392c0cf7dfe603aed45251ca9d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_05.bam.bai": "a116cd9821d391c6d34cb38acff66099cf70158307bfa9389217362498ba0a8c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_06.bam.bai": "8d5e7d4759efd6723b82d40d5f36f489b288c5ef2246919a9539bd9a4f05d766",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_07.bam.bai": "6b1b5706c7ecf68f74eda1155fa4fa662005bc98ac1a374e9a826cb44fe20fa1",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_08.bam.bai": "6a3d6a88eabe4217452279c58191822d18c90b663d6127c74d02fec47aca2541",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_09.bam.bai": "d1ca64c2e49feed044f5536fd38a026b7fd19680181232e3c6a15bcfc76824ee",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_10.bam.bai": "93a2293401bc6ea5524b9f9d071243e8aaf8d2c0d9be93a3c81a62e29e5a7e3f",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_11.bam.bai": "fba44bcc360aab01e71fa11d454b0fcdaac46f0f8c2c7ce97f30d479df496e29",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_12.bam.bai": "9179227709eb31a4a9fc64cf027e29c93a61c46a0b1fbc74a454f15dc5a63462",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_13.bam.bai": "d9c8c08915618c4f19a1ca2ae87cfe435ee84210a81d669a40003ab02c30b715",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_14.bam.bai": "d1c852d76dda1fa273d1967e6b71a9fa8612814620ef814404c6e78b9e6e892d",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_15.bam.bai": "aff027307150d931b33d7623e373e923266cbbe6e18b9dfd0e7607a9c029fc82",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_16.bam.bai": "d6fe911a1244775871d7e7cbafa7d56492dac2b2ad5b0d763c16191cfe888dee",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_17.bam.bai": "23cf3f1ea07cba22f7e14f9d0f23486ffadaf3f95b284a98f9165c74bf63ab23",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_18.bam.bai": "c70920976a964dca35f181659eb5f8a658dadd2249d8d1011feaeda063cfd19a",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/lowcoverage-20261120/full_bottleneck/remapped/synthetic_19.bam.bai": "67216c64dd90b3b9bd1bfefe1bb2dffb1c99d0f4bf2f6ba9106355f1eebeea99"
+  },
+  "external_tool_sha256": {
+    "external/angsd/angsd": "c8059942b9bdaeef232515947b5761f4ca33d2c8c2443a27d63af199763c6242",
+    "external/winsfs-release-v0.7.0/winsfs": "be5993c4ad06ddaa4cb8d45723c8039af50110cd63f11de563ee04bfdaeba1b7"
+  },
+  "environment_record_sha256": "32b6fc0019e5c0fda047aff178230479fdd66640ef7f4bb28d2b5d04838dc110",
+  "slurm_job_id": "10854805",
+  "slurm_array_task_id": "0"
+}

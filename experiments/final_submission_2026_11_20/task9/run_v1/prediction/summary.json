@@ -1,0 +1,37 @@
+{
+  "dataset": "final",
+  "synthetic_input": false,
+  "release_id": "2026-11-20-ten-labels",
+  "policy": "Use explicitly selected fixed model; renormalize accepted labels; no fitting or answer-based selection",
+  "pair_domain": "unordered_pairs_present_in_segment_csv",
+  "input_provenance": {
+    "bytes": 2772823,
+    "entity_id": "syn75202631",
+    "file_handle_id": "177273793",
+    "md5": "1edb0a55ced6e19e3a577047185abfa8",
+    "metadata_sha256": "1fe50cdaef591175f1a59caedc8d779d7788b42e52d2b337eb65ca436ac30770",
+    "metadata_url": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn75202631",
+    "retrieved_via": "Authenticated Synapse Download File UI; current V3 and MD5 independently observed in file sidebar",
+    "sha256": "ff7031bc00a96f7d38131e010f1168f95fb4a8efad5849c904b2d7e77e4de394",
+    "user_authorization": "User requested starting submissions for the best working candidates, 2026-11-20; final inference authorized as required step.",
+    "verified_at_utc": "2026-11-20T19:13:56.399048+00:00",
+    "version": 3
+  },
+  "changed_predictions": 0,
+  "validation": {
+    "challenge": 9,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "pairs": 997,
+    "individuals": 1894,
+    "input_pair_coverage_verified": true
+  },
+  "source_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_releases/2026-11-20-ten-labels/model.joblib": "7fc54aa5f0dff1d8dc01364cf781d7a750970e1558a525c2fbdebcbc04a0611c",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/final_runs/task9-root-20261120-1914/run_v1/input.csv": "ff7031bc00a96f7d38131e010f1168f95fb4a8efad5849c904b2d7e77e4de394",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1"
+  },
+  "output_sha256": "d2810e81b74591c3d10c5305643c3ed4494ab416e44e4f98c37ff6df92b16c6d",
+  "submission_count": 0
+}

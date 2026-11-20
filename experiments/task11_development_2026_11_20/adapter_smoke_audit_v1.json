@@ -1,0 +1,145 @@
+{
+  "adapter_version": "task11-truth-free-adapter-v1",
+  "adapter_sha256": "fb7d48321a15f00d5d2765d30e231d3c3551f9061b5e66f8bd1fb459f1efe5cc",
+  "protocol_sha256": "f5ec05f6a4e3d27d82021bf6d1623e1392735f1896d9a2bda2249020b7120996",
+  "candidate_sha256": "c966d2f676057ebaf60b862b73f2b69d076e92a7574457497e339f855c262f50",
+  "input_vcf": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/results_v3/confirmation_00/synthetic.vcf.gz",
+  "input_vcf_sha256": "c6de8e2a9c80bff594af3d6635c413561b59b75f1a886f52c559ad0cf078fd8c",
+  "qualification": {
+    "predeclared_criteria_and_robustness_passed": false,
+    "development_only": true,
+    "scope": "Prespecified synthetic qualification; not proof of biological transfer or permission to access final challenge data"
+  },
+  "source": "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/source_v3",
+  "truth_used": false,
+  "job_id": "10852036",
+  "submission_count": 0,
+  "submission_ready": false,
+  "completed": true,
+  "samples": 56,
+  "pairs": 183,
+  "validation": {
+    "challenge": 11,
+    "dataset": "testing",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "pairs": 183,
+    "individuals": 56,
+    "input_pair_coverage_verified": true
+  },
+  "imported_sources": {
+    "scripts.cluster_task11_families": {
+      "path": "scripts/cluster_task11_families.py",
+      "sha256": "6189685ee57702c6576e6231c27533ce9923ac11ac309489b5b95d4fa8695ce8"
+    },
+    "ghist_relatedness": {
+      "path": "src/ghist_relatedness/__init__.py",
+      "sha256": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc"
+    },
+    "ghist_relatedness.validation": {
+      "path": "src/ghist_relatedness/validation.py",
+      "sha256": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42"
+    },
+    "scripts.reconstruct_bonsai_pedigree": {
+      "path": "scripts/reconstruct_bonsai_pedigree.py",
+      "sha256": "1580ee9c7229abe7875d4cf421d2f46c1984f91f5858eaca583caf95a3144b5b"
+    },
+    "scripts.fit_task11_dog_relationships": {
+      "path": "scripts/fit_task11_dog_relationships.py",
+      "sha256": "4483b9c30fa6696379f030f76c2bb42f0752c6737c7d1a184e6de8ae281b903d"
+    },
+    "scripts.prepare_hapibd_vcf": {
+      "path": "scripts/prepare_hapibd_vcf.py",
+      "sha256": "c303f1f471e9b1ebaafc4842c2f922e65b9906aede4e9b5f209917e953222157"
+    },
+    "ghist_relatedness.provenance": {
+      "path": "src/ghist_relatedness/provenance.py",
+      "sha256": "1b539509457cc4c999c91f10fc3615e64e71882d6a06fa6a14797d44b491cd87"
+    },
+    "scripts.validate_task11_complete_pipeline": {
+      "path": "scripts/validate_task11_complete_pipeline.py",
+      "sha256": "e084464f40fd73836179e84c7901ed7b3805bc919d854ff64fca11c8f16cb7c3"
+    },
+    "scripts.develop_task11_pedigree": {
+      "path": "scripts/develop_task11_pedigree.py",
+      "sha256": "90f15ccd535a68f366b4860a13ea3aa93b2ac5b7c4b7361f5fcc9c4329ebf209"
+    },
+    "ghist_submission": {
+      "path": "src/ghist_submission/__init__.py",
+      "sha256": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6"
+    },
+    "ghist_relatedness.labels": {
+      "path": "src/ghist_relatedness/labels.py",
+      "sha256": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+    },
+    "ghist_submission.validate": {
+      "path": "src/ghist_submission/validate.py",
+      "sha256": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17"
+    }
+  },
+  "model_sha256": "cdbc4167d89ad75335b825d912361c7cea3ecb11718d7c869ab110fec6e4df88",
+  "stages": [
+    {
+      "stage": "hapibd",
+      "exit_code": 0,
+      "command": [
+        "java",
+        "-Xmx12g",
+        "-jar",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+        "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/adapter_smoke_v1/prepared.vcf.gz",
+        "map=/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+        "out=/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/adapter_smoke_v1/segments",
+        "min-seed=1.0",
+        "min-extend=0.2",
+        "min-output=2.0",
+        "min-markers=50",
+        "max-gap=1000",
+        "nthreads=4"
+      ]
+    },
+    {
+      "stage": "summary",
+      "exit_code": 0,
+      "command": [
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/source_v3/scripts/summarize_hapibd.py",
+        "--ibd",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/adapter_smoke_v1/segments.ibd.gz",
+        "--hbd",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/adapter_smoke_v1/segments.hbd.gz",
+        "--map",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/external/dog-recombination/campbell2016_average.plink.map",
+        "--out-dir",
+        "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/adapter_smoke_v1/summary"
+      ]
+    }
+  ],
+  "confirmation_evidence_sha256": {
+    "confirmation_summary": "42546d0fe3c2eb68fafe062a3f9c5c0fe9a17a9222cdb23b8b5e1c0d7fd21d06",
+    "confirmation_audit": "14026139839935f28e26f9c7ba372105d2257e22e1cc28f1214912be7aaccbd7"
+  },
+  "output_sha256": {
+    "clusters.json": "a88a19494ad879fd80e9f61a9dfa3de9fc53f36449d86d04624dac574532c861",
+    "families.json": "a1bdbbe9c5306a08f8a291397ccda71ee12b73f58328ae3d3ffabbcaa0b21d8b",
+    "feature_pairs.json": "dab7ffc83f4b31ec7e35052d9c7f67c6e1b0bc06a641f0a9134073ec96dc037f",
+    "features.npz": "63348311ac7bcb66129f3a4472fb70a2a64d8a11ffe07cbf1a521ba70f4e5712",
+    "hapibd.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hapibd.out": "8718e469b169cf3a45fd5f7bdda7aec6be85017c6583e499b98af775e6735d81",
+    "predictions.json": "db61c32ca7cbf5d86113a902dedded01972bd223ef14a5dcfc0c0994ad4a12e2",
+    "preparation.json": "6b48f3d6fa912633cd9bd05b30945a839303081fca7210c1b4156f6c96b3fbba",
+    "prepared.vcf.gz": "5a578a5f301d20726f34b25bf1253fe46918c00837fa71671aaa79c0fed3e027",
+    "roster.json": "2ebc4f6f746f00c79190f57236d9d754a154878b8884cccbc2d2b2362f4cb445",
+    "segments.hbd.gz": "b66573e540d9110aa6d2f91f760abc0298a84b540cebdd1bec9c30cdb578f5d0",
+    "segments.ibd.gz": "7062e90c660b272b93619dd1b612bf963abf562650dd9ea9aacf8cfafd0ae342",
+    "segments.log": "8718e469b169cf3a45fd5f7bdda7aec6be85017c6583e499b98af775e6735d81",
+    "summary/hbd_features.csv": "3d17d80923be6cb309b3713aea3eddb63e1f7562b1e9fba5f74b03216d51bb98",
+    "summary/pair_features.csv": "0ed25ce4910cf1cb636faa7b9aec4d574ffc4efbbcfdbb0c287d73d2d093b9f6",
+    "summary/summary.json": "a973d85706c0b12b1b3e0ca97ea595df94ce31193bc5f7f91d4e6781137ddfb5",
+    "summary.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "summary.out": "a973d85706c0b12b1b3e0ca97ea595df94ce31193bc5f7f91d4e6781137ddfb5",
+    "synthetic.vcf.gz": "f031c14a6bbf586a48920808d1c7617cbfea06b60bead20e8a682163b7309bf0",
+    "task11_candidate.csv": "bce40cc78146d3daacae19ca301c3dff5a834853a42ffbff56632f3a51cd010f",
+    "validation.json": "81a131439d531fe78c5129d71c635e322c162f8abad96d6d44ed79e2c0f8465d"
+  }
+}

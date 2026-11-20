@@ -1,0 +1,72 @@
+{
+  "candidate_comparison": [
+    {
+      "optimizer_agreement": false,
+      "path": "window_full_bottleneck_v7/window_comparison/seed1.estimate.json",
+      "relative_errors": {
+        "generations": 0.0018523652149691205,
+        "post_decline_fraction": 0.4218778875705025
+      },
+      "root_sum_squared_relative_error": 0.4218819541979002,
+      "sha256": "18c096e0ea5837b300aae5fe7e0dd5d0aef042fed6a1018d014085d58b571d5c",
+      "stopping": true,
+      "targets": {
+        "generations": 2003.704730429938,
+        "post_decline_fraction": 0.28437557751410053
+      }
+    },
+    {
+      "optimizer_agreement": true,
+      "path": "window_full_bottleneck_v7/window_comparison/continued.estimate.json",
+      "relative_errors": {
+        "generations": -0.04317589562858526,
+        "post_decline_fraction": 0.4120711578087457
+      },
+      "root_sum_squared_relative_error": 0.41432692051225767,
+      "sha256": "60991ead443fdcc633808f688791cfb56320af218cac24a3b62ce0fb5905a0fc",
+      "stopping": true,
+      "targets": {
+        "generations": 1913.6482087428294,
+        "post_decline_fraction": 0.28241423156174916
+      }
+    },
+    {
+      "optimizer_agreement": true,
+      "path": "full_refinement_bottleneck_seed1_v1/refined.estimate.json",
+      "relative_errors": {
+        "generations": -0.0011962868528474502,
+        "post_decline_fraction": 0.51666623286275
+      },
+      "root_sum_squared_relative_error": 0.5166676177997027,
+      "sha256": "0e4abe13de282ef4e5f43ee723acbcc99d3f51bf84828e499941c72982d052ac",
+      "stopping": false,
+      "targets": {
+        "generations": 1997.607426294305,
+        "post_decline_fraction": 0.30333324657255
+      }
+    },
+    {
+      "optimizer_agreement": true,
+      "path": "full_refinement_bottleneck_seed1_v1/continued.estimate.json",
+      "relative_errors": {
+        "generations": 0.0026781399087834057,
+        "post_decline_fraction": 0.5173811750326467
+      },
+      "root_sum_squared_relative_error": 0.5173881064650918,
+      "sha256": "b51082cf62d0d19c4e1d44e4a9ec9e1e01cb6d920c0bceb5bdfa647eeadf0864",
+      "stopping": false,
+      "targets": {
+        "generations": 2005.3562798175667,
+        "post_decline_fraction": 0.30347623500652937
+      }
+    }
+  ],
+  "known_seed_instability_retained": true,
+  "new_synthetic_jobs": false,
+  "recovery_gate_passed": false,
+  "reference_template_sha256": "d2d4ad595d4de0466fc4291d3f6550054da98676e42c662b6b57aaeabf5a9936",
+  "selected": "window_full_bottleneck_v7/window_comparison/continued",
+  "selection_basis": "Lowest whole-target RSS among fixed seed1 initial/continued methods, with successful interior best, two-optimizer agreement and observed stopping. Continuation from seed761001 is now fixed before final input access. Inspected development selection is disclosed. No bias correction or final seed selection.",
+  "strict_qualification": false,
+  "task": "bottleneck"
+}

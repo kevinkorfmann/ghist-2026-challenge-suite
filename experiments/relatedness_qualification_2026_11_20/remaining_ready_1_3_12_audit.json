@@ -1,0 +1,483 @@
+{
+  "created_utc": "2026-11-20T21:29:07.919248+00:00",
+  "scope": "Read-only candidate/input/source/method/format/provenance review; no inference, fitting, tuning, truth, browser access or submission. Candidates copied unchanged only after checks.",
+  "tasks": {
+    "1": {
+      "ready_for_root": true,
+      "candidate": "/private/tmp/ghist-final-submissions-20261120/task1/ready_for_root/task1.final.yaml",
+      "candidate_sha256": "edf4ce5516d408afd268ae6d9f3295bd475e9bb932126af92453d08d34e8d553",
+      "audit": "/private/tmp/ghist-final-submissions-20261120/task1/ready_for_root/task1.audit.json",
+      "audit_sha256": "ceec70053f2276d0117a5888823d86fd889cb8ac9219aafa1236f725cf0feb18",
+      "input_sha256": "1aab253df34eb292ab2afd82c3be509e33c633433843aef8443ae3f0e89a5d2a",
+      "input_entity": "syn74933318",
+      "input_version": 3,
+      "sample_count": 57,
+      "planned_and_completed_fits": 2,
+      "selected_cases": [
+        "task1_moments"
+      ],
+      "selected_convergence": [
+        true
+      ],
+      "recomputed_prediction": {
+        "generations": 1829.730121512939,
+        "post_decline_fraction": 0.757769020161341
+      },
+      "validation": {
+        "challenge": 1,
+        "dataset": "final",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "parameters": {
+          "generations": 1829.730121512939,
+          "post_decline_fraction": 0.757769020161341
+        }
+      },
+      "reference_confirmations": [],
+      "scientifically_validated": false,
+      "limitations": [
+        "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established."
+      ],
+      "staged_files": [
+        "/private/tmp/ghist-final-submissions-20261120/task1/ready_for_root/task1.final.yaml",
+        "/private/tmp/ghist-final-submissions-20261120/task1/ready_for_root/task1.audit.json",
+        "/private/tmp/ghist-final-submissions-20261120/task1/ready_for_root/input_provenance.json"
+      ]
+    },
+    "3": {
+      "ready_for_root": true,
+      "candidate": "/private/tmp/ghist-final-submissions-20261120/task3/ready_for_root/task3.final.yaml",
+      "candidate_sha256": "ea9254ea49330527fd23ff6d7cd41f30d80dd6a3dac6e82678c91ebe47102465",
+      "audit": "/private/tmp/ghist-final-submissions-20261120/task3/ready_for_root/task3.audit.json",
+      "audit_sha256": "b0ef1da8ba63c848d29d0252ea37c11c98fd0e1d609633832ad30529bf9d90dd",
+      "input_sha256": "b94f7616b98598596cd3629e75b2527c574f4604c445d704b86d1041c36d9cfe",
+      "input_entity": "syn75193300",
+      "input_version": 5,
+      "sample_count": 42,
+      "planned_and_completed_fits": 6,
+      "selected_cases": [
+        "task3_exponential_p84",
+        "task3_exponential_p60",
+        "task3_exponential_p40"
+      ],
+      "selected_convergence": [
+        true,
+        true,
+        true
+      ],
+      "recomputed_prediction": {
+        "generations": 6521.265831226245,
+        "post_growth_scaling": 6.04254383097829
+      },
+      "validation": {
+        "challenge": 3,
+        "dataset": "final",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "parameters": {
+          "generations": 6521.265831226245,
+          "post_growth_scaling": 6.04254383097829
+        }
+      },
+      "reference_confirmations": [
+        {
+          "entity": "syn74933457",
+          "version": 1,
+          "sha256": "fcc67ba8e6347c906bb16de29ae506ca4d95b0466bee48a76102f6a404f8d057"
+        },
+        {
+          "entity": "syn75318370",
+          "version": 2,
+          "sha256": "f5347b65891237196cc5fab5f32327c250ea6570145798bc2554ff08cb903560"
+        }
+      ],
+      "scientifically_validated": false,
+      "limitations": [
+        "Point estimate only; scientific recovery, interval coverage, global optimum and misspecification robustness not established."
+      ],
+      "staged_files": [
+        "/private/tmp/ghist-final-submissions-20261120/task3/ready_for_root/task3.final.yaml",
+        "/private/tmp/ghist-final-submissions-20261120/task3/ready_for_root/task3.audit.json",
+        "/private/tmp/ghist-final-submissions-20261120/task3/ready_for_root/input_provenance.json"
+      ]
+    },
+    "12": {
+      "ready_for_root": true,
+      "candidate": "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/task12.final.csv",
+      "candidate_sha256": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+      "audit": "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/candidate_manifest.json",
+      "audit_sha256": "6aa366a3a8585701fbb4519e77c2dbe7e41925a284ce00b09e0e9b2eb9d86fb3",
+      "input_sha256": "4579c3e776a017931b54393bc819ae42d1224a245b77f71eb679bc0a1254b121",
+      "input_entity": "syn75203676",
+      "input_version": 1,
+      "source_files_verified": 22,
+      "method_lock_sha256": "fe3a4604a639079ec29c67113ef21b5fab88d181a0f3e036d84dccff82b444d1",
+      "source_manifest_sha256": "173997a37259d9385db88d9198f1c2fad7ac0ed8cb6522e667be7e662d4e3327",
+      "validation": {
+        "challenge": 12,
+        "dataset": "final",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "pairs": 43956,
+        "individuals": 297,
+        "input_pair_coverage_verified": true
+      },
+      "raw_probability_rows_validated": 43956,
+      "source_choice": "Historical model fixed before final input; explicit v2 missingness adaptation after input contract inspection, before detector/model run",
+      "preparation": {
+        "input": "/vast/projects/smathi/cohort/korfmann/ghist2026/data/final-20261120/task12/relatedness4.final.vcf.gz",
+        "output": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/prepared.vcf.gz",
+        "missing_policy": "major",
+        "records_read": 249065,
+        "records_written": 249062,
+        "multiallelic_records_skipped": 3,
+        "nonvariant_records_skipped": 0,
+        "all_missing_records_skipped": 0,
+        "missing_records_dropped": 0,
+        "imputed_alleles": 148382,
+        "unphased_homozygotes_normalized": 74191,
+        "scope": "Input contract only; does not infer or validate biological phase",
+        "phase_set_policy": "One explicit or implicit phase set per sample/chromosome across retained heterozygous calls",
+        "samples": 297
+      },
+      "scientifically_validated": false,
+      "limitations": [
+        "Full VCF-to-detector-to-family pipeline has not passed independent scientific validation.",
+        "Historical component accuracy approximately37.5%; not an estimate of final-data accuracy.",
+        "Historical correction retains documented top20 histogram truncation defect to preserve model feature semantics.",
+        "Zero-segment classification is forced to official supported labels, without an unrelated label; probabilities are uncalibrated.",
+        "Existing historical model outperformed both previous fixed refits on recorded comparisons; neither candidate was promoted.",
+        "Missing alleles are deterministically replaced with observed per-site major allele; this may bias IBD and is an unvalidated best-effort preprocessing adaptation."
+      ],
+      "staged_files": [
+        "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/task12.final.csv",
+        "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/candidate_manifest.json",
+        "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/input_provenance.json",
+        "/private/tmp/ghist-final-submissions-20261120/task12/ready_for_root/status.json"
+      ]
+    }
+  },
+  "demography_source_files_verified": 247,
+  "demography_method_lock_sha256": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+  "demography_source_manifest_sha256": "cf0b1e98837d01ea296610ca6e9d0cd9ea576716fdd8a17f0c75e18b0f2229af",
+  "documentation_note": "General handoff cites integration source manifest85ee9e25; actual immutable execution manifestcf0b1e98 is separately bound by the method lock and every fit, and independently verified here.",
+  "remote_checks_pending": false,
+  "remote_bindings": {
+    "checked": 52,
+    "all_match": true,
+    "results": [
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task1/task1_moments.json",
+        "expected": "c3db3d26a2f33181e2cfc4bc6e7e427ddf205238c9e19ca469808e4611545a3a",
+        "actual": "c3db3d26a2f33181e2cfc4bc6e7e427ddf205238c9e19ca469808e4611545a3a",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task1/task1_dadi.json",
+        "expected": "95e008163aef6b4ab52e16ea0225cd70f542a4cb0ce6f9534d938137f4e7200c",
+        "actual": "95e008163aef6b4ab52e16ea0225cd70f542a4cb0ce6f9534d938137f4e7200c",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/provisional_001/task1.final.yaml",
+        "expected": "edf4ce5516d408afd268ae6d9f3295bd475e9bb932126af92453d08d34e8d553",
+        "actual": "edf4ce5516d408afd268ae6d9f3295bd475e9bb932126af92453d08d34e8d553",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/provisional_001/task1.audit.json",
+        "expected": "ceec70053f2276d0117a5888823d86fd889cb8ac9219aafa1236f725cf0feb18",
+        "actual": "ceec70053f2276d0117a5888823d86fd889cb8ac9219aafa1236f725cf0feb18",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/method_lock.json",
+        "expected": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+        "actual": "a4d4f2a659b5a3baf18c1c18a20f97725618294728356f320eeee29fc3d0e0da",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/source_manifest.json",
+        "expected": "cf0b1e98837d01ea296610ca6e9d0cd9ea576716fdd8a17f0c75e18b0f2229af",
+        "actual": "cf0b1e98837d01ea296610ca6e9d0cd9ea576716fdd8a17f0c75e18b0f2229af",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/run.py",
+        "expected": "8153bb71578827aa5e3fd224aef6730c983aca97fe8c190679219c57f10df3c8",
+        "actual": "8153bb71578827aa5e3fd224aef6730c983aca97fe8c190679219c57f10df3c8",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task1/spectrum.json",
+        "expected": "f5dadc4cde1ec1404ab757fc59dbc098eb3ae766deb0be15a19c29def698a20d",
+        "actual": "f5dadc4cde1ec1404ab757fc59dbc098eb3ae766deb0be15a19c29def698a20d",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task1/spectrum.npz",
+        "expected": "09ac448ae811910349964864de71f5d819cfdef12a7174aea3740539ed6d7fb1",
+        "actual": "09ac448ae811910349964864de71f5d819cfdef12a7174aea3740539ed6d7fb1",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_exponential_p84.json",
+        "expected": "f5fc012f1bb2c1200e757b729b79f4e61a90e74d033b0519aa318d03aa477e41",
+        "actual": "f5fc012f1bb2c1200e757b729b79f4e61a90e74d033b0519aa318d03aa477e41",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_exponential_p60.json",
+        "expected": "890176b5705e89e03c957933fa6856b4b858c19fffb048d2ffe1fe0555e01820",
+        "actual": "890176b5705e89e03c957933fa6856b4b858c19fffb048d2ffe1fe0555e01820",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_exponential_p40.json",
+        "expected": "0e09c72b260696d28925cd8a1f86ad3186baee0664db872a70ad6ad3e314a40e",
+        "actual": "0e09c72b260696d28925cd8a1f86ad3186baee0664db872a70ad6ad3e314a40e",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_sudden_p84.json",
+        "expected": "a65b7416432f041a07add28d661fe86c0d3e179792e8f5395822644ea6719502",
+        "actual": "a65b7416432f041a07add28d661fe86c0d3e179792e8f5395822644ea6719502",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_sudden_p60.json",
+        "expected": "f61c721975c54778d36c52efdb2deb7e31afb50d3cfb3f8760510e46296dfa94",
+        "actual": "f61c721975c54778d36c52efdb2deb7e31afb50d3cfb3f8760510e46296dfa94",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/task3_sudden_p40.json",
+        "expected": "637c3a5b0cdedd8778e81cd1633db9da48b9dbb33844e0eeace5b4e84889d191",
+        "actual": "637c3a5b0cdedd8778e81cd1633db9da48b9dbb33844e0eeace5b4e84889d191",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/provisional_001/task3.final.yaml",
+        "expected": "ea9254ea49330527fd23ff6d7cd41f30d80dd6a3dac6e82678c91ebe47102465",
+        "actual": "ea9254ea49330527fd23ff6d7cd41f30d80dd6a3dac6e82678c91ebe47102465",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/packages/provisional_001/task3.audit.json",
+        "expected": "b0ef1da8ba63c848d29d0252ea37c11c98fd0e1d609633832ad30529bf9d90dd",
+        "actual": "b0ef1da8ba63c848d29d0252ea37c11c98fd0e1d609633832ad30529bf9d90dd",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/spectrum.json",
+        "expected": "32d3e2e4048551896468f5e24c4828dda8a096bdfc6c44e110a39ecd3dd87d83",
+        "actual": "32d3e2e4048551896468f5e24c4828dda8a096bdfc6c44e110a39ecd3dd87d83",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-demography-20261120/results/task3/spectrum.npz",
+        "expected": "11c6e939792913f20b496b46631d09b00ea72a7bde0d15fe0c503cf3210ccf3f",
+        "actual": "11c6e939792913f20b496b46631d09b00ea72a7bde0d15fe0c503cf3210ccf3f",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/method_lock.json",
+        "expected": "fe3a4604a639079ec29c67113ef21b5fab88d181a0f3e036d84dccff82b444d1",
+        "actual": "fe3a4604a639079ec29c67113ef21b5fab88d181a0f3e036d84dccff82b444d1",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/missingness_audit.json",
+        "expected": "696daae5c172d3fe533940b1c497547d18ca328d47c99465a111598e94a4f6dc",
+        "actual": "696daae5c172d3fe533940b1c497547d18ca328d47c99465a111598e94a4f6dc",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/missingness_audit.py",
+        "expected": "4548afb359146a75741adaf328e3f28840190a7183ae99f9aa4fb80803aaa7ad",
+        "actual": "4548afb359146a75741adaf328e3f28840190a7183ae99f9aa4fb80803aaa7ad",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/run.py",
+        "expected": "51f78b7c4c50c0971ae6291ba34922acb75c44799577d2707ba942da1bad9bef",
+        "actual": "51f78b7c4c50c0971ae6291ba34922acb75c44799577d2707ba942da1bad9bef",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/run.sbatch",
+        "expected": "ec8838439e2cbe081f2662f7a9075fb6b379fbfd03b9a37d257972672fc675aa",
+        "actual": "ec8838439e2cbe081f2662f7a9075fb6b379fbfd03b9a37d257972672fc675aa",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/__init__.py",
+        "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/fit_human_background_corrected.py",
+        "expected": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+        "actual": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/fit_human_background_robust.py",
+        "expected": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+        "actual": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/fit_human_family_relationships.py",
+        "expected": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+        "actual": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/prepare_hapibd_vcf.py",
+        "expected": "c303f1f471e9b1ebaafc4842c2f922e65b9906aede4e9b5f209917e953222157",
+        "actual": "c303f1f471e9b1ebaafc4842c2f922e65b9906aede4e9b5f209917e953222157",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/summarize_hapibd_shape.py",
+        "expected": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+        "actual": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/scripts/validate_human_background_correction.py",
+        "expected": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+        "actual": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/source_origin.json",
+        "expected": "b7744779a2347d3deeb42c056c6321f47f95e578ffa88ce4963037e91e2f143a",
+        "actual": "b7744779a2347d3deeb42c056c6321f47f95e578ffa88ce4963037e91e2f143a",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/__init__.py",
+        "expected": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+        "actual": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/ibd.py",
+        "expected": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+        "actual": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/labels.py",
+        "expected": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+        "actual": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/provenance.py",
+        "expected": "1b539509457cc4c999c91f10fc3615e64e71882d6a06fa6a14797d44b491cd87",
+        "actual": "1b539509457cc4c999c91f10fc3615e64e71882d6a06fa6a14797d44b491cd87",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/task9_release.py",
+        "expected": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+        "actual": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_relatedness/validation.py",
+        "expected": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+        "actual": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_submission/__init__.py",
+        "expected": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+        "actual": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/src/ghist_submission/validate.py",
+        "expected": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+        "actual": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/test_runner.py",
+        "expected": "e11dec44cc417051dd890ebff2d26e2096b2c70a6931de4760544431d9fb96a8",
+        "actual": "e11dec44cc417051dd890ebff2d26e2096b2c70a6931de4760544431d9fb96a8",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task12_large_family_background/empirical_background_v1/model.joblib",
+        "expected": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+        "actual": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib",
+        "expected": "742986c9fe0ae7738732c7350e63d5aaa8985237479c5a050e9b5c1cd797acef",
+        "actual": "742986c9fe0ae7738732c7350e63d5aaa8985237479c5a050e9b5c1cd797acef",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_0.seg",
+        "expected": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+        "actual": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+        "expected": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba",
+        "actual": "87b835752ad25855f32c9e6561c788bbcb374ee146c3be119dce74103a585fba",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+        "expected": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c",
+        "actual": "846ddf08db5590339c58072fa9944fff8466f9c2825f9c02612cb9d38492752c",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/final-task12-20261120-v2/source_manifest.json",
+        "expected": "173997a37259d9385db88d9198f1c2fad7ac0ed8cb6522e667be7e662d4e3327",
+        "actual": "173997a37259d9385db88d9198f1c2fad7ac0ed8cb6522e667be7e662d4e3327",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/status.json",
+        "expected": "252ae30822ae48b191e35ac41eb624f1edf35e336a71836dc92b05491955d19d",
+        "actual": "252ae30822ae48b191e35ac41eb624f1edf35e336a71836dc92b05491955d19d",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/task12.final.csv",
+        "expected": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+        "actual": "b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/predictions_with_uncalibrated_probabilities.json",
+        "expected": "e299d6b6f8295f6f874bb2a0090c6a9822ed1d054f9a041d62b0b193ef7a0851",
+        "actual": "e299d6b6f8295f6f874bb2a0090c6a9822ed1d054f9a041d62b0b193ef7a0851",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/preparation.json",
+        "expected": "972c66838ecf764eeab831f8a51bb682c25fc019d09d3bb11a5906ca5d98f2c9",
+        "actual": "972c66838ecf764eeab831f8a51bb682c25fc019d09d3bb11a5906ca5d98f2c9",
+        "match": true
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/final-task12-20261120-v2/input_preflight.json",
+        "expected": "984eb19a6c080f83a1791bde2e787a7fb6ab29ea6296b36cdebd496773a893fd",
+        "actual": "984eb19a6c080f83a1791bde2e787a7fb6ab29ea6296b36cdebd496773a893fd",
+        "match": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+
+==================================== ERRORS ====================================
+_ ERROR collecting experiments/task11-development-20261120/test_sparse_stress_design.py _
+ImportError while importing test module '/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/test_sparse_stress_design.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../test_sparse_stress_design.py:10: in <module>
+    from scripts import develop_task11_pedigree as dev
+scripts/develop_task11_pedigree.py:40: in <module>
+    from scripts.prepare_hapibd_vcf import prepare_vcf
+E   ImportError: cannot import name 'prepare_vcf' from 'scripts.prepare_hapibd_vcf' (/vast/projects/smathi/cohort/korfmann/ghist2026/scripts/prepare_hapibd_vcf.py)
+=============================== warnings summary ===============================
+../../../.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR ../test_sparse_stress_design.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 warning, 1 error in 8.10s

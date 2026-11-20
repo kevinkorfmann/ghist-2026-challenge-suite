@@ -1,0 +1,58 @@
+{
+  "audited_at_utc": "2026-11-20T21:50:38.182519+00:00",
+  "comparison_status": "WITHHELD_MAPPING_UNVERIFIED",
+  "displayed_row_evaluation_id": null,
+  "finding": "Wiki640983 uses syn75235918; wiki640984 uses syn75235902. Neither query filters evaluationid. Public entity metadata, annotations, evaluation and displayed submission endpoints returned403. Thus the actual queue binding and whether page/table mappings are swapped remain unverified.",
+  "known_own_task11_evaluation_id": "9619676",
+  "known_own_task11_submission_id": "9785361",
+  "next_read_only_evidence_needed": "Authenticated table metadata/scope or evaluationid column for row9783965 and rows in syn75235902. No credentials requested or accessed.",
+  "pages": {
+    "640983": {
+      "etag": "932293d9-39a8-48fb-ab07-92494c7ad0c8",
+      "evaluationid_filter_present": false,
+      "evidence_file": "/private/tmp/ghist-final-submissions-20261120/task11/dashboard_mapping_audit/entity_syn74803798_wiki_640983.json",
+      "evidence_sha256": "520975205d455465a4f5a1e81a8c2365fc5d12cdf86a32d78402406283878baf",
+      "modified_on": "2026-05-31T18:16:39.637Z",
+      "query": "SELECT createdBy, id, name, createdOn, meioses_count, relation FROM syn75235918  WHERE status = 'ACCEPTED' AND id <> ' 9752602' ORDER BY createdOn DESC",
+      "rest_url": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn74803798/wiki/640983",
+      "source_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640983",
+      "table": "syn75235918",
+      "title": "Relatedness in a multifamily cohort with close inbreeding"
+    },
+    "640984": {
+      "etag": "26729034-e25e-451f-89c7-ef71d45b27d7",
+      "evaluationid_filter_present": false,
+      "evidence_file": "/private/tmp/ghist-final-submissions-20261120/task11/dashboard_mapping_audit/entity_syn74803798_wiki_640984.json",
+      "evidence_sha256": "5f9d56b400ebcf335fa2fd48b8032a67785d84b9e8a0bdee148fe81bd2778dff",
+      "modified_on": "2026-05-31T18:16:11.466Z",
+      "query": "SELECT createdBy, id, name, createdOn, meioses_count, relation FROM syn75235902  WHERE status = 'ACCEPTED' AND id <> ' 9752602' ORDER BY createdOn DESC",
+      "rest_url": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn74803798/wiki/640984",
+      "source_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640984",
+      "table": "syn75235902",
+      "title": "Relatedness in a large family with a high background relatedness"
+    }
+  },
+  "raw_public_response_bindings": {
+    "entity_syn74803798_wiki_640983.json": "520975205d455465a4f5a1e81a8c2365fc5d12cdf86a32d78402406283878baf",
+    "entity_syn74803798_wiki_640984.json": "5f9d56b400ebcf335fa2fd48b8032a67785d84b9e8a0bdee148fe81bd2778dff",
+    "entity_syn75235902.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235902_annotations.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235902_header.json": "a8c7bda9674f7f475f073f476f3e7d72244ff9bd64ff48a67ea4f3b2f3a19d5e",
+    "entity_syn75235902_path.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235918.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235918_annotations.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235918_bundle2.json": "5b339b492b4550544fc7b39a9e62b695fc9d80d04c6625b5ecbf75caa0cb2ccc",
+    "entity_syn75235918_header.json": "a8c7bda9674f7f475f073f476f3e7d72244ff9bd64ff48a67ea4f3b2f3a19d5e",
+    "entity_syn75235918_path.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "entity_syn75235918_table_column.json": "a8c7bda9674f7f475f073f476f3e7d72244ff9bd64ff48a67ea4f3b2f3a19d5e",
+    "evaluation_9619676.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "evaluation_9619677.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "evaluation_submission_9783965.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "evaluation_submission_9783965_status.json": "7927219b827b035a83b34bc3e1b80c3027ade8f61e5963d8fb31421aaf7742a4",
+    "public_project_table_children.json": "34c99daef2539868ff7da7c50efe20364263e64021f3d7db168cdcaaf7b1dd03"
+  },
+  "schema_version": 1,
+  "status": "UNRESOLVED_PUBLIC_METADATA_ACCESS_DENIED",
+  "table_syn75235902_evaluation_binding": null,
+  "table_syn75235918_evaluation_binding": null
+}

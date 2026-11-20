@@ -1,0 +1,29 @@
+{
+  "registered_at_utc": "2026-11-20T18:35:24.562312+00:00",
+  "scope": "Both already-prepared 10Mb BAM cohorts; development only. Their genotype-truth controls were inspected, but no full BAM estimates have been viewed.",
+  "method": "ANGSD0.940-tag GL2/doSaf1 minMapQ30 minQ20; winsfs0.7.0; global folding; unchanged v5 moments demographic fitter with8 starts each L-BFGS-B andPowell.",
+  "window_settings": {
+    "blocks": 500,
+    "window_size": 100,
+    "normalized_block_tolerance": 0.0001,
+    "max_epochs": 50,
+    "seeds": [
+      761001,
+      761002
+    ],
+    "continuation": "first seed initialized from its first unfolded SFS"
+  },
+  "changed_from_1Mb_window_development": "Increase maximum epoch cap from20 to50 without changing the stopping threshold; seed1 on1Mb Task14 hit20. No old run is relabeled.",
+  "numerical_acceptance": {
+    "contract": "Full20 diploids, coherent matching10Mb reference/BAM dictionary, expected populations and hashes.",
+    "callable_fraction_min": 0.99,
+    "winsfs": "Each initial/alternate-seed/continued run must satisfy its normalized-block1e-4 stop before50epochs. This is explicitly not the realSFS stopping rule.",
+    "optimizer": "Each run must pass unchanged v5 two-optimizer agreement/interior-best gates.",
+    "target_stability": "Every requested target must change by less than1% in both the alternate-seed and continued runs relative to seed1.",
+    "spectrum_stability": "Both comparisons must have full-frequencyL1<0.001 and segregating-bin relativeL1<0.05. These window-estimator criteria are separate from the earlier realSFS criteria, which remain unpassed."
+  },
+  "scientific_acceptance": "All requested targets absolute relative error<=0.30; unchanged development recovery threshold. Full-width single-case success does not establish multi-regime readiness.",
+  "confirmation": "Remains unlaunched. Freeze an entire policy only after complete development comparisons; then require all three regimes/two seeds per task in validation_acceptance_v1.json. Exposure/optimizer/recovery criteria unchanged; window-specific numerical criteria above must be prospectively frozen.",
+  "compute": "At most2 concurrent4CPU Slurm jobs with5632M/CPU. Each full comparison capped1hour. Matched1Mb checks finish before full runs launch.",
+  "release_status": "scientifically_ready remains False; no final/testing data or inference or submission."
+}

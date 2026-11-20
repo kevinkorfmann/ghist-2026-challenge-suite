@@ -1,0 +1,38 @@
+{
+  "scope": "Record of root-owned practical selection policy, independent of unchanged strict qualification.",
+  "prospective_state_verified_utc": "2026-11-20T20:57:35.785594+00:00",
+  "observed_state": {
+    "corrected_fit_output_exists": false,
+    "old_matched_comparison_output_exists": false,
+    "superseded_v1_comparison_output_exists": false,
+    "corrected_fit_job": "10856907 PENDING Dependency",
+    "old_matched_comparison_job": "10858576 PENDING Dependency"
+  },
+  "selection_cohorts": "All54 corrected development cohorts, same truth/rosters for all4 fixed roles",
+  "eligible_requirements": {
+    "complete_valid_results_truth_rosters": true,
+    "accuracy_min": 0.7,
+    "balanced_accuracy_min": 0.6,
+    "each_label_recall_min": 0.3,
+    "exact_family_recovery_min": 0.95,
+    "valid_resources": true
+  },
+  "objective": "Highest pooled official truth-class-size-weighted Jaccard among eligible fixed roles",
+  "tie_tolerance": 1e-12,
+  "tie_order": [
+    "old_context",
+    "new_context",
+    "old_base",
+    "new_base"
+  ],
+  "forbidden": [
+    "Final-score feedback",
+    "Per-pair model mixture",
+    "Further retuning",
+    "Outcome exclusions"
+  ],
+  "strict_gates_unchanged": true,
+  "final_data_and_upload_owner": "root",
+  "comparison_export_job": "10859081 afterok10858576",
+  "corrected_export_job": "10857242 afterok10856920"
+}

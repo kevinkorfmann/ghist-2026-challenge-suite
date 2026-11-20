@@ -1,0 +1,29 @@
+{
+  "registered_at_utc": "2026-11-20T18:25:43.829729+00:00",
+  "purpose": "Separately registered development comparison of published window-EM method; not a relaxation/pass of prior realSFS gates.",
+  "source": "https://github.com/malthesr/winsfs/tree/v0.7.0",
+  "commit": "3be82460b62d3e3c93ba352d9b394c1fb1423807",
+  "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9713400/",
+  "design": "Use only the existing inspected1Mb development cohorts first, then prepared10Mb development cohorts if meaningful; no fresh confirmation yet.",
+  "settings": {
+    "blocks": 500,
+    "window_size": 100,
+    "tolerance": 0.0001,
+    "max_epochs": 20,
+    "seeds": [
+      761001,
+      761002
+    ],
+    "continuation": "seed761001 initialized with first unfolded SFS"
+  },
+  "tolerance_note": "Published default normalized-block likelihood tolerance is a different stopping rule from realSFS total likelihood/probability-update tolerance. It cannot be called passage of acceptance_v1.",
+  "diagnostics": [
+    "Measured sum-of-counts exposure.",
+    "Globally fold using winsfs view --fold; source verified pooled count and half-frequency boundary handling.",
+    "Two-optimizer agreement using unchanged v5 demographic fitter.",
+    "Report independent seed and continued target differences and SFS frequencyL1.",
+    "Score fixed synthetic truth after inference."
+  ],
+  "production_status": "Experimental only; a subsequent frozen method and fresh confirmation with explicitly registered criteria are required before readiness.",
+  "compute": "At most2 concurrent4CPU jobs; build15min; each comparison60min; stop if no meaningful improvement."
+}

@@ -1,0 +1,121 @@
+{
+  "task": 8,
+  "protocol_sha256": "acc0ce4de87e4e99c282b97947dbe87b5748a2d8034dd519eb33410237a4fd17",
+  "source_freeze_sha256": "1fdcaf559e3f6233001438f5680414ba4bbfef29f6b5da99484872fa9701aeaf",
+  "runner_sha256": "76feb2e2e27bba5bfc60cc7d7cdf690e49c7c93bb38d0d3b108673a09ee09209",
+  "source_sha256": {
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "src/ghist_single_sweep/peaks.py": "41a48bb7147477462fcfb2dc7a4b67208933ff95b8ee9209af47a5eda5a35c3e",
+    "src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+    "src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+    "src/ghist_single_sweep/soft.py": "993ffdd555d7a9ec747661199267cfeba73f5c9c62d4db439600d5e47fb852e2",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "src/ghist_single_sweep/__init__.py": "b0f7371b157005db3c8027224f6b8bd052c42685bed20e62454cc1cb60958f8d",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "inputs": {
+    "vcf": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/inputs/task8/multisweep_bgs.final.vcf.gz",
+      "sha256": "9f30510f8d982a3728c70defb7a53843cb710ba5860091f6d47b01321341cf82"
+    },
+    "mask": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/inputs/shared/9.accessible.bed",
+      "sha256": "9f5235a687683eec6a7f19b0cf1334f545bda23497ff8e715658b1086778ec33"
+    },
+    "exons": {
+      "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/deadline_sweeps_20261120/inputs/shared/ensembl_havana_exons_9.normalized.bed",
+      "sha256": "0a1f9f609237cee7bf9907b80075747cc5a1a9612c1115d91db63738de17abdf"
+    }
+  },
+  "runtime": {
+    "python": "3.11.11",
+    "executable_sha256": "4824313cdfaa6ec4320450dff68de4df5f48d8b712ced0264f3602e681ac9135",
+    "packages": {
+      "numpy": "2.4.6",
+      "pysam": "0.24.0",
+      "PyYAML": "6.0.3"
+    },
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307"
+  },
+  "started_unix": 1795209962.209547,
+  "scientifically_validated": false,
+  "release_ready": false,
+  "external_submissions": 0,
+  "state": "COMPLETED",
+  "completed_unix": 1795210007.194062,
+  "duration_seconds": 44.98451566696167,
+  "contig": "9",
+  "contig_length": 138394717,
+  "samples_diploid": 25,
+  "final_intervals": [
+    [
+      37720879,
+      37840879
+    ],
+    [
+      83003141,
+      83123141
+    ]
+  ],
+  "geometry_adjustments": [
+    {
+      "raw_center": 37780879,
+      "final_center": 37780879,
+      "callable_component": [
+        40910,
+        138394717
+      ],
+      "interval": [
+        37720879,
+        37840879
+      ],
+      "center_adjusted": false,
+      "boundary_clipped": false
+    },
+    {
+      "raw_center": 83063141,
+      "final_center": 83063141,
+      "callable_component": [
+        40910,
+        138394717
+      ],
+      "interval": [
+        83003141,
+        83123141
+      ],
+      "center_adjusted": false,
+      "boundary_clipped": false
+    }
+  ],
+  "format_validation": {
+    "challenge": 8,
+    "dataset": "final",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "chromosome": "9",
+    "intervals": [
+      [
+        37720879,
+        37840879
+      ],
+      [
+        83003141,
+        83123141
+      ]
+    ]
+  },
+  "artifact_sha256": {
+    "deadline_submission.bed": "c4a726508c069347627a331117069083768da97b747eb4f68bea44f23a7b8274",
+    "raw/RAiSD_Info.task8": "94e9dde99fd8c9ee8e4d37def14fd2b0905e223e93009dfc7f4db08999ce6286",
+    "raw/RAiSD_Report.task8": "60933433347abc57f981f225e893807b5fccfff91a2dcd39b3f9f811902bb3fe",
+    "raw/masked.vcf": "e8487610aa4ed30591bafec9200e726005c926d7e31a1d12d8148a2be3741753",
+    "raw/prediction.json": "d33a21edfba01418cc7a2638e569d6b9561e414ada8f928d9f8c1e5608aad44b",
+    "raw/raisd.log": "b1f02b4337c306205c434e0e7f238c112938edc634d7cf83670239587ab61767",
+    "started.json": "a6e98c8ee2f6e0e9739b4fedcedfd68074486f35a6988b59beb1b0c5fe05d561"
+  },
+  "limitation": "Best-effort deadline candidate only. Scientific qualification and matched calibration absent; original validation failures remain."
+}

@@ -1,0 +1,326 @@
+{
+  "schema": "task11-pragmatic-existing-context-handoff-v1",
+  "prepared_utc": "2026-11-20T20:32:49.163472+00:00",
+  "candidate_sha256": "6ccfda5f8133b5dee5265f35ac3a328fc4c35cfa88af076e11b9873af781ea15",
+  "binding_script_sha256": "7e2bdb9ffcd8f42802e2470a93f2c325b6857d57a963854b74b37a41ef1f04ce",
+  "adapter_sha256": "23e66a96fef095709f28da9273ec5c62f2eb70f4fd00d5df163ad1fcdc11d867",
+  "scores": {
+    "calibration": {
+      "base": {
+        "correct": 673,
+        "total": 735,
+        "accuracy": 0.9156462585034013,
+        "balanced_accuracy": 0.8382390847378949,
+        "weighted_jaccard": 0.8623401330557937,
+        "ece": 0.021961295647946993,
+        "per_label": [
+          {
+            "label": "siblings",
+            "correct": 406,
+            "total": 406,
+            "recall": 1.0
+          },
+          {
+            "label": "half_sibling",
+            "correct": 44,
+            "total": 47,
+            "recall": 0.9361702127659575
+          },
+          {
+            "label": "avuncular",
+            "correct": 31,
+            "total": 38,
+            "recall": 0.8157894736842105
+          },
+          {
+            "label": "half_avuncular",
+            "correct": 38,
+            "total": 56,
+            "recall": 0.6785714285714286
+          },
+          {
+            "label": "avuncular_once_removed",
+            "correct": 30,
+            "total": 39,
+            "recall": 0.7692307692307693
+          },
+          {
+            "label": "avuncular_twice_removed",
+            "correct": 43,
+            "total": 45,
+            "recall": 0.9555555555555556
+          },
+          {
+            "label": "full_1st_cousin",
+            "correct": 35,
+            "total": 48,
+            "recall": 0.7291666666666666
+          },
+          {
+            "label": "half_1st_cousin",
+            "correct": 46,
+            "total": 56,
+            "recall": 0.8214285714285714
+          }
+        ]
+      },
+      "context": {
+        "correct": 673,
+        "total": 735,
+        "accuracy": 0.9156462585034013,
+        "balanced_accuracy": 0.8394497863247863,
+        "weighted_jaccard": 0.8707341274599482,
+        "ece": 0.026948126462941705,
+        "per_label": [
+          {
+            "label": "siblings",
+            "correct": 406,
+            "total": 406,
+            "recall": 1.0
+          },
+          {
+            "label": "half_sibling",
+            "correct": 47,
+            "total": 47,
+            "recall": 1.0
+          },
+          {
+            "label": "avuncular",
+            "correct": 38,
+            "total": 38,
+            "recall": 1.0
+          },
+          {
+            "label": "half_avuncular",
+            "correct": 31,
+            "total": 56,
+            "recall": 0.5535714285714286
+          },
+          {
+            "label": "avuncular_once_removed",
+            "correct": 20,
+            "total": 39,
+            "recall": 0.5128205128205128
+          },
+          {
+            "label": "avuncular_twice_removed",
+            "correct": 41,
+            "total": 45,
+            "recall": 0.9111111111111111
+          },
+          {
+            "label": "full_1st_cousin",
+            "correct": 44,
+            "total": 48,
+            "recall": 0.9166666666666666
+          },
+          {
+            "label": "half_1st_cousin",
+            "correct": 46,
+            "total": 56,
+            "recall": 0.8214285714285714
+          }
+        ]
+      }
+    },
+    "exposed": {
+      "base": {
+        "correct": 1254,
+        "total": 1443,
+        "accuracy": 0.8690228690228691,
+        "balanced_accuracy": 0.7676074272392938,
+        "weighted_jaccard": 0.8010460166826526,
+        "ece": 0.021254702963779393,
+        "per_label": [
+          {
+            "label": "siblings",
+            "correct": 729,
+            "total": 729,
+            "recall": 1.0
+          },
+          {
+            "label": "half_sibling",
+            "correct": 77,
+            "total": 86,
+            "recall": 0.8953488372093024
+          },
+          {
+            "label": "avuncular",
+            "correct": 114,
+            "total": 140,
+            "recall": 0.8142857142857143
+          },
+          {
+            "label": "half_avuncular",
+            "correct": 43,
+            "total": 78,
+            "recall": 0.5512820512820513
+          },
+          {
+            "label": "avuncular_once_removed",
+            "correct": 66,
+            "total": 116,
+            "recall": 0.5689655172413793
+          },
+          {
+            "label": "avuncular_twice_removed",
+            "correct": 76,
+            "total": 96,
+            "recall": 0.7916666666666666
+          },
+          {
+            "label": "full_1st_cousin",
+            "correct": 70,
+            "total": 86,
+            "recall": 0.813953488372093
+          },
+          {
+            "label": "half_1st_cousin",
+            "correct": 79,
+            "total": 112,
+            "recall": 0.7053571428571429
+          }
+        ]
+      },
+      "context": {
+        "correct": 1312,
+        "total": 1443,
+        "accuracy": 0.9092169092169092,
+        "balanced_accuracy": 0.8290556860274182,
+        "weighted_jaccard": 0.8566947747135583,
+        "ece": 0.023237502865269842,
+        "per_label": [
+          {
+            "label": "siblings",
+            "correct": 729,
+            "total": 729,
+            "recall": 1.0
+          },
+          {
+            "label": "half_sibling",
+            "correct": 79,
+            "total": 86,
+            "recall": 0.9186046511627907
+          },
+          {
+            "label": "avuncular",
+            "correct": 132,
+            "total": 140,
+            "recall": 0.9428571428571428
+          },
+          {
+            "label": "half_avuncular",
+            "correct": 39,
+            "total": 78,
+            "recall": 0.5
+          },
+          {
+            "label": "avuncular_once_removed",
+            "correct": 71,
+            "total": 116,
+            "recall": 0.6120689655172413
+          },
+          {
+            "label": "avuncular_twice_removed",
+            "correct": 86,
+            "total": 96,
+            "recall": 0.8958333333333334
+          },
+          {
+            "label": "full_1st_cousin",
+            "correct": 71,
+            "total": 86,
+            "recall": 0.8255813953488372
+          },
+          {
+            "label": "half_1st_cousin",
+            "correct": 105,
+            "total": 112,
+            "recall": 0.9375
+          }
+        ]
+      }
+    }
+  },
+  "exposed_always_siblings_baseline": {
+    "accuracy": 0.5051975051975052,
+    "balanced_accuracy": 0.125,
+    "weighted_jaccard": 0.2552245192577833
+  },
+  "operational_smoke": {
+    "scope": "One retained synthetic cohort with simultaneous alias and column-order permutation; operational parity only",
+    "candidate_sha256": "6ccfda5f8133b5dee5265f35ac3a328fc4c35cfa88af076e11b9873af781ea15",
+    "protocol_sha256": "ca55f4dd692e0c1aa41704dcb3901b30b129437b1e0905211ceb84f00bfd0d1c",
+    "source_vcf_sha256": "3d1d021e51f12f8815f712db930c382570739bff4f37b66bde20d56492d1b382",
+    "permuted_vcf_sha256": "e3f5a1750b1606c7b61c8126029b170a55bed05db9686323d71b3e31418b953b",
+    "comparisons": {
+      "base": {
+        "pairs": 203,
+        "label_changes": 0,
+        "maximum_probability_delta": 2.220446049250313e-16,
+        "passed": true
+      },
+      "context": {
+        "pairs": 203,
+        "label_changes": 0,
+        "maximum_probability_delta": 1.6653345369377348e-16,
+        "passed": true
+      }
+    },
+    "family_partition_unchanged": true,
+    "full_classification_reruns": 1,
+    "adapter_audit_sha256": "cb49584450bbc2a173dec391766757f2e5698aaa42a2beef4fa95d1f32da6169",
+    "reference_bounds": {
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/pragmatic_context_smoke_v1/direct_reference_predictions.json": "853ec4ed8b2d020e756902d06f4e24548d0f6cc1abe63c0be87b15ee557634c4",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/experiments/task11-development-20261120/context_diagnostic_v1/scoring_calibration.json": "f300fd1f4b866ab30db7c871ad14ae659c1b41ff471921bde62ea468a2a154c7"
+    },
+    "smoke_script_sha256": "732f81650bbc6e65a7d525d544c9608ed5dad828bc795593ec6ecbbf3a3ea3b0",
+    "job_id": "10858308",
+    "submission_ready": false,
+    "new_biological_validation": false,
+    "output_sha256": {
+      "adapter/adapter_audit.json": "cb49584450bbc2a173dec391766757f2e5698aaa42a2beef4fa95d1f32da6169",
+      "adapter/base_predictions.json": "20568bd80e27183cc9eb1cada9ab1e6d1019d15c3c0fd6a37395ba833931699d",
+      "adapter/clusters.json": "ac1d1641cb224ef91919a90d69769867c504ba7ba4f22768493ae1e1d2bbb3b4",
+      "adapter/context_features.npz": "829ca0c6f148020c483ab4a146c1e469f2833f51058f809f240383ec524c8d3b",
+      "adapter/families.json": "495c0eb8a4efc33230eac43bcee3b3c9d84c6e14211029b4aa7d828f8f6b1efc",
+      "adapter/feature_pairs.json": "1dff7c4baf1cc81f441d1732069f5d37e8b4fc41e996c464942910ef72099c55",
+      "adapter/features.npz": "bf4ead44d318f594f6cf15758ab961e8c63fad39ac2d59f30c6f41781de3328f",
+      "adapter/grouping_audit.json": "4753a408f51bb1d4a77d1c0e7675a285f8f9e662e041d42ff17e7082fe7c20df",
+      "adapter/hapibd.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter/hapibd.out": "d22310c5094666c6547b73a4df8735524bf61b0a27d9142203d806c07554eb67",
+      "adapter/predictions.json": "6b37800e4e9e27949b23355d3933203cebce59d323fc8f0004e07697082c02fa",
+      "adapter/preparation.json": "4e871f44213bc59613fe1aa55079acf8403c6c2abad2d03f986be3269db114ec",
+      "adapter/prepared.vcf.gz": "3e7a1579fa69a5eefdfb1073acdda70a9050dd7eb3bdffc7eda7892c291b4246",
+      "adapter/roster.json": "095926a39b8409e1f460d8b057f264ce49c1c161803dbc2bc933dffd03195b89",
+      "adapter/segments.hbd.gz": "95c1a5e6c9fdb2b197e255b6fc7ec23c08ed78e4a9754d7962f12f7128900bf2",
+      "adapter/segments.ibd.gz": "6c1093b78034ffa6ec2bc0be76b20ff2c385ece5785cb935f44ca7f878db46c0",
+      "adapter/segments.log": "d22310c5094666c6547b73a4df8735524bf61b0a27d9142203d806c07554eb67",
+      "adapter/summary/hbd_features.csv": "894ca544703f003453114fad2fe41cc25a4793ebaadab8a4600de4846a34b496",
+      "adapter/summary/pair_features.csv": "e87f12820c68bea590e30652a8fa9619a4d270c62d61d09ab37cb1ecaa09efa4",
+      "adapter/summary/summary.json": "c3711501a9d7a24971fa7b3b5a4d4958a52769e29b3152d35358667add1d0c0e",
+      "adapter/summary.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter/summary.out": "c3711501a9d7a24971fa7b3b5a4d4958a52769e29b3152d35358667add1d0c0e",
+      "adapter/synthetic.vcf.gz": "57e1289ff7b066ccf0f9b82dd4f4962a09de97ff9d52f3d81797d373a54d26ce",
+      "adapter/task11_candidate.csv": "ead1a0de6567ed71361a4ccd3e161cd8b9ca2e476f854dbcdc32017503dbe0b6",
+      "adapter/validation.json": "750f462e506506f55ce13d8218378211220ff2c5dbbf4ce1f1e6f44f78c89ffe",
+      "adapter.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "adapter.stdout": "bdfd8000328aa24212e5574897eefbe732e34895c420a150a11159ada3584a13",
+      "alias_and_order_map.json": "e8d1e043972b4f2ec11908416090c4a5102ddf42cee7b0626ae9dc0324eec2eb",
+      "direct_reference_predictions.json": "853ec4ed8b2d020e756902d06f4e24548d0f6cc1abe63c0be87b15ee557634c4",
+      "permuted_synthetic.vcf.gz": "e3f5a1750b1606c7b61c8126029b170a55bed05db9686323d71b3e31418b953b"
+    }
+  },
+  "limitations": [
+    "Development-selected fallback; no untouched confirmation passed.",
+    "Exposed eight-cohort half_avuncular recall is 39/78=0.50, below the unchanged 0.60 gate.",
+    "Calibration half_avuncular and avuncular_once_removed recall also fail 0.60.",
+    "Old generator has ancestry/Ne confounding and sibling-rich sampling; transfer is uncertain.",
+    "Model probabilities are empirical synthetic-domain classifier probabilities, not calibrated dog pedigree posteriors.",
+    "One final submission is allowed; root must select the fixed candidate before final-score feedback."
+  ],
+  "sample_contract": "Exactly8 unrelated families inferred by frozen average clustering. Header aliases preserve all genotype/phase/FORMAT lines; frozen preparation rejects incompatible phase and drops sites with missing genotypes without imputation. Family assignments are inferred, not supplied by truth.",
+  "final_selection": "Root-owned one-time selection after matched54 corrected development comparison if available. No final score used.",
+  "scientific_status": "FAILED strict minimum-class recall; all original gates unchanged; no untouched context confirmation passed.",
+  "submission_status": "Operational synthetic CSV validation passed; final data unexposed by this agent and no submission executed."
+}
