@@ -9,6 +9,8 @@ import numpy as np
 
 from ghist_secondary_contact.features import inverse_transform_targets
 from ghist_secondary_contact.vcf_fast import scan_secondary_contact_vcf
+from ghist_secondary_contact.contract import require_spectrum_contract
+from ghist_secondary_contact.spectrum import transform_spectrum_counts
 
 
 OUTPUT_NAMES = (
@@ -26,13 +28,15 @@ def main() -> None:
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
+    checkpoint = joblib.load(args.model)
+    require_spectrum_contract(checkpoint)
     spectrum, metadata = scan_secondary_contact_vcf(args.vcf)
-    transformed_spectrum = np.log1p(spectrum.astype(np.float64))
-    transformed_spectrum /= np.linalg.norm(transformed_spectrum) + 1e-12
+    transformed_spectrum = transform_spectrum_counts(
+        spectrum, checkpoint["spectrum_transform"]
+    )
     features = np.concatenate(
         (transformed_spectrum.ravel(), [np.log1p(metadata["records"])]), axis=0
     )[None].astype(np.float32)
-    checkpoint = joblib.load(args.model)
     reduced = checkpoint["pca"].transform(features)
     transformed = (
         checkpoint["model"].predict(reduced)[0] * checkpoint["target_scale"]

@@ -1,0 +1,28 @@
+{
+  "method": "two-sided 95% Clopper-Pearson interval across independent simulated segments",
+  "null_false_positive_Q10": {
+    "successes": 1,
+    "replicates": 8,
+    "interval": [
+      0.0031597235312519063,
+      0.5265096708752065
+    ]
+  },
+  "null_false_positive_Q1": {
+    "successes": 0,
+    "replicates": 8,
+    "interval": [
+      0,
+      0.3694166475528192
+    ]
+  },
+  "single_sweep_coverage_Q1": {
+    "successes": 7,
+    "replicates": 8,
+    "interval": [
+      0.47349032912479344,
+      0.9968402764687481
+    ]
+  },
+  "caution": "Multiple sites/regions within a segment are correlated; do not apply site- or region-level binomial intervals. These intervals describe only the fixed simulated configuration, not uncertainty over nuisance histories or chromosome domains."
+}

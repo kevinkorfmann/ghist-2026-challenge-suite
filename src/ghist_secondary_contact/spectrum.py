@@ -11,6 +11,7 @@ from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
     optimizer_diagnostics,
+    validate_expected_spectrum,
 )
 import pysam
 
@@ -159,21 +160,34 @@ def _fit_restart(arguments: tuple) -> dict:
         data = data.fold()
 
     def model(parameters, sample_sizes):
-        if convention == "generator_matched":
-            return generator_matched_secondary_contact_spectrum(
-                parameters,
-                sample_sizes,
-                folded=folded,
-                dt_fac=integration_dt_fac,
-                adapt_dt=adaptive_integration,
-            )
-        return secondary_contact_spectrum(
+        function = (
+            generator_matched_secondary_contact_spectrum
+            if convention == "generator_matched"
+            else secondary_contact_spectrum
+        )
+        expected = function(
             parameters,
             sample_sizes,
             folded=folded,
             dt_fac=integration_dt_fac,
             adapt_dt=adaptive_integration,
         )
+        try:
+            return validate_expected_spectrum(expected, data)
+        except ValueError:
+            if adaptive_integration:
+                raise
+            # Retry stiff trajectories with adaptive steps, never mask failed bins.
+            return validate_expected_spectrum(
+                function(
+                    parameters,
+                    sample_sizes,
+                    folded=folded,
+                    dt_fac=integration_dt_fac,
+                    adapt_dt=True,
+                ),
+                data,
+            )
 
     try:
         estimate = np.asarray(

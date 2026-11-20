@@ -12,7 +12,14 @@ from sklearn.ensemble import ExtraTreesRegressor, HistGradientBoostingRegressor
 from sklearn.linear_model import Ridge
 from sklearn.multioutput import MultiOutputRegressor
 
-from ghist_secondary_contact.features import inverse_transform_targets, transform_targets
+from ghist_secondary_contact.features import (
+    inverse_transform_targets,
+    transform_targets,
+)
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 
 def _load(pattern: str) -> dict[str, np.ndarray]:
@@ -20,13 +27,23 @@ def _load(pattern: str) -> dict[str, np.ndarray]:
     if not paths:
         raise FileNotFoundError(f"no chunks match {pattern!r}")
     chunks = [np.load(path) for path in paths]
+    for chunk in chunks:
+        require_spectrum_contract(chunk)
     keys = ("partition", "design_domain", "truth", "point_id", "joint_sfs")
     result = {key: np.concatenate([chunk[key] for chunk in chunks]) for key in keys}
+    result["spectrum_transform"] = np.concatenate(
+        [
+            np.repeat(str(chunk["spectrum_transform"]), len(chunk["truth"]))
+            for chunk in chunks
+        ]
+    )
     result["n_variants"] = np.concatenate([chunk["n_variants"] for chunk in chunks])
     return result
 
 
-def _point_rrmse(prediction: np.ndarray, truth: np.ndarray, point_id: np.ndarray) -> float:
+def _point_rrmse(
+    prediction: np.ndarray, truth: np.ndarray, point_id: np.ndarray
+) -> float:
     estimates, targets = [], []
     for identifier in np.unique(point_id):
         selected = point_id == identifier
@@ -57,6 +74,9 @@ def main() -> None:
     )
     keep = np.isin(data["design_domain"], domains)
     data = {key: value[keep] for key, value in data.items()}
+    transforms = np.unique(data["spectrum_transform"])
+    if len(transforms) != 1:
+        raise ValueError("Training chunks use different spectrum transforms")
     calibration = data["partition"] == 0
     selection = data["partition"] == 1
     evaluation = data["partition"] == 2
@@ -148,6 +168,8 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(
         {
+            "spectrum_contract": SPECTRUM_CONTRACT,
+            "spectrum_transform": str(transforms[0]),
             "pca": pca,
             "model": best_model,
             "target_mean": target_mean,

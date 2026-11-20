@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 
 PARAMETER_KEYS = (
@@ -37,6 +41,7 @@ def load_resolution(pattern: str) -> dict[int, dict]:
     records: dict[int, dict] = {}
     for filename in sorted(glob.glob(pattern)):
         record = json.loads(Path(filename).read_text())
+        require_spectrum_contract(record)
         replicate = int(record["replicate"])
         if replicate in records:
             raise ValueError(f"duplicate replicate {replicate} for {pattern!r}")
@@ -52,7 +57,9 @@ def percentile_interval(values: np.ndarray) -> list[float]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--resolution", action="append", type=labelled_pattern, required=True)
+    parser.add_argument(
+        "--resolution", action="append", type=labelled_pattern, required=True
+    )
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--bootstrap-draws", type=int, default=20_000)
     parser.add_argument("--seed", type=int, default=20260822)
@@ -75,7 +82,9 @@ def main() -> None:
             for label in loaded
         ]
         if any(not np.array_equal(truths[0], truth) for truth in truths[1:]):
-            raise ValueError(f"truth differs across resolutions for replicate {replicate}")
+            raise ValueError(
+                f"truth differs across resolutions for replicate {replicate}"
+            )
         truth_by_replicate[replicate] = truths[0]
 
     scores: dict[str, np.ndarray] = {}
@@ -83,7 +92,10 @@ def main() -> None:
     summaries = {}
     for label, records in loaded.items():
         estimates = np.asarray(
-            [[records[index][key] for key in PARAMETER_KEYS] for index in replicate_ids],
+            [
+                [records[index][key] for key in PARAMETER_KEYS]
+                for index in replicate_ids
+            ],
             dtype=np.float64,
         )
         truth = np.asarray([truth_by_replicate[index] for index in replicate_ids])
@@ -94,7 +106,10 @@ def main() -> None:
         boundary_replicates = []
         for index in replicate_ids:
             scaled = np.asarray(
-                [records[index]["scaled_parameters"][key] for key in SCALED_PARAMETER_KEYS]
+                [
+                    records[index]["scaled_parameters"][key]
+                    for key in SCALED_PARAMETER_KEYS
+                ]
             )
             near_boundary = (scaled <= LOWER_BOUNDS * 1.001) | (
                 scaled >= UPPER_BOUNDS / 1.001
@@ -105,7 +120,9 @@ def main() -> None:
                         "replicate": index,
                         "parameters": [
                             key
-                            for key, flagged in zip(SCALED_PARAMETER_KEYS, near_boundary)
+                            for key, flagged in zip(
+                                SCALED_PARAMETER_KEYS, near_boundary
+                            )
                             if flagged
                         ],
                     }
@@ -122,7 +139,9 @@ def main() -> None:
         }
 
     rng = np.random.default_rng(args.seed)
-    draw_indices = rng.integers(0, len(replicate_ids), (args.bootstrap_draws, len(replicate_ids)))
+    draw_indices = rng.integers(
+        0, len(replicate_ids), (args.bootstrap_draws, len(replicate_ids))
+    )
     pairwise = {}
     labels = list(loaded)
     for left_index, left in enumerate(labels):
@@ -132,11 +151,15 @@ def main() -> None:
             pairwise[f"{left}_minus_{right}"] = {
                 "mean_score_difference": float(delta.mean()),
                 "median_score_difference": float(np.median(delta)),
-                "mean_difference_bootstrap_interval_95": percentile_interval(mean_draws),
+                "mean_difference_bootstrap_interval_95": percentile_interval(
+                    mean_draws
+                ),
                 "left_wins": int(np.sum(delta < 0.0)),
                 "ties": int(np.sum(delta == 0.0)),
                 "right_wins": int(np.sum(delta > 0.0)),
-                "replicate_differences": dict(zip(map(str, replicate_ids), delta.tolist())),
+                "replicate_differences": dict(
+                    zip(map(str, replicate_ids), delta.tolist())
+                ),
             }
 
     ranking = sorted(
@@ -150,6 +173,7 @@ def main() -> None:
         summary["boundary_replicates"] for summary in summaries.values()
     )
     result = {
+        "spectrum_contract": SPECTRUM_CONTRACT,
         "replicates": replicate_ids,
         "parameter_keys": PARAMETER_KEYS,
         "selection_rule": "lowest mean competition RRMSE, then lowest median competition RRMSE",

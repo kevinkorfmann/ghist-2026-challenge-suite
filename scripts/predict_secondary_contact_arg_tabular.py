@@ -6,6 +6,7 @@ from pathlib import Path
 
 import joblib
 import numpy as np
+from ghist_secondary_contact.contract import require_spectrum_contract
 
 from ghist_secondary_contact.features import inverse_transform_targets
 
@@ -42,6 +43,7 @@ def main() -> None:
     if len(features) % args.tiles_per_block:
         raise ValueError("tile count must be divisible by tiles per block")
     checkpoint = joblib.load(args.model)
+    require_spectrum_contract(checkpoint)
     averaged_input = bool(checkpoint["report"].get("average_by_point", False))
     model_features = (
         features.reshape(-1, args.tiles_per_block, features.shape[1]).mean(axis=1)
@@ -69,7 +71,9 @@ def main() -> None:
         "tiles_per_block": args.tiles_per_block,
         "averaged_before_prediction": averaged_input,
         "blocks": len(block_prediction),
-        "prediction": dict(zip(OUTPUT_NAMES, inverse_transform_targets(center).tolist())),
+        "prediction": dict(
+            zip(OUTPUT_NAMES, inverse_transform_targets(center).tolist())
+        ),
         "block_percentile_05": dict(
             zip(OUTPUT_NAMES, np.percentile(block_prediction, 5, axis=0).tolist())
         ),

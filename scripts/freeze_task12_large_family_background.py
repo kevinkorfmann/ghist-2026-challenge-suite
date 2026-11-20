@@ -51,6 +51,8 @@ def main() -> None:
     labels = Counter(row["relation"] for row in rows)
     checks = {
         "empirical_background_holdout_gate": bool(holdout["gate"]["passed"]),
+        "independent_background_reference_in_development": development.get("independent_correction_reference") is True,
+        "independent_background_reference_in_holdout": holdout.get("independent_correction_reference") is True,
         "all_input_pairs_present": coverage["input_pair_coverage_verified"],
         "pairs_unique": len(set(pairs)) == len(pairs),
         "all_input_individuals_present": samples == set(cohort),
@@ -82,7 +84,7 @@ def main() -> None:
         "selected_method": {
             "pair_model": "5 cM histogram-gradient classifier using corrected segment counts, total sharing, and length-bin features",
             "background_control": "background length-bin rates estimated from unlabeled Task 12 versus Task 10 cohort distributions",
-            "selection_rule": "selected on empirical short-segment contamination regimes and promoted through 20 untouched paired comparisons",
+            "selection_rule": "selected on empirical short-segment contamination regimes and evaluated on independent pedigree replicates with a separate correction reference",
             "topology_consensus": "branch reconstruction may refine relation type only when its meiosis degree agrees with the calibrated pair model",
         },
         "source_artifacts": {relative(path): sha256(path) for path in source_paths},

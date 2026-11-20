@@ -12,6 +12,10 @@ def _record(index: int, offset: int) -> dict:
         "largest_gap_midpoint": truth + offset + 80_000,
     }
     return {
+        "localization": {
+            "truth_used_for_inference": False,
+            "region_source": "full_scan_composite_maximum",
+        },
         "seed": 75_226_000 + index,
         "truth": {"position": truth},
         "estimates": estimates,
@@ -27,9 +31,6 @@ def test_soft_recovery_selects_precise_haplotype_localizer() -> None:
 
 
 def test_soft_recovery_rejects_large_untouched_offset() -> None:
-    records = [
-        _record(index, 0 if index < 24 else 400_000)
-        for index in range(48)
-    ]
+    records = [_record(index, 0 if index < 24 else 400_000) for index in range(48)]
     result = summarize(records)
     assert result["robustness_gate"]["passed"] is False

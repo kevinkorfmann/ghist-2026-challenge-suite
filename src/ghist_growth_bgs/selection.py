@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from .spectrum import fit_growth_spectrum, growth_spectrum, sudden_growth_spectrum
+from ghist_inference.validation import validate_expected_spectrum
 
 
 def compare_growth_models(
@@ -73,6 +74,7 @@ def compare_growth_models(
                 (fit["post_growth_scaling"], fit["scaled_duration_2N"]),
                 held_out.sample_sizes,
             )
+            validate_expected_spectrum(expected, held_out)
             score = float(moments.Inference.ll_multinom(expected, held_out))
             if not np.isfinite(score):
                 raise RuntimeError("Nonfinite held-out predictive likelihood")
@@ -106,7 +108,7 @@ def compare_growth_models(
         for index, name in enumerate(models)
     }
     return {
-        "protocol": "Leave one chromosome group out; select by summed predictive likelihood; refit all groups",
+        "protocol": "Leave one chromosome group out; select by summed conditional SFS-shape likelihood (held-out amplitude profiled); refit all groups",
         "public_testing_answers_used": False,
         "folds": folds,
         "predictive_log_likelihood": scores,

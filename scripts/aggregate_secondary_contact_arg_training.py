@@ -5,6 +5,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 
 def main() -> None:
@@ -20,10 +24,13 @@ def main() -> None:
         simulation_path = root / "simulated.features.npz"
         singer_path = root / "singer_hazards.npz"
         polegon_path = root / "polegon_hazards.npz"
-        if not all(path.exists() for path in (simulation_path, singer_path, polegon_path)):
+        if not all(
+            path.exists() for path in (simulation_path, singer_path, polegon_path)
+        ):
             missing.append(cell)
             continue
         simulation = np.load(simulation_path)
+        require_spectrum_contract(simulation)
         singer = np.load(singer_path)
         polegon = np.load(polegon_path)
         records.append(
@@ -50,9 +57,13 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         args.out,
+        spectrum_contract=SPECTRUM_CONTRACT,
+        spectrum_transform="log_l2",
         cell_id=np.asarray([record["cell_id"] for record in records]),
         point_id=np.asarray([record["point_id"] for record in records]),
-        partition=np.asarray([record["partition"] for record in records], dtype=np.int8),
+        partition=np.asarray(
+            [record["partition"] for record in records], dtype=np.int8
+        ),
         design_domain=np.asarray(
             [record["design_domain"] for record in records], dtype=np.int8
         ),
@@ -60,7 +71,9 @@ def main() -> None:
         ancestral_size=np.asarray(
             [record["ancestral_size"] for record in records], dtype=np.float64
         ),
-        nuisance=np.asarray([record["nuisance"] for record in records], dtype=np.float64),
+        nuisance=np.asarray(
+            [record["nuisance"] for record in records], dtype=np.float64
+        ),
         truth_hazards=np.asarray(
             [record["truth_hazards"] for record in records], dtype=np.float32
         ),

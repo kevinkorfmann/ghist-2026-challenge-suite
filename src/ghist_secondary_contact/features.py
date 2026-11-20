@@ -54,7 +54,9 @@ def population_pair_hazards(
         time_edges=time_edges,
     )
     remaining = np.cumsum(counts[:, ::-1], axis=1)[:, ::-1]
-    hazards = np.divide(counts, remaining, out=np.zeros_like(counts), where=remaining > 0)
+    hazards = np.divide(
+        counts, remaining, out=np.zeros_like(counts), where=remaining > 0
+    )
     hazards = hazards[:, :-1]
     if hazards.shape != (len(PAIR_CLASSES), ARG_TIME_BINS):
         raise ValueError(f"unexpected hazard shape {hazards.shape}")
@@ -75,9 +77,13 @@ def population_pair_interval_counts(
     ]
     if any(len(values) == 0 for values in sample_sets):
         raise ValueError("both population sample sets must be nonempty")
-    edges = default_time_edges() if time_edges is None else np.asarray(time_edges, float)
+    edges = (
+        default_time_edges() if time_edges is None else np.asarray(time_edges, float)
+    )
     if edges[0] != 0 or np.any(np.diff(edges) <= 0) or not np.all(np.isfinite(edges)):
-        raise ValueError("time_edges must start at zero and increase with finite values")
+        raise ValueError(
+            "time_edges must start at zero and increase with finite values"
+        )
     counts = np.asarray(
         ts.pair_coalescence_counts(
             sample_sets=sample_sets,
@@ -169,14 +175,18 @@ def summarize_tree_sequence(
     population1_samples = np.asarray(population1_samples, dtype=np.int32)
     population2_samples = np.asarray(population2_samples, dtype=np.int32)
     if n_windows <= 0 or min(len(population1_samples), len(population2_samples)) < 2:
-        raise ValueError("positive window count and at least two haplotypes per population required")
+        raise ValueError(
+            "positive window count and at least two haplotypes per population required"
+        )
     sample_order = np.asarray(ts.samples(), dtype=np.int32)
     lookup = {int(node): index for index, node in enumerate(sample_order)}
     try:
         indices1 = np.asarray([lookup[int(node)] for node in population1_samples])
         indices2 = np.asarray([lookup[int(node)] for node in population2_samples])
     except KeyError as error:
-        raise ValueError("population set contains a node outside ts.samples()") from error
+        raise ValueError(
+            "population set contains a node outside ts.samples()"
+        ) from error
     spectrum = np.zeros((len(indices1) + 1, len(indices2) + 1), dtype=np.float64)
     # Columns store pi1, pi2, dxy, Fst numerator, four site classes,
     # frequency1, frequency2, absolute frequency difference, and site count.
@@ -190,7 +200,7 @@ def summarize_tree_sequence(
         if np.any((g1 < 0) | (g1 > 1)) or np.any((g2 < 0) | (g2 > 1)):
             continue
         count1, count2 = int(g1.sum()), int(g2.sum())
-        if count1 in (0, len(g1)) and count2 in (0, len(g2)):
+        if count1 + count2 in (0, len(g1) + len(g2)):
             continue
         spectrum[count1, count2] += 1
         p1, p2 = count1 / len(g1), count2 / len(g2)
@@ -207,8 +217,7 @@ def summarize_tree_sequence(
         values[5] += int(0 < count2 < len(g2) and count1 in (0, len(g1)))
         values[6] += int(0 < count1 < len(g1) and 0 < count2 < len(g2))
         values[7] += int(
-            (count1 == 0 and count2 == len(g2))
-            or (count2 == 0 and count1 == len(g1))
+            (count1 == 0 and count2 == len(g2)) or (count2 == 0 and count1 == len(g1))
         )
         values[8] += p1
         values[9] += p2

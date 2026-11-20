@@ -10,6 +10,7 @@ from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
     optimizer_diagnostics,
+    validate_expected_spectrum,
 )
 import pysam
 
@@ -53,12 +54,26 @@ def _fit_restart(arguments: tuple) -> dict:
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
 
     def model(parameters, sample_sizes):
-        return isolation_with_migration_spectrum(
+        expected = isolation_with_migration_spectrum(
             parameters,
             sample_sizes,
             dt_fac=dt_fac,
             adapt_dt=adapt_dt,
         )
+        try:
+            return validate_expected_spectrum(expected, data)
+        except ValueError:
+            if adapt_dt:
+                raise
+            return validate_expected_spectrum(
+                isolation_with_migration_spectrum(
+                    parameters,
+                    sample_sizes,
+                    dt_fac=dt_fac,
+                    adapt_dt=True,
+                ),
+                data,
+            )
 
     try:
         estimate = np.asarray(

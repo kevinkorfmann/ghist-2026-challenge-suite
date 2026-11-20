@@ -8,17 +8,21 @@ import msprime
 import numpy as np
 import stdpopsim
 
-from ghist_growth_bgs.audit import coding_distance, distance_label, load_coding_intervals
+from ghist_growth_bgs.audit import (
+    coding_distance,
+    distance_label,
+    load_coding_intervals,
+)
 from ghist_growth_bgs.blocks import distance_stratum_segments
 from ghist_split_migration_bgs.spectrum import fit_isolation_with_migration_spectrum
+from ghist_split_migration_bgs.simulation import split_migration_demography
+from ghist_growth_bgs.simulation import SIMULATION_SCALING_SCHEME
 
 
 MIDDLE_LABELS = {"noncoding_1kb_10kb", "noncoding_10kb_100kb"}
 
 
-def overlap_length(
-    intervals: list[tuple[int, int]], start: int, end: int
-) -> int:
+def overlap_length(intervals: list[tuple[int, int]], start: int, end: int) -> int:
     return sum(
         max(0, min(right, end) - max(left, start))
         for left, right in intervals
@@ -67,28 +71,25 @@ def main() -> None:
     args = parser.parse_args()
     if not 0 <= args.left < args.right:
         raise ValueError("simulation coordinates are invalid")
-    if min(
+    if (
+        min(
+            args.ancestral_size,
+            args.afr_size,
+            args.eur_size,
+            args.generations,
+            args.migration_rate,
+        )
+        <= 0
+    ):
+        raise ValueError("demographic parameters must be positive")
+
+    scale = args.slim_scaling_factor
+    demography = split_migration_demography(
         args.ancestral_size,
         args.afr_size,
         args.eur_size,
         args.generations,
         args.migration_rate,
-    ) <= 0:
-        raise ValueError("demographic parameters must be positive")
-
-    scale = args.slim_scaling_factor
-    mutation_unscaled = args.mutation_rate / scale
-    demography = msprime.Demography()
-    demography.add_population(name="ANC", initial_size=args.ancestral_size * scale)
-    demography.add_population(name="AFR", initial_size=args.afr_size * scale)
-    demography.add_population(name="EUR", initial_size=args.eur_size * scale)
-    demography.set_symmetric_migration_rate(
-        ["AFR", "EUR"], rate=args.migration_rate / scale
-    )
-    demography.add_population_split(
-        time=args.generations * scale,
-        derived=["AFR", "EUR"],
-        ancestral="ANC",
     )
     model = stdpopsim.DemographicModel(
         id="SplitMigration_2P",
@@ -96,7 +97,7 @@ def main() -> None:
         long_description="A constant-size ancestor splits into two constant-size populations.",
         generation_time=0.1,
         model=demography,
-        mutation_rate=mutation_unscaled,
+        mutation_rate=args.mutation_rate,
     )
     species = stdpopsim.get_species("DroMel")
     contig = species.get_contig(
@@ -104,7 +105,7 @@ def main() -> None:
         genetic_map="ComeronCrossoverV2_dm6",
         left=args.left,
         right=args.right,
-        mutation_rate=mutation_unscaled,
+        mutation_rate=args.mutation_rate,
     )
     scale_recombination_map(contig, 0.5)
     coding = load_coding_intervals(args.coding_bed)
@@ -158,6 +159,7 @@ def main() -> None:
         "EUR_population_size": args.eur_size,
         "generations_since_split": args.generations,
         "migration_rate": args.migration_rate,
+        "mutation_rate": args.mutation_rate,
     }
     fit = None
     if not args.skip_fit:
@@ -165,21 +167,16 @@ def main() -> None:
             spectrum,
             mutation_rate=args.mutation_rate,
             sequence_length=exposure,
-            projection=(60, 50),
+            projection=(min(60, len(afr_nodes)), min(50, len(eur_nodes))),
             restarts=args.fit_restarts,
             workers=1,
             maxiter=600,
             seed=args.seed + 1,
-            initial_scaled=(
-                args.afr_size / args.ancestral_size,
-                args.eur_size / args.ancestral_size,
-                args.generations / (2 * args.ancestral_size),
-                2 * args.ancestral_size * args.migration_rate,
-            ),
         )
     payload = {
         "truth_in_analysis_units": truth,
         "generator": {
+            "simulation_scaling_scheme": SIMULATION_SCALING_SCHEME,
             "stdpopsim": stdpopsim.__version__,
             "slim_scaling_factor": scale,
             "slim_burn_in": args.slim_burn_in,

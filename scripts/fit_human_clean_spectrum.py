@@ -6,6 +6,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
@@ -71,7 +73,7 @@ def fit_models(
             model = HistGradientBoostingClassifier(
                 learning_rate=0.07,
                 max_iter=300,
-                early_stopping=True,
+                early_stopping=False,
                 random_state=seed + 10 * len(fitted) + index,
                 **spec,
             ).fit(values, labels, sample_weight=weights)
@@ -130,6 +132,11 @@ def main() -> None:
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--seed", type=int, default=102426)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'selection': [args.selection],
+        'development_evaluation': [args.development_evaluation],
+    })
 
     baseline = joblib.load(args.baseline_model)
     training = [

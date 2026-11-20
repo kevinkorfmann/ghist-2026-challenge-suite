@@ -6,13 +6,20 @@ from pathlib import Path
 
 import joblib
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 from sklearn.ensemble import ExtraTreesRegressor, HistGradientBoostingRegressor
 from sklearn.linear_model import Ridge
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-from ghist_secondary_contact.features import inverse_transform_targets, transform_targets
+from ghist_secondary_contact.features import (
+    inverse_transform_targets,
+    transform_targets,
+)
 
 
 def point_rrmse(
@@ -40,10 +47,13 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--seed", type=int, default=20260929)
     parser.add_argument("--average-by-point", action="store_true")
-    parser.add_argument("--nuisance-filter", choices=("all", "historical"), default="all")
+    parser.add_argument(
+        "--nuisance-filter", choices=("all", "historical"), default="all"
+    )
     args = parser.parse_args()
 
     source = np.load(args.dataset)
+    require_spectrum_contract(source)
     domains = np.asarray(
         [int(value) for value in args.domain_filter.replace(":", ",").split(",")]
     )
@@ -163,6 +173,7 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(
         {
+            "spectrum_contract": SPECTRUM_CONTRACT,
             "model": best_model,
             "target_mean": target_mean,
             "target_scale": target_scale,

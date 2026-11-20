@@ -1,0 +1,487 @@
+{
+  "neutral": {
+    "planned": 22,
+    "completed": 13,
+    "time_limited": 9,
+    "wallclock_budget_seconds": 1200,
+    "workers": 8,
+    "stop_record": {
+      "wallclock_budget_seconds": 1200,
+      "action": "stop still-running workers after bounded diagnostic budget",
+      "stop_time_utc": "2026-11-20T16:33:57Z",
+      "processes": [
+        {
+          "pid": 3573195,
+          "elapsed_seconds": 1200,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573198,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573199,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573200,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573201,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573202,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573203,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573204,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        },
+        {
+          "pid": 3573205,
+          "elapsed_seconds": 1197,
+          "action": "SIGTERM"
+        }
+      ]
+    },
+    "records": [
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "matched",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 0,
+        "seed": 202611210,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "matched",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 1,
+        "seed": 202611220,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "hidden_epochs",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 0,
+        "seed": 202612210,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "hidden_epochs",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 1,
+        "seed": 202612220,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "asymmetric",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 0,
+        "seed": 202613210,
+        "status": "completed",
+        "result": "neutral/task2_point0_asymmetric_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 0,
+          "condition": "asymmetric",
+          "parameters": [
+            12000,
+            18000,
+            7000,
+            10500,
+            2700,
+            6e-05
+          ]
+        },
+        "replicate": 1,
+        "seed": 202613220,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 1,
+          "condition": "matched",
+          "parameters": [
+            9000,
+            6500,
+            21000,
+            18000,
+            6500,
+            0.00012
+          ]
+        },
+        "replicate": 0,
+        "seed": 202614210,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 2,
+          "point": 1,
+          "condition": "matched",
+          "parameters": [
+            9000,
+            6500,
+            21000,
+            18000,
+            6500,
+            0.00012
+          ]
+        },
+        "replicate": 1,
+        "seed": 202614220,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 0,
+          "condition": "exponential",
+          "parameters": [
+            7000,
+            9200,
+            3.7
+          ]
+        },
+        "replicate": 0,
+        "seed": 202615210,
+        "status": "completed",
+        "result": "neutral/task3_point0_exponential_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 0,
+          "condition": "exponential",
+          "parameters": [
+            7000,
+            9200,
+            3.7
+          ]
+        },
+        "replicate": 1,
+        "seed": 202615220,
+        "status": "completed",
+        "result": "neutral/task3_point0_exponential_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 0,
+          "condition": "sudden",
+          "parameters": [
+            7000,
+            9200,
+            3.7
+          ]
+        },
+        "replicate": 0,
+        "seed": 202616210,
+        "status": "completed",
+        "result": "neutral/task3_point0_sudden_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 0,
+          "condition": "sudden",
+          "parameters": [
+            7000,
+            9200,
+            3.7
+          ]
+        },
+        "replicate": 1,
+        "seed": 202616220,
+        "status": "completed",
+        "result": "neutral/task3_point0_sudden_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 1,
+          "condition": "exponential",
+          "parameters": [
+            15000,
+            3100,
+            1.6
+          ]
+        },
+        "replicate": 0,
+        "seed": 202617210,
+        "status": "completed",
+        "result": "neutral/task3_point1_exponential_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 1,
+          "condition": "exponential",
+          "parameters": [
+            15000,
+            3100,
+            1.6
+          ]
+        },
+        "replicate": 1,
+        "seed": 202617220,
+        "status": "completed",
+        "result": "neutral/task3_point1_exponential_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 1,
+          "condition": "sudden",
+          "parameters": [
+            15000,
+            3100,
+            1.6
+          ]
+        },
+        "replicate": 0,
+        "seed": 202618210,
+        "status": "completed",
+        "result": "neutral/task3_point1_sudden_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 3,
+          "point": 1,
+          "condition": "sudden",
+          "parameters": [
+            15000,
+            3100,
+            1.6
+          ]
+        },
+        "replicate": 1,
+        "seed": 202618220,
+        "status": "completed",
+        "result": "neutral/task3_point1_sudden_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 0,
+          "condition": "matched",
+          "parameters": [
+            11000,
+            8000,
+            19000,
+            7800,
+            7e-05
+          ]
+        },
+        "replicate": 0,
+        "seed": 202619210,
+        "status": "completed",
+        "result": "neutral/task4_point0_matched_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 0,
+          "condition": "matched",
+          "parameters": [
+            11000,
+            8000,
+            19000,
+            7800,
+            7e-05
+          ]
+        },
+        "replicate": 1,
+        "seed": 202619220,
+        "status": "completed",
+        "result": "neutral/task4_point0_matched_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 0,
+          "condition": "asymmetric",
+          "parameters": [
+            11000,
+            8000,
+            19000,
+            7800,
+            7e-05
+          ]
+        },
+        "replicate": 0,
+        "seed": 202620210,
+        "status": "completed",
+        "result": "neutral/task4_point0_asymmetric_rep0.json"
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 0,
+          "condition": "asymmetric",
+          "parameters": [
+            11000,
+            8000,
+            19000,
+            7800,
+            7e-05
+          ]
+        },
+        "replicate": 1,
+        "seed": 202620220,
+        "status": "completed",
+        "result": "neutral/task4_point0_asymmetric_rep1.json"
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 1,
+          "condition": "matched",
+          "parameters": [
+            18000,
+            27000,
+            12000,
+            12500,
+            0.0002
+          ]
+        },
+        "replicate": 0,
+        "seed": 202621210,
+        "status": "incomplete_time_budget",
+        "result": null
+      },
+      {
+        "configuration": {
+          "task": 4,
+          "point": 1,
+          "condition": "matched",
+          "parameters": [
+            18000,
+            27000,
+            12000,
+            12500,
+            0.0002
+          ]
+        },
+        "replicate": 1,
+        "seed": 202621220,
+        "status": "incomplete_time_budget",
+        "result": null
+      }
+    ],
+    "censoring": "Only fully completed two-model/two-projection fits emit a record; missing records may have been running or queued. Do not infer an accuracy pass or numerical failure from incomplete status. All seeds and configurations were kept unchanged."
+  },
+  "bgs": {
+    "planned": 6,
+    "completed": 5,
+    "incomplete": 1,
+    "completed_records": [
+      "growth_q1.json",
+      "growth_q5.json",
+      "growth_q10.json",
+      "split_q5.json",
+      "split_q10.json"
+    ],
+    "incomplete_records": [
+      {
+        "case": "split_q1",
+        "status": "incomplete_time_budget",
+        "simulation_completed": true,
+        "fit_completed": false,
+        "slurm_job": "10849487_1",
+        "wallclock_budget_seconds": 900,
+        "stop_record": {
+          "job": "10849487_1",
+          "wallclock_budget_seconds": 900,
+          "before_stop": "10849487_1|RUNNING|900|0:0",
+          "action": "cancelled after 900-second diagnostic budget",
+          "stop_time_utc": "2026-11-20T16:34:53Z"
+        },
+        "tree_sequence_host": "betty",
+        "tree_sequence_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/2026-11-20/artifacts/scientific/demography/split_q1.trees",
+        "tree_sequence_sha256": "30c740212a73e15cf8e36eef44470bfa8890198e6192f7805791f9db6f447eb4",
+        "source_command": "physical_units_bgs_q1.sbatch task 1",
+        "interpretation": "Simulation completed, inference incomplete. No recovery error or numerical-convergence result is inferred."
+      }
+    ]
+  },
+  "aggregate_interpretation": "All numerical and accuracy aggregates are conditional on completed records. Time-limited configurations can systematically be harder, so the censored subset cannot establish overall panel accuracy or reliability."
+}

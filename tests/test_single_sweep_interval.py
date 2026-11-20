@@ -11,14 +11,24 @@ def _summary(errors: list[int], selection_count: int) -> dict:
         is_selection = ((index * 17 + 3) % 5) in [0, 1]
         target = selection_indices if is_selection else evaluation_indices
         target.append(index)
-        if len(selection_indices) >= selection_count and len(evaluation_indices) >= len(errors) - selection_count:
+        if (
+            len(selection_indices) >= selection_count
+            and len(evaluation_indices) >= len(errors) - selection_count
+        ):
             break
-    indices = selection_indices[:selection_count] + evaluation_indices[: len(errors) - selection_count]
+    indices = (
+        selection_indices[:selection_count]
+        + evaluation_indices[: len(errors) - selection_count]
+    )
     for error, index in zip(errors, indices, strict=True):
         truth = 1_000_000
         estimate = truth + error
         records.append(
             {
+                "localization": {
+                    "truth_used_for_inference": False,
+                    "region_source": "full_scan_composite_maximum",
+                },
                 "seed": 75_222_000 + index,
                 "truth": {"position": truth},
                 "estimates": {
@@ -28,7 +38,10 @@ def _summary(errors: list[int], selection_count: int) -> dict:
                 },
             }
         )
-    return {"held_out_method_gate": {"selected": "median_all_three"}, "records": records}
+    return {
+        "held_out_method_gate": {"selected": "median_all_three"},
+        "records": records,
+    }
 
 
 def test_competition_score_penalizes_interval_length() -> None:

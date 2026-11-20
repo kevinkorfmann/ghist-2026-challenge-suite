@@ -15,5 +15,6 @@ cd "$PROJECT_ROOT"
 PYTHONPATH=src:scripts .venv/bin/python scripts/validate_human_background_correction.py \
   --model artifacts/task12_large_family_background/pair_model_min20_q0.50/model.joblib \
   --evaluation artifacts/task10_human_calibration/replicate_7.seg \
+  --reference artifacts/task10_human_calibration/replicate_0.seg \
   --replicates 12 \
   --out artifacts/task12_large_family_background/background_validation/summary.json

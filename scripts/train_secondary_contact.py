@@ -11,6 +11,10 @@ from torch.utils.data import DataLoader, TensorDataset
 
 from ghist_secondary_contact.features import transform_targets
 from ghist_secondary_contact.model import SecondaryContactNet, mixture_nll
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 
 def _load(pattern: str) -> dict[str, np.ndarray]:
@@ -28,13 +32,23 @@ def _load(pattern: str) -> dict[str, np.ndarray]:
         "joint_sfs",
     )
     loaded = [np.load(path) for path in paths]
+    for chunk in loaded:
+        require_spectrum_contract(chunk)
     # Spectrum-surrogate chunks use point/replicate identifiers instead of a
     # cell identifier and intentionally omit chromosome-context features.
     available = set(loaded[0].files)
     if "cell_id" not in available:
         required = tuple(key for key in required if key != "cell_id")
     result = {key: np.concatenate([chunk[key] for chunk in loaded]) for key in required}
-    if "cell_id" in result and len(np.unique(result["cell_id"])) != len(result["cell_id"]):
+    result["spectrum_transform"] = np.concatenate(
+        [
+            np.repeat(str(chunk["spectrum_transform"]), len(chunk["truth"]))
+            for chunk in loaded
+        ]
+    )
+    if "cell_id" in result and len(np.unique(result["cell_id"])) != len(
+        result["cell_id"]
+    ):
         raise ValueError("dataset chunks contain duplicate cell identifiers")
     if "windows" in available:
         result["windows"] = np.concatenate([chunk["windows"] for chunk in loaded])
@@ -70,11 +84,15 @@ def _point_rrmse(
         selected = point_ids == point_id
         point_prediction.append(prediction[selected].mean(axis=0))
         point_truth.append(truth[selected][0])
-    relative = (np.asarray(point_prediction) - np.asarray(point_truth)) / np.asarray(point_truth)
+    relative = (np.asarray(point_prediction) - np.asarray(point_truth)) / np.asarray(
+        point_truth
+    )
     return float(np.sqrt(np.mean(np.sum(relative**2, axis=1))))
 
 
-def _physical(values: torch.Tensor, mean: torch.Tensor, scale: torch.Tensor) -> torch.Tensor:
+def _physical(
+    values: torch.Tensor, mean: torch.Tensor, scale: torch.Tensor
+) -> torch.Tensor:
     transformed = values * scale + mean
     split = torch.exp(transformed[:, 2].clamp(3.5, 13.0))
     fraction = torch.sigmoid(transformed[:, 3].clamp(-10.0, 10.0))
@@ -104,7 +122,9 @@ def _evaluate(
     predictions = []
     for start in range(0, len(indices), batch_size):
         rows = torch.as_tensor(
-            indices[start : start + batch_size], dtype=torch.long, device=target_mean.device
+            indices[start : start + batch_size],
+            dtype=torch.long,
+            device=target_mean.device,
         )
         mean, _ = model(
             arrays["windows"][rows],
@@ -130,11 +150,17 @@ def main() -> None:
     parser.add_argument("--score-weight", type=float, default=0.15)
     parser.add_argument("--patience", type=int, default=20)
     parser.add_argument("--width", type=int, default=128)
-    parser.add_argument("--context-backend", choices=("transformer", "mamba"), default="transformer")
+    parser.add_argument(
+        "--context-backend", choices=("transformer", "mamba"), default="transformer"
+    )
     parser.add_argument("--seed", type=int, default=7701)
     parser.add_argument("--domain-filter", type=str)
-    parser.add_argument("--nuisance-filter", choices=("all", "historical"), default="all")
-    parser.add_argument("--objective", choices=("posterior", "direct"), default="posterior")
+    parser.add_argument(
+        "--nuisance-filter", choices=("all", "historical"), default="all"
+    )
+    parser.add_argument(
+        "--objective", choices=("posterior", "direct"), default="posterior"
+    )
     parser.add_argument(
         "--spectrum-transform",
         choices=("log_l2", "sqrt_proportion"),
@@ -145,6 +171,8 @@ def main() -> None:
     np.random.seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     data = _load(args.chunks)
+    if set(data["spectrum_transform"]) != {args.spectrum_transform}:
+        raise ValueError("Requested spectrum transform differs from training chunks")
     if args.nuisance_filter == "historical":
         if "nuisance" not in data:
             raise ValueError("historical nuisance filtering requires nuisance metadata")
@@ -157,10 +185,7 @@ def main() -> None:
         data = {key: value[keep] for key, value in data.items()}
     if args.domain_filter:
         domains = np.asarray(
-            [
-                int(value)
-                for value in args.domain_filter.replace(":", ",").split(",")
-            ],
+            [int(value) for value in args.domain_filter.replace(":", ",").split(",")],
             dtype=np.int8,
         )
         keep = np.isin(data["design_domain"], domains)
@@ -171,17 +196,25 @@ def main() -> None:
     if not np.any(calibration) or not np.any(data["partition"] == 1):
         raise ValueError("calibration and selection partitions must both be present")
     window_mean = data["windows"][calibration].mean(axis=(0, 1), keepdims=True)
-    window_scale = data["windows"][calibration].std(axis=(0, 1), keepdims=True).clip(1e-6)
+    window_scale = (
+        data["windows"][calibration].std(axis=(0, 1), keepdims=True).clip(1e-6)
+    )
     global_mean = data["global_summary"][calibration].mean(axis=0, keepdims=True)
-    global_scale = data["global_summary"][calibration].std(axis=0, keepdims=True).clip(1e-6)
+    global_scale = (
+        data["global_summary"][calibration].std(axis=0, keepdims=True).clip(1e-6)
+    )
     transformed = transform_targets(data["truth"])
     target_mean_np = transformed[calibration].mean(axis=0)
     target_scale_np = transformed[calibration].std(axis=0).clip(1e-6)
     arrays = {
         "windows": torch.as_tensor(
-            (data["windows"] - window_mean) / window_scale, dtype=torch.float32, device=device
+            (data["windows"] - window_mean) / window_scale,
+            dtype=torch.float32,
+            device=device,
         ),
-        "joint_sfs": torch.as_tensor(data["joint_sfs"], dtype=torch.float32, device=device),
+        "joint_sfs": torch.as_tensor(
+            data["joint_sfs"], dtype=torch.float32, device=device
+        ),
         "global_summary": torch.as_tensor(
             (data["global_summary"] - global_mean) / global_scale,
             dtype=torch.float32,
@@ -231,9 +264,7 @@ def main() -> None:
                     arrays["joint_sfs"][rows, None],
                     arrays["global_summary"][rows],
                 )
-                primary_loss = mixture_nll(
-                    logits, means, scale, arrays["target"][rows]
-                )
+                primary_loss = mixture_nll(logits, means, scale, arrays["target"][rows])
                 weights = torch.softmax(logits, dim=1)
                 transformed_mean = torch.sum(weights[..., None] * means, dim=1)
             else:
@@ -276,6 +307,7 @@ def main() -> None:
             best_epoch = epoch + 1
             torch.save(
                 {
+                    "spectrum_contract": SPECTRUM_CONTRACT,
                     "model": model.state_dict(),
                     "model_configuration": {
                         "window_features": data["windows"].shape[-1],
@@ -352,7 +384,11 @@ def main() -> None:
         truth=data["truth"][evaluation_indices],
         point_id=data["point_id"][evaluation_indices],
     )
-    print(json.dumps({key: value for key, value in report.items() if key != "history"}, indent=2))
+    print(
+        json.dumps(
+            {key: value for key, value in report.items() if key != "history"}, indent=2
+        )
+    )
 
 
 if __name__ == "__main__":

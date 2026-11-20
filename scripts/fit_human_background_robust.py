@@ -5,6 +5,8 @@ import csv
 import json
 from dataclasses import asdict, dataclass
 from pathlib import Path
+
+from ghist_relatedness.validation import validate_simulation_splits
 from typing import Any
 
 import joblib
@@ -189,7 +191,7 @@ def fit_direct_models(
                 max_leaf_nodes=31,
                 min_samples_leaf=30,
                 l2_regularization=1.0,
-                early_stopping=True,
+                early_stopping=False,
                 random_state=seed + 2,
             ),
         ),
@@ -327,6 +329,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=120826)
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'selection': [args.selection],
+        'development_evaluation': [args.development_evaluation],
+    })
 
     names = feature_names(args.minimum_cm)
     train, training_regimes = build_training_set(

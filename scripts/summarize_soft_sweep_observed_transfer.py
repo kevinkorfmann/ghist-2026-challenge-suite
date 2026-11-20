@@ -6,6 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 def metrics(records: list[dict], method: str, half_width: int) -> dict:
     errors = np.asarray(
@@ -30,6 +32,7 @@ def main() -> None:
     args = parser.parse_args()
 
     recovery = json.loads(args.recovery_summary.read_text())
+    validate_blind_records(recovery.get("records", []))
     observed = json.loads(args.observed_audit.read_text())
     observed_score = float(
         observed["scales"]["25000"]["top_windows"][0]["soft_composite_score"]

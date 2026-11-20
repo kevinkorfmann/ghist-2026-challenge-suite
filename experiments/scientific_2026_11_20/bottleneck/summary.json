@@ -1,0 +1,482 @@
+{
+  "input_sha256": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5",
+  "scope": "Descriptive diagnostic panel; no calibration, model selection, confidence intervals, or hypothesis-test p-values",
+  "summary": {
+    "matched/moments": {
+      "successes": 12,
+      "failures": 0,
+      "median_absolute_relative_error": {
+        "generations": 0.19025151600090268,
+        "post_decline_fraction": 0.017093581488723808,
+        "ancestral_effective_size": 0.023029986518337264
+      },
+      "maximum_absolute_relative_error": {
+        "generations": 39.9933131418898,
+        "post_decline_fraction": 0.9757545813546314,
+        "ancestral_effective_size": 40.50575567103145
+      }
+    },
+    "matched/dadi": {
+      "successes": 12,
+      "failures": 0,
+      "median_absolute_relative_error": {
+        "generations": 0.19208406578649123,
+        "post_decline_fraction": 0.01883455314605742,
+        "ancestral_effective_size": 0.022423884822445006
+      },
+      "maximum_absolute_relative_error": {
+        "generations": 36.19545629161448,
+        "post_decline_fraction": 0.9598126336902929,
+        "ancestral_effective_size": 24.37564707977542
+      }
+    },
+    "ancestral_epoch/moments": {
+      "successes": 12,
+      "failures": 0,
+      "median_absolute_relative_error": {
+        "generations": 0.35900851031902414,
+        "post_decline_fraction": 0.14863831954354295,
+        "ancestral_effective_size": 0.15013994612883896
+      },
+      "maximum_absolute_relative_error": {
+        "generations": 4.932308690777914,
+        "post_decline_fraction": 0.8562130125934371,
+        "ancestral_effective_size": 5.981249715901856
+      }
+    }
+  },
+  "cases": [
+    {
+      "point": 0,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 600,
+        "post_decline_fraction": 0.12,
+        "ancestral_effective_size": 8000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 6400.39344225625,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 102.58594719694588
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 6399.973493264726,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 102.16599820542262
+        }
+      }
+    },
+    {
+      "point": 0,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 600,
+        "post_decline_fraction": 0.12,
+        "ancestral_effective_size": 8000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 5873.320345837947,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 27.718497583456383
+        }
+      }
+    },
+    {
+      "point": 0,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 600,
+        "post_decline_fraction": 0.12,
+        "ancestral_effective_size": 8000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 5533.616396435084,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 15.48966260066959
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 5533.775388297086,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 15.64865446267072
+        }
+      }
+    },
+    {
+      "point": 0,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 600,
+        "post_decline_fraction": 0.12,
+        "ancestral_effective_size": 8000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 5754.006722880529,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 31.375781178171337
+        }
+      }
+    },
+    {
+      "point": 1,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 1900,
+        "post_decline_fraction": 0.35,
+        "ancestral_effective_size": 17000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 4507.61009659288,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 4.683909476648296
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 4509.216320635726,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 6.290133519495157
+        }
+      }
+    },
+    {
+      "point": 1,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 1900,
+        "post_decline_fraction": 0.35,
+        "ancestral_effective_size": 17000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 5709.722920351136,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 57.05429180940473
+        }
+      }
+    },
+    {
+      "point": 1,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 1900,
+        "post_decline_fraction": 0.35,
+        "ancestral_effective_size": 17000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 4217.1414713606355,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 6.6355237985060285
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 4216.84586766697,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 6.339920104840758
+        }
+      }
+    },
+    {
+      "point": 1,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 1900,
+        "post_decline_fraction": 0.35,
+        "ancestral_effective_size": 17000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 5861.139706097321,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 62.039809565800624
+        }
+      }
+    },
+    {
+      "point": 2,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 8500,
+        "post_decline_fraction": 0.5,
+        "ancestral_effective_size": 32000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 4426.9978051834905,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 4.409294292548111
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 4426.872164401107,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 4.283653510164186
+        }
+      }
+    },
+    {
+      "point": 2,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 8500,
+        "post_decline_fraction": 0.5,
+        "ancestral_effective_size": 32000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 6367.06311655066,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 87.35361126087082
+        }
+      }
+    },
+    {
+      "point": 2,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 8500,
+        "post_decline_fraction": 0.5,
+        "ancestral_effective_size": 32000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 4663.490853940859,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 8.552492670552056
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 4663.385364379073,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 8.447003108765784
+        }
+      }
+    },
+    {
+      "point": 2,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 8500,
+        "post_decline_fraction": 0.5,
+        "ancestral_effective_size": 32000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 7353.036421464246,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 243.7149114278418
+        }
+      }
+    },
+    {
+      "point": 3,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 16000,
+        "post_decline_fraction": 0.72,
+        "ancestral_effective_size": 44000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 1646.757569595573,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 1.6986961006123238
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 1646.7053936721195,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 1.6465201771588909
+        }
+      }
+    },
+    {
+      "point": 3,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 16000,
+        "post_decline_fraction": 0.72,
+        "ancestral_effective_size": 44000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 3756.0983748533818,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 354.6890148207831
+        }
+      }
+    },
+    {
+      "point": 3,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 16000,
+        "post_decline_fraction": 0.72,
+        "ancestral_effective_size": 44000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 1613.464308054401,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.4648016509163426
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 1613.7713407317078,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.7718343282231217
+        }
+      }
+    },
+    {
+      "point": 3,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 16000,
+        "post_decline_fraction": 0.72,
+        "ancestral_effective_size": 44000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 3683.1957656038503,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 330.4847577155524
+        }
+      }
+    },
+    {
+      "point": 4,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 28000,
+        "post_decline_fraction": 0.89,
+        "ancestral_effective_size": 21000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 80.85277291098373,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 7.385036042192041
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 75.42648714570987,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 1.958750276918181
+        }
+      }
+    },
+    {
+      "point": 4,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 28000,
+        "post_decline_fraction": 0.89,
+        "ancestral_effective_size": 21000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 115.10322519939109,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 11.430255047323953
+        }
+      }
+    },
+    {
+      "point": 4,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 28000,
+        "post_decline_fraction": 0.89,
+        "ancestral_effective_size": 21000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 35.45526198293146,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.302258206463648
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 35.45600267904592,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.3029989025781106
+        }
+      }
+    },
+    {
+      "point": 4,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 28000,
+        "post_decline_fraction": 0.89,
+        "ancestral_effective_size": 21000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 105.90291252449197,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 8.718494425056633
+        }
+      }
+    },
+    {
+      "point": 5,
+      "replicate": 0,
+      "scenario": "matched",
+      "truth": {
+        "generations": 4000,
+        "post_decline_fraction": 0.94,
+        "ancestral_effective_size": 11000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 9.447193599747607,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.54268929800196
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 9.420210494541607,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 2.5157061927959603
+        }
+      }
+    },
+    {
+      "point": 5,
+      "replicate": 0,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 4000,
+        "post_decline_fraction": 0.94,
+        "ancestral_effective_size": 11000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 196.51334927784296,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 94.70004809328293
+        }
+      }
+    },
+    {
+      "point": 5,
+      "replicate": 1,
+      "scenario": "matched",
+      "truth": {
+        "generations": 4000,
+        "post_decline_fraction": 0.94,
+        "ancestral_effective_size": 11000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 11.743094887685174,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 19.65594593858168
+        },
+        "dadi": {
+          "log_likelihood_gain_over_constant": 3.5002609314676647,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 11.413111982364171
+        }
+      }
+    },
+    {
+      "point": 5,
+      "replicate": 1,
+      "scenario": "ancestral_epoch",
+      "truth": {
+        "generations": 4000,
+        "post_decline_fraction": 0.94,
+        "ancestral_effective_size": 11000
+      },
+      "likelihood_comparisons": {
+        "moments": {
+          "log_likelihood_gain_over_constant": 170.46627656521537,
+          "fitted_minus_two_epoch_at_target_parameters_log_likelihood": 78.30309599865996
+        }
+      }
+    }
+  ]
+}

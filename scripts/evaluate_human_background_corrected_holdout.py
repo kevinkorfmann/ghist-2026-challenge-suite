@@ -5,25 +5,32 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 
 try:
     from scripts.evaluate_human_background_robust import FINAL_REGIMES
-    from scripts.fit_human_background_corrected import correct_records, metrics
+    from scripts.fit_human_background_corrected import (
+        correct_records,
+        metrics,
+        blended_probabilities,
+    )
     from scripts.fit_human_background_deconvolution import current_baseline_metrics
     from scripts.fit_human_background_robust import (
         augment_records,
-        predict_probabilities,
     )
-    from scripts.fit_human_family_relationships import matrix
     from scripts.validate_human_background_correction import read_pedsim_with_lengths
 except ModuleNotFoundError:
     from evaluate_human_background_robust import FINAL_REGIMES
-    from fit_human_background_corrected import correct_records, metrics
+    from fit_human_background_corrected import (
+        correct_records,
+        metrics,
+        blended_probabilities,
+    )
     from fit_human_background_deconvolution import current_baseline_metrics
-    from fit_human_background_robust import augment_records, predict_probabilities
-    from fit_human_family_relationships import matrix
+    from fit_human_background_robust import augment_records
     from validate_human_background_correction import read_pedsim_with_lengths
 
 
@@ -43,10 +50,17 @@ def main() -> None:
     parser.add_argument("--candidate-model", type=Path, required=True)
     parser.add_argument("--baseline-model", type=Path, required=True)
     parser.add_argument("--holdouts", type=Path, nargs="+", required=True)
+    parser.add_argument("--correction-reference", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--seed", type=int, default=121226)
     args = parser.parse_args()
+    split_manifest = validate_simulation_splits(
+        {"holdouts": args.holdouts, "correction_reference": [args.correction_reference]}
+    )
+    correction_reference, _ = read_pedsim_with_lengths(
+        args.correction_reference, args.genome_cm
+    )
 
     candidate = joblib.load(args.candidate_model)
     baseline = joblib.load(args.baseline_model)
@@ -74,18 +88,22 @@ def main() -> None:
                 args.genome_cm,
             )
             corrected = correct_records(
-                augmented, reference, minimum_cm, args.genome_cm
+                augmented, correction_reference, minimum_cm, args.genome_cm
             )
-            classes, probabilities = predict_probabilities(
+            classes, probabilities = blended_probabilities(
                 candidate["corrected_payload"],
-                matrix(corrected, candidate["feature_names"]),
+                baseline["model"],
+                baseline["feature_names"],
+                corrected,
+                candidate["feature_names"],
+                float(candidate["corrected_model_weight"]),
             )
             candidate_result = metrics(classes, probabilities, corrected)
             baseline_result = current_baseline_metrics(
                 baseline["model"],
                 baseline["feature_names"],
                 augmented,
-                reference,
+                correction_reference,
                 baseline_minimum_cm,
                 args.genome_cm,
             )
@@ -106,9 +124,7 @@ def main() -> None:
                 }
             )
 
-    exact_differences = np.asarray(
-        [float(row["exact_difference"]) for row in paired]
-    )
+    exact_differences = np.asarray([float(row["exact_difference"]) for row in paired])
     degree_differences = np.asarray(
         [float(row["meioses_difference"]) for row in paired]
     )
@@ -120,9 +136,7 @@ def main() -> None:
         >= 0.80,
         "worst_exact_regression_no_more_than_0.01": float(exact_differences.min())
         >= -0.01,
-        "mean_meioses_regression_no_more_than_0.005": float(
-            degree_differences.mean()
-        )
+        "mean_meioses_regression_no_more_than_0.005": float(degree_differences.mean())
         >= -0.005,
     }
     gate["passed"] = all(gate.values())
@@ -130,6 +144,9 @@ def main() -> None:
         "state": "COMPLETED",
         "design": "preregistered paired comparison on newly generated Ped-sim replicates and unseen background regimes",
         "holdout_replicates": len(args.holdouts),
+        "independent_correction_reference": True,
+        "split_manifest": split_manifest,
+        "regimes_share_pedigrees": True,
         "background_regimes": [asdict(regime) for regime in FINAL_REGIMES],
         "comparisons": len(paired),
         "candidate": aggregate(candidate_runs),

@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 
 PARAMETER_NAMES = (
@@ -27,6 +31,8 @@ def main() -> None:
     if not paths:
         raise FileNotFoundError(f"no bootstrap results match {args.inputs!r}")
     records = [json.loads(path.read_text()) for path in paths]
+    for record in records:
+        require_spectrum_contract(record)
     estimates = np.asarray(
         [
             (
@@ -52,6 +58,7 @@ def main() -> None:
     )
     scores = np.sqrt(np.sum((ratios - 1.0) ** 2, axis=1))
     result = {
+        "spectrum_contract": SPECTRUM_CONTRACT,
         "replicates": len(records),
         "parameter_names": PARAMETER_NAMES,
         "median_estimate_to_truth_ratio": median_ratio.tolist(),

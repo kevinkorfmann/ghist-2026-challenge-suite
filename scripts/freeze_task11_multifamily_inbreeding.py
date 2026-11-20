@@ -128,12 +128,12 @@ def main() -> None:
     axes[0].set_title("Untouched pairwise evaluation")
     fig.colorbar(image, ax=axes[0], fraction=0.046, pad=0.04, label="Row fraction")
 
-    counts = [consensus["label_counts"][label] for label in labels]
+    counts = [consensus["label_counts"].get(label, 0) for label in labels]
     axes[1].barh(range(len(short)), counts, color="#0072B2")
     axes[1].set_yticks(range(len(short)), short)
     axes[1].invert_yaxis()
     axes[1].set_xlabel("Frozen pair calls")
-    axes[1].set_title("Eight-family consensus")
+    axes[1].set_title(f"{len(clusters['families'])}-family consensus")
     axes[1].spines[["top", "right"]].set_visible(False)
     axes[1].grid(axis="x", color="#D9D9D9", linewidth=0.5)
     fig.suptitle("Task 11 dog relatedness validation", fontweight="normal")

@@ -8,7 +8,10 @@ import moments
 import msprime
 import numpy as np
 
-from ghist_secondary_contact.demography import SecondaryContactParameters, build_demography
+from ghist_secondary_contact.demography import (
+    SecondaryContactParameters,
+    build_demography,
+)
 from ghist_secondary_contact.simulate import SimulationNuisance, nuisance_size_changes
 from ghist_secondary_contact.spectrum import (
     generator_matched_secondary_contact_spectrum,
@@ -63,7 +66,7 @@ def main() -> None:
             genotypes = variant.genotypes
             count1 = int(genotypes[:86].sum())
             count2 = int(genotypes[86:].sum())
-            if count1 in (0, 86) and count2 in (0, 48):
+            if count1 + count2 in (0, 134):
                 continue
             spectrum[count1, count2] += 1
             sites += 1
@@ -90,7 +93,9 @@ def main() -> None:
         ),
         data.sample_sizes,
     )
-    generator_likelihood = float(moments.Inference.ll_multinom(generator_expected, data))
+    generator_likelihood = float(
+        moments.Inference.ll_multinom(generator_expected, data)
+    )
     simple_likelihood = float(moments.Inference.ll_multinom(simple_expected, data))
     result = {
         "replicates": args.replicates,

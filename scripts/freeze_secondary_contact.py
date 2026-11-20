@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from ghist_secondary_contact.contract import require_spectrum_contract
 
 
 PARAMETER_KEYS = (
@@ -80,12 +81,21 @@ def main() -> None:
     transfer = sources["stress_transfer"]
     bootstrap = sources["bootstrap"]
     audit = sources["vcf_audit"]
+    for evidence in (
+        calibration,
+        resolution,
+        broad_resolution,
+        varying_resolution,
+        stress_comparison,
+        transfer,
+        bootstrap,
+    ):
+        require_spectrum_contract(evidence)
 
     standard_values = selected_values(standard)
     refined_values = selected_values(raw)
     numerical_relative_change = {
-        key: refined_values[key] / standard_values[key] - 1.0
-        for key in PARAMETER_KEYS
+        key: refined_values[key] / standard_values[key] - 1.0 for key in PARAMETER_KEYS
     }
     prediction = calibration["observed_accepted"]
     for label, comparison in (
@@ -95,24 +105,29 @@ def main() -> None:
     ):
         require_resolution_gate(comparison, label)
     if not calibration["untouched_evaluation"].get("correction_accepted"):
-        raise ValueError("point-grouped transfer correction did not pass its acceptance gate")
+        raise ValueError(
+            "point-grouped transfer correction did not pass its acceptance gate"
+        )
     if not stress_comparison.get("selection_valid"):
         raise ValueError("raw stress comparison contains optimizer-boundary results")
     if max(abs(value) for value in numerical_relative_change.values()) >= 0.01:
-        raise ValueError("refined integration changed at least one parameter by 1% or more")
+        raise ValueError(
+            "refined integration changed at least one parameter by 1% or more"
+        )
     nominal = transfer.get("conditions", {}).get("nominal")
     if nominal is None:
         raise ValueError("stress transfer is missing the nominal condition")
-    if nominal["corrected"]["mean_competition_rrmse"] >= nominal["raw"][
-        "mean_competition_rrmse"
-    ]:
+    if (
+        nominal["corrected"]["mean_competition_rrmse"]
+        >= nominal["raw"]["mean_competition_rrmse"]
+    ):
         raise ValueError("correction did not improve mean nominal stress risk")
     result = {
         "challenge": "Secondary Contact",
         "status": "method frozen; no submission",
         "submission_count": 0,
         "selected_method": {
-            "spectrum": "generator-matched unfolded joint frequency spectrum",
+            "spectrum": "unfolded joint frequency spectrum under historical hidden-epoch convention; current generator match unverified",
             "projection": raw["projection"],
             "integration_dt_fac": raw["integration_dt_fac"],
             "adaptive_integration": raw["adaptive_integration"],
@@ -122,9 +137,7 @@ def main() -> None:
         },
         "testing_prediction": prediction,
         "raw_refined_fit": refined_values,
-        "conservative_sampling_interval_95": bootstrap[
-            "observed_sampling_interval_95"
-        ],
+        "conservative_sampling_interval_95": bootstrap["observed_sampling_interval_95"],
         "validation": {
             "resolution": {
                 "selected": resolution["selected_resolution"],
@@ -141,9 +154,7 @@ def main() -> None:
                 "selected": varying_resolution["selected_resolution"],
                 "replicates": len(varying_resolution["replicates"]),
                 "summaries": varying_resolution["summaries"],
-                "paired_comparisons": varying_resolution[
-                    "paired_comparisons"
-                ],
+                "paired_comparisons": varying_resolution["paired_comparisons"],
             },
             "point_grouped_transfer": {
                 "partition_point_counts": calibration["point_grouped_partitions"],

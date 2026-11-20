@@ -1,0 +1,3434 @@
+{
+  "state": "COMPLETED",
+  "evaluation_status": "retrospective reanalysis of previously evaluated simulations",
+  "design": "48 chromosome-map standing-variation sweeps; first 24 method calibration and last 24 seed-heldout evaluation",
+  "replicates": 48,
+  "calibration_replicates": 24,
+  "evaluation_replicates": 24,
+  "selection_metrics": {
+    "composite": {
+      "replicates": 24,
+      "median_absolute_error": 65374.5,
+      "quantiles": {
+        "0.9": 2471047.099999999,
+        "0.95": 2907798.6999999997,
+        "1.0": 3357235.0
+      },
+      "within_50kb": 0.4583333333333333,
+      "within_100kb": 0.5833333333333334
+    },
+    "soft_composite": {
+      "replicates": 24,
+      "median_absolute_error": 65374.5,
+      "quantiles": {
+        "0.9": 2506837.399999999,
+        "0.95": 2915468.05,
+        "1.0": 3357235.0
+      },
+      "within_50kb": 0.4166666666666667,
+      "within_100kb": 0.5833333333333334
+    },
+    "h12": {
+      "replicates": 24,
+      "median_absolute_error": 252258.0,
+      "quantiles": {
+        "0.9": 2890556.4,
+        "0.95": 3447589.1499999985,
+        "1.0": 4025242.0
+      },
+      "within_50kb": 0.25,
+      "within_100kb": 0.375
+    },
+    "h12_h2": {
+      "replicates": 24,
+      "median_absolute_error": 252258.0,
+      "quantiles": {
+        "0.9": 2890556.4,
+        "0.95": 3447589.1499999985,
+        "1.0": 4025242.0
+      },
+      "within_50kb": 0.25,
+      "within_100kb": 0.375
+    },
+    "flank_ld_100kb": {
+      "replicates": 24,
+      "median_absolute_error": 477371.0,
+      "quantiles": {
+        "0.9": 3153114.299999999,
+        "0.95": 3545663.3,
+        "1.0": 4101235.0
+      },
+      "within_50kb": 0.20833333333333334,
+      "within_100kb": 0.2916666666666667
+    },
+    "largest_gap_midpoint": {
+      "replicates": 24,
+      "median_absolute_error": 106758.25,
+      "quantiles": {
+        "0.9": 2779442.3999999994,
+        "0.95": 3131740.75,
+        "1.0": 3192021.5
+      },
+      "within_50kb": 0.4166666666666667,
+      "within_100kb": 0.4583333333333333
+    },
+    "median_soft_haplotype": {
+      "replicates": 24,
+      "median_absolute_error": 252258.0,
+      "quantiles": {
+        "0.9": 2890556.4,
+        "0.95": 3447589.1499999985,
+        "1.0": 4025242.0
+      },
+      "within_50kb": 0.25,
+      "within_100kb": 0.375
+    },
+    "median_soft_linkage": {
+      "replicates": 24,
+      "median_absolute_error": 65374.5,
+      "quantiles": {
+        "0.9": 2904669.1,
+        "0.95": 3292589.799999999,
+        "1.0": 3543145.0
+      },
+      "within_50kb": 0.4583333333333333,
+      "within_100kb": 0.5416666666666666
+    },
+    "median_soft_four": {
+      "replicates": 24,
+      "median_absolute_error": 185008.0,
+      "quantiles": {
+        "0.9": 2806871.9,
+        "0.95": 3052290.8499999996,
+        "1.0": 3543145.0
+      },
+      "within_50kb": 0.2916666666666667,
+      "within_100kb": 0.4166666666666667
+    }
+  },
+  "selection_objective_median_plus_quarter_q90": {
+    "composite": 683136.2749999998,
+    "soft_composite": 692083.8499999997,
+    "h12": 974897.1,
+    "h12_h2": 974897.1,
+    "flank_ld_100kb": 1265649.5749999997,
+    "largest_gap_midpoint": 801618.8499999999,
+    "median_soft_haplotype": 974897.1,
+    "median_soft_linkage": 791541.775,
+    "median_soft_four": 886725.975
+  },
+  "selected_method": "composite",
+  "interval_width_selection": {
+    "candidate_half_widths": [
+      25000,
+      35000,
+      50000,
+      60000,
+      75000,
+      100000,
+      125000,
+      150000,
+      200000
+    ],
+    "calibration_scores": {
+      "25000": 0.16666666666666669,
+      "35000": 0.27777777777777773,
+      "50000": 0.3055555555555555,
+      "60000": 0.2864583333333333,
+      "75000": 0.3095238095238095,
+      "100000": 0.2916666666666667,
+      "125000": 0.2592592592592593,
+      "150000": 0.25,
+      "200000": 0.20833333333333334
+    },
+    "selected_half_width": 75000
+  },
+  "untouched_evaluation": {
+    "metrics": {
+      "replicates": 24,
+      "median_absolute_error": 39487.5,
+      "quantiles": {
+        "0.9": 2186643.9,
+        "0.95": 2764613.399999999,
+        "1.0": 3230288.0
+      },
+      "within_50kb": 0.5833333333333334,
+      "within_100kb": 0.6666666666666666
+    },
+    "candidate_coverage": 0.6666666666666666,
+    "mean_competition_score": 0.38095238095238093
+  },
+  "robustness_gate": {
+    "evaluation_median_at_most_100kb": true,
+    "evaluation_q90_at_most_250kb": false,
+    "evaluation_mean_competition_score_at_least_0.4": false,
+    "passed": false
+  },
+  "records": [
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36693733,
+        "mutation_generation": 1000.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.05,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 39620000,
+        "soft_composite": 39620000,
+        "h12": 39160000,
+        "h12_h2": 39160000,
+        "flank_ld_100kb": 40231000,
+        "largest_gap_midpoint": 39837204.5
+      },
+      "absolute_error": {
+        "composite": 2926267,
+        "soft_composite": 2926267,
+        "h12": 2466267,
+        "h12_h2": 2466267,
+        "flank_ld_100kb": 3537267,
+        "largest_gap_midpoint": 3143471.5
+      },
+      "diagnostics": {
+        "estimator_spread": 3510990.0,
+        "largest_gap_length": 2398,
+        "peak_composite_score": 1.7894695547919326,
+        "peak_h12": 0.033600000000000005,
+        "maximum_h12": 0.04640000000000001,
+        "soft_peak_h12": 0.033600000000000005,
+        "soft_peak_h2_h1": 0.8636363636363638,
+        "peak_soft_composite_score": 1.4284296766407005,
+        "peak_pi_relative_median": 0.6301308736701766,
+        "peak_tajima_d": -1.3909058638824658
+      },
+      "accepted_biallelic_sites": 19785,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226000,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3120000,
+          4620000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39620000,
+        "soft_composite": 39620000,
+        "h12": 39160000,
+        "h12_h2": 39160000,
+        "flank_ld_100kb": 37313733,
+        "largest_gap_midpoint": 36109010.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_0.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37124862,
+        "mutation_generation": 1400.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.2,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 35840000,
+        "soft_composite": 35860000,
+        "h12": 37040000,
+        "h12_h2": 37040000,
+        "flank_ld_100kb": 36470000,
+        "largest_gap_midpoint": 36356069.0
+      },
+      "absolute_error": {
+        "composite": 1284862,
+        "soft_composite": 1264862,
+        "h12": 84862,
+        "h12_h2": 84862,
+        "flank_ld_100kb": 654862,
+        "largest_gap_midpoint": 768793.0
+      },
+      "diagnostics": {
+        "estimator_spread": 1795727.5,
+        "largest_gap_length": 5049,
+        "peak_composite_score": 2.4548948756028093,
+        "peak_h12": 0.03680000000000001,
+        "maximum_h12": 0.061600000000000016,
+        "soft_peak_h12": 0.04240000000000001,
+        "soft_peak_h2_h1": 0.8048780487804877,
+        "peak_soft_composite_score": 1.9101782793009126,
+        "peak_pi_relative_median": 0.45532717554033825,
+        "peak_tajima_d": -1.8205759876394414
+      },
+      "accepted_biallelic_sites": 18435,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226001,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          0,
+          840000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 35840000,
+        "soft_composite": 35860000,
+        "h12": 37040000,
+        "h12_h2": 37040000,
+        "flank_ld_100kb": 36469862,
+        "largest_gap_midpoint": 37635727.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_1.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37505023,
+        "mutation_generation": 5200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 37640000,
+        "soft_composite": 37640000,
+        "h12": 37640000,
+        "h12_h2": 37640000,
+        "flank_ld_100kb": 37462000,
+        "largest_gap_midpoint": 37506728.5
+      },
+      "absolute_error": {
+        "composite": 134977,
+        "soft_composite": 134977,
+        "h12": 134977,
+        "h12_h2": 134977,
+        "flank_ld_100kb": 43023,
+        "largest_gap_midpoint": 1705.5
+      },
+      "diagnostics": {
+        "estimator_spread": 177977.0,
+        "largest_gap_length": 7145,
+        "peak_composite_score": 3.249552329130547,
+        "peak_h12": 0.08560000000000001,
+        "maximum_h12": 0.08560000000000001,
+        "soft_peak_h12": 0.08560000000000001,
+        "soft_peak_h2_h1": 0.3506493506493505,
+        "peak_soft_composite_score": 3.017456822053319,
+        "peak_pi_relative_median": 0.5316051012961741,
+        "peak_tajima_d": -1.2194950101938833
+      },
+      "accepted_biallelic_sites": 17972,
+      "skipped_sites": 30,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226010,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1140000,
+          2640000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37640000,
+        "soft_composite": 37640000,
+        "h12": 37640000,
+        "h12_h2": 37640000,
+        "flank_ld_100kb": 37462023,
+        "largest_gap_midpoint": 37506728.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_10.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37936152,
+        "mutation_generation": 7000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 36240000,
+        "soft_composite": 36240000,
+        "h12": 39160000,
+        "h12_h2": 39160000,
+        "flank_ld_100kb": 36761000,
+        "largest_gap_midpoint": 35823632.5
+      },
+      "absolute_error": {
+        "composite": 1696152,
+        "soft_composite": 1696152,
+        "h12": 1223848,
+        "h12_h2": 1223848,
+        "flank_ld_100kb": 1175152,
+        "largest_gap_midpoint": 2112519.5
+      },
+      "diagnostics": {
+        "estimator_spread": 2920000.0,
+        "largest_gap_length": 2925,
+        "peak_composite_score": 1.9499789951109452,
+        "peak_h12": 0.04080000000000002,
+        "maximum_h12": 0.04400000000000001,
+        "soft_peak_h12": 0.04080000000000002,
+        "soft_peak_h2_h1": 0.7948717948717949,
+        "peak_soft_composite_score": 1.753684541394257,
+        "peak_pi_relative_median": 0.6250600686179189,
+        "peak_tajima_d": -0.7950308344719622
+      },
+      "accepted_biallelic_sites": 18312,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226011,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          0,
+          1240000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36240000,
+        "soft_composite": 36240000,
+        "h12": 39160000,
+        "h12_h2": 39160000,
+        "flank_ld_100kb": 37938152,
+        "largest_gap_midpoint": 38307376.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_11.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36765726,
+        "mutation_generation": 1000.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.05,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 36380000,
+        "soft_composite": 39620000,
+        "h12": 39620000,
+        "h12_h2": 39620000,
+        "flank_ld_100kb": 36310000,
+        "largest_gap_midpoint": 35822555.0
+      },
+      "absolute_error": {
+        "composite": 385726,
+        "soft_composite": 2854274,
+        "h12": 2854274,
+        "h12_h2": 2854274,
+        "flank_ld_100kb": 455726,
+        "largest_gap_midpoint": 943171.0
+      },
+      "diagnostics": {
+        "estimator_spread": 3333443.5,
+        "largest_gap_length": 2407,
+        "peak_composite_score": 1.428160492127175,
+        "peak_h12": 0.029600000000000005,
+        "maximum_h12": 0.05360000000000001,
+        "soft_peak_h12": 0.05360000000000001,
+        "soft_peak_h2_h1": 0.5377358490566037,
+        "peak_soft_composite_score": 1.7353032589396689,
+        "peak_pi_relative_median": 0.6848462838104562,
+        "peak_tajima_d": -0.79866629966227
+      },
+      "accepted_biallelic_sites": 19484,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226012,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          0,
+          1380000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36380000,
+        "soft_composite": 39620000,
+        "h12": 39620000,
+        "h12_h2": 39620000,
+        "flank_ld_100kb": 36308726,
+        "largest_gap_midpoint": 36286556.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_12.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37196855,
+        "mutation_generation": 1400.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.2,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 40000000,
+        "soft_composite": 36380000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 40744000,
+        "largest_gap_midpoint": 40388876.5
+      },
+      "absolute_error": {
+        "composite": 2803145,
+        "soft_composite": 816855,
+        "h12": 3543145,
+        "h12_h2": 3543145,
+        "flank_ld_100kb": 3547145,
+        "largest_gap_midpoint": 3192021.5
+      },
+      "diagnostics": {
+        "estimator_spread": 4360000.0,
+        "largest_gap_length": 3464,
+        "peak_composite_score": 1.958725125412575,
+        "peak_h12": 0.03040000000000001,
+        "maximum_h12": 0.052000000000000005,
+        "soft_peak_h12": 0.04320000000000001,
+        "soft_peak_h2_h1": 0.8095238095238095,
+        "peak_soft_composite_score": 1.9220514214421167,
+        "peak_pi_relative_median": 0.5843312573566388,
+        "peak_tajima_d": -1.3137117892479215
+      },
+      "accepted_biallelic_sites": 18763,
+      "skipped_sites": 24,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226013,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3500000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40000000,
+        "soft_composite": 36380000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 37316855,
+        "largest_gap_midpoint": 36884061.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_13.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37627984,
+        "mutation_generation": 2200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 37640000,
+        "soft_composite": 37580000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 38127000,
+        "largest_gap_midpoint": 38276902.5
+      },
+      "absolute_error": {
+        "composite": 12016,
+        "soft_composite": 47984,
+        "h12": 47984,
+        "h12_h2": 47984,
+        "flank_ld_100kb": 499016,
+        "largest_gap_midpoint": 648918.5
+      },
+      "diagnostics": {
+        "estimator_spread": 696902.5,
+        "largest_gap_length": 3093,
+        "peak_composite_score": 3.2674716601408393,
+        "peak_h12": 0.0776,
+        "maximum_h12": 0.148,
+        "soft_peak_h12": 0.148,
+        "soft_peak_h2_h1": 0.3628318584070796,
+        "peak_soft_composite_score": 3.5316379143480114,
+        "peak_pi_relative_median": 0.4668991119686762,
+        "peak_tajima_d": -1.6160222054489655
+      },
+      "accepted_biallelic_sites": 18134,
+      "skipped_sites": 23,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226014,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1140000,
+          2640000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37640000,
+        "soft_composite": 37580000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 38126984,
+        "largest_gap_midpoint": 38276902.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_14.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38059113,
+        "mutation_generation": 3400.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 38060000,
+        "soft_composite": 38060000,
+        "h12": 38020000,
+        "h12_h2": 38020000,
+        "flank_ld_100kb": 38115000,
+        "largest_gap_midpoint": 38047775.5
+      },
+      "absolute_error": {
+        "composite": 887,
+        "soft_composite": 887,
+        "h12": 39113,
+        "h12_h2": 39113,
+        "flank_ld_100kb": 55887,
+        "largest_gap_midpoint": 11337.5
+      },
+      "diagnostics": {
+        "estimator_spread": 95113.0,
+        "largest_gap_length": 4321,
+        "peak_composite_score": 4.2502999629000024,
+        "peak_h12": 0.09600000000000002,
+        "maximum_h12": 0.12480000000000001,
+        "soft_peak_h12": 0.09600000000000002,
+        "soft_peak_h2_h1": 0.6858974358974358,
+        "peak_soft_composite_score": 3.5733568917812177,
+        "peak_pi_relative_median": 0.29920851603651305,
+        "peak_tajima_d": -1.3238183931521141
+      },
+      "accepted_biallelic_sites": 17966,
+      "skipped_sites": 22,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226015,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1560000,
+          3060000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38060000,
+        "soft_composite": 38060000,
+        "h12": 38020000,
+        "h12_h2": 38020000,
+        "flank_ld_100kb": 38115113,
+        "largest_gap_midpoint": 38047775.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_15.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38490242,
+        "mutation_generation": 1500.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.4,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 40140000,
+        "soft_composite": 38480000,
+        "h12": 38480000,
+        "h12_h2": 38480000,
+        "flank_ld_100kb": 40747000,
+        "largest_gap_midpoint": 40112056.5
+      },
+      "absolute_error": {
+        "composite": 1649758,
+        "soft_composite": 10242,
+        "h12": 10242,
+        "h12_h2": 10242,
+        "flank_ld_100kb": 2256758,
+        "largest_gap_midpoint": 1621814.5
+      },
+      "diagnostics": {
+        "estimator_spread": 2018758.0,
+        "largest_gap_length": 2936,
+        "peak_composite_score": 2.045547975540993,
+        "peak_h12": 0.03920000000000001,
+        "maximum_h12": 0.058400000000000014,
+        "soft_peak_h12": 0.058400000000000014,
+        "soft_peak_h2_h1": 0.6326530612244896,
+        "peak_soft_composite_score": 2.293556133745045,
+        "peak_pi_relative_median": 0.6484212648925385,
+        "peak_tajima_d": -1.0252166274400973
+      },
+      "accepted_biallelic_sites": 17819,
+      "skipped_sites": 19,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226016,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3640000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40140000,
+        "soft_composite": 38480000,
+        "h12": 38480000,
+        "h12_h2": 38480000,
+        "flank_ld_100kb": 38121242,
+        "largest_gap_midpoint": 38636337.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_16.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38921371,
+        "mutation_generation": 2300.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 38860000,
+        "soft_composite": 38860000,
+        "h12": 38860000,
+        "h12_h2": 38860000,
+        "flank_ld_100kb": 38923000,
+        "largest_gap_midpoint": 38819012.5
+      },
+      "absolute_error": {
+        "composite": 61371,
+        "soft_composite": 61371,
+        "h12": 61371,
+        "h12_h2": 61371,
+        "flank_ld_100kb": 1629,
+        "largest_gap_midpoint": 102358.5
+      },
+      "diagnostics": {
+        "estimator_spread": 78358.5,
+        "largest_gap_length": 2825,
+        "peak_composite_score": 4.298035272158854,
+        "peak_h12": 0.10320000000000001,
+        "maximum_h12": 0.10320000000000001,
+        "soft_peak_h12": 0.10320000000000001,
+        "soft_peak_h2_h1": 0.5178571428571428,
+        "peak_soft_composite_score": 4.031723593859083,
+        "peak_pi_relative_median": 0.35373593808441467,
+        "peak_tajima_d": -1.3661272406018672
+      },
+      "accepted_biallelic_sites": 18199,
+      "skipped_sites": 23,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226017,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2360000,
+          3860000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38860000,
+        "soft_composite": 38860000,
+        "h12": 38860000,
+        "h12_h2": 38860000,
+        "flank_ld_100kb": 38897371,
+        "largest_gap_midpoint": 38819012.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_17.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39352500,
+        "mutation_generation": 3500.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 39340000,
+        "soft_composite": 39340000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38931000,
+        "largest_gap_midpoint": 39357762.5
+      },
+      "absolute_error": {
+        "composite": 12500,
+        "soft_composite": 12500,
+        "h12": 1387500,
+        "h12_h2": 1387500,
+        "flank_ld_100kb": 421500,
+        "largest_gap_midpoint": 5262.5
+      },
+      "diagnostics": {
+        "estimator_spread": 1815500.0,
+        "largest_gap_length": 7963,
+        "peak_composite_score": 3.7387607673214673,
+        "peak_h12": 0.04880000000000001,
+        "maximum_h12": 0.05120000000000001,
+        "soft_peak_h12": 0.04880000000000001,
+        "soft_peak_h2_h1": 0.7282608695652173,
+        "peak_soft_composite_score": 2.5662812849592265,
+        "peak_pi_relative_median": 0.2540120902924543,
+        "peak_tajima_d": -1.2617951560662204
+      },
+      "accepted_biallelic_sites": 19161,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226018,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2840000,
+          4340000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39340000,
+        "soft_composite": 39340000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38924500,
+        "largest_gap_midpoint": 39357762.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_18.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39783629,
+        "mutation_generation": 5000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 39820000,
+        "soft_composite": 40000000,
+        "h12": 40000000,
+        "h12_h2": 40000000,
+        "flank_ld_100kb": 39777000,
+        "largest_gap_midpoint": 39780683.0
+      },
+      "absolute_error": {
+        "composite": 36371,
+        "soft_composite": 216371,
+        "h12": 216371,
+        "h12_h2": 216371,
+        "flank_ld_100kb": 6629,
+        "largest_gap_midpoint": 2946.0
+      },
+      "diagnostics": {
+        "estimator_spread": 220371.0,
+        "largest_gap_length": 7776,
+        "peak_composite_score": 1.9033675501886738,
+        "peak_h12": 0.0352,
+        "maximum_h12": 0.06240000000000001,
+        "soft_peak_h12": 0.06240000000000001,
+        "soft_peak_h2_h1": 0.6666666666666666,
+        "peak_soft_composite_score": 1.7780196890750533,
+        "peak_pi_relative_median": 0.5394500405298929,
+        "peak_tajima_d": -0.8568211862910045
+      },
+      "accepted_biallelic_sites": 17388,
+      "skipped_sites": 16,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226019,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3320000,
+          4820000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39820000,
+        "soft_composite": 40000000,
+        "h12": 40000000,
+        "h12_h2": 40000000,
+        "flank_ld_100kb": 39779629,
+        "largest_gap_midpoint": 39780683.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_19.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37555991,
+        "mutation_generation": 2200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 37560000,
+        "soft_composite": 37580000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 38130000,
+        "largest_gap_midpoint": 37525355.5
+      },
+      "absolute_error": {
+        "composite": 4009,
+        "soft_composite": 24009,
+        "h12": 24009,
+        "h12_h2": 24009,
+        "flank_ld_100kb": 574009,
+        "largest_gap_midpoint": 30635.5
+      },
+      "diagnostics": {
+        "estimator_spread": 604635.5,
+        "largest_gap_length": 2925,
+        "peak_composite_score": 4.866186471111773,
+        "peak_h12": 0.088,
+        "maximum_h12": 0.12400000000000001,
+        "soft_peak_h12": 0.12400000000000001,
+        "soft_peak_h2_h1": 0.2715517241379309,
+        "peak_soft_composite_score": 5.229919310299497,
+        "peak_pi_relative_median": 0.41242652310058786,
+        "peak_tajima_d": -1.4774174084731353
+      },
+      "accepted_biallelic_sites": 18931,
+      "skipped_sites": 22,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226002,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1060000,
+          2560000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37560000,
+        "soft_composite": 37580000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 38129991,
+        "largest_gap_midpoint": 37525355.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_2.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36714758,
+        "mutation_generation": 2600.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 36680000,
+        "soft_composite": 36680000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 36296000,
+        "largest_gap_midpoint": 36676283.5
+      },
+      "absolute_error": {
+        "composite": 34758,
+        "soft_composite": 34758,
+        "h12": 4025242,
+        "h12_h2": 4025242,
+        "flank_ld_100kb": 418758,
+        "largest_gap_midpoint": 38474.5
+      },
+      "diagnostics": {
+        "estimator_spread": 4444242.0,
+        "largest_gap_length": 4733,
+        "peak_composite_score": 3.264300159803591,
+        "peak_h12": 0.024800000000000006,
+        "maximum_h12": 0.0632,
+        "soft_peak_h12": 0.024800000000000006,
+        "soft_peak_h2_h1": 0.9259259259259259,
+        "peak_soft_composite_score": 1.580511242278088,
+        "peak_pi_relative_median": 0.31095935954741916,
+        "peak_tajima_d": -1.5618341105116837
+      },
+      "accepted_biallelic_sites": 19142,
+      "skipped_sites": 28,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226020,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          180000,
+          1680000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36680000,
+        "soft_composite": 36680000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 36295758,
+        "largest_gap_midpoint": 36676283.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_20.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37145887,
+        "mutation_generation": 3600.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 37160000,
+        "soft_composite": 37160000,
+        "h12": 37000000,
+        "h12_h2": 37000000,
+        "flank_ld_100kb": 37310000,
+        "largest_gap_midpoint": 37162196.0
+      },
+      "absolute_error": {
+        "composite": 14113,
+        "soft_composite": 14113,
+        "h12": 145887,
+        "h12_h2": 145887,
+        "flank_ld_100kb": 164113,
+        "largest_gap_midpoint": 16309.0
+      },
+      "diagnostics": {
+        "estimator_spread": 314887.0,
+        "largest_gap_length": 3810,
+        "peak_composite_score": 3.189164643905534,
+        "peak_h12": 0.0328,
+        "maximum_h12": 0.04560000000000001,
+        "soft_peak_h12": 0.0328,
+        "soft_peak_h2_h1": 0.8593750000000001,
+        "peak_soft_composite_score": 1.71739265915821,
+        "peak_pi_relative_median": 0.32417201964356096,
+        "peak_tajima_d": -1.1415756773286456
+      },
+      "accepted_biallelic_sites": 19129,
+      "skipped_sites": 24,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226021,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          660000,
+          2160000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37160000,
+        "soft_composite": 37160000,
+        "h12": 37000000,
+        "h12_h2": 37000000,
+        "flank_ld_100kb": 37314887,
+        "largest_gap_midpoint": 37162196.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_21.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37577016,
+        "mutation_generation": 5200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 37660000,
+        "soft_composite": 37660000,
+        "h12": 40300000,
+        "h12_h2": 40300000,
+        "flank_ld_100kb": 38123000,
+        "largest_gap_midpoint": 37698382.5
+      },
+      "absolute_error": {
+        "composite": 82984,
+        "soft_composite": 82984,
+        "h12": 2722984,
+        "h12_h2": 2722984,
+        "flank_ld_100kb": 545984,
+        "largest_gap_midpoint": 121366.5
+      },
+      "diagnostics": {
+        "estimator_spread": 2640000.0,
+        "largest_gap_length": 5483,
+        "peak_composite_score": 4.706329231728676,
+        "peak_h12": 0.0528,
+        "maximum_h12": 0.0552,
+        "soft_peak_h12": 0.0528,
+        "soft_peak_h2_h1": 0.8399999999999999,
+        "peak_soft_composite_score": 3.4577098283518493,
+        "peak_pi_relative_median": 0.09444615655542836,
+        "peak_tajima_d": -2.0874280855526615
+      },
+      "accepted_biallelic_sites": 18020,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226022,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1160000,
+          2660000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37660000,
+        "soft_composite": 37660000,
+        "h12": 40300000,
+        "h12_h2": 40300000,
+        "flank_ld_100kb": 38123016,
+        "largest_gap_midpoint": 37698382.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_22.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38008145,
+        "mutation_generation": 7000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 38040000,
+        "soft_composite": 38060000,
+        "h12": 37720000,
+        "h12_h2": 37720000,
+        "flank_ld_100kb": 37989000,
+        "largest_gap_midpoint": 38001541.5
+      },
+      "absolute_error": {
+        "composite": 31855,
+        "soft_composite": 51855,
+        "h12": 288145,
+        "h12_h2": 288145,
+        "flank_ld_100kb": 19145,
+        "largest_gap_midpoint": 6603.5
+      },
+      "diagnostics": {
+        "estimator_spread": 340000.0,
+        "largest_gap_length": 7741,
+        "peak_composite_score": 4.706326086080785,
+        "peak_h12": 0.03040000000000001,
+        "maximum_h12": 0.04640000000000001,
+        "soft_peak_h12": 0.03600000000000001,
+        "soft_peak_h2_h1": 0.7837837837837839,
+        "peak_soft_composite_score": 3.116175900629268,
+        "peak_pi_relative_median": 0.23073520583867813,
+        "peak_tajima_d": -2.2208814739904708
+      },
+      "accepted_biallelic_sites": 18999,
+      "skipped_sites": 24,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226023,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1540000,
+          3040000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38040000,
+        "soft_composite": 38060000,
+        "h12": 37720000,
+        "h12_h2": 37720000,
+        "flank_ld_100kb": 37989145,
+        "largest_gap_midpoint": 38001541.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_23.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36837719,
+        "mutation_generation": 1000.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.05,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 38820000,
+        "soft_composite": 38820000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38297000,
+        "largest_gap_midpoint": 38870477.0
+      },
+      "absolute_error": {
+        "composite": 1982281,
+        "soft_composite": 1982281,
+        "h12": 3902281,
+        "h12_h2": 3902281,
+        "flank_ld_100kb": 1459281,
+        "largest_gap_midpoint": 2032758.0
+      },
+      "diagnostics": {
+        "estimator_spread": 4589963.5,
+        "largest_gap_length": 2513,
+        "peak_composite_score": 2.1944243062854256,
+        "peak_h12": 0.04160000000000001,
+        "maximum_h12": 0.06000000000000001,
+        "soft_peak_h12": 0.04160000000000001,
+        "soft_peak_h2_h1": 0.8,
+        "peak_soft_composite_score": 1.856195915261723,
+        "peak_pi_relative_median": 0.6490829748898633,
+        "peak_tajima_d": -0.8815124103419012
+      },
+      "accepted_biallelic_sites": 19237,
+      "skipped_sites": 36,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226024,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2320000,
+          3820000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38820000,
+        "soft_composite": 38820000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 37090719,
+        "largest_gap_midpoint": 36150036.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_24.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37268848,
+        "mutation_generation": 1400.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.2,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 40120000,
+        "soft_composite": 40120000,
+        "h12": 40340000,
+        "h12_h2": 40340000,
+        "flank_ld_100kb": 39807000,
+        "largest_gap_midpoint": 40086587.0
+      },
+      "absolute_error": {
+        "composite": 2851152,
+        "soft_composite": 2851152,
+        "h12": 3071152,
+        "h12_h2": 3071152,
+        "flank_ld_100kb": 2538152,
+        "largest_gap_midpoint": 2817739.0
+      },
+      "diagnostics": {
+        "estimator_spread": 3803343.5,
+        "largest_gap_length": 2859,
+        "peak_composite_score": 2.349776492037461,
+        "peak_h12": 0.04640000000000001,
+        "maximum_h12": 0.056,
+        "soft_peak_h12": 0.04640000000000001,
+        "soft_peak_h2_h1": 0.8095238095238095,
+        "peak_soft_composite_score": 2.0318812620401365,
+        "peak_pi_relative_median": 0.5544412526595595,
+        "peak_tajima_d": -1.0299933980341531
+      },
+      "accepted_biallelic_sites": 18664,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226025,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3620000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40120000,
+        "soft_composite": 40120000,
+        "h12": 40340000,
+        "h12_h2": 40340000,
+        "flank_ld_100kb": 37515848,
+        "largest_gap_midpoint": 36536656.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_25.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37699977,
+        "mutation_generation": 2200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 37660000,
+        "soft_composite": 37620000,
+        "h12": 37600000,
+        "h12_h2": 37600000,
+        "flank_ld_100kb": 38134000,
+        "largest_gap_midpoint": 37703291.5
+      },
+      "absolute_error": {
+        "composite": 39977,
+        "soft_composite": 79977,
+        "h12": 99977,
+        "h12_h2": 99977,
+        "flank_ld_100kb": 434023,
+        "largest_gap_midpoint": 3314.5
+      },
+      "diagnostics": {
+        "estimator_spread": 533977.0,
+        "largest_gap_length": 2635,
+        "peak_composite_score": 3.7959957388189887,
+        "peak_h12": 0.1096,
+        "maximum_h12": 0.1624,
+        "soft_peak_h12": 0.1472,
+        "soft_peak_h2_h1": 0.2899159663865545,
+        "peak_soft_composite_score": 3.837094847208653,
+        "peak_pi_relative_median": 0.4491446992148911,
+        "peak_tajima_d": -1.4804372073316965
+      },
+      "accepted_biallelic_sites": 18800,
+      "skipped_sites": 23,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226026,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1160000,
+          2660000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37660000,
+        "soft_composite": 37620000,
+        "h12": 37600000,
+        "h12_h2": 37600000,
+        "flank_ld_100kb": 38133977,
+        "largest_gap_midpoint": 37703291.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_26.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38131106,
+        "mutation_generation": 3400.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 38180000,
+        "soft_composite": 38180000,
+        "h12": 38060000,
+        "h12_h2": 38060000,
+        "flank_ld_100kb": 38130000,
+        "largest_gap_midpoint": 38129174.0
+      },
+      "absolute_error": {
+        "composite": 48894,
+        "soft_composite": 48894,
+        "h12": 71106,
+        "h12_h2": 71106,
+        "flank_ld_100kb": 1106,
+        "largest_gap_midpoint": 1932.0
+      },
+      "diagnostics": {
+        "estimator_spread": 120000.0,
+        "largest_gap_length": 4316,
+        "peak_composite_score": 2.867097034862824,
+        "peak_h12": 0.08800000000000002,
+        "maximum_h12": 0.10160000000000002,
+        "soft_peak_h12": 0.08800000000000002,
+        "soft_peak_h2_h1": 0.3749999999999999,
+        "peak_soft_composite_score": 2.4678274261470388,
+        "peak_pi_relative_median": 0.5775968142464039,
+        "peak_tajima_d": -1.2241221685539583
+      },
+      "accepted_biallelic_sites": 17684,
+      "skipped_sites": 15,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226027,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1680000,
+          3180000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38180000,
+        "soft_composite": 38180000,
+        "h12": 38060000,
+        "h12_h2": 38060000,
+        "flank_ld_100kb": 38130106,
+        "largest_gap_midpoint": 38129174.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_27.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38562235,
+        "mutation_generation": 1500.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.4,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 40360000,
+        "soft_composite": 40340000,
+        "h12": 40340000,
+        "h12_h2": 40340000,
+        "flank_ld_100kb": 40748000,
+        "largest_gap_midpoint": 40563988.0
+      },
+      "absolute_error": {
+        "composite": 1797765,
+        "soft_composite": 1777765,
+        "h12": 1777765,
+        "h12_h2": 1777765,
+        "flank_ld_100kb": 2185765,
+        "largest_gap_midpoint": 2001753.0
+      },
+      "diagnostics": {
+        "estimator_spread": 2453122.0,
+        "largest_gap_length": 2576,
+        "peak_composite_score": 1.9415673670079703,
+        "peak_h12": 0.04800000000000001,
+        "maximum_h12": 0.056,
+        "soft_peak_h12": 0.056,
+        "soft_peak_h2_h1": 0.7499999999999999,
+        "peak_soft_composite_score": 1.7819362486433359,
+        "peak_pi_relative_median": 0.6738391784996957,
+        "peak_tajima_d": -0.8706677956294158
+      },
+      "accepted_biallelic_sites": 18777,
+      "skipped_sites": 28,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226028,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3860000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40360000,
+        "soft_composite": 40340000,
+        "h12": 40340000,
+        "h12_h2": 40340000,
+        "flank_ld_100kb": 38927235,
+        "largest_gap_midpoint": 37906878.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_28.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38993364,
+        "mutation_generation": 2300.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 39220000,
+        "soft_composite": 39200000,
+        "h12": 39200000,
+        "h12_h2": 39200000,
+        "flank_ld_100kb": 38941000,
+        "largest_gap_midpoint": 39701594.0
+      },
+      "absolute_error": {
+        "composite": 226636,
+        "soft_composite": 206636,
+        "h12": 206636,
+        "h12_h2": 206636,
+        "flank_ld_100kb": 52364,
+        "largest_gap_midpoint": 708230.0
+      },
+      "diagnostics": {
+        "estimator_spread": 772230.0,
+        "largest_gap_length": 2464,
+        "peak_composite_score": 1.9992582364931528,
+        "peak_h12": 0.05280000000000001,
+        "maximum_h12": 0.0864,
+        "soft_peak_h12": 0.0864,
+        "soft_peak_h2_h1": 0.3589743589743588,
+        "peak_soft_composite_score": 2.4368361294382264,
+        "peak_pi_relative_median": 0.6527279396520104,
+        "peak_tajima_d": -0.8766829583308586
+      },
+      "accepted_biallelic_sites": 19197,
+      "skipped_sites": 34,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226029,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2720000,
+          4220000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39220000,
+        "soft_composite": 39200000,
+        "h12": 39200000,
+        "h12_h2": 39200000,
+        "flank_ld_100kb": 38929364,
+        "largest_gap_midpoint": 39701594.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_29.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37987120,
+        "mutation_generation": 3400.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 37640000,
+        "soft_composite": 37640000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38124000,
+        "largest_gap_midpoint": 37514377.0
+      },
+      "absolute_error": {
+        "composite": 347120,
+        "soft_composite": 347120,
+        "h12": 2752880,
+        "h12_h2": 2752880,
+        "flank_ld_100kb": 136880,
+        "largest_gap_midpoint": 472743.0
+      },
+      "diagnostics": {
+        "estimator_spread": 3225623.0,
+        "largest_gap_length": 2770,
+        "peak_composite_score": 2.7772691128409406,
+        "peak_h12": 0.04640000000000001,
+        "maximum_h12": 0.10880000000000001,
+        "soft_peak_h12": 0.04640000000000001,
+        "soft_peak_h2_h1": 0.8260869565217391,
+        "peak_soft_composite_score": 2.1034307553543887,
+        "peak_pi_relative_median": 0.5492169078129133,
+        "peak_tajima_d": -1.1270885998372617
+      },
+      "accepted_biallelic_sites": 18186,
+      "skipped_sites": 23,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226003,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1140000,
+          2640000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37640000,
+        "soft_composite": 37640000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38125120,
+        "largest_gap_midpoint": 37514377.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_3.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39424493,
+        "mutation_generation": 3500.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 39420000,
+        "soft_composite": 39420000,
+        "h12": 39620000,
+        "h12_h2": 39620000,
+        "flank_ld_100kb": 39401000,
+        "largest_gap_midpoint": 39453056.5
+      },
+      "absolute_error": {
+        "composite": 4493,
+        "soft_composite": 4493,
+        "h12": 195507,
+        "h12_h2": 195507,
+        "flank_ld_100kb": 23493,
+        "largest_gap_midpoint": 28563.5
+      },
+      "diagnostics": {
+        "estimator_spread": 218507.0,
+        "largest_gap_length": 4555,
+        "peak_composite_score": 3.7704258746452104,
+        "peak_h12": 0.03280000000000001,
+        "maximum_h12": 0.05600000000000001,
+        "soft_peak_h12": 0.03280000000000001,
+        "soft_peak_h2_h1": 0.8714285714285716,
+        "peak_soft_composite_score": 2.0860788287856464,
+        "peak_pi_relative_median": 0.23677760960081012,
+        "peak_tajima_d": -1.6539916858125452
+      },
+      "accepted_biallelic_sites": 18609,
+      "skipped_sites": 36,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226030,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2920000,
+          4420000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39420000,
+        "soft_composite": 39420000,
+        "h12": 39620000,
+        "h12_h2": 39620000,
+        "flank_ld_100kb": 39401493,
+        "largest_gap_midpoint": 39453056.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_30.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39855622,
+        "mutation_generation": 5000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 39820000,
+        "soft_composite": 40140000,
+        "h12": 39900000,
+        "h12_h2": 39900000,
+        "flank_ld_100kb": 39806000,
+        "largest_gap_midpoint": 39852177.5
+      },
+      "absolute_error": {
+        "composite": 35622,
+        "soft_composite": 284378,
+        "h12": 44378,
+        "h12_h2": 44378,
+        "flank_ld_100kb": 49622,
+        "largest_gap_midpoint": 3444.5
+      },
+      "diagnostics": {
+        "estimator_spread": 333378.0,
+        "largest_gap_length": 6119,
+        "peak_composite_score": 1.7638179071965183,
+        "peak_h12": 0.06320000000000002,
+        "maximum_h12": 0.10000000000000002,
+        "soft_peak_h12": 0.09040000000000001,
+        "soft_peak_h2_h1": 0.6549295774647885,
+        "peak_soft_composite_score": 1.568006376511118,
+        "peak_pi_relative_median": 0.5504260803980503,
+        "peak_tajima_d": -0.33364218789859934
+      },
+      "accepted_biallelic_sites": 17105,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226031,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3320000,
+          4820000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39820000,
+        "soft_composite": 40140000,
+        "h12": 39900000,
+        "h12_h2": 39900000,
+        "flank_ld_100kb": 39806622,
+        "largest_gap_midpoint": 39852177.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_31.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36786751,
+        "mutation_generation": 2600.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 36840000,
+        "soft_composite": 36840000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 36756000,
+        "largest_gap_midpoint": 36808115.5
+      },
+      "absolute_error": {
+        "composite": 53249,
+        "soft_composite": 53249,
+        "h12": 3953249,
+        "h12_h2": 3953249,
+        "flank_ld_100kb": 30751,
+        "largest_gap_midpoint": 21364.5
+      },
+      "diagnostics": {
+        "estimator_spread": 3980249.0,
+        "largest_gap_length": 6659,
+        "peak_composite_score": 4.364375686606069,
+        "peak_h12": 0.05280000000000001,
+        "maximum_h12": 0.1104,
+        "soft_peak_h12": 0.05280000000000001,
+        "soft_peak_h2_h1": 0.6249999999999999,
+        "peak_soft_composite_score": 3.5430792171027443,
+        "peak_pi_relative_median": 0.318770908732527,
+        "peak_tajima_d": -1.6886866973400958
+      },
+      "accepted_biallelic_sites": 18487,
+      "skipped_sites": 19,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226032,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          340000,
+          1840000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36840000,
+        "soft_composite": 36840000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 36759751,
+        "largest_gap_midpoint": 36808115.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_32.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37217880,
+        "mutation_generation": 3600.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 37240000,
+        "soft_composite": 37240000,
+        "h12": 38040000,
+        "h12_h2": 38040000,
+        "flank_ld_100kb": 37195000,
+        "largest_gap_midpoint": 37234196.0
+      },
+      "absolute_error": {
+        "composite": 22120,
+        "soft_composite": 22120,
+        "h12": 822120,
+        "h12_h2": 822120,
+        "flank_ld_100kb": 22880,
+        "largest_gap_midpoint": 16316.0
+      },
+      "diagnostics": {
+        "estimator_spread": 845120.0,
+        "largest_gap_length": 5098,
+        "peak_composite_score": 4.951788444843777,
+        "peak_h12": 0.04000000000000001,
+        "maximum_h12": 0.04560000000000001,
+        "soft_peak_h12": 0.04000000000000001,
+        "soft_peak_h2_h1": 0.7894736842105263,
+        "peak_soft_composite_score": 3.486812507360685,
+        "peak_pi_relative_median": 0.16985459459762572,
+        "peak_tajima_d": -2.2653932147784137
+      },
+      "accepted_biallelic_sites": 18324,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226033,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          740000,
+          2240000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37240000,
+        "soft_composite": 37240000,
+        "h12": 38040000,
+        "h12_h2": 38040000,
+        "flank_ld_100kb": 37194880,
+        "largest_gap_midpoint": 37234196.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_33.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37649009,
+        "mutation_generation": 5200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 37580000,
+        "soft_composite": 37580000,
+        "h12": 37600000,
+        "h12_h2": 37600000,
+        "flank_ld_100kb": 37866000,
+        "largest_gap_midpoint": 37553553.0
+      },
+      "absolute_error": {
+        "composite": 69009,
+        "soft_composite": 69009,
+        "h12": 49009,
+        "h12_h2": 49009,
+        "flank_ld_100kb": 216991,
+        "largest_gap_midpoint": 95456.0
+      },
+      "diagnostics": {
+        "estimator_spread": 312456.0,
+        "largest_gap_length": 6064,
+        "peak_composite_score": 6.571855831150482,
+        "peak_h12": 0.13040000000000002,
+        "maximum_h12": 0.1456,
+        "soft_peak_h12": 0.13040000000000002,
+        "soft_peak_h2_h1": 0.23873873873873858,
+        "peak_soft_composite_score": 5.891239987851548,
+        "peak_pi_relative_median": 0.11977669119598,
+        "peak_tajima_d": -1.7674504414219239
+      },
+      "accepted_biallelic_sites": 18510,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226034,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1080000,
+          2580000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37580000,
+        "soft_composite": 37580000,
+        "h12": 37600000,
+        "h12_h2": 37600000,
+        "flank_ld_100kb": 37866009,
+        "largest_gap_midpoint": 37553553.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_34.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38080138,
+        "mutation_generation": 7000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 38060000,
+        "soft_composite": 38040000,
+        "h12": 35820000,
+        "h12_h2": 35820000,
+        "flank_ld_100kb": 38122000,
+        "largest_gap_midpoint": 38078073.5
+      },
+      "absolute_error": {
+        "composite": 20138,
+        "soft_composite": 40138,
+        "h12": 2260138,
+        "h12_h2": 2260138,
+        "flank_ld_100kb": 41862,
+        "largest_gap_midpoint": 2064.5
+      },
+      "diagnostics": {
+        "estimator_spread": 2302138.0,
+        "largest_gap_length": 6089,
+        "peak_composite_score": 4.571907263497086,
+        "peak_h12": 0.039200000000000006,
+        "maximum_h12": 0.0552,
+        "soft_peak_h12": 0.04880000000000001,
+        "soft_peak_h2_h1": 0.8222222222222222,
+        "peak_soft_composite_score": 3.3192533807846876,
+        "peak_pi_relative_median": 0.1433730370305226,
+        "peak_tajima_d": -2.047847153078816
+      },
+      "accepted_biallelic_sites": 17882,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226035,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1560000,
+          3060000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38060000,
+        "soft_composite": 38040000,
+        "h12": 35820000,
+        "h12_h2": 35820000,
+        "flank_ld_100kb": 38122138,
+        "largest_gap_midpoint": 38078073.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_35.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36909712,
+        "mutation_generation": 1000.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.05,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 40140000,
+        "soft_composite": 40140000,
+        "h12": 40380000,
+        "h12_h2": 40380000,
+        "flank_ld_100kb": 40438000,
+        "largest_gap_midpoint": 40173397.5
+      },
+      "absolute_error": {
+        "composite": 3230288,
+        "soft_composite": 3230288,
+        "h12": 3470288,
+        "h12_h2": 3470288,
+        "flank_ld_100kb": 3528288,
+        "largest_gap_midpoint": 3263685.5
+      },
+      "diagnostics": {
+        "estimator_spread": 4201288.0,
+        "largest_gap_length": 2233,
+        "peak_composite_score": 2.0819569037209895,
+        "peak_h12": 0.04160000000000001,
+        "maximum_h12": 0.047200000000000006,
+        "soft_peak_h12": 0.04160000000000001,
+        "soft_peak_h2_h1": 0.8,
+        "peak_soft_composite_score": 1.5241788969971126,
+        "peak_pi_relative_median": 0.7014862708875641,
+        "peak_tajima_d": -0.622682794046877
+      },
+      "accepted_biallelic_sites": 19136,
+      "skipped_sites": 18,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226036,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3640000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40140000,
+        "soft_composite": 40140000,
+        "h12": 40380000,
+        "h12_h2": 40380000,
+        "flank_ld_100kb": 36178712,
+        "largest_gap_midpoint": 36778355.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_36.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37340841,
+        "mutation_generation": 1400.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.2,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 37020000,
+        "soft_composite": 36380000,
+        "h12": 36380000,
+        "h12_h2": 36380000,
+        "flank_ld_100kb": 37313000,
+        "largest_gap_midpoint": 37430642.0
+      },
+      "absolute_error": {
+        "composite": 320841,
+        "soft_composite": 960841,
+        "h12": 960841,
+        "h12_h2": 960841,
+        "flank_ld_100kb": 27841,
+        "largest_gap_midpoint": 89801.0
+      },
+      "diagnostics": {
+        "estimator_spread": 1445658.0,
+        "largest_gap_length": 3098,
+        "peak_composite_score": 1.522897174740055,
+        "peak_h12": 0.029600000000000005,
+        "maximum_h12": 0.054400000000000004,
+        "soft_peak_h12": 0.054400000000000004,
+        "soft_peak_h2_h1": 0.846153846153846,
+        "peak_soft_composite_score": 2.1760283404914276,
+        "peak_pi_relative_median": 0.6225651080516603,
+        "peak_tajima_d": -0.6802316353149384
+      },
+      "accepted_biallelic_sites": 18790,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226037,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          520000,
+          2020000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37020000,
+        "soft_composite": 36380000,
+        "h12": 36380000,
+        "h12_h2": 36380000,
+        "flank_ld_100kb": 37312841,
+        "largest_gap_midpoint": 37825658.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_37.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37771970,
+        "mutation_generation": 2200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 37800000,
+        "soft_composite": 37800000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 37452000,
+        "largest_gap_midpoint": 37827192.0
+      },
+      "absolute_error": {
+        "composite": 28030,
+        "soft_composite": 28030,
+        "h12": 191970,
+        "h12_h2": 191970,
+        "flank_ld_100kb": 319970,
+        "largest_gap_midpoint": 55222.0
+      },
+      "diagnostics": {
+        "estimator_spread": 375222.0,
+        "largest_gap_length": 4264,
+        "peak_composite_score": 3.355312792457429,
+        "peak_h12": 0.07200000000000001,
+        "maximum_h12": 0.09840000000000002,
+        "soft_peak_h12": 0.07200000000000001,
+        "soft_peak_h2_h1": 0.5151515151515151,
+        "peak_soft_composite_score": 2.701821435636394,
+        "peak_pi_relative_median": 0.49904179858343706,
+        "peak_tajima_d": -0.5501207495165834
+      },
+      "accepted_biallelic_sites": 18758,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226038,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1300000,
+          2800000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37800000,
+        "soft_composite": 37800000,
+        "h12": 37580000,
+        "h12_h2": 37580000,
+        "flank_ld_100kb": 37451970,
+        "largest_gap_midpoint": 37827192.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_38.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38203099,
+        "mutation_generation": 3400.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 200.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 38200000,
+        "soft_composite": 38240000,
+        "h12": 38240000,
+        "h12_h2": 38240000,
+        "flank_ld_100kb": 38921000,
+        "largest_gap_midpoint": 38206641.0
+      },
+      "absolute_error": {
+        "composite": 3099,
+        "soft_composite": 36901,
+        "h12": 36901,
+        "h12_h2": 36901,
+        "flank_ld_100kb": 717901,
+        "largest_gap_midpoint": 3542.0
+      },
+      "diagnostics": {
+        "estimator_spread": 40000.0,
+        "largest_gap_length": 7296,
+        "peak_composite_score": 4.501128650793975,
+        "peak_h12": 0.052800000000000014,
+        "maximum_h12": 0.0632,
+        "soft_peak_h12": 0.0632,
+        "soft_peak_h2_h1": 0.7881355932203389,
+        "peak_soft_composite_score": 3.3079872853993573,
+        "peak_pi_relative_median": 0.17383507554535782,
+        "peak_tajima_d": -1.3703515874767644
+      },
+      "accepted_biallelic_sites": 18253,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226039,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1700000,
+          3200000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38200000,
+        "soft_composite": 38240000,
+        "h12": 38240000,
+        "h12_h2": 38240000,
+        "flank_ld_100kb": 38233099,
+        "largest_gap_midpoint": 38206641.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_39.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38418249,
+        "mutation_generation": 1500.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.4,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 38460000,
+        "soft_composite": 38460000,
+        "h12": 38460000,
+        "h12_h2": 38460000,
+        "flank_ld_100kb": 38925000,
+        "largest_gap_midpoint": 38329123.0
+      },
+      "absolute_error": {
+        "composite": 41751,
+        "soft_composite": 41751,
+        "h12": 41751,
+        "h12_h2": 41751,
+        "flank_ld_100kb": 506751,
+        "largest_gap_midpoint": 89126.0
+      },
+      "diagnostics": {
+        "estimator_spread": 599126.0,
+        "largest_gap_length": 3778,
+        "peak_composite_score": 2.418654901270713,
+        "peak_h12": 0.08880000000000002,
+        "maximum_h12": 0.08880000000000002,
+        "soft_peak_h12": 0.08880000000000002,
+        "soft_peak_h2_h1": 0.3827160493827159,
+        "peak_soft_composite_score": 3.1563424149216193,
+        "peak_pi_relative_median": 0.7974210731453812,
+        "peak_tajima_d": -0.4764530869155388
+      },
+      "accepted_biallelic_sites": 18716,
+      "skipped_sites": 36,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226004,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1960000,
+          3460000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38460000,
+        "soft_composite": 38460000,
+        "h12": 38460000,
+        "h12_h2": 38460000,
+        "flank_ld_100kb": 38928249,
+        "largest_gap_midpoint": 38329123.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_4.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38634228,
+        "mutation_generation": 1500.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.4,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 36360000,
+        "soft_composite": 36380000,
+        "h12": 36380000,
+        "h12_h2": 36380000,
+        "flank_ld_100kb": 36174000,
+        "largest_gap_midpoint": 36932918.5
+      },
+      "absolute_error": {
+        "composite": 2274228,
+        "soft_composite": 2254228,
+        "h12": 2254228,
+        "h12_h2": 2254228,
+        "flank_ld_100kb": 2460228,
+        "largest_gap_midpoint": 1701309.5
+      },
+      "diagnostics": {
+        "estimator_spread": 2900228.0,
+        "largest_gap_length": 3323,
+        "peak_composite_score": 2.2943747137917194,
+        "peak_h12": 0.04560000000000001,
+        "maximum_h12": 0.05280000000000001,
+        "soft_peak_h12": 0.05280000000000001,
+        "soft_peak_h2_h1": 0.7282608695652172,
+        "peak_soft_composite_score": 3.5049863643588615,
+        "peak_pi_relative_median": 0.7626548159175118,
+        "peak_tajima_d": -1.0626283770171139
+      },
+      "accepted_biallelic_sites": 19090,
+      "skipped_sites": 26,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226040,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          0,
+          1360000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36360000,
+        "soft_composite": 36380000,
+        "h12": 36380000,
+        "h12_h2": 36380000,
+        "flank_ld_100kb": 39260228,
+        "largest_gap_midpoint": 38787585.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_40.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39065357,
+        "mutation_generation": 2300.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 39040000,
+        "soft_composite": 39120000,
+        "h12": 39120000,
+        "h12_h2": 39120000,
+        "flank_ld_100kb": 39069000,
+        "largest_gap_midpoint": 39156718.5
+      },
+      "absolute_error": {
+        "composite": 25357,
+        "soft_composite": 54643,
+        "h12": 54643,
+        "h12_h2": 54643,
+        "flank_ld_100kb": 3643,
+        "largest_gap_midpoint": 91361.5
+      },
+      "diagnostics": {
+        "estimator_spread": 116718.5,
+        "largest_gap_length": 3857,
+        "peak_composite_score": 4.184885392600507,
+        "peak_h12": 0.0592,
+        "maximum_h12": 0.0864,
+        "soft_peak_h12": 0.0864,
+        "soft_peak_h2_h1": 0.75,
+        "peak_soft_composite_score": 3.6027721772974215,
+        "peak_pi_relative_median": 0.3553356535780137,
+        "peak_tajima_d": -1.6026605291415854
+      },
+      "accepted_biallelic_sites": 18410,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226041,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2540000,
+          4040000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39040000,
+        "soft_composite": 39120000,
+        "h12": 39120000,
+        "h12_h2": 39120000,
+        "flank_ld_100kb": 39076357,
+        "largest_gap_midpoint": 39156718.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_41.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39496486,
+        "mutation_generation": 3500.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 40380000,
+        "soft_composite": 40710000,
+        "h12": 39420000,
+        "h12_h2": 39420000,
+        "flank_ld_100kb": 40229000,
+        "largest_gap_midpoint": 40391458.5
+      },
+      "absolute_error": {
+        "composite": 883514,
+        "soft_composite": 1213514,
+        "h12": 76486,
+        "h12_h2": 76486,
+        "flank_ld_100kb": 732514,
+        "largest_gap_midpoint": 894972.5
+      },
+      "diagnostics": {
+        "estimator_spread": 1450514.0,
+        "largest_gap_length": 2675,
+        "peak_composite_score": 1.4620281495017902,
+        "peak_h12": 0.0344,
+        "maximum_h12": 0.052000000000000005,
+        "soft_peak_h12": 0.04640000000000001,
+        "soft_peak_h2_h1": 0.8095238095238095,
+        "peak_soft_composite_score": 1.346316395871711,
+        "peak_pi_relative_median": 0.7232020265451875,
+        "peak_tajima_d": -1.0470668753917776
+      },
+      "accepted_biallelic_sites": 19646,
+      "skipped_sites": 16,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226042,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3880000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40380000,
+        "soft_composite": 40710000,
+        "h12": 39420000,
+        "h12_h2": 39420000,
+        "flank_ld_100kb": 39259486,
+        "largest_gap_midpoint": 39446460.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_42.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39927615,
+        "mutation_generation": 5000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 39920000,
+        "soft_composite": 39920000,
+        "h12": 40000000,
+        "h12_h2": 40000000,
+        "flank_ld_100kb": 39936000,
+        "largest_gap_midpoint": 39925791.0
+      },
+      "absolute_error": {
+        "composite": 7615,
+        "soft_composite": 7615,
+        "h12": 72385,
+        "h12_h2": 72385,
+        "flank_ld_100kb": 8385,
+        "largest_gap_midpoint": 1824.0
+      },
+      "diagnostics": {
+        "estimator_spread": 80000.0,
+        "largest_gap_length": 6554,
+        "peak_composite_score": 4.1454869788880675,
+        "peak_h12": 0.09200000000000001,
+        "maximum_h12": 0.09600000000000002,
+        "soft_peak_h12": 0.09200000000000001,
+        "soft_peak_h2_h1": 0.41176470588235276,
+        "peak_soft_composite_score": 3.8166360754226374,
+        "peak_pi_relative_median": 0.4291167685962168,
+        "peak_tajima_d": -0.9031825702052078
+      },
+      "accepted_biallelic_sites": 16783,
+      "skipped_sites": 22,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226043,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3420000,
+          4920000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39920000,
+        "soft_composite": 39920000,
+        "h12": 40000000,
+        "h12_h2": 40000000,
+        "flank_ld_100kb": 39931615,
+        "largest_gap_midpoint": 39925791.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_43.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36858744,
+        "mutation_generation": 2600.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 36820000,
+        "soft_composite": 36820000,
+        "h12": 36820000,
+        "h12_h2": 36820000,
+        "flank_ld_100kb": 37317000,
+        "largest_gap_midpoint": 36829228.0
+      },
+      "absolute_error": {
+        "composite": 38744,
+        "soft_composite": 38744,
+        "h12": 38744,
+        "h12_h2": 38744,
+        "flank_ld_100kb": 458256,
+        "largest_gap_midpoint": 29516.0
+      },
+      "diagnostics": {
+        "estimator_spread": 492744.0,
+        "largest_gap_length": 2724,
+        "peak_composite_score": 4.082489845381351,
+        "peak_h12": 0.06240000000000001,
+        "maximum_h12": 0.06240000000000001,
+        "soft_peak_h12": 0.06240000000000001,
+        "soft_peak_h2_h1": 0.6666666666666666,
+        "peak_soft_composite_score": 3.639728957641579,
+        "peak_pi_relative_median": 0.3367507520212991,
+        "peak_tajima_d": -1.5987089843236924
+      },
+      "accepted_biallelic_sites": 19709,
+      "skipped_sites": 20,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226044,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          320000,
+          1820000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 36820000,
+        "soft_composite": 36820000,
+        "h12": 36820000,
+        "h12_h2": 36820000,
+        "flank_ld_100kb": 37312744,
+        "largest_gap_midpoint": 36829228.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_44.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37289873,
+        "mutation_generation": 3600.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 37260000,
+        "soft_composite": 37600000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 37314000,
+        "largest_gap_midpoint": 37291388.0
+      },
+      "absolute_error": {
+        "composite": 29873,
+        "soft_composite": 310127,
+        "h12": 3450127,
+        "h12_h2": 3450127,
+        "flank_ld_100kb": 24127,
+        "largest_gap_midpoint": 1515.0
+      },
+      "diagnostics": {
+        "estimator_spread": 3480000.0,
+        "largest_gap_length": 10008,
+        "peak_composite_score": 3.1222040787162486,
+        "peak_h12": 0.029600000000000005,
+        "maximum_h12": 0.0784,
+        "soft_peak_h12": 0.052000000000000005,
+        "soft_peak_h2_h1": 0.6170212765957445,
+        "peak_soft_composite_score": 1.7396199994636787,
+        "peak_pi_relative_median": 0.4745766325698416,
+        "peak_tajima_d": -0.8778619402704473
+      },
+      "accepted_biallelic_sites": 18966,
+      "skipped_sites": 21,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226045,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          760000,
+          2260000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37260000,
+        "soft_composite": 37600000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 37297873,
+        "largest_gap_midpoint": 37291388.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_45.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37721002,
+        "mutation_generation": 5200.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 37760000,
+        "soft_composite": 37760000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38135000,
+        "largest_gap_midpoint": 37722663.0
+      },
+      "absolute_error": {
+        "composite": 38998,
+        "soft_composite": 38998,
+        "h12": 3018998,
+        "h12_h2": 3018998,
+        "flank_ld_100kb": 413998,
+        "largest_gap_midpoint": 1661.0
+      },
+      "diagnostics": {
+        "estimator_spread": 3017337.0,
+        "largest_gap_length": 4524,
+        "peak_composite_score": 4.569284400367247,
+        "peak_h12": 0.038400000000000004,
+        "maximum_h12": 0.052000000000000005,
+        "soft_peak_h12": 0.038400000000000004,
+        "soft_peak_h2_h1": 0.7777777777777778,
+        "peak_soft_composite_score": 2.969175256086774,
+        "peak_pi_relative_median": 0.21963709590108918,
+        "peak_tajima_d": -1.9180201312747027
+      },
+      "accepted_biallelic_sites": 18814,
+      "skipped_sites": 31,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226046,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1260000,
+          2760000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37760000,
+        "soft_composite": 37760000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 38135002,
+        "largest_gap_midpoint": 37722663.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_46.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38152131,
+        "mutation_generation": 7000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.03
+      },
+      "estimates": {
+        "composite": 38180000,
+        "soft_composite": 38180000,
+        "h12": 39600000,
+        "h12_h2": 39600000,
+        "flank_ld_100kb": 38127000,
+        "largest_gap_midpoint": 38159449.5
+      },
+      "absolute_error": {
+        "composite": 27869,
+        "soft_composite": 27869,
+        "h12": 1447869,
+        "h12_h2": 1447869,
+        "flank_ld_100kb": 25131,
+        "largest_gap_midpoint": 7318.5
+      },
+      "diagnostics": {
+        "estimator_spread": 1469869.0,
+        "largest_gap_length": 2935,
+        "peak_composite_score": 3.020580766754295,
+        "peak_h12": 0.030400000000000007,
+        "maximum_h12": 0.06240000000000001,
+        "soft_peak_h12": 0.030400000000000007,
+        "soft_peak_h2_h1": 0.8593750000000001,
+        "peak_soft_composite_score": 1.8423211078146162,
+        "peak_pi_relative_median": 0.35509618648243246,
+        "peak_tajima_d": -1.5527011378895488
+      },
+      "accepted_biallelic_sites": 18799,
+      "skipped_sites": 20,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226047,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          1680000,
+          3180000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38180000,
+        "soft_composite": 38180000,
+        "h12": 39600000,
+        "h12_h2": 39600000,
+        "flank_ld_100kb": 38130131,
+        "largest_gap_midpoint": 38159449.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_47.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 38849378,
+        "mutation_generation": 2300.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.8,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 38780000,
+        "soft_composite": 38780000,
+        "h12": 38780000,
+        "h12_h2": 38780000,
+        "flank_ld_100kb": 38924000,
+        "largest_gap_midpoint": 38738220.0
+      },
+      "absolute_error": {
+        "composite": 69378,
+        "soft_composite": 69378,
+        "h12": 69378,
+        "h12_h2": 69378,
+        "flank_ld_100kb": 74622,
+        "largest_gap_midpoint": 111158.0
+      },
+      "diagnostics": {
+        "estimator_spread": 187158.0,
+        "largest_gap_length": 3954,
+        "peak_composite_score": 5.179465864526344,
+        "peak_h12": 0.112,
+        "maximum_h12": 0.112,
+        "soft_peak_h12": 0.112,
+        "soft_peak_h2_h1": 0.3697916666666665,
+        "peak_soft_composite_score": 5.411349043055233,
+        "peak_pi_relative_median": 0.3690310256168195,
+        "peak_tajima_d": -1.7395554112178147
+      },
+      "accepted_biallelic_sites": 18498,
+      "skipped_sites": 29,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226005,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          2280000,
+          3780000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 38780000,
+        "soft_composite": 38780000,
+        "h12": 38780000,
+        "h12_h2": 38780000,
+        "flank_ld_100kb": 38925378,
+        "largest_gap_midpoint": 38738220.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_5.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39280507,
+        "mutation_generation": 3500.0,
+        "selection_coefficient": 0.05,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 40580000,
+        "soft_composite": 39160000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 40444000,
+        "largest_gap_midpoint": 40255263.5
+      },
+      "absolute_error": {
+        "composite": 1299493,
+        "soft_composite": 120507,
+        "h12": 1459493,
+        "h12_h2": 1459493,
+        "flank_ld_100kb": 1163493,
+        "largest_gap_midpoint": 974756.5
+      },
+      "diagnostics": {
+        "estimator_spread": 1580000.0,
+        "largest_gap_length": 4489,
+        "peak_composite_score": 2.1489546601230094,
+        "peak_h12": 0.03680000000000001,
+        "maximum_h12": 0.05360000000000001,
+        "soft_peak_h12": 0.04640000000000001,
+        "soft_peak_h2_h1": 0.8260869565217391,
+        "peak_soft_composite_score": 1.7011713953950858,
+        "peak_pi_relative_median": 0.6210372542572058,
+        "peak_tajima_d": -0.7651524446053432
+      },
+      "accepted_biallelic_sites": 18030,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226006,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          4080000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40580000,
+        "soft_composite": 39160000,
+        "h12": 40740000,
+        "h12_h2": 40740000,
+        "flank_ld_100kb": 39503507,
+        "largest_gap_midpoint": 39303102.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_6.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 39711636,
+        "mutation_generation": 5000.0,
+        "selection_coefficient": 0.1,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 500.0,
+        "minimum_start_frequency": 0.01
+      },
+      "estimates": {
+        "composite": 39680000,
+        "soft_composite": 39680000,
+        "h12": 39680000,
+        "h12_h2": 39680000,
+        "flank_ld_100kb": 39715000,
+        "largest_gap_midpoint": 39731681.5
+      },
+      "absolute_error": {
+        "composite": 31636,
+        "soft_composite": 31636,
+        "h12": 31636,
+        "h12_h2": 31636,
+        "flank_ld_100kb": 3364,
+        "largest_gap_midpoint": 20045.5
+      },
+      "diagnostics": {
+        "estimator_spread": 51681.5,
+        "largest_gap_length": 4639,
+        "peak_composite_score": 5.307269349798819,
+        "peak_h12": 0.10080000000000001,
+        "maximum_h12": 0.10080000000000001,
+        "soft_peak_h12": 0.10080000000000001,
+        "soft_peak_h2_h1": 0.4999999999999999,
+        "peak_soft_composite_score": 4.610464918862417,
+        "peak_pi_relative_median": 0.19202403272080873,
+        "peak_tajima_d": -1.7174053384662422
+      },
+      "accepted_biallelic_sites": 17920,
+      "skipped_sites": 28,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226007,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3180000,
+          4680000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 39680000,
+        "soft_composite": 39680000,
+        "h12": 39680000,
+        "h12_h2": 39680000,
+        "flank_ld_100kb": 39714636,
+        "largest_gap_midpoint": 39731681.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_7.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 36642765,
+        "mutation_generation": 2600.0,
+        "selection_coefficient": 0.01,
+        "minimum_end_frequency": 0.95,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.05
+      },
+      "estimates": {
+        "composite": 40000000,
+        "soft_composite": 40000000,
+        "h12": 39460000,
+        "h12_h2": 39460000,
+        "flank_ld_100kb": 40744000,
+        "largest_gap_midpoint": 39708031.5
+      },
+      "absolute_error": {
+        "composite": 3357235,
+        "soft_composite": 3357235,
+        "h12": 2817235,
+        "h12_h2": 2817235,
+        "flank_ld_100kb": 4101235,
+        "largest_gap_midpoint": 3065266.5
+      },
+      "diagnostics": {
+        "estimator_spread": 3923329.5,
+        "largest_gap_length": 2259,
+        "peak_composite_score": 1.6803154055127947,
+        "peak_h12": 0.04400000000000001,
+        "maximum_h12": 0.04880000000000001,
+        "soft_peak_h12": 0.04400000000000001,
+        "soft_peak_h2_h1": 0.8139534883720929,
+        "peak_soft_composite_score": 1.5251364945708445,
+        "peak_pi_relative_median": 0.7027645838263866,
+        "peak_tajima_d": -0.8606402250218611
+      },
+      "accepted_biallelic_sites": 18138,
+      "skipped_sites": 32,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226008,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          3500000,
+          5000000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 40000000,
+        "soft_composite": 40000000,
+        "h12": 39460000,
+        "h12_h2": 39460000,
+        "flank_ld_100kb": 36488765,
+        "largest_gap_midpoint": 36076670.5
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_8.json"
+    },
+    {
+      "state": "COMPLETED",
+      "truth": {
+        "position": 37073894,
+        "mutation_generation": 3600.0,
+        "selection_coefficient": 0.02,
+        "minimum_end_frequency": 0.99,
+        "selection_start_generation": 1000.0,
+        "minimum_start_frequency": 0.1
+      },
+      "estimates": {
+        "composite": 37040000,
+        "soft_composite": 37040000,
+        "h12": 39980000,
+        "h12_h2": 39980000,
+        "flank_ld_100kb": 36292000,
+        "largest_gap_midpoint": 37072555.0
+      },
+      "absolute_error": {
+        "composite": 33894,
+        "soft_composite": 33894,
+        "h12": 2906106,
+        "h12_h2": 2906106,
+        "flank_ld_100kb": 781894,
+        "largest_gap_midpoint": 1339.0
+      },
+      "diagnostics": {
+        "estimator_spread": 2940000.0,
+        "largest_gap_length": 6240,
+        "peak_composite_score": 4.094237057853174,
+        "peak_h12": 0.03280000000000001,
+        "maximum_h12": 0.04880000000000001,
+        "soft_peak_h12": 0.03280000000000001,
+        "soft_peak_h2_h1": 0.8714285714285716,
+        "peak_soft_composite_score": 2.5349001461157865,
+        "peak_pi_relative_median": 0.15117005801894878,
+        "peak_tajima_d": -2.0589533405123293
+      },
+      "accepted_biallelic_sites": 18422,
+      "skipped_sites": 27,
+      "sequence_length": 5000000,
+      "chromosome": "7",
+      "left": 35750000,
+      "genetic_map": "HapMapII_GRCh38",
+      "seed": 75226009,
+      "slim_scaling_factor": 10.0,
+      "slim_burn_in": 0.1,
+      "submission_count": 0,
+      "localization": {
+        "region_source": "full_scan_composite_maximum",
+        "region": [
+          540000,
+          2040000
+        ],
+        "radius": 750000,
+        "truth_used_for_inference": false
+      },
+      "previous_oracle_estimates": {
+        "composite": 37040000,
+        "soft_composite": 37040000,
+        "h12": 39980000,
+        "h12_h2": 39980000,
+        "flank_ld_100kb": 37059894,
+        "largest_gap_midpoint": 37072555.0
+      },
+      "reanalysis_of_legacy_simulation": true,
+      "source_record": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task6_soft_sweep/recovery_feasible/task_9.json"
+    }
+  ],
+  "submission_count": 0
+}

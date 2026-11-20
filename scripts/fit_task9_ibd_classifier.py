@@ -5,6 +5,8 @@ import csv
 import json
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 from sklearn.ensemble import ExtraTreesClassifier, HistGradientBoostingClassifier, RandomForestClassifier
@@ -81,6 +83,11 @@ def main() -> None:
     parser.add_argument("--genome-cm", type=float, default=3350.933402)
     parser.add_argument("--out-dir", type=Path, required=True)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'validation': [args.validation],
+        'evaluation': [args.evaluation],
+    })
 
     sex_map = read_sex_map(args.sex_map)
     calibration = load_simulations(args.calibration, args.genome_cm, sex_map)
@@ -107,6 +114,7 @@ def main() -> None:
         ),
         "hist_gradient_boosting": HistGradientBoostingClassifier(
             max_iter=300,
+            early_stopping=False,
             learning_rate=0.08,
             max_leaf_nodes=31,
             l2_regularization=1.0,

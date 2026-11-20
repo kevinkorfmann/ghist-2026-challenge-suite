@@ -3,6 +3,10 @@ from scripts.summarize_single_sweep_exact_recovery import summarize
 
 def _record(seed: int, truth: int, offsets: tuple[int, int, int]) -> dict:
     return {
+        "localization": {
+            "truth_used_for_inference": False,
+            "region_source": "full_scan_composite_maximum",
+        },
         "seed": seed,
         "truth": {"position": truth},
         "estimates": {
@@ -15,7 +19,9 @@ def _record(seed: int, truth: int, offsets: tuple[int, int, int]) -> dict:
 
 def test_exact_recovery_gate_passes_precise_consensus() -> None:
     records = [
-        _record(75_225_000 + index, 1_000_000 + index * 100_000, (-5_000, 5_000, 10_000))
+        _record(
+            75_225_000 + index, 1_000_000 + index * 100_000, (-5_000, 5_000, 10_000)
+        )
         for index in range(192)
     ]
     result = summarize(records)
@@ -27,7 +33,9 @@ def test_exact_recovery_gate_passes_precise_consensus() -> None:
 
 def test_exact_recovery_gate_rejects_consistent_offset() -> None:
     records = [
-        _record(75_225_000 + index, 1_000_000 + index * 100_000, (150_000, 155_000, 160_000))
+        _record(
+            75_225_000 + index, 1_000_000 + index * 100_000, (150_000, 155_000, 160_000)
+        )
         for index in range(192)
     ]
     result = summarize(records)

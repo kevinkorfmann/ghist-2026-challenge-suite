@@ -12,6 +12,7 @@ from sklearn.model_selection import GroupShuffleSplit
 from torch.utils.data import DataLoader, TensorDataset
 
 from .model import BottleneckNet, mixture_nll
+from .provenance import require_diploid_scale
 
 
 def _seed_everything(seed: int) -> None:
@@ -47,7 +48,11 @@ def train_ensemble(
     weight_decay: float = 2e-3,
     batch_size: int = 64,
 ) -> None:
+    out_dir = Path(out_dir)
+    if out_dir.exists() and any(out_dir.iterdir()):
+        raise ValueError("Training requires an empty output directory; existing checkpoints must not be mixed")
     d = np.load(dataset)
+    require_diploid_scale(d, context="Training dataset")
     xw, xs, y, ne = d["windows"], d["sfs"], d["targets"], d["ancestral_ne"]
     y_raw = y.copy()
     # Hold out joint parameter cells. This is stricter than a random simulation
@@ -63,7 +68,6 @@ def train_ensemble(
     target_mean = y[train_idx].mean(0, keepdims=True)
     target_std = y[train_idx].std(0, keepdims=True) + 1e-6
     y = (y - target_mean) / target_std
-    out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     np.savez(
         out_dir / "normalization.npz",
@@ -71,6 +75,7 @@ def train_ensemble(
         std=sigma,
         target_mean=target_mean,
         target_std=target_std,
+        coalescent_ploidy=np.int64(2),
     )
     device = _device()
     metrics = []
@@ -119,6 +124,7 @@ def train_ensemble(
                     {
                         "state_dict": model.state_dict(),
                         "seed": seed,
+                        "coalescent_ploidy": 2,
                         "model_config": resolved_model_config,
                     },
                     model_path,
@@ -187,6 +193,7 @@ def train_ensemble(
             }
     np.savez_compressed(
         out_dir / "validation_predictions.npz",
+        coalescent_ploidy=np.int64(2),
         target_latent=y_raw[val_idx],
         deep_members_latent=np.asarray(deep_preds),
         deep_mean_latent=deep_pred,
@@ -196,7 +203,8 @@ def train_ensemble(
         validation_indices=val_idx,
     )
     joblib.dump(
-        {"model": ref, "weights": weights, "deep_mse": deep_mse, "reference_mse": ref_mse},
+        {"model": ref, "weights": weights, "deep_mse": deep_mse, "reference_mse": ref_mse,
+         "coalescent_ploidy": 2},
         out_dir / "reference.joblib",
     )
     report = {

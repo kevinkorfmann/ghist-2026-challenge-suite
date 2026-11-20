@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import require_spectrum_contract
 import torch
 
 from ghist_secondary_contact.features import inverse_transform_targets
@@ -41,7 +42,10 @@ def main() -> None:
     for path in checkpoints:
         report_path = path.with_suffix(".json")
         report = json.loads(report_path.read_text()) if report_path.exists() else {}
-        if args.domain_filter is not None and report.get("domain_filter") != args.domain_filter:
+        if (
+            args.domain_filter is not None
+            and report.get("domain_filter") != args.domain_filter
+        ):
             continue
         candidates.append((path, report))
     if not candidates:
@@ -71,10 +75,9 @@ def main() -> None:
     records = []
     for (path, report), weight in zip(candidates, weights):
         checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+        require_spectrum_contract(checkpoint)
         spectrum_transform = checkpoint.get("spectrum_transform", "log_l2")
-        transformed_spectrum = transform_spectrum_counts(
-            spectrum, spectrum_transform
-        )
+        transformed_spectrum = transform_spectrum_counts(spectrum, spectrum_transform)
         configuration = checkpoint["model_configuration"]
         model = SecondaryContactNet(**configuration)
         model.load_state_dict(checkpoint["model"])
@@ -143,9 +146,11 @@ def main() -> None:
         "transformed_coordinate_ensemble": dict(zip(OUTPUT_NAMES, ensemble.tolist())),
         "model_spread_transformed": np.sqrt(
             np.average(
-                (transformed_predictions - np.average(
-                    transformed_predictions, axis=0, weights=weights
-                )) ** 2,
+                (
+                    transformed_predictions
+                    - np.average(transformed_predictions, axis=0, weights=weights)
+                )
+                ** 2,
                 axis=0,
                 weights=weights,
             )

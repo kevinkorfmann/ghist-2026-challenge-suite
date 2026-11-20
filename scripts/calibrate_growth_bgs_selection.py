@@ -8,9 +8,12 @@ import numpy as np
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
-def predict(model_name: str, train_x: np.ndarray, train_y: np.ndarray, test_x: np.ndarray) -> np.ndarray:
+def predict(
+    model_name: str, train_x: np.ndarray, train_y: np.ndarray, test_x: np.ndarray
+) -> np.ndarray:
     if model_name == "identity":
         return np.exp(test_x)
     if model_name == "median_log_bias":
@@ -36,7 +39,9 @@ def main() -> None:
     parser.add_argument("--observed", type=Path, action="append", required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
-    recovery = json.loads(args.recovery.read_text())["results"]
+    recovery_payload = json.loads(args.recovery.read_text())
+    scaling_scheme = require_physical_scaling([recovery_payload])
+    recovery = recovery_payload["results"]
     rows = list(recovery.values())
     raw = np.asarray(
         [
@@ -121,6 +126,7 @@ def main() -> None:
         ]
     )
     result = {
+        "simulation_scaling_scheme": scaling_scheme,
         "validation": "leave_one_truth_point_out",
         "truth_points": len(rows),
         "evaluations": evaluations,

@@ -7,6 +7,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_bottleneck.provenance import require_diploid_scale
+
 try:
     from scripts.evaluate_bottleneck_chromosomes import _metrics
 except ModuleNotFoundError:
@@ -49,6 +51,8 @@ def main() -> None:
     moments = np.load(args.moments)
     learned = np.load(args.learned)
     split_record = json.loads(args.split_record.read_text())
+    for artifact in (moments, learned, split_record):
+        require_diploid_scale(artifact, context="Ensemble validation input")
     moments_index = {int(cell): index for index, cell in enumerate(moments["cell_id"])}
     learned_index = {int(cell): index for index, cell in enumerate(learned["cell_id"])}
     common = sorted(set(moments_index) & set(learned_index))
@@ -149,6 +153,7 @@ def main() -> None:
     observed_ensemble = chosen_weights * observed_mechanistic + (1 - chosen_weights) * observed_learned
     observed_ensemble_natural = natural(observed_ensemble[None])[0]
     serializable = {
+        "coalescent_ploidy": 2,
         "moments_sha256": sha256(args.moments),
         "learned_sha256": sha256(args.learned),
         "split_record_sha256": sha256(args.split_record),

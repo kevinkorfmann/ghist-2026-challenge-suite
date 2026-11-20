@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 from ghist_secondary_contact.calibration import (
     LogCorrection,
@@ -57,13 +61,19 @@ def summary(predictions: np.ndarray, truth: np.ndarray) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--correction", type=Path, required=True)
-    parser.add_argument("--condition", action="append", type=labelled_pattern, required=True)
+    parser.add_argument(
+        "--condition", action="append", type=labelled_pattern, required=True
+    )
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
     correction_source = json.loads(args.correction.read_text())
+    require_spectrum_contract(correction_source)
     serialized = correction_source["final_correction"]
-    if serialized is None or correction_source["accepted_prediction_method"] == "identity":
+    if (
+        serialized is None
+        or correction_source["accepted_prediction_method"] == "identity"
+    ):
         correction = None
     else:
         correction = LogCorrection(
@@ -78,6 +88,8 @@ def main() -> None:
         if not paths:
             raise FileNotFoundError(f"no results match {pattern!r}")
         records = [json.loads(path.read_text()) for path in paths]
+        for record in records:
+            require_spectrum_contract(record)
         boundary_replicates = []
         for record in records:
             scaled = np.asarray(
@@ -102,8 +114,7 @@ def main() -> None:
                 )
         if boundary_replicates:
             raise ValueError(
-                f"{label} contains optimizer-boundary results: "
-                f"{boundary_replicates}"
+                f"{label} contains optimizer-boundary results: {boundary_replicates}"
             )
         estimates = np.asarray(
             [[record[key] for key in ESTIMATE_KEYS] for record in records],
@@ -131,6 +142,7 @@ def main() -> None:
             },
         }
     result = {
+        "spectrum_contract": SPECTRUM_CONTRACT,
         "correction": str(args.correction),
         "accepted_prediction_method": correction_source["accepted_prediction_method"],
         "conditions": conditions,

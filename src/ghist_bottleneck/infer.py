@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from .provenance import require_diploid_scale
+
 from pathlib import Path
 import json
 
@@ -37,6 +39,7 @@ def apply_chromosome_calibration(
         if not isinstance(calibration, dict)
         else calibration
     )
+    require_diploid_scale(record, context="Chromosome calibration")
     branch_name = record["chosen_branch"]
     branch = record["branches"][branch_name]
     matrix = np.asarray(branch["matrix"], dtype=float)
@@ -60,12 +63,14 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     b = FeatureBundle.load(observed)
     checkpoint_dir = Path(checkpoint_dir)
     norm = np.load(checkpoint_dir / "normalization.npz")
+    require_diploid_scale(norm, context="Learned checkpoint")
     xw = ((b.windows[None] - norm["mean"]) / norm["std"]).astype(np.float32)
     xs = b.sfs[None].astype(np.float32)
     device = _device()
     preds, aleatoric = [], []
     for path in sorted(checkpoint_dir.glob("model_*.pt")):
         state = torch.load(path, map_location=device)
+        require_diploid_scale(state, context=f"Model checkpoint {path.name}")
         model_config = state.get(
             "model_config",
             {"window_features": b.windows.shape[1], "sfs_bins": b.sfs.shape[0]},
@@ -91,6 +96,7 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     reference_path = checkpoint_dir / "reference.joblib"
     if reference_path.exists():
         reference = joblib.load(reference_path)
+        require_diploid_scale(reference, context="Reference checkpoint")
         raw_w = b.windows[None].astype(np.float32)
         ref_mean = reference["model"].predict(reference_features(raw_w, xs))[0]
         weights = np.asarray(reference["weights"])
@@ -170,12 +176,14 @@ def predict_blocks(
     collection = FeatureCollection.load(observed)
     checkpoint_dir = Path(checkpoint_dir)
     norm = np.load(checkpoint_dir / "normalization.npz")
+    require_diploid_scale(norm, context="Learned checkpoint")
     xw = ((collection.windows - norm["mean"]) / norm["std"]).astype(np.float32)
     xs = collection.sfs.astype(np.float32)
     device = _device()
     member_predictions, member_variances = [], []
     for path in sorted(checkpoint_dir.glob("model_*.pt")):
         state = torch.load(path, map_location=device)
+        require_diploid_scale(state, context=f"Model checkpoint {path.name}")
         model_config = state.get(
             "model_config",
             {
@@ -209,6 +217,7 @@ def predict_blocks(
     reference_blocks = None
     if reference_path.exists():
         reference = joblib.load(reference_path)
+        require_diploid_scale(reference, context="Reference checkpoint")
         reference_blocks = reference["model"].predict(
             reference_features(collection.windows.astype(np.float32), xs)
         )

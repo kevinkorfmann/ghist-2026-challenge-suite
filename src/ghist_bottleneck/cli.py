@@ -59,6 +59,9 @@ def main() -> None:
     base.add_argument("--restarts", type=int, default=24)
     base.add_argument("--unpolarized", action="store_true")
     base.add_argument("--folded", action="store_true")
+    base.add_argument("--sequence-length", type=float, default=100_000_000)
+    base.add_argument("--mutation-rate", type=float, default=3.42e-8)
+    base.add_argument("--callable-sequence-length", type=float)
     args = p.parse_args()
     if args.command == "extract":
         b = extract_vcf(args.vcf, tree_sequence=args.trees)
@@ -144,6 +147,9 @@ def main() -> None:
             restarts=args.restarts,
             polarized=not args.unpolarized,
             folded=args.folded,
+            sequence_length=args.sequence_length,
+            mutation_rate=args.mutation_rate,
+            callable_sequence_length=args.callable_sequence_length,
         )
         write_fit(result, args.out)
         print(json.dumps(result, indent=2))

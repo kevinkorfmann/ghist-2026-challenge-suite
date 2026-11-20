@@ -6,6 +6,10 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import (
+    SPECTRUM_CONTRACT,
+    require_spectrum_contract,
+)
 
 from ghist_secondary_contact.calibration import (
     apply_log_correction,
@@ -64,6 +68,7 @@ def main() -> None:
     records = {}
     for path in paths:
         record = json.loads(path.read_text())
+        require_spectrum_contract(record)
         records[int(record["replicate"])] = record
     if len(records) != len(paths):
         raise ValueError("duplicate task indices in calibration results")
@@ -99,6 +104,7 @@ def main() -> None:
     for pattern in args.extra_calibration:
         for path in sorted(Path(value) for value in glob.glob(pattern)):
             record = json.loads(path.read_text())
+            require_spectrum_contract(record)
             scaled = np.asarray(
                 [record["scaled_parameters"][key] for key in SCALED_PARAMETER_KEYS]
             )
@@ -126,11 +132,17 @@ def main() -> None:
         dtype=np.float64,
     )
     partitions = np.asarray([row["partition"] for row in rows])
-    masks = {name: partitions == name for name in ("calibration", "selection", "evaluation")}
+    masks = {
+        name: partitions == name for name in ("calibration", "selection", "evaluation")
+    }
     if any(not np.any(mask) for mask in masks.values()):
         raise ValueError("all three point-grouped partitions must be present")
 
-    methods = ("identity", "median_ratio", *(f"ridge_{value:g}" for value in RIDGE_VALUES))
+    methods = (
+        "identity",
+        "median_ratio",
+        *(f"ridge_{value:g}" for value in RIDGE_VALUES),
+    )
     calibration_estimates = np.concatenate(
         (estimates[masks["calibration"]], extra_estimates), axis=0
     )
@@ -143,7 +155,9 @@ def main() -> None:
             method, calibration_estimates, calibration_truth
         )
         predictions = apply_log_correction(correction, estimates[masks["selection"]])
-        selection_results[method] = score_summary(predictions, truth[masks["selection"]])
+        selection_results[method] = score_summary(
+            predictions, truth[masks["selection"]]
+        )
     selected = min(
         methods,
         key=lambda method: (
@@ -161,8 +175,12 @@ def main() -> None:
     evaluation_predictions = apply_log_correction(
         final_correction, estimates[masks["evaluation"]]
     )
-    raw_evaluation = score_summary(estimates[masks["evaluation"]], truth[masks["evaluation"]])
-    corrected_evaluation = score_summary(evaluation_predictions, truth[masks["evaluation"]])
+    raw_evaluation = score_summary(
+        estimates[masks["evaluation"]], truth[masks["evaluation"]]
+    )
+    corrected_evaluation = score_summary(
+        evaluation_predictions, truth[masks["evaluation"]]
+    )
     evaluation_improvement = (
         raw_evaluation["median_competition_rrmse"]
         - corrected_evaluation["median_competition_rrmse"]
@@ -182,6 +200,7 @@ def main() -> None:
         and max(parameter_error_ratios.values()) <= 1.10
     )
     result = {
+        "spectrum_contract": SPECTRUM_CONTRACT,
         "design": str(args.design),
         "inputs": args.inputs,
         "extra_calibration_patterns": args.extra_calibration,

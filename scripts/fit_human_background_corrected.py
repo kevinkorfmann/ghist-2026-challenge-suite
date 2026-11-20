@@ -7,6 +7,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 
@@ -92,16 +94,28 @@ def corrected_training_set(
     minimum_cm: int,
     genome_cm: float,
 ) -> tuple[list[dict[str, object]], list[dict[str, float]]]:
+    if len(paths) < 2:
+        raise ValueError(
+            "Background calibration requires at least two independent simulation replicates"
+        )
     rng = np.random.default_rng(seed)
     output = []
     regimes = []
-    for path in paths:
-        reference, lengths = read_pedsim_with_lengths(path, genome_cm)
+    loaded = [read_pedsim_with_lengths(path, genome_cm) for path in paths]
+    for index, (reference, lengths) in enumerate(loaded):
+        correction_reference = [
+            record
+            for other, (records, _) in enumerate(loaded)
+            if other != index
+            for record in records
+        ]
         output.extend(reference)
         for _ in range(augmentations):
             regime = random_regime(rng)
             augmented = augment_records(reference, lengths, regime, rng, genome_cm)
-            output.extend(correct_records(augmented, reference, minimum_cm, genome_cm))
+            output.extend(
+                correct_records(augmented, correction_reference, minimum_cm, genome_cm)
+            )
             regimes.append(
                 {
                     "mean_segments": regime.mean_segments,
@@ -120,12 +134,12 @@ def corrected_regime_datasets(
     seed: int,
     minimum_cm: int,
     genome_cm: float,
+    correction_reference: list[dict[str, object]],
 ):
-    reference, _ = read_pedsim_with_lengths(path, genome_cm)
     return [
         (
             regime,
-            correct_records(records, reference, minimum_cm, genome_cm),
+            correct_records(records, correction_reference, minimum_cm, genome_cm),
         )
         for regime, records in regime_datasets(path, regimes, seed, genome_cm)
     ]
@@ -184,18 +198,43 @@ def evaluate_blend(
         baseline_aligned = align_probabilities(
             np.asarray(baseline_model.classes_), baseline_probabilities, classes
         )
-        probabilities = (
-            weight * corrected_aligned + (1.0 - weight) * baseline_aligned
-        )
+        probabilities = weight * corrected_aligned + (1.0 - weight) * baseline_aligned
         result = metrics(classes, probabilities, records)
         result["background_mean_segments"] = regime.mean_segments
         runs.append(result)
     return {
         "mean_exact_accuracy": float(np.mean([row["exact_accuracy"] for row in runs])),
         "worst_exact_accuracy": float(np.min([row["exact_accuracy"] for row in runs])),
-        "mean_meioses_accuracy": float(np.mean([row["meioses_accuracy"] for row in runs])),
+        "mean_meioses_accuracy": float(
+            np.mean([row["meioses_accuracy"] for row in runs])
+        ),
         "runs": runs,
     }
+
+
+def blended_probabilities(
+    corrected_payload,
+    baseline_model,
+    baseline_names,
+    records,
+    corrected_names,
+    weight: float,
+):
+    if not np.isfinite(weight) or not 0 <= weight <= 1:
+        raise ValueError("Blend weight must be finite and in [0, 1]")
+    classes = np.asarray(LABELS)
+    corrected_classes, corrected_probabilities = predict_probabilities(
+        corrected_payload, matrix(records, corrected_names)
+    )
+    baseline_probabilities = baseline_model.predict_proba(
+        matrix(records, baseline_names)
+    )
+    probabilities = weight * align_probabilities(
+        corrected_classes, corrected_probabilities, classes
+    ) + (1.0 - weight) * align_probabilities(
+        np.asarray(baseline_model.classes_), baseline_probabilities, classes
+    )
+    return classes, probabilities
 
 
 def observed_predictions(
@@ -206,15 +245,13 @@ def observed_predictions(
     corrected_names,
     weight: float,
 ):
-    classes = np.asarray(LABELS)
-    corrected_classes, corrected_probabilities = predict_probabilities(
-        corrected_payload, matrix(records, corrected_names)
-    )
-    baseline_probabilities = baseline_model.predict_proba(matrix(records, baseline_names))
-    probabilities = weight * align_probabilities(
-        corrected_classes, corrected_probabilities, classes
-    ) + (1.0 - weight) * align_probabilities(
-        np.asarray(baseline_model.classes_), baseline_probabilities, classes
+    classes, probabilities = blended_probabilities(
+        corrected_payload,
+        baseline_model,
+        baseline_names,
+        records,
+        corrected_names,
+        weight,
     )
     predicted = classes[np.argmax(probabilities, axis=1)]
     return [
@@ -246,6 +283,13 @@ def main() -> None:
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--seed", type=int, default=122126)
     args = parser.parse_args()
+    validate_simulation_splits(
+        {
+            "calibration": args.calibration,
+            "selection": [args.selection],
+            "development_evaluation": [args.development_evaluation],
+        }
+    )
 
     baseline = joblib.load(args.baseline_model)
     names = corrected_feature_names(args.minimum_cm)
@@ -260,12 +304,18 @@ def main() -> None:
     train_y = np.asarray([str(record["label"]) for record in training])
     candidates = fit_direct_models(train_x, train_y, args.seed)
     candidates.append(fit_hierarchical_model(train_x, train_y, args.seed + 100))
+    correction_reference = [
+        record
+        for path in args.calibration
+        for record in read_pedsim_with_lengths(path, args.genome_cm)[0]
+    ]
     selection = corrected_regime_datasets(
         args.selection,
         SELECTION_REGIMES,
         args.seed + 1000,
         args.minimum_cm,
         args.genome_cm,
+        correction_reference,
     )
     results = []
     fitted = {}
@@ -299,6 +349,7 @@ def main() -> None:
         args.seed + 2000,
         args.minimum_cm,
         args.genome_cm,
+        correction_reference,
     )
     development_result = evaluate_blend(
         selected_payload,
@@ -331,7 +382,9 @@ def main() -> None:
         },
         args.out_dir / "model.joblib",
     )
-    (args.out_dir / "predictions.json").write_text(json.dumps(predictions, indent=2) + "\n")
+    (args.out_dir / "predictions.json").write_text(
+        json.dumps(predictions, indent=2) + "\n"
+    )
     with (args.out_dir / "candidate.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=("indID1", "indID2", "relation"))
         writer.writeheader()

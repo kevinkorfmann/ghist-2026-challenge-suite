@@ -105,6 +105,7 @@ def main() -> None:
         revision = marker.read_text().strip()
     dataset_digest, dataset_bytes = dataset_identity(args.dataset)
     record = {
+        "coalescent_ploidy": 2,
         "candidate": args.candidate,
         "configuration": configuration,
         "protocol": registry["protocol"],

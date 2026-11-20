@@ -1,0 +1,85 @@
+/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py:1636: SLiMScalingFactorWarning: You're using a scaling factor (10.0). This should give similar results for many situations, but is not equivalent, especially in the presence of selection. When using rescaling, you should be careful---do checks and compare results across different values of the scaling factor.
+  warnings.warn(
+/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Inference.py:340: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+  outputs = scipy.optimize.fmin_l_bfgs_b(
+/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Inference.py:419: DeprecationWarning: The 'warn' method is deprecated, use 'warning' instead
+  logger.warn("Model is < 0 where data is not masked.")
+WARNING:Inference:Model is < 0 where data is not masked.
+WARNING:Inference:Number of affected entries is 323. Sum of data in those entries is 906:
+WARNING:Inference:Model is < 0 where data is not masked.
+WARNING:Inference:Number of affected entries is 323. Sum of data in those entries is 906:
+WARNING:Inference:Model is < 0 where data is not masked.
+WARNING:Inference:Number of affected entries is 323. Sum of data in those entries is 906:
+WARNING:Inference:Model is < 0 where data is not masked.
+WARNING:Inference:Number of affected entries is 323. Sum of data in those entries is 906:
+WARNING:Inference:Model is < 0 where data is not masked.
+WARNING:Inference:Number of affected entries is 323. Sum of data in those entries is 906:
+{
+  "truth_in_analysis_units": {
+    "ancestral_population_size": 11000.0,
+    "AFR_population_size": 8000.0,
+    "EUR_population_size": 19000.0,
+    "generations_since_split": 7800.0,
+    "migration_rate": 7e-05
+  },
+  "generator": {
+    "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+    "stdpopsim": "0.3.0",
+    "slim_scaling_factor": 10.0,
+    "slim_burn_in": 2.0,
+    "chromosome": "2L",
+    "left": 5000000,
+    "right": 6000000,
+    "seed": 202611213,
+    "dfe": "Gamma_H17",
+    "genetic_map": "ComeronCrossoverV2_dm6 scaled by 0.5"
+  },
+  "spectrum": {
+    "AFR_haplotypes": 24,
+    "EUR_haplotypes": 20,
+    "accepted_sites": 1124,
+    "multiallelic_sites": 3,
+    "physical_exposure_bp": 462434
+  },
+  "fit": {
+    "AFR_population_size": 5818.002858667294,
+    "EUR_population_size": 16451.012956027607,
+    "generations_since_split": 9051.882670166042,
+    "migration_rate": 6.587375060592999e-05,
+    "ancestral_population_size": 9144.465232690703,
+    "scaled_parameters": {
+      "AFR_size_ratio": 0.6362321590844282,
+      "EUR_size_ratio": 1.799013122956234,
+      "split_duration_2N": 0.4949377814793539,
+      "migration_2N": 1.2047604443257298
+    },
+    "theta": 171.68569239781218,
+    "multinomial_log_likelihood": -594.5185670590861,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 6,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 9,
+    "successful_restarts": 12,
+    "failed_restarts": [],
+    "projection": [
+      24,
+      20
+    ],
+    "restarts": 12,
+    "workers": 1,
+    "sequence_length": 462434,
+    "mutation_rate": 1.015e-08,
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": null
+  },
+  "relative_error": {
+    "AFR_population_size": -0.2727496426665882,
+    "EUR_population_size": -0.1341572128406523,
+    "generations_since_split": 0.16049777822641564,
+    "migration_rate": -0.05894641991528582
+  }
+}

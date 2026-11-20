@@ -7,6 +7,8 @@ from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 
@@ -157,7 +159,9 @@ def augment_empirical(
             "label": record["label"],
         }
         lengths = source_lengths[pair] + background
-        row.update(summarize_raw_lengths([("0", value) for value in lengths], genome_cm))
+        row.update(
+            summarize_raw_lengths([("0", value) for value in lengths], genome_cm)
+        )
         output.append(row)
     return output
 
@@ -170,11 +174,21 @@ def training_set(
     minimum_cm: int,
     genome_cm: float,
 ):
+    if len(paths) < 2:
+        raise ValueError(
+            "Background calibration requires at least two independent simulation replicates"
+        )
     rng = np.random.default_rng(seed)
     output = []
     regimes = []
-    for path in paths:
-        reference, lengths = read_pedsim_with_lengths(path, genome_cm)
+    loaded = [read_pedsim_with_lengths(path, genome_cm) for path in paths]
+    for index, (reference, lengths) in enumerate(loaded):
+        correction_reference = [
+            record
+            for other, (records, _) in enumerate(loaded)
+            if other != index
+            for record in records
+        ]
         output.extend(reference)
         for _ in range(augmentations):
             regime = EmpiricalRegime(
@@ -188,7 +202,7 @@ def training_set(
                 reference, lengths, profile, regime, rng, genome_cm
             )
             output.extend(
-                correct_records(augmented, reference, minimum_cm, genome_cm)
+                correct_records(augmented, correction_reference, minimum_cm, genome_cm)
             )
             regimes.append(asdict(regime))
     return output, regimes
@@ -201,6 +215,7 @@ def regime_datasets(
     seed: int,
     minimum_cm: int,
     genome_cm: float,
+    correction_reference: list[dict[str, object]],
 ):
     reference, lengths = read_pedsim_with_lengths(path, genome_cm)
     output = []
@@ -216,7 +231,7 @@ def regime_datasets(
         output.append(
             (
                 regime,
-                correct_records(augmented, reference, minimum_cm, genome_cm),
+                correct_records(augmented, correction_reference, minimum_cm, genome_cm),
             )
         )
     return output
@@ -236,6 +251,13 @@ def main() -> None:
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--seed", type=int, default=122226)
     args = parser.parse_args()
+    validate_simulation_splits(
+        {
+            "calibration": args.calibration,
+            "selection": [args.selection],
+            "development_evaluation": [args.development_evaluation],
+        }
+    )
 
     observed = read_observed(args.observed)
     background_reference = read_observed(args.background_reference)
@@ -254,6 +276,11 @@ def main() -> None:
     train_y = np.asarray([str(record["label"]) for record in train])
     candidates = fit_direct_models(train_x, train_y, args.seed)
     candidates.append(fit_hierarchical_model(train_x, train_y, args.seed + 100))
+    correction_reference = [
+        record
+        for path in args.calibration
+        for record in read_pedsim_with_lengths(path, args.genome_cm)[0]
+    ]
     selection = regime_datasets(
         args.selection,
         profile,
@@ -261,6 +288,7 @@ def main() -> None:
         args.seed + 1000,
         args.minimum_cm,
         args.genome_cm,
+        correction_reference,
     )
     results = []
     fitted = {}
@@ -295,6 +323,7 @@ def main() -> None:
         args.seed + 2000,
         args.minimum_cm,
         args.genome_cm,
+        correction_reference,
     )
     development_result = evaluate_blend(
         selected_payload,
@@ -326,7 +355,9 @@ def main() -> None:
         },
         args.out_dir / "model.joblib",
     )
-    (args.out_dir / "predictions.json").write_text(json.dumps(predictions, indent=2) + "\n")
+    (args.out_dir / "predictions.json").write_text(
+        json.dumps(predictions, indent=2) + "\n"
+    )
     with (args.out_dir / "candidate.csv").open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=("indID1", "indID2", "relation"))
         writer.writeheader()
@@ -339,6 +370,8 @@ def main() -> None:
         "background_profile": profile,
         "background_profile_bin_edges": list(BIN_EDGES[:-1]) + ["infinity"],
         "training_pairs": len(train),
+        "independent_correction_reference": True,
+        "correction_reference_policy": "leave-one-replicate-out for training; calibration-only for selection and development",
         "training_regimes": training_regimes,
         "selection": results,
         "selected_model": winner["name"],
