@@ -8,6 +8,14 @@ import msprime
 import numpy as np
 import stdpopsim
 
+from ghist_inference.checkpoint import (
+    atomic_json,
+    fit_checkpoint,
+    save_spectrum_checkpoint,
+    simulation_identity,
+    simulation_tree_checkpoint,
+)
+
 from ghist_growth_bgs.audit import (
     coding_distance,
     distance_label,
@@ -68,6 +76,11 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=75194000)
     parser.add_argument("--fit-restarts", type=int, default=16)
     parser.add_argument("--skip-fit", action="store_true")
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--existing-trees-sha256",
+        help="Required to import a tree predating simulation checkpoints",
+    )
     args = parser.parse_args()
     if not 0 <= args.left < args.right:
         raise ValueError("simulation coordinates are invalid")
@@ -114,17 +127,24 @@ def main() -> None:
         species.get_dfe("Gamma_H17"),
     )
     engine = stdpopsim.get_engine("slim")
-    tree_sequence = engine.simulate(
-        model,
-        contig,
-        samples={"AFR": args.afr_samples, "EUR": args.eur_samples},
-        seed=args.seed,
-        slim_path=str(args.slim_path),
-        slim_scaling_factor=scale,
-        slim_burn_in=args.slim_burn_in,
+    identity = simulation_identity(
+        args,
+        stdpopsim_version=stdpopsim.__version__,
+        scaling_scheme=SIMULATION_SCALING_SCHEME,
     )
-    args.trees.parent.mkdir(parents=True, exist_ok=True)
-    tree_sequence.dump(args.trees)
+
+    def simulate():
+        return engine.simulate(
+            model,
+            contig,
+            samples={"AFR": args.afr_samples, "EUR": args.eur_samples},
+            seed=args.seed,
+            slim_path=str(args.slim_path),
+            slim_scaling_factor=scale,
+            slim_burn_in=args.slim_burn_in,
+        )
+
+    tree_sequence = simulation_tree_checkpoint(args, identity, simulate)
 
     afr_nodes = population_nodes(tree_sequence, "AFR")
     eur_nodes = population_nodes(tree_sequence, "EUR")
@@ -153,6 +173,12 @@ def main() -> None:
         coding[args.chromosome], int(contig.length), MIDDLE_LABELS
     )
     exposure = overlap_length(selected_segments, args.left, args.right)
+    save_spectrum_checkpoint(
+        args.out.with_suffix(".sfs.npz"),
+        spectrum,
+        {"simulation": identity, "physical_exposure_bp": exposure},
+    )
+
     truth = {
         "ancestral_population_size": args.ancestral_size,
         "AFR_population_size": args.afr_size,
@@ -163,16 +189,22 @@ def main() -> None:
     }
     fit = None
     if not args.skip_fit:
-        fit = fit_isolation_with_migration_spectrum(
-            spectrum,
-            mutation_rate=args.mutation_rate,
-            sequence_length=exposure,
-            projection=(min(60, len(afr_nodes)), min(50, len(eur_nodes))),
-            restarts=args.fit_restarts,
-            workers=1,
-            maxiter=600,
-            seed=args.seed + 1,
+        fit = fit_checkpoint(
+            args.out.with_suffix(".fit.json"),
+            spectrum=spectrum,
+            fit=fit_isolation_with_migration_spectrum,
+            resume=args.resume,
+            settings={
+                "mutation_rate": args.mutation_rate,
+                "sequence_length": exposure,
+                "projection": (min(60, len(afr_nodes)), min(50, len(eur_nodes))),
+                "restarts": args.fit_restarts,
+                "workers": 1,
+                "maxiter": 600,
+                "seed": args.seed + 1,
+            },
         )
+
     payload = {
         "truth_in_analysis_units": truth,
         "generator": {
@@ -208,8 +240,7 @@ def main() -> None:
         },
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(payload, indent=2) + "\n")
-    np.savez_compressed(args.out.with_suffix(".sfs.npz"), spectrum=spectrum)
+    atomic_json(args.out, payload)
     print(json.dumps(payload, indent=2))
 
 

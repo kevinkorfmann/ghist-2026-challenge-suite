@@ -188,6 +188,7 @@ def main() -> None:
         "accepted_biallelic_sites": int(variants.positions.size),
         "skipped_sites": variants.skipped_records,
         "sequence_length": args.length,
+        "scan_window_size": 100_000,
         "chromosome": args.chromosome,
         "left": args.left,
         "genetic_map": args.genetic_map,

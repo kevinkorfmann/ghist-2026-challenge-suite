@@ -1,9 +1,9 @@
-"""Independent msprime-to-moments recovery diagnostics; never reads challenge data."""
+"""Independent, resumable msprime-to-moments recovery; no challenge inputs."""
 
 from __future__ import annotations
 
 import argparse
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, as_completed
 import json
 import math
 from pathlib import Path
@@ -19,6 +19,14 @@ from ghist_secondary_contact.demography import (
 )
 from ghist_secondary_contact.spectrum import fit_secondary_contact_spectrum
 from ghist_split_migration_bgs.spectrum import fit_isolation_with_migration_spectrum
+from ghist_inference.checkpoint import (
+    atomic_json,
+    load_spectrum_checkpoint,
+    save_spectrum_checkpoint,
+)
+
+SIMULATION_PROTOCOL = "independent_msprime_diploid_v2"
+FIT_PROTOCOL = "bounded_refinement_diagnostics_v1"
 
 
 def configurations():
@@ -66,12 +74,36 @@ def configurations():
     return rows
 
 
-def run_one(item):
-    config, replicate, out, length, restarts = item
+def simulation_seeds(configuration_index, replicate, scheme="counter_v2"):
+    """Disjoint ancestry, mutation and optimizer streams without hash collisions.
+
+    The fixed radix reserves sixteen configuration IDs and four streams each.
+    Increasing the replicate count never changes an existing allocation. The
+    old arithmetic is retained only for exact replay of fewer than 101 reps.
+    """
+    if not isinstance(configuration_index, int) or not 0 <= configuration_index < 16:
+        raise ValueError("configuration index must be an integer in [0, 16)")
+    if not isinstance(replicate, int) or replicate < 0:
+        raise ValueError("replicate must be a nonnegative integer")
+    if scheme == "counter_v2":
+        seed = 202611210 + 64 * replicate + 4 * configuration_index
+        values = (seed, seed + 1, seed + 2, seed + 3)
+    elif scheme == "legacy_v1":
+        if replicate >= 100:
+            raise ValueError(
+                "legacy seed allocation collides at replicate 100; use counter_v2"
+            )
+        seed = 202611210 + 1000 * configuration_index + 10 * replicate
+        values = (seed, seed + 1, seed + 2, seed + 2)
+    else:
+        raise ValueError("unknown seed scheme")
+    if max(values) >= 2**32:
+        raise ValueError("seed allocation exceeds the msprime uint32 range")
+    return dict(zip(("ancestry", "mutations", "fit0", "fit1"), values))
+
+
+def simulate_configuration(config, seeds, length):
     task, condition = config["task"], config["condition"]
-    index = configurations().index(config)
-    seed = 202611210 + 1000 * index + 10 * replicate
-    started = time.monotonic()
     if task == 2:
         p = SecondaryContactParameters(*config["parameters"])
         changes = (
@@ -160,12 +192,12 @@ def run_one(item):
         demography=demography,
         sequence_length=length,
         recombination_rate=recombination_rate,
-        random_seed=seed,
+        random_seed=seeds["ancestry"],
     )
     mutated = msprime.sim_mutations(
         ancestry,
         rate=mutation_rate,
-        random_seed=seed + 1,
+        random_seed=seeds["mutations"],
         discrete_genome=False,
         model=msprime.BinaryMutationModel(),
     )
@@ -173,65 +205,156 @@ def run_one(item):
     spectrum = mutated.allele_frequency_spectrum(
         sample_sets=sets, polarised=True, span_normalise=False
     )
-    common = {
-        "mutation_rate": mutation_rate,
-        "sequence_length": length,
-        "restarts": restarts,
-        "workers": 1,
-        "maxiter": 400,
-        "seed": seed + 2,
-    }
-    if task == 2:
-        fits = {
-            name: fit_secondary_contact_spectrum(
-                spectrum,
-                projection=(20, 16),
-                convention=name,
-                initial_scaled=(1.2, 0.9, 0.3, 0.15, 1.0),
-                **common,
-            )
-            for name in ("simple", "generator_matched")
-        }
-    elif task == 3:
-        fits = {
-            name: fit_growth_spectrum(
-                spectrum, projection=30, convention=name, **common
-            )
-            for name in ("exponential", "sudden")
-        }
-    else:
-        fits = {
-            str(projection): fit_isolation_with_migration_spectrum(
-                spectrum,
-                projection=projection,
-                initial_scaled=(1.2, 0.9, 0.3, 1.0),
-                **common,
-            )
-            for projection in ((20, 16), (12, 10))
-        }
-    row = {
-        "configuration": config,
-        "replicate": replicate,
-        "seed": seed,
+    return spectrum, {
         "truth": truth,
-        "fits": fits,
-        "relative_error": {
-            name: {key: fit[key] / value - 1 for key, value in truth.items()}
-            for name, fit in fits.items()
-        },
         "sites": mutated.num_sites,
         "length": length,
         "mutation_rate": mutation_rate,
         "recombination_rate": recombination_rate,
-        "elapsed_seconds": time.monotonic() - started,
-        "public_testing_answers_used": False,
-        "initialization": "Fixed generic scaled seed shared across all truths/replicates (Task 2: 1.2,0.9,0.3,0.15,1; Task 4: 1.2,0.9,0.3,1), independent of simulation truth; growth uses global random restarts",
-        "scope": "Independent msprime genealogies and infinite-sites mutations; neutral numerical/misspecification diagnostic, not BGS or whole-chromosome coverage validation",
+        "msprime_version": msprime.__version__,
+        "coalescent_ploidy": 2,
     }
-    path = (
-        Path(out) / f"task{task}_point{config['point']}_{condition}_rep{replicate}.json"
-    )
-    path.write_text(json.dumps(row, indent=2) + "\n")
+
+
+def run_one(item):
+    config, replicate, out, length, restarts, scheme = item
+    started = time.monotonic()
+    task, condition = config["task"], config["condition"]
+    index = configurations().index(config)
+    seeds = simulation_seeds(index, replicate, scheme)
+    stem = f"task{task}_point{config['point']}_{condition}_rep{replicate}"
+    out = Path(out)
+    out.mkdir(parents=True, exist_ok=True)
+    specification = {
+        "simulation_protocol": SIMULATION_PROTOCOL,
+        "configuration": config,
+        "replicate": replicate,
+        "length": length,
+        "seeds": seeds,
+        "seed_scheme": scheme,
+    }
+    checkpoint = out / (stem + ".sfs.npz")
+    if checkpoint.exists():
+        spectrum, metadata = load_spectrum_checkpoint(
+            checkpoint, expected=specification
+        )
+    else:
+        spectrum, metadata = simulate_configuration(config, seeds, length)
+        metadata = save_spectrum_checkpoint(
+            checkpoint, spectrum, dict(metadata, **specification)
+        )
+    common = {
+        "mutation_rate": metadata["mutation_rate"],
+        "sequence_length": length,
+        "restarts": restarts,
+        "workers": 1,
+        "maxiter": 400,
+    }
+    if task == 2:
+        models = [
+            (
+                name,
+                {
+                    "convention": name,
+                    "projection": (20, 16),
+                    "initial_scaled": (1.2, 0.9, 0.3, 0.15, 1.0),
+                },
+            )
+            for name in ("simple", "generator_matched")
+        ]
+        fitter = fit_secondary_contact_spectrum
+    elif task == 3:
+        models = [
+            (name, {"convention": name, "projection": 30})
+            for name in ("exponential", "sudden")
+        ]
+        fitter = fit_growth_spectrum
+    else:
+        models = [
+            (
+                str(projection),
+                {"projection": projection, "initial_scaled": (1.2, 0.9, 0.3, 1.0)},
+            )
+            for projection in ((20, 16), (12, 10))
+        ]
+        fitter = fit_isolation_with_migration_spectrum
+    fits, failures = {}, {}
+    for model_index, (name, settings) in enumerate(models):
+        settings = dict(common, **settings, seed=seeds[f"fit{model_index}"])
+        fit_spec = json.loads(
+            json.dumps(
+                {
+                    "fit_protocol": FIT_PROTOCOL,
+                    "settings": settings,
+                    "spectrum_sha256": metadata["spectrum_sha256"],
+                }
+            )
+        )
+        fit_path = out / (stem + f".fit{model_index}.json")
+        record = None
+        if fit_path.exists():
+            record = json.loads(fit_path.read_text())
+            if record["specification"] != fit_spec:
+                raise ValueError(f"Fit checkpoint configuration mismatch: {fit_path}")
+            if record["status"] not in ("completed", "failed"):
+                raise ValueError(f"Unknown fit checkpoint status: {fit_path}")
+        if record is None or record["status"] == "failed":
+            previous_attempts = (
+                []
+                if record is None
+                else [
+                    *record.get("previous_failed_attempts", []),
+                    {key: record[key] for key in ("error", "elapsed_seconds")},
+                ]
+            )
+            fit_started = time.monotonic()
+            try:
+                record = {"status": "completed", "fit": fitter(spectrum, **settings)}
+            except Exception as error:
+                record = {
+                    "status": "failed",
+                    "error": f"{type(error).__name__}: {error}",
+                }
+            record.update(
+                specification=fit_spec,
+                model=name,
+                elapsed_seconds=time.monotonic() - fit_started,
+                previous_failed_attempts=previous_attempts,
+            )
+            atomic_json(fit_path, record)
+        if record["status"] == "completed":
+            fits[name] = record["fit"]
+        else:
+            failures[name] = record["error"]
+    truth = metadata["truth"]
+    row = {
+        "status": "completed" if not failures else "partial" if fits else "failed",
+        "configuration": config,
+        "replicate": replicate,
+        "seed": seeds["ancestry"],
+        "seeds": seeds,
+        "seed_scheme": scheme,
+        "truth": truth,
+        "fits": fits,
+        "failures": failures,
+        "relative_error": {
+            name: {key: fit[key] / value - 1 for key, value in truth.items()}
+            for name, fit in fits.items()
+        },
+        "sites": metadata["sites"],
+        "length": length,
+        "mutation_rate": metadata["mutation_rate"],
+        "recombination_rate": metadata["recombination_rate"],
+        "elapsed_seconds_this_invocation": time.monotonic() - started,
+        "public_testing_answers_used": False,
+        "spectrum_sha256": metadata["spectrum_sha256"],
+        "simulation_protocol": SIMULATION_PROTOCOL,
+        "fit_protocol": FIT_PROTOCOL,
+        "initialization": "Fixed generic scaled starts shared across all truths (Tasks 2/4), independent of simulation truth; growth uses global random starts",
+        "scope": f"Independent neutral linked {length} bp chromosomes; not BGS or coverage validation",
+    }
+    path = out / (stem + ".json")
+    atomic_json(path, row)
     return str(path)
 
 
@@ -242,18 +365,52 @@ def main():
     parser.add_argument("--replicates", type=int, default=2)
     parser.add_argument("--sequence-length", type=int, default=2_000_000)
     parser.add_argument("--restarts", type=int, default=12)
+    parser.add_argument(
+        "--seed-scheme", choices=("counter_v2", "legacy_v1"), default="counter_v2"
+    )
+    parser.add_argument(
+        "--tasks", nargs="+", type=int, choices=(2, 3, 4), default=(2, 3, 4)
+    )
     args = parser.parse_args()
     if min(args.workers, args.replicates, args.sequence_length, args.restarts) < 1:
         raise ValueError("positive execution settings required")
-    args.out.mkdir(parents=True, exist_ok=True)
+    selected = [row for row in configurations() if row["task"] in args.tasks]
     work = [
-        (row, replicate, str(args.out), args.sequence_length, args.restarts)
-        for row in configurations()
+        (
+            row,
+            replicate,
+            str(args.out),
+            args.sequence_length,
+            args.restarts,
+            args.seed_scheme,
+        )
+        for row in selected
         for replicate in range(args.replicates)
     ]
+    # Validate the whole plan before spending compute or creating partial files.
+    for row, replicate, *_ in work:
+        simulation_seeds(configurations().index(row), replicate, args.seed_scheme)
+    args.out.mkdir(parents=True, exist_ok=True)
     with ProcessPoolExecutor(max_workers=args.workers) as executor:
-        for path in executor.map(run_one, work):
-            print(path, flush=True)
+        pending = {executor.submit(run_one, item): item for item in work}
+        for future in as_completed(pending):
+            item = pending[future]
+            try:
+                print(future.result(), flush=True)
+            except Exception as error:
+                # A corrupt/incompatible checkpoint must be visible and never overwritten.
+                print(
+                    json.dumps(
+                        {
+                            "status": "execution_failed",
+                            "configuration": item[0],
+                            "replicate": item[1],
+                            "error": f"{type(error).__name__}: {error}",
+                        }
+                    ),
+                    flush=True,
+                )
+                raise
 
 
 if __name__ == "__main__":

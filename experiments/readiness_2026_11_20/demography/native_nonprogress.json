@@ -1,0 +1,48 @@
+{
+  "moments_version": "1.7.1",
+  "native_integration_source_sha256": "72e5d9d0b751d6703bc69969e4db89bc145177c8ee569df8dabed3fcd64c6259",
+  "records": [
+    {
+      "parameters": [
+        2.3195170721030354,
+        63.313519790087035,
+        0.00255781614605999,
+        0.7031593982045962,
+        37.616984248152015
+      ],
+      "sample_sizes": [
+        20,
+        16
+      ],
+      "dt_fac": 0.02,
+      "secondary_contact": true,
+      "status": "native_nonprogress_confirmed",
+      "time": 0.013291868287515983,
+      "dt": 0.0006645934143757992,
+      "target": 1.4063187964091923,
+      "identical_repeats": 16,
+      "elapsed_seconds": 0.06227858399506658
+    },
+    {
+      "parameters": [
+        37.002346797132866,
+        6.218138603544293,
+        0.059115084943017114,
+        22.980411155782058
+      ],
+      "sample_sizes": [
+        20,
+        16
+      ],
+      "dt_fac": 0.02,
+      "secondary_contact": false,
+      "status": "native_nonprogress_confirmed",
+      "time": 0.02009912888062582,
+      "dt": 0.0002955754247150856,
+      "target": 0.11823016988603423,
+      "identical_repeats": 16,
+      "elapsed_seconds": 0.05475029197987169
+    }
+  ],
+  "method": "A Python trace observes repeated t/dt at the native while-loop and interrupts after 16 identical rejected steps; no third-party source is changed."
+}

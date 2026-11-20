@@ -1,0 +1,211 @@
+{
+  "status": "completed",
+  "fit": {
+    "generations_since_split": 17036.238267653942,
+    "generations_since_contact": 6675.444887766388,
+    "population1_effective_size": 7131.619169888639,
+    "population2_effective_size": 20440.915848028868,
+    "ancestral_effective_size": 9102.417001323709,
+    "migration_rate": 0.00013255594971968074,
+    "scaled_parameters": {
+      "population1_size_ratio": 0.7834863167498842,
+      "population2_size_ratio": 2.2456580318234454,
+      "isolation_duration_2N": 0.5691231998259829,
+      "contact_duration_2N": 0.36668529286208373,
+      "migration_2N": 2.4131590607100653
+    },
+    "theta": 6116.824224889531,
+    "multinomial_log_likelihood": -983.6481390221547,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 3,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 4,
+    "best_restart_converged": true,
+    "converged_restarts": 4,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -2677.2758168731825,
+        "theta": 59362.12807608202,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 12,
+          "function_calls": 234,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 1,
+        "likelihood": -983.6492745424578,
+        "theta": 6115.654936010702,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 34,
+          "function_calls": 306,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": false,
+        "restart": 2,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": true,
+        "restart": 3,
+        "likelihood": -993.7967045988393,
+        "theta": 5907.7917126966095,
+        "optimizer": {
+          "converged": false,
+          "warnflag": 2,
+          "iterations": 12,
+          "function_calls": 282,
+          "message": "ABNORMAL: "
+        }
+      },
+      {
+        "ok": true,
+        "restart": 4,
+        "likelihood": -983.6481390221547,
+        "theta": 6116.824224889531,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 43,
+          "function_calls": 486,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 5,
+        "likelihood": -983.6492652344051,
+        "theta": 6115.635209004533,
+        "optimizer": {
+          "converged": false,
+          "warnflag": 2,
+          "iterations": 44,
+          "function_calls": 588,
+          "message": "ABNORMAL: "
+        }
+      },
+      {
+        "ok": false,
+        "restart": 6,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 8,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 9,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": true,
+        "restart": 10,
+        "likelihood": -2677.2743872066176,
+        "theta": 87994.35958368938,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 24,
+          "function_calls": 432,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": false,
+        "restart": 11,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      }
+    ],
+    "integration_retry_policy": "bounded_whole_model_refinement_v1",
+    "successful_restarts": 6,
+    "failed_restarts": [
+      {
+        "restart": 2,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "restart": 6,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "restart": 8,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "restart": 9,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "restart": 11,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      }
+    ],
+    "restarts": 12,
+    "workers": 1,
+    "projection": [
+      20,
+      16
+    ],
+    "maxiter": 400,
+    "folded": false,
+    "convention": "simple",
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": [
+      1.2,
+      0.9,
+      0.3,
+      0.15,
+      1.0
+    ]
+  },
+  "specification": {
+    "fit_protocol": "bounded_refinement_diagnostics_v1",
+    "settings": {
+      "mutation_rate": 8.4e-08,
+      "sequence_length": 2000000,
+      "restarts": 12,
+      "workers": 1,
+      "maxiter": 400,
+      "convention": "simple",
+      "projection": [
+        20,
+        16
+      ],
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        0.15,
+        1.0
+      ],
+      "seed": 202614222
+    },
+    "spectrum_sha256": "84ae25f9de0bb24b37902dd376f5fcd8ee2ab88892864999f79eabf77412c06f"
+  },
+  "model": "simple",
+  "elapsed_seconds": 182.80301546677947
+}

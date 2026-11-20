@@ -1,0 +1,214 @@
+{
+  "status": "completed",
+  "fit": {
+    "generations": 3865.445605837001,
+    "post_growth_scaling": 1.8062430433924002,
+    "ancestral_effective_size": 15247.135302845914,
+    "modern_effective_size": 27540.03207242811,
+    "scaled_duration_2N": 0.12675973319117548,
+    "theta": 20492.14984702491,
+    "multinomial_log_likelihood": -140.92855463525802,
+    "best_restart": 9,
+    "best_restart_converged": true,
+    "converged_restarts": 11,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -140.92885540947236,
+        "theta": 20491.359240282338,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 20,
+          "function_calls": 201,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 1,
+        "likelihood": -140.92864772615394,
+        "theta": 20491.634192673035,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 25,
+          "function_calls": 171,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 2,
+        "likelihood": -140.92859698054144,
+        "theta": 20493.17110547515,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 23,
+          "function_calls": 189,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 3,
+        "likelihood": -140.92913897911876,
+        "theta": 20492.130569120967,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 20,
+          "function_calls": 117,
+          "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 4,
+        "likelihood": -169.00453472954268,
+        "theta": 20886.856400028915,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 8,
+          "function_calls": 99,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 5,
+        "likelihood": -140.92868049331628,
+        "theta": 20491.788241946822,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 14,
+          "function_calls": 135,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 6,
+        "likelihood": -140.9290902794778,
+        "theta": 20492.018931302875,
+        "optimizer": {
+          "converged": false,
+          "warnflag": 2,
+          "iterations": 18,
+          "function_calls": 180,
+          "message": "ABNORMAL: "
+        }
+      },
+      {
+        "ok": true,
+        "restart": 7,
+        "likelihood": -140.9289663481468,
+        "theta": 20492.325629584204,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 123,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 8,
+        "likelihood": -140.9291006723347,
+        "theta": 20492.160288934454,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 17,
+          "function_calls": 144,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 9,
+        "likelihood": -140.92855463525802,
+        "theta": 20492.14984702491,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 14,
+          "function_calls": 135,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 10,
+        "likelihood": -140.92864460085093,
+        "theta": 20492.113188449817,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 18,
+          "function_calls": 129,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 11,
+        "likelihood": -140.92903083465126,
+        "theta": 20492.22672957083,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 138,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      }
+    ],
+    "successful_restarts": 12,
+    "failed_restarts": [],
+    "restarts": 12,
+    "workers": 1,
+    "projection": 30,
+    "observed_haplotypes": 40,
+    "sequence_length": 10000000.0,
+    "mutation_rate": 3.36e-08,
+    "convention": "exponential",
+    "bounds": {
+      "lower": [
+        1.001,
+        1e-05
+      ],
+      "upper": [
+        200.0,
+        10.0
+      ]
+    },
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 11,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    }
+  },
+  "specification": {
+    "fit_protocol": "bounded_refinement_diagnostics_v1",
+    "settings": {
+      "mutation_rate": 3.36e-08,
+      "sequence_length": 10000000,
+      "restarts": 12,
+      "workers": 1,
+      "maxiter": 400,
+      "convention": "exponential",
+      "projection": 30,
+      "seed": 202611240
+    },
+    "spectrum_sha256": "79c2f453ac36245a3bd0cbf107ec862fc2587e1ac26c68247fbd71476629a3c4"
+  },
+  "model": "exponential",
+  "elapsed_seconds": 6.0207873694598675
+}

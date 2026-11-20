@@ -7,8 +7,9 @@
 Inference methods for the original 12 GHIST 2026 challenges. The two later
 low-coverage challenges are not implemented.
 
-**November 20 scientific review: material bugs repaired; scientific release gates remain open.**
+**November 20: Task 9 has a validated versioned candidate; other scientific release gates remain open.**
 
+[Current readiness and follow-up validation](docs/readiness_2026_11_20.md) ·
 [Parallel scientific validation and measured limitations](docs/scientific_validation_2026_11_20.md) ·
 [Latest reliability fixes and limitations](docs/reliability_2026_11_20.md) ·
 [Initial review and submission blockers](docs/review_2026_11_20.md) ·
@@ -19,7 +20,8 @@ The August freezes below are historical testing results. The scientific review
 found scaling, simulation/extraction mismatches and validation leakage that
 invalidate several historical promotion gates. Their archived metrics are not
 current evidence of submission readiness. The old Challenge 9 candidate uses
-two retired labels; its corrected candidate has not been promoted. Final-data
+two retired labels; its corrected candidate now passes the separately versioned
+[Task 9 release checks](docs/task9_readiness_2026_11_20.md). Final-data
 runs remain deferred, and no submissions have been made by this review.
 
 [Challenge registry](configs/challenges.yaml) ·

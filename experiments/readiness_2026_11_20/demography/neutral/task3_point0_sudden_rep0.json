@@ -1,0 +1,123 @@
+{
+  "status": "completed",
+  "configuration": {
+    "task": 3,
+    "point": 0,
+    "condition": "sudden",
+    "parameters": [
+      7000,
+      9200,
+      3.7
+    ]
+  },
+  "replicate": 0,
+  "seed": 202616210,
+  "seeds": {
+    "ancestry": 202616210,
+    "mutations": 202616211,
+    "fit0": 202616212,
+    "fit1": 202616212
+  },
+  "seed_scheme": "legacy_v1",
+  "truth": {
+    "ancestral_effective_size": 7000,
+    "generations": 9200,
+    "post_growth_scaling": 3.7
+  },
+  "fits": {
+    "exponential": {
+      "generations": 14982.26234017316,
+      "post_growth_scaling": 5.239395989637101,
+      "ancestral_effective_size": 6684.853704007139,
+      "modern_effective_size": 35024.59568808573,
+      "scaled_duration_2N": 1.1206125820818083,
+      "theta": 1796.8886756371191,
+      "multinomial_log_likelihood": -137.6761411787752,
+      "best_restart": 9,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 1,
+      "projection": 30,
+      "observed_haplotypes": 40,
+      "sequence_length": 2000000.0,
+      "mutation_rate": 3.36e-08,
+      "convention": "exponential",
+      "bounds": {
+        "lower": [
+          1.001,
+          1e-05
+        ],
+        "upper": [
+          200.0,
+          10.0
+        ]
+      },
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      }
+    },
+    "sudden": {
+      "generations": 8795.173801569392,
+      "post_growth_scaling": 3.937871171288405,
+      "ancestral_effective_size": 6949.981962310602,
+      "modern_effective_size": 27368.13361035734,
+      "scaled_duration_2N": 0.6327479588627115,
+      "theta": 1868.1551514690902,
+      "multinomial_log_likelihood": -115.20176517993895,
+      "best_restart": 3,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 1,
+      "projection": 30,
+      "observed_haplotypes": 40,
+      "sequence_length": 2000000.0,
+      "mutation_rate": 3.36e-08,
+      "convention": "sudden",
+      "bounds": {
+        "lower": [
+          1.001,
+          1e-05
+        ],
+        "upper": [
+          200.0,
+          10.0
+        ]
+      },
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      }
+    }
+  },
+  "failures": {},
+  "relative_error": {
+    "exponential": {
+      "ancestral_effective_size": -0.04502089942755161,
+      "generations": 0.6285067761057783,
+      "post_growth_scaling": 0.41605297017218934
+    },
+    "sudden": {
+      "ancestral_effective_size": -0.0071454339556282775,
+      "generations": -0.04400284765550089,
+      "post_growth_scaling": 0.06428950575362302
+    }
+  },
+  "sites": 15933,
+  "length": 2000000,
+  "mutation_rate": 3.36e-08,
+  "recombination_rate": 2e-08,
+  "elapsed_seconds_this_invocation": 5.805994065478444,
+  "public_testing_answers_used": false,
+  "spectrum_sha256": "3429f7a4aefe45b6dd39986e229814da6a272681ea8efc8ae6c1731a555fc5a4",
+  "simulation_protocol": "independent_msprime_diploid_v2",
+  "fit_protocol": "bounded_refinement_diagnostics_v1",
+  "initialization": "Fixed generic scaled starts shared across all truths (Tasks 2/4), independent of simulation truth; growth uses global random starts",
+  "scope": "Independent neutral linked 2 Mb chromosomes; not BGS or coverage validation"
+}

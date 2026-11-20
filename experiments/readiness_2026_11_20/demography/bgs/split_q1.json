@@ -1,0 +1,223 @@
+{
+  "truth_in_analysis_units": {
+    "ancestral_population_size": 11000.0,
+    "AFR_population_size": 8000.0,
+    "EUR_population_size": 19000.0,
+    "generations_since_split": 7800.0,
+    "migration_rate": 7e-05,
+    "mutation_rate": 1.015e-08
+  },
+  "generator": {
+    "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+    "stdpopsim": "0.3.0",
+    "slim_scaling_factor": 1.0,
+    "slim_burn_in": 2.0,
+    "chromosome": "2L",
+    "left": 5000000,
+    "right": 6000000,
+    "seed": 202611221,
+    "dfe": "Gamma_H17",
+    "genetic_map": "ComeronCrossoverV2_dm6 scaled by 0.5"
+  },
+  "spectrum": {
+    "AFR_haplotypes": 24,
+    "EUR_haplotypes": 20,
+    "accepted_sites": 1259,
+    "multiallelic_sites": 1,
+    "physical_exposure_bp": 462434
+  },
+  "fit": {
+    "AFR_population_size": 6284.695211400467,
+    "EUR_population_size": 15891.771511504154,
+    "generations_since_split": 11477.263118287608,
+    "migration_rate": 5.414121328284993e-05,
+    "ancestral_population_size": 10794.812547703397,
+    "scaled_parameters": {
+      "AFR_size_ratio": 0.582195863395288,
+      "EUR_size_ratio": 1.4721674360973631,
+      "split_duration_2N": 0.5316101167837973,
+      "migration_2N": 1.1688884969871884
+    },
+    "theta": 202.67066683479771,
+    "multinomial_log_likelihood": -681.4530379429469,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 2,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 9,
+    "best_restart_converged": true,
+    "converged_restarts": 8,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -728.3099676341542,
+        "theta": 243.42038389000558,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 14,
+          "function_calls": 265,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 1,
+        "likelihood": -728.3107688959524,
+        "theta": 243.489806149591,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 190,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 2,
+        "likelihood": -728.312095002974,
+        "theta": 243.46808360442782,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 14,
+          "function_calls": 225,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": false,
+        "restart": 3,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": true,
+        "restart": 4,
+        "likelihood": -728.3135186800954,
+        "theta": 243.43600365148427,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 17,
+          "function_calls": 230,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 5,
+        "likelihood": -681.4530967255107,
+        "theta": 202.76016180306098,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 13,
+          "function_calls": 75,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 6,
+        "likelihood": -728.2908552243206,
+        "theta": 243.45360945838348,
+        "optimizer": {
+          "converged": false,
+          "warnflag": 2,
+          "iterations": 13,
+          "function_calls": 310,
+          "message": "ABNORMAL: "
+        }
+      },
+      {
+        "ok": false,
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 8,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": true,
+        "restart": 9,
+        "likelihood": -681.4530379429469,
+        "theta": 202.67066683479771,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 31,
+          "function_calls": 290,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 10,
+        "likelihood": -728.3144324451882,
+        "theta": 243.49460515976386,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 18,
+          "function_calls": 280,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 11,
+        "likelihood": -728.3146193305989,
+        "theta": 243.49480877165732,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 16,
+          "function_calls": 105,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      }
+    ],
+    "integration_retry_policy": "bounded_whole_model_refinement_v1",
+    "successful_restarts": 9,
+    "failed_restarts": [
+      {
+        "ok": false,
+        "restart": 3,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": false,
+        "restart": 8,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      }
+    ],
+    "projection": [
+      24,
+      20
+    ],
+    "restarts": 12,
+    "workers": 1,
+    "sequence_length": 462434,
+    "mutation_rate": 1.015e-08,
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": null
+  },
+  "relative_error": {
+    "AFR_population_size": -0.21441309857494162,
+    "EUR_population_size": -0.16359097307872872,
+    "generations_since_split": 0.4714439895240523,
+    "migration_rate": -0.22655409595928666
+  }
+}

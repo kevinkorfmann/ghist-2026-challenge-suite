@@ -26,39 +26,52 @@ def read_sex_map(path: Path) -> SexMap:
             values[chromosome][0].append(float(position))
             values[chromosome][1].append(float(male_cm))
             values[chromosome][2].append(float(female_cm))
-    return {
+    result = {
         chromosome: tuple(np.asarray(column, dtype=float) for column in columns)
         for chromosome, columns in values.items()
     }
+    if not result:
+        raise ValueError("Empty genetic map")
+    for chromosome, columns in result.items():
+        if (
+            not all(np.all(np.isfinite(column)) for column in columns)
+            or np.any(np.diff(columns[0]) <= 0)
+            or any(np.any(np.diff(column) < 0) for column in columns[1:])
+        ):
+            raise ValueError(f"Nonfinite or nonmonotonic genetic map: {chromosome}")
+    return result
 
 
 def read_segment_rows(path: Path) -> list[dict[str, str]]:
-    with path.open() as handle:
-        first = handle.readline()
-        handle.seek(0)
-        if first.startswith("indID1,"):
-            return list(csv.DictReader(handle))
+    columns = (
+        "indID1", "indID2", "chr", "start_bp", "end_bp", "type",
+        "start_cM", "end_cM", "length",
+    )
+    with path.open(encoding="utf-8-sig") as handle:
+        lines = (line for line in handle if line.strip() and not line.startswith("#"))
+        first = next(lines, "")
+        if not first:
+            raise ValueError("Empty IBD segment input")
+        from itertools import chain
+
+        lines = chain((first,), lines)
+        if "," in first:
+            reader = csv.DictReader(lines)
+            if len(reader.fieldnames or []) != len(columns) or set(reader.fieldnames) != set(columns):
+                raise ValueError(f"Expected unique IBD CSV columns: {columns}")
+            rows = list(reader)
+            if any(None in row or any(value is None or not value.strip() for value in row.values()) for row in rows):
+                raise ValueError("Missing or extra IBD CSV fields")
+            return rows
         rows = []
-        for line in handle:
-            if not line.strip() or line.startswith("#"):
-                continue
+        for line in lines:
             fields = line.split()
             if len(fields) != 9:
                 raise ValueError(f"Expected 9 fields in {path}, found {len(fields)}")
             rows.append(
                 dict(
                     zip(
-                        (
-                            "indID1",
-                            "indID2",
-                            "chr",
-                            "start_bp",
-                            "end_bp",
-                            "type",
-                            "start_cM",
-                            "end_cM",
-                            "length",
-                        ),
+                        columns,
                         fields,
                         strict=True,
                     )
@@ -135,8 +148,12 @@ def pair_features(
         female_lengths: list[float] = []
         if sex_map is not None:
             for row in segments:
+                if row["chr"] not in sex_map:
+                    raise ValueError(f"Chromosome absent from genetic map: {row['chr']}")
                 positions, male_cm, female_cm = sex_map[row["chr"]]
                 bounds = np.asarray([float(row["start_bp"]), float(row["end_bp"])])
+                if not np.all(np.isfinite(bounds)) or bounds[0] < 0 or bounds[1] < bounds[0]:
+                    raise ValueError("Segment physical coordinates must be finite and ordered")
                 male_bounds = np.interp(bounds, positions, male_cm)
                 female_bounds = np.interp(bounds, positions, female_cm)
                 male_lengths.append(float(male_bounds[1] - male_bounds[0]))
@@ -195,4 +212,6 @@ def matrix(records: list[dict[str, object]], feature_names: list[str] | None = N
     if feature_names is None:
         feature_names = sorted(name for name in records[0] if name not in {"indID1", "indID2", "label"})
     values = np.asarray([[float(record[name]) for name in feature_names] for record in records])
+    if not np.all(np.isfinite(values)):
+        raise ValueError("Nonfinite relatedness features")
     return values, feature_names

@@ -37,12 +37,14 @@ def validate_matched_recovery(recovery: dict) -> None:
             "Task 7 needs recovery of the exact ten-estimate inference method"
         )
     for record in recovery["records"]:
-        if (
-            record.get("background_selection") is not True
-            or record.get("demography") != "bottleneck_growth"
-        ):
+        if record.get("background_selection") is not True:
+            raise ValueError("Task 7 requires independently simulated BGS recovery")
+        # The official Task 7 specification does not require bottleneck/growth;
+        # that extra demographic condition belongs to Task 8. Record the history
+        # actually tested without asserting an undocumented target match.
+        if not isinstance(record.get("demography"), str) or not record["demography"]:
             raise ValueError(
-                "Task 7 requires independently simulated bottleneck/growth plus BGS recovery"
+                "Task 7 BGS recovery must identify its demographic history"
             )
 
 

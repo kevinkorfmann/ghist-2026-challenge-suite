@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -13,6 +15,7 @@ from ghist_inference.validation import (
     validate_expected_spectrum,
 )
 from ghist_inference.vcf import diploid_alleles, validate_position
+from ghist_inference.checkpoint import spectrum_digest
 from scipy.stats import hypergeom
 
 
@@ -24,7 +27,7 @@ def projected_sfs_from_vcf(
 ) -> tuple[np.ndarray, dict]:
     """Build an allele-count spectrum with exact missing-data projection."""
     vcf = pysam.VariantFile(str(path))
-    counts: list[tuple[int, int]] = []
+    counts: Counter[tuple[int, int]] = Counter()
     max_called = 0
     ancestral_reference = ancestral_alternate = 0
     incomplete_records = 0
@@ -51,16 +54,25 @@ def projected_sfs_from_vcf(
                     f"record {rec.contig}:{rec.pos} has invalid ancestral allele {ancestral!r}"
                 )
         if 0 < derived < called:
-            counts.append((derived, called))
+            counts[derived, called] += 1
             max_called = max(max_called, called)
     vcf.close()
     if not counts:
         raise ValueError("No segregating biallelic SNPs found")
-    called_array = np.asarray([n for _, n in counts])
+    total_records = sum(counts.values())
     if projection is None:
         # Keeps at least 90% of variable sites while avoiding a single poor site
         # collapsing the projection size.
-        projection = int(np.quantile(called_array, 0.1, method="lower"))
+        by_called = Counter()
+        for (_, called), multiplicity in counts.items():
+            by_called[called] += multiplicity
+        rank = int(np.floor(.1 * (total_records - 1)))
+        cumulative = 0
+        for called, multiplicity in sorted(by_called.items()):
+            cumulative += multiplicity
+            if cumulative > rank:
+                projection = called
+                break
     if projection < 4 or projection > max_called:
         raise ValueError(
             f"invalid projection {projection}; maximum called is {max_called}"
@@ -68,14 +80,18 @@ def projected_sfs_from_vcf(
     spectrum = np.zeros(projection + 1, dtype=np.float64)
     kept = 0
     target_counts = np.arange(projection + 1)
-    for alt, called in counts:
+    for (alt, called), multiplicity in counts.items():
         if called < projection:
             continue
-        spectrum += hypergeom.pmf(target_counts, called, alt, projection)
-        kept += 1
+        if called == projection:
+            spectrum[alt] += multiplicity
+        else:
+            spectrum += multiplicity * hypergeom.pmf(target_counts, called, alt, projection)
+        kept += multiplicity
     metadata = {
+        "spectrum_sha256": spectrum_digest(spectrum),
         "projection": projection,
-        "segregating_records": len(counts),
+        "segregating_records": total_records,
         "projected_records": kept,
         "maximum_called_haplotypes": max_called,
         "incomplete_genotype_records": incomplete_records,
@@ -114,6 +130,8 @@ def fit_two_epoch(
     folded: bool = False,
 ) -> dict:
     """Fit the mechanistic two-epoch SFS reference with moments."""
+    if not polarized and not folded:
+        raise ValueError('Unpolarized VCF input requires a folded spectrum')
     spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
     exposure = spectrum_exposure(metadata, sequence_length, callable_sequence_length)
     result = fit_two_epoch_spectrum(
@@ -124,7 +142,10 @@ def fit_two_epoch(
         seed=seed,
         folded=folded,
     )
+    with Path(path).open('rb') as handle:
+        input_sha256 = hashlib.file_digest(handle, 'sha256').hexdigest()
     return {**result, "polarized": polarized, "folded": folded, "sfs": metadata,
+            "input_vcf_sha256": input_sha256,
             "sequence_length": sequence_length, "callable_sequence_length": exposure}
 
 
@@ -169,11 +190,11 @@ def fit_two_epoch_spectrum(
         if (
             initial.shape != (2,)
             or not np.isfinite(initial).all()
-            or np.any(initial <= lower)
-            or np.any(initial >= upper)
+            or np.any(initial < lower)
+            or np.any(initial > upper)
         ):
             raise ValueError(
-                "Initial estimate must lie strictly within parameter bounds"
+                "Initial estimate must lie within parameter bounds"
             )
     for restart in range(restarts):
         if restart == 0 and initial is not None:
@@ -181,7 +202,7 @@ def fit_two_epoch_spectrum(
         else:
             start = np.exp(rng.uniform(np.log(lower), np.log(upper)))
         try:
-            estimate = moments.Inference.optimize_log_lbfgsb(
+            estimate, _, optimizer = moments.Inference.optimize_log_lbfgsb(
                 start,
                 data,
                 model,
@@ -189,20 +210,21 @@ def fit_two_epoch_spectrum(
                 upper_bound=upper,
                 maxiter=500,
                 verbose=0,
+                full_output=True,
             )
             expected = model(estimate, data.sample_sizes)
             likelihood = float(moments.Inference.ll_multinom(expected, data))
             theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
             if not np.isfinite([*estimate, likelihood, theta]).all() or theta <= 0:
                 raise ValueError("Nonfinite fit or nonpositive theta")
-            fits.append((likelihood, np.asarray(estimate), theta))
+            fits.append((likelihood, np.asarray(estimate), theta, restart, optimizer))
         except Exception as error:
             failures.append(
                 {"restart": restart, "reason": f"{type(error).__name__}: {error}"}
             )
     if not fits:
         raise RuntimeError(f"All moments restarts failed: {failures[:3]}")
-    likelihood, estimate, theta = max(fits, key=lambda item: item[0])
+    likelihood, estimate, theta, best_restart, optimizer = max(fits, key=lambda item: item[0])
     fraction, scaled_time = estimate
     ancestral_ne = theta / (4 * mutation_rate * sequence_length)
     generations = scaled_time * 2 * ancestral_ne
@@ -214,6 +236,16 @@ def fit_two_epoch_spectrum(
         "theta": theta,
         "multinomial_log_likelihood": likelihood,
         "restarts": restarts,
+        "mutation_rate": mutation_rate,
+        "sequence_length": sequence_length,
+        "folded": folded,
+        "best_restart": best_restart,
+        "converged_restarts": sum(fit[4]["warnflag"] == 0 for fit in fits),
+        "optimizer": {"warnflag": int(optimizer["warnflag"]),
+                      "converged": bool(optimizer["warnflag"] == 0),
+                      "message": str(optimizer["task"]),
+                      "evaluations": int(optimizer["funcalls"]),
+                      "iterations": int(optimizer["nit"])},
         "successful_restarts": len(fits),
         "failed_restarts": failures,
         "optimizer_diagnostics": optimizer_diagnostics(

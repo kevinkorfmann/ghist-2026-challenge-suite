@@ -1,0 +1,91 @@
+{
+  "synthetic_only": true,
+  "public_answers_used": false,
+  "submission_count": 0,
+  "model_sha256": "7fc54aa5f0dff1d8dc01364cf781d7a750970e1558a525c2fbdebcbc04a0611c",
+  "datasets": [
+    {
+      "source_sha256": "e59977d6f6bca3c69e96b620b25313c625ca434ce2844561285df5f707241ab3",
+      "expected_pairs": 10038,
+      "cases": {
+        "official_csv": {
+          "validation": {
+            "challenge": 9,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 10038,
+            "individuals": 19076,
+            "input_pair_coverage_verified": true
+          },
+          "accuracy": 0.8910141462442718,
+          "meioses_accuracy": 0.8941024108388125,
+          "prediction_sha256": "3d09619e9cfc6d85b11ac83df3907d728a055454b6fa586664e8183b9d761c80",
+          "input_sha256": "634960b2f146f3a231b7fedbc52013639d04fe6718a3eec20f044d6e1196b8bf",
+          "changed_predictions": 0,
+          "release_id": null
+        },
+        "permuted_reversed_bom_csv": {
+          "validation": {
+            "challenge": 9,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 10038,
+            "individuals": 19076,
+            "input_pair_coverage_verified": true
+          },
+          "accuracy": 0.8910141462442718,
+          "meioses_accuracy": 0.8941024108388125,
+          "prediction_sha256": "8ea71eef48784867431022269f98f25e5899b3e3c58ebf34c32d68db24ad6b62",
+          "input_sha256": "5f50ecb03d8e9d64e07b4c3a7a0129bc82b45b61ff0c700f41c8e1d9158083e6",
+          "changed_predictions": 0,
+          "release_id": null
+        }
+      },
+      "permutation_invariant": true
+    },
+    {
+      "source_sha256": "387f9a5e0df05eb69619f0b925602ce0785fa3ce18bc4d0211461741d2b9c484",
+      "expected_pairs": 9985,
+      "cases": {
+        "official_csv": {
+          "validation": {
+            "challenge": 9,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 9985,
+            "individuals": 18970,
+            "input_pair_coverage_verified": true
+          },
+          "accuracy": 0.872008012018027,
+          "meioses_accuracy": 0.8771156735102654,
+          "prediction_sha256": "91b749a79b1189b2337c93d562e59e6fbab3cc7b534ad7464e12a676ff03ca88",
+          "input_sha256": "68fde7759a8f87cd96df9348e931174d7fee72a49a0578c2708510e49a03efe0",
+          "changed_predictions": 0,
+          "release_id": null
+        },
+        "permuted_reversed_bom_csv": {
+          "validation": {
+            "challenge": 9,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 9985,
+            "individuals": 18970,
+            "input_pair_coverage_verified": true
+          },
+          "accuracy": 0.872008012018027,
+          "meioses_accuracy": 0.8771156735102654,
+          "prediction_sha256": "65c1f8f0773e6c56b73fb0beaefaef1cc13256df1a1d64db215f49735b923f0a",
+          "input_sha256": "78e68245d1f81728113ad49844b67de580662912c56c7c2a0ed0187859939c05",
+          "changed_predictions": 0,
+          "release_id": null
+        }
+      },
+      "permutation_invariant": true
+    }
+  ],
+  "passed": true
+}

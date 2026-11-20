@@ -7,6 +7,14 @@ from pathlib import Path
 import numpy as np
 import stdpopsim
 
+from ghist_inference.checkpoint import (
+    atomic_json,
+    fit_checkpoint,
+    save_spectrum_checkpoint,
+    simulation_identity,
+    simulation_tree_checkpoint,
+)
+
 from ghist_growth_bgs.audit import (
     coding_distance,
     distance_label,
@@ -49,6 +57,11 @@ def main() -> None:
     parser.add_argument("--samples", type=int, default=42)
     parser.add_argument("--seed", type=int, default=7593401)
     parser.add_argument("--fit-restarts", type=int, default=32)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--existing-trees-sha256",
+        help="Required to import a tree predating simulation checkpoints",
+    )
     args = parser.parse_args()
     if not 0 <= args.left < args.right:
         raise ValueError("simulation coordinates are invalid")
@@ -84,17 +97,24 @@ def main() -> None:
         species.get_dfe("Gamma_H17"),
     )
     engine = stdpopsim.get_engine("slim")
-    tree_sequence = engine.simulate(
-        model,
-        contig,
-        samples={"population": args.samples},
-        seed=args.seed,
-        slim_path=str(args.slim_path),
-        slim_scaling_factor=scale,
-        slim_burn_in=args.slim_burn_in,
+    identity = simulation_identity(
+        args,
+        stdpopsim_version=stdpopsim.__version__,
+        scaling_scheme=SIMULATION_SCALING_SCHEME,
     )
-    args.trees.parent.mkdir(parents=True, exist_ok=True)
-    tree_sequence.dump(args.trees)
+
+    def simulate():
+        return engine.simulate(
+            model,
+            contig,
+            samples={"population": args.samples},
+            seed=args.seed,
+            slim_path=str(args.slim_path),
+            slim_scaling_factor=scale,
+            slim_burn_in=args.slim_burn_in,
+        )
+
+    tree_sequence = simulation_tree_checkpoint(args, identity, simulate)
 
     starts = [interval[0] for interval in coding[args.chromosome]]
     spectrum = np.zeros(2 * args.samples + 1, dtype=np.int64)
@@ -120,26 +140,33 @@ def main() -> None:
         coding[args.chromosome], int(contig.length), MIDDLE_LABELS
     )
     exposure = overlap_length(selected_segments, args.left, args.right)
-    fit = fit_growth_spectrum(
+    save_spectrum_checkpoint(
+        args.out.with_suffix(".sfs.npz"),
         spectrum,
-        sequence_length=exposure,
-        mutation_rate=args.mutation_rate,
-        projection=len(sample_nodes),
-        restarts=args.fit_restarts,
-        workers=1,
-        maxiter=500,
-        seed=args.seed + 1,
+        {"simulation": identity, "physical_exposure_bp": exposure},
     )
-    sudden_fit = fit_growth_spectrum(
-        spectrum,
-        sequence_length=exposure,
-        mutation_rate=args.mutation_rate,
-        projection=len(sample_nodes),
-        restarts=args.fit_restarts,
-        workers=1,
-        maxiter=500,
-        seed=args.seed + 2,
-        convention="sudden",
+
+    fit_settings = {
+        "sequence_length": exposure,
+        "mutation_rate": args.mutation_rate,
+        "projection": len(sample_nodes),
+        "restarts": args.fit_restarts,
+        "workers": 1,
+        "maxiter": 500,
+    }
+    fit = fit_checkpoint(
+        args.out.with_suffix(".fit_exponential.json"),
+        spectrum=spectrum,
+        fit=fit_growth_spectrum,
+        resume=args.resume,
+        settings=dict(fit_settings, seed=args.seed + 1, convention="exponential"),
+    )
+    sudden_fit = fit_checkpoint(
+        args.out.with_suffix(".fit_sudden.json"),
+        spectrum=spectrum,
+        fit=fit_growth_spectrum,
+        resume=args.resume,
+        settings=dict(fit_settings, seed=args.seed + 2, convention="sudden"),
     )
     matched_fit = fit if args.convention == "exponential" else sudden_fit
     payload = {
@@ -181,8 +208,7 @@ def main() -> None:
         },
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(payload, indent=2) + "\n")
-    np.savez_compressed(args.out.with_suffix(".sfs.npz"), spectrum=spectrum)
+    atomic_json(args.out, payload)
     print(json.dumps(payload, indent=2))
 
 

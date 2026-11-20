@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "fit": {
+    "generations": 5187.577272712152,
+    "post_growth_scaling": 3.0791711101811754,
+    "ancestral_effective_size": 7312.331049739047,
+    "modern_effective_size": 22515.91851643726,
+    "scaled_duration_2N": 0.3547143337347452,
+    "theta": 1965.554586169856,
+    "multinomial_log_likelihood": -109.60188397261652,
+    "best_restart": 1,
+    "successful_restarts": 12,
+    "failed_restarts": [],
+    "restarts": 12,
+    "workers": 1,
+    "projection": 30,
+    "observed_haplotypes": 40,
+    "sequence_length": 2000000.0,
+    "mutation_rate": 3.36e-08,
+    "convention": "sudden",
+    "bounds": {
+      "lower": [
+        1.001,
+        1e-05
+      ],
+      "upper": [
+        200.0,
+        10.0
+      ]
+    },
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 12,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    }
+  },
+  "specification": {
+    "fit_protocol": "bounded_refinement_diagnostics_v1",
+    "settings": {
+      "mutation_rate": 3.36e-08,
+      "sequence_length": 2000000,
+      "restarts": 12,
+      "workers": 1,
+      "maxiter": 400,
+      "convention": "sudden",
+      "projection": 30,
+      "seed": 202615212
+    },
+    "spectrum_sha256": "a44cd372125d367c1435a926502cd85869433f58f571e498a79fdf76d8f0a9ec"
+  },
+  "model": "sudden",
+  "elapsed_seconds": 1.4891614904627204
+}

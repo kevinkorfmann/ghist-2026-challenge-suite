@@ -1,0 +1,107 @@
+{
+  "protocol_id": "task12-independent-reference-v2-2026-11-20",
+  "frozen_at_utc": "2026-11-20T17:06:53.353764+00:00",
+  "component_only": true,
+  "full_vcf_pipeline_validated": false,
+  "candidate_promoted": false,
+  "historical_model": "artifacts/task12_large_family_background/empirical_background_v1/model.joblib",
+  "historical_model_sha256": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+  "baseline_model": "artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib",
+  "baseline_model_sha256": "742986c9fe0ae7738732c7350e63d5aaa8985237479c5a050e9b5c1cd797acef",
+  "calibration": [
+    "artifacts/task10_human_calibration/replicate_0.seg",
+    "artifacts/task10_human_calibration/replicate_1.seg",
+    "artifacts/task10_human_calibration/replicate_2.seg",
+    "artifacts/task10_human_calibration/replicate_3.seg",
+    "artifacts/task10_human_calibration/replicate_4.seg",
+    "artifacts/task10_human_calibration/replicate_5.seg"
+  ],
+  "augmentations": 4,
+  "training_seed": 122226,
+  "minimum_cm": 5,
+  "genome_cm": 3346.298892538,
+  "max_iter": 240,
+  "early_stopping": false,
+  "holdout_seeds": [
+    2026114011,
+    2026114012,
+    2026114013,
+    2026114014
+  ],
+  "augmentation_seed": 2026114051,
+  "evaluation_regimes": [
+    {
+      "intensity": 0.55,
+      "pair_heterogeneity": 0.25,
+      "within_bin_shape": 0.75
+    },
+    {
+      "intensity": 0.8,
+      "pair_heterogeneity": 0.35,
+      "within_bin_shape": 1.25
+    },
+    {
+      "intensity": 1.0,
+      "pair_heterogeneity": 0.45,
+      "within_bin_shape": 0.85
+    },
+    {
+      "intensity": 1.2,
+      "pair_heterogeneity": 0.55,
+      "within_bin_shape": 1.15
+    },
+    {
+      "intensity": 1.45,
+      "pair_heterogeneity": 0.65,
+      "within_bin_shape": 1.0
+    }
+  ],
+  "correction_reference_policy": "Training: other five original calibration replicates; holdout: calibration replicate_0 only",
+  "profile_provenance": "Frozen unlabeled empirical profile stored in the historical model; inherited from prior challenge/reference cohorts. No new challenge inputs or public answers used.",
+  "no_selection_on_holdout": true,
+  "model_selection": "Clone historical direct HistGradientBoostingClassifier, disable row-random early stopping, refit once; fixed historical blend 1.0",
+  "holdout_gate": {
+    "mean_exact_gain_min": 0.02,
+    "positive_mean_gain_fraction_by_seed_min": 0.8,
+    "worst_regime_exact_gain_min": -0.01,
+    "mean_meioses_gain_min": -0.005,
+    "comparator": "historical empirical model under the same independent correction reference"
+  },
+  "scientific_limitations": [
+    "Exact pedigree segments with independently added pair background, not a whole-genome founder/VCF model",
+    "Background regimes within each seed are repeated measures, not independent families",
+    "No detector/phasing/topology or full-cohort pair coverage validation",
+    "Probability calibration reported only, not fitted or asserted",
+    "Four fresh pedigree seeds do not establish broad population robustness"
+  ],
+  "source_sha256": {
+    "configs/task10_human_pedigrees.def": "bb83f8d5c6aa432abca356226af14eb9231bd2d569cb766a762d641d240932f4",
+    "experiments/readiness_2026_11_20/task12/run.sbatch": "d074798b98f61918a1a1f4d2ecc049e0acb24aee44e37427dfdfc905b09f86e7",
+    "scripts/fit_human_background_corrected.py": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+    "scripts/fit_human_background_robust.py": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+    "scripts/fit_human_empirical_background.py": "d219b0d8e4b2e0e1464e1d2674ac012e49cbdd9a545f5273b230c21d94725f2f",
+    "scripts/fit_human_family_relationships.py": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+    "scripts/summarize_hapibd_shape.py": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+    "scripts/train_task12_reference_candidate.py": "e8a4b4c98c2e4f1d006b6d25d25751ef261d77bc819d9e00b0de4164223512b9",
+    "scripts/validate_human_background_correction.py": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+    "scripts/validate_task12_reference_candidate.py": "92544275b57a793026fb4170b97952fa8f9ba921e03f03a75e9a7a78e1a0327c",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+    "src/ghist_relatedness/validation.py": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc"
+  },
+  "input_sha256": {
+    "artifacts/task10_human_calibration/replicate_0.seg": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+    "artifacts/task10_human_calibration/replicate_1.seg": "c297c3032aee7d7e2f878fe314505ffca5ee257f5784a13d55ec4c2eb3d3c906",
+    "artifacts/task10_human_calibration/replicate_2.seg": "c129c356c8287c2ffb47c5296c7c898b8a48f2647de4e77798a6abe6e4e0aa18",
+    "artifacts/task10_human_calibration/replicate_3.seg": "3989fc232df744fcdf7b52f1b6cc0e17e7fe847ee274e11d444cac6b3ea2bcb1",
+    "artifacts/task10_human_calibration/replicate_4.seg": "32581c9d7afc4ba5f459a8547a93776623dcfaa4260ccab8e61b37c386902602",
+    "artifacts/task10_human_calibration/replicate_5.seg": "dc6a785cbfdb56bc7c26a35e5c9d59ceb9ed950387f7e47bc33fd5b1e5f36294",
+    "external/ped-sim/ped-sim": "2872021e82936de9815f1e0c28f86f823abdbcdbd4f9fd60d6150ae8da387acd",
+    "external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1",
+    "external/ped-sim/interfere/nu_p_campbell.tsv": "825648443c400c89103295dc0a29804c969164c54e2570a3084403bb778ca1a1"
+  }
+}

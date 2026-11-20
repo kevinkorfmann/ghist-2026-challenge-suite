@@ -6,11 +6,12 @@ import json
 import math
 from pathlib import Path
 
-from ghist_inference.freeze import continuous_prediction
+from ghist_inference.freeze import continuous_prediction, require_projection_convergence
 from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 PARAMETERS = ("generations", "post_growth_scaling")
+PROJECTIONS = (84, 60, 40)
 
 
 def load(path: Path) -> dict:
@@ -66,6 +67,10 @@ def main() -> None:
     calibration = sources["calibration"]
     stress = sources["stress"]
     require_physical_scaling([smoke, grid, calibration, stress])
+    require_projection_convergence(
+        middle.get("by_projection"), "growth fit projections",
+        expected_projections=PROJECTIONS,
+    )
 
     observed = continuous_prediction(middle["median"], PARAMETERS)
     comparison = sources["model_comparison"]
@@ -115,7 +120,7 @@ def main() -> None:
             "model": "exponential growth",
             "spectrum": "unfolded middle-distance noncoding frequency spectrum",
             "distance_from_coding_bp": [1000, 100000],
-            "projections": [84, 60, 40],
+            "projections": list(PROJECTIONS),
             "aggregation": "continuous projection median; no preset rounding",
             "calibration": "identity; no correction",
         },

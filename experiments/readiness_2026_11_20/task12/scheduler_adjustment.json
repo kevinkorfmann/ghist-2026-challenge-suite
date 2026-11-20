@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-11-20T17:11:58.662033+00:00",
+  "job_id": 10850487,
+  "change": "scontrol update JobId=10850487 TimeLimit=00:15:00",
+  "original_limit_minutes": 30,
+  "new_limit_minutes": 15,
+  "scientific_protocol_changed": false,
+  "cpus": 8,
+  "memory_gib": 44,
+  "rationale": "Earlier full empirical fit completed in 2:56 on eight CPUs; four-replicate holdout in 0:54 on four CPUs. Shorter wall-time requests permit scheduler backfill.",
+  "historical_elapsed": {
+    "7828972": "00:02:56",
+    "7829025": "00:00:54"
+  },
+  "historical_peak_rss_kib": {
+    "7828972": null,
+    "7829025": 3898888
+  },
+  "historical_training_rss_note": "Slurm batch MaxRSS 512 KiB is not a credible model-training peak; do not use it as memory evidence."
+}

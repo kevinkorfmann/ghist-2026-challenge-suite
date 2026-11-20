@@ -1,0 +1,1717 @@
+{
+  "component_only": true,
+  "protocol_sha256": "725002be6830bd9455957e182a8d383d4d068defbbbdb01aa78f80135d268f89",
+  "model_sha256": {
+    "historical": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077",
+    "candidate": "84c573b49a0230d5937f5557d0f2780c1f5f0dbafeb614b7dd55360a05a0b1dc"
+  },
+  "split_manifest": {
+    "calibration": [
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_0.seg",
+        "sha256": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_1.seg",
+        "sha256": "c297c3032aee7d7e2f878fe314505ffca5ee257f5784a13d55ec4c2eb3d3c906"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_2.seg",
+        "sha256": "c129c356c8287c2ffb47c5296c7c898b8a48f2647de4e77798a6abe6e4e0aa18"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_3.seg",
+        "sha256": "3989fc232df744fcdf7b52f1b6cc0e17e7fe847ee274e11d444cac6b3ea2bcb1"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_4.seg",
+        "sha256": "32581c9d7afc4ba5f459a8547a93776623dcfaa4260ccab8e61b37c386902602"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10_human_calibration/replicate_5.seg",
+        "sha256": "dc6a785cbfdb56bc7c26a35e5c9d59ceb9ed950387f7e47bc33fd5b1e5f36294"
+      }
+    ],
+    "holdout": [
+      {
+        "path": "artifacts/holdout_2026114011.seg",
+        "sha256": "53ab2781a41a4188d6d1f7422d89c59c2db1d6a04144e78fde7904de31c3b870"
+      },
+      {
+        "path": "artifacts/holdout_2026114012.seg",
+        "sha256": "ac4e3f8cc91438ce3b7102d444871e1c94e1316845a021d4c92447ea2082a680"
+      },
+      {
+        "path": "artifacts/holdout_2026114013.seg",
+        "sha256": "504dc2f7176c275afb8b68e19295c2397a7eeb94fcb46b4523fedf23f2836eef"
+      },
+      {
+        "path": "artifacts/holdout_2026114014.seg",
+        "sha256": "fe5d0df7974586787b24f7c5113f625b626ddbc0c9974f99efc5aae4b872906b"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "seed": 2026114011,
+      "regime": {
+        "intensity": 0.55,
+        "pair_heterogeneity": 0.25,
+        "within_bin_shape": 0.75
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.39131072948774404,
+          "balanced_accuracy": 0.38957853177546925,
+          "meioses_accuracy": 0.565242917950976,
+          "ece_10_equal_width_bins": 0.015141189382560684,
+          "multiclass_brier_sum": 0.6568671499114226,
+          "negative_log_likelihood": 1.4416063645877673,
+          "recall_by_label": {
+            "avuncular": 0.99,
+            "avuncular_once_removed": 0.524,
+            "avuncular_twice_removed": 0.432,
+            "full_1st_cousin": 0.588,
+            "full_1st_cousin_once_removed": 0.42,
+            "full_1st_cousin_thrice_removed": 0.10220440881763528,
+            "full_1st_cousin_twice_removed": 0.246,
+            "full_2nd_cousin": 0.264,
+            "full_2nd_cousin_once_removed": 0.098,
+            "full_2nd_cousin_twice_removed": 0.12090163934426229,
+            "full_3rd_cousin": 0.08704453441295547,
+            "full_3rd_cousin_once_removed": 0.13808463251670378,
+            "full_4th_cousin": 0.44386422976501305,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "b3f78cf1a29d7437562e65120599cbd7ab7ede3b8b3c8f31bb0692f08e73900f"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.38221047996477325,
+          "balanced_accuracy": 0.3804195277048283,
+          "meioses_accuracy": 0.562160575370615,
+          "ece_10_equal_width_bins": 0.02947071403249252,
+          "multiclass_brier_sum": 0.6586603695756591,
+          "negative_log_likelihood": 1.446344831637605,
+          "recall_by_label": {
+            "avuncular": 0.99,
+            "avuncular_once_removed": 0.486,
+            "avuncular_twice_removed": 0.446,
+            "full_1st_cousin": 0.56,
+            "full_1st_cousin_once_removed": 0.406,
+            "full_1st_cousin_thrice_removed": 0.10821643286573146,
+            "full_1st_cousin_twice_removed": 0.218,
+            "full_2nd_cousin": 0.224,
+            "full_2nd_cousin_once_removed": 0.118,
+            "full_2nd_cousin_twice_removed": 0.11885245901639344,
+            "full_3rd_cousin": 0.0708502024291498,
+            "full_3rd_cousin_once_removed": 0.16481069042316257,
+            "full_4th_cousin": 0.4151436031331593,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "3041167e7bd94e7f53fa8093aed58c48566a637df613b60ac82ddfc5212adcd7"
+        }
+      }
+    },
+    {
+      "seed": 2026114011,
+      "regime": {
+        "intensity": 0.8,
+        "pair_heterogeneity": 0.35,
+        "within_bin_shape": 1.25
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.3916042859239689,
+          "balanced_accuracy": 0.3913859726186327,
+          "meioses_accuracy": 0.5552619991193307,
+          "ece_10_equal_width_bins": 0.016485392448839276,
+          "multiclass_brier_sum": 0.660304888204989,
+          "negative_log_likelihood": 1.458995103381511,
+          "recall_by_label": {
+            "avuncular": 0.99,
+            "avuncular_once_removed": 0.526,
+            "avuncular_twice_removed": 0.416,
+            "full_1st_cousin": 0.56,
+            "full_1st_cousin_once_removed": 0.432,
+            "full_1st_cousin_thrice_removed": 0.11623246492985972,
+            "full_1st_cousin_twice_removed": 0.252,
+            "full_2nd_cousin": 0.212,
+            "full_2nd_cousin_once_removed": 0.082,
+            "full_2nd_cousin_twice_removed": 0.13729508196721313,
+            "full_3rd_cousin": 0.06680161943319839,
+            "full_3rd_cousin_once_removed": 0.1714922048997773,
+            "full_4th_cousin": 0.5195822454308094,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "dc50331688840fb3e6796f6dcc365b7a484d61659e7479f4b92d44c6a5f27983"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.3857331571994716,
+          "balanced_accuracy": 0.3851696120802822,
+          "meioses_accuracy": 0.5540877733744313,
+          "ece_10_equal_width_bins": 0.024071287715808194,
+          "multiclass_brier_sum": 0.6615019789909558,
+          "negative_log_likelihood": 1.4643579371493733,
+          "recall_by_label": {
+            "avuncular": 0.988,
+            "avuncular_once_removed": 0.532,
+            "avuncular_twice_removed": 0.392,
+            "full_1st_cousin": 0.566,
+            "full_1st_cousin_once_removed": 0.418,
+            "full_1st_cousin_thrice_removed": 0.10020040080160321,
+            "full_1st_cousin_twice_removed": 0.21,
+            "full_2nd_cousin": 0.232,
+            "full_2nd_cousin_once_removed": 0.082,
+            "full_2nd_cousin_twice_removed": 0.1290983606557377,
+            "full_3rd_cousin": 0.06275303643724696,
+            "full_3rd_cousin_once_removed": 0.2071269487750557,
+            "full_4th_cousin": 0.4751958224543081,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "db21291092f1e1fe83a140d03ad37585e7eadf346b3b4936f69f74b08475eb48"
+        }
+      }
+    },
+    {
+      "seed": 2026114011,
+      "regime": {
+        "intensity": 1.0,
+        "pair_heterogeneity": 0.45,
+        "within_bin_shape": 0.85
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.37677968589461325,
+          "balanced_accuracy": 0.3769957639087738,
+          "meioses_accuracy": 0.5370615000733892,
+          "ece_10_equal_width_bins": 0.02343047687352296,
+          "multiclass_brier_sum": 0.6688633065466953,
+          "negative_log_likelihood": 1.4925866232005738,
+          "recall_by_label": {
+            "avuncular": 0.984,
+            "avuncular_once_removed": 0.544,
+            "avuncular_twice_removed": 0.412,
+            "full_1st_cousin": 0.516,
+            "full_1st_cousin_once_removed": 0.372,
+            "full_1st_cousin_thrice_removed": 0.10821643286573146,
+            "full_1st_cousin_twice_removed": 0.268,
+            "full_2nd_cousin": 0.152,
+            "full_2nd_cousin_once_removed": 0.064,
+            "full_2nd_cousin_twice_removed": 0.1168032786885246,
+            "full_3rd_cousin": 0.03441295546558704,
+            "full_3rd_cousin_once_removed": 0.1915367483296214,
+            "full_4th_cousin": 0.5169712793733682,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "2bfcd1732276991c7af438dd6d97fbdc6ecd659e7105b6937151176c9c13b365"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.3808894760017613,
+          "balanced_accuracy": 0.3808290383459799,
+          "meioses_accuracy": 0.5398502862175253,
+          "ece_10_equal_width_bins": 0.024488985095528274,
+          "multiclass_brier_sum": 0.6692592795969144,
+          "negative_log_likelihood": 1.4953172126925158,
+          "recall_by_label": {
+            "avuncular": 0.976,
+            "avuncular_once_removed": 0.564,
+            "avuncular_twice_removed": 0.386,
+            "full_1st_cousin": 0.528,
+            "full_1st_cousin_once_removed": 0.38,
+            "full_1st_cousin_thrice_removed": 0.12024048096192384,
+            "full_1st_cousin_twice_removed": 0.204,
+            "full_2nd_cousin": 0.192,
+            "full_2nd_cousin_once_removed": 0.072,
+            "full_2nd_cousin_twice_removed": 0.1290983606557377,
+            "full_3rd_cousin": 0.058704453441295545,
+            "full_3rd_cousin_once_removed": 0.24053452115812918,
+            "full_4th_cousin": 0.4830287206266319,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "44fca073695adb5fd1178157056e73b0bdc2652ba933cfcc34ecacc25e7eb909"
+        }
+      }
+    },
+    {
+      "seed": 2026114011,
+      "regime": {
+        "intensity": 1.2,
+        "pair_heterogeneity": 0.55,
+        "within_bin_shape": 1.15
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.37178922647879054,
+          "balanced_accuracy": 0.37268672495888966,
+          "meioses_accuracy": 0.5304564802583297,
+          "ece_10_equal_width_bins": 0.027092848491199098,
+          "multiclass_brier_sum": 0.6722521887768782,
+          "negative_log_likelihood": 1.5041994237181981,
+          "recall_by_label": {
+            "avuncular": 0.974,
+            "avuncular_once_removed": 0.536,
+            "avuncular_twice_removed": 0.388,
+            "full_1st_cousin": 0.488,
+            "full_1st_cousin_once_removed": 0.384,
+            "full_1st_cousin_thrice_removed": 0.0841683366733467,
+            "full_1st_cousin_twice_removed": 0.232,
+            "full_2nd_cousin": 0.198,
+            "full_2nd_cousin_once_removed": 0.062,
+            "full_2nd_cousin_twice_removed": 0.11475409836065574,
+            "full_3rd_cousin": 0.03643724696356275,
+            "full_3rd_cousin_once_removed": 0.15367483296213807,
+            "full_4th_cousin": 0.566579634464752,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "4758cfada109e410cab62b35571776be96996644c0075c5e20e4e1274008079e"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.37545868193160137,
+          "balanced_accuracy": 0.37527073991120175,
+          "meioses_accuracy": 0.5317774842213415,
+          "ece_10_equal_width_bins": 0.03083883126629222,
+          "multiclass_brier_sum": 0.6729594262816612,
+          "negative_log_likelihood": 1.5078214995172914,
+          "recall_by_label": {
+            "avuncular": 0.972,
+            "avuncular_once_removed": 0.548,
+            "avuncular_twice_removed": 0.392,
+            "full_1st_cousin": 0.498,
+            "full_1st_cousin_once_removed": 0.364,
+            "full_1st_cousin_thrice_removed": 0.09218436873747494,
+            "full_1st_cousin_twice_removed": 0.21,
+            "full_2nd_cousin": 0.232,
+            "full_2nd_cousin_once_removed": 0.088,
+            "full_2nd_cousin_twice_removed": 0.10860655737704918,
+            "full_3rd_cousin": 0.07489878542510121,
+            "full_3rd_cousin_once_removed": 0.18262806236080179,
+            "full_4th_cousin": 0.4934725848563969,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "c5e985167e70f8cdf37c6785fce328a3b2becf80012c8a07ebc383c662b6bbb3"
+        }
+      }
+    },
+    {
+      "seed": 2026114011,
+      "regime": {
+        "intensity": 1.45,
+        "pair_heterogeneity": 0.65,
+        "within_bin_shape": 1.0
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.3657713195361808,
+          "balanced_accuracy": 0.36732553099721627,
+          "meioses_accuracy": 0.5209158960810216,
+          "ece_10_equal_width_bins": 0.0336757986184747,
+          "multiclass_brier_sum": 0.6770115559231885,
+          "negative_log_likelihood": 1.5251773902567631,
+          "recall_by_label": {
+            "avuncular": 0.974,
+            "avuncular_once_removed": 0.526,
+            "avuncular_twice_removed": 0.42,
+            "full_1st_cousin": 0.498,
+            "full_1st_cousin_once_removed": 0.348,
+            "full_1st_cousin_thrice_removed": 0.08617234468937876,
+            "full_1st_cousin_twice_removed": 0.184,
+            "full_2nd_cousin": 0.148,
+            "full_2nd_cousin_once_removed": 0.054,
+            "full_2nd_cousin_twice_removed": 0.08811475409836066,
+            "full_3rd_cousin": 0.0465587044534413,
+            "full_3rd_cousin_once_removed": 0.18485523385300667,
+            "full_4th_cousin": 0.5848563968668408,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "bd7bd07f1d144c68ee1f4a763fab2b0c280b01d7a949954faca01aa7102ac9d9"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.36400998091883163,
+          "balanced_accuracy": 0.3648659032315316,
+          "meioses_accuracy": 0.5185674445912226,
+          "ece_10_equal_width_bins": 0.04459134230673747,
+          "multiclass_brier_sum": 0.6801725274715799,
+          "negative_log_likelihood": 1.5333722238918621,
+          "recall_by_label": {
+            "avuncular": 0.974,
+            "avuncular_once_removed": 0.516,
+            "avuncular_twice_removed": 0.374,
+            "full_1st_cousin": 0.48,
+            "full_1st_cousin_once_removed": 0.34,
+            "full_1st_cousin_thrice_removed": 0.08617234468937876,
+            "full_1st_cousin_twice_removed": 0.19,
+            "full_2nd_cousin": 0.2,
+            "full_2nd_cousin_once_removed": 0.064,
+            "full_2nd_cousin_twice_removed": 0.08811475409836066,
+            "full_3rd_cousin": 0.06275303643724696,
+            "full_3rd_cousin_once_removed": 0.20044543429844097,
+            "full_4th_cousin": 0.5326370757180157,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "db8d209b4bf1c6105d901edb5a245e58647e9c584b71ecdce1f3685ad29f4ed3"
+        }
+      }
+    },
+    {
+      "seed": 2026114012,
+      "regime": {
+        "intensity": 0.55,
+        "pair_heterogeneity": 0.25,
+        "within_bin_shape": 0.75
+      },
+      "models": {
+        "historical": {
+          "pairs": 6783,
+          "accuracy": 0.3955476927613151,
+          "balanced_accuracy": 0.39461201175414223,
+          "meioses_accuracy": 0.5667108948842695,
+          "ece_10_equal_width_bins": 0.009192714264782369,
+          "multiclass_brier_sum": 0.6563743100073401,
+          "negative_log_likelihood": 1.4453615554045702,
+          "recall_by_label": {
+            "avuncular": 0.982,
+            "avuncular_once_removed": 0.48,
+            "avuncular_twice_removed": 0.416,
+            "full_1st_cousin": 0.614,
+            "full_1st_cousin_once_removed": 0.426,
+            "full_1st_cousin_thrice_removed": 0.1,
+            "full_1st_cousin_twice_removed": 0.296,
+            "full_2nd_cousin": 0.248,
+            "full_2nd_cousin_once_removed": 0.09418837675350701,
+            "full_2nd_cousin_twice_removed": 0.13414634146341464,
+            "full_3rd_cousin": 0.13737373737373737,
+            "full_3rd_cousin_once_removed": 0.1210762331838565,
+            "full_4th_cousin": 0.4757834757834758,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "0f9f2eb29b4659312ba7b877027ef19291505dc21849c49ceece8e87694b3af8"
+        },
+        "candidate": {
+          "pairs": 6783,
+          "accuracy": 0.39333628188117353,
+          "balanced_accuracy": 0.3922750153389102,
+          "meioses_accuracy": 0.5646469113961374,
+          "ece_10_equal_width_bins": 0.01910739351796618,
+          "multiclass_brier_sum": 0.6580655546142962,
+          "negative_log_likelihood": 1.449122355171968,
+          "recall_by_label": {
+            "avuncular": 0.978,
+            "avuncular_once_removed": 0.478,
+            "avuncular_twice_removed": 0.406,
+            "full_1st_cousin": 0.596,
+            "full_1st_cousin_once_removed": 0.416,
+            "full_1st_cousin_thrice_removed": 0.128,
+            "full_1st_cousin_twice_removed": 0.244,
+            "full_2nd_cousin": 0.26,
+            "full_2nd_cousin_once_removed": 0.10420841683366733,
+            "full_2nd_cousin_twice_removed": 0.1443089430894309,
+            "full_3rd_cousin": 0.11515151515151516,
+            "full_3rd_cousin_once_removed": 0.17488789237668162,
+            "full_4th_cousin": 0.4472934472934473,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "1af1d3097ca28845dddbc54da78dd9f830d8c775aaade5bf8f47422ff4a5c4d7"
+        }
+      }
+    },
+    {
+      "seed": 2026114012,
+      "regime": {
+        "intensity": 0.8,
+        "pair_heterogeneity": 0.35,
+        "within_bin_shape": 1.25
+      },
+      "models": {
+        "historical": {
+          "pairs": 6783,
+          "accuracy": 0.3836060740085508,
+          "balanced_accuracy": 0.38369206216796153,
+          "meioses_accuracy": 0.541795665634675,
+          "ece_10_equal_width_bins": 0.016978153504277737,
+          "multiclass_brier_sum": 0.6664275390298584,
+          "negative_log_likelihood": 1.483169239871125,
+          "recall_by_label": {
+            "avuncular": 0.986,
+            "avuncular_once_removed": 0.502,
+            "avuncular_twice_removed": 0.416,
+            "full_1st_cousin": 0.56,
+            "full_1st_cousin_once_removed": 0.404,
+            "full_1st_cousin_thrice_removed": 0.122,
+            "full_1st_cousin_twice_removed": 0.248,
+            "full_2nd_cousin": 0.224,
+            "full_2nd_cousin_once_removed": 0.06012024048096192,
+            "full_2nd_cousin_twice_removed": 0.14634146341463414,
+            "full_3rd_cousin": 0.06666666666666667,
+            "full_3rd_cousin_once_removed": 0.13228699551569506,
+            "full_4th_cousin": 0.5042735042735043,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "d6fe20f7754e486d42db9ffdf0f555a4eae9d55a37b062718240295c0565279e"
+        },
+        "candidate": {
+          "pairs": 6783,
+          "accuracy": 0.3822792274804659,
+          "balanced_accuracy": 0.38187303732358885,
+          "meioses_accuracy": 0.5406162464985994,
+          "ece_10_equal_width_bins": 0.022189369050053205,
+          "multiclass_brier_sum": 0.6690271050332538,
+          "negative_log_likelihood": 1.4890190434374306,
+          "recall_by_label": {
+            "avuncular": 0.982,
+            "avuncular_once_removed": 0.488,
+            "avuncular_twice_removed": 0.374,
+            "full_1st_cousin": 0.58,
+            "full_1st_cousin_once_removed": 0.408,
+            "full_1st_cousin_thrice_removed": 0.124,
+            "full_1st_cousin_twice_removed": 0.212,
+            "full_2nd_cousin": 0.258,
+            "full_2nd_cousin_once_removed": 0.0781563126252505,
+            "full_2nd_cousin_twice_removed": 0.1443089430894309,
+            "full_3rd_cousin": 0.048484848484848485,
+            "full_3rd_cousin_once_removed": 0.1905829596412556,
+            "full_4th_cousin": 0.4586894586894587,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "039c3420d2690c35d307e0c24b90a7eff4b868542d0659df06b9bd5c9b3723c0"
+        }
+      }
+    },
+    {
+      "seed": 2026114012,
+      "regime": {
+        "intensity": 1.0,
+        "pair_heterogeneity": 0.45,
+        "within_bin_shape": 0.85
+      },
+      "models": {
+        "historical": {
+          "pairs": 6783,
+          "accuracy": 0.372843874391862,
+          "balanced_accuracy": 0.3746207425280521,
+          "meioses_accuracy": 0.5292643373138729,
+          "ece_10_equal_width_bins": 0.02563500901645864,
+          "multiclass_brier_sum": 0.6732073902623238,
+          "negative_log_likelihood": 1.5052401834528948,
+          "recall_by_label": {
+            "avuncular": 0.974,
+            "avuncular_once_removed": 0.494,
+            "avuncular_twice_removed": 0.402,
+            "full_1st_cousin": 0.54,
+            "full_1st_cousin_once_removed": 0.33,
+            "full_1st_cousin_thrice_removed": 0.118,
+            "full_1st_cousin_twice_removed": 0.224,
+            "full_2nd_cousin": 0.19,
+            "full_2nd_cousin_once_removed": 0.08016032064128256,
+            "full_2nd_cousin_twice_removed": 0.12398373983739837,
+            "full_3rd_cousin": 0.046464646464646465,
+            "full_3rd_cousin_once_removed": 0.16367713004484305,
+            "full_4th_cousin": 0.5584045584045584,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "ec413a1e84bf79f9a78599d8abe383bf108f1191e8d28369f7b40c6e910fcc21"
+        },
+        "candidate": {
+          "pairs": 6783,
+          "accuracy": 0.3703376087277016,
+          "balanced_accuracy": 0.37089625749166816,
+          "meioses_accuracy": 0.5285272003538257,
+          "ece_10_equal_width_bins": 0.03286152214504675,
+          "multiclass_brier_sum": 0.6743028694533544,
+          "negative_log_likelihood": 1.5104150945205312,
+          "recall_by_label": {
+            "avuncular": 0.976,
+            "avuncular_once_removed": 0.522,
+            "avuncular_twice_removed": 0.364,
+            "full_1st_cousin": 0.536,
+            "full_1st_cousin_once_removed": 0.324,
+            "full_1st_cousin_thrice_removed": 0.11,
+            "full_1st_cousin_twice_removed": 0.2,
+            "full_2nd_cousin": 0.212,
+            "full_2nd_cousin_once_removed": 0.07014028056112225,
+            "full_2nd_cousin_twice_removed": 0.11382113821138211,
+            "full_3rd_cousin": 0.0707070707070707,
+            "full_3rd_cousin_once_removed": 0.21524663677130046,
+            "full_4th_cousin": 0.47863247863247865,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "13c8536a1bcabd5c8e1b3663f8c03549fe02b216eed4ae8ee5c1cda09d7ade3a"
+        }
+      }
+    },
+    {
+      "seed": 2026114012,
+      "regime": {
+        "intensity": 1.2,
+        "pair_heterogeneity": 0.55,
+        "within_bin_shape": 1.15
+      },
+      "models": {
+        "historical": {
+          "pairs": 6783,
+          "accuracy": 0.36886333480760725,
+          "balanced_accuracy": 0.36918119611474715,
+          "meioses_accuracy": 0.5204186937933067,
+          "ece_10_equal_width_bins": 0.027863572038601202,
+          "multiclass_brier_sum": 0.6741282051874414,
+          "negative_log_likelihood": 1.5204042679035312,
+          "recall_by_label": {
+            "avuncular": 0.97,
+            "avuncular_once_removed": 0.504,
+            "avuncular_twice_removed": 0.378,
+            "full_1st_cousin": 0.526,
+            "full_1st_cousin_once_removed": 0.356,
+            "full_1st_cousin_thrice_removed": 0.106,
+            "full_1st_cousin_twice_removed": 0.26,
+            "full_2nd_cousin": 0.2,
+            "full_2nd_cousin_once_removed": 0.050100200400801605,
+            "full_2nd_cousin_twice_removed": 0.1402439024390244,
+            "full_3rd_cousin": 0.04242424242424243,
+            "full_3rd_cousin_once_removed": 0.14573991031390135,
+            "full_4th_cousin": 0.49002849002849,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "a52322a8e93d4ba1f7d1f80f50952be2d406058f26784e20a8e0cbcd1dbb90f7"
+        },
+        "candidate": {
+          "pairs": 6783,
+          "accuracy": 0.3690107621996167,
+          "balanced_accuracy": 0.3687750458900704,
+          "meioses_accuracy": 0.52218782249742,
+          "ece_10_equal_width_bins": 0.0353892839506819,
+          "multiclass_brier_sum": 0.6760330166706774,
+          "negative_log_likelihood": 1.525634935942501,
+          "recall_by_label": {
+            "avuncular": 0.962,
+            "avuncular_once_removed": 0.484,
+            "avuncular_twice_removed": 0.37,
+            "full_1st_cousin": 0.516,
+            "full_1st_cousin_once_removed": 0.36,
+            "full_1st_cousin_thrice_removed": 0.124,
+            "full_1st_cousin_twice_removed": 0.236,
+            "full_2nd_cousin": 0.204,
+            "full_2nd_cousin_once_removed": 0.08216432865731463,
+            "full_2nd_cousin_twice_removed": 0.13008130081300814,
+            "full_3rd_cousin": 0.06060606060606061,
+            "full_3rd_cousin_once_removed": 0.18385650224215247,
+            "full_4th_cousin": 0.45014245014245013,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "9c6a34e2215fcd43968cacb6abaffd49d5646db417a345f39f1427ad3b5bfd40"
+        }
+      }
+    },
+    {
+      "seed": 2026114012,
+      "regime": {
+        "intensity": 1.45,
+        "pair_heterogeneity": 0.65,
+        "within_bin_shape": 1.0
+      },
+      "models": {
+        "historical": {
+          "pairs": 6783,
+          "accuracy": 0.36045997346306946,
+          "balanced_accuracy": 0.3625790208870358,
+          "meioses_accuracy": 0.5068553737284387,
+          "ece_10_equal_width_bins": 0.03687749330969509,
+          "multiclass_brier_sum": 0.6811347346746854,
+          "negative_log_likelihood": 1.5494295212982487,
+          "recall_by_label": {
+            "avuncular": 0.972,
+            "avuncular_once_removed": 0.512,
+            "avuncular_twice_removed": 0.368,
+            "full_1st_cousin": 0.514,
+            "full_1st_cousin_once_removed": 0.326,
+            "full_1st_cousin_thrice_removed": 0.09,
+            "full_1st_cousin_twice_removed": 0.21,
+            "full_2nd_cousin": 0.148,
+            "full_2nd_cousin_once_removed": 0.04609218436873747,
+            "full_2nd_cousin_twice_removed": 0.10569105691056911,
+            "full_3rd_cousin": 0.06060606060606061,
+            "full_3rd_cousin_once_removed": 0.1681614349775785,
+            "full_4th_cousin": 0.5555555555555556,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "15d26387e94fffd6473663cbd6bb9f5fbeb591ab06557eff0aeed90672b7e68f"
+        },
+        "candidate": {
+          "pairs": 6783,
+          "accuracy": 0.3558897243107769,
+          "balanced_accuracy": 0.35638657469070917,
+          "meioses_accuracy": 0.5030222615361934,
+          "ece_10_equal_width_bins": 0.05028448484791947,
+          "multiclass_brier_sum": 0.6861421258776971,
+          "negative_log_likelihood": 1.5633390369083928,
+          "recall_by_label": {
+            "avuncular": 0.958,
+            "avuncular_once_removed": 0.498,
+            "avuncular_twice_removed": 0.362,
+            "full_1st_cousin": 0.52,
+            "full_1st_cousin_once_removed": 0.322,
+            "full_1st_cousin_thrice_removed": 0.098,
+            "full_1st_cousin_twice_removed": 0.192,
+            "full_2nd_cousin": 0.158,
+            "full_2nd_cousin_once_removed": 0.06813627254509018,
+            "full_2nd_cousin_twice_removed": 0.09349593495934959,
+            "full_3rd_cousin": 0.06868686868686869,
+            "full_3rd_cousin_once_removed": 0.18385650224215247,
+            "full_4th_cousin": 0.4672364672364672,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6783,
+            "individuals": 13566,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "e6c9c8d40b576a27cf32ca1ca7cfa8164484fba2b095005d25866206a26a9919"
+        }
+      }
+    },
+    {
+      "seed": 2026114013,
+      "regime": {
+        "intensity": 0.55,
+        "pair_heterogeneity": 0.25,
+        "within_bin_shape": 0.75
+      },
+      "models": {
+        "historical": {
+          "pairs": 6803,
+          "accuracy": 0.38394825812141703,
+          "balanced_accuracy": 0.38303271433632846,
+          "meioses_accuracy": 0.5613699838306629,
+          "ece_10_equal_width_bins": 0.01998816262008023,
+          "multiclass_brier_sum": 0.661767994274427,
+          "negative_log_likelihood": 1.4625654466377658,
+          "recall_by_label": {
+            "avuncular": 0.978,
+            "avuncular_once_removed": 0.486,
+            "avuncular_twice_removed": 0.382,
+            "full_1st_cousin": 0.556,
+            "full_1st_cousin_once_removed": 0.43,
+            "full_1st_cousin_thrice_removed": 0.092,
+            "full_1st_cousin_twice_removed": 0.262,
+            "full_2nd_cousin": 0.238,
+            "full_2nd_cousin_once_removed": 0.0841683366733467,
+            "full_2nd_cousin_twice_removed": 0.15010141987829614,
+            "full_3rd_cousin": 0.09979633401221996,
+            "full_3rd_cousin_once_removed": 0.13808463251670378,
+            "full_4th_cousin": 0.46630727762803237,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "0d8bd59d5de74fe382faee7f8ac8e6f249129e94e68cad7edfb26ca77202b27e"
+        },
+        "candidate": {
+          "pairs": 6803,
+          "accuracy": 0.3851242099073938,
+          "balanced_accuracy": 0.3840877160189247,
+          "meioses_accuracy": 0.5646038512420991,
+          "ece_10_equal_width_bins": 0.024572294501776448,
+          "multiclass_brier_sum": 0.6628063116362536,
+          "negative_log_likelihood": 1.468961638324402,
+          "recall_by_label": {
+            "avuncular": 0.98,
+            "avuncular_once_removed": 0.468,
+            "avuncular_twice_removed": 0.362,
+            "full_1st_cousin": 0.556,
+            "full_1st_cousin_once_removed": 0.424,
+            "full_1st_cousin_thrice_removed": 0.136,
+            "full_1st_cousin_twice_removed": 0.264,
+            "full_2nd_cousin": 0.244,
+            "full_2nd_cousin_once_removed": 0.08216432865731463,
+            "full_2nd_cousin_twice_removed": 0.15010141987829614,
+            "full_3rd_cousin": 0.08757637474541752,
+            "full_3rd_cousin_once_removed": 0.1759465478841871,
+            "full_4th_cousin": 0.4474393530997305,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "0b0b18dd0054df875163c1cc3cfcf4b2568d939e695543bde552768a700fab93"
+        }
+      }
+    },
+    {
+      "seed": 2026114013,
+      "regime": {
+        "intensity": 0.8,
+        "pair_heterogeneity": 0.35,
+        "within_bin_shape": 1.25
+      },
+      "models": {
+        "historical": {
+          "pairs": 6803,
+          "accuracy": 0.3801264148169925,
+          "balanced_accuracy": 0.3802531922317375,
+          "meioses_accuracy": 0.5431427311480229,
+          "ece_10_equal_width_bins": 0.018871220464669235,
+          "multiclass_brier_sum": 0.6672454525328074,
+          "negative_log_likelihood": 1.481982605828634,
+          "recall_by_label": {
+            "avuncular": 0.98,
+            "avuncular_once_removed": 0.506,
+            "avuncular_twice_removed": 0.358,
+            "full_1st_cousin": 0.548,
+            "full_1st_cousin_once_removed": 0.408,
+            "full_1st_cousin_thrice_removed": 0.128,
+            "full_1st_cousin_twice_removed": 0.25,
+            "full_2nd_cousin": 0.202,
+            "full_2nd_cousin_once_removed": 0.08817635270541083,
+            "full_2nd_cousin_twice_removed": 0.12373225152129817,
+            "full_3rd_cousin": 0.06313645621181263,
+            "full_3rd_cousin_once_removed": 0.15367483296213807,
+            "full_4th_cousin": 0.5148247978436657,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "96e03ffa71aaae36047fc0abf0bba67b27f10e9111b5481586432a5d4a0626f8"
+        },
+        "candidate": {
+          "pairs": 6803,
+          "accuracy": 0.3721887402616493,
+          "balanced_accuracy": 0.371664371421976,
+          "meioses_accuracy": 0.5419667793620462,
+          "ece_10_equal_width_bins": 0.032337613416787425,
+          "multiclass_brier_sum": 0.6693307405813294,
+          "negative_log_likelihood": 1.4909698958221353,
+          "recall_by_label": {
+            "avuncular": 0.976,
+            "avuncular_once_removed": 0.468,
+            "avuncular_twice_removed": 0.316,
+            "full_1st_cousin": 0.562,
+            "full_1st_cousin_once_removed": 0.408,
+            "full_1st_cousin_thrice_removed": 0.114,
+            "full_1st_cousin_twice_removed": 0.234,
+            "full_2nd_cousin": 0.224,
+            "full_2nd_cousin_once_removed": 0.09819639278557114,
+            "full_2nd_cousin_twice_removed": 0.11156186612576065,
+            "full_3rd_cousin": 0.07331975560081466,
+            "full_3rd_cousin_once_removed": 0.1492204899777283,
+            "full_4th_cousin": 0.46900269541778977,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "42e94fed6dfb676aec59e9efa8df8c0e6d46fa5a6815b9836058c6b4dcb8328e"
+        }
+      }
+    },
+    {
+      "seed": 2026114013,
+      "regime": {
+        "intensity": 1.0,
+        "pair_heterogeneity": 0.45,
+        "within_bin_shape": 0.85
+      },
+      "models": {
+        "historical": {
+          "pairs": 6803,
+          "accuracy": 0.3760105835660738,
+          "balanced_accuracy": 0.3776844705192639,
+          "meioses_accuracy": 0.5377039541378803,
+          "ece_10_equal_width_bins": 0.021225592957487154,
+          "multiclass_brier_sum": 0.6735068243650875,
+          "negative_log_likelihood": 1.513465608674318,
+          "recall_by_label": {
+            "avuncular": 0.982,
+            "avuncular_once_removed": 0.49,
+            "avuncular_twice_removed": 0.408,
+            "full_1st_cousin": 0.516,
+            "full_1st_cousin_once_removed": 0.352,
+            "full_1st_cousin_thrice_removed": 0.098,
+            "full_1st_cousin_twice_removed": 0.256,
+            "full_2nd_cousin": 0.196,
+            "full_2nd_cousin_once_removed": 0.06813627254509018,
+            "full_2nd_cousin_twice_removed": 0.10344827586206896,
+            "full_3rd_cousin": 0.04073319755600815,
+            "full_3rd_cousin_once_removed": 0.20044543429844097,
+            "full_4th_cousin": 0.5768194070080862,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "105549573f366fc650504af7dcbb4a3d1471347b535b48416b8ac3556d9d4f11"
+        },
+        "candidate": {
+          "pairs": 6803,
+          "accuracy": 0.36880787887696603,
+          "balanced_accuracy": 0.36945883113895156,
+          "meioses_accuracy": 0.5300602675290313,
+          "ece_10_equal_width_bins": 0.0339656054708852,
+          "multiclass_brier_sum": 0.675460191019673,
+          "negative_log_likelihood": 1.5217110694902523,
+          "recall_by_label": {
+            "avuncular": 0.98,
+            "avuncular_once_removed": 0.5,
+            "avuncular_twice_removed": 0.368,
+            "full_1st_cousin": 0.526,
+            "full_1st_cousin_once_removed": 0.35,
+            "full_1st_cousin_thrice_removed": 0.086,
+            "full_1st_cousin_twice_removed": 0.206,
+            "full_2nd_cousin": 0.208,
+            "full_2nd_cousin_once_removed": 0.08016032064128256,
+            "full_2nd_cousin_twice_removed": 0.09533468559837728,
+            "full_3rd_cousin": 0.059063136456211814,
+            "full_3rd_cousin_once_removed": 0.2071269487750557,
+            "full_4th_cousin": 0.5067385444743935,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "82b8d104d56684fde6b0dd9a8b2cbe4f9132a9a35613e0437de6d3740d046813"
+        }
+      }
+    },
+    {
+      "seed": 2026114013,
+      "regime": {
+        "intensity": 1.2,
+        "pair_heterogeneity": 0.55,
+        "within_bin_shape": 1.15
+      },
+      "models": {
+        "historical": {
+          "pairs": 6803,
+          "accuracy": 0.36954284874320154,
+          "balanced_accuracy": 0.3709812918511274,
+          "meioses_accuracy": 0.5269733940908423,
+          "ece_10_equal_width_bins": 0.02798458427899379,
+          "multiclass_brier_sum": 0.6762829774146574,
+          "negative_log_likelihood": 1.5234778168420802,
+          "recall_by_label": {
+            "avuncular": 0.972,
+            "avuncular_once_removed": 0.506,
+            "avuncular_twice_removed": 0.356,
+            "full_1st_cousin": 0.524,
+            "full_1st_cousin_once_removed": 0.382,
+            "full_1st_cousin_thrice_removed": 0.092,
+            "full_1st_cousin_twice_removed": 0.246,
+            "full_2nd_cousin": 0.162,
+            "full_2nd_cousin_once_removed": 0.06012024048096192,
+            "full_2nd_cousin_twice_removed": 0.1257606490872211,
+            "full_3rd_cousin": 0.05295315682281059,
+            "full_3rd_cousin_once_removed": 0.13808463251670378,
+            "full_4th_cousin": 0.5768194070080862,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "c763353021c7a78e96eed11166c3c6e8c8339b87af6722878f717acfcd594028"
+        },
+        "candidate": {
+          "pairs": 6803,
+          "accuracy": 0.3707188005291783,
+          "balanced_accuracy": 0.37147522732469096,
+          "meioses_accuracy": 0.5272673820373365,
+          "ece_10_equal_width_bins": 0.034329559812416956,
+          "multiclass_brier_sum": 0.6796035667245305,
+          "negative_log_likelihood": 1.5334212212599407,
+          "recall_by_label": {
+            "avuncular": 0.966,
+            "avuncular_once_removed": 0.486,
+            "avuncular_twice_removed": 0.35,
+            "full_1st_cousin": 0.526,
+            "full_1st_cousin_once_removed": 0.36,
+            "full_1st_cousin_thrice_removed": 0.096,
+            "full_1st_cousin_twice_removed": 0.224,
+            "full_2nd_cousin": 0.206,
+            "full_2nd_cousin_once_removed": 0.07615230460921844,
+            "full_2nd_cousin_twice_removed": 0.11764705882352941,
+            "full_3rd_cousin": 0.07535641547861507,
+            "full_3rd_cousin_once_removed": 0.2026726057906459,
+            "full_4th_cousin": 0.5148247978436657,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "12d6320d6fe0738dd4d7975e85f5b5cd4605d37090532ea656f0b362705922da"
+        }
+      }
+    },
+    {
+      "seed": 2026114013,
+      "regime": {
+        "intensity": 1.45,
+        "pair_heterogeneity": 0.65,
+        "within_bin_shape": 1.0
+      },
+      "models": {
+        "historical": {
+          "pairs": 6803,
+          "accuracy": 0.36983683668969575,
+          "balanced_accuracy": 0.37176205784735206,
+          "meioses_accuracy": 0.5183007496692635,
+          "ece_10_equal_width_bins": 0.027798627384464706,
+          "multiclass_brier_sum": 0.68082404621924,
+          "negative_log_likelihood": 1.5444638375138902,
+          "recall_by_label": {
+            "avuncular": 0.958,
+            "avuncular_once_removed": 0.514,
+            "avuncular_twice_removed": 0.36,
+            "full_1st_cousin": 0.496,
+            "full_1st_cousin_once_removed": 0.38,
+            "full_1st_cousin_thrice_removed": 0.116,
+            "full_1st_cousin_twice_removed": 0.238,
+            "full_2nd_cousin": 0.14,
+            "full_2nd_cousin_once_removed": 0.06613226452905811,
+            "full_2nd_cousin_twice_removed": 0.12981744421906694,
+            "full_3rd_cousin": 0.05091649694501019,
+            "full_3rd_cousin_once_removed": 0.16481069042316257,
+            "full_4th_cousin": 0.5929919137466307,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "3b1cf26a8133c5eb5e10e734fd7667dab05f0d54dd3eb51a28d646c3340843f6"
+        },
+        "candidate": {
+          "pairs": 6803,
+          "accuracy": 0.3621931500808467,
+          "balanced_accuracy": 0.36349632712178287,
+          "meioses_accuracy": 0.5169778039100397,
+          "ece_10_equal_width_bins": 0.04302699609600065,
+          "multiclass_brier_sum": 0.6843334600420009,
+          "negative_log_likelihood": 1.5589003836755868,
+          "recall_by_label": {
+            "avuncular": 0.962,
+            "avuncular_once_removed": 0.51,
+            "avuncular_twice_removed": 0.338,
+            "full_1st_cousin": 0.486,
+            "full_1st_cousin_once_removed": 0.362,
+            "full_1st_cousin_thrice_removed": 0.096,
+            "full_1st_cousin_twice_removed": 0.184,
+            "full_2nd_cousin": 0.172,
+            "full_2nd_cousin_once_removed": 0.05811623246492986,
+            "full_2nd_cousin_twice_removed": 0.10344827586206896,
+            "full_3rd_cousin": 0.09368635437881874,
+            "full_3rd_cousin_once_removed": 0.18930957683741648,
+            "full_4th_cousin": 0.5363881401617251,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6803,
+            "individuals": 13606,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "b1cc8d1178634f275d8365e1c18db54af02b0c5cfabed02c35e15a3535328edc"
+        }
+      }
+    },
+    {
+      "seed": 2026114014,
+      "regime": {
+        "intensity": 0.55,
+        "pair_heterogeneity": 0.25,
+        "within_bin_shape": 0.75
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.3847057096726846,
+          "balanced_accuracy": 0.38339120150486006,
+          "meioses_accuracy": 0.5562894466461177,
+          "ece_10_equal_width_bins": 0.01934803987807726,
+          "multiclass_brier_sum": 0.6574348540725345,
+          "negative_log_likelihood": 1.4444720165814706,
+          "recall_by_label": {
+            "avuncular": 0.988,
+            "avuncular_once_removed": 0.514,
+            "avuncular_twice_removed": 0.418,
+            "full_1st_cousin": 0.588,
+            "full_1st_cousin_once_removed": 0.382,
+            "full_1st_cousin_thrice_removed": 0.102,
+            "full_1st_cousin_twice_removed": 0.254,
+            "full_2nd_cousin": 0.234,
+            "full_2nd_cousin_once_removed": 0.102,
+            "full_2nd_cousin_twice_removed": 0.1532258064516129,
+            "full_3rd_cousin": 0.09034907597535935,
+            "full_3rd_cousin_once_removed": 0.11255411255411256,
+            "full_4th_cousin": 0.42934782608695654,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "e25aa1ec3eb058a59a1e8f8bd0d842f28e3af8357e8b6ba782bc6bfba3982cc8"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.3852928225451343,
+          "balanced_accuracy": 0.38391174480608203,
+          "meioses_accuracy": 0.5589314545721414,
+          "ece_10_equal_width_bins": 0.025877518442296025,
+          "multiclass_brier_sum": 0.6589661466919292,
+          "negative_log_likelihood": 1.4509888728322515,
+          "recall_by_label": {
+            "avuncular": 0.988,
+            "avuncular_once_removed": 0.53,
+            "avuncular_twice_removed": 0.416,
+            "full_1st_cousin": 0.59,
+            "full_1st_cousin_once_removed": 0.356,
+            "full_1st_cousin_thrice_removed": 0.102,
+            "full_1st_cousin_twice_removed": 0.232,
+            "full_2nd_cousin": 0.23,
+            "full_2nd_cousin_once_removed": 0.096,
+            "full_2nd_cousin_twice_removed": 0.15120967741935484,
+            "full_3rd_cousin": 0.08008213552361396,
+            "full_3rd_cousin_once_removed": 0.2012987012987013,
+            "full_4th_cousin": 0.40217391304347827,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "451cf335056ef0ed935e466312f4a9413c44c5e7be7552ff493134685d3d1ddf"
+        }
+      }
+    },
+    {
+      "seed": 2026114014,
+      "regime": {
+        "intensity": 0.8,
+        "pair_heterogeneity": 0.35,
+        "within_bin_shape": 1.25
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.3823572581828857,
+          "balanced_accuracy": 0.38381690859337453,
+          "meioses_accuracy": 0.542492294143549,
+          "ece_10_equal_width_bins": 0.019588020732274447,
+          "multiclass_brier_sum": 0.6624496970598895,
+          "negative_log_likelihood": 1.4694127510950667,
+          "recall_by_label": {
+            "avuncular": 0.984,
+            "avuncular_once_removed": 0.508,
+            "avuncular_twice_removed": 0.412,
+            "full_1st_cousin": 0.578,
+            "full_1st_cousin_once_removed": 0.412,
+            "full_1st_cousin_thrice_removed": 0.09,
+            "full_1st_cousin_twice_removed": 0.23,
+            "full_2nd_cousin": 0.208,
+            "full_2nd_cousin_once_removed": 0.072,
+            "full_2nd_cousin_twice_removed": 0.1028225806451613,
+            "full_3rd_cousin": 0.053388090349075976,
+            "full_3rd_cousin_once_removed": 0.15800865800865802,
+            "full_4th_cousin": 0.5652173913043478,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "33a27e0a30b01de7b19e665dd1c2c3cb19a019b6e410659769bf2d9a322f912e"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.38015558491119916,
+          "balanced_accuracy": 0.3808058431436842,
+          "meioses_accuracy": 0.545868193160135,
+          "ece_10_equal_width_bins": 0.024434631847913453,
+          "multiclass_brier_sum": 0.6641853181136756,
+          "negative_log_likelihood": 1.475063059152606,
+          "recall_by_label": {
+            "avuncular": 0.982,
+            "avuncular_once_removed": 0.51,
+            "avuncular_twice_removed": 0.406,
+            "full_1st_cousin": 0.57,
+            "full_1st_cousin_once_removed": 0.37,
+            "full_1st_cousin_thrice_removed": 0.1,
+            "full_1st_cousin_twice_removed": 0.204,
+            "full_2nd_cousin": 0.254,
+            "full_2nd_cousin_once_removed": 0.084,
+            "full_2nd_cousin_twice_removed": 0.10887096774193548,
+            "full_3rd_cousin": 0.0513347022587269,
+            "full_3rd_cousin_once_removed": 0.1774891774891775,
+            "full_4th_cousin": 0.5135869565217391,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "be9dea4318012d1c99691800668efa739a4e93f79148fcd1713cfbab664fd564"
+        }
+      }
+    },
+    {
+      "seed": 2026114014,
+      "regime": {
+        "intensity": 1.0,
+        "pair_heterogeneity": 0.45,
+        "within_bin_shape": 0.85
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.37443123440481435,
+          "balanced_accuracy": 0.37536400697571437,
+          "meioses_accuracy": 0.532951709966241,
+          "ece_10_equal_width_bins": 0.023962472171473008,
+          "multiclass_brier_sum": 0.6713453637169821,
+          "negative_log_likelihood": 1.5042346882017361,
+          "recall_by_label": {
+            "avuncular": 0.984,
+            "avuncular_once_removed": 0.522,
+            "avuncular_twice_removed": 0.424,
+            "full_1st_cousin": 0.534,
+            "full_1st_cousin_once_removed": 0.356,
+            "full_1st_cousin_thrice_removed": 0.096,
+            "full_1st_cousin_twice_removed": 0.216,
+            "full_2nd_cousin": 0.184,
+            "full_2nd_cousin_once_removed": 0.062,
+            "full_2nd_cousin_twice_removed": 0.14112903225806453,
+            "full_3rd_cousin": 0.04106776180698152,
+            "full_3rd_cousin_once_removed": 0.17316017316017315,
+            "full_4th_cousin": 0.5217391304347826,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "8273e7d146d4cad659abb8b2b4baf136a067e09534f2f12b7b850fb07455ee30"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.3625421987377073,
+          "balanced_accuracy": 0.36289439257595235,
+          "meioses_accuracy": 0.5235579040070454,
+          "ece_10_equal_width_bins": 0.04156639925613472,
+          "multiclass_brier_sum": 0.674951289924525,
+          "negative_log_likelihood": 1.514522907284974,
+          "recall_by_label": {
+            "avuncular": 0.984,
+            "avuncular_once_removed": 0.524,
+            "avuncular_twice_removed": 0.392,
+            "full_1st_cousin": 0.502,
+            "full_1st_cousin_once_removed": 0.34,
+            "full_1st_cousin_thrice_removed": 0.08,
+            "full_1st_cousin_twice_removed": 0.202,
+            "full_2nd_cousin": 0.188,
+            "full_2nd_cousin_once_removed": 0.068,
+            "full_2nd_cousin_twice_removed": 0.08266129032258064,
+            "full_3rd_cousin": 0.0513347022587269,
+            "full_3rd_cousin_once_removed": 0.19913419913419914,
+            "full_4th_cousin": 0.4673913043478261,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "203158fc380f6d27f8c5f2adf72f3ae518de9f2f1640ea76d359f9a73a6cf3b7"
+        }
+      }
+    },
+    {
+      "seed": 2026114014,
+      "regime": {
+        "intensity": 1.2,
+        "pair_heterogeneity": 0.55,
+        "within_bin_shape": 1.15
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.36811977102597976,
+          "balanced_accuracy": 0.36897417643107583,
+          "meioses_accuracy": 0.5225304564802583,
+          "ece_10_equal_width_bins": 0.032532073796521316,
+          "multiclass_brier_sum": 0.6748818194784252,
+          "negative_log_likelihood": 1.5140837175488064,
+          "recall_by_label": {
+            "avuncular": 0.974,
+            "avuncular_once_removed": 0.536,
+            "avuncular_twice_removed": 0.4,
+            "full_1st_cousin": 0.522,
+            "full_1st_cousin_once_removed": 0.364,
+            "full_1st_cousin_thrice_removed": 0.09,
+            "full_1st_cousin_twice_removed": 0.194,
+            "full_2nd_cousin": 0.172,
+            "full_2nd_cousin_once_removed": 0.08,
+            "full_2nd_cousin_twice_removed": 0.1028225806451613,
+            "full_3rd_cousin": 0.045174537987679675,
+            "full_3rd_cousin_once_removed": 0.1774891774891775,
+            "full_4th_cousin": 0.5081521739130435,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "ea0d223d96a68b81a10352d3990bd10a51a05ff254c1d208e87367b2ce85cd8e"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.36753265815353003,
+          "balanced_accuracy": 0.36831524271623,
+          "meioses_accuracy": 0.5238514604432702,
+          "ece_10_equal_width_bins": 0.0363511365378209,
+          "multiclass_brier_sum": 0.6785262719832393,
+          "negative_log_likelihood": 1.5242423368446192,
+          "recall_by_label": {
+            "avuncular": 0.978,
+            "avuncular_once_removed": 0.496,
+            "avuncular_twice_removed": 0.374,
+            "full_1st_cousin": 0.506,
+            "full_1st_cousin_once_removed": 0.388,
+            "full_1st_cousin_thrice_removed": 0.08,
+            "full_1st_cousin_twice_removed": 0.206,
+            "full_2nd_cousin": 0.176,
+            "full_2nd_cousin_once_removed": 0.082,
+            "full_2nd_cousin_twice_removed": 0.09274193548387097,
+            "full_3rd_cousin": 0.06776180698151951,
+            "full_3rd_cousin_once_removed": 0.22077922077922077,
+            "full_4th_cousin": 0.4891304347826087,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "767d08658900af440c086fe8a20aeebfa668b4833d0d7a781a2c89a070577cee"
+        }
+      }
+    },
+    {
+      "seed": 2026114014,
+      "regime": {
+        "intensity": 1.45,
+        "pair_heterogeneity": 0.65,
+        "within_bin_shape": 1.0
+      },
+      "models": {
+        "historical": {
+          "pairs": 6813,
+          "accuracy": 0.3596066343754587,
+          "balanced_accuracy": 0.3609134446808828,
+          "meioses_accuracy": 0.5118156465580508,
+          "ece_10_equal_width_bins": 0.037469930405222146,
+          "multiclass_brier_sum": 0.6822544338240224,
+          "negative_log_likelihood": 1.552334934372685,
+          "recall_by_label": {
+            "avuncular": 0.972,
+            "avuncular_once_removed": 0.506,
+            "avuncular_twice_removed": 0.392,
+            "full_1st_cousin": 0.474,
+            "full_1st_cousin_once_removed": 0.336,
+            "full_1st_cousin_thrice_removed": 0.092,
+            "full_1st_cousin_twice_removed": 0.204,
+            "full_2nd_cousin": 0.164,
+            "full_2nd_cousin_once_removed": 0.034,
+            "full_2nd_cousin_twice_removed": 0.10685483870967742,
+            "full_3rd_cousin": 0.07597535934291581,
+            "full_3rd_cousin_once_removed": 0.17965367965367965,
+            "full_4th_cousin": 0.5163043478260869,
+            "siblings": 1.0
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "02c942df818d1a87c22d7bd636b1105e9c1671ba16ca6bf6e4b260ecffc55fc3"
+        },
+        "candidate": {
+          "pairs": 6813,
+          "accuracy": 0.36078086012035815,
+          "balanced_accuracy": 0.36153832969373406,
+          "meioses_accuracy": 0.5079994128871276,
+          "ece_10_equal_width_bins": 0.04606923509503841,
+          "multiclass_brier_sum": 0.6863842403606276,
+          "negative_log_likelihood": 1.5679547358025725,
+          "recall_by_label": {
+            "avuncular": 0.97,
+            "avuncular_once_removed": 0.534,
+            "avuncular_twice_removed": 0.39,
+            "full_1st_cousin": 0.462,
+            "full_1st_cousin_once_removed": 0.344,
+            "full_1st_cousin_thrice_removed": 0.086,
+            "full_1st_cousin_twice_removed": 0.168,
+            "full_2nd_cousin": 0.174,
+            "full_2nd_cousin_once_removed": 0.05,
+            "full_2nd_cousin_twice_removed": 0.09475806451612903,
+            "full_3rd_cousin": 0.0944558521560575,
+            "full_3rd_cousin_once_removed": 0.22077922077922077,
+            "full_4th_cousin": 0.47554347826086957,
+            "siblings": 0.998
+          },
+          "confidence_is_uncalibrated": true,
+          "validation": {
+            "challenge": 12,
+            "dataset": "testing",
+            "format_valid": true,
+            "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+            "pairs": 6813,
+            "individuals": 13626,
+            "input_pair_coverage_verified": true
+          },
+          "output_sha256": "a81c29a9fb831e854310b282a2dc628cea0df30114618ef50db8f039004db5d2"
+        }
+      }
+    }
+  ],
+  "regimes_share_pedigrees": true,
+  "independent_correction_reference": true,
+  "full_vcf_pipeline_validated": false,
+  "public_answers_used": false,
+  "candidate_promoted": false,
+  "submission_count": 0,
+  "mean_exact_gain_by_seed": [
+    -0.0017906942609716703,
+    -0.0020934689665339846,
+    -0.004086432456269296,
+    -0.0025832966387788203
+  ],
+  "mean_exact_gain": -0.0026384730806384427,
+  "mean_meioses_gain": -0.0010512805150457328,
+  "gate": {
+    "mean_exact_gain_at_least_0.02": false,
+    "positive_mean_gain_in_at_least_80pct_seeds": false,
+    "worst_exact_regression_at_most_0.01": false,
+    "mean_meioses_regression_at_most_0.005": true,
+    "passed": false
+  }
+}

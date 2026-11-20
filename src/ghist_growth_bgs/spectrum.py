@@ -75,18 +75,17 @@ def _fit_restart(arguments: tuple) -> dict:
         def model(parameters, sample_sizes):
             return validate_expected_spectrum(function(parameters, sample_sizes), data)
 
-        estimate = np.asarray(
-            moments.Inference.optimize_log_lbfgsb(
-                start,
-                data,
-                model,
-                lower_bound=lower,
-                upper_bound=upper,
-                maxiter=maxiter,
-                verbose=0,
-            ),
-            dtype=np.float64,
+        estimate, _, optimizer_info = moments.Inference.optimize_log_lbfgsb(
+            start,
+            data,
+            model,
+            lower_bound=lower,
+            upper_bound=upper,
+            maxiter=maxiter,
+            verbose=0,
+            full_output=True,
         )
+        estimate = np.asarray(estimate, dtype=np.float64)
         expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
@@ -97,6 +96,13 @@ def _fit_restart(arguments: tuple) -> dict:
                 "estimate": estimate,
                 "likelihood": likelihood,
                 "theta": theta,
+                "optimizer": {
+                    "converged": bool(optimizer_info["warnflag"] == 0),
+                    "warnflag": int(optimizer_info["warnflag"]),
+                    "iterations": int(optimizer_info["nit"]),
+                    "function_calls": int(optimizer_info["funcalls"]),
+                    "message": str(optimizer_info["task"]),
+                },
             }
         return {"ok": False, "restart": restart, "reason": "nonfinite result"}
     except Exception as error:
@@ -181,6 +187,14 @@ def fit_growth_spectrum(
         "theta": float(theta),
         "multinomial_log_likelihood": float(best["likelihood"]),
         "best_restart": int(best["restart"]),
+        "best_restart_converged": best["optimizer"]["converged"],
+        "converged_restarts": sum(
+            row.get("optimizer", {}).get("converged", False) for row in results
+        ),
+        "restart_diagnostics": [
+            {key: value for key, value in row.items() if key != "estimate"}
+            for row in results
+        ],
         "successful_restarts": len(successful),
         "failed_restarts": failures,
         "restarts": restarts,

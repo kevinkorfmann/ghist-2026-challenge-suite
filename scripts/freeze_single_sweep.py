@@ -51,7 +51,7 @@ def validate(
     outside = {
         name: value
         for name, value in candidate["observed_estimates"].items()
-        if not start < value <= end
+        if not start <= value < end
     }
     if outside:
         raise ValueError(f"observed estimators outside candidate interval: {outside}")
@@ -59,7 +59,7 @@ def validate(
     reference_ratio = float(peaks[0]["mu"] / peaks[1]["mu"])
     if reference_ratio < 3.0:
         raise ValueError("reference scan lacks a three-fold separated-peak margin")
-    if not start < raisd["maximum"]["position"] <= end:
+    if not start <= raisd["maximum"]["position"] < end:
         raise ValueError("reference maximum lies outside the candidate interval")
     maximum_hit_score = 1.0 / (1.0 + (end - start) * 1e-5 / 2.0)
     return {

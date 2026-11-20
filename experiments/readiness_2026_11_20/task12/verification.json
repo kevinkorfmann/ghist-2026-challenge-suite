@@ -1,0 +1,68 @@
+{
+  "recorded_at_utc": "2026-11-20T17:16:24.056206+00:00",
+  "status": "FAILED_IMPROVEMENT_GATE",
+  "candidate_promoted": false,
+  "component_only": true,
+  "full_vcf_pipeline_validated": false,
+  "model_sha256": "84c573b49a0230d5937f5557d0f2780c1f5f0dbafeb614b7dd55360a05a0b1dc",
+  "protocol_sha256": "725002be6830bd9455957e182a8d383d4d068defbbbdb01aa78f80135d268f89",
+  "job": {
+    "id": 10850487,
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:02:17",
+    "cpus": 8,
+    "peak_rss_kib": 4075964,
+    "time_limit_minutes": 15
+  },
+  "artifact_location": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task12-20261120/artifacts/task12_reference_v2/model.joblib",
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_task12_reference_candidate.py tests/test_relatedness_scientific_validation.py",
+    "passed": 15
+  },
+  "ruff": "passed",
+  "bash_syntax": "passed",
+  "source_sha256": {
+    "configs/task10_human_pedigrees.def": "bb83f8d5c6aa432abca356226af14eb9231bd2d569cb766a762d641d240932f4",
+    "experiments/readiness_2026_11_20/task12/run.sbatch": "d074798b98f61918a1a1f4d2ecc049e0acb24aee44e37427dfdfc905b09f86e7",
+    "scripts/fit_human_background_corrected.py": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+    "scripts/fit_human_background_robust.py": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+    "scripts/fit_human_empirical_background.py": "d219b0d8e4b2e0e1464e1d2674ac012e49cbdd9a545f5273b230c21d94725f2f",
+    "scripts/fit_human_family_relationships.py": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+    "scripts/summarize_hapibd_shape.py": "aad4c28bc82122794209c6522ce0aa87ee298b56620d28c6f89c3df064ccfa3d",
+    "scripts/train_task12_reference_candidate.py": "e8a4b4c98c2e4f1d006b6d25d25751ef261d77bc819d9e00b0de4164223512b9",
+    "scripts/validate_human_background_correction.py": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+    "scripts/validate_task12_reference_candidate.py": "92544275b57a793026fb4170b97952fa8f9ba921e03f03a75e9a7a78e1a0327c",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+    "src/ghist_relatedness/validation.py": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc"
+  },
+  "frozen_remote_source_verified_at_fit_and_holdout": true,
+  "current_workspace_source_drift_at_recording": {
+    "src/ghist_submission/validate.py": {
+      "frozen_sha256": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc",
+      "current_workspace_sha256": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17"
+    }
+  },
+  "workspace_drift_note": "Concurrent unrelated changes are not part of the frozen experiment; reproduce from the locked Betty snapshot. The original validator/model/protocol hashes were checked again after completion.",
+  "evidence_sha256": {
+    "aggregate.py": "5cca8385cdcc932f7a575b60af4313022988bfee7a6199f14e49dc3bfd857374",
+    "runtime.json": "7cb957e70de2d75f56fe556fa6cf9f26c507a3ca8861793b937d87a9c77137ff",
+    "training.json": "a071a6aeefc1237e3ddee553a275d03eb2bbcc3867c8b5a65104e66456c3e07d",
+    "scheduler_adjustment.json": "80cb390d74fe798791b8aa35ceb575738d296eac449d60133ba3a4bec9a36527",
+    "run.sbatch": "d074798b98f61918a1a1f4d2ecc049e0acb24aee44e37427dfdfc905b09f86e7",
+    "aggregate.json": "f795efe9d43e0bf4aa1a4308cc8c3c84c72f51bd17d8b9a316c793e8fb0a4de9",
+    "slurm_accounting.psv": "dbea213344f56ba63a92afc34e62ace0e14097952da970624a3aab6e9aecf8e8",
+    "protocol.json": "725002be6830bd9455957e182a8d383d4d068defbbbdb01aa78f80135d268f89",
+    "holdout.json": "fd9e8ad64ef18d492833e75e5d8ebc235fde7de4a120c886b53a60fdfbf22fd1"
+  },
+  "challenge_data_runs": false,
+  "final_data_runs": false,
+  "submission_count": 0,
+  "public_answers_used": false,
+  "fixed_model_holdout_generation_order": "Candidate fit completed before four new Ped-sim holdouts were generated"
+}

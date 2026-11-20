@@ -52,6 +52,7 @@ def main():
     }
     result["previous_oracle_estimates"] = old["estimates"]
     result["reanalysis_of_legacy_simulation"] = True
+    result["scan_window_size"] = int(np.max(windows["end"] - windows["start"]))
     result["source_record"] = str(args.record)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, indent=2) + "\n")

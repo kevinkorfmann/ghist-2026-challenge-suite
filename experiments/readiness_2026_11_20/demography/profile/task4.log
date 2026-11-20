@@ -1,0 +1,25 @@
+Timeout (0:00:30)!
+Thread 0x0000e3756f12f720 (most recent call first):
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/sparse/linalg/_dsolve/linsolve.py", line 444 in splu
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/sparse/linalg/_dsolve/linsolve.py", line 653 in factorized
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Integration.py", line 1132 in integrate_nD
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Spectrum_mod.py", line 911 in integrate
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_split_migration_bgs/spectrum.py", line 46 in isolation_with_migration_spectrum
+  File "/home/kkor/ghist-2026-review-20261120/profile_censored.py", line 22 in traced
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_split_migration_bgs/spectrum.py", line 68 in model
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 65 in _object_func
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 93 in _object_func_log
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/_lib/_util.py", line 544 in __call__
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_differentiable_functions.py", line 362 in _update_fun
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_differentiable_functions.py", line 412 in fun_and_grad
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_lbfgsb_py.py", line 420 in _minimize_lbfgsb
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_lbfgsb_py.py", line 259 in fmin_l_bfgs_b
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 354 in optimize_log_lbfgsb
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_split_migration_bgs/spectrum.py", line 74 in _fit_restart
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_split_migration_bgs/spectrum.py", line 178 in fit_isolation_with_migration_spectrum
+  File "/home/kkor/ghist-2026-review-20261120/scripts/validate_demography_independently.py", line 83 in run_one
+  File "/home/kkor/ghist-2026-review-20261120/profile_censored.py", line 27 in <module>
+Timeout (0:00:30)!
+Thread 0x0000e3756f12f720 (most recent call first):
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/sparse/_sputils.py", line 0 in get_index_dtype
+  File 
