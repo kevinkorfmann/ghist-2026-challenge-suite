@@ -7,6 +7,8 @@ from typing import Mapping, Sequence
 
 import numpy as np
 
+from ghist_inference.integration import refine_spectrum
+
 from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
@@ -52,6 +54,14 @@ def secondary_contact_spectrum(
     """
     import moments
 
+    if adapt_dt:
+        return refine_spectrum(
+            lambda step: secondary_contact_spectrum(
+                parameters, sample_sizes, folded=folded, dt_fac=step, adapt_dt=False
+            ),
+            dt_fac=dt_fac,
+        )
+
     nu1, nu2, isolation_duration, contact_duration, migration = parameters
     if isolation_duration <= 0 or contact_duration <= 0:
         raise ValueError("epoch durations must be positive")
@@ -84,6 +94,14 @@ def generator_matched_secondary_contact_spectrum(
     contact fraction of split time, and scaled symmetric migration.
     """
     import moments
+
+    if adapt_dt:
+        return refine_spectrum(
+            lambda step: generator_matched_secondary_contact_spectrum(
+                parameters, sample_sizes, folded=folded, dt_fac=step, adapt_dt=False
+            ),
+            dt_fac=dt_fac,
+        )
 
     nu1, nu2_current, split_duration, contact_fraction, migration = parameters
     if split_duration <= 0 or not 0 < contact_fraction < 1:
@@ -190,18 +208,17 @@ def _fit_restart(arguments: tuple) -> dict:
             )
 
     try:
-        estimate = np.asarray(
-            moments.Inference.optimize_log_lbfgsb(
-                start,
-                data,
-                model,
-                lower_bound=lower,
-                upper_bound=upper,
-                maxiter=maxiter,
-                verbose=0,
-            ),
-            dtype=float,
+        estimate, _, optimizer_info = moments.Inference.optimize_log_lbfgsb(
+            start,
+            data,
+            model,
+            lower_bound=lower,
+            upper_bound=upper,
+            maxiter=maxiter,
+            verbose=0,
+            full_output=True,
         )
+        estimate = np.asarray(estimate, dtype=float)
         expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
@@ -212,6 +229,13 @@ def _fit_restart(arguments: tuple) -> dict:
                 "estimate": estimate,
                 "likelihood": likelihood,
                 "theta": theta,
+                "optimizer": {
+                    "converged": bool(optimizer_info["warnflag"] == 0),
+                    "warnflag": int(optimizer_info["warnflag"]),
+                    "iterations": int(optimizer_info["nit"]),
+                    "function_calls": int(optimizer_info["funcalls"]),
+                    "message": str(optimizer_info["task"]),
+                },
             }
         return {"ok": False, "restart": restart, "reason": "nonfinite result"}
     except Exception as error:
@@ -277,10 +301,10 @@ def fit_secondary_contact_spectrum(
         if (
             initial.shape != lower.shape
             or not np.isfinite(initial).all()
-            or np.any(initial <= lower)
-            or np.any(initial >= upper)
+            or np.any(initial < lower)
+            or np.any(initial > upper)
         ):
-            raise ValueError("initial_scaled must lie strictly within parameter bounds")
+            raise ValueError("initial_scaled must lie within parameter bounds")
         starts = [initial]
         starts.extend(
             np.clip(
@@ -361,6 +385,17 @@ def fit_secondary_contact_spectrum(
             estimate, lower, upper, [r[0] for r in fits], likelihood
         ),
         "best_restart": int(best_restart),
+        "best_restart_converged": next(
+            row for row in results if row["restart"] == best_restart
+        )["optimizer"]["converged"],
+        "converged_restarts": sum(
+            row.get("optimizer", {}).get("converged", False) for row in results
+        ),
+        "restart_diagnostics": [
+            {key: value for key, value in row.items() if key != "estimate"}
+            for row in results
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
         "successful_restarts": len(fits),
         "failed_restarts": failures,
         "restarts": restarts,

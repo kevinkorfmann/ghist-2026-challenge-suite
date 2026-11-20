@@ -190,6 +190,9 @@ def test_task4_export_keeps_fitted_values_instead_of_preset_targets(
     def marked_fixture(path):
         result = original_load(path)
         result["simulation_scaling_scheme"] = SIMULATION_SCALING_SCHEME
+        for fit in result.get("by_projection", {}).values():
+            fit["best_restart_converged"] = True
+        result.get("fit", result)["best_restart_converged"] = True
         return result
     monkeypatch.setattr(freeze, "load", marked_fixture)
     freeze.main()
@@ -280,7 +283,7 @@ def test_bottleneck_fit_survives_one_failed_restart(monkeypatch):
         calls.append(1)
         if len(calls) == 1:
             raise ArithmeticError("one numerical failure")
-        return np.array([0.4, 0.2])
+        return np.array([0.4, 0.2]), 0., dict(warnflag=0, task="CONVERGENCE", funcalls=1, nit=1)
 
     monkeypatch.setattr(moments.Inference, "optimize_log_lbfgsb", optimizer)
     spectrum = np.asarray(moments.Demographics1D.two_epoch([0.4, 0.2], [10])) * 200

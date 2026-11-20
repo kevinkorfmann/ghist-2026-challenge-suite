@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-11-20T16:52:55.989415+00:00",
+  "source": "https://www.synapse.org/Synapse:syn74803798/wiki/640950",
+  "source_api": "https://repo-prod.prod.sagebase.org/repo/v1/entity/syn74803798/wiki/640950",
+  "wiki_modified_on": "2026-10-22T02:06:57.695Z",
+  "wiki_etag": "7879b5f4-bdf2-4804-9553-ba50dbbc6033",
+  "input": "CSV containing exact Ped-sim IBD1 and IBD2 segments; no HBD; ancestry restricted to the pedigree",
+  "simulation": "Sex-specific Bherer 2017 map and Campbell 2015 crossover interference",
+  "accepted_labels": [
+    "siblings",
+    "grandparent_grandchild",
+    "avuncular",
+    "double_cousin",
+    "full_1st_cousin",
+    "half_1st_cousin",
+    "full_2nd_cousin",
+    "full_3rd_cousin",
+    "full_4th_cousin",
+    "full_5th_cousin"
+  ],
+  "pair_domain_assessment": {
+    "documented": "Input is a segment CSV; no separate individual/pair roster is listed. Inference is requested for related pairs. The October correction removed retired-class pairs absent from the input.",
+    "inference": "The operational observable domain is each distinct unordered pair present in the CSV. No identities are available for pairs absent from all supplied data. The wiki does not explicitly discuss a zero-IBD pair roster.",
+    "implementation": "Require every input pair exactly once. If an independent supplied pair list contains extra pairs absent from the segments, fail explicitly; do not invent labels for those pairs.",
+    "all_sample_combinations_required": false,
+    "genotype_phasing_or_detector_validation_required_for_task9": false
+  },
+  "submission_schema_source": "https://www.synapse.org/Synapse:syn74803798/wiki/640752",
+  "submission_schema": [
+    "indID1",
+    "indID2",
+    "meioses_count and/or relation"
+  ],
+  "public_answers_used_for_model_choices": false
+}

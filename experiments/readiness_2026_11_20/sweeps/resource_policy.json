@@ -1,0 +1,46 @@
+{
+  "status": "resource pilot in progress; no Task5 accuracy results inspected",
+  "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+  "initial_case_subset": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "initial_resources": {
+    "cpus": 2,
+    "memory_bytes": 11811160064,
+    "array_concurrency": 3
+  },
+  "observed_constant_seconds": [
+    432.397,
+    425.764,
+    406.167
+  ],
+  "zigzag_case3": {
+    "elapsed_seconds": 843.1145107881166,
+    "state": "FAILED",
+    "cause": "SLiM signal9; cgroup no longer accessible, OOM not directly confirmed"
+  },
+  "zigzag_case5": {
+    "elapsed_seconds": 723.0107642398216,
+    "state": "FAILED",
+    "cause": "OOM confirmed from live cgroup max reaching exact limit and oom_kill0\u21921",
+    "trace": "resource_case5.jsonl"
+  },
+  "resource_retry": {
+    "job": "10850911",
+    "case": 5,
+    "same_seed": 202612005,
+    "same_biological_settings": true,
+    "cpus": 4,
+    "memory_bytes": 23622320128,
+    "time_limit_seconds": 7200,
+    "dependency": "afterany:10850775",
+    "output_directory": "scientific/readiness_sweeps/task5_v4_memory_retry"
+  },
+  "expansion_beyond_first_six": "not submitted; await observed Zigzag feasibility and parent resource review",
+  "accuracy_used_for_resource_decisions": false
+}

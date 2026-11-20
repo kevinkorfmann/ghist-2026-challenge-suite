@@ -3,7 +3,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
+from ghist_inference.checkpoint import atomic_json
+from ghist_inference.freeze import continuous_prediction, require_optimizer_convergence
 from ghist_secondary_contact.contract import require_spectrum_contract
 
 
@@ -29,7 +32,22 @@ def sha256(path: Path) -> str:
 
 
 def selected_values(source: dict) -> dict:
-    return {key: source[key] for key in PARAMETER_KEYS}
+    values = continuous_prediction(
+        source, PARAMETER_KEYS,
+        nonnegative=("generations_since_contact", "migration_rate"),
+    )
+    if values["generations_since_contact"] > values["generations_since_split"]:
+        raise ValueError("Contact cannot precede the population split")
+    return values
+
+
+def finite_risk(value):
+    if isinstance(value, bool):
+        raise ValueError("Stress risk must be finite and nonnegative")
+    value = float(value)
+    if not math.isfinite(value) or value < 0:
+        raise ValueError("Stress risk must be finite and nonnegative")
+    return value
 
 
 def require_resolution_gate(source: dict, label: str) -> None:
@@ -92,12 +110,19 @@ def main() -> None:
     ):
         require_spectrum_contract(evidence)
 
+    require_optimizer_convergence(raw, "refined secondary-contact fit")
+    require_optimizer_convergence(standard, "standard secondary-contact fit")
     standard_values = selected_values(standard)
     refined_values = selected_values(raw)
-    numerical_relative_change = {
-        key: refined_values[key] / standard_values[key] - 1.0 for key in PARAMETER_KEYS
-    }
-    prediction = calibration["observed_accepted"]
+    numerical_relative_change = {}
+    for key in PARAMETER_KEYS:
+        if standard_values[key] == 0:
+            if refined_values[key] != 0:
+                raise ValueError(f"Refinement changed a zero boundary: {key}")
+            numerical_relative_change[key] = 0.0
+        else:
+            numerical_relative_change[key] = refined_values[key] / standard_values[key] - 1.0
+    prediction = selected_values(calibration["observed_accepted"])
     for label, comparison in (
         ("fixed-center", resolution),
         ("broad", broad_resolution),
@@ -118,8 +143,8 @@ def main() -> None:
     if nominal is None:
         raise ValueError("stress transfer is missing the nominal condition")
     if (
-        nominal["corrected"]["mean_competition_rrmse"]
-        >= nominal["raw"]["mean_competition_rrmse"]
+        finite_risk(nominal["corrected"]["mean_competition_rrmse"])
+        >= finite_risk(nominal["raw"]["mean_competition_rrmse"])
     ):
         raise ValueError("correction did not improve mean nominal stress risk")
     result = {
@@ -185,9 +210,8 @@ def main() -> None:
             for name, path in paths.items()
         },
     }
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps(result, indent=2))
+    atomic_json(args.out, result)
+    print(json.dumps(result, indent=2, allow_nan=False))
 
 
 if __name__ == "__main__":

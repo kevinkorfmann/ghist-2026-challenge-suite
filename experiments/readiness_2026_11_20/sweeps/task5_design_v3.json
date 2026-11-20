@@ -1,0 +1,508 @@
+{
+  "protocol": "task5_whole_chr7_confirmation_v3",
+  "created_utc": "2026-11-20",
+  "parent_revision": "b847c4c",
+  "source_sha256": {
+    "src/ghist_single_sweep/scan.py": "458863574513977a6746a520ff1dc9f11a108fa7b8c9a2a52ddba131c1cc240d",
+    "src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+    "src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+    "src/ghist_single_sweep/peaks.py": "5d851a05d9199bb47e6725018801c36c0d7039e6f1e6b83810d8c327ed80b52a",
+    "scripts/predict_single_sweep.py": "f49fdad7a78cad2ac9470f37cefa2b0e70ec106d0bbba2b62f5cc9c42daa0f91",
+    "scripts/run_sweep_readiness_case.py": "125cb8fc91b683d2035d3cfebce5a97a337e65a7c3d0a2abe7a0459f0dc2a579",
+    "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "primary_specification": {
+    "url": "https://www.synapse.org/Synapse:syn74803798/wiki/640755",
+    "modifiedOn": "2026-10-22T02:07:11.903Z",
+    "safe_facts_only": true,
+    "challenge5": "one selective sweep; all other loci neutral",
+    "challenge6": "one soft sweep; all other loci neutral",
+    "challenge7": "one sweep with exonic background selection; bottleneck/growth not explicitly specified",
+    "challenge8": "multiple exonic sweeps with bottleneck/growth and exonic background selection"
+  },
+  "answer_exposure": "During specification review, a grep of cached one-line wiki JSON inadvertently displayed embedded public answer sections. No values are recorded here or used for design/model choices. This is a prespecified protocol, not a claim of unexposed investigators. Subsequent specification parsing strips details/answer sections before display.",
+  "accessibility_sha256": "d227d72cc8d99a3cabfe29b8f21ee1617bd91d436ca0a737f501844a52c1bc98",
+  "target_position_rng": {
+    "algorithm": "Python random.Random.randrange over accessible bases",
+    "seed": 2026112081
+  },
+  "generation": {
+    "chromosome": "7",
+    "length": 159345973,
+    "mutation_rate": 1.44e-08,
+    "genetic_map": "HapMapII_GRCh38",
+    "diploid_samples": 25,
+    "haplotypes": 50,
+    "slim_scaling_factor": 1,
+    "slim_burn_in": 1,
+    "minimum_end_frequency": 0.95,
+    "conditioning": "conditional on allele reaching end-frequency .95; establishment probability not measured",
+    "demography_scope": "generic stress histories, not documented target-history matches",
+    "background_selection": false
+  },
+  "predictor": {
+    "method": "blind_callable_median_three_v1",
+    "window_size": 100000,
+    "step": 20000,
+    "region_radius": 750000,
+    "half_width": 60000,
+    "consensus_span_limit": 50000,
+    "reference": "RAiSD window50 whole chromosome"
+  },
+  "analysis": {
+    "primary": "unconditional localization error and half-open interval coverage on all planned cases; operational failures included in yield denominator",
+    "secondary": "consensus-conditioned coverage and abstention, history/selection strata, RAiSD errors",
+    "uncertainty": "two-sided exact Clopper-Pearson intervals by independent replicate; report denominators",
+    "no_tuning_on_panel": true,
+    "format_validation": "production predictor plus ghist_submission.validate.validate_submission",
+    "promotion": "no automatic freeze or final-data run; prior exposure and model matching limit claims"
+  },
+  "execution": {
+    "pilot_case": 0,
+    "pilot_is_performance_only": true,
+    "array_order": "six history/selection cells per replicate",
+    "concurrent_jobs": 4,
+    "cpus_per_job": 2,
+    "mem_per_cpu_mb": 5632,
+    "time_limit": "12:00:00",
+    "all_attempts_retained": true,
+    "reduction_policy": "If whole-chromosome resource pilot predicts infeasible runtime, report attempted cases and reduce to complete six-cell blocks based only on runtime; never select cases by accuracy"
+  },
+  "cases": [
+    {
+      "case": 0,
+      "seed": 202612000,
+      "position": 62738881,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 0
+    },
+    {
+      "case": 1,
+      "seed": 202612001,
+      "position": 70030106,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 0
+    },
+    {
+      "case": 2,
+      "seed": 202612002,
+      "position": 11778041,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 0
+    },
+    {
+      "case": 3,
+      "seed": 202612003,
+      "position": 34454248,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 0
+    },
+    {
+      "case": 4,
+      "seed": 202612004,
+      "position": 89019240,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 0
+    },
+    {
+      "case": 5,
+      "seed": 202612005,
+      "position": 103361210,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 0
+    },
+    {
+      "case": 6,
+      "seed": 202612006,
+      "position": 55229460,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 1
+    },
+    {
+      "case": 7,
+      "seed": 202612007,
+      "position": 34942818,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 1
+    },
+    {
+      "case": 8,
+      "seed": 202612008,
+      "position": 111422942,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 1
+    },
+    {
+      "case": 9,
+      "seed": 202612009,
+      "position": 60258931,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 1
+    },
+    {
+      "case": 10,
+      "seed": 202612010,
+      "position": 85785085,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 1
+    },
+    {
+      "case": 11,
+      "seed": 202612011,
+      "position": 119823884,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 1
+    },
+    {
+      "case": 12,
+      "seed": 202612012,
+      "position": 40267920,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 2
+    },
+    {
+      "case": 13,
+      "seed": 202612013,
+      "position": 60769413,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 2
+    },
+    {
+      "case": 14,
+      "seed": 202612014,
+      "position": 99184626,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 2
+    },
+    {
+      "case": 15,
+      "seed": 202612015,
+      "position": 157489649,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 2
+    },
+    {
+      "case": 16,
+      "seed": 202612016,
+      "position": 67976136,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 2
+    },
+    {
+      "case": 17,
+      "seed": 202612017,
+      "position": 5475242,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 2
+    },
+    {
+      "case": 18,
+      "seed": 202612018,
+      "position": 71640367,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 3
+    },
+    {
+      "case": 19,
+      "seed": 202612019,
+      "position": 158509283,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 3
+    },
+    {
+      "case": 20,
+      "seed": 202612020,
+      "position": 157481767,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 3
+    },
+    {
+      "case": 21,
+      "seed": 202612021,
+      "position": 59412003,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 3
+    },
+    {
+      "case": 22,
+      "seed": 202612022,
+      "position": 37397671,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 3
+    },
+    {
+      "case": 23,
+      "seed": 202612023,
+      "position": 46206580,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 3
+    },
+    {
+      "case": 24,
+      "seed": 202612024,
+      "position": 26651690,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 4
+    },
+    {
+      "case": 25,
+      "seed": 202612025,
+      "position": 33101591,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 4
+    },
+    {
+      "case": 26,
+      "seed": 202612026,
+      "position": 20830656,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 4
+    },
+    {
+      "case": 27,
+      "seed": 202612027,
+      "position": 44243424,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 4
+    },
+    {
+      "case": 28,
+      "seed": 202612028,
+      "position": 203651,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 4
+    },
+    {
+      "case": 29,
+      "seed": 202612029,
+      "position": 75609673,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 4
+    },
+    {
+      "case": 30,
+      "seed": 202612030,
+      "position": 87508466,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 5
+    },
+    {
+      "case": 31,
+      "seed": 202612031,
+      "position": 81679676,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 5
+    },
+    {
+      "case": 32,
+      "seed": 202612032,
+      "position": 140084692,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 5
+    },
+    {
+      "case": 33,
+      "seed": 202612033,
+      "position": 133466153,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 5
+    },
+    {
+      "case": 34,
+      "seed": 202612034,
+      "position": 16728918,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 5
+    },
+    {
+      "case": 35,
+      "seed": 202612035,
+      "position": 153092446,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 5
+    },
+    {
+      "case": 36,
+      "seed": 202612036,
+      "position": 71349310,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 6
+    },
+    {
+      "case": 37,
+      "seed": 202612037,
+      "position": 37131879,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 6
+    },
+    {
+      "case": 38,
+      "seed": 202612038,
+      "position": 106108667,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 6
+    },
+    {
+      "case": 39,
+      "seed": 202612039,
+      "position": 130324060,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 6
+    },
+    {
+      "case": 40,
+      "seed": 202612040,
+      "position": 50119345,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 6
+    },
+    {
+      "case": 41,
+      "seed": 202612041,
+      "position": 25148812,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 6
+    },
+    {
+      "case": 42,
+      "seed": 202612042,
+      "position": 104179895,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 7
+    },
+    {
+      "case": 43,
+      "seed": 202612043,
+      "position": 147559242,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 7
+    },
+    {
+      "case": 44,
+      "seed": 202612044,
+      "position": 129102593,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 7
+    },
+    {
+      "case": 45,
+      "seed": 202612045,
+      "position": 127080989,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "replicate": 7
+    },
+    {
+      "case": 46,
+      "seed": 202612046,
+      "position": 139321303,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "replicate": 7
+    },
+    {
+      "case": 47,
+      "seed": 202612047,
+      "position": 44030219,
+      "history": "Zigzag_1S14",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "replicate": 7
+    }
+  ],
+  "supersedes_design_sha256": "a5608c5cc565bed7d431f70d05b31269d4dc5913ba5c6a545795a66d29cbf2bf",
+  "revision_reason": "Before any biological output, constant model burn-in .1 began too recently for origin3000. Set burn-in1, yielding a 10000-generation constant-model forward horizon; all seeds/positions/selection cells unchanged."
+}

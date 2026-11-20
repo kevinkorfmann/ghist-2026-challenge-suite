@@ -1,0 +1,73 @@
+{
+  "tests": {
+    "command": ".venv/bin/python -m pytest tests/test_sweep_readiness.py tests/test_single_sweep.py tests/test_sweep_scientific_validation.py tests/test_freeze_single_sweep.py tests/test_soft_sweep_recovery.py tests/test_single_sweep_exact_recovery.py tests/test_background_sweep_selection.py tests/test_single_sweep_interval.py tests/test_single_sweep_scale_stress.py -q",
+    "passed": 41
+  },
+  "ruff": "all sweep source/new scripts/tests pass",
+  "shell": "all sweep Slurm templates pass bash -n",
+  "jobs": [
+    {
+      "id": "10850223",
+      "purpose": "v1 pilot",
+      "outcome": "failed before simulation: stdpopsim single-row BED parser"
+    },
+    {
+      "id": "10850239",
+      "purpose": "v2 pilot",
+      "outcome": "failed before biological output: forward horizon predates tick zero"
+    },
+    {
+      "id": "10850253",
+      "purpose": "48 historical Task6 development simulations,8 H12 configurations",
+      "outcome": "completed48; no promotion"
+    },
+    {
+      "id": "10850290",
+      "purpose": "v3 whole-chromosome resource pilot",
+      "outcome": "completed432.397s; headerL+1 output superseded, biology retained"
+    },
+    {
+      "id": "10850453",
+      "purpose": "original exact-tree VCF/reference contract check",
+      "outcome": "setup failed: /bin/sh module initialization and missing script race; no results"
+    },
+    {
+      "id": "10850478",
+      "purpose": "original exact-tree VCF/reference contract check",
+      "outcome": "completed: headerL+1; nucleotide alleles;17259 SNPs matched reader and RAiSD"
+    },
+    {
+      "id": "10850519",
+      "purpose": "v4 canonical export and production rerun of unchanged pilot biology",
+      "outcome": "completed50.787s;409177 SNPs matched; exactL asserted"
+    },
+    {
+      "id": "10850520",
+      "purpose": "v4 first complete six-cell block cases1-5",
+      "outcome": "constant cases1/2 completed425.764s/406.167s; Zigzagcase3 SLiM\u22129 after843.115s, cause unconfirmed;cases4/5 running; no accuracy inspection before resource decision"
+    },
+    {
+      "id": "10850775",
+      "purpose": "Task6 development provenance repair, same48 old trees and eight candidates",
+      "outcome": "completed48; all384 predictions/errors identical to archived v1, coordinate-origin/source-hash validation now enforced"
+    },
+    {
+      "id": "10850911",
+      "purpose": "same-seed case5 memory retry,4CPUs/22GiB,time limit2h",
+      "outcome": "pending after Task6 provenance rerun; originalcase5OOM confirmed by cgroup trace"
+    }
+  ],
+  "current_design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+  "final_data_runs": 0,
+  "submissions": 0,
+  "integration_manifest": "current_source_manifest.json",
+  "frozen_runtime_snapshot_sha256": "78a8ae4bd6b5214541fe6eadb340c05434e79037713465f02610ef7f5e6980ac",
+  "cross_review": "demography_science independent read-only review; duplicate/non-SNP parser, development metric origin/provenance and raw RAiSD metric-link findings repaired",
+  "task6_provenance_regeneration": {
+    "records": 48,
+    "candidate_predictions": 384,
+    "metrics_unchanged": true,
+    "aggregate": "task6_development_v2.json",
+    "sha256": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3"
+  }
+}

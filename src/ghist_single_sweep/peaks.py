@@ -9,6 +9,24 @@ def read_raisd(path: Path) -> np.ndarray:
     return np.loadtxt(path, comments="/", ndmin=2)
 
 
+def highest_peak_position(report: np.ndarray, contig_length: int) -> int:
+    """Return the first maximal RAiSD position in zero-based coordinates."""
+    report = np.asarray(report, dtype=float)
+    if (
+        report.ndim != 2
+        or not len(report)
+        or report.shape[1] < 7
+        or not np.isfinite(report[:, [0, 6]]).all()
+        or np.any(report[:, 6] < 0)
+        or np.any(report[:, 0] < 1)
+        or np.any(report[:, 0] > contig_length)
+    ):
+        raise ValueError(
+            "RAiSD reference needs finite in-contig coordinates and nonnegative scores"
+        )
+    return int(report[np.argmax(report[:, 6]), 0]) - 1
+
+
 def separated_peaks(report: np.ndarray, separation: int) -> list[int]:
     report = np.asarray(report, dtype=float)
     if (

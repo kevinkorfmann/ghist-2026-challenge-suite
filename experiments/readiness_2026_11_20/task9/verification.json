@@ -1,0 +1,76 @@
+{
+  "recorded_at_utc": "2026-11-20T16:57:59.866442+00:00",
+  "base_commit": "b847c4c3bea994131da79b2f01ea87707195c1cd",
+  "job": {
+    "id": "10850210",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:03:58",
+    "allocated_cpus": 4,
+    "peak_rss_kib": 3062368
+  },
+  "targeted_tests": {
+    "passed": 54,
+    "command": ".venv/bin/python -m pytest -q tests/test_task9_release.py tests/test_ibd_relatedness.py tests/test_relatedness_scientific_validation.py tests/test_relatedness_submission_contract.py tests/test_relatedness_labels.py tests/test_task9_degree_factorized.py tests/test_submission_validation.py"
+  },
+  "ruff": "passed",
+  "bash_syntax": "passed",
+  "independent_simulation_datasets": 2,
+  "unique_confirmation_pairs": 20023,
+  "production_runs": 8,
+  "production_paths": [
+    "explicit model",
+    "explicit versioned release"
+  ],
+  "equivalent_input_cases": [
+    "official CSV",
+    "reversed pairs and row/column ordering with UTF-8 BOM"
+  ],
+  "all_pairs_covered": true,
+  "all_format_valid": true,
+  "all_permutation_invariant": true,
+  "scores_match_fixed_confirmation": true,
+  "release_id": "2026-11-20-ten-labels",
+  "release_status": "VALIDATED_RELEASE_CANDIDATE",
+  "default_model_changed": false,
+  "historical_freeze_preserved": true,
+  "current_challenge_data_runs": false,
+  "final_data_runs": false,
+  "competition_submissions": 0,
+  "public_answers_used_for_choices": false,
+  "source_sha256": {
+    "src/ghist_relatedness/ibd.py": "21c0fac7bfc2aa65d0d13da20e21da3b1f91ff1db6eeaa87e88b334c1629f6d0",
+    "src/ghist_relatedness/task9_release.py": "7cfb2279751d2a6144ef85fdfb64c2156929ddc8775d5059224788a383eb4ae5",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc",
+    "scripts/predict_task9_current.py": "a842dc0fb2f4bac48a7a28cdae821e5c70b48bf0b5b099b0ea52fef8123c344c",
+    "scripts/validate_submission.py": "747a2041e8e7e00d69678a22ade7b192ee78fa7fe847bf1b3da329d7f35971aa",
+    "scripts/validate_task9_operationally.py": "844d96429a43540f6a044e3a5361837a363bfc4b788b9d314697f7f383ad3d70",
+    "scripts/prepare_task9_release.py": "4f985ab5e0dc324ccaf3f4cc67ecdb6d787f60560bd97267fd8a4192d834be0e",
+    "tests/test_task9_release.py": "3f6ff89bf91b3e612a379ba2f3bb3dae0af98acec2cad35e46dfa1a0a2e491b1",
+    "configs/task9_current_release.json": "6df675a7f99ad3e82a923b82391c031c31432ae60c81bf90fa5adf3fd05937cc",
+    "requirements/task9-release-2026-11-20.txt": "44375e0cb2fbab9788eeac9f7cc612a7b3d370b7541db3e21e180110f37a757f"
+  },
+  "evidence_sha256": {
+    "operational_versioned.json": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928",
+    "run.sbatch": "0700adc329fd4905bd1a8c882b804b491b0fefe342aaf7c9cd3a5a8e4800ff5f",
+    "official_input_contract.json": "bf207f596dd55c667bf5ff3704218fb546b1d478c24b3f975154cab41c1a384f",
+    "slurm_accounting.psv": "8848f8858668109b40d6512d32768b65bb9c87a586dd3bc8ddec403c7a8bdc86",
+    "operational_unversioned.json": "f11d96d8d9d8217ae74a3d1304f4c031ad887a787ad8891f7d6c13d36d0ad954"
+  },
+  "artifact_location": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_releases/2026-11-20-ten-labels/model.joblib",
+  "remote_snapshot": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-task9-20261120",
+  "validated_runtime": {
+    "python": "3.11.11",
+    "platform": "Linux x86_64",
+    "requirements": "requirements/task9-release-2026-11-20.txt",
+    "packages": {
+      "scikit-learn": "1.9.0",
+      "numpy": "2.4.6",
+      "scipy": "1.16.3",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0",
+      "PyYAML": "6.0.3"
+    }
+  }
+}

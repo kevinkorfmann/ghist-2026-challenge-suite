@@ -6,7 +6,11 @@ import json
 import math
 from pathlib import Path
 
-from ghist_inference.freeze import continuous_prediction
+from ghist_inference.freeze import (
+    continuous_prediction,
+    require_optimizer_convergence,
+    require_projection_convergence,
+)
 from ghist_growth_bgs.simulation import require_physical_scaling
 
 
@@ -16,6 +20,7 @@ PARAMETERS = (
     "generations_since_split",
     "migration_rate",
 )
+PROJECTIONS = ((50, 40), (70, 50), (94, 68))
 
 
 def load(path: Path) -> dict:
@@ -54,6 +59,11 @@ def main() -> None:
     calibration = load(args.calibration)
     recovery = load(args.near_recovery)
     require_physical_scaling([calibration, recovery])
+    require_projection_convergence(
+        baseline.get("by_projection"), "split fit projections",
+        expected_projections=[f"{left}x{right}" for left, right in PROJECTIONS],
+    )
+    require_optimizer_convergence(refined.get("fit", refined), "refined split fit")
     raw = continuous_prediction(baseline["projection_median"], PARAMETERS)
 
     if calibration.get("selected_model") != "identity":
@@ -103,7 +113,7 @@ def main() -> None:
         "selected_method": {
             "model": "two-population isolation with continuous symmetric migration",
             "spectrum": "unfolded 1–100 kb noncoding joint frequency spectrum",
-            "projections": [[50, 40], [70, 50], [94, 68]],
+            "projections": [list(projection) for projection in PROJECTIONS],
             "aggregation": "continuous projection median; no preset rounding",
             "calibration": "identity; no correction",
         },

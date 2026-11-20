@@ -26,17 +26,38 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
             raise ValueError("expected exactly one contig")
         contig = contigs[0]
         contig_length = int(vcf.header.contigs[contig].length)
+        previous_position = -1
         for record in vcf:
+            position = int(record.pos) - 1
+            if record.contig != contig or not 0 <= position < contig_length:
+                raise ValueError(
+                    "VCF coordinates must be 1-based and within the declared contig"
+                )
+            if position <= previous_position:
+                raise ValueError("VCF SNP positions must be sorted and unique")
+            previous_position = position
             if len(record.alleles or ()) != 2:
                 skipped += 1
                 continue
+            if any(
+                len(allele) != 1 or allele.upper() not in "ACGT"
+                for allele in record.alleles
+            ):
+                raise ValueError(
+                    "Sweep inference requires single-nucleotide A/C/G/T alleles"
+                )
             row: list[int] = []
             valid = True
             for sample in record.samples.values():
                 gt = sample.get("GT")
-                if gt is None or len(gt) != 2 or None in gt or not sample.phased:
-                    valid = False
-                    break
+                if gt is None or len(gt) != 2 or None in gt:
+                    raise ValueError(
+                        "Missing or non-diploid genotypes require a callable-exposure model"
+                    )
+                if not sample.phased and gt[0] != gt[1]:
+                    raise ValueError(
+                        "Haplotype sweep inference requires phased heterozygous genotypes"
+                    )
                 if gt[0] > 1 or gt[1] > 1:
                     valid = False
                     break
@@ -44,11 +65,6 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
             if not valid:
                 skipped += 1
                 continue
-            position = int(record.pos) - 1
-            if record.contig != contig or not 0 <= position < contig_length:
-                raise ValueError("VCF coordinates must be 1-based and within the declared contig")
-            if positions and position < positions[-1]:
-                raise ValueError("VCF positions must be sorted")
             if sum(row) in (0, len(row)):
                 skipped += 1
                 continue
@@ -94,14 +110,18 @@ def merge_intervals(intervals: np.ndarray) -> np.ndarray:
     return np.asarray(merged, dtype=np.int64).reshape(-1, 2)
 
 
-def accessible_bases(starts: np.ndarray, ends: np.ndarray, intervals: np.ndarray) -> np.ndarray:
+def accessible_bases(
+    starts: np.ndarray, ends: np.ndarray, intervals: np.ndarray
+) -> np.ndarray:
     result = np.zeros(starts.size, dtype=np.int64)
     for left, right in merge_intervals(intervals):
         result += np.maximum(0, np.minimum(ends, right) - np.maximum(starts, left))
     return result
 
 
-def tajima_d(allele_counts: np.ndarray, sequence_length: int, sample_size: int) -> float:
+def tajima_d(
+    allele_counts: np.ndarray, sequence_length: int, sample_size: int
+) -> float:
     allele_counts = np.asarray(allele_counts)
     allele_counts = allele_counts[(allele_counts > 0) & (allele_counts < sample_size)]
     segregating = int(allele_counts.size)
@@ -110,8 +130,10 @@ def tajima_d(allele_counts: np.ndarray, sequence_length: int, sample_size: int) 
     a1 = np.sum(1.0 / np.arange(1, sample_size))
     a2 = np.sum(1.0 / np.arange(1, sample_size) ** 2)
     b1 = (sample_size + 1.0) / (3.0 * (sample_size - 1.0))
-    b2 = 2.0 * (sample_size**2 + sample_size + 3.0) / (
-        9.0 * sample_size * (sample_size - 1.0)
+    b2 = (
+        2.0
+        * (sample_size**2 + sample_size + 3.0)
+        / (9.0 * sample_size * (sample_size - 1.0))
     )
     c1 = b1 - 1.0 / a1
     c2 = b2 - (sample_size + 2.0) / (a1 * sample_size) + a2 / a1**2
@@ -121,7 +143,11 @@ def tajima_d(allele_counts: np.ndarray, sequence_length: int, sample_size: int) 
         sample_size * (sample_size - 1.0)
     )
     denominator = np.sqrt(e1 * segregating + e2 * segregating * (segregating - 1.0))
-    return float((pi_total - segregating / a1) / denominator) if denominator > 0 else float("nan")
+    return (
+        float((pi_total - segregating / a1) / denominator)
+        if denominator > 0
+        else float("nan")
+    )
 
 
 def haplotype_homozygosity(window_haplotypes: np.ndarray) -> tuple[float, float, float]:
@@ -178,7 +204,9 @@ def scan_windows(
     accessible = np.zeros(variants.positions.size, dtype=bool)
     if len(intervals):
         # Avoid comparing every variant with every interval on chromosome-scale data.
-        interval_index = np.searchsorted(intervals[:, 0], variants.positions, side="right") - 1
+        interval_index = (
+            np.searchsorted(intervals[:, 0], variants.positions, side="right") - 1
+        )
         accessible = (interval_index >= 0) & (
             variants.positions < intervals[np.maximum(interval_index, 0), 1]
         )
@@ -213,7 +241,9 @@ def scan_windows(
             sample_size * (sample_size - 1.0)
         )
         features["pi"][index] = pi_total / exposure[index]
-        features["tajima_d"][index] = tajima_d(counts, int(exposure[index]), sample_size)
+        features["tajima_d"][index] = tajima_d(
+            counts, int(exposure[index]), sample_size
+        )
         features["singleton_fraction"][index] = np.mean(minor == 1)
         features["intermediate_fraction"][index] = np.mean(minor >= sample_size * 0.2)
         h1, h12, h2_h1 = haplotype_homozygosity(haplotypes)
@@ -224,24 +254,44 @@ def scan_windows(
 
     span = ends - starts
     valid_exposure = (span >= window_size * 0.8) & (exposure >= span * 0.8)
+    # Uncallable and truncated windows must not set the chromosome's reference
+    # distribution. Masking only the final score still changes all other scores.
+    normalized = {
+        key: np.where(valid_exposure, values, np.nan)
+        for key, values in features.items()
+    }
     components = {
-        "low_pi": -robust_z(np.log(np.maximum(features["pi"], 1e-12))),
-        "low_sites": -robust_z(np.log1p(features["site_count"] / np.maximum(exposure, 1))),
-        "low_tajima_d": -robust_z(features["tajima_d"]),
-        "high_h12": robust_z(np.log(np.maximum(features["h12"], 1e-6))),
-        "high_h2_h1": robust_z(features["h2_h1"]),
-        "high_r2": robust_z(np.log(np.maximum(features["mean_r2"], 1e-6))),
+        "low_pi": -robust_z(np.log(np.maximum(normalized["pi"], 1e-12))),
+        "low_sites": -robust_z(
+            np.log1p(normalized["site_count"] / np.maximum(exposure, 1))
+        ),
+        "low_tajima_d": -robust_z(normalized["tajima_d"]),
+        "high_h12": robust_z(np.log(np.maximum(normalized["h12"], 1e-6))),
+        "high_h2_h1": robust_z(normalized["h2_h1"]),
+        "high_r2": robust_z(np.log(np.maximum(normalized["mean_r2"], 1e-6))),
     }
     components["conditioned_h2_h1"] = np.where(
         components["high_h12"] > 1.0,
         np.maximum(components["high_h2_h1"], 0.0),
         0.0,
     )
-    hard_component_names = ["low_pi", "low_sites", "low_tajima_d", "high_h12", "high_r2"]
+    hard_component_names = [
+        "low_pi",
+        "low_sites",
+        "low_tajima_d",
+        "high_h12",
+        "high_r2",
+    ]
     stack = np.vstack(
         [np.clip(components[name], -5.0, 8.0) for name in hard_component_names]
     )
-    score = np.nanmean(stack, axis=0)
+    counts = np.isfinite(stack).sum(axis=0)
+    score = np.divide(
+        np.nansum(stack, axis=0),
+        counts,
+        out=np.full(starts.shape, np.nan),
+        where=counts > 0,
+    )
     score[~valid_exposure] = np.nan
     soft_weights = {
         "low_pi": 0.5,
@@ -301,7 +351,9 @@ def flank_ld_scan(
                 prepared = []
                 break
             values -= values.mean(axis=1, keepdims=True)
-            values /= np.maximum(np.sqrt(np.sum(values**2, axis=1, keepdims=True)), 1e-12)
+            values /= np.maximum(
+                np.sqrt(np.sum(values**2, axis=1, keepdims=True)), 1e-12
+            )
             prepared.append(values)
         if len(prepared) != 2:
             continue
@@ -310,7 +362,9 @@ def flank_ld_scan(
         right_corr = right_std @ right_std.T
         cross_corr = left_std @ right_std.T
         left_r2 = float(np.mean(left_corr[np.triu_indices(left_corr.shape[0], 1)] ** 2))
-        right_r2 = float(np.mean(right_corr[np.triu_indices(right_corr.shape[0], 1)] ** 2))
+        right_r2 = float(
+            np.mean(right_corr[np.triu_indices(right_corr.shape[0], 1)] ** 2)
+        )
         cross_r2 = float(np.mean(cross_corr**2))
         within_left[index] = left_r2
         within_right[index] = right_r2

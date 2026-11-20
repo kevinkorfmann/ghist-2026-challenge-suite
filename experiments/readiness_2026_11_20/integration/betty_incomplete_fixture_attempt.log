@@ -1,0 +1,156 @@
+........................................................................ [ 25%]
+..................F..................................................... [ 50%]
+..................................F..................................... [ 75%]
+.....................................................................F   [100%]
+=================================== FAILURES ===================================
+_____________ test_clean_spectrum_holdout_uses_reserved_replicates _____________
+
+    def test_clean_spectrum_holdout_uses_reserved_replicates():
+>       text = Path("slurm/task10_clean_spectrum_holdout.sbatch").read_text()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_human_clean_spectrum_holdout.py:5: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('slurm/task10_clean_spectrum_holdout.sbatch'), mode = 'r'
+buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'slurm/task10_clean_spectrum_holdout.sbatch'
+
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1044: FileNotFoundError
+_______ test_task4_export_keeps_fitted_values_instead_of_preset_targets ________
+
+tmp_path = PosixPath('/tmp/pytest-of-korfmann/pytest-0/test_task4_export_keeps_fitted0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7ffeaf30d390>
+
+    def test_task4_export_keeps_fitted_values_instead_of_preset_targets(
+        tmp_path, monkeypatch
+    ):
+        from scripts import freeze_split_migration_bgs as freeze
+    
+        directory = Path(__file__).resolve().parents[1] / "experiments/split_migration_bgs"
+        args = ["freeze", "--out", str(tmp_path / "freeze.json")]
+        for flag, name in (
+            ("baseline", "baseline_summary"),
+            ("refined", "refined_middle_p50_40"),
+            ("bootstrap", "bootstrap_1mb_summary"),
+            ("calibration", "selection_calibration"),
+            ("near-recovery", "selection_near_observed_aggregate"),
+        ):
+            args += ["--" + flag, str(directory / (name + ".json"))]
+        for flag in (
+            "testing-vcf-sha256",
+            "coding-bed-sha256",
+            "recombination-map-sha256",
+            "final-sealed-sha256",
+        ):
+            args += ["--" + flag, "0" * 64]
+        monkeypatch.setattr(sys, "argv", args)
+        with pytest.raises(ValueError, match="physical-unit"):
+>           freeze.main()
+
+tests/test_reliability.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/freeze_split_migration_bgs.py:51: in main
+    baseline = load(args.baseline)
+               ^^^^^^^^^^^^^^^^^^^
+scripts/freeze_split_migration_bgs.py:22: in load
+    return json.loads(path.read_text())
+                      ^^^^^^^^^^^^^^^^
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-integration-20261120/experiments/split_migration_bgs/baseline_summary.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-integration-20261120/experiments/split_migration_bgs/baseline_summary.json'
+
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1044: FileNotFoundError
+____________ test_release_gate_rejects_model_or_provenance_mismatch ____________
+
+    def test_release_gate_rejects_model_or_provenance_mismatch():
+        folder = Path("experiments/scientific_2026_11_20/relatedness")
+>       training = json.loads((folder / "task9_current_training.json").read_text())
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_task9_release.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('experiments/scientific_2026_11_20/relatedness/task9_current_training.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'experiments/scientific_2026_11_20/relatedness/task9_current_training.json'
+
+/vast/parcc/spack/sw/apps/linux-zen4/python-3.11.11-lydijkfdagsfq3czjov77agguhgd5pm5/lib/python3.11/pathlib.py:1044: FileNotFoundError
+=============================== warnings summary ===============================
+../../.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+tests/test_bottleneck_readiness.py::test_boundary_reference_can_initialize_bootstrap
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Inference.py:340: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+    outputs = scipy.optimize.fmin_l_bfgs_b(
+
+tests/test_pipeline.py::PipelineTests::test_coalescent_and_network_contract
+tests/test_secondary_contact.py::SecondaryContactTests::test_multimodal_posterior_contract
+  enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+  scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_human_clean_spectrum_holdout.py::test_clean_spectrum_holdout_uses_reserved_replicates
+FAILED tests/test_reliability.py::test_task4_export_keeps_fitted_values_instead_of_preset_targets
+FAILED tests/test_task9_release.py::test_release_gate_rejects_model_or_provenance_mismatch
+3 failed, 283 passed, 12 warnings in 48.50s

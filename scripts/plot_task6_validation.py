@@ -26,11 +26,17 @@ def main() -> None:
         ("RAiSD maximum", float(raisd["maximum"]["position"])),
         (
             "Flank LD, 50 kb",
-            float(localization["flank_ld_scans"]["50000"]["maximum"]["candidate_position"]),
+            float(
+                localization["flank_ld_scans"]["50000"]["maximum"]["candidate_position"]
+            ),
         ),
         (
             "Flank LD, 100 kb",
-            float(localization["flank_ld_scans"]["100000"]["maximum"]["candidate_position"]),
+            float(
+                localization["flank_ld_scans"]["100000"]["maximum"][
+                    "candidate_position"
+                ]
+            ),
         ),
     ]
 
@@ -41,31 +47,50 @@ def main() -> None:
         (center + half_width) / 1e6,
         color="#F0E442",
         alpha=0.35,
-        label="Frozen interval",
+        label="Candidate interval",
     )
     for index, (label, position) in enumerate(points):
         axis.scatter(position / 1e6, index, s=55, color="#0072B2", zorder=3)
     axis.set_yticks(np.arange(len(points)), [label for label, _ in points])
-    axis.set_xlim(16.50, 16.64)
+    bounds = [position for _, position in points] + [
+        center - half_width,
+        center + half_width,
+    ]
+    margin = max(10_000, 0.1 * (max(bounds) - min(bounds)))
+    axis.set_xlim((min(bounds) - margin) / 1e6, (max(bounds) + margin) / 1e6)
     axis.set_xlabel("Chromosome 7 position (Mb)")
-    axis.set_title("A  Independent observed localizers")
+    axis.set_title("A  Observed localizers")
     axis.legend(frameon=False, fontsize=8, loc="lower right")
     axis.spines[["top", "right", "left"]].set_visible(False)
     axis.tick_params(axis="y", length=0)
 
-    all_metrics = transfer["all_regime_untouched_evaluation"]["metrics"]
-    signal = transfer["signal_matched_untouched_evaluation"]
-    frequency = transfer["high_frequency_untouched_evaluation"]
-    names = ["All regimes", "Signal matched", "High frequency"]
+    all_metrics = transfer.get(
+        "all_regime_evaluation", transfer.get("all_regime_untouched_evaluation")
+    )["metrics"]
+    signal = transfer.get(
+        "signal_matched_evaluation", transfer.get("signal_matched_untouched_evaluation")
+    )
+    frequency = transfer.get(
+        "high_frequency_evaluation", transfer.get("high_frequency_untouched_evaluation")
+    )
+    names = [
+        "All regimes",
+        f"Signal matched (n={signal['replicates']})",
+        f"High frequency (n={frequency['replicates']})",
+    ]
+
+    def kb(value):
+        return np.nan if value is None else value / 1000
+
     medians = [
         all_metrics["median_absolute_error"] / 1000,
-        signal["median_absolute_error"] / 1000,
-        frequency["median_absolute_error"] / 1000,
+        kb(signal["median_absolute_error"]),
+        kb(frequency["median_absolute_error"]),
     ]
     q90 = [
         all_metrics["quantiles"]["0.9"] / 1000,
-        signal["q90_absolute_error"] / 1000,
-        frequency["q90_absolute_error"] / 1000,
+        kb(signal["q90_absolute_error"]),
+        kb(frequency["q90_absolute_error"]),
     ]
     x = np.arange(len(names))
     width = 0.34
@@ -74,7 +99,7 @@ def main() -> None:
     axis.bar(x + width / 2, q90, width, color="#D55E00", label="90th percentile")
     axis.axhline(250, color="#555555", linestyle=":", linewidth=1, label="250 kb gate")
     axis.set_xticks(x, names, rotation=15, ha="right")
-    axis.set_ylabel("Untouched localization error (kb)")
+    axis.set_ylabel("Evaluation localization error (kb)")
     axis.set_title("B  Recovery across sweep regimes")
     axis.legend(frameon=False, fontsize=8)
     axis.spines[["top", "right"]].set_visible(False)

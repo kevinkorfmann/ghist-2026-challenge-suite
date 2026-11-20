@@ -107,12 +107,16 @@ def fit_two_epoch_dadi_spectrum(
         "multinomial_log_likelihood": likelihood,
         "best_restart": int(best_restart),
         "successful_restarts": len(fits),
+        "converged_restarts": sum(fit[4]["warnflag"] == 0 for fit in fits),
         "failed_restarts": failures,
         "grid_points": grids,
         "optimizer": {"warnflag": int(optimizer["warnflag"]),
+                      "converged": bool(optimizer["warnflag"] == 0),
                       "message": str(optimizer["task"]),
                       "evaluations": int(optimizer["funcalls"])},
         "folded": folded,
+        "mutation_rate": mutation_rate,
+        "sequence_length": sequence_length,
     }
 
 

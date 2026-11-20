@@ -17,6 +17,9 @@ def main() -> None:
         raise ValueError("each fit file must have one job identifier")
 
     payloads = [json.loads(path.read_text()) for path in args.fit]
+    projections = [str(payload["projection"]) for payload in payloads]
+    if len(set(projections)) != len(projections):
+        raise ValueError("Duplicate projection inputs cannot contribute to a summary")
     labels = list(payloads[0]["results"])
     if any(set(payload["results"]) != set(labels) for payload in payloads):
         raise ValueError("fit files do not contain identical strata")
@@ -29,12 +32,9 @@ def main() -> None:
         modern = np.asarray([value["modern_effective_size"] for value in values])
         rows[label] = {
             "by_projection": {
-                str(payload["projection"]): {
-                    "generations": value["generations"],
-                    "post_growth_scaling": value["post_growth_scaling"],
-                    "ancestral_effective_size": value["ancestral_effective_size"],
-                    "modern_effective_size": value["modern_effective_size"],
-                }
+                # Keep termination and restart diagnostics with each estimate;
+                # projection medians alone cannot certify optimizer convergence.
+                str(payload["projection"]): dict(value)
                 for payload, value in zip(payloads, values)
             },
             "median": {
@@ -46,7 +46,10 @@ def main() -> None:
             "projection_range": {
                 "generations": [float(generations.min()), float(generations.max())],
                 "post_growth_scaling": [float(scaling.min()), float(scaling.max())],
-                "ancestral_effective_size": [float(ancestral.min()), float(ancestral.max())],
+                "ancestral_effective_size": [
+                    float(ancestral.min()),
+                    float(ancestral.max()),
+                ],
                 "modern_effective_size": [float(modern.min()), float(modern.max())],
             },
         }

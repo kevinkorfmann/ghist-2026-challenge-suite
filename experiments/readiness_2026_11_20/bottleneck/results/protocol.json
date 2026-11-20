@@ -1,0 +1,80 @@
+{
+  "schema": "bottleneck_target_length_v1",
+  "sequence_length": 100000000,
+  "block_length": 2000000,
+  "seed": 2026112901,
+  "restarts": 8,
+  "parameter_points": [
+    [
+      600,
+      0.12,
+      8000
+    ],
+    [
+      1900,
+      0.35,
+      17000
+    ],
+    [
+      8500,
+      0.5,
+      32000
+    ],
+    [
+      16000,
+      0.72,
+      44000
+    ],
+    [
+      28000,
+      0.89,
+      21000
+    ],
+    [
+      4000,
+      0.94,
+      11000
+    ]
+  ],
+  "replicates": 2,
+  "cases": 24,
+  "diploid_individuals": 57,
+  "coalescent_ploidy": 2,
+  "mutation_rate": 3.42e-08,
+  "recombination_rate": 1.87e-08,
+  "scenarios": [
+    "matched",
+    "ancestral_epoch"
+  ],
+  "folded": true,
+  "mutation_model": "binary infinite sites; continuous positions",
+  "seed_allocation": "disjoint consecutive ancestry/mutation/optimizer triples",
+  "fit_initialization": "random log-uniform; no truth initialization",
+  "methods": "moments on all cases; independent dadi diffusion on matched cases",
+  "vcf_checks": "cases 0 and 12; map binary alleles to A/C, floor(position)+1; compare all spectra",
+  "calibration_or_selection": false,
+  "public_answers_used": false,
+  "exposure": "complete 100 Mb simulation; all bases callable; no missing genotypes",
+  "limitations": [
+    "Six diagnostic parameter points, not a random prior validation sample",
+    "Two chromosomes per point/history cannot establish calibrated coverage",
+    "Both numerical solvers assume the same two-epoch biological model",
+    "No interval coverage claim; failures and incomplete cases remain in denominator",
+    "Continuous sites may share an integer VCF position after rounding"
+  ],
+  "source_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-bottleneck-20261120/scripts/validate_bottleneck_readiness.py": "8e642980b3ad3f5c56dbc06a9eb0bc9c9df36d48a9a95730535f1f8d5a999bf7",
+    "scripts/validate_bottleneck_science.py": "18cfb6f93ca9fb6e790642bd428b0c0326a2146fece487a51286754b54468dfa",
+    "src/ghist_bottleneck/sfs_baseline.py": "6799c109208172f5645960548043a6fe875fd73ff8ecd564db4352880b0c5ed6",
+    "src/ghist_bottleneck/dadi_reference.py": "4be5e7688f6310669a7696992d751ab6e354e82d123051a74429841aa54a8997",
+    "src/ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb",
+    "src/ghist_inference/vcf.py": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81"
+  },
+  "versions": {
+    "msprime": "1.4.2",
+    "tskit": "1.0.3",
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "numpy": "2.4.6"
+  }
+}

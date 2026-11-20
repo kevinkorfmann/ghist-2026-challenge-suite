@@ -73,6 +73,13 @@ def test_task7_cannot_transfer_non_bgs_recovery():
     }
     with pytest.raises(ValueError, match="BGS"):
         validate_matched_recovery(payload)
+    # Task 7 itself does not mandate Task 8's bottleneck/growth history.
+    payload["records"][0]["background_selection"] = True
+    payload["records"][0]["demography"] = "constant_10000"
+    validate_matched_recovery(payload)
+    payload["records"][0].pop("demography")
+    with pytest.raises(ValueError, match="demographic history"):
+        validate_matched_recovery(payload)
 
 
 def test_raisd_reference_matches_filename_not_lexical_position(tmp_path):

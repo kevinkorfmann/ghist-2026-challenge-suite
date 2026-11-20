@@ -1,0 +1,70 @@
+{
+  "recorded_at_utc": "2026-11-20T17:23:45.336638+00:00",
+  "scope": "Final owned source integration passed on three platforms; biological simulation panels are still running",
+  "workspace_test": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 773,
+    "seconds": 53.75,
+    "includes_concurrent_other_chat_changes": true,
+    "is_final_source_check": false
+  },
+  "bottleneck_cross_review": {
+    "reviewer": "independent demography agent",
+    "focused_tests_passed": 12,
+    "additional_smoke": "Verified-reference VCF with two mocked finite unconverged fits retained diagnostics, failed, and omitted intervals",
+    "no_actionable_regression": true
+  },
+  "claude_access": {
+    "completed_reviews": 0,
+    "last_status": 429,
+    "reason": "usage_limit_reached",
+    "reset": "2026-11-20T21:00:00Z"
+  },
+  "isolated_macos_test": {
+    "command": "/Users/kevinkorfmann/.cache/ghist-2026/venv-review-20261120/bin/python -m pytest -q",
+    "cwd": "/Users/kevinkorfmann/.cache/ghist-2026/readiness-integration-20261120",
+    "passed": 340,
+    "seconds": 16.02,
+    "warnings": 2,
+    "source_manifest": "source_snapshot.json",
+    "explicit_pythonpath": true
+  },
+  "task9_manifest_compatibility": {
+    "canonical_key": "entity_id",
+    "legacy_key": "entity",
+    "conflicting_aliases_rejected": true,
+    "predictor_and_package_targeted_tests_passed": 67,
+    "betty_job": "10850854",
+    "includes_other_chat_package_tests": true
+  },
+  "isolated_linux_arm_test": {
+    "passed": 340,
+    "seconds": 13.98,
+    "warnings": 2,
+    "explicit_pythonpath": true,
+    "source_manifest": "source_snapshot.json"
+  },
+  "harness_failures": [
+    {
+      "attempt": "betty_incomplete_fixture_attempt.log",
+      "reason": "Incomplete copied fixture set: missing Slurm script, calibration configs and earlier Task9 evidence; no code defect",
+      "resolved_by": "Complete baseline-plus-owned-files snapshot"
+    },
+    {
+      "attempt": "linux_missing_pythonpath_attempt.log",
+      "reason": "Subprocess inherited editable installation pointing to older checkout; explicit snapshot PYTHONPATH was missing",
+      "resolved_by": "Explicit PYTHONPATH for both main and child processes; full340test rerun passed"
+    }
+  ],
+  "isolated_ruff": "passed",
+  "isolated_betty_test": {
+    "passed": 340,
+    "seconds": 44.5,
+    "warnings": 12,
+    "job": "10850879",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "explicit_pythonpath": true,
+    "source_manifest": "source_snapshot.json"
+  }
+}

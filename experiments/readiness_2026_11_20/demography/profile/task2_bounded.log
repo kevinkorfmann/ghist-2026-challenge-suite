@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/spectrum.py", line 175, in model
+    return validate_expected_spectrum(expected, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_inference/validation.py", line 25, in validate_expected_spectrum
+    raise ValueError("Expected spectrum would exclude observed likelihood bins")
+ValueError: Expected spectrum would exclude observed likelihood bins
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/kkor/ghist-2026-review-20261120/profile_censored_bounded.py", line 36, in <module>
+    print(benchmark.run_one((config,0,sys.argv[3],2000000,12)),flush=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/scripts/validate_demography_independently.py", line 79, in run_one
+    fits = {name: fit_secondary_contact_spectrum(spectrum, projection=(20, 16), convention=name, initial_scaled=(1.2, 0.9, 0.3, 0.15, 1.0), **common) for name in ("simple", "generator_matched")}
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/spectrum.py", line 305, in fit_secondary_contact_spectrum
+    results = [_fit_restart(arguments) for arguments in work]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/spectrum.py", line 187, in _fit_restart
+    moments.Inference.optimize_log_lbfgsb(
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 354, in optimize_log_lbfgsb
+    outputs = scipy.optimize.fmin_l_bfgs_b(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_lbfgsb_py.py", line 259, in fmin_l_bfgs_b
+    res = _minimize_lbfgsb(fun, x0, args=args, jac=jac, bounds=bounds,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_lbfgsb_py.py", line 420, in _minimize_lbfgsb
+    f, g = func_and_grad(x)
+           ^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_differentiable_functions.py", line 412, in fun_and_grad
+    self._update_fun()
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/optimize/_differentiable_functions.py", line 362, in _update_fun
+    fx = self._wrapped_fun(self.x)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/scipy/_lib/_util.py", line 544, in __call__
+    fx = self.f(np.copy(x), *self.args)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 93, in _object_func_log
+    return _object_func(numpy.exp(log_params), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Inference.py", line 65, in _object_func
+    sfs = model_func(*all_args, **func_kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/spectrum.py", line 180, in model
+    return validate_expected_spectrum(function(
+                                      ^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/profile_censored_bounded.py", line 31, in traced
+    return _original(parameters,sample_sizes,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/spectrum.py", line 63, in secondary_contact_spectrum
+    spectrum.integrate(
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Spectrum_mod.py", line 911, in integrate
+    self.data[:] = moments.Integration.integrate_nD(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kkor/ghist-2026-review-20261120/.venv-reliability/lib/python3.12/site-packages/moments/Integration.py", line 1062, in integrate_nD
+    while t < Tmax:
+          ^
+  File "/home/kkor/ghist-2026-review-20261120/profile_censored_bounded.py", line 27, in watch
+    raise KeyboardInterrupt('Native adaptive integrator repeated identical t and dt 16 times')
+KeyboardInterrupt: Native adaptive integrator repeated identical t and dt 16 times

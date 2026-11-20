@@ -1,0 +1,226 @@
+{
+  "status": "completed",
+  "fit": {
+    "AFR_population_size": 27973.957134284774,
+    "EUR_population_size": 13308.801812288695,
+    "generations_since_split": 10383.423389326696,
+    "migration_rate": 0.00014215370783820093,
+    "ancestral_population_size": 17814.025209317562,
+    "scaled_parameters": {
+      "AFR_size_ratio": 1.5703333079181394,
+      "EUR_size_ratio": 0.7470968327432014,
+      "split_duration_2N": 0.2914395614500333,
+      "migration_2N": 5.06465947005535
+    },
+    "theta": 1446.498846996586,
+    "multinomial_log_likelihood": -655.2732296250823,
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [],
+      "restarts_within_0_1_log_likelihood": 10,
+      "numerically_supported": true,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    },
+    "best_restart": 2,
+    "best_restart_converged": true,
+    "converged_restarts": 11,
+    "restart_diagnostics": [
+      {
+        "ok": true,
+        "restart": 0,
+        "likelihood": -655.2733788510797,
+        "theta": 1446.694034590288,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 145,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 1,
+        "likelihood": -655.2733742917248,
+        "theta": 1446.6951568090813,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 19,
+          "function_calls": 180,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 2,
+        "likelihood": -655.2732296250823,
+        "theta": 1446.498846996586,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 17,
+          "function_calls": 120,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 3,
+        "likelihood": -655.2733805088351,
+        "theta": 1446.6924475307194,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 19,
+          "function_calls": 175,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 4,
+        "likelihood": -655.2732754787174,
+        "theta": 1446.5328977443698,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 13,
+          "function_calls": 155,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 5,
+        "likelihood": -655.2733811165186,
+        "theta": 1446.6937094663963,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 100,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 6,
+        "likelihood": -655.2732551905779,
+        "theta": 1446.5194946090935,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 16,
+          "function_calls": 255,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": false,
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      },
+      {
+        "ok": true,
+        "restart": 8,
+        "likelihood": -655.2733811329214,
+        "theta": 1446.6937069874355,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 14,
+          "function_calls": 80,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 9,
+        "likelihood": -743.8711974400312,
+        "theta": 1680.179761867543,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 18,
+          "function_calls": 215,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 10,
+        "likelihood": -655.2733809951255,
+        "theta": 1446.693210488041,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 39,
+          "function_calls": 315,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      },
+      {
+        "ok": true,
+        "restart": 11,
+        "likelihood": -655.2732458361877,
+        "theta": 1446.5410412393653,
+        "optimizer": {
+          "converged": true,
+          "warnflag": 0,
+          "iterations": 15,
+          "function_calls": 170,
+          "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+        }
+      }
+    ],
+    "integration_retry_policy": "bounded_whole_model_refinement_v1",
+    "successful_restarts": 11,
+    "failed_restarts": [
+      {
+        "ok": false,
+        "restart": 7,
+        "reason": "ValueError: Spectrum integration failed after 7 finite refinements: Expected spectrum would exclude observed likelihood bins"
+      }
+    ],
+    "projection": [
+      20,
+      16
+    ],
+    "restarts": 12,
+    "workers": 1,
+    "sequence_length": 2000000,
+    "mutation_rate": 1.015e-08,
+    "integration_dt_fac": 0.02,
+    "adaptive_integration": false,
+    "initial_scaled": [
+      1.2,
+      0.9,
+      0.3,
+      1.0
+    ]
+  },
+  "specification": {
+    "fit_protocol": "bounded_refinement_diagnostics_v1",
+    "settings": {
+      "mutation_rate": 1.015e-08,
+      "sequence_length": 2000000,
+      "restarts": 12,
+      "workers": 1,
+      "maxiter": 400,
+      "projection": [
+        20,
+        16
+      ],
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        1.0
+      ],
+      "seed": 202621212
+    },
+    "spectrum_sha256": "761f9fe046138d1249ecb1f5e926519b462ed188596920c83261adb590b4efb4"
+  },
+  "model": "(20, 16)",
+  "elapsed_seconds": 31.27983412705362
+}

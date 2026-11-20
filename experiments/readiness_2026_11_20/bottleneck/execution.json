@@ -1,0 +1,49 @@
+{
+  "simulation_array_jobs": [
+    "10850236",
+    "10850327"
+  ],
+  "initial_cases": [
+    0,
+    12
+  ],
+  "remaining_cases": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "initial_case0_completed_seconds": 134,
+  "initial_case0_peak_rss_kib": 497200,
+  "remaining_array_concurrency": 4,
+  "time_limit_seconds_per_case": 7200,
+  "cpus_per_case": 4,
+  "memory_per_case_gib": 22,
+  "scheduler_adjustment": "Released remaining array dependency after case0 passed full input/fitting path; larger case12 continued under its original resource bound. At most five jobs can overlap during this transition. Scientific inputs and seeds unchanged.",
+  "export_revision": "v1 exported correct site coordinates but VCF header L+1; explicit true exposure/block lengths kept SFS fits unchanged. v2 corrects header and adds case/spectrum contract binding, with separate revalidation.",
+  "source_snapshot_sha256": {
+    "experiments/readiness_2026_11_20/bottleneck/source_snapshot/sfs_baseline_v1.py": "6799c109208172f5645960548043a6fe875fd73ff8ecd564db4352880b0c5ed6",
+    "experiments/readiness_2026_11_20/bottleneck/source_snapshot/validate_bottleneck_readiness_v1.py": "8e642980b3ad3f5c56dbc06a9eb0bc9c9df36d48a9a95730535f1f8d5a999bf7"
+  },
+  "vcf_revalidation_job": "10850629",
+  "vcf_revalidation_dependency": "afterok:10850236",
+  "vcf_revalidation_tree": "case12-revalidation-verified.trees (copy only after atomic spectrum checkpoint exists)"
+}

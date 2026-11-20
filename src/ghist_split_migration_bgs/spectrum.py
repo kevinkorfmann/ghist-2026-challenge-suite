@@ -6,6 +6,8 @@ from typing import Sequence
 
 import numpy as np
 
+from ghist_inference.integration import refine_spectrum
+
 from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
@@ -35,6 +37,14 @@ def isolation_with_migration_spectrum(
     ``M = 2 * Nref * m``.
     """
     import moments
+
+    if adapt_dt:
+        return refine_spectrum(
+            lambda step: isolation_with_migration_spectrum(
+                parameters, sample_sizes, folded=folded, dt_fac=step, adapt_dt=False
+            ),
+            dt_fac=dt_fac,
+        )
 
     nu1, nu2, duration, migration = parameters
     if min(nu1, nu2, duration, migration) <= 0:
@@ -76,18 +86,17 @@ def _fit_restart(arguments: tuple) -> dict:
             )
 
     try:
-        estimate = np.asarray(
-            moments.Inference.optimize_log_lbfgsb(
-                start,
-                data,
-                model,
-                lower_bound=lower,
-                upper_bound=upper,
-                maxiter=maxiter,
-                verbose=0,
-            ),
-            dtype=np.float64,
+        estimate, _, optimizer_info = moments.Inference.optimize_log_lbfgsb(
+            start,
+            data,
+            model,
+            lower_bound=lower,
+            upper_bound=upper,
+            maxiter=maxiter,
+            verbose=0,
+            full_output=True,
         )
+        estimate = np.asarray(estimate, dtype=np.float64)
         expected = model(estimate, data.sample_sizes)
         likelihood = float(moments.Inference.ll_multinom(expected, data))
         theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
@@ -98,6 +107,13 @@ def _fit_restart(arguments: tuple) -> dict:
                 "estimate": estimate,
                 "likelihood": likelihood,
                 "theta": theta,
+                "optimizer": {
+                    "converged": bool(optimizer_info["warnflag"] == 0),
+                    "warnflag": int(optimizer_info["warnflag"]),
+                    "iterations": int(optimizer_info["nit"]),
+                    "function_calls": int(optimizer_info["funcalls"]),
+                    "message": str(optimizer_info["task"]),
+                },
             }
         return {"ok": False, "restart": restart, "reason": "nonfinite result"}
     except Exception as error:
@@ -151,10 +167,10 @@ def fit_isolation_with_migration_spectrum(
         if (
             initial.shape != lower.shape
             or not np.isfinite(initial).all()
-            or np.any(initial <= lower)
-            or np.any(initial >= upper)
+            or np.any(initial < lower)
+            or np.any(initial > upper)
         ):
-            raise ValueError("initial_scaled must lie strictly within parameter bounds")
+            raise ValueError("initial_scaled must lie within parameter bounds")
         starts = [initial]
         starts.extend(
             np.clip(
@@ -210,6 +226,15 @@ def fit_isolation_with_migration_spectrum(
             best["likelihood"],
         ),
         "best_restart": int(best["restart"]),
+        "best_restart_converged": best["optimizer"]["converged"],
+        "converged_restarts": sum(
+            row.get("optimizer", {}).get("converged", False) for row in results
+        ),
+        "restart_diagnostics": [
+            {key: value for key, value in row.items() if key != "estimate"}
+            for row in results
+        ],
+        "integration_retry_policy": "bounded_whole_model_refinement_v1",
         "successful_restarts": len(valid),
         "failed_restarts": [row for row in results if not row["ok"]],
         "projection": [int(value) for value in data.sample_sizes],
