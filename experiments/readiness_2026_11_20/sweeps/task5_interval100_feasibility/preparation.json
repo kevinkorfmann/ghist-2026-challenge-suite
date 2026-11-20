@@ -1,0 +1,26 @@
+{
+  "schema": "task5_interval100_feasibility_preparation_v1",
+  "state": "PREPARED_NOT_LAUNCHED",
+  "prior_protocol_sha256": "c9a3c5a7597ac90e4b5354635f2aaf421f4538c438624da92f594c18c76cae1d",
+  "exact_adapter_replacements": [
+    {
+      "before": "simplificationInterval=20,",
+      "after": "simplificationInterval=100,"
+    },
+    {
+      "before": "generated_interval20.slim",
+      "after": "generated_interval100.slim"
+    },
+    {
+      "before": "'interval20_sha256'",
+      "after": "'interval100_sha256'"
+    }
+  ],
+  "batch_changes": "Only job-name and isolated code directory; CPU/memory/time/threads unchanged.",
+  "snapshot_unchanged": true,
+  "external_locks_and_versions_unchanged": true,
+  "biological_seed_inputs_and_checkpoint_logic_unchanged": true,
+  "production_defaults_unchanged": true,
+  "fullcase100_launch_authorized": false,
+  "scope": "One prospective resource feasibility attempt; no scientific promotion, accuracy inspection, or independent biological replicate."
+}

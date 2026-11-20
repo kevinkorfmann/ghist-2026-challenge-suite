@@ -1,0 +1,51 @@
+{
+  "schema": "paired_fixed_interval20_vs100_result_summary_v1",
+  "job_id": "10857430",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "elapsed_seconds": 9,
+  "allocation": {
+    "cpus": 1,
+    "memory_MiB": 5632,
+    "time_limit_seconds": 300,
+    "automatic_retries": 0
+  },
+  "protocol_sha256": "0d977abaa44fa26b5166506fdac293b4158d449b32b3e5e8011dcf9618879429",
+  "result_sha256": "cc53f0f7c03657509b8e9d75dd5c4011affcbb86e683d5612fc45a905b8cbca5",
+  "postrun_verification_sha256": "07919ff480fd4b12678e3e4f70dc6f3e148db15ca48661a3fbfd159a6e11ae80",
+  "state": "PASSED",
+  "comparisons": {
+    "trajectory": true,
+    "sample_identities": true,
+    "marginal_ancestry": true,
+    "selected_genotypes": true,
+    "sequence_length": true,
+    "sample_haplotypes": true
+  },
+  "trajectory_records_per_arm": 362,
+  "forced_restores_per_arm": 1,
+  "canonical_sha256": "0e64c13783ad5850f2c41e1e3fd28fead63ab448bc9cd907e3a1ebaf9a06fdf0",
+  "counts": {
+    "interval20": {
+      "sample_haplotypes": 24,
+      "sample_diploids": 12,
+      "canonical_ancestry_intervals": 7,
+      "selected_variants": 1
+    },
+    "interval100": {
+      "sample_haplotypes": 24,
+      "sample_diploids": 12,
+      "canonical_ancestry_intervals": 7,
+      "selected_variants": 1
+    }
+  },
+  "source_runtime_engine_binary_checks": "passed before and after; raw trees independently recanonicalized after completion",
+  "scientifically_validated": false,
+  "release_ready": false,
+  "limitations": [
+    "One small fixed-seed software fixture, not an independent biological recovery replicate.",
+    "The approximately 0.08-second per-arm runtime does not establish a full-chromosome speedup or memory bound.",
+    "No fullcase interval100 execution is included or authorized by this record.",
+    "Original interval20 fullcase timeout and previous adaptive OOMs remain unchanged."
+  ]
+}

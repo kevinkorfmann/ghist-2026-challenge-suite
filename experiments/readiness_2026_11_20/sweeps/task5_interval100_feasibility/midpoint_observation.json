@@ -1,0 +1,59 @@
+{
+  "schema": "task5_interval100_midpoint_observation_v1",
+  "observed_utc": "2026-11-20T20:30:05.817469+00:00",
+  "job_id": "10857763",
+  "state": "RUNNING_PARTIAL",
+  "scheduler_snapshot": "RUNNING|21:09|45:00",
+  "protocol_sha256": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307",
+  "resource_observations": 126,
+  "resources_prefix_bytes": 144319,
+  "resources_prefix_sha256": "01adadad422803af3cf527f5dd0e0bf0a52e14000895cbf713fe55f134bc8c11",
+  "phase_prefix_bytes": 4095,
+  "phase_prefix_sha256": "fbbde326ba2b9622fb30771faa3fb84ac4c1950b6810329fffde6af39f2398f9",
+  "last_resource": {
+    "unix_time": 1795206594.310331,
+    "stage": "slim_running",
+    "cgroups": {
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10857763/step_batch/task_0": {
+        "memory.usage_in_bytes": "1841618944",
+        "memory.max_usage_in_bytes": "4927836160",
+        "memory.limit_in_bytes": "9223372036854771712",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      },
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10857763/step_batch": {
+        "memory.usage_in_bytes": "1842434048",
+        "memory.max_usage_in_bytes": "4928651264",
+        "memory.limit_in_bytes": "23622320128",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      },
+      "/sys/fs/cgroup/memory/slurm/uid_1068187619/job_10857763": {
+        "memory.usage_in_bytes": "1843433472",
+        "memory.max_usage_in_bytes": "4929650688",
+        "memory.limit_in_bytes": "23622320128",
+        "memory.failcnt": "0",
+        "memory.oom_control": "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+      }
+    },
+    "processes": [
+      {
+        "pid": 2405651,
+        "Name": "python",
+        "PPid": "2404828",
+        "VmHWM": "126552 kB",
+        "VmRSS": "117616 kB"
+      },
+      {
+        "pid": 2405756,
+        "Name": "slim",
+        "PPid": "2405651",
+        "VmHWM": "4685736 kB",
+        "VmRSS": "1678236 kB"
+      }
+    ]
+  },
+  "last_phase": "26600\t41129\t0\t0",
+  "monitor_failure": false,
+  "interpretation": "Partial resource observation only; no full-run memory bound, accuracy or recovery claim. Original 45-minute cap remains unchanged."
+}

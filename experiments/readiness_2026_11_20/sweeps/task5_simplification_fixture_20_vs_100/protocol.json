@@ -1,0 +1,76 @@
+{
+  "schema": "paired_slim_fixed_interval20_vs100_software_fixture_v1",
+  "seed": 2026112091,
+  "biology": {
+    "length": 100000,
+    "recombination_rate": 1e-07,
+    "mutation_rate": 1e-08,
+    "present_diploid_N": 100,
+    "backward_size_events": [
+      [
+        80,
+        160
+      ],
+      [
+        160,
+        120
+      ],
+      [
+        240,
+        120
+      ]
+    ],
+    "burn_in": 1,
+    "scaling_factor": 1,
+    "diploid_samples": 12,
+    "selected_position": 50000,
+    "selected_origin_generations": 60,
+    "selection_coefficient": 0.2,
+    "conditioning": "stdpopsim allele-survival conditioning; one additional forced checkpoint restore"
+  },
+  "arms": {
+    "interval20": "explicit fixed simplificationInterval20 with default NULL ratio",
+    "interval100": "explicit fixed simplificationInterval100 with default NULL ratio"
+  },
+  "comparisons": [
+    "logged tick/population/target-frequency/restore trajectory",
+    "forced restore exactly once per arm",
+    "remembered sample pedigree and genome identities",
+    "canonical marginal ancestry after sample simplification",
+    "binary selected-site genotypes"
+  ],
+  "resource_limits": {
+    "slurm_minutes": 5,
+    "cpus": 1,
+    "memory_MiB": 5632,
+    "per_arm_timeout_seconds": 100
+  },
+  "script_difference": "Exactly one initializeTreeSeq fixed-interval argument; all other bytes identical.",
+  "source_fixture_protocol_sha256": "52fb8147aba90613e08823c84dc1cacfa2f440f0b4b162e1db1cebfaec9f4f33",
+  "source_sha256": {
+    "prepare.py": "94b267ac05ccc2a05da49c8e3930047597826fc2a9002dfd90b67ddbcf37dcba",
+    "run.py": "d0190d210a9e0411d4962ed72ab535354aea70b0be2988c701f582c95a302ba5",
+    "run.sbatch": "7398a46b62a35f4fe9698f1748eb8a2cf3c6b6573db1c3b3afd4b2c18f059ae9",
+    "runtime_reference.json": "9c2c96751e7cacd846a7a20a5e0550aebc63796ea0d65032d9718232180cf7ce",
+    "reference/protocol.json": "52fb8147aba90613e08823c84dc1cacfa2f440f0b4b162e1db1cebfaec9f4f33",
+    "reference/interval20.slim": "f591fdc135e8c9c17076527475e41423d826c346b0e143ce34c9de40b7d7e26e",
+    "interval20.slim": "f591fdc135e8c9c17076527475e41423d826c346b0e143ce34c9de40b7d7e26e",
+    "interval100.slim": "f4bcdf05d1e38ec3a86dce74311e0f3524378bb3f4a1ba94b2582cd25660a79b"
+  },
+  "engine_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py",
+  "engine_sha256": "a58e4629196239970d0c593f71b324d3da831745a5e707fe83fdd214cea9a911",
+  "slim_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim",
+  "slim_sha256": "caaf10c365e4ae783251ab31f9d4b9d0425ba3417a7fbccbc76ce42eea94551e",
+  "versions": {
+    "numpy": "2.4.6",
+    "msprime": "1.4.2",
+    "pysam": "0.24.0",
+    "stdpopsim": "0.3.0",
+    "tskit": "1.0.3",
+    "pyslim": "1.0.4"
+  },
+  "python_version": "3.11.11",
+  "python_executable_sha256": "4824313cdfaa6ec4320450dff68de4df5f48d8b712ced0264f3602e681ac9135",
+  "scientifically_validated": false,
+  "scope": "Bookkeeping equivalence software fixture only; no full-chromosome resource, accuracy or recovery claim."
+}

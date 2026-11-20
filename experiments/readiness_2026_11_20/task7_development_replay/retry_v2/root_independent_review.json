@@ -1,0 +1,38 @@
+{
+  "verdict": "No blocker to recording the completed retry as development interoperability evidence; not scientific validation or release qualification.",
+  "terminal_handoff_sha256": "1910d63a1f4c02c018f5ed46cca7ee547fc7a8483c1f940180d26827e30a8458",
+  "terminal_archive_sha256": "314f383d298503ddc1997775ca194d145bd5e8ce929e47d66c71f41640d2cd2e",
+  "protocol_sha256": "4c5abafa1e19a8435a1594cb2ad944285d7e353bb2a301e99b93814023f28b59",
+  "checks_sha256": "5dd538de57719d4ad17040501057b500152b47072304d99656baac26b83ca653",
+  "check_script_sha256": "bee043fb1cbfef1334bb1dcc22692d0d6f4ae210dd23c7310710f862c51ca84f",
+  "independent_checks": {
+    "original_and_retry_archives_verified": true,
+    "original_files_verified": 28,
+    "retry_files_verified": 44,
+    "production_source_files_unchanged": 11,
+    "completion_output_hashes_verified": 12,
+    "preserved_external_tree_digest_verified_before_after": true,
+    "in_memory_reference_clear_and_full_segment_translation": "Directly rechecked all biological tables before reference clear, samples/genotypes/mutations afterward, and exact edge and site coordinate shift by -36000000.",
+    "vcf_roundtrip": "Direct text parsing matches all 777 accepted variants and 25 diploid samples; 1 excluded source site, contig length1000000. Masked VCF records are identical.",
+    "production_chain": "Frozen runner invokes actual predictor CLI and real RAiSD, then BED validator and verify_candidate; completion, RAiSD logs/report, candidate and source hashes agree. No predictor or RAiSD rerun in this independent audit.",
+    "short_segment_abstention": "consensus_eligible=false and distant score/ratio null; a1Mb segment cannot supply a >2Mb baseline."
+  },
+  "denominator": {
+    "existing_development_trees": 1,
+    "workflow_attempts": 2,
+    "original_failed_job": "10858405",
+    "completed_metadata_only_retry": "10858757",
+    "new_biological_replicates": 0,
+    "new_accuracy_evaluations": 0
+  },
+  "scheduler": "Retained sacct reports COMPLETED0:0 in9s,1CPU,5632MiB; sampled batch MaxRSS662304KiB is not a guaranteed peak.",
+  "limitations": [
+    "Tree digest is retrospectively attested; original simulation did not freeze a tree hash.",
+    "One previously evaluated development segment, not fresh confirmation; stress history differs from matched target-scale Task7 design.",
+    "Full-segment callability does not exercise inaccessible gaps or whole-chromosome confidence/coverage.",
+    "Local read-only audit used Python3.12.11/NumPy2.5.5/tskit1.0.4; frozen Betty run used Python3.11.11/NumPy2.4.6/tskit1.0.3. This audit did not reproduce the statistical predictor in a different runtime.",
+    "No scientific readiness, accuracy, calibration, coverage or submission claim."
+  ],
+  "production_source_edits": false,
+  "answers_or_holdout_inspected": false
+}

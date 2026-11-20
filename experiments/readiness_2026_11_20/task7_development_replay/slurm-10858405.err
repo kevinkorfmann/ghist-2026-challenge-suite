@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-20261120/run.py", line 156, in <module>
+    main()
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-20261120/run.py", line 84, in main
+    localized = original.keep_intervals([[left, right]], simplify=False).trim()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/tskit/trees.py", line 7230, in trim
+    tables.trim(record_provenance)
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/tskit/tables.py", line 4174, in trim
+    self.rtrim(record_provenance=False)
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/tskit/tables.py", line 4150, in rtrim
+    self._check_trim_conditions()
+  File "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/tskit/tables.py", line 4077, in _check_trim_conditions
+    raise ValueError(
+ValueError: Cannot trim if there is a reference sequence. Please remove the reference sequence by calling `.reference_sequence.clear()` first.

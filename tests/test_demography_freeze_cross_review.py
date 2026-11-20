@@ -72,7 +72,7 @@ def test_freeze_entrypoints_reject_incomplete_converged_projection_set(tmp_path,
 
 def secondary_contact_sources():
     from ghist_secondary_contact.contract import SPECTRUM_CONTRACT
-    from scripts.freeze_secondary_contact import PARAMETER_KEYS
+    from scripts.freeze_secondary_contact import INTERVAL_KEYS, PARAMETER_KEYS
 
     raw = dict.fromkeys(PARAMETER_KEYS, 1.0)
     raw.update(generations_since_split=2., best_restart_converged=True,
@@ -93,7 +93,9 @@ def secondary_contact_sources():
             'corrected': {'mean_competition_rrmse': .1},
             'raw': {'mean_competition_rrmse': .2},
         }}},
-        'bootstrap': {**contract, 'observed_sampling_interval_95': {}},
+        'bootstrap': {**contract, 'observed_sampling_interval_95': {
+            key: [.5, 3.] for key in INTERVAL_KEYS
+        }},
         'vcf-audit': {'population': {'file_sha256': '0' * 64, 'records': 1,
                                     'skipped_non_biallelic_records': 0,
                                     'ancestral_reference_records': 1}},
@@ -125,7 +127,7 @@ def test_secondary_contact_real_freeze_rejects_nonfinite_values(tmp_path, monkey
         role = location.removesuffix('_risk')
         sources['stress-transfer']['conditions']['nominal'][role]['mean_competition_rrmse'] = float('nan')
     else:
-        sources['bootstrap']['observed_sampling_interval_95'] = {'bad': float('nan')}
+        sources['bootstrap']['observed_sampling_interval_95']['migration_rate'] = [0., float('nan')]
     with pytest.raises(ValueError, match='finite|JSON compliant'):
         run_secondary_contact_freeze(sources, tmp_path, monkeypatch)
     assert not (tmp_path / 'freeze.json').exists()

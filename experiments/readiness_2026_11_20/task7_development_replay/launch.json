@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-11-20T20:33:30.451131+00:00",
+  "job_id": "10858405",
+  "authorized_replay_count": 1,
+  "actual_jobs_submitted": 1,
+  "resource_bound": {
+    "cpus": 1,
+    "memory_mib": 5632,
+    "time_limit": "00:10:00"
+  },
+  "submission_attempts": [
+    {
+      "state": "FAILED_BEFORE_SCHEDULER",
+      "exit_code": 127,
+      "stderr": "bash: line 1: sbatch: command not found",
+      "job_created": false
+    },
+    {
+      "state": "SUBMITTED",
+      "job_id": "10858405",
+      "environment_fix": "source /etc/profile before invoking unchanged sbatch file"
+    }
+  ],
+  "retry_allowed": false,
+  "protocol_sha256": "795fae7cb0da7ef2d8c92dd9a2496cd489c33b41217acc897f48781dde3986be"
+}

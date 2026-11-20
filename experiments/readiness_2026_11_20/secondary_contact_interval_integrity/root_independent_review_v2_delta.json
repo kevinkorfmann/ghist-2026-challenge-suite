@@ -1,0 +1,26 @@
+{
+  "verdict": "No blocker; exact test-only correction resolves the v1 review nit.",
+  "scope": "Byte and hash attestation only; no tests repeated, no model work, no source edits.",
+  "v1_handoff_sha256": "6520a132653ecdc15a389dc6ced47a5e8d2ae9fc29d13940fe8893760c369b2b",
+  "v2_handoff_sha256": "b2e9d883dd26baa28a58a504994d649dfb90b5328062495e421ccf613e50c8c0",
+  "v1_archive_sha256": "4a3b5758c1c7aeda3a40ead1b4328b4e5e4643025eecb03f0957c3fe0b83b929",
+  "v2_archive_sha256": "5c6dedd469497cfd632ec31e0f530a3bb1c1415386dfbd69141186851e2c44aa",
+  "v1_independent_review_sha256": "6315fa53e3409cfece15d77e06c9077e24453ee3e14de3d1623d6363b4a1ac52",
+  "checks": {
+    "all_three_files_match_each_version_owned_manifest": true,
+    "both_archives_match_handoffs": true,
+    "two_other_owned_files_byte_identical": true,
+    "single_exact_replacement": {
+      "file": "tests/test_secondary_contact_intervals.py",
+      "before": "glob(\".freeze.json.*\")",
+      "after": "glob(\"freeze.json.*\")"
+    },
+    "test_v1_sha256": "dffffaf7430878feeed7f4ae95507002f06c7528d73a55676d4497aff619b005",
+    "test_v2_sha256": "b08cadf347b45fec21e658a005e93553c28dd4084433e7e7bcadb7b0da3be127"
+  },
+  "prior_actual_main_evidence": {
+    "sha256": "78705cddfbd31c431ae0bd989a158eb129ed6e28ed7beae67842acad0df350b3",
+    "details": "Four byte-identical valid exports and four rejected invalid cases previously checked. Failure checks used correct freeze.json.* prefix, including late JSON serialization failure."
+  },
+  "limitations": "Interval integrity only; prior scientific limitations unchanged. Root-reported 54-test rerun and current three-platform integration are separate evidence."
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "independent_paired_fixture_result_review_v1",
+  "verdict": "PASS for this fixed-seed software fixture only; no blocking discrepancy found.",
+  "job": "10857430",
+  "scheduler": "COMPLETED, 0:0, 9 seconds; one CPU, 5632 MiB, five-minute cap",
+  "protocol_sha256": "0d977abaa44fa26b5166506fdac293b4158d449b32b3e5e8011dcf9618879429",
+  "result_sha256": "cc53f0f7c03657509b8e9d75dd5c4011affcbb86e683d5612fc45a905b8cbca5",
+  "independent_checks": {
+    "all_manifest_files_verified": 26,
+    "source_locks": 8,
+    "arms": {
+      "interval20": {
+        "trajectories": 362,
+        "forced_restores": 1,
+        "restore_debug_records": 1,
+        "haplotypes": 24,
+        "canonical_intervals": 7,
+        "selected_variants": 1
+      },
+      "interval100": {
+        "trajectories": 362,
+        "forced_restores": 1,
+        "restore_debug_records": 1,
+        "haplotypes": 24,
+        "canonical_intervals": 7,
+        "selected_variants": 1
+      }
+    },
+    "independent_pairwise_mrca_state_or_time_equalities": 2208,
+    "matched_disconnected_pairs_across_intervals": 176,
+    "common_breakpoint_intervals": 8,
+    "local_tskit_version": "1.0.4",
+    "remembered_flag": "2**17 read directly from Betty pyslim source; no local pyslim model code run"
+  },
+  "interpretation": [
+    "Both raw tree files independently reproduce their saved canonical records; trajectories, identities, selected genotypes and sequence length match.",
+    "The 2208 sample-pair checks preserve both connected MRCA times and absence of a common ancestor. Eight raw combined intervals collapse to seven canonical ancestry intervals.",
+    "Raw tree byte hashes differ, as allowed by the prespecified canonical comparison.",
+    "Local read-only tskit analysis used version 1.0.4; the executed frozen fixture used 1.0.3. No simulation, model fitting or mutation overlay was run in this review."
+  ],
+  "limitations": [
+    "One reused software-fixture seed, no new biological recovery replicate.",
+    "This does not establish fullcase speed, memory, completion, accuracy or scientific readiness.",
+    "Prior fullcase OOMs and interval20 timeout remain unchanged."
+  ],
+  "scientifically_validated": false,
+  "release_ready": false
+}

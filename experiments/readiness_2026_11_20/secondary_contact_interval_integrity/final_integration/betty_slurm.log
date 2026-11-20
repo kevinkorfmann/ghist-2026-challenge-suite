@@ -1,0 +1,51 @@
+{
+  "platform": "Linux-6.8.0-117-generic-x86_64-with-glibc2.39",
+  "python": "3.11.11 (main, Jul  1 2025, 12:16:28) [GCC 13.3.0]",
+  "source_manifest_sha256": "85ee9e25f97397901589d9ca17fca4f84c8e5bd2e092bf21b0f0fc8c27b4483d",
+  "fixture_manifest_sha256": "006a8a9f2b960e5cfeb19448201561d53804d302f00f44fea8e207e564ae2c8a",
+  "steps": {
+    "source_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 2.578,
+      "log_sha256": "5737081b0ed926a50410e4c52a57d9f82b895d017743b21bf6206d37fa6fffe7"
+    },
+    "fixtures_before": {
+      "exit_code": 0,
+      "elapsed_seconds": 3.931,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    },
+    "ruff": {
+      "exit_code": 0,
+      "elapsed_seconds": 1.876,
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "pytest": {
+      "exit_code": 0,
+      "elapsed_seconds": 238.702,
+      "log_sha256": "c7127651b9c09b3f12b23b6c5af62498e89f97006456e98d8abcba8bc6d8343d"
+    },
+    "source_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 1.876,
+      "log_sha256": "5737081b0ed926a50410e4c52a57d9f82b895d017743b21bf6206d37fa6fffe7"
+    },
+    "fixtures_after": {
+      "exit_code": 0,
+      "elapsed_seconds": 3.277,
+      "log_sha256": "615bbe875662cd45bb42bc35dbf67b3d7c7e07acaab2b1dbe4b3151a3b7369be"
+    }
+  },
+  "all_checks_passed": true,
+  "pytest_suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "1314",
+      "time": "230.941",
+      "timestamp": "2026-11-20T15:43:52.541943-05:00",
+      "hostname": "epyc-1-10"
+    }
+  ]
+}

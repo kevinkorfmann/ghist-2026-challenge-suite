@@ -1,0 +1,84 @@
+{
+  "status": "diagnostic only; no full-chromosome calibration",
+  "seed": 202611501,
+  "generator": {
+    "stdpopsim": "0.3.0",
+    "demography": "bottleneck_growth",
+    "ancestral_size": 6000,
+    "bottleneck_size": 1200,
+    "present_size": 12000,
+    "bottleneck_start": 1200,
+    "growth_start": 300,
+    "dfe": "Gamma_K17",
+    "background_selection": true,
+    "genetic_map": "HapMapII_GRCh38",
+    "mutation_rate": 1.44e-08,
+    "slim_scaling_factor": 1.0,
+    "slim_burn_in": 1.0,
+    "left": 36000000,
+    "right": 37000000,
+    "diploid_samples": 25,
+    "coding_bed_sha256": "440bc3a72cbe218f320bb0ef39163965c060156c050fb1650105479e32e7039c"
+  },
+  "truth_positions": [
+    36368356
+  ],
+  "estimates": {
+    "composite": 36350000,
+    "flank_ld_100kb": 36466000,
+    "largest_gap_midpoint": 36302233.0,
+    "median_all_three": 36350000.0
+  },
+  "localization": {
+    "region_source": "full_scan_composite_maximum",
+    "region": [
+      0,
+      1000000
+    ],
+    "radius": 750000,
+    "truth_used_for_inference": false
+  },
+  "raisd_peaks": [
+    {
+      "position": 36286009,
+      "score": 1.675
+    },
+    {
+      "position": 36409352,
+      "score": 0.4306
+    },
+    {
+      "position": 36161034,
+      "score": 0.3976
+    },
+    {
+      "position": 36879625,
+      "score": 0.1649
+    },
+    {
+      "position": 36674573,
+      "score": 0.1368
+    },
+    {
+      "position": 36571304,
+      "score": 0.1063
+    },
+    {
+      "position": 36042710,
+      "score": 0.08437
+    },
+    {
+      "position": 36778019,
+      "score": 0.05018
+    }
+  ],
+  "single_sweep_errors": {
+    "composite": 18356,
+    "flank_ld_100kb": 97644,
+    "largest_gap_midpoint": 66123.0,
+    "median_all_three": 18356.0
+  },
+  "accepted_sites": 777,
+  "public_testing_answers_used": false,
+  "submission_count": 0
+}

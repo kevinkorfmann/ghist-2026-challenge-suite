@@ -1,0 +1,27 @@
+{
+  "scope": "Root prospective review of Task7 development replay reference-metadata remedy",
+  "protocol_sha256": "4c5abafa1e19a8435a1594cb2ad944285d7e353bb2a301e99b93814023f28b59",
+  "source_archive_sha256": "b3f4d18dabd5835dd8db49651a1028dce60074ab8a58f96180ee39d65f43882e",
+  "runner_diff_sha256": "30a0b7689487b4f5850269d031cc488245e039f4721b4d2f9e22d5e042f81dd2",
+  "owned_files_checked": 22,
+  "unchanged_protocol_fields": [
+    "seed",
+    "source_sha256",
+    "settings",
+    "method",
+    "planned_allocation",
+    "input_sha256",
+    "input_tree",
+    "software"
+  ],
+  "reviewed_invariants": [
+    "Clear only unused reference metadata on an in-memory copy; original tree retained",
+    "Every biological table and global metadata/time units/exposure identical before translation",
+    "After full-segment translation, identical samples/genotypes/mutations/site states and exact shifted coordinates",
+    "Same canonical exporter and predictor; their algorithms and accuracy thresholds unchanged"
+  ],
+  "decision": "Permit exactly one separately versioned retry under the original1CPU/5632MiB/10min bound; no automatic retries",
+  "previous_failed_job": 10858405,
+  "scope_limit": "Interoperability only on previously evaluated1Mb segment with retrospective tree hash; no scientific qualification",
+  "scientifically_validated": false
+}

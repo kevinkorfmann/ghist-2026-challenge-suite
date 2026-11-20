@@ -1,0 +1,82 @@
+{
+  "verdict": "No blocker to preserving the attempt as a time-censored resource-feasibility failure. Full workflow feasibility and scientific validation remain unresolved.",
+  "scope": "Read-only full resource/phase/source audit; no new execution, accuracy inspection, source change or resource recommendation.",
+  "bindings": {
+    "original_owned_manifest_sha256": "f97f3c2eec95929c57d3a47b1c625ef7069e9ae902c95839c216993d425e1592",
+    "original_owned_files_verified": 28,
+    "terminal_report_sha256": "56b20c93fd1ab5939bb44eae7f8fccf7e67de1377e84c90f1e099c7ddf895f93",
+    "terminal_collection_sha256": "8e9142561bd8e88622ae2290e2a9e96811c2c4a75d8939f0431ca8b6ec0b5099",
+    "independent_check_sha256": "ea5406605d92211325e535211e64bb58ab8203d412c1f790ce537456364cecc7",
+    "independent_check_script_sha256": "89825599f1810ef2875fcc569c4becb744852ee2a28f3d36a26386b43b5a1995",
+    "protocol_sha256": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307"
+  },
+  "source_and_runtime": "All24 local source locks and9 output hashes verified, archive members agree with full generated scripts. Independent Betty re-attestation at2026-11-20T20:58:37.537582Z verifies24 source/148 external hashes, package versions and Python. Generated original scripts equal interval20 after only one temporary loader path normalization; instrumented script delta only registered interval and diagnostic paths. No biology/event/RNG/seed or production-default change.",
+  "terminal": {
+    "job_state": "TIMEOUT",
+    "job_elapsed": "00:45:10",
+    "batch_state": "CANCELLED",
+    "batch_exit_code": "0:15",
+    "batch_max_rss": "8167920K"
+  },
+  "monitoring": {
+    "records": 271,
+    "span_seconds": 2700.2765645980835,
+    "max_gap_seconds": 10.00145173072815,
+    "startup_to_first_sample_seconds": 8.183281183242798,
+    "last_sample_to_job_end_seconds": 1.540154218673706,
+    "last_sample_to_batch_end_seconds": 2.540154218673706,
+    "all_sampled_cgroup_failcnt_and_oom_zero": true,
+    "observed_high_water_bytes": 8365776896,
+    "observed_high_water_GiB": 7.791236877441406,
+    "maximum_sampled_usage_bytes": 8287920128,
+    "job_limit_GiB": 22,
+    "observed_headroom_GiB": 14.208763122558594,
+    "midpoint_prefixes_preserved": true,
+    "monitor_failure_file_absent": true,
+    "unobserved_tail_and_future_memory_not_certified": true
+  },
+  "phases": {
+    "rows": 337,
+    "all_ticks_1_then_every100_to33600": true,
+    "last": [
+      33600,
+      52855,
+      0,
+      0
+    ],
+    "maximum_logged_population": 71194,
+    "source_end_tick": 41290,
+    "saves_and_restores_observed": 0,
+    "only_initializing_and_slim_running_stages_observed": true,
+    "final_raw_tree_absent": true,
+    "stale_running_status_is_interrupted_cleanup": true
+  },
+  "interpretation": [
+    "TIMEOUT45:10 overrides parent numeric exit0:0; batchCANCELLED0:15. Stale RUNNING statuses reflect interrupted cleanup, not success.",
+    "The observed first population peak and entry into contraction do not bound later growth phases, selected-event conditioning/checkpoints, recapitation, mutation, VCF or prediction costs.",
+    "Zero sampled OOM/fail counters and observed memory headroom do not certify the unobserved final1.54s (job) or2.54s (batch), nor future full-run memory.",
+    "No matched-phase memory saving, general speedup, time-to-completion extrapolation, scientific accuracy or readiness claim is supported."
+  ],
+  "denominators": {
+    "original_planned_independent_cases": 48,
+    "locked_unique_attempted_cases": 6,
+    "original_not_run_cases": 42,
+    "original_completed_cases": 3,
+    "original_failed_cases": 3,
+    "original_workflow_attempts": 7,
+    "additional_same_seed_interval20_attempts": 1,
+    "additional_same_seed_interval20_outcome": "TIMEOUT",
+    "additional_same_seed_interval100_attempts": 1,
+    "additional_same_seed_interval100_outcome": "TIMEOUT",
+    "total_full_workflow_or_resource_attempts": 9,
+    "total_completed_workflows": 3,
+    "total_failed_original_attempts": 4,
+    "total_time_censored_resource_attempts": 2,
+    "new_independent_biological_replicates_from_this_attempt": 0,
+    "scope": "The original failures, 42 unrun cases and incomplete planned denominators are retained. Paired small software fixtures are separate and do not increase biological recovery counts."
+  },
+  "denominator_checks": "Original plan contains48 cases. Prior interval20 terminal report0dba0255b604964e1044be4ec75651d49c72c8f3413033de6a2104ec60218a68 retains6 launched cases/42 unrun,3 completed3 failed,7 original attempts and one timeout. Current report adds exactly one same-seed timeout:9 attempts total, no new independent replicate.",
+  "report_assessment": "Report accurately limits source-derived later schedule values and observed monitoring; retains original failures/denominators and forbids interpreting the timeout as completion. No further run is implied.",
+  "scientifically_validated": false,
+  "release_ready": false
+}

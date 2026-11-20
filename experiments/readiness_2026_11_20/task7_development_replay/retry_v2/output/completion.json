@@ -1,0 +1,58 @@
+{
+  "state": "COMPLETED",
+  "protocol_sha256": "4c5abafa1e19a8435a1594cb2ad944285d7e353bb2a301e99b93814023f28b59",
+  "slurm_job_id": "10858757",
+  "planned_replays": 1,
+  "scope": "Development-only interoperability on one existing exact-Q1 BGS tree; no recovery, coverage, independence, or release qualification.",
+  "submission_count": 0,
+  "release_ready": false,
+  "scientifically_validated": false,
+  "seed": 202611501,
+  "canonical_round_trip": true,
+  "candidate_recomputed": true,
+  "bed_validation": {
+    "challenge": 7,
+    "dataset": "testing",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "chromosome": "7",
+    "intervals": [
+      [
+        236250,
+        396250
+      ]
+    ]
+  },
+  "expected_short_segment_abstention": true,
+  "callable_sites": 777,
+  "callable_bases": 1000000,
+  "raisd_windows_total": 728,
+  "raisd_windows_callable": 728,
+  "software": {
+    "python": "3.11.11 (main, Jul  1 2025, 12:16:28) [GCC 13.3.0]",
+    "versions": {
+      "numpy": "2.4.6",
+      "tskit": "1.0.3",
+      "pysam": "0.24.0",
+      "PyYAML": "6.0.3"
+    },
+    "raisd_binary_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/raisd/RAiSD",
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307"
+  },
+  "no_localization_accuracy_scoring": true,
+  "elapsed_seconds": 3.2247640839777887,
+  "output_sha256": {
+    "canonical_input.vcf": "de0c55fe1d40def5968b0120725554b3f6a7358e63b9a384e2753dbb50556cb6",
+    "export.json": "58aa07bd5d75d624043a74c8f53f7e3df5f877523c529ab5d4503ad082908ec9",
+    "prediction/RAiSD_Info.task7": "54255c54312ccb4170112753b54682a0093a96c809738924b5a44d6bf4a3694f",
+    "prediction/RAiSD_Report.task7": "0750d4d6627418d662db5846ba9274c316711ed6d6b8f1d76c2eb1cb2786e120",
+    "prediction/accessible.bed": "1eb6930b131c8ee4beb28d500ce6587fdec984cc41d6a0ded3ea3bcce9603d96",
+    "prediction/candidate.bed": "b329a39e90d4b5d2402fea137ff819e04ebc43d3db3047a860644877a15e949e",
+    "prediction/masked.vcf": "b920afbd222c42008bb7cae0e14f4d9a78431c329e8c1fb85fb780196960561d",
+    "prediction/prediction.json": "13bd02390bdeb40ff2a5f3c923b882aada7c69ec3359e8c24fb103af3c9cf7de",
+    "prediction/raisd.log": "385302a796309f5c3d7d2297337cc8269eb9bc0b027deaf5dedb74ed755964df",
+    "predictor.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "predictor.stdout": "13bd02390bdeb40ff2a5f3c923b882aada7c69ec3359e8c24fb103af3c9cf7de",
+    "reference_metadata_audit.json": "7539695e44664f123bbb5077c43a4e904b994a57978360d002f438880cceaed5"
+  }
+}
