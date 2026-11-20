@@ -21,13 +21,13 @@ whose archived results and historical artifacts remain preserved.
 | 2 — secondary contact | All original cases now finish; hidden-history and contact-time errors remain | Runs, not scientifically ready |
 | 3 — growth/BGS | New 10 Mb neutral simulations recover strong growth; weak growth remains poorly identified | Runs, broader validation needed |
 | 4 — split/migration/BGS | Numerical stall fixed; Q1 fit finishes, but split-time error is +47% | Runs, accuracy/calibration gaps |
-| 5 — hard sweep | Production VCF-to-BED path implemented; fresh full-chromosome panel running | Scientific confirmation pending |
+| 5 — hard sweep | First three fresh cases: 2/3 interval coverage, 0/3 pass agreement gate; three initial simulation failures | Not ready; bounded resource retries running |
 | 6 — soft sweep | Eight new development configurations fail recovery criteria | Not ready |
 | 7 — sweep/BGS | Input handling repaired; exact-estimator BGS validation missing | Not ready |
 | 8 — multiple sweeps/BGS | Existing detection/localization failures remain | Not ready |
 | 9 — exact IBD relationships | Fixed candidate passes scientific and production gates | Validated candidate in tested domain |
-| 10 — human pedigrees | Separate complete-pipeline review underway | Not yet certified |
-| 11 — dog pedigrees | Separate complete-pipeline review found consensus accuracy failures | Not ready |
+| 10 — human pedigrees | Complete pipeline produces all 153 pairs in one family; only 58 exact labels correct | Runs, accuracy inadequate |
+| 11 — dog pedigrees | Two cohorts: classifier 96/96 sibling pairs correct, final consensus 16/96 | Consensus fails; broader relationships unvalidated |
 | 12 — background-related families | Corrected independent-reference candidate fails improvement gate | Not ready |
 
 **Task 9 — exact IBD relationships.** The ten-label candidate passed eight
@@ -38,6 +38,13 @@ shift. Reversing pairs, reordering rows/columns and adding a UTF-8 BOM leaves
 predictions unchanged. Model, map, feature contract and runtime checksums guard
 release selection. These are conditional accuracy estimates, not a claim that
 every relationship is correct. See the [Task 9 report](task9_readiness_2026_11_20.md).
+
+Four further production executions with the updated shared validator and
+download-manifest-compatible predictor reproduce every prediction CSV byte for
+byte. They reuse the same confirmation data and are compatibility evidence,
+not additional independent biological replicates. The offline
+[submission handoff](task9_submission_handoff_2026_11_20.md) keeps current final
+input and prediction fields explicitly pending.
 
 The official Task 9 input consists of exact IBD segments. Genotype simulation,
 phasing and IBD detector validation are therefore not prerequisites for this
@@ -102,6 +109,34 @@ confirmation. Only Task 8 explicitly specifies bottleneck/growth in addition to
 background selection; the Task 7 gate now states its matched-BGS requirement
 without attributing unrequired demographic history to the specification.
 
+Before inspecting Task 5 accuracy, resource measurements restricted this pass
+to the first six balanced pilot cases. All 48 originally planned cases remain
+in the accounting; the other 42 are explicitly not run. Three constant-size
+cases completed with localization errors of 31.1, 39.9 and 108.0 kb, two covered
+targets and no agreement-gate passes. The three initial variable-history
+attempts failed operationally; one has a confirmed out-of-memory kill. A
+bounded larger-memory retry preserves the original seeds and biological model.
+The tiny completed subset cannot establish full-panel recovery. See the
+[sweep report](readiness_sweeps_2026_11_20.md) for failures and resource policy.
+
+**Tasks 10 and 11 — complete genotype-to-pedigree diagnostics.** A new
+18-person human family passed through founder-genotype simulation, inheritance,
+IBD detection, classification, reconstruction and consensus. All 153 pair
+outputs were produced, but only 58 exact relationships and 117 meioses counts
+were correct. One family does not supply 153 independent biological replicates.
+For Task 11, two cohorts contain 16 families and 96 sibling pairs; clustering
+and the flat sibling calls succeeded, while final consensus was correct for
+only 16 pairs. Other relationship classes remain untested by this diagnostic.
+
+Cross-review repaired haplotype matching in IBD2 conversion, probability ties,
+malformed topology handling and unsupported independent phase blocks. Genotype
+preparation rejects unphased heterozygotes and requires an explicit missing-call
+policy. New validation records bind protocol, truth, source, model and output
+bytes. Historical runs retain their original source snapshots and weaker
+provenance contracts; these changes do not retroactively validate repaired
+pipelines. The [parallel follow-up](parallel_followup_2026_11_20.md) records the
+experiments and the independent review findings.
+
 **Task 12 — independent reference validation.** A fixed corrected refit was
 tested on four new pedigree seeds, using calibration-only correction references.
 All 40 CSVs passed pair coverage and format checks, but exact accuracy fell from
@@ -114,9 +149,11 @@ reconstruction. See the [Task 12 report](task12_readiness_2026_11_20.md).
 Task 5's earlier 25.4 kb median localization error was retrospective and is not
 fresh release evidence. Tasks 6 and 8 fail important localization/detection
 checks. Tasks 1–4 require broader model recovery, artifact regeneration where
-provenance was invalidated, and uncertainty validation. Tasks 7 and 10–12 lack
-complete matched pipeline validation; pair-template performance is insufficient
-to certify family reconstruction.
+provenance was invalidated, and uncertainty validation. Task 7 lacks matched
+BGS validation. The complete Tasks 10 and 11 diagnostics expose accuracy
+failures; repaired pipelines need new validation. Task 12 lacks complete matched
+pipeline validation. Pair-template performance is insufficient to certify
+family reconstruction.
 
 During this follow-up, two reviewers inadvertently encountered embedded public
 testing-answer sections while retrieving official specifications. They reported
@@ -132,10 +169,13 @@ quota rejects execution. Earlier interrupted attempts do not count as completed
 reviews. This limitation is separate from the completed parallel reviews and
 measured experimental evidence.
 
-The isolated source snapshot passes all **340 tests** on macOS/Python 3.12,
-Linux ARM/Python 3.12 and Betty/Linux x86-64/Python 3.11. Ruff also passes.
-The snapshot excludes concurrent work from the separate submission and
-pedigree-pipeline chats, whose integration is tracked separately. Cross-review
+The first isolated readiness snapshot passed all **340 tests** on three
+platforms and was merged in [PR #4](https://github.com/kevinkorfmann/ghist-2026-challenge-suite/pull/4)
+with successful GitHub CI. The combined snapshot now includes the reviewed
+submission and pedigree-pipeline work and passes all **949 tests** on
+macOS/Python 3.12, Linux ARM/Python 3.12 and Betty/Linux x86-64/Python 3.11.
+Ruff also passes; the exact source inventory and logs are retained under
+`experiments/readiness_2026_11_20/complete_integration`. Cross-review
 reproductions added guards for incomplete or duplicate projection sets,
 nonfinite freeze values, unknown checkpoint status, unverified metric records,
 invalid sweep markers and mismatched download-manifest field names. Initial

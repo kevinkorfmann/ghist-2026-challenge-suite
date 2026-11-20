@@ -1,0 +1,66 @@
+{
+  "scope": "Retrospective development diagnostics on previously inspected sibling-only cohorts; no independent confirmation or accuracy certification.",
+  "independent_families": 16,
+  "development_cohorts": [
+    {
+      "seed": 2026112711,
+      "pairs": 48,
+      "original_consensus_correct": 7,
+      "audited_legacy_consensus_correct": 7,
+      "legacy_guard_rejection": null,
+      "zero_probability_constraints": [],
+      "legacy_label_changes_on_successful_replay": 0,
+      "raw_forest_proposals_correct": 48,
+      "guarded_provisional_pairs": 3,
+      "guarded_abstained_pairs": 45,
+      "guarded_correct_counting_abstentions_as_wrong": 3,
+      "guarded_abstention_reasons": {
+        "topology_disagreement": 39,
+        "unmapped_topology": 6
+      },
+      "raw_hbd_stability": 1.0,
+      "historical_topology_conditioned_stability": 1.0
+    },
+    {
+      "seed": 2026112811,
+      "pairs": 48,
+      "original_consensus_correct": 9,
+      "audited_legacy_consensus_correct": null,
+      "legacy_guard_rejection": "No probability support for topology-constrained labels",
+      "zero_probability_constraints": [
+        {
+          "pair": [
+            "synthetic11_22",
+            "synthetic11_23"
+          ],
+          "hbd_threshold_cm": 10,
+          "topology_meioses": 3
+        }
+      ],
+      "legacy_label_changes_on_successful_replay": null,
+      "raw_forest_proposals_correct": 48,
+      "guarded_provisional_pairs": 4,
+      "guarded_abstained_pairs": 44,
+      "guarded_correct_counting_abstentions_as_wrong": 4,
+      "guarded_abstention_reasons": {
+        "topology_disagreement": 35,
+        "unmapped_topology": 9
+      },
+      "raw_hbd_stability": 1.0,
+      "historical_topology_conditioned_stability": 1.0
+    }
+  ],
+  "pairs": 96,
+  "legacy_label_changes_on_successful_replay": 0,
+  "legacy_guard_rejected_cohorts": 1,
+  "confidence_corrections": 6,
+  "confidence_corrections_by_source": {
+    "full-sibling component propagation": 3,
+    "HBD-robust pair model constrained by pedigree meioses": 3
+  },
+  "original_smoke_output_hashes_verified": 42,
+  "historical_files_hashes_unchanged": 49,
+  "submission_ready": false,
+  "submission_count": 0,
+  "release_validation_evidence_created": false
+}

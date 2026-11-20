@@ -1,0 +1,459 @@
+{
+  "status": "simulation evidence only; no final prediction or scientific certification",
+  "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+  "planned": 48,
+  "completed": 3,
+  "operational_failures": 3,
+  "not_run": 42,
+  "all_planned_complete": false,
+  "completed_only_metrics": {
+    "completed": 3,
+    "covered": 2,
+    "coverage": 0.6666666666666666,
+    "coverage_95pct_hoeffding_independent_bounded": [
+      0,
+      1
+    ],
+    "coverage_95pct_clopper_pearson_if_exchangeable": [
+      0.09429932405024609,
+      0.9915962413403874
+    ],
+    "median_absolute_error": 39894.0,
+    "q90_absolute_error": 94411.6,
+    "maximum_absolute_error": 108041.0,
+    "consensus_eligible": 0,
+    "consensus_covered": 0,
+    "consensus_conditional_coverage": null,
+    "consensus_coverage_95pct_clopper_pearson_if_exchangeable": null,
+    "abstention_fraction": 1.0,
+    "reference_median_absolute_error": 142385.0,
+    "reference_q90_absolute_error": 361489.8,
+    "reference_within_60kb": 1,
+    "valid_formats": 3
+  },
+  "completed_only_scope": "Accuracy is conditional on successful execution. Planned-denominator quantities below prevent silently dropping failures; unrun/running cases are unknown, not observed biological failures.",
+  "planned_denominator": {
+    "planned": 48,
+    "completed": 3,
+    "failed": 3,
+    "running": 0,
+    "not_run": 42,
+    "completed_valid_formats": 3,
+    "valid_format_yield_lower_bound": 0.0625,
+    "covered_completed_cases": 2,
+    "coverage_success_yield_lower_bound": 0.041666666666666664,
+    "interpretation": "Known successes divided by all planned cases; incomplete lower bounds, not estimates that unrun cases are biological misses. Operational failures remain in the planned denominator."
+  },
+  "strata": {
+    "constant_10000_s0.01": {
+      "completed": 1,
+      "covered": 1,
+      "coverage": 1.0,
+      "coverage_95pct_hoeffding_independent_bounded": [
+        0,
+        1
+      ],
+      "coverage_95pct_clopper_pearson_if_exchangeable": [
+        0.025,
+        1.0
+      ],
+      "median_absolute_error": 31119.0,
+      "q90_absolute_error": 31119.0,
+      "maximum_absolute_error": 31119.0,
+      "consensus_eligible": 0,
+      "consensus_covered": 0,
+      "consensus_conditional_coverage": null,
+      "consensus_coverage_95pct_clopper_pearson_if_exchangeable": null,
+      "abstention_fraction": 1.0,
+      "reference_median_absolute_error": 142385.0,
+      "reference_q90_absolute_error": 142385.0,
+      "reference_within_60kb": 0,
+      "valid_formats": 1
+    },
+    "constant_10000_s0.03": {
+      "completed": 1,
+      "covered": 1,
+      "coverage": 1.0,
+      "coverage_95pct_hoeffding_independent_bounded": [
+        0,
+        1
+      ],
+      "coverage_95pct_clopper_pearson_if_exchangeable": [
+        0.025,
+        1.0
+      ],
+      "median_absolute_error": 39894.0,
+      "q90_absolute_error": 39894.0,
+      "maximum_absolute_error": 39894.0,
+      "consensus_eligible": 0,
+      "consensus_covered": 0,
+      "consensus_conditional_coverage": null,
+      "consensus_coverage_95pct_clopper_pearson_if_exchangeable": null,
+      "abstention_fraction": 1.0,
+      "reference_median_absolute_error": 416266.0,
+      "reference_q90_absolute_error": 416266.0,
+      "reference_within_60kb": 0,
+      "valid_formats": 1
+    },
+    "constant_10000_s0.1": {
+      "completed": 1,
+      "covered": 0,
+      "coverage": 0.0,
+      "coverage_95pct_hoeffding_independent_bounded": [
+        0,
+        1
+      ],
+      "coverage_95pct_clopper_pearson_if_exchangeable": [
+        0.0,
+        0.975
+      ],
+      "median_absolute_error": 108041.0,
+      "q90_absolute_error": 108041.0,
+      "maximum_absolute_error": 108041.0,
+      "consensus_eligible": 0,
+      "consensus_covered": 0,
+      "consensus_conditional_coverage": null,
+      "consensus_coverage_95pct_clopper_pearson_if_exchangeable": null,
+      "abstention_fraction": 1.0,
+      "reference_median_absolute_error": 13743.0,
+      "reference_q90_absolute_error": 13743.0,
+      "reference_within_60kb": 1,
+      "valid_formats": 1
+    },
+    "Zigzag_1S14_s0.01": {
+      "completed": 0
+    },
+    "Zigzag_1S14_s0.03": {
+      "completed": 0
+    },
+    "Zigzag_1S14_s0.1": {
+      "completed": 0
+    }
+  },
+  "uncertainty_scope": "Clopper-Pearson is exact for exchangeable Bernoulli replicates within a parameter stratum. Pooled heterogeneous strata additionally receive a conservative Hoeffding bound; descriptive conditional intervals do not certify the selection rule.",
+  "statuses": [
+    {
+      "case": 0,
+      "seed": 202612000,
+      "state": "COMPLETED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "reused_tree_sha256": "6444212efb8382f455b34d3ceb1a768655381058a77c0bf158ae2c35325ef6b7",
+      "reused_resource_pilot_biology": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/readiness_sweeps/task5_v3/case_000",
+      "simulation_seconds": 12.70055975485593,
+      "prediction_seconds": 16.15494827600196,
+      "reference_usable_sites": 409177,
+      "elapsed_seconds": 50.786796206841245
+    },
+    {
+      "case": 1,
+      "seed": 202612001,
+      "state": "COMPLETED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "simulation_seconds": 386.2447214573622,
+      "prediction_seconds": 16.340762513689697,
+      "reference_usable_sites": 420542,
+      "elapsed_seconds": 425.76400454342365
+    },
+    {
+      "case": 2,
+      "seed": 202612002,
+      "state": "COMPLETED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "simulation_seconds": 368.6480950252153,
+      "prediction_seconds": 15.811183840967715,
+      "reference_usable_sites": 403155,
+      "elapsed_seconds": 406.1665734872222
+    },
+    {
+      "case": 3,
+      "seed": 202612003,
+      "state": "FAILED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "error": "SLiMException: /vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim exited with code -9.\n",
+      "elapsed_seconds": 843.1145107881166
+    },
+    {
+      "case": 4,
+      "seed": 202612004,
+      "state": "FAILED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "error": "SLiMException: /vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim exited with code -9.\n",
+      "elapsed_seconds": 960.3623888622969
+    },
+    {
+      "case": 5,
+      "seed": 202612005,
+      "state": "FAILED",
+      "design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+      "error": "SLiMException: /vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim exited with code -9.\n",
+      "elapsed_seconds": 723.0107642398216
+    },
+    {
+      "case": 6,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 7,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 8,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 9,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 10,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 11,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 12,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 13,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 14,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 15,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 16,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 17,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 18,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 19,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 20,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 21,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 22,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 23,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 24,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 25,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 26,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 27,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 28,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 29,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 30,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 31,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 32,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 33,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 34,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 35,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 36,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 37,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 38,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 39,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 40,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 41,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 42,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 43,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 44,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 45,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 46,
+      "state": "NOT_RUN"
+    },
+    {
+      "case": 47,
+      "state": "NOT_RUN"
+    }
+  ],
+  "records": [
+    {
+      "case": 0,
+      "seed": 202612000,
+      "history": "constant_10000",
+      "selection_coefficient": 0.01,
+      "origin_generations": 3000,
+      "method": "blind_callable_median_three_v1",
+      "consensus_eligible": false,
+      "absolute_error": 31119,
+      "covered": true,
+      "interval_width": 120000,
+      "format_validation": {
+        "challenge": 5,
+        "dataset": "testing",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "chromosome": "7",
+        "intervals": [
+          [
+            62710000,
+            62830000
+          ]
+        ]
+      },
+      "reference_position": 62881266,
+      "reference_absolute_error": 142385,
+      "prediction_sha256": "7ab122948196befb311fdd3f4024bffdc9abb44f7837ad062a8b8c28ad0f2955",
+      "bed_sha256": "068e3894d9b791889f9db55c87b4b3ae7a1205c48dfa05b99b120e8810ec62b8",
+      "reference_hash_attestation": "summary reread of archived raw report/info; legacy driver omitted hashes",
+      "reference_report_sha256": "7ccce61adcd573a35dac8119040498feeed20457e4fee701935b7c7071d3b812",
+      "reference_info_sha256": "ccaeaf8d9ebe7c227f8317ce44007d43cccfe61183318966b26afe3a774147c4"
+    },
+    {
+      "case": 1,
+      "seed": 202612001,
+      "history": "constant_10000",
+      "selection_coefficient": 0.03,
+      "origin_generations": 1500,
+      "method": "blind_callable_median_three_v1",
+      "consensus_eligible": false,
+      "absolute_error": 39894,
+      "covered": true,
+      "interval_width": 120000,
+      "format_validation": {
+        "challenge": 5,
+        "dataset": "testing",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "chromosome": "7",
+        "intervals": [
+          [
+            70010000,
+            70130000
+          ]
+        ]
+      },
+      "reference_position": 69613840,
+      "reference_absolute_error": 416266,
+      "prediction_sha256": "d2c8a1e11906a93d158f8aea4a5dc088a1804d8d7e986a1ab376bf87a1f42061",
+      "bed_sha256": "99664239d3a097089dc9a85e84e208f11a1150f5afa7c0d299490ab9b13d7142",
+      "reference_hash_attestation": "summary reread of archived raw report/info; legacy driver omitted hashes",
+      "reference_report_sha256": "5848287279f4ac22ac2f0adf7738fd7174cd4f208c889194f9660595e707f049",
+      "reference_info_sha256": "451223209df0461d4190a063fe50b557c9b5345237a8bb6c4e0123b0521eeabe"
+    },
+    {
+      "case": 2,
+      "seed": 202612002,
+      "history": "constant_10000",
+      "selection_coefficient": 0.1,
+      "origin_generations": 500,
+      "method": "blind_callable_median_three_v1",
+      "consensus_eligible": false,
+      "absolute_error": 108041,
+      "covered": false,
+      "interval_width": 120000,
+      "format_validation": {
+        "challenge": 5,
+        "dataset": "testing",
+        "format_valid": true,
+        "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+        "chromosome": "7",
+        "intervals": [
+          [
+            11610000,
+            11730000
+          ]
+        ]
+      },
+      "reference_position": 11764298,
+      "reference_absolute_error": 13743,
+      "prediction_sha256": "f471b92cb3a7e4ee787819dd420269523ed964cfd23e92582b5cece66380db91",
+      "bed_sha256": "f02a030090b5765ec2179f29ca854cf7aa45f70edf3eaf2eeb1d7de01083c8ae",
+      "reference_hash_attestation": "summary reread of archived raw report/info; legacy driver omitted hashes",
+      "reference_report_sha256": "41197d87e02f531147fde5957dab1eb03da89643e22fe2af756dddad3b724e7a",
+      "reference_info_sha256": "67933734ce157f03c89385148a39f7129942a9be62b57f23926cbfb6de697dd9"
+    }
+  ],
+  "submission_count": 0
+}

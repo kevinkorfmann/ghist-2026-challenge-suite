@@ -1,0 +1,70 @@
+{
+  "status": "CANDIDATE_NOT_FROZEN",
+  "selection": "No search; preserve frozen forest hyperparameters and remove retired training labels",
+  "training_pairs": 60266,
+  "labels": [
+    "avuncular",
+    "double_cousin",
+    "full_1st_cousin",
+    "full_2nd_cousin",
+    "full_3rd_cousin",
+    "full_4th_cousin",
+    "full_5th_cousin",
+    "grandparent_grandchild",
+    "half_1st_cousin",
+    "siblings"
+  ],
+  "source_splits": {
+    "calibration": [
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_0.seg",
+        "sha256": "bb90d3ca5d1a1d959e8471cebc60430560f1fc4451d91ff7ba7e9ee32a0528cc"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_1.seg",
+        "sha256": "84416a1eff55a8546207183b4c37ddafd5943a1add32c674c5f2f110ff90d126"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_2.seg",
+        "sha256": "38545902bdb4d37d599c3f734afc491c1028a99d4d0c6a5c62304ed766277958"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_3.seg",
+        "sha256": "2bb1ab70683a5d493666d42ec86bff3f36fc31e88f280207702f5fcc4dd9af85"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_4.seg",
+        "sha256": "607a3da13b1b39cdc0cc76b8b30df19cdae0e6d07222d01a55bca05ba90df20b"
+      },
+      {
+        "path": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_5.seg",
+        "sha256": "89ed37a60dce938a77d154413dd5711a3b9beb77812703d5dcd382337cb0af30"
+      }
+    ]
+  },
+  "baseline_sha256": "07494e08ace96bcbbe8d16f0982ee78a4db2da95b0cb8ad9d82918c86ba648ce",
+  "public_answers_used": false,
+  "new_evaluation_used_for_selection": false,
+  "hyperparameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": "balanced_subsample",
+    "criterion": "gini",
+    "max_depth": null,
+    "max_features": 0.8,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 600,
+    "n_jobs": 4,
+    "oob_score": false,
+    "random_state": 90926,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "submission_count": 0
+}

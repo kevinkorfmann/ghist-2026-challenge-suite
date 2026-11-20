@@ -111,6 +111,44 @@ strata do not establish narrow error rates with small samples; pooled
 heterogeneous strata also receive a conservative independent bounded-variable
 uncertainty bound.
 
+The constant-population pilot and next two cases completed in 432.4, 425.8 and
+406.2 seconds. The first three Zigzag cases failed during SLiM after 843.1,
+960.4 and 723.0 seconds, before producing biological outputs. A live cgroup
+trace directly confirms out-of-memory termination for the last case: memory
+reached its 11 GiB limit and `oom_kill` increased from zero to one. The other two
+terminated with signal 9; their precise cause is not independently established.
+A same-seed, unchanged-model retry uses 22 GiB and four CPUs with a two-hour
+limit. This pass was then locked to the first six balanced cases, before any
+accuracy was inspected; the remaining 42 will not run in this pass. The
+[resource record](../experiments/readiness_2026_11_20/sweeps/resource_policy.json)
+preserves these decisions before inspecting localization accuracy.
+
+## Completed Task 5 evidence
+
+The [initial-attempt summary](../experiments/readiness_2026_11_20/sweeps/task5_initial_attempt_summary.json)
+contains three completed constant-history cases, three failed Zigzag attempts
+and 42 cases not run after the resource decision. The completed-case errors are
+31.12, 39.89 and 108.04 kb; two of three fixed ±60 kb intervals cover the simulated
+target. All three fail the locked 50 kb estimator-consensus criterion, giving
+100% abstention and no estimable conditional coverage. All three candidate BEDs
+pass the production format validator. The distinct RAiSD reference has errors
+142.39, 416.27 and 13.74 kb; one of three is within 60 kb.
+
+There is only one completed replicate per parameter cell, and the pooled
+heterogeneous-case Hoeffding interval spans [0, 1]. The original planned
+denominator remains 48: observed format-success yield is at least 3/48 and
+coverage-success yield at least 2/48. These are incomplete lower bounds, not
+claims that unrun cases biologically failed. Even within the six-case resource
+block, only half of first attempts produced predictions. Higher-memory retries
+are retained separately and do not erase these failed attempts.
+
+The [post-review compatibility run](../experiments/readiness_2026_11_20/sweeps/task5_postreview_verification.json)
+passed the same three real VCFs through the current stricter production parser
+and reproduced all prediction fields exactly. This establishes implementation
+compatibility on those observations; it does not add independent replicates.
+The fresh evidence supports retaining Task 5 as provisional, not promoting it to
+validated release status.
+
 ## Task 6 method development
 
 All 48 earlier standing-variation simulations are explicitly repurposed as

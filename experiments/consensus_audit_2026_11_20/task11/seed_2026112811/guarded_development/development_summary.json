@@ -1,0 +1,31 @@
+{
+  "method_version": "task11-guarded-pair-proposal-development-v1",
+  "status": "DEVELOPMENT; no independent complete-task confirmation",
+  "submission_ready": false,
+  "submission_count": 0,
+  "submission_csv_exported": false,
+  "pairs": 48,
+  "families": 8,
+  "hbd_threshold_runs": 3,
+  "provisional_pairs": 4,
+  "abstained_pairs": 44,
+  "provisional_coverage": 0.08333333333333333,
+  "abstention_reasons": {
+    "topology_disagreement": 35,
+    "unmapped_topology": 9
+  },
+  "confidence_definition": "Mean uncalibrated pair-model probability of the final label across HBD runs; not a calibrated probability of correctness.",
+  "policy": "Unique pair-model argmax must agree across HBD runs and with a mapped topology label; otherwise abstain. No topology overrides, constraints or propagation.",
+  "limitations": "Proposals and provisional decisions are uncalibrated and unvalidated. Agreement is not proof of correctness; abstention cannot fill required submission pairs.",
+  "source_sha256": {
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/consensus_task11_dog_pedigrees.py": "789bb96db2fd1da24c95741386049a86d7e1e49e030dbeca9605524aeb51514a",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "input_sha256": {
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd2.json": "26d2cddd6409465302f7d30a5c09d923c0b724c2279f5028abb4add1b332b2ae",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd5.json": "040b2d8793fc70e8bfc74dd400ac3f3ca55a2845679be0757dd3b35eb0fc599e",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/pair_predictions_hbd10.json": "038fc66009bf33fe8df908fb7532c7dabc9fcc950bcbd8aad7548c68ab0bb50c",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/bonsai.json": "731f0c64751f4b839116e97ff7fd188f41c2daf6ca7c751300d80c758583a1ef"
+  }
+}

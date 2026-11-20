@@ -1,0 +1,65 @@
+{
+  "package_verified": true,
+  "pinned_files": 16,
+  "package_manifest_sha256": "4c0ec8f9ae12b00b77506b803812c3378f1d43bf873ff206a1db2bffeca5da9e",
+  "archive_sha256": "f1df68f7e5f2397fd5b7d2540d330c601034ea66f54d199e93b7a2c3c95df0de",
+  "archive_bytes": 23459,
+  "archive_extraction_verified": true,
+  "checkout_matches_package": true,
+  "historical_package_files_unchanged": true,
+  "historical_package_files": 21,
+  "final_input_accessed": false,
+  "final_prediction_created": false,
+  "submission_count": 0,
+  "compatibility_reproduction": "Preserved copies of current-source same-simulation operational rerun; not additional independent evidence",
+  "compatibility_sha256": {
+    "compatibility.json": "f8d6de8e5be7fae93d322c4886fc4bc41756316f6b833ae8371101b091f5debc",
+    "compatibility_operational.json": "3e9aef6ee232d57147c77d43354e9147537ced4b870d6a2285825ed99af92928"
+  },
+  "package_generation": "task9_v2",
+  "created_date": "2026-11-20",
+  "tests_passed": 67,
+  "package_tests_passed": 50,
+  "existing_release_tests_passed": 17,
+  "test_command": ".venv/bin/python -m pytest -q tests/test_task9_submission_package.py tests/test_task9_release.py",
+  "test_source_sha256": {
+    "tests/test_task9_submission_package.py": "904415c8486eb1dba301cc7e03fc9b7021433fa1ef1f8348534b561e15871c8c",
+    "tests/test_task9_release.py": "10cc18a94ce0a606d1965731a8c4fecd664243fc969a15da1daa84bed24a11b5"
+  },
+  "test_scope": "Temporary synthetic input/model/map fixtures only, including canonical entity_id full predictor plus independent validator invocation",
+  "ruff": "passed",
+  "batch_shell_syntax": "passed",
+  "compatibility_source_files_matched": 9,
+  "compatibility_csvs_byte_identical": 4,
+  "compatibility_role": "Same existing 20023 simulation pairs; not new independent scientific confirmation",
+  "betty_preflight": {
+    "job": "10851132",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "seconds": 18,
+    "cpus": 2,
+    "peak_rss_kib": 1598148,
+    "package_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task9-offline-package-v2-20261120/task9-package-v2",
+    "passed": true,
+    "post_preflight_package_inventory_verified": true,
+    "reads": "Pinned existing model/map and package source/evidence; no challenge data"
+  },
+  "runtime": {
+    "machine": "x86_64",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "joblib": "1.5.3",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.16.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "python": "3.11.11",
+    "system": "Linux"
+  },
+  "source_changes_for_this_rebuild": [],
+  "original_evidence_preserved": true,
+  "model_copied_locally": false,
+  "scientific_promotion": false,
+  "scope": "Offline package refresh and read-only scheduled preflight; original release model and scientific evidence unchanged"
+}

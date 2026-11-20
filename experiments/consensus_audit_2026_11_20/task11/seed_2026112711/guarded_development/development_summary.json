@@ -1,0 +1,31 @@
+{
+  "method_version": "task11-guarded-pair-proposal-development-v1",
+  "status": "DEVELOPMENT; no independent complete-task confirmation",
+  "submission_ready": false,
+  "submission_count": 0,
+  "submission_csv_exported": false,
+  "pairs": 48,
+  "families": 8,
+  "hbd_threshold_runs": 3,
+  "provisional_pairs": 3,
+  "abstained_pairs": 45,
+  "provisional_coverage": 0.0625,
+  "abstention_reasons": {
+    "topology_disagreement": 39,
+    "unmapped_topology": 6
+  },
+  "confidence_definition": "Mean uncalibrated pair-model probability of the final label across HBD runs; not a calibrated probability of correctness.",
+  "policy": "Unique pair-model argmax must agree across HBD runs and with a mapped topology label; otherwise abstain. No topology overrides, constraints or propagation.",
+  "limitations": "Proposals and provisional decisions are uncalibrated and unvalidated. Agreement is not proof of correctness; abstention cannot fill required submission pairs.",
+  "source_sha256": {
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/consensus_task11_dog_pedigrees.py": "789bb96db2fd1da24c95741386049a86d7e1e49e030dbeca9605524aeb51514a",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f"
+  },
+  "input_sha256": {
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd2.json": "e511fce2f3d1d2c232cdb7d56a303dddd135577a74bfb6d0772f8c186ff591d2",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd5.json": "33086d267bbf20ec64f3741ee87dbf27bf71e565151f0ec2d5fd0fa7c6a6e804",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/pair_predictions_hbd10.json": "6d1340d7b6960a694a0e9c584948b42a1b705fa2d2f35256ba1bce741bdec216",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/bonsai.json": "d3cd7819d9eaf07dfffd7d3b0c9ae403b7d215a08cb64c8fa6fcbcdc93ccbcf0"
+  }
+}

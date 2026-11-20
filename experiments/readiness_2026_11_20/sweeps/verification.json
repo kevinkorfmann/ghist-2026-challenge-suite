@@ -44,7 +44,7 @@
     {
       "id": "10850520",
       "purpose": "v4 first complete six-cell block cases1-5",
-      "outcome": "constant cases1/2 completed425.764s/406.167s; Zigzagcase3 SLiM\u22129 after843.115s, cause unconfirmed;cases4/5 running; no accuracy inspection before resource decision"
+      "outcome": "constant cases1/2 completed425.764s/406.167s; Zigzagcases3/4/5 SLiM\u22129 after843.115s/960.362s/723.011s; case5OOM directly confirmed from cgroup; no accuracy inspection before resource decision"
     },
     {
       "id": "10850775",
@@ -54,7 +54,12 @@
     {
       "id": "10850911",
       "purpose": "same-seed case5 memory retry,4CPUs/22GiB,time limit2h",
-      "outcome": "pending after Task6 provenance rerun; originalcase5OOM confirmed by cgroup trace"
+      "outcome": "running same case5 on22GiB; no broader expansion"
+    },
+    {
+      "id": "10851047",
+      "purpose": "Current strict-reader replay of3 completedTask5 VCFs and raw-reference validated summary",
+      "outcome": "completed; exact prediction compatibility on3; original panel3completed/3failed/42notrun, coverage2of3,consensus0of3"
     }
   ],
   "current_design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
@@ -69,5 +74,13 @@
     "metrics_unchanged": true,
     "aggregate": "task6_development_v2.json",
     "sha256": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3"
+  },
+  "scope_lock": "resource_policy.json; before any Task5 accuracy inspection; no cases6\u201347 this pass",
+  "task5_initial_evidence": "task5_initial_attempt_summary.json",
+  "task5_postreview_compatibility": "task5_postreview_verification.json",
+  "evidence_sha256": {
+    "task5_initial_attempt_summary.json": "8cdfa99424c8200c4e530bc177ba72076a119ef70dfa9abd24e735967f87ef16",
+    "task5_postreview_verification.json": "6839c24467c095ad3d24817ca0940a74201a21d330e99bf53be3de4f12bf72e3",
+    "task6_development_v2.json": "06714d915a47facf7c889b4a294255568d95058e5ba5b0d5dec6bd2fe24fd1e3"
   }
 }

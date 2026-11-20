@@ -1,0 +1,28 @@
+{
+  "scope": "Development diagnostics only; existing cohorts were already inspected before this policy was designed.",
+  "legacy_reporting_version": "task11-legacy-consensus-audited-v1",
+  "development_policy_version": "task11-guarded-pair-proposal-development-v1",
+  "development_cohort_seeds": [2026112711, 2026112811],
+  "training_or_refitting": false,
+  "numeric_threshold_tuning": false,
+  "rule": "Compute arithmetic mean of the eight original forest probabilities across HBD runs. Preserve a unique argmax as a proposal. Emit a provisional relationship only if at least two runs have the same unique argmax and a mapped Bonsai label agrees. Exact probability ties, HBD disagreement, a single run, unmapped topology, or topology disagreement produce abstention. Topology never replaces, constrains or propagates the proposal.",
+  "decision_rationale": "Use abstention for contradictory evidence because neither the forest nor the dog-adapted topology has complete-task validation. Retain forest proposals separately to measure potential utility without certifying them. This can sharply reduce coverage and is not a submission algorithm until independently validated or explicitly revised and re-frozen.",
+  "output_contract": "Development JSON only, no submission CSV, no default/final-path selection, submission_ready=false even for full agreement.",
+  "replay_checks": [
+    "All legacy final relationship labels must remain unchanged on well-formed retained inputs after deterministic reporting fixes.",
+    "Every audited confidence must equal the original forest probability averaged for the final label.",
+    "Raw HBD stability and topology-conditioned stability must be separately named.",
+    "Historical inputs and outputs must retain their original hashes."
+  ],
+  "independent_confirmation_requirements": [
+    "Freeze source, model, preprocessing, map, policy and protocol hashes before new confirmation.",
+    "Use independent whole pedigrees and founder haplotypes disjoint from fitting and both development cohorts; do not split correlated rows.",
+    "Include all eight accepted labels and multiple pedigrees/topologies, inbreeding strata, realistic matched dog LD/frequencies, supplied family-count behavior, and permitted missing-call conditions.",
+    "Score family recovery, all expected within-family pairs with missing/abstained pairs counted as failures, spurious cross-family pairs, per-label confusion and complete-pipeline balanced accuracy. Report uncertainty at the independent family/cohort level.",
+    "Compare frozen legacy and development policy against the frozen pair model with the same evaluation cohorts; no retrospective threshold selection or ignoring abstentions.",
+    "Specify scientific acceptance criteria in the new protocol before evaluating new confirmation. This development replay supplies no numerical release criterion or certification.",
+    "Promote only through explicit complete-task evidence bound to method/model/candidate hashes; no final challenge inference or submission is authorized by this audit."
+  ],
+  "submission_ready": false,
+  "submission_count": 0
+}

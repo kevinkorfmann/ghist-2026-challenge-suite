@@ -1,0 +1,175 @@
+[
+  {
+    "stage": "ped_sim",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/ped-sim",
+      "-d",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/family.def",
+      "-m",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap",
+      "-i",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/founders/founders.vcf.gz",
+      "-o",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/family",
+      "--intf",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim/interfere/nu_p_campbell.tsv",
+      "--seed",
+      "2026121010",
+      "--fam",
+      "--keep_phase",
+      "--err_rate",
+      "0",
+      "--miss_rate",
+      "0"
+    ],
+    "returncode": 0,
+    "seconds": 9.424046791158617
+  },
+  {
+    "stage": "prepare",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/prepare_hapibd_vcf.py",
+      "--input",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/family.normalized.vcf.gz",
+      "--output",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/prepared.vcf.gz"
+    ],
+    "returncode": 0,
+    "seconds": 65.82079948531464
+  },
+  {
+    "stage": "hapibd",
+    "command": [
+      "java",
+      "-Xmx14g",
+      "-jar",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/hap-ibd/hap-ibd.jar",
+      "gt=/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/prepared.vcf.gz",
+      "map=/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+      "out=/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected",
+      "min-seed=1.0",
+      "min-extend=0.2",
+      "min-output=2.0",
+      "min-markers=100",
+      "max-gap=1000",
+      "nthreads=4"
+    ],
+    "returncode": 0,
+    "seconds": 5.654821623116732
+  },
+  {
+    "stage": "summarize",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/summarize_hapibd.py",
+      "--ibd",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected.ibd.gz",
+      "--hbd",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected.hbd.gz",
+      "--map",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+      "--out-dir",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/features"
+    ],
+    "returncode": 0,
+    "seconds": 1.2415435370057821
+  },
+  {
+    "stage": "shape",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/summarize_hapibd_shape.py",
+      "--ibd",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected.ibd.gz",
+      "--base",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/features/pair_features.csv",
+      "--out",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/features/pair_shape_features.csv"
+    ],
+    "returncode": 0,
+    "seconds": 0.2497501098550856
+  },
+  {
+    "stage": "cluster",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/cluster_human_family_branches.py",
+      "--pairs",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/features/pair_shape_features.csv",
+      "--threshold",
+      "0.12",
+      "--field",
+      "relatedness_ge_20",
+      "--out",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/clusters.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.2559239403344691
+  },
+  {
+    "stage": "fast",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/reconstruct_human_branch_pedigrees.py",
+      "--ibd",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected.ibd.gz",
+      "--map",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+      "--clusters",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/clusters.json",
+      "--threshold-cm",
+      "10",
+      "--max-add-degree",
+      "3",
+      "--max-rel-types",
+      "1",
+      "--out",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/fast.json"
+    ],
+    "returncode": 0,
+    "seconds": 6.598230462055653
+  },
+  {
+    "stage": "medium",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/reconstruct_human_branch_pedigrees.py",
+      "--ibd",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/detected.ibd.gz",
+      "--map",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_average.plink.map",
+      "--clusters",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/clusters.json",
+      "--threshold-cm",
+      "10",
+      "--max-add-degree",
+      "4",
+      "--max-rel-types",
+      "2",
+      "--out",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/medium.json"
+    ],
+    "returncode": 0,
+    "seconds": 5.409860694780946
+  },
+  {
+    "stage": "consensus",
+    "command": [
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/source/scripts/consensus_human_family_pedigree.py",
+      "--pair-predictions",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/pair_predictions.json",
+      "--bonsai",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/fast.json",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/medium.json",
+      "--topology-boost",
+      "1",
+      "--require-flat-degree-agreement",
+      "--out-dir",
+      "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task10-complete-20261120/seed_2026112010/consensus"
+    ],
+    "returncode": 0,
+    "seconds": 0.6883133496157825
+  }
+]

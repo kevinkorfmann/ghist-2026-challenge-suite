@@ -1,0 +1,64 @@
+{
+  "scope": "Independent review and provenance guards only; no new scientific pipeline evaluation",
+  "historical_records_modified": false,
+  "test_command": ".venv/bin/python -m pytest -q tests/test_task10_complete_pipeline.py tests/test_task11_complete_pipeline.py tests/test_relatedness_missingness.py",
+  "tests_passed": 26,
+  "ruff": "passed",
+  "source_sha256": {
+    "src/ghist_relatedness/provenance.py": "1b539509457cc4c999c91f10fc3615e64e71882d6a06fa6a14797d44b491cd87",
+    "scripts/validate_task10_complete_pipeline.py": "f7eb731f0d4845bbd9f8f8455f0a171653f00bbadb10235bb4f5b563c2e92943",
+    "scripts/validate_task11_complete_pipeline.py": "e084464f40fd73836179e84c7901ed7b3805bc919d854ff64fca11c8f16cb7c3",
+    "scripts/validate_relatedness_missingness.py": "7f52b55820a1b485551b50e3c72320d28cd3bd0ea1f62865871359f267359851",
+    "tests/test_task10_complete_pipeline.py": "ea882480edbdf56c90690feb55cb97e0248a1dedd3858316611824f30cdb4354",
+    "tests/test_task11_complete_pipeline.py": "3f3295e2d003979728156e6e623bb02f1e7229f08567f3ba4752fe0532da2e9a",
+    "tests/test_relatedness_missingness.py": "372d8e3ad404b64026b96b2662152a75f5af3e4db196e8b827a8af5252c9197f"
+  },
+  "recomputed_historical_results": {
+    "task10": {
+      "correct": 58,
+      "denominator": 153,
+      "truth_reconstructed_from_pedigree": true
+    },
+    "task11": [
+      {
+        "seed": 2026112711,
+        "correct": 7,
+        "denominator": 48
+      },
+      {
+        "seed": 2026112811,
+        "correct": 9,
+        "denominator": 48
+      }
+    ],
+    "missingness": {
+      "policy_executions": 8,
+      "correct_per_policy": 48,
+      "denominator_per_policy": 48,
+      "distinct_pairs": 96,
+      "independent_original_cohorts": 2
+    },
+    "task11_retained_output_hashes_verified": 42,
+    "task11_remote_only_files_not_rehashed": 14
+  },
+  "original_record_sha256": {
+    "experiments/complete_pipeline_2026_11_20/missingness/results/seed_2026112711_rate_0.005/result.json": "d402e278fc2eb2a8cbb199909187d1653335215d52452a87bf639e70abcdf053",
+    "experiments/complete_pipeline_2026_11_20/missingness/results/seed_2026112711_rate_0.02/result.json": "be08652e668ed107adc593671c0bbf50dc0ed2aaddef0caef0334da8217d0d2a",
+    "experiments/complete_pipeline_2026_11_20/missingness/results/seed_2026112811_rate_0.005/result.json": "9e376de2b3671e57e4c3d0e45899315155e549b76dd0050e3a48dbea54ef6254",
+    "experiments/complete_pipeline_2026_11_20/missingness/results/seed_2026112811_rate_0.02/result.json": "92c3cd2e0232e3c9f753ae9e4b556ed655bff7b7be25e1ba4d85cf010b4c8cc5",
+    "experiments/complete_pipeline_2026_11_20/task10/seed_2026112010/result.json": "07915b8154761c423312e9880923b148d9e06a8db83118afdecb6f3ac3a95795",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112711/result.json": "504d03865802ccfe1c7ed2ac5e62dac4965746c9d0dfc79e74d79b38a78a03e6",
+    "experiments/complete_pipeline_2026_11_20/task11/results/seed_2026112811/result.json": "80701ff4a400e370e5c2b0e71ca59ece9a3912c7e63d77ff53a5ab6481b0146d"
+  },
+  "new_run_provenance_schema": "relatedness-pipeline-v2",
+  "historical_provenance_limits": [
+    "Task10 and missingness lacked generated output hash manifests",
+    "Task11 and missingness lacked end-of-run source/input checks",
+    "Missingness did not verify baseline truth/protocol/result linkage"
+  ],
+  "final_challenge_data_accessed": false,
+  "public_answers_accessed": false,
+  "submission_count": 0,
+  "expanded_compatibility_tests_passed": 180,
+  "expanded_compatibility_test_command": ".venv/bin/python -m pytest -q tests/test_task10_complete_pipeline.py tests/test_task11_complete_pipeline.py tests/test_relatedness_missingness.py tests/test_hapibd_preparation.py tests/test_bonsai_conversion.py tests/test_task11_consensus.py tests/test_task11_freeze_guard.py"
+}

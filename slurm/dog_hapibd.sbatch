@@ -31,10 +31,11 @@ PYTHONPATH=src .venv/bin/python scripts/dog_maps_to_plink.py \
   --map-dir "$MAP_ROOT" \
   --output "$MAP_ROOT/campbell2016_average.plink.map"
 
-PREPARED="$OUT_ROOT/input.major_imputed.vcf.gz"
+PREPARED="$OUT_ROOT/input.phased.vcf.gz"
 PYTHONPATH=src .venv/bin/python scripts/prepare_hapibd_vcf.py \
   --input data/raw/relatedness/multifamily_inbreeding/testing/relatedness3.testing.vcf.gz \
-  --output "$PREPARED"
+  --output "$PREPARED" \
+  --missing-policy error > "$OUT_ROOT/preparation.json"
 
 java -Xmx14g -jar "$TOOL_ROOT/hap-ibd.jar" \
   gt="$PREPARED" \

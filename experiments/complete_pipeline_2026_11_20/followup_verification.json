@@ -1,0 +1,46 @@
+{
+  "completed_at_utc": "2026-11-20T17:30:20.822084+00:00",
+  "agent_workstreams_completed": 6,
+  "maximum_concurrent_child_agents": 3,
+  "full_workspace_pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 909,
+    "warnings": 2,
+    "seconds": 46.81,
+    "exit_code": 0
+  },
+  "final_task11_consensus_and_freeze_pytest": {
+    "passed": 48,
+    "exit_code": 0
+  },
+  "ruff_changed_relatedness_files": "passed",
+  "changed_slurm_wrapper_shell_syntax": "passed",
+  "git_diff_check": "passed",
+  "task9_trusted_package_manifest_sha256": "017f91c139aeaa3e013cd4147e3e846b0ada14c6407497952114e6c75cc993b1",
+  "task9_package_verify": "passed",
+  "task9_transfer_checksums_verified": 4,
+  "original_task11_files_independently_reverified": 49,
+  "source_sha256": {
+    "scripts/prepare_hapibd_vcf.py": "e724c8d006951f999116909fd8a27de5ac380ff106336b42404ece75ce9643c4",
+    "scripts/validate_relatedness_missingness.py": "c1bb5daffe4ef44589bad835b8411d5e0dd1df79091a045bbc932ee856798d3e",
+    "scripts/validate_task10_complete_pipeline.py": "7ae5275261b6ccc8c11faab644c3063a8e7963248d9889dc2a3e0fc100a5a757",
+    "scripts/validate_task11_complete_pipeline.py": "e346278e8ed04220530a50947417949458a3f0f773c0f273438cb9e64505e9e9",
+    "scripts/prepare_task9_submission_package.py": "9c18f68ffaea8f4456281bed2dec90680e8e6fd5c425cf72f1c25027d0b49d81",
+    "scripts/consensus_task11_dog_pedigrees.py": "789bb96db2fd1da24c95741386049a86d7e1e49e030dbeca9605524aeb51514a",
+    "scripts/consensus_task11_guarded_candidate.py": "70c752b5bd1df6cd8dff168968b6057c88403a64ffb5e22e3c6fd60c51377318",
+    "scripts/freeze_task11_multifamily_inbreeding.py": "722cc9952d4157939202f400f25c1dde7095af8f13016fc7f3a0cad405420691",
+    "scripts/reconstruct_bonsai_pedigree.py": "1580ee9c7229abe7875d4cf421d2f46c1984f91f5858eaca583caf95a3144b5b",
+    "slurm/human_hapibd.sbatch": "2aafbb64c6e0ea18d66c782f614dd7c1ff4bb43885602b482863cd145c773cb8",
+    "slurm/dog_hapibd.sbatch": "3394e493d45f0ab28a14eebb9ce9f49b4f438f15e4448c33ab1f508f3a4df631"
+  },
+  "completed_experiment_jobs": [
+    "10850569",
+    "10850571",
+    "10850656",
+    "10850864"
+  ],
+  "failed_bootstrap_job_preserved": "10850841",
+  "current_final_data_inference_performed": false,
+  "submission_count": 0,
+  "scope": "Relatedness follow-up integration; scientific conclusions are limited to the individually documented experiments. Concurrent unrelated workspace work is not frozen by this record."
+}

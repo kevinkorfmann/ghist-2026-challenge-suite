@@ -33,11 +33,12 @@ else
   OUT_ROOT="$PROJECT_ROOT/artifacts/task12_large_family_background/hapibd"
 fi
 mkdir -p "$OUT_ROOT"
-PREPARED="$OUT_ROOT/input.major_imputed.vcf.gz"
+PREPARED="$OUT_ROOT/input.phased.vcf.gz"
 cd "$PROJECT_ROOT"
 PYTHONPATH=src .venv/bin/python scripts/prepare_hapibd_vcf.py \
   --input "$INPUT" \
-  --output "$PREPARED"
+  --output "$PREPARED" \
+  --missing-policy error > "$OUT_ROOT/preparation.json"
 
 java -Xmx14g -jar "$TOOL_ROOT/hap-ibd.jar" \
   gt="$PREPARED" \

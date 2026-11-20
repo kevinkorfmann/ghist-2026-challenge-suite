@@ -56,7 +56,7 @@ def validate_demography(path: Path, challenge: int) -> dict:
         if (
             isinstance(value, bool)
             or not isinstance(value, (int, float))
-            or not math.isfinite(value)
+            or (isinstance(value, float) and not math.isfinite(value))
         ):
             raise ValueError(f"{name} must be a finite number")
         if value < 0 or (name != "migration_rate" and value == 0):
@@ -111,13 +111,45 @@ def relation_meioses(challenge: int) -> dict[str, int]:
     }
 
 
+def _sample_id(value) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("Expected nonempty string sample IDs")
+    return value.strip()
+
+
+def _canonical_pair(pair) -> tuple[str, str]:
+    if isinstance(pair, (str, bytes)):
+        raise ValueError("Expected pairs of two distinct sample IDs")
+    try:
+        pair = tuple(pair)
+    except TypeError as error:
+        raise ValueError("Expected pairs of two distinct sample IDs") from error
+    if len(pair) != 2:
+        raise ValueError("Expected pairs of two distinct sample IDs")
+    left, right = (_sample_id(sample) for sample in pair)
+    if left == right:
+        raise ValueError("Expected pairs of two distinct sample IDs; found self pair")
+    return tuple(sorted((left, right)))
+
+
+def _csv_rows(reader):
+    """Expose strict CSV syntax failures through the validator's ValueError API."""
+    try:
+        yield from reader
+    except csv.Error as error:
+        raise ValueError(f"CSV line {reader.line_num}: {error}") from error
+
+
 def validate_relatedness(path: Path, challenge: int, expected_pairs=None) -> dict:
     with path.open(newline="") as handle:
         sample = handle.read(8192)
         handle.seek(0)
         delimiter = "\t" if "\t" in sample.partition("\n")[0] else ","
-        reader = csv.DictReader(handle, delimiter=delimiter)
-        headers = reader.fieldnames or []
+        reader = csv.DictReader(handle, delimiter=delimiter, strict=True)
+        try:
+            headers = reader.fieldnames or []
+        except csv.Error as error:
+            raise ValueError(f"Invalid CSV header: {error}") from error
         allowed = {"indID1", "indID2", "relation", "meioses_count"}
         if (
             len(set(headers)) != len(headers)
@@ -130,7 +162,7 @@ def validate_relatedness(path: Path, challenge: int, expected_pairs=None) -> dic
             )
         labels = relation_meioses(challenge)
         pairs, individuals = set(), set()
-        for number, row in enumerate(reader, 2):
+        for number, row in enumerate(_csv_rows(reader), 2):
             if None in row or any(
                 value is None or not value.strip() for value in row.values()
             ):
@@ -162,7 +194,10 @@ def validate_relatedness(path: Path, challenge: int, expected_pairs=None) -> dic
     if not pairs:
         raise ValueError("No relatedness pairs")
     if expected_pairs is not None:
-        expected = {tuple(sorted(pair)) for pair in expected_pairs}
+        try:
+            expected = {_canonical_pair(pair) for pair in expected_pairs}
+        except TypeError as error:
+            raise ValueError("Expected an iterable of sample ID pairs") from error
         if pairs != expected:
             raise ValueError(
                 f"Pair coverage mismatch: {len(expected - pairs)} missing, {len(pairs - expected)} extra"
@@ -174,13 +209,20 @@ def validate_relatedness(path: Path, challenge: int, expected_pairs=None) -> dic
     }
 
 
-def all_pairs(samples: list[str]) -> set[tuple[str, str]]:
-    if (
-        len(samples) != len(set(samples))
-        or len(samples) < 2
-        or any(not s.strip() for s in samples)
-    ):
+def _validated_samples(samples) -> list[str]:
+    if isinstance(samples, (str, bytes)):
         raise ValueError("Expected at least two distinct sample IDs")
+    try:
+        samples = [_sample_id(sample) for sample in samples]
+    except TypeError as error:
+        raise ValueError("Expected at least two distinct sample IDs") from error
+    if len(samples) != len(set(samples)) or len(samples) < 2:
+        raise ValueError("Expected at least two distinct sample IDs")
+    return samples
+
+
+def all_pairs(samples: list[str]) -> set[tuple[str, str]]:
+    samples = _validated_samples(samples)
     return set(combinations(sorted(samples), 2))
 
 
@@ -189,12 +231,21 @@ def vcf_samples(path: Path) -> list[str]:
 
     with pysam.VariantFile(str(path)) as vcf:
         samples = list(vcf.header.samples)
-    all_pairs(samples)  # Validate identifiers, including a nonempty cohort.
-    return samples
+    return _validated_samples(samples)
 
 
 def within_family_pairs(families, samples):
     """Require a partition of the actual cohort, then enumerate its pairs."""
+    samples = _validated_samples(samples)
+    if isinstance(families, (str, bytes)):
+        raise ValueError("Families must partition the actual VCF samples exactly once")
+    try:
+        families = list(families)
+        if any(isinstance(family, (str, bytes)) for family in families):
+            raise ValueError("Each family must be a collection of sample IDs")
+        families = [[_sample_id(sample) for sample in family] for family in families]
+    except TypeError as error:
+        raise ValueError("Each family must be a collection of sample IDs") from error
     flattened = [sample for family in families for sample in family]
     if (
         len(flattened) != len(set(flattened))
@@ -212,6 +263,8 @@ def validate_submission(
 ) -> dict:
     if dataset not in {"testing", "final"} or challenge not in range(1, 13):
         raise ValueError("Specify challenge 1–12 and dataset testing or final")
+    if expected_pairs is not None and challenge <= 8:
+        raise ValueError("Pair coverage applies only to relatedness Challenges 9–12")
     if challenge <= 4:
         result = validate_demography(path, challenge)
     elif challenge <= 8:

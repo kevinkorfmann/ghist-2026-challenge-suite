@@ -1,0 +1,128 @@
+{
+  "scope": "held-out whole-family operational smoke only; not a biological validation/release gate",
+  "job_id": "10850571",
+  "independent_cohorts": 2,
+  "independent_families": 16,
+  "distinct_pairs": 96,
+  "forest_correct_by_hbd_threshold": {
+    "2": 96,
+    "5": 96,
+    "10": 96
+  },
+  "consensus_correct": 16,
+  "consensus_wrong_by_source": {
+    "accepted pedigree tuple": 74,
+    "full-sibling component propagation": 3,
+    "HBD-robust pair model constrained by pedigree meioses": 3
+  },
+  "wrong_with_zero_reported_confidence": 61,
+  "wrong_propagations_with_stale_unit_confidence": 3,
+  "cohorts": [
+    {
+      "seed": 2026112711,
+      "families": {
+        "truth_families": 8,
+        "predicted_families": 8,
+        "truth_samples": 32,
+        "covered_samples": 32,
+        "missing_samples": [],
+        "exactly_recovered_families": 8,
+        "split_families": 0,
+        "merged_predicted_families": 0,
+        "true_within_pairs": 48,
+        "predicted_within_pairs": 48,
+        "missed_within_pairs": 0,
+        "false_cross_family_pairs": 0,
+        "within_pair_recall": 1.0,
+        "within_pair_precision": 1.0,
+        "ari_with_missing_samples_as_distinct_singletons": 1.0
+      },
+      "consensus": {
+        "truth_pairs": 48,
+        "covered_true_pairs": 48,
+        "missing_true_pairs": 0,
+        "correct": 7,
+        "accuracy_counting_missing_as_wrong": 0.14583333333333334,
+        "extra_cross_family_predictions": 0,
+        "by_parent_mating_type": {
+          "unrelated": {
+            "correct": 1,
+            "covered": 12,
+            "pairs": 12,
+            "accuracy_counting_missing_as_wrong": 0.08333333333333333
+          },
+          "first_cousins": {
+            "correct": 6,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 0.3333333333333333
+          },
+          "siblings": {
+            "correct": 0,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 0.0
+          }
+        },
+        "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+      },
+      "protocol_sha256": "9c444e9dbcaf0c97433e90b22dfb5f498fbe12d84e09de323203e26493c94fd1",
+      "model_sha256": "894481f64c56b3ffd90372bcc1330b61f32565c011b486e17d7777f188fc0591"
+    },
+    {
+      "seed": 2026112811,
+      "families": {
+        "truth_families": 8,
+        "predicted_families": 8,
+        "truth_samples": 32,
+        "covered_samples": 32,
+        "missing_samples": [],
+        "exactly_recovered_families": 8,
+        "split_families": 0,
+        "merged_predicted_families": 0,
+        "true_within_pairs": 48,
+        "predicted_within_pairs": 48,
+        "missed_within_pairs": 0,
+        "false_cross_family_pairs": 0,
+        "within_pair_recall": 1.0,
+        "within_pair_precision": 1.0,
+        "ari_with_missing_samples_as_distinct_singletons": 1.0
+      },
+      "consensus": {
+        "truth_pairs": 48,
+        "covered_true_pairs": 48,
+        "missing_true_pairs": 0,
+        "correct": 9,
+        "accuracy_counting_missing_as_wrong": 0.1875,
+        "extra_cross_family_predictions": 0,
+        "by_parent_mating_type": {
+          "unrelated": {
+            "correct": 3,
+            "covered": 12,
+            "pairs": 12,
+            "accuracy_counting_missing_as_wrong": 0.25
+          },
+          "first_cousins": {
+            "correct": 6,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 0.3333333333333333
+          },
+          "siblings": {
+            "correct": 0,
+            "covered": 18,
+            "pairs": 18,
+            "accuracy_counting_missing_as_wrong": 0.0
+          }
+        },
+        "interpretation": "Sibling-only synthetic smoke; not balanced eight-label accuracy."
+      },
+      "protocol_sha256": "80162d4d497af6a78b52254c8060a42a37afabf41cccc4cde92b1cf14ac2559a",
+      "model_sha256": "894481f64c56b3ffd90372bcc1330b61f32565c011b486e17d7777f188fc0591"
+    }
+  ],
+  "local_retained_output_hashes_verified": 42,
+  "source_archive_sha256": "be32c7095bfd47951ad203ad78b5a436efecbd86659e3db77cb44d661ab27ee7",
+  "submission_ready": false,
+  "submission_count": 0
+}
