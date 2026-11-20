@@ -1,0 +1,38 @@
+{
+  "scope": "Task2 freeze interval shape/domain guard; no denominator or coverage claim",
+  "source_root": "/Users/kevinkorfmann/.cache/ghist-2026/task2-interval-integrity-20261120",
+  "staging": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-task2-interval-v2-20261120-fg5jwgxt",
+  "archive": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-task2-interval-v2-20261120-fg5jwgxt.tar.gz",
+  "archive_sha256": "5c6dedd469497cfd632ec31e0f530a3bb1c1415386dfbd69141186851e2c44aa",
+  "owned_manifest": {
+    "scripts/freeze_secondary_contact.py": {
+      "sha256": "62e8fea2eb37a091f230400107632442c7e68a64d455780a6b5c16ce2116c1cc",
+      "bytes": 9385
+    },
+    "tests/test_demography_freeze_cross_review.py": {
+      "sha256": "1497d9711d3e24176b3b8b64dc3c8dd9f2786bc9d328c0a377ac8b6cf84da5dd",
+      "bytes": 8688
+    },
+    "tests/test_secondary_contact_intervals.py": {
+      "sha256": "b08cadf347b45fec21e658a005e93553c28dd4084433e7e7bcadb7b0da3be127",
+      "bytes": 3076
+    }
+  },
+  "baseline_sha256": {
+    "scripts/freeze_secondary_contact.py": "66ea063b8e9de4e53d0fbd29e38989282f5897f14e5d83b37ea55f09197d3dc5",
+    "tests/test_demography_freeze_cross_review.py": "acf9da08e065b9275167d93940093823bcfa6dc34342ff6f7b86abec57d71ddb",
+    "tests/test_secondary_contact_intervals.py": null
+  },
+  "baseline_source_manifest_sha256": "a79c0f48d1a382daeadbbb743d51b1afa9de9e12afbad3988808487bcc42a3c3",
+  "checks": {
+    "focused_tests": 102,
+    "new_entrypoint_tests": 54,
+    "ruff": "passed",
+    "corrected_actual_atomic_temp_prefix_tests": 54
+  },
+  "shared_checkout_modified": false,
+  "previous_handoff": "/tmp/ghist-task2-interval-handoff.json",
+  "changed_since_v1": [
+    "tests/test_secondary_contact_intervals.py"
+  ]
+}

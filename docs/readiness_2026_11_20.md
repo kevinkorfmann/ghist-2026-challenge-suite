@@ -19,12 +19,12 @@ whose archived results and historical artifacts remain preserved.
 | Challenge | Current evidence | Status |
 |---|---|---|
 | 1 — bottleneck | Export checks pass; versioned optimizer repair passes 1,089 tests on three platforms; original 24-case panel has major recovery errors | Not ready; recovery and uncertainty gaps |
-| 2 — secondary contact | All original cases now finish; hidden-history and contact-time errors remain | Runs, not scientifically ready |
+| 2 — secondary contact | All original cases finish; malformed interval exports are rejected; hidden-history and contact-time errors remain | Runs, not scientifically ready |
 | 3 — growth/BGS | New 10 Mb neutral simulations recover strong growth; weak growth remains poorly identified | Runs, broader validation needed |
 | 4 — split/migration/BGS | Numerical stall fixed; Q1 fit finishes, but split-time error is +47% | Runs, accuracy/calibration gaps |
-| 5 — hard sweep | Three completed cases: 2/3 interval coverage, 0/3 agreement passes; default-policy retry exhausted 22 GiB and fixed-interval retry timed out | Not ready; simulation feasibility and recovery gaps |
+| 5 — hard sweep | Three completed cases: 2/3 interval coverage, 0/3 agreement passes; default-policy retry exhausted 22 GiB and both fixed-interval trials timed out | Not ready; simulation feasibility and recovery gaps |
 | 6 — soft sweep | Eight new development configurations fail recovery criteria | Not ready |
-| 7 — sweep/BGS | New masked full-input path passes real RAiSD software smoke; matching biological validation missing | Not ready |
+| 7 — sweep/BGS | Canonical export, real RAiSD, prediction and validators pass on one retained development tree; matching biological validation missing | Not ready |
 | 8 — multiple sweeps/BGS | Existing detection/localization failures remain | Not ready |
 | 9 — exact IBD relationships | Fixed candidate passes scientific/production gates; separate submission has final weighted-Jaccard scores 0.834/0.842 | Validated candidate in tested domain; submitted |
 | 10 — human pedigrees | Complete pipeline produces all 153 pairs in one family; only 58 exact labels correct | Runs, accuracy inadequate |
@@ -92,6 +92,19 @@ Strong-growth recovery improves at the longer length, but weak exponential
 growth still has up to 71.6% timing error. See the
 [demographic report](readiness_demography_2026_11_20.md) for every denominator,
 failure stratum and numerical sensitivity check.
+
+**Task 2 — interval export integrity.** Independent actual-entrypoint
+reproductions showed that empty, reversed and negative-population intervals
+could pass the secondary-contact freeze guard. The repair requires the exact
+five producer fields, two finite ordered endpoints, positive population/split
+values, and nonnegative contact-time/migration values. Valid zero boundaries
+remain accepted. Four valid independent checks, including producer-generated
+intervals, preserve the original export bytes; failure checks preserve the
+existing output and leave no temporary artifacts. The
+[repair record](../experiments/readiness_2026_11_20/secondary_contact_interval_integrity/review.md)
+and [independent review](../experiments/readiness_2026_11_20/secondary_contact_interval_integrity/root_independent_review.json)
+describe the bounded scope. These shape/domain guards do not establish the
+planned bootstrap denominator, empirical coverage, or biological recovery.
 
 **Tasks 3–4 — prediction and bootstrap integrity.** The freeze wrappers now
 recompute projection medians from every required converged fit, reject malformed
@@ -224,8 +237,47 @@ remain failures. A [prospective independent review](../experiments/readiness_202
 sets explicit conditions for a separate interval-100 software fixture and
 bounded resource pilot; it is not evidence that either succeeds.
 
+**Task 5 — interval-100 resource trial.** The separately registered tiny
+20-versus-100 simplification fixture passed its trajectory, sample-identity,
+selected-genotype and canonical-ancestry checks, including a forced restore.
+Independent checking confirmed 2,208 sample-pair ancestry comparisons. It is
+software evidence from one reused seed, with no full-case performance claim.
+The subsequent same-seed full-case interval-100 trial, job 10857763, also ended
+in **TIMEOUT**, after 45 minutes 10 seconds under the unchanged 4-CPU/22-GiB
+bound. Its 271 resource samples record a 7.791 GiB high-water mark with zero
+recorded allocation failures or OOM kills. The largest sample gap is 10.002
+seconds; the final 1.540 seconds before scheduler end are unsampled.
+It reached the first contraction at tick 33,600 with 52,855 diploids, after a
+maximum logged population of 71,194. It did not finish SLiM, save/restore a
+checkpoint, produce a final tree, or reach recapitation, mutation overlay,
+VCF export or scanning. The retained adapter `RUNNING` status is stale.
+All 24 frozen source files, 148 external locks, runtime and midpoint trace
+prefixes passed checks. The [terminal collection](../experiments/readiness_2026_11_20/sweeps/task5_interval100_feasibility/terminal/terminal_collection.json)
+records the partial phase coverage. This run reaches a later phase than the
+interval-20 attempt but establishes neither a full-case memory bound nor a
+matched-phase performance improvement. Both timeouts and the earlier OOMs
+remain failures; no new biological replicate or accuracy evaluation is added.
+Production defaults and scientific acceptance thresholds are unchanged.
+
 The tiny completed subset cannot establish full-panel recovery. See the
 [sweep report](readiness_sweeps_2026_11_20.md) for failures and resource policy.
+
+**Task 7 — actual retained-tree pipeline replay.** One previously generated
+development tree now passes canonical VCF export, real RAiSD scanning, production
+prediction, BED validation and candidate recomputation. The 25-diploid replay
+retains 777 exported sites and 728 callable RAiSD windows. The original attempt
+failed before export because tskit refuses to trim a tree with retained reference
+metadata. A separately reviewed harness retry clears only that unused metadata
+on an in-memory copy, verifies unchanged biological tables and genotypes, and
+checks the coordinate shift. The raw tree and original failure remain preserved;
+all eleven production source files are unchanged. The retry completed in nine
+scheduler seconds. The 1 Mb segment is too short for a reference peak more than
+2 Mb away, so the expected consensus rejection and absent signal ratio remain
+intact. This is one synthetic-segment interoperability check using an existing
+stress tree, not a new independent simulation, matched-BGS recovery estimate,
+whole-chromosome accessibility check, freeze or release qualification. The tree
+digest is a retrospective attestation, not an original pre-simulation lock.
+See the [terminal report](../experiments/readiness_2026_11_20/task7_development_replay/retry_v2/terminal_report.md).
 
 **Tasks 10 and 11 — complete genotype-to-pedigree diagnostics.** A new
 18-person human family passed through founder-genotype simulation, inheritance,
@@ -320,7 +372,9 @@ fixtures were missing. Restoring those unchanged fixtures resolved the failures;
 production source was identical in the failed and successful snapshots. The
 prior 1,087-test integration record remains preserved as a separate version.
 
-The final Task 3–4 export/bootstrap integrity snapshot passes **1,260 tests**
+The Task 3–4 export/bootstrap integrity snapshot merged in
+[PR #9](https://github.com/kevinkorfmann/ghist-2026-challenge-suite/pull/9) after
+GitHub CI passed and passes **1,260 tests**
 with no skips, failures or errors on macOS/Python 3.12, Linux ARM/Python 3.12,
 and Betty/Linux x86-64/Python 3.11. Ruff passes on all three. All 468 source/config
 files and 827 unchanged ancillary fixtures match before and after each run.
@@ -330,6 +384,16 @@ The first Betty harness failed before tests because Ruff was absent; installing
 it into an isolated lint directory fixed the harness without changing production
 dependencies. Separate Tasks 10–11/13–14 development and the later Task 2 interval
 domain repair are outside this snapshot. Scientific readiness is unchanged.
+
+The subsequent Task 2 interval-guard snapshot passes **1,314 tests** with no
+skips, errors or failures on the same three platforms; Ruff passes on all three.
+All 469 source/configuration files and 827 unchanged ancillary fixtures match
+before and after each run. The [final integration record](../experiments/readiness_2026_11_20/secondary_contact_interval_integrity/final_integration/verification.json)
+preserves an initial snapshot whose cleanup assertion glob had an extra dot;
+the final snapshot corrects only that test line. Independent failure checks used
+the correct temporary-file prefix and passed. Neither this integration nor the
+Task 7 replay establishes scientific readiness for the remaining challenges.
+Separate Tasks 10–11/13–14 development remains outside these frozen snapshots.
 
 Compact protocols, checkpoints, job scripts and verification records are under
 [`experiments/readiness_2026_11_20`](../experiments/readiness_2026_11_20/).

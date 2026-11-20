@@ -6,7 +6,11 @@ import json
 import math
 from pathlib import Path
 from ghist_inference.checkpoint import atomic_json
-from ghist_inference.freeze import continuous_prediction, require_optimizer_convergence
+from ghist_inference.freeze import (
+    continuous_prediction,
+    require_optimizer_convergence,
+    validated_intervals,
+)
 from ghist_secondary_contact.contract import require_spectrum_contract
 
 
@@ -15,6 +19,15 @@ PARAMETER_KEYS = (
     "population2_effective_size",
     "generations_since_split",
     "generations_since_contact",
+    "migration_rate",
+)
+
+# Preserve the schema emitted by summarize_secondary_contact_generator_bootstrap.
+INTERVAL_KEYS = (
+    "mainland_population_size",
+    "island_population_size",
+    "generations_since_split",
+    "generations_since_migration",
     "migration_rate",
 )
 
@@ -147,6 +160,11 @@ def main() -> None:
         >= finite_risk(nominal["raw"]["mean_competition_rrmse"])
     ):
         raise ValueError("correction did not improve mean nominal stress risk")
+    interval = validated_intervals(
+        bootstrap["observed_sampling_interval_95"],
+        INTERVAL_KEYS,
+        nonnegative=("generations_since_migration", "migration_rate"),
+    )
     result = {
         "challenge": "Secondary Contact",
         "status": "method frozen; no submission",
@@ -162,7 +180,7 @@ def main() -> None:
         },
         "testing_prediction": prediction,
         "raw_refined_fit": refined_values,
-        "conservative_sampling_interval_95": bootstrap["observed_sampling_interval_95"],
+        "conservative_sampling_interval_95": interval,
         "validation": {
             "resolution": {
                 "selected": resolution["selected_resolution"],

@@ -1,0 +1,143 @@
+{
+  "scope": "synthetic arithmetic and actual CLI checks only; no fitting or model evaluation",
+  "snapshot_root": "/private/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-task2-independent-gbhxuopy",
+  "synthetic_inputs_root": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-task2-synthetic-inputs-_oixzmf0",
+  "checks": [
+    {
+      "case": "ordinary_complete",
+      "baseline_and_patch_byte_identical": true,
+      "output_sha256": "8691e332ccd4bd064e37073a4e1d200fcc59110b7b688a9489d79d0cdfad70b7",
+      "intervals": {
+        "mainland_population_size": [
+          0.5,
+          3.0
+        ],
+        "island_population_size": [
+          0.5,
+          3.0
+        ],
+        "generations_since_split": [
+          0.5,
+          3.0
+        ],
+        "generations_since_migration": [
+          0.5,
+          3.0
+        ],
+        "migration_rate": [
+          0.5,
+          3.0
+        ]
+      }
+    },
+    {
+      "case": "zero_migration_contact_0.0",
+      "baseline_and_patch_byte_identical": true,
+      "output_sha256": "93026f0fb70658e831a35fff323a94810ce6a6b86381f8b3074b29b32200b3b3",
+      "intervals": {
+        "mainland_population_size": [
+          0.5,
+          3.0
+        ],
+        "island_population_size": [
+          0.5,
+          3.0
+        ],
+        "generations_since_split": [
+          0.5,
+          3.0
+        ],
+        "generations_since_migration": [
+          0.0,
+          0.0
+        ],
+        "migration_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "case": "zero_migration_contact_2.0",
+      "baseline_and_patch_byte_identical": true,
+      "output_sha256": "a3d3f5514aefcfebbf54d826a4325a88e80feca4d9fd156db41cc7465b4ea2d8",
+      "intervals": {
+        "mainland_population_size": [
+          0.5,
+          3.0
+        ],
+        "island_population_size": [
+          0.5,
+          3.0
+        ],
+        "generations_since_split": [
+          0.5,
+          3.0
+        ],
+        "generations_since_migration": [
+          0.0,
+          0.0
+        ],
+        "migration_rate": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "case": "actual_producer_output",
+      "baseline_and_patch_byte_identical": true,
+      "output_sha256": "7b2d7e8068fe8bc58f33ea25a64bb85dd79e7edfbde8d90ad0ec1850f08e30f7",
+      "intervals": {
+        "mainland_population_size": [
+          9132.4200913242,
+          11049.723756906076
+        ],
+        "island_population_size": [
+          18264.8401826484,
+          22099.447513812152
+        ],
+        "generations_since_split": [
+          2739.72602739726,
+          3314.917127071823
+        ],
+        "generations_since_migration": [
+          1369.86301369863,
+          1657.4585635359115
+        ],
+        "migration_rate": [
+          9.132420091324201e-05,
+          0.00011049723756906077
+        ]
+      }
+    },
+    {
+      "case": "empty",
+      "rejected": true,
+      "existing_output_unchanged": true,
+      "no_temporary_files_correct_prefix": true,
+      "error": "Interval parameters do not match the prediction contract"
+    },
+    {
+      "case": "reversed",
+      "rejected": true,
+      "existing_output_unchanged": true,
+      "no_temporary_files_correct_prefix": true,
+      "error": "migration_rate interval must be finite, ordered, and within its physical domain"
+    },
+    {
+      "case": "negative_population",
+      "rejected": true,
+      "existing_output_unchanged": true,
+      "no_temporary_files_correct_prefix": true,
+      "error": "mainland_population_size interval must be finite, ordered, and within its physical domain"
+    },
+    {
+      "case": "late_serialization_nan",
+      "rejected": true,
+      "existing_output_unchanged": true,
+      "no_temporary_files_correct_prefix": true,
+      "error": "Out of range float values are not JSON compliant: nan"
+    }
+  ]
+}

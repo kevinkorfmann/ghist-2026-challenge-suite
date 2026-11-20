@@ -1,0 +1,62 @@
+{
+  "scope": "Independent read-only review of Task2 interval shape/domain patch; no model evaluation, optimization, simulation, challenge data, or public answers.",
+  "verdict": "No implementation blocker for the narrow interval guard.",
+  "handoff_sha256": "6520a132653ecdc15a389dc6ced47a5e8d2ae9fc29d13940fe8893760c369b2b",
+  "archive_sha256": "4a3b5758c1c7aeda3a40ead1b4328b4e5e4643025eecb03f0957c3fe0b83b929",
+  "verified_bindings": {
+    "frozen_source_files": 3,
+    "supplied_evidence_files": 4,
+    "archive": true,
+    "source_bytes_equal_safe_cache": true
+  },
+  "baseline": {
+    "commit": "0af82011653fbdb41f7fc560f4fcec8570a7c8af",
+    "freezer_sha256": "66ea063b8e9de4e53d0fbd29e38989282f5897f14e5d83b37ea55f09197d3dc5"
+  },
+  "reviewed_source_sha256": {
+    "scripts/freeze_secondary_contact.py": "62e8fea2eb37a091f230400107632442c7e68a64d455780a6b5c16ce2116c1cc",
+    "scripts/summarize_secondary_contact_generator_bootstrap.py": "79f26cade992f119b10dc17a96febf8b6e7a84622dba7a4fc96b735c45a2e011",
+    "src/ghist_inference/freeze.py": "64d88f137ba2dbe33be47cbd6cd1a9cd7b1d9818462d5d042b7cf2fc809b9f0e",
+    "src/ghist_inference/checkpoint.py": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d",
+    "tests/test_demography_freeze_cross_review.py": "1497d9711d3e24176b3b8b64dc3c8dd9f2786bc9d328c0a377ac8b6cf84da5dd",
+    "tests/test_secondary_contact_intervals.py": "dffffaf7430878feeed7f4ae95507002f06c7528d73a55676d4497aff619b005"
+  },
+  "checks": {
+    "focused_tests": {
+      "command": "python -m pytest -q tests/test_demography_freeze_cross_review.py tests/test_secondary_contact_intervals.py",
+      "passed": 72,
+      "duration_seconds": 1.84,
+      "snapshot": "/var/folders/3s/hwl2l1l15mb9wgxw12hzdch80000gn/T/ghist-task2-independent-gbhxuopy",
+      "python": "/Users/kevinkorfmann/.cache/ghist-2026/venv-review-20261120/bin/python"
+    },
+    "producer_schema": "Exact five-key match. Producer maps population1/population2 to mainland/island and generations_since_contact to generations_since_migration.",
+    "valid_actual_entrypoints": {
+      "count": 4,
+      "baseline_and_patch_byte_identical": true,
+      "includes": "ordinary complete intervals; zero migration intervals and zero contact intervals with contact point at 0 or split boundary; actual producer output from synthetic records"
+    },
+    "failure_actual_entrypoints": {
+      "count": 4,
+      "cases": [
+        "empty intervals",
+        "reversed migration",
+        "negative mainland population",
+        "late serialization NaN outside interval"
+      ],
+      "all_existing_outputs_preserved": true,
+      "all_actual_prefix_temporary_files_absent": true
+    },
+    "domain": "Positive population sizes and split time; nonnegative contact time and migration; finite ordered pairs; exact parameter set.",
+    "scope_preserved": "No bootstrap denominator, coverage, generating-model adequacy, selected endpoint reconstruction, or scientific readiness is established. Marginal interval endpoints are not treated as a joint parameter vector."
+  },
+  "nonblocking_test_observation": {
+    "path": "tests/test_secondary_contact_intervals.py",
+    "detail": "Existing-output regression uses .freeze.json.* whereas atomic_json temporary prefix is freeze.json.; independent actual-main checks cover the correct prefix, including late writer failure.",
+    "reported_to_root": true
+  },
+  "new_evidence_sha256": {
+    "root_independent_entrypoints.py": "22a9b876e2b14777f3a2f52ec816074f56c03d0418539b5281345f6c6317d335",
+    "root_independent_entrypoints.json": "78705cddfbd31c431ae0bd989a158eb129ed6e28ed7beae67842acad0df350b3"
+  },
+  "production_files_modified": false
+}

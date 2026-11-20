@@ -1,0 +1,45 @@
+{
+  "schema": "independent_interval100_prelaunch_review_v1",
+  "verdict": "No blocking prelaunch issue found for one separately authorized bounded resource-feasibility attempt; launch remains the root decision.",
+  "protocol_sha256": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307",
+  "adapter_sha256": "73d868fdacdce01a5278330461d694f4a1e388bdfe024294fd9d8429f5e673ec",
+  "snapshot_sha256": "04cdfbe46fa75fdf6005f46a1b81198d552a2a38015b98465477cd2f10293c59",
+  "checks": {
+    "exact_delta": "One fixed simplification interval argument 20 to 100; two matching diagnostic filename/hash-label changes. All other adapter bytes unchanged.",
+    "unchanged": [
+      "case 5",
+      "seed 202612005",
+      "biology/design hash",
+      "checkpoint/save/restore scheduling",
+      "engine invocation and RNG arguments",
+      "loader restoration",
+      "monitoring/failure propagation",
+      "source snapshot archive",
+      "148 external locks",
+      "runtime versions"
+    ],
+    "resources": {
+      "cpus": 4,
+      "memory_GiB": 22,
+      "minutes": 45,
+      "automatic_retries": 0
+    },
+    "regressions": "10 local isolated adapter tests passed; no simulations",
+    "independent_remote_recheck_utc": "2026-11-20T20:07:32.176811+00:00",
+    "remote_source_locks_verified": 24,
+    "remote_external_locks_verified": 148,
+    "remote_runtime_versions_match": true,
+    "remote_python": "3.11.11",
+    "remote_output_directory_absent": true
+  },
+  "conditions": [
+    "Root authorization before any launch.",
+    "Preserve all prior outcomes and the 48-case planned denominator; this is the same case/seed, not a fresh independent replicate.",
+    "Retain timeout/OOM/failure as an additional failed or censored workflow attempt, with no automatic retry or resource escalation.",
+    "Inspect terminal resource and phase evidence, not accuracy, for the resource-feasibility decision.",
+    "Small fixture equivalence and interval20 memory headroom do not bound later interval100 population, simplification, postprocessing or prediction peaks."
+  ],
+  "simulation_launched_by_reviewer": false,
+  "scientifically_validated": false,
+  "release_ready": false
+}

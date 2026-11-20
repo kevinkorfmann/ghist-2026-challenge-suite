@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "scope": "Read-only resource/source audit, no accuracy inspection or run.",
+  "hashes": {
+    "protocol.json": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307",
+    "collect_terminal.py": "6ac372289e6c7b16f8191e861f3d80c4f2bc78284fbad5d2d4ee5864b65ba787",
+    "terminal/terminal_collection.json": "8e9142561bd8e88622ae2290e2a9e96811c2c4a75d8939f0431ca8b6ec0b5099",
+    "terminal/diagnostics/resources.jsonl": "14b92285b1ce9776afb0033054c6e4d0b52b576a973f5d4b46495706c649297f",
+    "terminal/diagnostics/phase.tsv": "3ba8d11adaf2eb4ced0482f89491230bdfdffd5d0ec06053073f356a661c43f6",
+    "terminal/sacct_utc.txt": "0e88f05800324342a5db9a61495cb64edfe794cb9d708137524fb9a1cc8e4c16",
+    "terminal/generated_scripts.tar.gz": "07f49369d1e2621fc290daa2a8e77898d1185f4c2cb82b626a9eb7eeb4573a32",
+    "generated_script_equivalence.json": "0e12f873307f1725ff3c2dbf9f50246f1db8147cb1ecf1e659c02c1df0462602"
+  },
+  "local_source_hashes_verified": 24,
+  "terminal_files_verified": 9,
+  "remote_independent_attestation": {
+    "utc": "2026-11-20T20:58:37.537582+00:00",
+    "source_hashes": 24,
+    "external_hashes": 148,
+    "versions": {
+      "numpy": "2.4.6",
+      "msprime": "1.4.2",
+      "pysam": "0.24.0",
+      "stdpopsim": "0.3.0",
+      "tskit": "1.0.3",
+      "pyslim": "1.0.4"
+    },
+    "python": "3.11.11",
+    "all_match": true
+  },
+  "monitoring": {
+    "records": 271,
+    "span_seconds": 2700.2765645980835,
+    "max_gap_seconds": 10.00145173072815,
+    "startup_to_first_sample_seconds": 8.183281183242798,
+    "last_sample_to_job_end_seconds": 1.540154218673706,
+    "last_sample_to_batch_end_seconds": 2.540154218673706,
+    "all_sampled_cgroup_failcnt_and_oom_zero": true,
+    "observed_high_water_bytes": 8365776896,
+    "observed_high_water_GiB": 7.791236877441406,
+    "maximum_sampled_usage_bytes": 8287920128,
+    "job_limit_GiB": 22,
+    "observed_headroom_GiB": 14.208763122558594,
+    "midpoint_prefixes_preserved": true,
+    "monitor_failure_file_absent": true,
+    "unobserved_tail_and_future_memory_not_certified": true
+  },
+  "phases": {
+    "rows": 337,
+    "all_ticks_1_then_every100_to33600": true,
+    "last": [
+      33600,
+      52855,
+      0,
+      0
+    ],
+    "maximum_logged_population": 71194,
+    "source_end_tick": 41290,
+    "saves_and_restores_observed": 0,
+    "only_initializing_and_slim_running_stages_observed": true,
+    "final_raw_tree_absent": true,
+    "stale_running_status_is_interrupted_cleanup": true
+  },
+  "same_seed_source_comparison": {
+    "original_scripts_identical_after_one_temporary_loader_path_normalization": true,
+    "instrumented_scripts_identical_after_only_registered_interval_and_diagnostic_paths": true,
+    "exact_adapter_transform_verified": true,
+    "biology_and_event_statements_unchanged": true
+  },
+  "scheduler": {
+    "job_state": "TIMEOUT",
+    "job_elapsed": "00:45:10",
+    "batch_state": "CANCELLED",
+    "batch_exit_code": "0:15",
+    "batch_max_rss": "8167920K"
+  },
+  "scientifically_validated": false
+}

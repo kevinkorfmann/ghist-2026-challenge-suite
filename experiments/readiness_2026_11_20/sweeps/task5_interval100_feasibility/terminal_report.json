@@ -1,0 +1,171 @@
+{
+  "schema": "task5_interval100_same_seed_terminal_report_v1",
+  "recorded_utc": "2026-11-20T20:57:30.260823+00:00",
+  "scope": "One same-seed bookkeeping/resource feasibility attempt; not biological recovery, model calibration, or challenge submission evidence.",
+  "job_id": "10857763",
+  "case": 5,
+  "seed": 202612005,
+  "protocol_sha256": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307",
+  "source_snapshot_sha256": "04cdfbe46fa75fdf6005f46a1b81198d552a2a38015b98465477cd2f10293c59",
+  "adapter_sha256": "73d868fdacdce01a5278330461d694f4a1e388bdfe024294fd9d8429f5e673ec",
+  "scientifically_validated": false,
+  "release_ready": false,
+  "workflow_completed": false,
+  "scheduler": {
+    "state": "TIMEOUT",
+    "elapsed_seconds": 2710,
+    "start_utc": "2026-11-20T20:08:56Z",
+    "end_utc": "2026-11-20T20:54:06Z",
+    "time_limit_seconds": 2700,
+    "cpus": 4,
+    "memory_GiB": 22,
+    "automatic_retries": 0,
+    "job_exit_code": "0:0",
+    "batch_state": "CANCELLED",
+    "batch_exit_code": "0:15",
+    "batch_elapsed_seconds": 2711,
+    "batch_end_utc": "2026-11-20T20:54:07Z",
+    "batch_maxrss_K": 8167920,
+    "interpretation": "TIMEOUT and the terminated batch are the outcome; the parent job numeric exit field does not imply workflow success."
+  },
+  "resource_observations": {
+    "records": 271,
+    "first_unix_time": 1795205344.1832812,
+    "last_unix_time": 1795208044.4598458,
+    "duration_seconds": 2700.2765645980835,
+    "maximum_sample_gap_seconds": 10.00145173072815,
+    "stages": [
+      "initializing",
+      "slim_running"
+    ],
+    "last_usage_bytes": 6203006976,
+    "maximum_recorded_usage_bytes": 8287920128,
+    "maximum_recorded_high_water_bytes": 8365776896,
+    "limits_bytes": [
+      23622320128
+    ],
+    "maximum_failcnt": 0,
+    "oom_controls": [
+      "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+    ],
+    "monitor_failure_file": false,
+    "maximum_recorded_high_water_GiB": 7.791236877441406,
+    "last_usage_GiB": 5.777000427246094,
+    "first_sample_utc": "2026-11-20T20:09:04.183281+00:00",
+    "last_sample_utc": "2026-11-20T20:54:04.459846+00:00",
+    "startup_before_first_sample_seconds": 8.183281183242798,
+    "unsampled_tail_to_job_end_seconds": 1.540154218673706,
+    "unsampled_tail_to_batch_end_seconds": 2.540154218673706,
+    "scope": "Complete retained ten-second monitor sequence, including cumulative cgroup high-water counters. Headroom and zero fail/oom counters apply to observed records; no final cleanup/counter sample survived scheduler termination."
+  },
+  "phase_observations": {
+    "records": 337,
+    "first": [
+      1,
+      7156,
+      0,
+      0
+    ],
+    "last": [
+      33600,
+      52855,
+      0,
+      0
+    ],
+    "maximum_logged_tick": 33600,
+    "schedule_boundaries_reached": [
+      7157,
+      32757
+    ],
+    "source_end_tick_reached": false,
+    "maximum_logged_diploids": 71194,
+    "maximum_saves": 0,
+    "maximum_restores": 0
+  },
+  "phase_interpretation": {
+    "observed": "Burn-in, first growth phase and entry into the first contraction. The maximum logged population was 71,194; the source schedules its first peak near 71,560 between the recorded 100-tick phase samples.",
+    "source_end_tick": 41290,
+    "later_boundaries_unreached": [
+      39157,
+      40757,
+      41157,
+      41257,
+      41290
+    ],
+    "remaining": "Remainder of the first contraction; later growth/contraction episodes with source targets around 71,600; selected-event checkpoint/conditioning; final sampling; recapitation; neutral mutations; VCF export; localization; RAiSD; BED/software output validation.",
+    "source_only_limit": "Later schedule targets are source-derived, not measured population or memory bounds. Repeated high-population phases and downstream costs remain unobserved."
+  },
+  "termination_semantics": {
+    "adapter_status": {
+      "state": "RUNNING",
+      "protocol_sha256": "9004cf2349334767c1bb9777d3ad9ef7063b961876e8dbd92ac7222dc1901307",
+      "case": 5,
+      "seed": 202612005,
+      "scientifically_validated": false,
+      "scope": "One same-seed resource feasibility attempt only"
+    },
+    "adapter_status_is_stale": true,
+    "in_process_final_verification_completed": false,
+    "external_post_terminal_verification_passed": true,
+    "final_tree_or_prediction_outputs_present": false,
+    "no_new_simulation_or_resource_escalation_after_timeout": true
+  },
+  "provenance": {
+    "terminal_collection_sha256": "8e9142561bd8e88622ae2290e2a9e96811c2c4a75d8939f0431ca8b6ec0b5099",
+    "collector_sha256": "6ac372289e6c7b16f8191e861f3d80c4f2bc78284fbad5d2d4ee5864b65ba787",
+    "frozen_source_bindings_checked": 24,
+    "external_bindings_checked": 148,
+    "post_run_mismatches": [],
+    "runtime_versions": {
+      "numpy": "2.4.6",
+      "msprime": "1.4.2",
+      "pysam": "0.24.0",
+      "stdpopsim": "0.3.0",
+      "tskit": "1.0.3",
+      "pyslim": "1.0.4"
+    },
+    "midpoint_prefix_checks": {
+      "resources": true,
+      "phase": true
+    },
+    "generated_script_exact_transformation": true,
+    "generated_script_equivalence_sha256": "0e12f873307f1725ff3c2dbf9f50246f1db8147cb1ecf1e659c02c1df0462602",
+    "original_biological_event_script_unchanged_from_interval20_after_only_temporary_loader_path_normalization": true,
+    "fixed_script_changes_only_registered_interval_and_retained_paths": true,
+    "all_nine_retained_output_file_hashes_verified_locally": true,
+    "source_archive_members_verified_against_full_output_hashes": true,
+    "accuracy_or_prediction_contents_inspected": false
+  },
+  "denominators": {
+    "original_planned_independent_cases": 48,
+    "locked_unique_attempted_cases": 6,
+    "original_not_run_cases": 42,
+    "original_completed_cases": 3,
+    "original_failed_cases": 3,
+    "original_workflow_attempts": 7,
+    "additional_same_seed_interval20_attempts": 1,
+    "additional_same_seed_interval20_outcome": "TIMEOUT",
+    "additional_same_seed_interval100_attempts": 1,
+    "additional_same_seed_interval100_outcome": "TIMEOUT",
+    "total_full_workflow_or_resource_attempts": 9,
+    "total_completed_workflows": 3,
+    "total_failed_original_attempts": 4,
+    "total_time_censored_resource_attempts": 2,
+    "new_independent_biological_replicates_from_this_attempt": 0,
+    "scope": "The original failures, 42 unrun cases and incomplete planned denominators are retained. Paired small software fixtures are separate and do not increase biological recovery counts."
+  },
+  "conclusion": "The interval100 bookkeeping variant reached the first contraction with no OOM observed in the retained trace, but the same-seed workflow still exceeded its fixed 45-minute budget. Full resource feasibility and end-to-end scientific validation remain unresolved.",
+  "limitations": [
+    "No full-run memory bound, scientific recovery, interval coverage or submission readiness is established.",
+    "No matched-phase memory savings or general speedup estimate is claimed.",
+    "The paired small fixture supports software/ancestry equivalence for its fixed biology and seed, not full-chromosome recovery or runtime.",
+    "Production defaults and all frozen biological parameters remain unchanged; no further attempt is authorized by this report."
+  ],
+  "artifact_retention": {
+    "remote_source_directory": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/readiness-sweeps-interval100-20261120",
+    "remote_full_output_directory": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/readiness_sweeps/task5_interval100_feasibility",
+    "integration_generated_source_archive": "terminal/generated_scripts.tar.gz",
+    "generated_source_archive_sha256": "07f49369d1e2621fc290daa2a8e77898d1185f4c2cb82b626a9eb7eeb4573a32",
+    "uncompressed_source": "Retained in the non-iCloud cache and on Betty; excluded from the integration manifest to avoid duplicating the compressed archive."
+  }
+}

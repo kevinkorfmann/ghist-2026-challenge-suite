@@ -1,0 +1,165 @@
+{
+  "schema": "task7_development_interoperability_replay_v2",
+  "status": "prepared_retry_not_launched",
+  "purpose": "Development-only interoperability on one existing exact-Q1 BGS tree; no recovery, coverage, independence, or release qualification.",
+  "case_selection": "Earliest retained exact-Q1 one-sweep smoke by original case index; fixed before reading case-level localization outcomes.",
+  "seed": 202611501,
+  "original_job": "10849403_1",
+  "original_generator": {
+    "stdpopsim": "0.3.0",
+    "demography": "bottleneck_growth",
+    "ancestral_size": 6000,
+    "bottleneck_size": 1200,
+    "present_size": 12000,
+    "bottleneck_start": 1200,
+    "growth_start": 300,
+    "dfe": "Gamma_K17",
+    "background_selection": true,
+    "genetic_map": "HapMapII_GRCh38",
+    "mutation_rate": 1.44e-08,
+    "slim_scaling_factor": 1.0,
+    "slim_burn_in": 1.0,
+    "left": 36000000,
+    "right": 37000000,
+    "diploid_samples": 25,
+    "coding_bed_sha256": "440bc3a72cbe218f320bb0ef39163965c060156c050fb1650105479e32e7039c"
+  },
+  "case_origin": "previously evaluated development simulation; original per-case outcome is retained but not scored or used to set this replay",
+  "input_tree": {
+    "remote_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/scientific-sweeps-20261120/artifacts/exact/background_1.trees",
+    "sha256": "99d6b96b70af599237860c55844faf63ca34092dedd155c31434bf58c554b464",
+    "bytes": 159794652,
+    "local_preservation_path": "/Users/kevinkorfmann/.cache/ghist-2026/task7-development-replay-20261120/inputs/background_1.trees",
+    "hash_scope": "retrospective attestation at replay preparation; original verification did not record a tree digest"
+  },
+  "input_sha256": {
+    "accessible.bed": "1eb6930b131c8ee4beb28d500ce6587fdec984cc41d6a0ded3ea3bcce9603d96",
+    "generator.py": "c91135e481c4f22cb413afe5cb1127f78924846928762ffa7744cee23926c379",
+    "background_1.json": "d20533d6ab43b61f6ad89c9750ccbe203c71a74f0f2c602bd69047b39fa0515a"
+  },
+  "coordinate_transform": {
+    "original_left": 36000000,
+    "original_right": 37000000,
+    "local_length": 1000000,
+    "operation": "copy tables; clear only unused reference sequence after hash/length attestation; keep entire original segment and trim empty outside sequence; assert unchanged samples, genotypes, mutations and site states and exact original_left shift",
+    "mask": "entire retained local segment; no new holes or selected subregion; not the official full-chromosome accessibility mask",
+    "chromosome_label": "7",
+    "dataset_cli_label": "testing, for format routing only; input is a synthetic local-coordinate segment"
+  },
+  "source_baseline_commit": "0af82011653fbdb41f7fc560f4fcec8570a7c8af",
+  "source_sha256": {
+    "scripts/predict_task7_sweep_bgs.py": "80c9b10aa6cc249ade8fbb6cfb789ddd86e01c0409a80633c3cf9e2af3e8841a",
+    "scripts/freeze_task7_sweep_bgs.py": "1a045ccda245bc6f41887a257ead00cd28f835275607843fd2431c338de8d827",
+    "src/ghist_single_sweep/export.py": "b8f24772f8548bb079c4dd8898e3a047f8ec664c5c7384d8e8c0652002ccad56",
+    "src/ghist_single_sweep/background.py": "533769bb887e6e4ef340f429b3f9a60014758a3f839eee772b755527b481abb7",
+    "src/ghist_single_sweep/scan.py": "a69d8a3ce522ec5448b6bd24f0499784780a19d560cee3d4a84e47dd9a632899",
+    "src/ghist_single_sweep/peaks.py": "41a48bb7147477462fcfb2dc7a4b67208933ff95b8ee9209af47a5eda5a35c3e",
+    "src/ghist_single_sweep/__init__.py": "b0f7371b157005db3c8027224f6b8bd052c42685bed20e62454cc1cb60958f8d",
+    "src/ghist_submission/validate.py": "f405f5beaf86c64e1c726b33a97d8cf69aacd10e98c1e9e28b06e2c48f4dee17",
+    "src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc"
+  },
+  "software": {
+    "python": "3.11.11 (main, Jul  1 2025, 12:16:28) [GCC 13.3.0]",
+    "versions": {
+      "numpy": "2.4.6",
+      "tskit": "1.0.3",
+      "pysam": "0.24.0",
+      "PyYAML": "6.0.3"
+    },
+    "raisd_binary_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/raisd/RAiSD",
+    "raisd_binary_sha256": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307"
+  },
+  "tree_preflight": {
+    "sequence_length": 159345973,
+    "samples": 50,
+    "nodes": 720,
+    "sites": 778,
+    "edges": 2758,
+    "migrations": 0,
+    "site_min": 36001035,
+    "site_max": 36999955,
+    "edge_min": 36000000,
+    "edge_max": 37000000,
+    "slim_provenance_seed": 202611501,
+    "slim_version": "4.3"
+  },
+  "locked_checks": [
+    "exact input/source/binary hashes before and after",
+    "reference-data hash/length attestation and table/mutation/genotype invariance on in-memory metadata-only removal",
+    "canonical source tree to VCF genotype/site/length round trip",
+    "actual predictor CLI and real RAiSD",
+    "RAiSD usable SNP parity enforced by production CLI",
+    "production BED validator",
+    "verify_candidate recomputation",
+    "record expected consensus abstention and absent distant >2Mb baseline without changing thresholds"
+  ],
+  "forbidden_operations": [
+    "new simulation",
+    "fitting or optimizer search",
+    "truth-driven region or parameter selection",
+    "localization error scoring",
+    "known answer or final-data access",
+    "production source changes",
+    "freeze or submission"
+  ],
+  "expected_limit": "The 1Mb segment cannot contain a reference peak more than2Mb away. Abstention and undefined signal ratio are expected; this cannot calibrate whole-chromosome eligibility.",
+  "planned_allocation": {
+    "cpus": 1,
+    "memory_mb": 5632,
+    "walltime": "00:10:00",
+    "partition": "genoa-std-mem",
+    "maximum_jobs": 1
+  },
+  "submission_count": 0,
+  "release_ready": false,
+  "scientifically_validated": false,
+  "runner_sha256": {
+    "run.py": "3c2b6f487810e63e08add5e83e01424930c6f79df125fd242939c322363d71c0",
+    "run.sbatch": "64e03e901dc04b9ae9927690efead8f0e5fcafc5b5bd9c6a964be18331806d14"
+  },
+  "method": "blind_callable_median_ten_v1",
+  "settings": {
+    "composite_widths": [
+      25000,
+      50000,
+      100000,
+      250000,
+      500000
+    ],
+    "composite_step_divisor": 5,
+    "region_width": 100000,
+    "region_radius": 750000,
+    "grid_step": 1000,
+    "flank_widths": [
+      50000,
+      100000,
+      250000
+    ],
+    "minimum_callable_flank_fraction": 0.8,
+    "raisd_snp_window": 50,
+    "raisd_mask_policy": "entire inclusive SNP span callable",
+    "half_width": 80000,
+    "secondary_peak_separation": 100000,
+    "secondary_peak_minimum_distance": 2000000,
+    "minimum_signal_ratio": 4.0
+  },
+  "previous_protocol_sha256": "795fae7cb0da7ef2d8c92dd9a2496cd489c33b41217acc897f48781dde3986be",
+  "previous_failed_job": "10858405",
+  "reference_handling": {
+    "reason": "tskit trim refuses reference sequence data; canonical binary A/C exporter does not use reference data",
+    "action": "clear only unused reference sequence on an in-memory table copy before complete-segment translation; preserve raw tree and bind original reference hash",
+    "expected_data_length": 159345973,
+    "expected_data_sha256": "4e9f52738ce58fee1e2c7cebf9bd3caf37b9d8fe370632f52d0e122b706b34b5",
+    "require_full_chromosome_reference_length": true,
+    "invariants": [
+      "all individual,node,edge,migration,site,mutation,population,provenance tables equal before and after reference clear",
+      "sample IDs and genotype matrices unchanged",
+      "after whole-segment translation, site positions shift exactly by left, mutation table and ancestral states/metadata remain unchanged",
+      "canonical genotype/site/length round trip unchanged"
+    ]
+  },
+  "same_case_planned_workflow_attempts_including_original": 2,
+  "new_biological_replicates": 0
+}

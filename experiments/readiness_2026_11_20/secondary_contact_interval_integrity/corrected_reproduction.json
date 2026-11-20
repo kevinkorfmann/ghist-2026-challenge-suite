@@ -1,0 +1,42 @@
+{
+  "complete": {
+    "accepted": true,
+    "exported": {
+      "mainland_population_size": [
+        0.5,
+        3.0
+      ],
+      "island_population_size": [
+        0.5,
+        3.0
+      ],
+      "generations_since_split": [
+        0.5,
+        3.0
+      ],
+      "generations_since_migration": [
+        0.5,
+        3.0
+      ],
+      "migration_rate": [
+        0.5,
+        3.0
+      ]
+    }
+  },
+  "empty": {
+    "accepted": false,
+    "exception": "ValueError",
+    "message": "Interval parameters do not match the prediction contract"
+  },
+  "reversed": {
+    "accepted": false,
+    "exception": "ValueError",
+    "message": "migration_rate interval must be finite, ordered, and within its physical domain"
+  },
+  "negative": {
+    "accepted": false,
+    "exception": "ValueError",
+    "message": "mainland_population_size interval must be finite, ordered, and within its physical domain"
+  }
+}

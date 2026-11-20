@@ -1,0 +1,78 @@
+--- original/run.py
++++ retry_v2/run.py
+@@ -81,13 +81,51 @@
+                 or np.any(original.tables.sites.position < left)
+                 or np.any(original.tables.sites.position >= right)):
+             raise ValueError('Original tree contains material outside the complete fixed segment')
+-        localized = original.keep_intervals([[left, right]], simplify=False).trim()
++        reference = original.reference_sequence
++        reference_hash = hashlib.sha256(reference.data.encode()).hexdigest()
++        reference_contract = protocol['reference_handling']
++        if (len(reference.data) != original.sequence_length
++                or len(reference.data) != reference_contract['expected_data_length']
++                or reference_hash != reference_contract['expected_data_sha256']):
++            raise ValueError('Retained reference sequence differs from its length/hash attestation')
++        original_tables = original.dump_tables()
++        copied_tables = original.dump_tables()
++        copied_tables.reference_sequence.clear()
++        table_names = ('individuals', 'nodes', 'edges', 'migrations', 'sites',
++                       'mutations', 'populations', 'provenances')
++        if (any(not getattr(original_tables, name).equals(getattr(copied_tables, name))
++                for name in table_names)
++                or copied_tables.metadata != original_tables.metadata
++                or copied_tables.time_units != original_tables.time_units
++                or copied_tables.sequence_length != original_tables.sequence_length):
++            raise ValueError('Clearing unused reference sequence changed biological tables')
++        without_reference = copied_tables.tree_sequence()
++        if (not np.array_equal(without_reference.samples(), original.samples())
++                or not np.array_equal(without_reference.genotype_matrix(), original.genotype_matrix())):
++            raise ValueError('Clearing unused reference sequence changed samples or genotypes')
++        localized = without_reference.keep_intervals([[left, right]], simplify=False).trim()
+         if (localized.sequence_length != right - left
+                 or not np.array_equal(localized.samples(), original.samples())
+                 or not np.array_equal(localized.tables.sites.position,
+                                       original.tables.sites.position - left)
+                 or not np.array_equal(localized.genotype_matrix(), original.genotype_matrix())):
+             raise ValueError('Whole-segment translation changed genotypes, sites, samples or exposure')
++        if (not localized.tables.mutations.equals(original_tables.mutations)
++                or localized.tables.sites.metadata_schema != original_tables.sites.metadata_schema
++                or any(not np.array_equal(getattr(localized.tables.sites, name),
++                                          getattr(original_tables.sites, name))
++                       for name in ('ancestral_state', 'ancestral_state_offset', 'metadata', 'metadata_offset'))):
++            raise ValueError('Whole-segment translation changed mutation records or site states/metadata')
++        atomic(output / 'reference_metadata_audit.json', {
++            'original_reference_length': len(reference.data),
++            'original_reference_sha256': reference_hash,
++            'raw_tree_sha256': protocol['input_tree']['sha256'],
++            'action': 'unused reference sequence cleared on in-memory copy only',
++            'biological_tables_unchanged_before_translation': True,
++            'samples_genotypes_mutations_site_states_unchanged': True,
++            'site_coordinate_shift': -left,
++            'canonical_export_uses_reference_data': False,
++        })
+         vcf = output / 'canonical_input.vcf'
+         export = write_biallelic_vcf(localized, vcf, chromosome='7')
+         reread = read_phased_biallelic_vcf(vcf)
+--- original/run.sbatch
++++ retry_v2/run.sbatch
+@@ -1,16 +1,16 @@
+ #!/usr/bin/env bash
+-#SBATCH --job-name=task7-dev-replay
++#SBATCH --job-name=task7-dev-replay-v2
+ #SBATCH --partition=genoa-std-mem
+ #SBATCH --cpus-per-task=1
+ #SBATCH --mem=5632M
+ #SBATCH --time=00:10:00
+-#SBATCH --output=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-20261120/slurm-%j.out
+-#SBATCH --error=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-20261120/slurm-%j.err
++#SBATCH --output=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-v2-20261120/slurm-%j.out
++#SBATCH --error=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-v2-20261120/slurm-%j.err
+ source /etc/profile >/dev/null 2>&1
+ set -eo pipefail
+ module load python/3.11.11
+ set -u
+-REPLAY_ROOT=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-20261120
++REPLAY_ROOT=/vast/projects/smathi/cohort/korfmann/ghist2026/reviews/task7-development-replay-v2-20261120
+ PROJECT_ROOT=/vast/projects/smathi/cohort/korfmann/ghist2026
+ cd "$REPLAY_ROOT"
+ export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
