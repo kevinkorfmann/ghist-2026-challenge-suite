@@ -1,0 +1,18 @@
+{
+  "schema": "bottleneck_optimizer_independent_review_addendum_v1",
+  "completed_utc": "2026-11-20T18:56:18.955644+00:00",
+  "scope": "Narrow follow-up to retained optimizer trace review; original audit preserved unchanged.",
+  "change": "Exact duplicate original start vectors are rejected in log_starts/run_optimizer and retained fit validation; paired coarse/fine starts must match within origin. Consumer synthetic fixture now supplies genuinely distinct original vectors.",
+  "checks": {
+    "consumer_tests_passed": 41,
+    "duration_seconds": 3.42,
+    "ruff": "passed",
+    "consumer_production_files_changed": false
+  },
+  "source_sha256": {
+    "src/ghist_bottleneck/optimization.py": "5a1ec054f9b0406f7b8a5d47b79e259f14c2632089e0b08a922fd4c2ab447f22",
+    "tests/test_bottleneck_consumer_contract.py": "e581d5290ed1119621f782c81468987e0e69b9ef91ac2b4c49318a0aa549d45e"
+  },
+  "scientifically_validated": false,
+  "replay_outcomes_inspected": false
+}

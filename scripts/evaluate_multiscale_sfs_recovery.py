@@ -15,8 +15,14 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.neural_network import MLPRegressor
 
-from scripts.run_multiscale_sfs_recovery import TOTAL_CELLS, TOTAL_POINTS
+from scripts.run_multiscale_sfs_recovery import (
+    TOTAL_CELLS, TOTAL_POINTS, multiscale_parameters, require_simulation_design,
+)
 from ghist_bottleneck.provenance import require_diploid_scale
+from scripts.bottleneck_consumer_guard import (
+    ROOT, capture_inputs, require_bundle, require_fit, require_new_outputs,
+    require_unchanged, source_manifest,
+)
 
 
 def sha256(path: Path) -> str:
@@ -124,12 +130,33 @@ def main() -> None:
     parser.add_argument("--model-out", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=20261201)
     args = parser.parse_args()
+    require_new_outputs(args.out, args.model_out)
     paths = [Path(path) for path in sorted(glob.glob(args.input_glob))]
     if not paths:
         raise FileNotFoundError(args.input_glob)
-    arrays = [np.load(path) for path in paths]
+    locked_inputs = capture_inputs(*paths, args.observed,
+                                  *(ROOT / name for name in source_manifest(
+                                      "scripts/evaluate_multiscale_sfs_recovery.py")))
+    arrays = [np.load(path, allow_pickle=False) for path in paths]
+    contract = None
+    data_contract = None
+    design = None
     for path, array in zip(paths, arrays):
         require_diploid_scale(array, context=f"Recovery shard {path}")
+        current, fits, context = require_bundle(array, producer="scripts/run_multiscale_sfs_recovery.py",
+                                       engine="moments", estimate_field="estimate")
+        if contract is not None and current != contract:
+            raise ValueError("Recovery shards use different optimizer contracts")
+        contract = current
+        if data_contract is not None and context["fit_data_contract"] != data_contract:
+            raise ValueError("Recovery shards use different folding/rate/exposure contracts")
+        data_contract = context["fit_data_contract"]
+        shard_design = require_simulation_design(array, fits, context)
+        if design is not None and shard_design != design:
+            raise ValueError("Recovery shards use different simulation/block/seed designs")
+        design = shard_design
+    observed = json.loads(args.observed.read_text())
+    require_fit(observed, engine="moments", expected=contract, expected_data=data_contract)
     fields = ("cell_id", "point_id", "replicate", "domain", "split", "truth", "estimate")
     merged = {field: np.concatenate([array[field] for array in arrays]) for field in fields}
     order = np.argsort(merged["cell_id"])
@@ -139,6 +166,12 @@ def main() -> None:
     np.testing.assert_array_equal(merged["cell_id"], np.arange(TOTAL_CELLS))
     if len(np.unique(merged["point_id"])) != TOTAL_POINTS:
         raise ValueError("parameter point coverage is incomplete")
+    for index, cell in enumerate(merged["cell_id"]):
+        expected = multiscale_parameters(int(cell))
+        if tuple(int(merged[field][index]) for field in ("point_id", "replicate", "domain", "split")) != expected[:4]:
+            raise ValueError("Recovery cell differs from the fixed design/split")
+        if not np.array_equal(merged["truth"][index], expected[4:]):
+            raise ValueError("Recovery cell target differs from the fixed design")
     for point in np.unique(merged["point_id"]):
         mask = merged["point_id"] == point
         if len(np.unique(merged["split"][mask])) != 1:
@@ -213,7 +246,6 @@ def main() -> None:
     )
     eligible = bool(selected != "raw" and broad_improvement and focused_guard)
 
-    observed = json.loads(args.observed.read_text())
     observed_natural = np.asarray(
         [[
             observed["generations"],
@@ -228,7 +260,13 @@ def main() -> None:
     observed_selected_natural = to_natural(observed_selected)[0]
     serializable = {
         "coalescent_ploidy": 2,
-        "inputs": {path.name: sha256(path) for path in paths},
+        "optimizer_contract": contract,
+        "fit_data_contract": data_contract,
+        "simulation_design": design,
+        "source_sha256": source_manifest("scripts/evaluate_multiscale_sfs_recovery.py"),
+        "scientifically_validated": False,
+        "release_ready": False,
+        "inputs": {str(path.resolve()): locked_inputs[str(path.resolve())] for path in paths},
         "observed_sha256": sha256(args.observed),
         "evaluator_sha256": sha256(Path(__file__)),
         "cells": TOTAL_CELLS,
@@ -251,12 +289,19 @@ def main() -> None:
             "chosen": (observed_selected_natural if eligible else observed_natural[0]).tolist(),
         },
     }
+    require_unchanged(locked_inputs)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     args.model_out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(
         {
             "coalescent_ploidy": 2,
+            "optimizer_contract": contract,
+            "fit_data_contract": data_contract,
+            "simulation_design": design,
+            "source_sha256": source_manifest("scripts/evaluate_multiscale_sfs_recovery.py"),
+            "scientifically_validated": False,
+            "release_ready": False,
             "selected_candidate": selected,
             "eligible": eligible,
             "model": fitted[selected],

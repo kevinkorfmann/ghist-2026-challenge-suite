@@ -1,0 +1,52 @@
+{
+  "verified_utc": "2026-11-20T18:45:33Z",
+  "base_commit_tested_tree": "497a0ee83a220b66de2f6bd3a9c081898091f210",
+  "equivalent_PR6_squash_commit": "180220900de98f971f1c5ccf6bc618d187694a8c",
+  "scope": "Task1 production optimizer, bootstrap and calibration consumers; other-chat development excluded",
+  "tests": {
+    "macOS_arm64_python_3_12_11": {
+      "passed": 1087,
+      "warnings": 2,
+      "seconds": 37.2
+    },
+    "linux_arm64_python_3_12_3": {
+      "passed": 1087,
+      "warnings": 2,
+      "seconds": 50.11
+    },
+    "betty_linux_x86_64_python_3_11_11": {
+      "passed": 1087,
+      "warnings": 11,
+      "seconds": 146.4,
+      "slurm_job": 10853297,
+      "state": "COMPLETED",
+      "exit_code": "0:0"
+    }
+  },
+  "source_files_checked_per_platform": 465,
+  "source_manifest_sha256": "af967e642919b0a1204a7894f8377c9ebd8af208098a0e7726021c7b2e7b4771",
+  "source_mismatches": [],
+  "ruff": {
+    "command": "ruff check src scripts tests",
+    "passed": true
+  },
+  "test_count_reconciliation": {
+    "PR6_baseline": 1022,
+    "new_optimizer_tests": 24,
+    "new_consumer_tests": 41,
+    "total": 1087
+  },
+  "scientific_scope": "Unit/integration evidence only; frozen production replay and biological panel are reported separately; no accuracy or interval-coverage certification",
+  "evidence_sha256": {
+    "betty_environment.json": "09bb568da1ba617d3aecdc4b002bb39012b7c06d0308eae053eb1fb5a38d59d7",
+    "betty_pytest.log": "d7bf769e93a78955e973ccb77a690ef2d48f40a305c89ec4e2c128b75938bdfb",
+    "ghist-optimizer-betty.sbatch": "f8ed5c94153a000befb841577ffeaa407a5d0360d783341aa4e65a35ddbb4002",
+    "ghist-optimizer-macos-environment.json": "4b87291b0fc13f1efadfb6893e14469316f5b01f82a3ed52345ee1bebe11190e",
+    "ghist-optimizer-macos-pytest.log": "717536c6f1a0be140712fb7a702509a9ad91d581a5ae92e9c8375bfe7a01789f",
+    "linux_environment.json": "2e14b86e56bbc7bc58efc1ea8982f8cb6a6a4f320677e34948d22df86d011ccc",
+    "linux_pytest.log": "6e59af57c6e955e0a49f683c5c9a23bc0fd8f7a207146b7186ebdd2a2d45a634",
+    "sacct.txt": "ef417c4565fe4a1fb214e0dde3fcbf2987c2c511405c272d829eda207893f144",
+    "slurm-10853297.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_snapshot.json": "af967e642919b0a1204a7894f8377c9ebd8af208098a0e7726021c7b2e7b4771"
+  }
+}

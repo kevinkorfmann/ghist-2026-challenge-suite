@@ -1,0 +1,17 @@
+// Initial random seed:
+2026112091
+
+// RunInitializeCallbacks():
+initializeMutationType(0, 0.5, "f", 0);
+initializeGenomicElementType(0, m0, 1);
+initializeGenomicElement(...);
+initializeMutationType(1, 0.5, "f", 0);
+initializeGenomicElementType(1, m1, 1);
+initializeGenomicElement(g1, 50000, 50000);
+initializeMutationRate(c(0, 0, 0), c(49999, 50000, 99999));
+ERROR (EidosInterpreter::_ProcessArgumentList): argument simplificationInterval to initializeTreeSeq() could not be matched; probably supplied more than once or supplied out of order (note that arguments must be supplied in order).
+
+Error on script line 131, character 4:
+
+    initializeTreeSeq(timeUnit="generations", simplificationInterval=20);
+    ^^^^^^^^^^^^^^^^^

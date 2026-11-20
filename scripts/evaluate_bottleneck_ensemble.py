@@ -8,6 +8,10 @@ from pathlib import Path
 import numpy as np
 
 from ghist_bottleneck.provenance import require_diploid_scale
+from scripts.bottleneck_consumer_guard import (
+    ROOT, capture_inputs, require_ensemble_inputs, require_learned_binding,
+    require_new_outputs, require_unchanged, source_manifest,
+)
 
 try:
     from scripts.evaluate_bottleneck_chromosomes import _metrics
@@ -47,15 +51,30 @@ def main() -> None:
     parser.add_argument("--observed-moments", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
-
-    moments = np.load(args.moments)
-    learned = np.load(args.learned)
+    require_new_outputs(args.out)
+    locked_inputs = capture_inputs(args.moments, args.learned, args.split_record,
+                                  args.observed_moments,
+                                  *(ROOT / name for name in source_manifest(
+                                      "scripts/evaluate_bottleneck_ensemble.py")))
+    moments = np.load(args.moments, allow_pickle=False)
+    learned = np.load(args.learned, allow_pickle=False)
     split_record = json.loads(args.split_record.read_text())
     for artifact in (moments, learned, split_record):
         require_diploid_scale(artifact, context="Ensemble validation input")
+    require_learned_binding(args.learned, split_record)
+    observed_moments = json.loads(args.observed_moments.read_text())
+    contract, context, split_cells = require_ensemble_inputs(moments, learned, split_record,
+                                                           observed_moments)
+    required_identity = {
+        "dataset_sha256": split_record.get("dataset_sha256"),
+        "split_record_sha256": locked_inputs[str(args.split_record.resolve())],
+        "observed_fit_sha256": locked_inputs[str(args.observed_moments.resolve())],
+    }
+    if context.get("inputs") != required_identity:
+        raise ValueError("Mechanistic calibration inputs differ from the ensemble inputs")
     moments_index = {int(cell): index for index, cell in enumerate(moments["cell_id"])}
     learned_index = {int(cell): index for index, cell in enumerate(learned["cell_id"])}
-    common = sorted(set(moments_index) & set(learned_index))
+    common = sorted(moments_index)
     target = np.asarray([moments["target_latent"][moments_index[cell]] for cell in common])
     mechanistic = np.asarray([moments["raw_latent"][moments_index[cell]] for cell in common])
     learned_prediction = np.asarray(
@@ -63,8 +82,8 @@ def main() -> None:
     )
     index = {cell: position for position, cell in enumerate(common)}
     split_indices = {
-        name: np.asarray([index[int(cell)] for cell in cells if int(cell) in index])
-        for name, cells in split_record["split_cells"].items()
+        name: np.asarray([index[int(cell)] for cell in cells])
+        for name, cells in split_cells.items()
     }
     calibration = split_indices["calibration"]
     selection = split_indices["selection"]
@@ -130,7 +149,6 @@ def main() -> None:
     )
     eligible = bool(improves_rmse and natural_guard)
 
-    observed_moments = json.loads(args.observed_moments.read_text())
     observed_mechanistic = np.array(
         [
             np.log(observed_moments["generations"]),
@@ -154,6 +172,11 @@ def main() -> None:
     observed_ensemble_natural = natural(observed_ensemble[None])[0]
     serializable = {
         "coalescent_ploidy": 2,
+        "optimizer_contract": contract,
+        "fit_data_contract": context["fit_data_contract"],
+        "source_sha256": source_manifest("scripts/evaluate_bottleneck_ensemble.py"),
+        "scientifically_validated": False,
+        "release_ready": False,
         "moments_sha256": sha256(args.moments),
         "learned_sha256": sha256(args.learned),
         "split_record_sha256": sha256(args.split_record),
@@ -178,6 +201,7 @@ def main() -> None:
             "ensemble_post_decline_fraction": float(observed_ensemble_natural[1]),
         },
     }
+    require_unchanged(locked_inputs)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     print(json.dumps({key: value for key, value in serializable.items() if key != "selection_candidates"}, indent=2))

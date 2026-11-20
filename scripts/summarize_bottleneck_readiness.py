@@ -38,6 +38,10 @@ def summarize(directory, *, allow_legacy_contracts=False):
                 if result.get('truth') != truth or metadata.get('truth') != truth:
                     raise ValueError(f'Fit or spectrum truth differs from locked protocol: {file}')
                 if 'fit' in result:
+                    if config.get('schema') == 'bottleneck_target_length_v3':
+                        # Historical summaries bind to their frozen contract; they do not promote old sources.
+                        if result['fit'].get('optimizer_contract') != config['optimizer_contracts'][method] or result['fit'].get('engine') != method:
+                            raise ValueError(f'Fit optimizer identity differs from locked protocol: {file}')
                     errors = {key: result['fit'][key] / value - 1 for key, value in truth.items()}
                     if not np.isfinite(list(errors.values())).all():
                         raise ValueError(f'Nonfinite fit: {file}')
@@ -68,6 +72,8 @@ def summarize(directory, *, allow_legacy_contracts=False):
             planned=len(rows), fitted=len(finite), failed=sum('failure' in row for row in rows),
             incomplete=sum('incomplete' in row for row in rows),
             optimizer_converged=sum(row['fit']['optimizer']['converged'] for row in finite),
+            distinct_origin_agreement=sum(row['fit'].get('optimizer_diagnostics', {}).get('restarts_within_0_1_log_likelihood', 0) >= 2 for row in finite),
+            finite_neighborhood_passes=sum(row['fit'].get('optimizer_neighborhood', {}).get('passes_finite_neighborhood_check') is True for row in finite),
             error_scope='Completed cases only; cannot represent full panel until complete',
             absolute_relative_error={
                 key: dict(zip(('median', 'p90', 'maximum'), np.quantile([

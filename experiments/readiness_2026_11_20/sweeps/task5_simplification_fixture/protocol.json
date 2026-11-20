@@ -1,0 +1,65 @@
+{
+  "schema": "paired_slim_simplification_software_fixture_v1",
+  "seed": 2026112091,
+  "biology": {
+    "length": 100000,
+    "recombination_rate": 1e-07,
+    "mutation_rate": 1e-08,
+    "present_diploid_N": 100,
+    "backward_size_events": [
+      [
+        80,
+        160
+      ],
+      [
+        160,
+        120
+      ],
+      [
+        240,
+        120
+      ]
+    ],
+    "burn_in": 1,
+    "scaling_factor": 1,
+    "diploid_samples": 12,
+    "selected_position": 50000,
+    "selected_origin_generations": 60,
+    "selection_coefficient": 0.2,
+    "conditioning": "stdpopsim allele-survival conditioning; one additional forced checkpoint restore"
+  },
+  "arms": {
+    "default": "SLiM4.3 default ratio10 adaptive interval",
+    "interval20": "explicit fixed simplificationInterval20"
+  },
+  "comparisons": [
+    "logged tick/population/target-frequency/restore trajectory",
+    "forced restore exactly once per arm",
+    "remembered sample pedigree and genome identities",
+    "canonical marginal ancestry after sample simplification",
+    "binary selected-site genotypes"
+  ],
+  "resource_limits": {
+    "slurm_minutes": 5,
+    "cpus": 1,
+    "memory_MiB": 5632,
+    "per_arm_timeout_seconds": 100
+  },
+  "source_sha256": {
+    "generate.py": "e24c243f51a4d645a0061449b319cd6ee0bfbcb9b15d6c112334bf75ec1b1658",
+    "run.py": "d3a38eb651bcd359a7817f5495c3a9df0e925004b13cb05040439e7951ce6ba1",
+    "run.sbatch": "9e48ca7dbcd9bacb9209069fb084a476af1ce34926f45d148375c669f2181b23",
+    "default.slim": "485804c307e21fe2c5ab09fbbdc1284cf0bc5a90cac593698a93b28eb79dba38",
+    "interval20.slim": "57beee8d688ad9ad26b26f30a372283501f2b3011367daff04e4e58ca37629d8"
+  },
+  "engine_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py",
+  "engine_sha256": "a58e4629196239970d0c593f71b324d3da831745a5e707fe83fdd214cea9a911",
+  "slim_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim",
+  "slim_sha256": "caaf10c365e4ae783251ab31f9d4b9d0425ba3417a7fbccbc76ce42eea94551e",
+  "versions": {
+    "stdpopsim": "0.3.0",
+    "msprime": "1.4.2"
+  },
+  "scientifically_validated": false,
+  "scope": "Bookkeeping equivalence software fixture only; no full-chromosome resource or recovery claim."
+}

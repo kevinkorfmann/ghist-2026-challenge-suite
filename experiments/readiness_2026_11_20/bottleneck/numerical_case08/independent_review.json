@@ -1,0 +1,54 @@
+{
+  "reviewer": "Independent relatedness-science agent, read-only numerical cross-review",
+  "recorded_at_utc": "2026-11-20T17:51:48.507574+00:00",
+  "scope": "Numerical diagnosis only; no model promotion or independent biological validation",
+  "objective": "negative profiled multinomial log likelihood in log(nu), log(T)",
+  "original_objectives_recompute_exactly": true,
+  "planned_unique_fit_records_verified": 48,
+  "source_and_output_bindings_verified": true,
+  "fraction_gradient": {
+    "moments": {
+      "forward_epsilon_1e-3": 29.923,
+      "centered_epsilon_1e-5": -54.8795
+    },
+    "dadi": {
+      "forward_epsilon_1e-3": 15.02,
+      "centered_epsilon_1e-5": -69.6274
+    }
+  },
+  "fine_best_objective_difference_from_best_powell": {
+    "moments": 2.084e-06,
+    "dadi": 8.869e-07
+  },
+  "fine_best_centered_gradient_1e-5": {
+    "moments": [
+      -0.82227,
+      -0.02956
+    ],
+    "dadi": [
+      -0.50369,
+      -0.0383
+    ]
+  },
+  "fine_best_termination": "relative objective reduction, not projected-gradient tolerance",
+  "caveats": [
+    "Diagnostic evaluation/iteration budgets differ from production defaults; broader paired comparison must state and match per-method production budgets",
+    "Near-bound central flags only identify two feasible sides; clipped unequal displacements are secants, not symmetric central differences",
+    "Powell reports success for some poor/nonstationary fits; never use success alone as an automatic fallback gate",
+    "Single spectrum was selected for abnormal termination, so this is numerical development evidence",
+    "The same objective and exact original endpoint values do not establish whole-domain numerical or trajectory equivalence",
+    "Frozen diagnostic checkpoint loader differs from the later checkout loader; retain the exact runtime source provenance"
+  ],
+  "conclusion": "Supports smaller-gradient-step candidate; does not certify stationarity, global optimality, biological accuracy or release readiness",
+  "reviewed_files_sha256": {
+    "diagnose.py": "9e2a3809eef0ef494a2a831fdb9cca2f6d4bc9992b9ed7d3738a16dadc717d37",
+    "results/completion.json": "5c27ce4a36dfb642a70a079bffbfed8caf9201424253191bc82da5f554613554",
+    "results/fits.json": "be9e59f926fc7aa6f8a4c76f6798deaba5e014de5c5b7c115167d30b943d4001",
+    "results/original_selected_diagnostics.json": "217f95d7e61d5dd9a344b4d27d699cb0af190e9f8f0b5814f55408ba3f07af88",
+    "results/protocol.json": "19f629d03eee6ef8e38e9543395571d624a1460ebe45b19ff7df00f09f8aeece"
+  },
+  "production_fitter_sha256": {
+    "src/ghist_bottleneck/sfs_baseline.py": "8b25bf3a40de8710e0401a87ed60a62ddeeee1afc21da916e93511e3e8c22baa",
+    "src/ghist_bottleneck/dadi_reference.py": "4be5e7688f6310669a7696992d751ab6e354e82d123051a74429841aa54a8997"
+  }
+}

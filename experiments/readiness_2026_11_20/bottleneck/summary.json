@@ -1364,7 +1364,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 13,
+            "point": 3,
+            "replicate": 0,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112940,
+            "mutation_seed": 2026112941,
+            "optimizer_seed": 2026112942,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 20848.487961645056,
+            "post_decline_fraction": 0.6049695531852253,
+            "ancestral_effective_size": 52272.410908531376,
+            "scaled_time_2N": 0.19942152656902207,
+            "theta": 715086.5812287093,
+            "multinomial_log_likelihood": -492.4131273699604,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 6,
+            "converged_restarts": 7,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 81,
+              "iterations": 10
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 6,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.303030497602816,
+            "post_decline_fraction": -0.1597645094649649,
+            "ancestral_effective_size": 0.1880093388302586
+          },
+          "seconds": 7.167362919077277
         }
       }
     },
@@ -1375,10 +1424,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 14,
+            "point": 3,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112943,
+            "mutation_seed": 2026112944,
+            "optimizer_seed": 2026112945,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 17570.536379842695,
+            "post_decline_fraction": 0.7173979097760339,
+            "ancestral_effective_size": 44326.04198479837,
+            "scaled_time_2N": 0.1981965408265926,
+            "theta": 606380.2543520418,
+            "multinomial_log_likelihood": -440.7907793786726,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 2,
+            "converged_restarts": 6,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 126,
+              "iterations": 12
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 6,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.09815852374016854,
+            "post_decline_fraction": -0.0036140141999528863,
+            "ancestral_effective_size": 0.007410045109053964
+          },
+          "seconds": 8.593435614835471
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 14,
+            "point": 3,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112943,
+            "mutation_seed": 2026112944,
+            "optimizer_seed": 2026112945,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 17839.74953729385,
+            "post_decline_fraction": 0.7169153158853042,
+            "ancestral_effective_size": 44370.08356479576,
+            "scaled_time_2N": 0.20103353548164507,
+            "theta": 606982.743166406,
+            "multinomial_log_likelihood": -441.0083783963928,
+            "best_restart": 6,
+            "successful_restarts": 8,
+            "converged_restarts": 7,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 249
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 0.11498434608086572,
+            "post_decline_fraction": -0.00428428349263299,
+            "ancestral_effective_size": 0.008410990108994376
+          },
+          "seconds": 39.02119964919984
         }
       }
     },
@@ -1389,7 +1533,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 15,
+            "point": 3,
+            "replicate": 1,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112946,
+            "mutation_seed": 2026112947,
+            "optimizer_seed": 2026112948,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 16000,
+            "post_decline_fraction": 0.72,
+            "ancestral_effective_size": 44000
+          },
+          "fit": {
+            "generations": 20981.89004947873,
+            "post_decline_fraction": 0.6079768467253657,
+            "ancestral_effective_size": 52385.252228965575,
+            "scaled_time_2N": 0.20026523837062996,
+            "theta": 716630.2504922491,
+            "multinomial_log_likelihood": -491.2483634713717,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 1,
+            "converged_restarts": 6,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 129,
+              "iterations": 13
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 6,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.31136812809242054,
+            "post_decline_fraction": -0.15558771288143658,
+            "ancestral_effective_size": 0.19057391429467208
+          },
+          "seconds": 7.746606599073857
         }
       }
     },
@@ -1678,7 +1871,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 19,
+            "point": 4,
+            "replicate": 1,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112958,
+            "mutation_seed": 2026112959,
+            "optimizer_seed": 2026112960,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 28000,
+            "post_decline_fraction": 0.89,
+            "ancestral_effective_size": 21000
+          },
+          "fit": {
+            "generations": 21537.859565836516,
+            "post_decline_fraction": 0.8432493559614442,
+            "ancestral_effective_size": 22169.172591495313,
+            "scaled_time_2N": 0.48576146621951544,
+            "theta": 303274.28105165594,
+            "multinomial_log_likelihood": -445.3904117672064,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 6,
+            "converged_restarts": 7,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 180,
+              "iterations": 21
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 3,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": -0.23079072979155302,
+            "post_decline_fraction": -0.05252881352646721,
+            "ancestral_effective_size": 0.05567488530930054
+          },
+          "seconds": 8.430821873247623
         }
       }
     },
@@ -1689,10 +1931,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 20,
+            "point": 5,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112961,
+            "mutation_seed": 2026112962,
+            "optimizer_seed": 2026112963,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 5040.318277929685,
+            "post_decline_fraction": 0.9520849471875097,
+            "ancestral_effective_size": 10957.027897827535,
+            "scaled_time_2N": 0.23000389909242797,
+            "theta": 149892.14164228068,
+            "multinomial_log_likelihood": -431.6927207873723,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 7,
+            "converged_restarts": 8,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 264,
+              "iterations": 28
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 4,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.26007956948242117,
+            "post_decline_fraction": 0.012856326795223083,
+            "ancestral_effective_size": -0.003906554742951429
+          },
+          "seconds": 9.27356032654643
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 20,
+            "point": 5,
+            "replicate": 0,
+            "scenario": "matched",
+            "ancestry_seed": 2026112961,
+            "mutation_seed": 2026112962,
+            "optimizer_seed": 2026112963,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 5124.5713533830785,
+            "post_decline_fraction": 0.9522124186998927,
+            "ancestral_effective_size": 10959.068167454085,
+            "scaled_time_2N": 0.2338050678707282,
+            "theta": 149920.0525307719,
+            "multinomial_log_likelihood": -431.8402206284445,
+            "best_restart": 5,
+            "successful_restarts": 8,
+            "converged_restarts": 6,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 177
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 0.2811428383457697,
+            "post_decline_fraction": 0.012991934787119908,
+            "ancestral_effective_size": -0.0037210756859923366
+          },
+          "seconds": 43.16259135399014
         }
       }
     },
@@ -1703,7 +2040,56 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 21,
+            "point": 5,
+            "replicate": 0,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112964,
+            "mutation_seed": 2026112965,
+            "optimizer_seed": 2026112966,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 11448.529370473521,
+            "post_decline_fraction": 0.7527464468308812,
+            "ancestral_effective_size": 13739.708010431632,
+            "scaled_time_2N": 0.4166220039676763,
+            "theta": 187959.20558270474,
+            "multinomial_log_likelihood": -421.04231881146916,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 1,
+            "converged_restarts": 8,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 294,
+              "iterations": 26
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 6,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 1.8621323426183802,
+            "post_decline_fraction": -0.19920590762672208,
+            "ancestral_effective_size": 0.24906436458469372
+          },
+          "seconds": 8.879998066462576
         }
       }
     },
@@ -1714,10 +2100,105 @@
       "scenario": "matched",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 22,
+            "point": 5,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112967,
+            "mutation_seed": 2026112968,
+            "optimizer_seed": 2026112969,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 5499.5506046648725,
+            "post_decline_fraction": 0.9255015053189123,
+            "ancestral_effective_size": 11132.472980772689,
+            "scaled_time_2N": 0.24700489343937113,
+            "theta": 152292.2303769704,
+            "multinomial_log_likelihood": -412.5628185564856,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 3,
+            "converged_restarts": 6,
+            "optimizer": {
+              "warnflag": 2,
+              "converged": false,
+              "message": "ABNORMAL: ",
+              "evaluations": 318,
+              "iterations": 27
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [],
+              "restarts_within_0_1_log_likelihood": 2,
+              "numerically_supported": true,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 0.374887651166218,
+            "post_decline_fraction": -0.015423930511795358,
+            "ancestral_effective_size": 0.012042998252062675
+          },
+          "seconds": 8.65443672472611
         },
         "dadi": {
-          "incomplete": true
+          "identity": {
+            "case": 22,
+            "point": 5,
+            "replicate": 1,
+            "scenario": "matched",
+            "ancestry_seed": 2026112967,
+            "mutation_seed": 2026112968,
+            "optimizer_seed": 2026112969,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 5509.084664803462,
+            "post_decline_fraction": 0.9258805695515484,
+            "ancestral_effective_size": 11131.198993276892,
+            "scaled_time_2N": 0.2474614220862857,
+            "theta": 152274.8022280279,
+            "multinomial_log_likelihood": -412.4839798236462,
+            "best_restart": 7,
+            "successful_restarts": 8,
+            "converged_restarts": 8,
+            "failed_restarts": [],
+            "grid_points": [
+              134,
+              144,
+              154
+            ],
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+              "evaluations": 240
+            },
+            "folded": true,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000
+          },
+          "relative_error": {
+            "generations": 0.3772711662008654,
+            "post_decline_fraction": -0.01502067068984203,
+            "ancestral_effective_size": 0.0119271812069901
+          },
+          "seconds": 57.07341265119612
         }
       }
     },
@@ -1728,7 +2209,58 @@
       "scenario": "ancestral_epoch",
       "methods": {
         "moments": {
-          "incomplete": true
+          "identity": {
+            "case": 23,
+            "point": 5,
+            "replicate": 1,
+            "scenario": "ancestral_epoch",
+            "ancestry_seed": 2026112970,
+            "mutation_seed": 2026112971,
+            "optimizer_seed": 2026112972,
+            "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+          },
+          "truth": {
+            "generations": 4000,
+            "post_decline_fraction": 0.94,
+            "ancestral_effective_size": 11000
+          },
+          "fit": {
+            "generations": 119347.9402992839,
+            "post_decline_fraction": 0.02,
+            "ancestral_effective_size": 525198.8256400053,
+            "scaled_time_2N": 0.1136216747570284,
+            "theta": 7184719.934755273,
+            "multinomial_log_likelihood": -447.3111511496427,
+            "restarts": 8,
+            "mutation_rate": 3.42e-08,
+            "sequence_length": 100000000,
+            "folded": true,
+            "best_restart": 7,
+            "converged_restarts": 7,
+            "optimizer": {
+              "warnflag": 0,
+              "converged": true,
+              "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+              "evaluations": 81,
+              "iterations": 13
+            },
+            "successful_restarts": 8,
+            "failed_restarts": [],
+            "optimizer_diagnostics": {
+              "near_boundary_parameter_indices": [
+                0
+              ],
+              "restarts_within_0_1_log_likelihood": 1,
+              "numerically_supported": false,
+              "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+            }
+          },
+          "relative_error": {
+            "generations": 28.836985074820976,
+            "post_decline_fraction": -0.9787234042553191,
+            "ancestral_effective_size": 46.745347785455024
+          },
+          "seconds": 8.146531771868467
         }
       }
     }
@@ -1736,81 +2268,81 @@
   "summary": {
     "matched/moments": {
       "planned": 12,
-      "fitted": 9,
+      "fitted": 12,
       "failed": 0,
-      "incomplete": 3,
-      "optimizer_converged": 6,
+      "incomplete": 0,
+      "optimizer_converged": 8,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
-          "median": 0.043777671750655944,
-          "p90": 1.8114839242990144,
+          "median": 0.07346499588873934,
+          "p90": 0.4434295297485543,
           "maximum": 7.253238445353144
         },
         "post_decline_fraction": {
-          "median": 0.01196346280331706,
-          "p90": 0.2150030338501054,
+          "median": 0.012409894799270071,
+          "p90": 0.028749204066299165,
           "maximum": 0.9564749509244895
         },
         "ancestral_effective_size": {
-          "median": 0.006439559147035867,
-          "p90": 4.444080333088072,
+          "median": 0.006924802128044916,
+          "p90": 0.03191029885713725,
           "maximum": 22.091578134872247
         }
       }
     },
     "matched/dadi": {
       "planned": 12,
-      "fitted": 9,
+      "fitted": 12,
       "failed": 0,
-      "incomplete": 3,
-      "optimizer_converged": 7,
+      "incomplete": 0,
+      "optimizer_converged": 10,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
-          "median": 0.0577512453746829,
-          "p90": 1.7010037009853285,
+          "median": 0.08817949271467451,
+          "p90": 0.4372905442339649,
           "maximum": 6.729181048864954
         },
         "post_decline_fraction": {
-          "median": 0.01353508461788755,
-          "p90": 0.21020827351492552,
+          "median": 0.013263509702503729,
+          "p90": 0.028871263673933747,
           "maximum": 0.9339970125426258
         },
         "ancestral_effective_size": {
-          "median": 0.0083723541302958,
-          "p90": 2.876927744941932,
+          "median": 0.008391672119645088,
+          "p90": 0.03521929567419693,
           "maximum": 14.24087962089287
         }
       }
     },
     "ancestral_epoch/moments": {
       "planned": 12,
-      "fitted": 7,
+      "fitted": 12,
       "failed": 0,
-      "incomplete": 5,
-      "optimizer_converged": 7,
+      "incomplete": 0,
+      "optimizer_converged": 12,
       "error_scope": "Completed cases only; cannot represent full panel until complete",
       "absolute_relative_error": {
         "generations": {
-          "median": 0.1264657728068347,
-          "p90": 2.383175543479182,
-          "maximum": 5.6694717973648014
+          "median": 0.21155105200682628,
+          "p90": 5.28873785189016,
+          "maximum": 28.836985074820976
         },
         "post_decline_fraction": {
-          "median": 0.10208609574614502,
-          "p90": 0.4551170918849948,
-          "maximum": 0.930426675472487
+          "median": 0.13756107355554675,
+          "p90": 0.8573045986879108,
+          "maximum": 0.9787234042553191
         },
         "ancestral_effective_size": {
-          "median": 0.06973537361123094,
-          "p90": 5.441823399670042,
-          "maximum": 13.374022524608222
+          "median": 0.15313546982121307,
+          "p90": 12.061526708605873,
+          "maximum": 46.745347785455024
         }
       }
     }
   },
-  "complete": false,
+  "complete": true,
   "vcf_checks_passed": false,
   "scientific_status": "diagnostic evidence; not a full-prior accuracy or uncertainty-coverage certification"
 }

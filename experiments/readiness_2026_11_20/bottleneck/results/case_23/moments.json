@@ -1,0 +1,54 @@
+{
+  "identity": {
+    "case": 23,
+    "point": 5,
+    "replicate": 1,
+    "scenario": "ancestral_epoch",
+    "ancestry_seed": 2026112970,
+    "mutation_seed": 2026112971,
+    "optimizer_seed": 2026112972,
+    "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+  },
+  "truth": {
+    "generations": 4000,
+    "post_decline_fraction": 0.94,
+    "ancestral_effective_size": 11000
+  },
+  "fit": {
+    "generations": 119347.9402992839,
+    "post_decline_fraction": 0.02,
+    "ancestral_effective_size": 525198.8256400053,
+    "scaled_time_2N": 0.1136216747570284,
+    "theta": 7184719.934755273,
+    "multinomial_log_likelihood": -447.3111511496427,
+    "restarts": 8,
+    "mutation_rate": 3.42e-08,
+    "sequence_length": 100000000,
+    "folded": true,
+    "best_restart": 7,
+    "converged_restarts": 7,
+    "optimizer": {
+      "warnflag": 0,
+      "converged": true,
+      "message": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "evaluations": 81,
+      "iterations": 13
+    },
+    "successful_restarts": 8,
+    "failed_restarts": [],
+    "optimizer_diagnostics": {
+      "near_boundary_parameter_indices": [
+        0
+      ],
+      "restarts_within_0_1_log_likelihood": 1,
+      "numerically_supported": false,
+      "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+    }
+  },
+  "relative_error": {
+    "generations": 28.836985074820976,
+    "post_decline_fraction": -0.9787234042553191,
+    "ancestral_effective_size": 46.745347785455024
+  },
+  "seconds": 8.146531771868467
+}

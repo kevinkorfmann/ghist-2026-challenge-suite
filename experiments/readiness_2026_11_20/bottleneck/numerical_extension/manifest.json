@@ -1,0 +1,2307 @@
+{
+  "schema": "bottleneck_paired_epsilon_extension_v1",
+  "frozen_at_utc": "2026-11-20T17:52:53.161732+00:00",
+  "cases": [
+    {
+      "name": "100mb_case_00",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_00.npz",
+      "input_sha256": "d680273cc6666327b027a402a0badf0a6bda58feaaa073ddfc500591ced88438",
+      "spectrum_sha256": "1f4658f70ae5ab7586789ebbc3987da0b27a8af9fe4ae9dee7c8f9d2c0bacd21",
+      "source_identity": {
+        "case": 0,
+        "point": 0,
+        "replicate": 0,
+        "scenario": "matched",
+        "ancestry_seed": 2026112901,
+        "mutation_seed": 2026112902,
+        "optimizer_seed": 2026112903,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_00/spectrum.npz": "fdd942ddf79f697d8724c03eeb7393af91ffa9efa9538c25e9c824c8729d0b86",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_00/moments.json": "c8cc8163c351cdaf9e1c0554cbd2bdac2cc8370f9ad431e9a46c62ab62033a91",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_00/dadi.json": "cd3a9a42aa7dfe6612e5c4879f1f6ae1bf4b8cd3ca0f46c04f5579446ebb5613"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        0
+      ],
+      "log_uniform_starts": [
+        [
+          -0.8699202085950967,
+          -8.606431879485223
+        ],
+        [
+          -3.725604043226632,
+          -7.450906193276881
+        ],
+        [
+          -0.5579320185487296,
+          -1.5714431426430542
+        ],
+        [
+          -2.272504819889514,
+          -4.392421012217382
+        ],
+        [
+          -3.896982229426,
+          -5.243491582414677
+        ],
+        [
+          -2.3962689315935535,
+          -6.143304351566301
+        ],
+        [
+          -0.12580184135349765,
+          -7.786887431083667
+        ],
+        [
+          -3.6815583451311733,
+          0.3516123901273662
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "100mb_case_01",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/100mb_case_01.npz",
+      "input_sha256": "dc235c2360bfaa30997e915c561caa061bfc0e68b4756690a4ef4b9b9eac46e1",
+      "spectrum_sha256": "92a14ea279ceccdf6de8a647465a9f122b61206647d0e1e2a4fcae28429cce60",
+      "source_identity": {
+        "case": 1,
+        "point": 0,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "ancestry_seed": 2026112904,
+        "mutation_seed": 2026112905,
+        "optimizer_seed": 2026112906,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_01/spectrum.npz": "33373354d19b490d7f422fe7be1a9ee3546d23957a046fcda06a26a878bba443",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_01/moments.json": "462971d3cbe2d0930b18e6dd0f6e7f7bca537f92dad95ec66c60cee64264a4b8"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        1
+      ],
+      "log_uniform_starts": [
+        [
+          -0.8707519845117838,
+          0.1498879391710664
+        ],
+        [
+          -2.0497747476781596,
+          1.4994188353242603
+        ],
+        [
+          -2.9184846652569307,
+          1.2550077376782391
+        ],
+        [
+          -3.3381394402509,
+          0.8303645702010838
+        ],
+        [
+          -3.711219870593475,
+          -5.416429260352749
+        ],
+        [
+          -2.8917355039738895,
+          -5.4723655863268466
+        ],
+        [
+          -3.873185898624335,
+          -5.754419043030944
+        ],
+        [
+          -2.636177305671045,
+          -8.801847877469916
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "100mb_case_02",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_02.npz",
+      "input_sha256": "759fa9b6dbf6af58f1fe45d59ee26b4b84662a52d5134884a2b27d7e729244e7",
+      "spectrum_sha256": "b6f19c0b728183753451f890a64e3030f941a1dab7d55ec63a9f74df58cd484e",
+      "source_identity": {
+        "case": 2,
+        "point": 0,
+        "replicate": 1,
+        "scenario": "matched",
+        "ancestry_seed": 2026112907,
+        "mutation_seed": 2026112908,
+        "optimizer_seed": 2026112909,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_02/spectrum.npz": "e921f64d9cc05922ef4c00d595c8e1e7b971d98da859248a22df98f300b94d28",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_02/moments.json": "68aa06a9a917a3cd4761805547a3223ab7980325d164c2f0240c1a89cb398018",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_02/dadi.json": "22e9946fd1f404f599b74132ea85aa5a174837282fbb036806c25f17c2db6553"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        2
+      ],
+      "log_uniform_starts": [
+        [
+          -0.8129005205263787,
+          -5.49028883935415
+        ],
+        [
+          -1.8549909234988005,
+          -1.7822732661180793
+        ],
+        [
+          -3.0247219396726566,
+          -4.970698351018329
+        ],
+        [
+          -3.3464544617884453,
+          -4.815165830989566
+        ],
+        [
+          -1.9792680729441745,
+          -5.25378930913871
+        ],
+        [
+          -0.27301135395410364,
+          -2.885850709813022
+        ],
+        [
+          -3.156178752768558,
+          -2.873520707818172
+        ],
+        [
+          -0.11605829925704685,
+          -5.773557747225899
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "100mb_case_03",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/100mb_case_03.npz",
+      "input_sha256": "0cbd4086be7038609da753c455b1dd81d0cae85ce235509a56362832725d1c02",
+      "spectrum_sha256": "a364d61a9b8da2c448a829b2f274c4c5b0e0f2d2d3a878b511e36883600b036b",
+      "source_identity": {
+        "case": 3,
+        "point": 0,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "ancestry_seed": 2026112910,
+        "mutation_seed": 2026112911,
+        "optimizer_seed": 2026112912,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_03/spectrum.npz": "325d1ce72462951877de4a2229ecfd43521db4c4737bf45858e2ff0137ca1c8d",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_03/moments.json": "1f0cb78d2cbff084351616414e7827136eba076ebc7e7651768eace78a7b32cb"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        3
+      ],
+      "log_uniform_starts": [
+        [
+          -3.0048866748136596,
+          -4.880963700757704
+        ],
+        [
+          -1.7506997999162535,
+          -7.498705096186514
+        ],
+        [
+          -0.04762053231321629,
+          0.4563511547104503
+        ],
+        [
+          -2.536773854644871,
+          -6.3370879525244135
+        ],
+        [
+          -3.5562862455409157,
+          -0.3209403500688163
+        ],
+        [
+          -3.283302219935519,
+          -5.767087551023611
+        ],
+        [
+          -1.686479017212812,
+          -1.223370124884921
+        ],
+        [
+          -3.3209605659462875,
+          -5.563932276788209
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "100mb_case_04",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_04.npz",
+      "input_sha256": "b03a5fcc26818472fe7d7e35b35da3ff177146e99696faac142a1c7fba569865",
+      "spectrum_sha256": "09e096076713598b26cc98631463639bf740289771ade1c60ab8cd82e3192a07",
+      "source_identity": {
+        "case": 4,
+        "point": 1,
+        "replicate": 0,
+        "scenario": "matched",
+        "ancestry_seed": 2026112913,
+        "mutation_seed": 2026112914,
+        "optimizer_seed": 2026112915,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_04/spectrum.npz": "32db87a9005fb342c05a17916d42735e187d16f8b945e3502e960db8d634b8b4",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_04/moments.json": "852fd73d1ccf23bbe9e4b55fe819f07fb83ff60be834f0c78f7f99949b59283b",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_04/dadi.json": "5de9015ce3699ec5bc8cd293cb8ed3744ad013cbde6d93d32c9cfa186ee48e7d"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        4
+      ],
+      "log_uniform_starts": [
+        [
+          -2.735918160699703,
+          -1.798678719746546
+        ],
+        [
+          -1.649337004261049,
+          -1.7408399780037276
+        ],
+        [
+          -1.463560585633311,
+          -5.700744430346798
+        ],
+        [
+          -0.5775142509156088,
+          -4.7873139193105825
+        ],
+        [
+          -2.877942173218587,
+          -0.999044184589256
+        ],
+        [
+          -2.305457842073037,
+          -0.9548743969771224
+        ],
+        [
+          -3.610726273951909,
+          -8.7720574971532
+        ],
+        [
+          -2.7636197900659787,
+          0.29221428497159313
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "100mb_case_05",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/100mb_case_05.npz",
+      "input_sha256": "c2e6ec83f99225516429088f1d30989cc50815893fa4dab48f1224ce4cae59c7",
+      "spectrum_sha256": "f60627bc221c72f3d6be8d84b4ae31cdcb28738b645873e2f08bd9ddf894b963",
+      "source_identity": {
+        "case": 5,
+        "point": 1,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "ancestry_seed": 2026112916,
+        "mutation_seed": 2026112917,
+        "optimizer_seed": 2026112918,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_05/spectrum.npz": "ab0bcac404f7b7eb1d66511cea870b7454d540b1dc2b127a23aa4c935444a3bb",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_05/moments.json": "9b22dea744a961932c41786d0a81f3751ee28545f21923b6f86eaefcef1e861b"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        5
+      ],
+      "log_uniform_starts": [
+        [
+          -3.873137211595826,
+          -3.6906985436076334
+        ],
+        [
+          -2.8473737045772802,
+          -5.2026336303954155
+        ],
+        [
+          -3.6088099810610377,
+          0.36902738483693515
+        ],
+        [
+          -2.6269542548011526,
+          -5.989452790215097
+        ],
+        [
+          -2.330667113837359,
+          -4.476147819703797
+        ],
+        [
+          -2.1034521889214965,
+          -2.0962625648983364
+        ],
+        [
+          -3.7472461302556166,
+          -6.1491345338281915
+        ],
+        [
+          -1.6810400154812017,
+          -2.6908649339465036
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "100mb_case_06",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_06.npz",
+      "input_sha256": "e90e2c7c16c42efebd56cac61a385c7606d9f950e2bc6c312f2052e0c0992981",
+      "spectrum_sha256": "7c30496c8bdca495fe58eedf9bfbf9c57ea62cfeacbe9ba1850d76afff96cd14",
+      "source_identity": {
+        "case": 6,
+        "point": 1,
+        "replicate": 1,
+        "scenario": "matched",
+        "ancestry_seed": 2026112919,
+        "mutation_seed": 2026112920,
+        "optimizer_seed": 2026112921,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_06/spectrum.npz": "343d6ec945995cbb05b8f35f92342e69b9b5edfa9b20df68332cb19df71d1edb",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_06/moments.json": "2fa2587c42e2ea611f8f7eaa709ef3ba012ab0e9d193b327e74f154a7598f8b2",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_06/dadi.json": "434de2361af5efbf6293232abd396cb932cdbd8b5ee005ff25b130d753d727d9"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        6
+      ],
+      "log_uniform_starts": [
+        [
+          -1.775019851693418,
+          -1.518320754696859
+        ],
+        [
+          -1.176510204908857,
+          -0.9862455258109324
+        ],
+        [
+          -1.3842779438741402,
+          -5.953494481630636
+        ],
+        [
+          -2.9430995739864656,
+          -1.2656532774901756
+        ],
+        [
+          -1.1408759471171321,
+          0.7757103835886269
+        ],
+        [
+          -2.850194788070726,
+          -0.4827337724397188
+        ],
+        [
+          -3.231718936485368,
+          -2.880844168662308
+        ],
+        [
+          -0.9364371119979062,
+          -1.8658344125670219
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "100mb_case_07",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/100mb_case_07.npz",
+      "input_sha256": "f6f7c542b6e173398870f9341208b94bc22de685d5574686a2a01223ae25e7f9",
+      "spectrum_sha256": "0ec5a404dda7b63dba711f73c8fb6cb86a0e0572ecb02fed0591054871699344",
+      "source_identity": {
+        "case": 7,
+        "point": 1,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "ancestry_seed": 2026112922,
+        "mutation_seed": 2026112923,
+        "optimizer_seed": 2026112924,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_07/spectrum.npz": "f08e1be164b3b97203c8ad2d70faf91640e47da53c0c37e6eacd4665eb5c077c",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_07/moments.json": "df3c46c8b28b4acd303dab29da2d3877a46aec453f68e600376b6a3ed593721e"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        7
+      ],
+      "log_uniform_starts": [
+        [
+          -3.4433790266294935,
+          1.5012533234412644
+        ],
+        [
+          -0.4579186034978657,
+          -1.555787960442549
+        ],
+        [
+          -3.0611373505906414,
+          -6.994363563153179
+        ],
+        [
+          -0.950057385034785,
+          -5.771657450755172
+        ],
+        [
+          -2.231383513332392,
+          -3.778914815299739
+        ],
+        [
+          -1.1868264632355212,
+          0.2971106627720451
+        ],
+        [
+          -3.6507996206254156,
+          -3.0058885781328106
+        ],
+        [
+          -1.2726308623759524,
+          -6.571023155732893
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "100mb_case_08",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_08.npz",
+      "input_sha256": "294b0746418edf56d10a2f3bbcd1f3a96c58055351276211be85e72243c7b8f7",
+      "spectrum_sha256": "8b3c0c6276416646fd126450f02b7634e029195da066a2876068c7ece3e06212",
+      "source_identity": {
+        "case": 8,
+        "point": 2,
+        "replicate": 0,
+        "scenario": "matched",
+        "ancestry_seed": 2026112925,
+        "mutation_seed": 2026112926,
+        "optimizer_seed": 2026112927,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_08/spectrum.npz": "41d63e29c2073a611dec034beb14d2b66d41197fbf359bbb26a83a2a8af447a8",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_08/moments.json": "ca190a0500f8a09c0f011f9d4f779c292bd28c2f867290fdd7d43bb9a2d11c29",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_08/dadi.json": "7bdfa6d54f5f3c9c506446c5066d67aeb186f7066fef52f9ffaa2f3b15abe286"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        8
+      ],
+      "log_uniform_starts": [
+        [
+          -1.4403241805406053,
+          -7.710571606697812
+        ],
+        [
+          -0.1267462089642316,
+          -2.1207967201941162
+        ],
+        [
+          -2.791292443691767,
+          0.09001284850893194
+        ],
+        [
+          -2.248092707391085,
+          -0.20007973976256815
+        ],
+        [
+          -0.5844250165549704,
+          -1.2138407729881189
+        ],
+        [
+          -3.432548377859926,
+          -6.464477018724856
+        ],
+        [
+          -1.0039706903535022,
+          -9.108529577343536
+        ],
+        [
+          -0.22230855379115425,
+          -8.971459623200229
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "100mb_case_09",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/100mb_case_09.npz",
+      "input_sha256": "f47381c1f4d4af11b68fb36fb6179a6477663046cd330e6ed97dc8d915e54140",
+      "spectrum_sha256": "f0b7dfb151c6ea011f908a8fd7f869632722da2032e93eef94997e26f0b2f696",
+      "source_identity": {
+        "case": 9,
+        "point": 2,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "ancestry_seed": 2026112928,
+        "mutation_seed": 2026112929,
+        "optimizer_seed": 2026112930,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_09/spectrum.npz": "c7cb5450a1fc7593a4b89629e59490745668ab06998534183ce2934de774b572",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_09/moments.json": "c5196f6b926d792f210de3e13ef42df1863b307c41b2537754238475a7915c43"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        9
+      ],
+      "log_uniform_starts": [
+        [
+          -1.386021926031576,
+          -5.316784373077323
+        ],
+        [
+          -3.4625278872056984,
+          -1.6055069960871837
+        ],
+        [
+          -3.1709272561146964,
+          0.9350542048398918
+        ],
+        [
+          -2.35321664069055,
+          -5.051557394654096
+        ],
+        [
+          -2.0667208991748387,
+          -6.087864548750662
+        ],
+        [
+          -1.8206725572107503,
+          -6.916610526437624
+        ],
+        [
+          -3.7645785710508446,
+          -1.1568098251347696
+        ],
+        [
+          -0.19018678999307467,
+          -8.933647181089988
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "100mb_case_10",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/100mb_case_10.npz",
+      "input_sha256": "55bbd1cf6c88cb740878aa44fd2e57c5ee407aa3fdf982d4867123773d8b8ae4",
+      "spectrum_sha256": "ae2abfa790d05aded74f31479958344c920bc859bbfb485733b39f49cd17f24d",
+      "source_identity": {
+        "case": 10,
+        "point": 2,
+        "replicate": 1,
+        "scenario": "matched",
+        "ancestry_seed": 2026112931,
+        "mutation_seed": 2026112932,
+        "optimizer_seed": 2026112933,
+        "protocol_sha256": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca"
+      },
+      "source_sha256": {
+        "experiments/readiness_2026_11_20/bottleneck/results/case_10/spectrum.npz": "eee9f4e9a583641726708224e93db7945207417999113ab6e9f8964bfd52e807",
+        "experiments/readiness_2026_11_20/bottleneck/results/protocol.json": "b7cc6ad41ad017393685cf8d58d720932f9b8a280b54547af733db81add889ca",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_10/moments.json": "fc164850b303909e89e27a2ab07eab3a9fb91e36728e7da6ced940090ced50a7",
+        "experiments/readiness_2026_11_20/bottleneck/results/case_10/dadi.json": "37144eb82e1137e83c0cb400276ee630b10eaa3806cfc472329f43f246dba68c"
+      },
+      "sequence_length": 100000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        100,
+        10
+      ],
+      "log_uniform_starts": [
+        [
+          -2.587051465321658,
+          -2.1544475487718553
+        ],
+        [
+          -2.455880428825299,
+          -0.8490214344688709
+        ],
+        [
+          -1.256668092069443,
+          -0.7897342933468806
+        ],
+        [
+          -0.23945205082841822,
+          -8.352573660212613
+        ],
+        [
+          -0.16882880909606826,
+          -0.009897908548600823
+        ],
+        [
+          -3.206905517992951,
+          -3.810864369588999
+        ],
+        [
+          -1.264059519317499,
+          -3.6782086280553195
+        ],
+        [
+          -3.3334141323393225,
+          -8.856277429848856
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_00",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_00.npz",
+      "input_sha256": "b322ff0b1178c4c5a35a41ce742bd28bcd9ac9c4f55a7d78ee08062f452fa7b0",
+      "spectrum_sha256": "cc94d5fece011d6a8bf4e540f4be40db5bbe00636b16dfe132a3df29b23d6b95",
+      "source_identity": {
+        "point": 0,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202611201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        0
+      ],
+      "log_uniform_starts": [
+        [
+          -0.8342608859861791,
+          -4.618740498686141
+        ],
+        [
+          -2.7681222021189953,
+          -6.164315616363738
+        ],
+        [
+          -1.9188742390953442,
+          -1.6219720468983125
+        ],
+        [
+          -0.9041360995388207,
+          -6.949184896772835
+        ],
+        [
+          -0.5800642235813598,
+          -2.162883307222847
+        ],
+        [
+          -3.395737731528087,
+          -0.08767618741185706
+        ],
+        [
+          -2.4964633380201793,
+          -0.14634607687547324
+        ],
+        [
+          -1.5106858646679384,
+          -4.7111417331137435
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_01",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_01.npz",
+      "input_sha256": "7243f471c4c7eebdbd9ca84c91ce3915567e0e7c0a966d0f3e892c4bf4e02008",
+      "spectrum_sha256": "8cb4e382878f09ea3b7daf3a81316bb6dadc3b4d87555df1293c7cd80f57467d",
+      "source_identity": {
+        "point": 0,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202611301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        1
+      ],
+      "log_uniform_starts": [
+        [
+          -2.767657543632983,
+          -1.561495062633441
+        ],
+        [
+          -2.927014315007379,
+          -8.406748255833172
+        ],
+        [
+          -2.4104626108117984,
+          -4.120649284416324
+        ],
+        [
+          -0.32176150027426637,
+          -6.544578154980404
+        ],
+        [
+          -1.9648268711868309,
+          -5.6781433910452614
+        ],
+        [
+          -1.019483006674202,
+          -6.72104763531044
+        ],
+        [
+          -2.3072493117779285,
+          -4.790356093860596
+        ],
+        [
+          -2.6747707405401635,
+          -1.0940801402123892
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_02",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_02.npz",
+      "input_sha256": "2c87c7a2ac0ae6bd3d8a788b110840e58ac23ea4bc6810d2872766d13492b74d",
+      "spectrum_sha256": "a0fee792f963051313f000e0c3f1ad62365b387f5e3fbe5695ef3d906671a728",
+      "source_identity": {
+        "point": 0,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202611211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        2
+      ],
+      "log_uniform_starts": [
+        [
+          -1.4687664927643165,
+          -8.258907095370379
+        ],
+        [
+          -1.553828137303692,
+          1.0397766336654475
+        ],
+        [
+          -1.9514875335500907,
+          -7.185597440671408
+        ],
+        [
+          -0.4453794508694978,
+          -4.113341111892893
+        ],
+        [
+          -3.741004875264369,
+          -7.685139970922204
+        ],
+        [
+          -0.2882989133611693,
+          -1.441867192301548
+        ],
+        [
+          -2.410526036232076,
+          -6.243776968317748
+        ],
+        [
+          -3.371207752698101,
+          -1.7606200512341836
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_03",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_03.npz",
+      "input_sha256": "c392abfc6df02fc4a1ba7ce00f5816993edbe91d83ae5317987a5047300dea9a",
+      "spectrum_sha256": "bf8ff46f1771a84ef0f9bdbfab09004f657d19075740179ae4365b2e80f33fe3",
+      "source_identity": {
+        "point": 0,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202611311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        3
+      ],
+      "log_uniform_starts": [
+        [
+          -0.43132756851846865,
+          -3.071396626180696
+        ],
+        [
+          -3.500955704680404,
+          0.3458052656701352
+        ],
+        [
+          -1.367225979086528,
+          -6.25774426563702
+        ],
+        [
+          -2.2721582369535795,
+          -8.03330242620643
+        ],
+        [
+          -0.17247776444550203,
+          -2.1799940398121245
+        ],
+        [
+          -3.3343940523293396,
+          1.1266251625753854
+        ],
+        [
+          -0.3181842790131893,
+          -5.833542545743905
+        ],
+        [
+          -3.031928864338453,
+          -7.174483008420596
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_04",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_04.npz",
+      "input_sha256": "3bbf374d6e89e6dbca31878df82591a055b19852fef32a6182619dcf07cfd9d6",
+      "spectrum_sha256": "ebb51154a6d1f9987c360e71330e3b3a3f0e667146c2f442c09ed4e68436f02a",
+      "source_identity": {
+        "point": 1,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202612201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        4
+      ],
+      "log_uniform_starts": [
+        [
+          -3.653610264142165,
+          0.2761674067686661
+        ],
+        [
+          -3.3540089826326085,
+          -7.187709577149255
+        ],
+        [
+          -0.22528754155151662,
+          -1.9243947570573956
+        ],
+        [
+          -2.0576786399251557,
+          0.0912868174412116
+        ],
+        [
+          -3.3459416089281135,
+          -0.7181003419735025
+        ],
+        [
+          -3.1978870562636206,
+          -7.106768491043744
+        ],
+        [
+          -3.61252691792318,
+          -5.877227910010278
+        ],
+        [
+          -0.9121293246207237,
+          -7.737490895284722
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_05",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_05.npz",
+      "input_sha256": "bf65bfff6e5e9ddd558febc08589ea056d96abb776fc00d193b78e28502e0e7d",
+      "spectrum_sha256": "b151483c930e420ca3b6c64d7147194f956d2dc2975c8be6abdfc3476733da99",
+      "source_identity": {
+        "point": 1,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202612301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        5
+      ],
+      "log_uniform_starts": [
+        [
+          -2.504537307391461,
+          -0.5357807572935411
+        ],
+        [
+          -2.904530539424838,
+          -2.806295362246585
+        ],
+        [
+          -2.4708129903823557,
+          0.9740235903877014
+        ],
+        [
+          -1.582293751039155,
+          0.4796847537208829
+        ],
+        [
+          -0.23600201878548427,
+          -6.866465765327967
+        ],
+        [
+          -1.1101888356921992,
+          -5.64923632762051
+        ],
+        [
+          -0.2280795236271851,
+          -0.1855156843025347
+        ],
+        [
+          -1.9261150059673984,
+          0.0274242635225573
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_06",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_06.npz",
+      "input_sha256": "a52b7b6a7f08026c4bdb3ad39d535e3b93412b698d28754ab19e826221bb9f85",
+      "spectrum_sha256": "777c8a68a7abd4dfeb9f89393e950fd2e6f32b6ce3e6132b76dbdd592c62ecc3",
+      "source_identity": {
+        "point": 1,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202612211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        6
+      ],
+      "log_uniform_starts": [
+        [
+          -0.9437547105036124,
+          -8.78420917288911
+        ],
+        [
+          -1.220317349316548,
+          -7.339114717708658
+        ],
+        [
+          -0.6413181901067315,
+          -8.727187286405417
+        ],
+        [
+          -3.8021963740146725,
+          1.4372089997317705
+        ],
+        [
+          -2.30570204989491,
+          -8.729203136894682
+        ],
+        [
+          -3.6923732079954936,
+          -6.503568326566989
+        ],
+        [
+          -0.9465659766742924,
+          -7.935593065311807
+        ],
+        [
+          -1.6457151351351862,
+          -3.378229011269114
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_07",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_07.npz",
+      "input_sha256": "234dbdf89d5e82dfe9ae77004caea04d39fc5e9ddfb8d32ba95144b4aa81402d",
+      "spectrum_sha256": "b64a52411c3af2533897849089268efc917aac64ac54ee79b5b51e091588f51d",
+      "source_identity": {
+        "point": 1,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202612311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        7
+      ],
+      "log_uniform_starts": [
+        [
+          -0.6260647238613816,
+          -7.708753381712532
+        ],
+        [
+          -3.150174143900107,
+          -5.114243497622434
+        ],
+        [
+          -0.8519157964229066,
+          -4.286188794601709
+        ],
+        [
+          -1.9676538095507774,
+          1.4176701934497309
+        ],
+        [
+          -0.4589570620412732,
+          -0.1732962312229308
+        ],
+        [
+          -2.6780967579012986,
+          -4.45778630212925
+        ],
+        [
+          -2.0264393724191208,
+          -5.661916186488608
+        ],
+        [
+          -2.394022721782463,
+          -5.426840798492302
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_08",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_08.npz",
+      "input_sha256": "03a26dddd2062646871e569cb789543d47ec8c0b1f6361172a054b1e848a53f0",
+      "spectrum_sha256": "c1bceeafa857d0d516fa7fd50776543ce6c3507f6b4f9bbfe71851b40c37121d",
+      "source_identity": {
+        "point": 2,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202613201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        8
+      ],
+      "log_uniform_starts": [
+        [
+          -3.0582137148287836,
+          -2.470437246656658
+        ],
+        [
+          -0.48621929754311977,
+          -4.790901792451344
+        ],
+        [
+          -3.237327556209997,
+          -3.9657718940504663
+        ],
+        [
+          -3.4348279062039726,
+          -1.4317301192592933
+        ],
+        [
+          -1.9168496395075016,
+          -7.332901046077578
+        ],
+        [
+          -3.181610990418644,
+          -3.6127809864463503
+        ],
+        [
+          -1.3298515092649552,
+          0.06124399602402012
+        ],
+        [
+          -2.549536977526445,
+          -7.459052203298226
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_09",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_09.npz",
+      "input_sha256": "7bea0e0f8c615aaa7b6878db4471dceaa3d0c592f2d0dd925d8268318d1c9f66",
+      "spectrum_sha256": "640cb4ef7309b12cb23bdbf3f0a33f3d091582ecb80ee64a61f18d3690a11f2e",
+      "source_identity": {
+        "point": 2,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202613301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        9
+      ],
+      "log_uniform_starts": [
+        [
+          -1.1924861263039115,
+          1.5873957738996833
+        ],
+        [
+          -2.184162960043343,
+          -0.3913403214845629
+        ],
+        [
+          -1.237050946235459,
+          -6.727129678087904
+        ],
+        [
+          -1.8051414663438927,
+          -4.830856158479118
+        ],
+        [
+          -3.5127553381313525,
+          -1.5966485194129398
+        ],
+        [
+          -1.3339524193098014,
+          1.0825369261057656
+        ],
+        [
+          -2.146900953466084,
+          0.3515890768359068
+        ],
+        [
+          -2.590435457052402,
+          0.7039872072847632
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_10",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_10.npz",
+      "input_sha256": "7adef91223309ecef65b4b622e8bdb06c36a5905052576fac2b0c248ed38df6f",
+      "spectrum_sha256": "a6c020da209a02cc3efff1a0739d5de2eeda7f8bae3e519bdfb00ceb0142d288",
+      "source_identity": {
+        "point": 2,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202613211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        10
+      ],
+      "log_uniform_starts": [
+        [
+          -3.005269441746677,
+          -4.29989883401819
+        ],
+        [
+          -3.525001649306359,
+          -5.520369602581065
+        ],
+        [
+          -1.5257306711984941,
+          -2.979880080437802
+        ],
+        [
+          -1.1175067984221418,
+          -6.528440711427507
+        ],
+        [
+          -1.8765811478633543,
+          -0.2144622510833596
+        ],
+        [
+          -0.3290842208828499,
+          -7.033907178189284
+        ],
+        [
+          -1.206668837826251,
+          -6.703511522410745
+        ],
+        [
+          -3.554002326406747,
+          -5.60310639573376
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_11",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_11.npz",
+      "input_sha256": "bd47e3375912e1eea2be692724d0815fa228eb84b374675e23c97c43aec32c8c",
+      "spectrum_sha256": "33fd2d2502bd4ec96088bb19a3a0c4025b7d15df2b8fbe8685797f51024b13f2",
+      "source_identity": {
+        "point": 2,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202613311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        11
+      ],
+      "log_uniform_starts": [
+        [
+          -0.25701387257426306,
+          -0.4670969048183854
+        ],
+        [
+          -3.6020309068352097,
+          -8.597700379044136
+        ],
+        [
+          -0.9616506660872338,
+          -2.4720842851487506
+        ],
+        [
+          -0.29422482175500253,
+          0.4894704037277617
+        ],
+        [
+          -1.9436710441725398,
+          -8.253151352780858
+        ],
+        [
+          -0.2750458269314732,
+          0.8894826773437342
+        ],
+        [
+          -0.40208428390809836,
+          -2.757311221604019
+        ],
+        [
+          -3.085340174895284,
+          -0.6944463426669575
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_12",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_12.npz",
+      "input_sha256": "dd96471ce55bf52d8a0ff79b66d13d4a28fa01f6fafeb20b8c9cae66ebc1b6e3",
+      "spectrum_sha256": "c8d25c67276cea6847d14a13b34a8c4796d5ffec4945f2250539bc7f0794adcf",
+      "source_identity": {
+        "point": 3,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202614201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        12
+      ],
+      "log_uniform_starts": [
+        [
+          -0.4480487483628686,
+          -4.931568673155462
+        ],
+        [
+          -1.3279208787928607,
+          -5.213785363309367
+        ],
+        [
+          -3.735280984261644,
+          -4.973374301511748
+        ],
+        [
+          -2.308128666522038,
+          -7.979800658204026
+        ],
+        [
+          -2.4318251655686915,
+          -0.8744532955128362
+        ],
+        [
+          -0.9325142613130333,
+          0.026724529285326565
+        ],
+        [
+          -1.6977035292948133,
+          0.7804651056121774
+        ],
+        [
+          -1.6098582788598383,
+          -5.769376523080799
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_13",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_13.npz",
+      "input_sha256": "0dd33e1e7abc5e2d15e5f2f103bd2bbfa9cf87f983014e3c50bc18a68466b2b6",
+      "spectrum_sha256": "4d8ab6d7f5dfb12c401280b2ccff2a14743dcfea9f6b43a8e99a1ab74e6d2d84",
+      "source_identity": {
+        "point": 3,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202614301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        13
+      ],
+      "log_uniform_starts": [
+        [
+          -2.3452200400628715,
+          -5.252109737748308
+        ],
+        [
+          -1.7814423206856345,
+          0.1337704093405235
+        ],
+        [
+          -1.5667620626651746,
+          -8.694616328190165
+        ],
+        [
+          -2.7656911644977864,
+          -8.60746734113105
+        ],
+        [
+          -3.5446326978965037,
+          -4.097449771309021
+        ],
+        [
+          -3.4499491568502614,
+          -2.879756094361101
+        ],
+        [
+          -0.9800443202963018,
+          -4.5057906485775545
+        ],
+        [
+          -3.7524397710884565,
+          -6.598976316627186
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_14",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_14.npz",
+      "input_sha256": "a379789d898aa09bdd0e873d613995c65dead505d6d737244560eae7e764eb91",
+      "spectrum_sha256": "51806f7e7e5c56bc37ecf5f4d8f24f16284c2404a9e4eae957d94e52e55bba35",
+      "source_identity": {
+        "point": 3,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202614211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        14
+      ],
+      "log_uniform_starts": [
+        [
+          -1.6584011303576494,
+          1.4869222848923365
+        ],
+        [
+          -2.624162270271647,
+          -8.490151213536343
+        ],
+        [
+          -0.19383706144733107,
+          -1.422039320268351
+        ],
+        [
+          -2.3390850392597877,
+          -0.5091888179723475
+        ],
+        [
+          -3.3276177753094314,
+          0.571848657752988
+        ],
+        [
+          -0.09868066715528388,
+          -3.8852817349101634
+        ],
+        [
+          -3.0320877909281956,
+          -7.474041872125096
+        ],
+        [
+          -0.07008652996380199,
+          -7.129906681163724
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_15",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_15.npz",
+      "input_sha256": "2b749ff30a78d0f6b7f77c883983130e1148180109cc77eef787cfcf9e2ea66d",
+      "spectrum_sha256": "d9f167c83203ec07b355177ae4dd7318f509e6f83316fef4eb57f099831d3aff",
+      "source_identity": {
+        "point": 3,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202614311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        15
+      ],
+      "log_uniform_starts": [
+        [
+          -1.6239210117588347,
+          -0.34030134850504573
+        ],
+        [
+          -0.8124133614157705,
+          -6.91784990956761
+        ],
+        [
+          -2.8474759603716415,
+          -1.5591936976961105
+        ],
+        [
+          -0.06513601670748816,
+          -7.8992364729736675
+        ],
+        [
+          -1.0017643967349747,
+          -6.233387733284745
+        ],
+        [
+          -3.3683288471662673,
+          1.4808058255741825
+        ],
+        [
+          -3.395541475101904,
+          -1.4188694052763153
+        ],
+        [
+          -1.626584992041206,
+          0.6902002045565844
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_16",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_16.npz",
+      "input_sha256": "5cfef947fcec75df92c65d66b806dec9ec042841a678650bed4abd78a4fa7696",
+      "spectrum_sha256": "188a9e0152f381c086f8ec322162707b7262c6d5818d6c34e9c71a55d38e1ee6",
+      "source_identity": {
+        "point": 4,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202615201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        16
+      ],
+      "log_uniform_starts": [
+        [
+          -0.4350557052656172,
+          -2.493256067742055
+        ],
+        [
+          -0.44461842391564166,
+          -6.790704511747585
+        ],
+        [
+          -2.227494386087774,
+          -1.9073927206112606
+        ],
+        [
+          -1.8462340227817537,
+          -7.574156454286297
+        ],
+        [
+          -1.6871878899833257,
+          0.7045439095652449
+        ],
+        [
+          -3.659708047859798,
+          -7.102384218905585
+        ],
+        [
+          -1.3400378885644695,
+          -7.8256716710529615
+        ],
+        [
+          -2.267515333238252,
+          -5.8305838339109455
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_17",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_17.npz",
+      "input_sha256": "f40e55085818ef4733289c3bbe01a9809ac36cc7ab532e6f659a9538830a28c2",
+      "spectrum_sha256": "742d238cf3449175406c20f4439575fa280a7a32e5cb014302d2f49c27bbcb16",
+      "source_identity": {
+        "point": 4,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202615301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        17
+      ],
+      "log_uniform_starts": [
+        [
+          -3.8012799406881554,
+          -3.3025624616325584
+        ],
+        [
+          -1.0013564470652907,
+          -3.154675746811716
+        ],
+        [
+          -1.8946252734530287,
+          -2.6236439764100927
+        ],
+        [
+          -2.147887093067118,
+          -5.700728899762869
+        ],
+        [
+          -0.9404454969514541,
+          -2.311712354737701
+        ],
+        [
+          -2.5142662645589935,
+          -0.33588343861215525
+        ],
+        [
+          -0.6693358965150727,
+          -1.259101866418368
+        ],
+        [
+          -2.264529201371643,
+          -4.77538862966819
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_18",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_18.npz",
+      "input_sha256": "d79bec205e9bdfbc16ad52f9150ca68b3d5f5ac4f871bc8d40354c8283acba43",
+      "spectrum_sha256": "f15d358d931e19f49c75719366fef38efc60c3b55211b8b85b6eafd2ebed769b",
+      "source_identity": {
+        "point": 4,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202615211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        18
+      ],
+      "log_uniform_starts": [
+        [
+          -0.3444467015224126,
+          -6.0800171998748755
+        ],
+        [
+          -1.4774678499017095,
+          -7.184598435836483
+        ],
+        [
+          -0.4836590530912297,
+          0.13470964787104955
+        ],
+        [
+          -3.9063903137226133,
+          -2.9642586992923494
+        ],
+        [
+          -0.6270188688422748,
+          -1.8712394950509428
+        ],
+        [
+          -2.019886627855703,
+          -2.771387659731405
+        ],
+        [
+          -2.61610889942777,
+          -3.1940892791013833
+        ],
+        [
+          -0.7231349421500604,
+          -0.47194211455778917
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_19",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_19.npz",
+      "input_sha256": "5aad32b39e6ee053b8c3af88cc4a6f520e57df77e864d97dcf9d8d1f2f75f253",
+      "spectrum_sha256": "f5372e48823c773679a640ed914cb84520364d32f32397861a956665df110770",
+      "source_identity": {
+        "point": 4,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202615311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        19
+      ],
+      "log_uniform_starts": [
+        [
+          -2.949823756735239,
+          -4.962515678262925
+        ],
+        [
+          -3.1832723228812623,
+          -7.774511598177032
+        ],
+        [
+          -0.5712494079768969,
+          -3.356161488809857
+        ],
+        [
+          -0.3659022941359353,
+          -4.499769647356699
+        ],
+        [
+          -3.369296045726063,
+          -8.385431975317749
+        ],
+        [
+          -3.6933280595531492,
+          -6.608522438473939
+        ],
+        [
+          -2.108693422360793,
+          -8.613325509239415
+        ],
+        [
+          -0.6877915954062837,
+          -2.038858063309147
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_20",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_20.npz",
+      "input_sha256": "5a5b676d2604900b6a5355db196dc1778bfdb7a76f7e6252c2a35c217596232f",
+      "spectrum_sha256": "9573bc7a341ac529d075918bcecf678650c7e03f624e16d06783080af1af1b2e",
+      "source_identity": {
+        "point": 5,
+        "replicate": 0,
+        "scenario": "matched",
+        "seed": 202616201
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        20
+      ],
+      "log_uniform_starts": [
+        [
+          -1.8907460359094388,
+          -0.9987576452235633
+        ],
+        [
+          -1.7476257069541747,
+          -1.0503829708813184
+        ],
+        [
+          -3.520434620747543,
+          -1.5290467909457781
+        ],
+        [
+          -2.2349489873460406,
+          -8.647370987548273
+        ],
+        [
+          -3.77196756612411,
+          -6.66802965356567
+        ],
+        [
+          -1.5502003170524692,
+          -3.848223456472232
+        ],
+        [
+          -0.17234337896389798,
+          -7.120143783436664
+        ],
+        [
+          -1.0300264179955578,
+          -6.911627116597474
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_21",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_21.npz",
+      "input_sha256": "b34c14181bcf8f6ecc441a5f34e610d7bdabd19965cf367c88846aa4c9b82d70",
+      "spectrum_sha256": "3c612960076a2e4b3f174969d98f747210f61745526c31943c529f14146f0833",
+      "source_identity": {
+        "point": 5,
+        "replicate": 0,
+        "scenario": "ancestral_epoch",
+        "seed": 202616301
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        21
+      ],
+      "log_uniform_starts": [
+        [
+          -2.2585242172958737,
+          -7.10201692419216
+        ],
+        [
+          -0.19315493402696243,
+          -6.266437283903145
+        ],
+        [
+          -0.33270630740494594,
+          -0.2441341796792754
+        ],
+        [
+          -3.4354286227309974,
+          -7.224462809042481
+        ],
+        [
+          -2.6990942800990703,
+          -5.794184442572269
+        ],
+        [
+          -3.859855428921948,
+          -7.142186576947561
+        ],
+        [
+          -1.012721698219087,
+          -2.8513467394544145
+        ],
+        [
+          -3.7634736030264704,
+          -4.222871456130924
+        ]
+      ],
+      "planned_fits": 16
+    },
+    {
+      "name": "10mb_case_22",
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "input": "inputs/10mb_case_22.npz",
+      "input_sha256": "46e5050e39bc8db918cad02c5d78e6c16a2c8baafb72c8ee8f86ddf89f79b377",
+      "spectrum_sha256": "42639d46d068bcd39effe5bb4463d0e384ba8e4b0b464861913b7ace963cdf31",
+      "source_identity": {
+        "point": 5,
+        "replicate": 1,
+        "scenario": "matched",
+        "seed": 202616211
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        22
+      ],
+      "log_uniform_starts": [
+        [
+          -2.1018503547631395,
+          -2.0895683555674736
+        ],
+        [
+          -1.4490272868422056,
+          0.17879054151769425
+        ],
+        [
+          -1.5650475810357474,
+          1.4205943997802242
+        ],
+        [
+          -0.5259557465615173,
+          -8.498781487655899
+        ],
+        [
+          -0.6031403161813594,
+          -6.098595530195608
+        ],
+        [
+          -3.773277483359275,
+          -1.5734368852846858
+        ],
+        [
+          -3.164489907360154,
+          -1.0429520002442907
+        ],
+        [
+          -1.919065040476459,
+          0.5193689014472469
+        ]
+      ],
+      "planned_fits": 32
+    },
+    {
+      "name": "10mb_case_23",
+      "methods": [
+        "moments"
+      ],
+      "input": "inputs/10mb_case_23.npz",
+      "input_sha256": "380f789adc6381d218df1c44ea36e28e392ceeaff8d4021bf725c56b3e6eab85",
+      "spectrum_sha256": "d412301f39d0cdda6b1393823433b816d5c748c1a047424b76f4b40a5fd471e5",
+      "source_identity": {
+        "point": 5,
+        "replicate": 1,
+        "scenario": "ancestral_epoch",
+        "seed": 202616311
+      },
+      "source_sha256": {
+        "experiments/scientific_2026_11_20/bottleneck/recovery.json": "04325a3a21e21900565711091c378e3528f15153eb606f4ecedf6cb981314dc5"
+      },
+      "sequence_length": 10000000,
+      "mutation_rate": 3.42e-08,
+      "seed_sequence_entropy": [
+        2026113010,
+        10,
+        23
+      ],
+      "log_uniform_starts": [
+        [
+          -2.350430568197059,
+          -8.095765116102738
+        ],
+        [
+          -3.6439227064450614,
+          0.6255145317930371
+        ],
+        [
+          -2.155900664789939,
+          1.0016460035847983
+        ],
+        [
+          -3.221035881615921,
+          -0.5653521211234764
+        ],
+        [
+          -2.980920615871084,
+          -8.186930307986055
+        ],
+        [
+          -0.2812761668549723,
+          -1.3780668522270239
+        ],
+        [
+          -1.641041405532626,
+          -8.991402495019832
+        ],
+        [
+          -0.3086284654087601,
+          -5.7521070766763245
+        ]
+      ],
+      "planned_fits": 16
+    }
+  ],
+  "planned_cases": 35,
+  "planned_method_problems": 53,
+  "planned_fits": 848,
+  "full_length_panel_planned_cases": 24,
+  "full_length_cases_available_at_freeze": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "full_length_cases_unavailable_at_freeze": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "earlier_10mb_cases": 24,
+  "fresh_seed_root": 2026113010,
+  "restarts": 8,
+  "arms": {
+    "coarse": 0.001,
+    "fine": 1e-05
+  },
+  "bounds": [
+    [
+      0.02,
+      0.0001
+    ],
+    [
+      0.999,
+      5.0
+    ]
+  ],
+  "folded": true,
+  "dadi_grid_offsets": [
+    20,
+    30,
+    40
+  ],
+  "controls": {
+    "moments": {
+      "maxfun": 15000,
+      "maxiter": 500
+    },
+    "dadi": {
+      "maxfun": 500,
+      "maxiter": 15000
+    }
+  },
+  "shared_controls": {
+    "pgtol": 1e-05,
+    "factr": 10000000.0,
+    "maxls": 20
+  },
+  "finite_neighborhood": {
+    "log_steps": [
+      0.001,
+      0.0001,
+      1e-05
+    ],
+    "directions": "all eight nonzero {-1,0,1}^2 axis/diagonal directions, clipped to feasible bounds",
+    "maximum_objective_improvement": 0.0001,
+    "scope": "finite-neighborhood check only; not KKT or stationarity certification"
+  },
+  "comparison_criteria": {
+    "maximum_best_objective_deterioration": 0.001,
+    "no_loss_of_finite_fits": true,
+    "selected_best_reports_converged": true,
+    "minimum_restarts_within_0_1_of_best": 2
+  },
+  "source_sha256": {
+    "prepare.py": "8bf2f5476541e61907213a61d671ef4b84b9b2e66b495cbbb8b0bafd956e23dc",
+    "run_case.py": "a3cab23c847e6bf7106cf1707cf37e8d3d9912237f808b6647770fdd022e32a6",
+    "run.sbatch": "7d51d5982b0e62eaa3d564b98bef2c2f2914ff9618160ad927c975a02a76e73b"
+  },
+  "likelihood_domain_guard_sha256": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb",
+  "allocation": {
+    "cpu_per_case": 1,
+    "maximum_concurrent_cases": 4,
+    "wallclock_seconds_per_case": 600
+  },
+  "truth_used_for_fitting_or_selection": false,
+  "original_outputs_replaced": false,
+  "limitations": [
+    "Availability of full-length results can favor easier configurations",
+    "Diagnostic parameter panel, not random prior coverage",
+    "Same-spectrum optimizer comparison, not new biological replication",
+    "No source default promotion from a convergence flag alone"
+  ],
+  "prelaunch_revision": {
+    "reason": "Match SciPy production default dadi maxiter15000 exactly; maxfun500 unchanged; no evaluations had run",
+    "eligible_cases_and_all_starts_unchanged": true,
+    "superseded_manifest_sha256": "dfe48b4ba56ac2c8fd23f4d5967aec8308c88c38e1ba7b98bad19fc9bb472bdc",
+    "at_utc": "2026-11-20T17:53:28.808173+00:00"
+  }
+}

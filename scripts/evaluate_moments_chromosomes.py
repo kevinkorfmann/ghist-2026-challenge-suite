@@ -11,6 +11,10 @@ import numpy as np
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
 from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
 from ghist_bottleneck.provenance import require_diploid_scale
+from scripts.bottleneck_consumer_guard import (
+    ROOT, bundle_metadata, capture_inputs, fit_data_contract, require_fit, require_new_outputs,
+    require_partition, require_unchanged, source_manifest,
+)
 try:
     from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
 except ModuleNotFoundError:
@@ -87,7 +91,10 @@ def histogram_to_folded_sfs(histogram: np.ndarray, n_haplotypes: int) -> np.ndar
 def _fit_cell(arguments: tuple[int, np.ndarray, int, str]) -> tuple[int, dict]:
     cell, spectrum, restarts, engine = arguments
     fit = fit_two_epoch_spectrum if engine == "moments" else fit_two_epoch_dadi_spectrum
-    result = fit(spectrum, restarts=restarts, seed=910_000 + cell, folded=True)
+    try:
+        result = fit(spectrum, restarts=restarts, seed=910_000 + cell, folded=True)
+    except Exception as error:
+        result = {"failure": f"{type(error).__name__}: {error}"}
     return cell, result
 
 
@@ -108,17 +115,26 @@ def main() -> None:
     parser.add_argument("--restarts", type=int, default=12)
     parser.add_argument("--engine", choices=("moments", "dadi"), default="moments")
     args = parser.parse_args()
-
-    data = np.load(args.dataset)
+    diagnostics = args.out.with_suffix(".fits.json")
+    require_new_outputs(args.out, args.out.with_suffix(".npz"), diagnostics)
+    locked_inputs = capture_inputs(args.dataset, args.split_record, args.observed_fit,
+                                  *(ROOT / name for name in source_manifest(
+                                      "scripts/evaluate_moments_chromosomes.py")))
+    observed = json.loads(args.observed_fit.read_text())
+    contract = require_fit(observed, engine=args.engine)
+    data = np.load(args.dataset, allow_pickle=False)
     require_diploid_scale(data, context="Chromosome validation dataset")
     split_record = json.loads(args.split_record.read_text())
     require_diploid_scale(split_record, context="Chromosome calibration")
+    if split_record.get("dataset_sha256") != locked_inputs[str(args.dataset.resolve())]:
+        raise ValueError("Chromosome split record uses a different dataset")
     cell_ids = np.unique(data["cell_id"])
     first = {int(cell): int(np.flatnonzero(data["cell_id"] == cell)[0]) for cell in cell_ids}
     nominal_cells = np.array(
         [cell for cell in cell_ids if int(data["nuisance"][first[int(cell)], 0]) == 0],
         dtype=np.int64,
     )
+    split_cells = require_partition(split_record, cell_ids, required_cells=nominal_cells)
     n_haplotypes = int(data["n_haplotypes"])
     spectra = {}
     targets = {}
@@ -139,12 +155,13 @@ def main() -> None:
                 [(cell, spectra[cell], args.restarts, args.engine) for cell in sorted(spectra)],
             )
         )
-    split_cells = {
-        name: np.asarray(
-            [cell for cell in values if cell in fitted], dtype=np.int64
-        )
-        for name, values in split_record["split_cells"].items()
-    }
+    diagnostics.parent.mkdir(parents=True, exist_ok=True)
+    diagnostics.write_text(json.dumps({"planned_cells": nominal_cells.tolist(),
+                                      "cell_fits": fitted}, indent=2, allow_nan=False) + "\n")
+    if set(fitted) != set(nominal_cells):
+        raise ValueError("Mechanistic fits do not cover every planned nominal cell")
+    for result in fitted.values():
+        require_fit(result, engine=args.engine, expected=contract, expected_data=fit_data_contract(observed))
     ordered_cells = np.asarray(sorted(fitted), dtype=np.int64)
     cell_index = {int(cell): index for index, cell in enumerate(ordered_cells)}
     prediction = np.asarray([_latent_from_result(fitted[int(cell)]) for cell in ordered_cells])
@@ -180,7 +197,6 @@ def main() -> None:
         <= 1.05 * raw_selection["fraction_median_absolute_error"]
     )
     chosen = "calibrated" if calibrated_score < 0.98 * raw_score and natural_guard else "raw"
-    observed = json.loads(args.observed_fit.read_text())
     observed_raw = _latent_from_result(observed)
     observed_chosen = (
         apply_affine(observed_raw[None], matrix, intercept)[0]
@@ -190,6 +206,11 @@ def main() -> None:
     observed_fraction = float(1 / (1 + np.exp(-observed_chosen[1])))
     serializable = {
         "coalescent_ploidy": 2,
+        "optimizer_contract": contract,
+        "fit_data_contract": fit_data_contract(observed),
+        "source_sha256": source_manifest("scripts/evaluate_moments_chromosomes.py"),
+        "scientifically_validated": False,
+        "release_ready": False,
         "dataset": str(args.dataset),
         "dataset_sha256": sha256(args.dataset),
         "split_record": str(args.split_record),
@@ -214,6 +235,13 @@ def main() -> None:
         },
         "cell_fits": {str(cell): fitted[int(cell)] for cell in ordered_cells},
     }
+    provenance = bundle_metadata([fitted[int(cell)] for cell in ordered_cells],
+        producer="scripts/evaluate_moments_chromosomes.py", inputs={
+            "dataset_sha256": locked_inputs[str(args.dataset.resolve())],
+            "split_record_sha256": locked_inputs[str(args.split_record.resolve())],
+            "observed_fit_sha256": locked_inputs[str(args.observed_fit.resolve())],
+        })
+    require_unchanged(locked_inputs)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     np.savez_compressed(
@@ -223,6 +251,7 @@ def main() -> None:
         target_latent=target,
         raw_latent=prediction,
         calibrated_latent=calibrated,
+        **provenance,
     )
     print(json.dumps({key: value for key, value in serializable.items() if key != "cell_fits"}, indent=2))
 

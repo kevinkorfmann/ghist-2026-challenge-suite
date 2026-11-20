@@ -1,0 +1,38 @@
+{
+  "verified_utc": "2026-11-20T19:08:05.211392+00:00",
+  "scope": "Coordinating reviewer recomputed all three frozen replay audits without modifying their outputs; checks source/input/output hashes, retained numerical trace, physical scaling, endpoint comparisons and original failure denominators",
+  "audits": {
+    "production_replay": {
+      "summary_sha256": "5d3e04b846369114a3660d6585b66f02b11a4545f137f823d609b50f20387437",
+      "audit_source_sha256": "97ca23d1959a1ddd79198e18b2b5b3d22776d913770d72e8a08aa5e2ccfca0b3",
+      "manifest_sha256": "20e8d5c508588edc18990061803bebaec15deec1c5c127d1c9498d428a60b071",
+      "planned_optimizer_attempts": 240,
+      "retained_optimizer_attempt_records": 192,
+      "numerical_gates_passed_problems": 7,
+      "completed_method_problems": 8,
+      "summary_recomputed_identically": true
+    },
+    "production_stress_retry": {
+      "summary_sha256": "5735b918396db78008f077395705c603e1782f5e4c5c8e9b26fdf6dcb5b24ff6",
+      "audit_source_sha256": "97ca23d1959a1ddd79198e18b2b5b3d22776d913770d72e8a08aa5e2ccfca0b3",
+      "manifest_sha256": "1184fbaa881c0370d21bc81ba01762611fae52eaade2ec5654e822e14e689140",
+      "planned_optimizer_attempts": 48,
+      "retained_optimizer_attempt_records": 48,
+      "numerical_gates_passed_problems": 2,
+      "completed_method_problems": 2,
+      "summary_recomputed_identically": true
+    },
+    "production_guard_replay": {
+      "summary_sha256": "7c8df5e935e3c9ab2c1d06feb3d0b77dffda9afef3ea2f556da541c244a8e2b8",
+      "audit_source_sha256": "3424f1e6586065d00357464fd32b159d76a36d4b54223e7143e7d6e544234275",
+      "manifest_sha256": "522d6c1b47af4e6ebf99a7e83683b1b8d2d2cc88679a2898d2b33a527e61e152",
+      "planned_optimizer_attempts": 240,
+      "retained_optimizer_attempt_records": 240,
+      "numerical_gates_passed_problems": 9,
+      "completed_method_problems": 10,
+      "summary_recomputed_identically": true
+    }
+  },
+  "final_source_guard_sha256": "5a1ec054f9b0406f7b8a5d47b79e259f14c2632089e0b08a922fd4c2ab447f22",
+  "scientific_limit": "Recorded-trace audit, not likelihood re-evaluation or independent biological confirmation"
+}

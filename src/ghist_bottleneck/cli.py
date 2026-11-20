@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from .optimization import DEFAULT_STRATEGY, STRATEGIES
+
 import argparse
 import json
 from pathlib import Path
@@ -62,6 +64,7 @@ def main() -> None:
     base.add_argument("--sequence-length", type=float, default=100_000_000)
     base.add_argument("--mutation-rate", type=float, default=3.42e-8)
     base.add_argument("--callable-sequence-length", type=float)
+    base.add_argument("--optimizer-strategy", choices=STRATEGIES, default=DEFAULT_STRATEGY)
     args = p.parse_args()
     if args.command == "extract":
         b = extract_vcf(args.vcf, tree_sequence=args.trees)
@@ -150,6 +153,7 @@ def main() -> None:
             sequence_length=args.sequence_length,
             mutation_rate=args.mutation_rate,
             callable_sequence_length=args.callable_sequence_length,
+            optimizer_strategy=args.optimizer_strategy,
         )
         write_fit(result, args.out)
         print(json.dumps(result, indent=2))

@@ -1,0 +1,53 @@
+{
+  "schema": "bottleneck_stress_biological_context_v1",
+  "assessed_utc": "2026-11-20T19:06:34.600400+00:00",
+  "scope": "Post-replay descriptive comparison for one existing development stress case chosen after its original poor recovery was known; not independent confirmation or a panel accuracy estimate",
+  "case": 16,
+  "truth": {
+    "generations": 28000,
+    "post_decline_fraction": 0.89,
+    "ancestral_effective_size": 21000
+  },
+  "truth_record_sha256": "323a70379e989947e04b9a00bc27b45a791bab42c7dba215b48d5c7970cca5c0",
+  "final_replay_manifest_sha256": "522d6c1b47af4e6ebf99a7e83683b1b8d2d2cc88679a2898d2b33a527e61e152",
+  "source_and_settings_unchanged_after_truth_comparison": true,
+  "methods": {
+    "moments": {
+      "fit_sha256": "58e097dc47ebb42bc75f38d2eb062da2f9c41f32e199ae898c3c5e6c68ee87df",
+      "estimates": {
+        "generations": 218057.3445287895,
+        "post_decline_fraction": 0.05504579428542256,
+        "ancestral_effective_size": 341432.62229543144
+      },
+      "relative_error": {
+        "generations": 6.7877623045996245,
+        "post_decline_fraction": -0.9381507929377275,
+        "ancestral_effective_size": 15.25869629978245
+      },
+      "selected_objective": 474.9901766320254,
+      "selected_converged": true,
+      "near_best_original_starts": 2,
+      "finite_neighborhood_pass": true
+    },
+    "dadi": {
+      "fit_sha256": "813a7da73a8a3092e8f173654ef09ed3050c9a980e18f2abff409cf80a85343a",
+      "estimates": {
+        "generations": 216380.625367213,
+        "post_decline_fraction": 0.05874510805907605,
+        "ancestral_effective_size": 320038.0722807451
+      },
+      "relative_error": {
+        "generations": 6.727879477400465,
+        "post_decline_fraction": -0.9339942606077797,
+        "ancestral_effective_size": 14.239908203845005
+      },
+      "selected_objective": 477.93363646076614,
+      "selected_converged": true,
+      "near_best_original_starts": 7,
+      "finite_neighborhood_pass": true
+    }
+  },
+  "conclusion": "Both source-current numerical fits pass their numerical gates but retain large biological-parameter recovery errors. These checks cannot establish biological correctness. Task1 remains not scientifically validated.",
+  "scientifically_validated": false,
+  "release_ready": false
+}

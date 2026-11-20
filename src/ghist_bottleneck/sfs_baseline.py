@@ -17,6 +17,7 @@ from ghist_inference.validation import (
 from ghist_inference.vcf import diploid_alleles, validate_position
 from ghist_inference.checkpoint import spectrum_digest
 from scipy.stats import hypergeom
+from .optimization import DEFAULT_STRATEGY, LEGACY_STRATEGY, LOWER, UPPER, log_starts, run_optimizer
 
 
 def projected_sfs_from_vcf(
@@ -128,10 +129,13 @@ def fit_two_epoch(
     seed: int = 4721,
     polarized: bool = True,
     folded: bool = False,
+    optimizer_strategy: str = DEFAULT_STRATEGY,
 ) -> dict:
     """Fit the mechanistic two-epoch SFS reference with moments."""
     if not polarized and not folded:
         raise ValueError('Unpolarized VCF input requires a folded spectrum')
+    with Path(path).open("rb") as handle:
+        input_sha256 = hashlib.file_digest(handle, "sha256").hexdigest()
     spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
     exposure = spectrum_exposure(metadata, sequence_length, callable_sequence_length)
     result = fit_two_epoch_spectrum(
@@ -141,9 +145,11 @@ def fit_two_epoch(
         restarts=restarts,
         seed=seed,
         folded=folded,
+        optimizer_strategy=optimizer_strategy,
     )
     with Path(path).open('rb') as handle:
-        input_sha256 = hashlib.file_digest(handle, 'sha256').hexdigest()
+        if hashlib.file_digest(handle, 'sha256').hexdigest() != input_sha256:
+            raise ValueError("VCF changed during spectrum extraction or fitting; regenerate the fit")
     return {**result, "polarized": polarized, "folded": folded, "sfs": metadata,
             "input_vcf_sha256": input_sha256,
             "sequence_length": sequence_length, "callable_sequence_length": exposure}
@@ -158,6 +164,8 @@ def fit_two_epoch_spectrum(
     seed: int = 4721,
     folded: bool = False,
     initial: tuple[float, float] | None = None,
+    optimizer_strategy: str = DEFAULT_STRATEGY,
+    initial_log_starts: np.ndarray | None = None,
 ) -> dict:
     """Fit a two-epoch model to an already projected allele-count spectrum."""
     import moments
@@ -180,51 +188,32 @@ def fit_two_epoch_spectrum(
         expectation = expectation.fold() if folded else expectation
         return validate_expected_spectrum(expectation, data)
 
-    lower = [0.02, 1e-4]
-    upper = [0.999, 5.0]
-    rng = np.random.default_rng(seed)
-    fits = []
-    failures = []
-    if initial is not None:
-        initial = np.asarray(initial, dtype=float)
-        if (
-            initial.shape != (2,)
-            or not np.isfinite(initial).all()
-            or np.any(initial < lower)
-            or np.any(initial > upper)
-        ):
-            raise ValueError(
-                "Initial estimate must lie within parameter bounds"
-            )
-    for restart in range(restarts):
-        if restart == 0 and initial is not None:
-            start = np.asarray(initial, dtype=float)
-        else:
-            start = np.exp(rng.uniform(np.log(lower), np.log(upper)))
-        try:
-            estimate, _, optimizer = moments.Inference.optimize_log_lbfgsb(
-                start,
-                data,
-                model,
-                lower_bound=lower,
-                upper_bound=upper,
-                maxiter=500,
-                verbose=0,
-                full_output=True,
-            )
-            expected = model(estimate, data.sample_sizes)
-            likelihood = float(moments.Inference.ll_multinom(expected, data))
-            theta = float(moments.Inference.optimal_sfs_scaling(expected, data))
-            if not np.isfinite([*estimate, likelihood, theta]).all() or theta <= 0:
-                raise ValueError("Nonfinite fit or nonpositive theta")
-            fits.append((likelihood, np.asarray(estimate), theta, restart, optimizer))
-        except Exception as error:
-            failures.append(
-                {"restart": restart, "reason": f"{type(error).__name__}: {error}"}
-            )
-    if not fits:
-        raise RuntimeError(f"All moments restarts failed: {failures[:3]}")
-    likelihood, estimate, theta, best_restart, optimizer = max(fits, key=lambda item: item[0])
+    def objective(point):
+        value = -float(moments.Inference.ll_multinom(model(np.exp(point), data.sample_sizes), data))
+        if not np.isfinite(value):
+            raise ValueError("Nonfinite fixed-domain objective")
+        return value
+
+    def evaluate(parameters):
+        theta = float(moments.Inference.optimal_sfs_scaling(model(parameters, data.sample_sizes), data))
+        if not np.isfinite(theta) or theta <= 0:
+            raise ValueError("Nonfinite or nonpositive theta")
+        return {"theta": theta}
+
+    def legacy_optimize(point):
+        estimate, _, optimizer = moments.Inference.optimize_log_lbfgsb(
+            np.exp(point), data, model, lower_bound=LOWER.tolist(), upper_bound=UPPER.tolist(),
+            maxiter=500, verbose=0, full_output=True,
+        )
+        return np.log(estimate), optimizer
+
+    starts = log_starts(restarts, seed, initial=initial, starts=initial_log_starts)
+    optimization = run_optimizer(objective, engine="moments", starts=starts, strategy=optimizer_strategy,
+                                 evaluate=evaluate, legacy_optimize=legacy_optimize if optimizer_strategy == LEGACY_STRATEGY else None)
+    best = optimization["best"]
+    estimate = np.asarray(best["parameters"])
+    likelihood, theta, best_restart = -best["objective"], best["theta"], best["restart"]
+    optimizer = best["optimizer"]
     fraction, scaled_time = estimate
     ancestral_ne = theta / (4 * mutation_rate * sequence_length)
     generations = scaled_time * 2 * ancestral_ne
@@ -240,16 +229,25 @@ def fit_two_epoch_spectrum(
         "sequence_length": sequence_length,
         "folded": folded,
         "best_restart": best_restart,
-        "converged_restarts": sum(fit[4]["warnflag"] == 0 for fit in fits),
-        "optimizer": {"warnflag": int(optimizer["warnflag"]),
-                      "converged": bool(optimizer["warnflag"] == 0),
-                      "message": str(optimizer["task"]),
-                      "evaluations": int(optimizer["funcalls"]),
-                      "iterations": int(optimizer["nit"])},
-        "successful_restarts": len(fits),
-        "failed_restarts": failures,
+        "engine": "moments",
+        "optimizer_contract": optimization["contract"],
+        "sample_haplotypes": int(data.sample_sizes[0]),
+        "optimizer_strategy": optimizer_strategy,
+        "best_optimizer_arm": best["arm"],
+        "best_restart_converged": optimizer["converged"],
+        "converged_restarts": sum(row["optimizer"]["converged"] for row in optimization["origin_best"]),
+        "optimizer": optimizer,
+        "optimizer_neighborhood": best["neighborhood"],
+        "optimizer_attempts": optimization["attempts"],
+        "optimizer_arm_summary": optimization["arm_summary"],
+        "optimizer_seed": seed,
+        "optimizer_initialization": "explicit_log_starts" if initial_log_starts is not None else "seeded_random_with_optional_first_initial",
+        "optimizer_origin_best": [{"restart": row["restart"], "arm": row["arm"], "objective": row["objective"],
+                                   "converged": row["optimizer"]["converged"]} for row in optimization["origin_best"]],
+        "successful_restarts": len(optimization["origin_best"]),
+        "failed_restarts": optimization["failed_origins"],
         "optimizer_diagnostics": optimizer_diagnostics(
-            estimate, lower, upper, [fit[0] for fit in fits], likelihood
+            estimate, LOWER, UPPER, [-row["objective"] for row in optimization["origin_best"]], likelihood
         ),
     }
 

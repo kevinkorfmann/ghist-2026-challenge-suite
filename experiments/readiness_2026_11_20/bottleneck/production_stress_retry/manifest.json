@@ -1,0 +1,203 @@
+{
+  "schema": "bottleneck_production_stress_retry_v1",
+  "cases": [
+    {
+      "name": "100mb_case_16_new_stress",
+      "input": "inputs/100mb_case_16_new_stress.npz",
+      "input_sha256": "dd76f14232d2f6e4af87b940e2f469fb0b9ac2b266d3a12084dac8a54a6f7e56",
+      "sequence_length": 100000000,
+      "methods": [
+        "moments",
+        "dadi"
+      ],
+      "seed": 2026112951,
+      "log_starts": [
+        [
+          -2.369547115883914,
+          -2.5453282398342036
+        ],
+        [
+          -2.945492703009922,
+          -7.247929607118981
+        ],
+        [
+          -1.4219897831475627,
+          -0.6659167138580546
+        ],
+        [
+          -0.4039749267194032,
+          -5.402513751921683
+        ],
+        [
+          -0.26382693844693295,
+          -3.1951549244059594
+        ],
+        [
+          -0.380084939198138,
+          -2.5626029836083504
+        ],
+        [
+          -1.963386445966477,
+          -6.081466108836404
+        ],
+        [
+          -2.845861042188066,
+          -3.414291451202809
+        ]
+      ],
+      "initialization": "Original seed; native Betty float starts frozen before retry, after inspecting only deterministic initialization",
+      "reference_sha256": {
+        "/Users/kevinkorfmann/.cache/ghist-2026/readiness-bottleneck-live/case_16/spectrum.npz": "e22a727687e939aa468446031e5de363ce2fc37dcd445598043d1bd5d60d0c83"
+      },
+      "scope": "one separately reported new stress spectrum outside the original53 numerical problems"
+    }
+  ],
+  "planned_cases": 1,
+  "planned_method_problems": 2,
+  "planned_optimizer_attempts": 48,
+  "mutation_rate": 3.42e-08,
+  "restarts": 8,
+  "folded": true,
+  "runtime_versions": {
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "numpy": "2.4.6",
+    "scipy": "1.16.3"
+  },
+  "optimizer_contracts": {
+    "moments": {
+      "schema": "ghist_bottleneck_optimizer_v1",
+      "engine": "moments",
+      "strategy": "paired_coarse_fine_refine_v1",
+      "optimizer": "scipy.optimize.fmin_l_bfgs_b",
+      "parameterization": "log",
+      "bounds": [
+        [
+          0.02,
+          0.0001
+        ],
+        [
+          0.999,
+          5.0
+        ]
+      ],
+      "epsilons": {
+        "coarse": 0.001,
+        "fine": 1e-05,
+        "refined": 1e-05
+      },
+      "controls": {
+        "maxfun": 15000,
+        "maxiter": 500,
+        "pgtol": 1e-05,
+        "factr": 10000000.0,
+        "maxls": 20
+      },
+      "selection": "minimum finite objective regardless status; original candidates precede refinements on exact ties",
+      "restart_ancestry": "one origin per original random start; best finite endpoint per origin",
+      "neighborhood": {
+        "log_steps": [
+          0.001,
+          0.0001,
+          1e-05
+        ],
+        "directions": "eight axis/diagonal directions clipped to bounds",
+        "maximum_objective_improvement": 0.0001,
+        "scope": "finite-neighborhood probes only; no stationarity or global-optimality certification"
+      },
+      "source_sha256": {
+        "ghist_bottleneck/optimization.py": "0a8eac1131b712385c9543a4819ab32b6964d72e639f4b0502168cc07870f5e0",
+        "ghist_bottleneck/sfs_baseline.py": "f665661e69548c624981d37dbf27de86ce54dc41dcc84b4d8c5f8f6641a2feef",
+        "ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb"
+      },
+      "versions": {
+        "moments-popgen": "1.6.0",
+        "numpy": "2.4.6",
+        "scipy": "1.16.3"
+      }
+    },
+    "dadi": {
+      "schema": "ghist_bottleneck_optimizer_v1",
+      "engine": "dadi",
+      "strategy": "paired_coarse_fine_refine_v1",
+      "optimizer": "scipy.optimize.fmin_l_bfgs_b",
+      "parameterization": "log",
+      "bounds": [
+        [
+          0.02,
+          0.0001
+        ],
+        [
+          0.999,
+          5.0
+        ]
+      ],
+      "epsilons": {
+        "coarse": 0.001,
+        "fine": 1e-05,
+        "refined": 1e-05
+      },
+      "controls": {
+        "maxfun": 500,
+        "maxiter": 15000,
+        "pgtol": 1e-05,
+        "factr": 10000000.0,
+        "maxls": 20
+      },
+      "selection": "minimum finite objective regardless status; original candidates precede refinements on exact ties",
+      "restart_ancestry": "one origin per original random start; best finite endpoint per origin",
+      "neighborhood": {
+        "log_steps": [
+          0.001,
+          0.0001,
+          1e-05
+        ],
+        "directions": "eight axis/diagonal directions clipped to bounds",
+        "maximum_objective_improvement": 0.0001,
+        "scope": "finite-neighborhood probes only; no stationarity or global-optimality certification"
+      },
+      "source_sha256": {
+        "ghist_bottleneck/optimization.py": "0a8eac1131b712385c9543a4819ab32b6964d72e639f4b0502168cc07870f5e0",
+        "ghist_bottleneck/dadi_reference.py": "b0476436bf93e8efecbf5768d822bb6a91081084ccf0f36028b66ff2317bd93d",
+        "ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb"
+      },
+      "versions": {
+        "dadi": "2.4.4",
+        "numpy": "2.4.6",
+        "scipy": "1.16.3"
+      }
+    }
+  },
+  "source_sha256": {
+    "source_snapshot/src/ghist_bottleneck/__init__.py": "4aa65448750ddbd3833bd89dcfe30be1e05feb70cbbadbb5481424761ee9f11d",
+    "source_snapshot/src/ghist_bottleneck/optimization.py": "0a8eac1131b712385c9543a4819ab32b6964d72e639f4b0502168cc07870f5e0",
+    "source_snapshot/src/ghist_bottleneck/sfs_baseline.py": "f665661e69548c624981d37dbf27de86ce54dc41dcc84b4d8c5f8f6641a2feef",
+    "source_snapshot/src/ghist_bottleneck/dadi_reference.py": "b0476436bf93e8efecbf5768d822bb6a91081084ccf0f36028b66ff2317bd93d",
+    "source_snapshot/src/ghist_inference/__init__.py": "2196b5034ca04e621c7673f18593c491f4553e75e4702318be2303f93cefa049",
+    "source_snapshot/src/ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb",
+    "source_snapshot/src/ghist_inference/checkpoint.py": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d",
+    "source_snapshot/src/ghist_inference/vcf.py": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81",
+    "prepare.py": "a4b04c8e4fecee471f42f4a7750ad15ccaafdb58927ad13197705866cbd05ad9",
+    "run_case.py": "051b7bac39d78725508bbaaaec79a8298201db7d504fea22194bb401bb15bc15",
+    "run.sbatch": "e0225ac0927a5de280f51a566a74549e23d0e5846724e12f553f75d11e33c6fb",
+    "stress_initialization_check.json": "f3ca9b05582807ac6f9a794bf30ef899a110df5edddd54e776a431337a98f4d2"
+  },
+  "extension_manifest_sha256": "8c2e403832193cb437e472baecc371aa9f4e6809122df5a027b0d136c16ae7ba",
+  "refinement_manifest_sha256": "b6c06c91222c09c63b43c179795409b6c9f946fa667b85487bd35b4dc703b3b2",
+  "comparison_tolerance": {
+    "objective_absolute": 1e-08,
+    "parameters_absolute": 1e-10,
+    "optimizer_status_evaluations_iterations": "exact"
+  },
+  "allocation": {
+    "cpus_per_case": 1,
+    "maximum_concurrent_cases": 1,
+    "seconds_per_case": 360
+  },
+  "truth_used": false,
+  "original_records_modified": false,
+  "scope": "One diagnostic-only retry of identical production source, input, seed and optimizer budgets. No new biological or acceptance settings; not independent replication.",
+  "parent_manifest_sha256": "20e8d5c508588edc18990061803bebaec15deec1c5c127d1c9498d428a60b071",
+  "initialization_inspection_sha256": "f3ca9b05582807ac6f9a794bf30ef899a110df5edddd54e776a431337a98f4d2",
+  "correction": "Cross-platform log/exp start rounding differs by at most8.881784197001252e-16; save fit before post-fit assertions and compare seeded runtime starts to frozen native starts."
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "bottleneck_optimizer_independent_source_review_v1",
+  "reviewer": "sweeps_science independent of optimizer/fitter/bootstrap implementation owner",
+  "completed_utc": "2026-11-20T18:40:54.179380+00:00",
+  "status": "no_additional_blocking_defect_identified_in_reviewed_scope",
+  "scope": "Read-only source review and focused software regressions; no biological truth, challenge data, or replay outcomes inspected in this audit.",
+  "source_sha256": {
+    "src/ghist_bottleneck/optimization.py": "0a8eac1131b712385c9543a4819ab32b6964d72e639f4b0502168cc07870f5e0",
+    "src/ghist_bottleneck/sfs_baseline.py": "f665661e69548c624981d37dbf27de86ce54dc41dcc84b4d8c5f8f6641a2feef",
+    "src/ghist_bottleneck/dadi_reference.py": "b0476436bf93e8efecbf5768d822bb6a91081084ccf0f36028b66ff2317bd93d",
+    "scripts/bootstrap_bottleneck_sfs.py": "82ec5691c7e8c7dc1a421c1600dadda29473b2dd7a2eb860afc2b016bf7721c6",
+    "src/ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb",
+    "src/ghist_inference/checkpoint.py": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d",
+    "src/ghist_inference/vcf.py": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81",
+    "tests/test_bottleneck_optimization.py": "b36289f3c6c5ca00e65371fd9ee408f8728e4c6c52c8cafce87bf5aa42ae6259",
+    "tests/test_bottleneck_readiness.py": "2ed50fdf404c373b0321bd5259931a4f047c9a3c4af42ffa4319395c7e5924f6",
+    "tests/test_bottleneck_science.py": "27db73838f03e824ff732a498403cc45f4f433ba3327f6d982d35fa867bab6b2"
+  },
+  "consumer_source_sha256": {
+    "scripts/bottleneck_consumer_guard.py": "707d3e9cf9c9e1c4600eee62d8529bdb202631067b93f058352f01a1c7f4f542",
+    "scripts/run_multiscale_sfs_recovery.py": "98717bb60fafab82acfacc7a03724ed88618bfbbedbe8ded04c782b36a3ccefa",
+    "scripts/evaluate_multiscale_sfs_recovery.py": "94104df246da58a5ac7908ffe449c5ad2b0f9451572ef8543617184f3413bc43",
+    "scripts/evaluate_moments_chromosomes.py": "45d402c879bbf707202e36e105de36dde286e159a65f201d18f84534c634841a",
+    "scripts/evaluate_bottleneck_ensemble.py": "83d27fa4f5d688a27e375314bdb676c99e5d1819e7a08a8553ecbcc309478ac3",
+    "scripts/evaluate_bottleneck_chromosomes.py": "2903a9f867374290afd31f7c4ca176652611871809cb3523a4c022ba35bcd7ae",
+    "tests/test_bottleneck_consumer_contract.py": "6b24047949e86cc215d642e741848ddf2e5c413c0e17e71b08d2f20166f21da1"
+  },
+  "reviewed_contract": {
+    "strategy": "paired_coarse_fine_refine_v1",
+    "selection": "Minimum finite objective over all original coarse/fine and coarse-refinement endpoints, regardless of optimizer convergence; original endpoints retain exact ties.",
+    "ancestry": "Successful, converged, and near-best agreement counts derive from one winning endpoint per original start.",
+    "endpoint_retention": "Optional neighborhood-probe failure does not discard a finite optimizer endpoint; failed or skipped arms remain explicit.",
+    "physical_units": "Selected theta binds ancestral diploid Ne=theta/(4*mutation_rate*callable_exposure) and generations=2*Ne*scaled_time_2N.",
+    "neighborhood": "Twenty-four retained log-space probes require valid direction/step identities, actual clipped displacements, finite objective changes, and recomputed maximum improvement/pass status; this is not a stationarity/global-optimality proof.",
+    "identity": "Current source, engine, strategy, controls and runtime contract must match; supplied expected metadata cannot self-certify an obsolete contract.",
+    "bootstrap": "Reference and replicas use the same strategy contract. Input/spectrum/projection identity is checked; failures remain in the requested denominator and suppress all intervals."
+  },
+  "findings_resolved_by_implementation_owner": [
+    {
+      "finding": "dadi VCF output omitted polarization and input hash needed by bootstrap.",
+      "resolution": "Both VCF wrappers record polarization and pre-run VCF SHA256 and compare input bytes after extraction/fitting."
+    },
+    {
+      "finding": "Bootstrap input/source identity was captured too late to bind parsed inputs.",
+      "resolution": "Reference, VCF, and source files are captured before parsing; checked after extraction and before interim/final artifacts; existing output is refused."
+    },
+    {
+      "finding": "Neighborhood pass flags were accepted without adequate raw evidence.",
+      "resolution": "Complete probe identities, clipped displacement geometry and maximum improvement are checked against the selected retained endpoint."
+    },
+    {
+      "finding": "Physical parameters could differ from retained selected theta/parameters.",
+      "resolution": "Validator checks theta equality and diploid exposure/time transformations with finite-positive physical inputs."
+    },
+    {
+      "finding": "Sample projection was missing from fitter identity checks.",
+      "resolution": "Both fitters persist sample_haplotypes; bootstrap requires agreement with reference projection and extracted block projection."
+    },
+    {
+      "finding": "An exception in optional neighborhood diagnostics could discard a finite endpoint.",
+      "resolution": "Finite endpoint is retained before diagnostics; diagnostic failure remains explicit and cannot pass promotion checks."
+    }
+  ],
+  "independent_checks": [
+    {
+      "command": "python -m pytest -q tests/test_bottleneck_consumer_contract.py",
+      "passed": 41,
+      "failed": 0,
+      "duration_seconds": 3.07
+    },
+    {
+      "command": "python -m pytest -q tests/test_bottleneck_optimization.py",
+      "passed": 24,
+      "failed": 0,
+      "duration_seconds": 0.66
+    },
+    {
+      "command": "python -m ruff check (six consumer scripts, shared consumer guard, optimizer, both fitters, bootstrap, and two focused test files)",
+      "result": "All checks passed"
+    },
+    {
+      "check": "Owned consumer files in cache, shared checkout, and declared manifest",
+      "result": "All seven exact SHA256 values match"
+    }
+  ],
+  "limitations": [
+    "Software/source review does not establish scientific recovery, predictive accuracy, interval coverage, or global optimizer optimality.",
+    "No old frozen scientific result is promoted to the new optimizer contract.",
+    "Five-case production replay is separately frozen and monitored by the implementation owner; its outcomes are outside this review.",
+    "No new biological simulations, final challenge runs, or submission were performed by this audit."
+  ],
+  "scientifically_validated": false,
+  "release_ready": false
+}
