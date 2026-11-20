@@ -6,33 +6,11 @@ from pathlib import Path
 
 import numpy as np
 
-
-def read_raisd(path: Path) -> np.ndarray:
-    return np.loadtxt(path, comments="/")
-
-
-def separated_peaks(report: np.ndarray, separation: int) -> list[int]:
-    order = np.argsort(report[:, 6])[::-1]
-    selected: list[int] = []
-    for index in order:
-        position = int(report[index, 0])
-        if all(abs(position - int(report[other, 0])) >= separation for other in selected):
-            selected.append(int(index))
-    return selected
-
-
-def nearest_exonic_position(position: int, intervals: list[tuple[int, int]]) -> int:
-    if not intervals:
-        raise ValueError("No exons found for the selected chromosome")
-    best_position = position
-    best_distance = float("inf")
-    for start, end in intervals:
-        candidate = min(max(position, start), end - 1)
-        distance = abs(candidate - position)
-        if distance < best_distance:
-            best_position = candidate
-            best_distance = distance
-    return best_position
+from ghist_single_sweep.peaks import (
+    read_raisd,
+    separated_peaks,
+    nearest_exonic_position,
+)
 
 
 def read_exons(path: Path, chromosome: str) -> list[tuple[int, int]]:
@@ -52,9 +30,13 @@ def read_exons(path: Path, chromosome: str) -> list[tuple[int, int]]:
     return intervals
 
 
-def write_candidate_bed(path: Path, candidates: list[dict], chromosome: str, half_width: int) -> None:
+def write_candidate_bed(
+    path: Path, candidates: list[dict], chromosome: str, half_width: int
+) -> None:
     if not candidates or half_width <= 0:
-        raise ValueError("At least one candidate and a positive half width are required")
+        raise ValueError(
+            "At least one candidate and a positive half width are required"
+        )
     contig = "chr" + chromosome.removeprefix("chr")
     rows = []
     for candidate in sorted(candidates, key=lambda item: int(item["exonic_center"])):
@@ -80,7 +62,9 @@ def localization_centers(path: Path) -> tuple[list[int], dict[str, object]]:
     summary = json.loads(path.read_text())
     centers = [int(summary["largest_variant_gap"]["midpoint"])]
     for width in ("50000", "100000", "250000"):
-        centers.append(int(summary["flank_ld_scans"][width]["maximum"]["candidate_position"]))
+        centers.append(
+            int(summary["flank_ld_scans"][width]["maximum"]["candidate_position"])
+        )
     return centers, summary
 
 
@@ -89,7 +73,9 @@ def main() -> None:
     parser.add_argument("--task7-dir", type=Path, required=True)
     parser.add_argument("--task8-dir", type=Path, required=True)
     parser.add_argument("--exons", type=Path, required=True)
-    parser.add_argument("--chromosome", required=True, help="7 for testing; 9 for final")
+    parser.add_argument(
+        "--chromosome", required=True, help="7 for testing; 9 for final"
+    )
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--bed", type=Path, required=True)
     args = parser.parse_args()
@@ -104,8 +90,12 @@ def main() -> None:
     threshold = 2.0 * task7_null_maximum
 
     task7_evidence = [task7_primary]
-    task7_evidence.extend(local_audit_centers(args.task7_dir / "baseline_scans", task7_primary))
-    local_centers, task7_localization = localization_centers(args.task7_dir / "localization" / "summary.json")
+    task7_evidence.extend(
+        local_audit_centers(args.task7_dir / "baseline_scans", task7_primary)
+    )
+    local_centers, task7_localization = localization_centers(
+        args.task7_dir / "localization" / "summary.json"
+    )
     task7_evidence.extend(local_centers)
     task7_center = int(np.median(task7_evidence))
 
@@ -113,7 +103,9 @@ def main() -> None:
 
     candidates = []
     task8_localizations = []
-    for localization_path in sorted((args.task8_dir / "localization").glob("region_*/summary.json")):
+    for localization_path in sorted(
+        (args.task8_dir / "localization").glob("region_*/summary.json")
+    ):
         localization = json.loads(localization_path.read_text())
         midpoint = float(np.mean(localization["region"]))
         task8_localizations.append((midpoint, localization_path))
@@ -127,7 +119,9 @@ def main() -> None:
         )
         local_centers, localization = localization_centers(localization_path)
         evidence = [position]
-        evidence.extend(local_audit_centers(args.task8_dir / "baseline_scans", position))
+        evidence.extend(
+            local_audit_centers(args.task8_dir / "baseline_scans", position)
+        )
         evidence.extend(local_centers)
         consensus = int(np.median(evidence))
         exonic_center = nearest_exonic_position(consensus, exons)

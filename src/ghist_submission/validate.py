@@ -184,6 +184,29 @@ def all_pairs(samples: list[str]) -> set[tuple[str, str]]:
     return set(combinations(sorted(samples), 2))
 
 
+def vcf_samples(path: Path) -> list[str]:
+    import pysam
+
+    with pysam.VariantFile(str(path)) as vcf:
+        samples = list(vcf.header.samples)
+    all_pairs(samples)  # Validate identifiers, including a nonempty cohort.
+    return samples
+
+
+def within_family_pairs(families, samples):
+    """Require a partition of the actual cohort, then enumerate its pairs."""
+    flattened = [sample for family in families for sample in family]
+    if (
+        len(flattened) != len(set(flattened))
+        or set(flattened) != set(samples)
+        or any(not family for family in families)
+    ):
+        raise ValueError("Families must partition the actual VCF samples exactly once")
+    return {
+        tuple(sorted(pair)) for family in families for pair in combinations(family, 2)
+    }
+
+
 def validate_submission(
     path: Path, challenge: int, dataset: str, expected_pairs=None
 ) -> dict:

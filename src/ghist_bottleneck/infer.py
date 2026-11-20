@@ -7,10 +7,24 @@ import numpy as np
 import torch
 import yaml
 import joblib
+from scipy.special import expit
 
 from .features import FeatureBundle, FeatureCollection
 from .model import BottleneckNet
 from .train import _device, reference_features
+
+
+def prediction_from_latent(latent):
+    latent = np.asarray(latent, dtype=float)
+    if latent.shape != (2,) or not np.isfinite(latent).all():
+        raise ValueError("Bottleneck prediction requires two finite latent parameters")
+    with np.errstate(over="ignore", under="ignore"):
+        generations, fraction = float(np.exp(latent[0])), float(expit(latent[1]))
+    if not np.isfinite(generations) or generations <= 0 or not 0 < fraction <= 1:
+        raise ValueError(
+            "Bottleneck prediction lies outside representable challenge bounds"
+        )
+    return {"generations": generations, "post_decline_fraction": fraction}
 
 
 def apply_chromosome_calibration(
@@ -29,9 +43,13 @@ def apply_chromosome_calibration(
     intercept = np.asarray(branch["intercept"], dtype=float)
     latent = np.asarray(latent, dtype=float)
     if latent.shape != (2,) or matrix.shape != (2, 2) or intercept.shape != (2,):
-        raise ValueError("chromosome calibration must map one two-parameter latent vector")
+        raise ValueError(
+            "chromosome calibration must map one two-parameter latent vector"
+        )
     return latent @ matrix + intercept, {
-        "source": str(calibration) if not isinstance(calibration, dict) else "in-memory",
+        "source": str(calibration)
+        if not isinstance(calibration, dict)
+        else "in-memory",
         "branch": branch_name,
         "matrix": matrix.tolist(),
         "intercept": intercept.tolist(),
@@ -56,14 +74,18 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
         model.load_state_dict(state["state_dict"])
         model.eval()
         with torch.no_grad():
-            mean, log_var = model(torch.from_numpy(xw).to(device), torch.from_numpy(xs).to(device))
+            mean, log_var = model(
+                torch.from_numpy(xw).to(device), torch.from_numpy(xs).to(device)
+            )
         preds.append(mean.cpu().numpy()[0])
         aleatoric.append(np.exp(log_var.cpu().numpy()[0]))
     if not preds:
         raise FileNotFoundError(f"No model_*.pt checkpoints in {checkpoint_dir}")
     z = np.asarray(preds)
     deep_mean = z.mean(0) * norm["target_std"][0] + norm["target_mean"][0]
-    total_var = (np.asarray(aleatoric).mean(0) + z.var(0)) * np.square(norm["target_std"][0])
+    total_var = (np.asarray(aleatoric).mean(0) + z.var(0)) * np.square(
+        norm["target_std"][0]
+    )
     mean = deep_mean
     component_predictions = {"deep_ensemble_latent": deep_mean.tolist()}
     reference_path = checkpoint_dir / "reference.joblib"
@@ -75,11 +97,9 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
         mean = weights[0] * deep_mean + weights[1] * ref_mean
         component_predictions["reference_latent"] = ref_mean.tolist()
         component_predictions["blend_weights_deep_reference"] = weights.T.tolist()
-    generations = float(np.exp(mean[0]))
-    fraction = float(1 / (1 + np.exp(-mean[1])))
+    prediction = prediction_from_latent(mean)
     result = {
-        "generations": int(round(generations)),
-        "post_decline_fraction": round(fraction, 6),
+        **prediction,
         "diagnostics": {
             "ensemble_members": len(preds),
             "latent_sd": [float(x) for x in np.sqrt(total_var)],
@@ -90,8 +110,15 @@ def predict(observed: str | Path, checkpoint_dir: str | Path, out: str | Path) -
     }
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(yaml.safe_dump({k: result[k] for k in ("generations", "post_decline_fraction")}, sort_keys=False))
-    out.with_suffix(out.suffix + ".json").write_text(json.dumps(result, indent=2) + "\n")
+    out.write_text(
+        yaml.safe_dump(
+            {k: result[k] for k in ("generations", "post_decline_fraction")},
+            sort_keys=False,
+        )
+    )
+    out.with_suffix(out.suffix + ".json").write_text(
+        json.dumps(result, indent=2) + "\n"
+    )
     return result
 
 
@@ -117,7 +144,9 @@ def _robust_block_average(
         precision = np.clip(precision, lower, upper)
         weights = huber * precision * information[:, None]
         mean = np.sum(weights * member_values, axis=0) / np.sum(weights, axis=0)
-        effective = np.square(np.sum(weights, axis=0)) / np.sum(np.square(weights), axis=0)
+        effective = np.square(np.sum(weights, axis=0)) / np.sum(
+            np.square(weights), axis=0
+        )
         between = np.sum(weights * np.square(member_values - mean), axis=0) / np.sum(
             weights, axis=0
         )
@@ -184,7 +213,9 @@ def predict_blocks(
             reference_features(collection.windows.astype(np.float32), xs)
         )
         valid = collection.n_variants > 0
-        info = np.sqrt(collection.n_variants[valid] / np.median(collection.n_variants[valid]))
+        info = np.sqrt(
+            collection.n_variants[valid] / np.median(collection.n_variants[valid])
+        )
         info = np.clip(info, 0.25, 4.0)
         reference_mean = np.average(reference_blocks[valid], axis=0, weights=info)
         blend = np.asarray(reference["weights"])
@@ -196,16 +227,12 @@ def predict_blocks(
     if calibration is not None:
         mean, calibration_record = apply_chromosome_calibration(mean, calibration)
         components["calibrated_latent"] = np.asarray(mean).tolist()
-    generations = float(np.exp(mean[0]))
-    fraction = float(1 / (1 + np.exp(-mean[1])))
+    prediction = prediction_from_latent(mean)
     out = Path(out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
         yaml.safe_dump(
-            {
-                "generations": int(round(generations)),
-                "post_decline_fraction": round(fraction, 6),
-            },
+            prediction,
             sort_keys=False,
         )
     )
@@ -222,8 +249,7 @@ def predict_blocks(
         n_variants=collection.n_variants,
     )
     result = {
-        "generations": int(round(generations)),
-        "post_decline_fraction": round(fraction, 6),
+        **prediction,
         "diagnostics": {
             "blocks_total": int(len(collection.n_variants)),
             "blocks_used": int(np.sum(collection.n_variants > 0)),
@@ -235,5 +261,7 @@ def predict_blocks(
             "block_artifact": str(diagnostics_path),
         },
     }
-    out.with_suffix(out.suffix + ".json").write_text(json.dumps(result, indent=2) + "\n")
+    out.with_suffix(out.suffix + ".json").write_text(
+        json.dumps(result, indent=2) + "\n"
+    )
     return result

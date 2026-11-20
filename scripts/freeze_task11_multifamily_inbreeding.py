@@ -10,6 +10,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from ghist_relatedness.labels import DOG_LABELS
+from ghist_submission.validate import (
+    vcf_samples,
+    within_family_pairs,
+    validate_submission,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,8 +25,14 @@ CONSENSUS = ARTIFACT_ROOT / "consensus/summary.json"
 CANDIDATE = ARTIFACT_ROOT / "consensus/task11_candidate.csv"
 FREEZE = ROOT / "experiments/multifamily_inbreeding/task11_freeze.json"
 FIGURE_ROOT = ROOT / "figures/task11_multifamily_inbreeding/task11_validation"
-TESTING = ROOT / "data/raw/relatedness/multifamily_inbreeding/testing/relatedness3.testing.vcf.gz"
-FINAL = ROOT / "data/holdout_final/relatedness/multifamily_inbreeding/relatedness3.final.vcf.gz"
+TESTING = (
+    ROOT
+    / "data/raw/relatedness/multifamily_inbreeding/testing/relatedness3.testing.vcf.gz"
+)
+FINAL = (
+    ROOT
+    / "data/holdout_final/relatedness/multifamily_inbreeding/relatedness3.final.vcf.gz"
+)
 FINAL_SHA256 = "5bbdd1a850f65308ed2376a159cbe63c7540e76eab9e91bb77b75c127a2fc553"
 
 
@@ -44,10 +55,14 @@ def main() -> None:
 
     pairs = [tuple(sorted((row["indID1"], row["indID2"]))) for row in rows]
     accepted = set(DOG_LABELS.values())
-    expected_pairs = sum(size * (size - 1) // 2 for size in clusters["family_sizes"])
+    samples = vcf_samples(TESTING)
+    expected = within_family_pairs(clusters["families"], samples)
+    coverage = validate_submission(CANDIDATE, 11, "testing", expected)
     gates = {
-        "eight_families": len(clusters["families"]) == 8,
-        "all_68_samples_partitioned": sum(clusters["family_sizes"]) == 68,
+        "all_input_samples_partitioned": sum(
+            len(family) for family in clusters["families"]
+        )
+        == len(samples),
         "family_partition_stable": clusters["minimum_adjusted_rand"] == 1.0
         and clusters["stability_runs"] >= 16,
         "fresh_pair_evaluation_above_60_percent": pair_model["fresh_evaluation"][
@@ -55,16 +70,15 @@ def main() -> None:
         ]
         >= 0.60,
         "official_relation_only_schema": header == ["indID1", "indID2", "relation"],
-        "all_within_family_pairs_present": len(rows) == expected_pairs == 275,
+        "all_within_family_pairs_present": coverage["input_pair_coverage_verified"],
         "pairs_unique": len(set(pairs)) == len(pairs),
-        "all_labels_accepted": {row["relation"] for row in rows} == accepted,
+        "all_labels_accepted": {row["relation"] for row in rows}.issubset(accepted),
         "hbd_threshold_stability": consensus["hbd_sensitivity_stability"] >= 0.98,
         "fallback_hbd_threshold_stability": consensus[
             "fallback_hbd_sensitivity_stability"
         ]
         >= 0.93,
-        "sibling_components_consistent": consensus["sibling_component_conflicts"]
-        == 0,
+        "sibling_components_consistent": consensus["sibling_component_conflicts"] == 0,
     }
     gates["passed"] = all(gates.values())
     if not gates["passed"]:
@@ -72,7 +86,12 @@ def main() -> None:
 
     labels = pair_model["labels"]
     confusion = np.asarray(pair_model["fresh_evaluation"]["confusion"], dtype=float)
-    normalized = confusion / confusion.sum(axis=1, keepdims=True)
+    normalized = np.divide(
+        confusion,
+        confusion.sum(axis=1, keepdims=True),
+        out=np.zeros_like(confusion),
+        where=confusion.sum(axis=1, keepdims=True) > 0,
+    )
     short = ["sib", "half-sib", "av", "half-av", "av-1R", "av-2R", "1C", "half-1C"]
     mpl.rcParams.update(
         {
@@ -84,7 +103,9 @@ def main() -> None:
             "pdf.fonttype": 42,
         }
     )
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.1), gridspec_kw={"width_ratios": [1.15, 0.85]})
+    fig, axes = plt.subplots(
+        1, 2, figsize=(7.2, 3.1), gridspec_kw={"width_ratios": [1.15, 0.85]}
+    )
     image = axes[0].imshow(normalized, vmin=0, vmax=1, cmap="Blues")
     for row in range(normalized.shape[0]):
         for column in range(normalized.shape[1]):
@@ -140,6 +161,7 @@ def main() -> None:
             "topology_consensus": "accepted pedigree tuples, meiosis-constrained pair fallbacks, and full-sibling component consistency",
         },
         "validation": {
+            "input_pair_coverage": coverage,
             "fresh_pair_accuracy": pair_model["fresh_evaluation"]["accuracy"],
             "fresh_pair_balanced_accuracy": pair_model["fresh_evaluation"][
                 "balanced_accuracy"

@@ -3,11 +3,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
+from ghist_inference.freeze import continuous_prediction
 
-TARGET_GENERATIONS = 5000.0
-TARGET_SCALING = 2.0
+
+PARAMETERS = ("generations", "post_growth_scaling")
 
 
 def load(path: Path) -> dict:
@@ -22,16 +24,18 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def contains(interval: list[float], value: float) -> bool:
-    return float(interval[0]) <= value <= float(interval[1])
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--audit", type=Path, required=True)
     parser.add_argument("--middle-fit", type=Path, required=True)
     parser.add_argument("--bootstrap", type=Path, required=True)
     parser.add_argument("--convention", type=Path, required=True)
+    parser.add_argument(
+        "--model-comparison",
+        type=Path,
+        required=True,
+        help="Chromosome holdout comparison from compare_growth_models.py",
+    )
     parser.add_argument("--smoke", type=Path, required=True)
     parser.add_argument("--grid", type=Path, required=True)
     parser.add_argument("--calibration", type=Path, required=True)
@@ -47,6 +51,7 @@ def main() -> None:
         "middle_fit": args.middle_fit,
         "bootstrap": args.bootstrap,
         "convention": args.convention,
+        "model_comparison": args.model_comparison,
         "smoke": args.smoke,
         "grid": args.grid,
         "calibration": args.calibration,
@@ -60,37 +65,32 @@ def main() -> None:
     calibration = sources["calibration"]
     stress = sources["stress"]
 
-    observed = middle["median"]
-    if abs(observed["generations"] / TARGET_GENERATIONS - 1.0) >= 0.05:
-        raise ValueError("projection-median generation estimate is not within 5% of target")
-    if abs(observed["post_growth_scaling"] / TARGET_SCALING - 1.0) >= 0.03:
-        raise ValueError("projection-median scaling estimate is not within 3% of target")
-    if not contains(
-        [
-            bootstrap["generations"]["quantiles"]["0.025"],
-            bootstrap["generations"]["quantiles"]["0.975"],
-        ],
-        TARGET_GENERATIONS,
+    observed = continuous_prediction(middle["median"], PARAMETERS)
+    comparison = sources["model_comparison"]
+    # All legacy middle-distance, bootstrap, and SLiM calibration artifacts fit
+    # exponential growth. They cannot certify a different selected convention.
+    if comparison.get("selected_convention") != "exponential" or not comparison.get(
+        "selection_consistent_across_groups"
     ):
-        raise ValueError("target generations fall outside the linked-block interval")
-    if not contains(
-        [
-            bootstrap["post_growth_scaling"]["quantiles"]["0.025"],
-            bootstrap["post_growth_scaling"]["quantiles"]["0.975"],
-        ],
-        TARGET_SCALING,
-    ):
-        raise ValueError("target scaling falls outside the linked-block interval")
+        raise ValueError(
+            "Chromosome holdouts do not consistently support the exponential model; regenerate fits and BGS recovery for the selected model"
+        )
     if smoke.get("preferred") != "exponential":
-        raise ValueError("known-truth smoke comparison did not prefer exponential growth")
+        raise ValueError("Independent recovery does not support the fitted convention")
     if calibration.get("selected_model") != "identity":
-        raise ValueError("held-out calibration selected a correction")
-
-    target_grid = grid["results"]["generations_5000|scaling_2"]
-    if abs(target_grid["relative_error"]["generations"]) >= 0.10:
-        raise ValueError("target-grid generation recovery exceeds 10% error")
-    if abs(target_grid["relative_error"]["post_growth_scaling"]) >= 0.05:
-        raise ValueError("target-grid scaling recovery exceeds 5% error")
+        raise ValueError(
+            "Held-out calibration selected a correction; apply and validate it before freezing"
+        )
+    # Check the complete recovery grid, not one handpicked central point.
+    if not grid.get("results"):
+        raise ValueError("Independent recovery grid is empty")
+    for point, recovery in grid["results"].items():
+        for parameter, limit in (("generations", 0.10), ("post_growth_scaling", 0.05)):
+            error = float(recovery["relative_error"][parameter])
+            if not math.isfinite(error) or abs(error) >= limit:
+                raise ValueError(
+                    f"Independent grid recovery exceeds tolerance: {point}, {parameter}"
+                )
     if not stress.get("freeze_gate_passed"):
         raise ValueError("selection-strength and burn-in stress gate did not pass")
 
@@ -114,13 +114,10 @@ def main() -> None:
             "spectrum": "unfolded middle-distance noncoding frequency spectrum",
             "distance_from_coding_bp": [1000, 100000],
             "projections": [84, 60, 40],
-            "aggregation": "projection median followed by generator-level rounding",
+            "aggregation": "continuous projection median; no preset rounding",
             "calibration": "identity; no correction",
         },
-        "testing_prediction": {
-            "generations": TARGET_GENERATIONS,
-            "post_growth_scaling": TARGET_SCALING,
-        },
+        "testing_prediction": observed,
         "raw_projection_median": {
             "generations": observed["generations"],
             "post_growth_scaling": observed["post_growth_scaling"],
@@ -130,7 +127,8 @@ def main() -> None:
             "projection_fits": middle["by_projection"],
             "linked_block_replicates": bootstrap["replicates"],
             "known_truth_smoke": smoke,
-            "target_grid_recovery": target_grid,
+            "all_grid_recovery": grid["results"],
+            "chromosome_holdout_comparison": comparison,
             "held_out_calibration": {
                 "validation": calibration["validation"],
                 "selected_model": calibration["selected_model"],

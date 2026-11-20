@@ -1,0 +1,357 @@
+{
+  "protocol": "Leave one chromosome group out; select by summed predictive likelihood; refit all groups",
+  "public_testing_answers_used": false,
+  "folds": [
+    {
+      "held_out_group": "2L",
+      "models": {
+        "exponential": {
+          "training_fit": {
+            "generations": 4258.610917439146,
+            "post_growth_scaling": 2.077168525749165,
+            "ancestral_effective_size": 7716.880905137288,
+            "modern_effective_size": 16029.262133105904,
+            "scaled_duration_2N": 0.2759282519576076,
+            "theta": 50378.68952691647,
+            "multinomial_log_likelihood": -262.57032815007005,
+            "best_restart": 7,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 48574216.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -255.12063359996637
+        },
+        "sudden": {
+          "training_fit": {
+            "generations": 2490.377611368264,
+            "post_growth_scaling": 1.845745544829419,
+            "ancestral_effective_size": 7753.423356477324,
+            "modern_effective_size": 14310.846617394382,
+            "scaled_duration_2N": 0.1605985831592548,
+            "theta": 50617.25233917739,
+            "multinomial_log_likelihood": -249.97395225458422,
+            "best_restart": 0,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 48574216.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "sudden",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -254.23436747821233
+        }
+      }
+    },
+    {
+      "held_out_group": "2R",
+      "models": {
+        "exponential": {
+          "training_fit": {
+            "generations": 5216.575948597633,
+            "post_growth_scaling": 2.070935099069126,
+            "ancestral_effective_size": 8318.621288846403,
+            "modern_effective_size": 17227.32480293567,
+            "scaled_duration_2N": 0.3135481089632011,
+            "theta": 53723.40907676972,
+            "multinomial_log_likelihood": -261.4801008031518,
+            "best_restart": 1,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 48052163.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -282.4633468134689
+        },
+        "sudden": {
+          "training_fit": {
+            "generations": 2994.578134990646,
+            "post_growth_scaling": 1.847860743326241,
+            "ancestral_effective_size": 8370.042426153199,
+            "modern_effective_size": 15466.672819263624,
+            "scaled_duration_2N": 0.1788866759882679,
+            "theta": 54055.49761630087,
+            "multinomial_log_likelihood": -253.28026857886653,
+            "best_restart": 11,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 48052163.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "sudden",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -276.3947956852048
+        }
+      }
+    },
+    {
+      "held_out_group": "3L",
+      "models": {
+        "exponential": {
+          "training_fit": {
+            "generations": 4584.200564988479,
+            "post_growth_scaling": 1.9701089176787843,
+            "ancestral_effective_size": 8314.170353054053,
+            "modern_effective_size": 16379.821155652355,
+            "scaled_duration_2N": 0.2756859897214254,
+            "theta": 50784.74087454309,
+            "multinomial_log_likelihood": -306.9715866114384,
+            "best_restart": 1,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 45448029.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -306.89457594763644
+        },
+        "sudden": {
+          "training_fit": {
+            "generations": 2684.4304936577832,
+            "post_growth_scaling": 1.764562337889115,
+            "ancestral_effective_size": 8348.697950814336,
+            "modern_effective_size": 14731.797974419009,
+            "scaled_duration_2N": 0.16076941036032708,
+            "theta": 50995.64286846631,
+            "multinomial_log_likelihood": -301.7121545659593,
+            "best_restart": 5,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 45448029.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "sudden",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -298.5647184279742
+        }
+      }
+    },
+    {
+      "held_out_group": "3R",
+      "models": {
+        "exponential": {
+          "training_fit": {
+            "generations": 5602.320254081943,
+            "post_growth_scaling": 2.019867937417386,
+            "ancestral_effective_size": 8368.84730325713,
+            "modern_effective_size": 16903.96634099103,
+            "scaled_duration_2N": 0.3347127777024643,
+            "theta": 49288.44482931224,
+            "multinomial_log_likelihood": -312.8717325444686,
+            "best_restart": 7,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 43820790.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "exponential",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -231.73253008310576
+        },
+        "sudden": {
+          "training_fit": {
+            "generations": 3229.1805477410358,
+            "post_growth_scaling": 1.8102015261868116,
+            "ancestral_effective_size": 8413.75032509317,
+            "modern_effective_size": 15230.583679438438,
+            "scaled_duration_2N": 0.1918990000279856,
+            "theta": 49552.90181296083,
+            "multinomial_log_likelihood": -295.60202521288375,
+            "best_restart": 9,
+            "successful_restarts": 12,
+            "failed_restarts": [],
+            "restarts": 12,
+            "workers": 4,
+            "projection": 40,
+            "observed_haplotypes": 84,
+            "sequence_length": 43820790.0,
+            "mutation_rate": 3.36e-08,
+            "convention": "sudden",
+            "bounds": {
+              "lower": [
+                1.001,
+                1e-05
+              ],
+              "upper": [
+                200.0,
+                10.0
+              ]
+            }
+          },
+          "held_out_log_likelihood": -236.5181604227855
+        }
+      }
+    }
+  ],
+  "predictive_log_likelihood": {
+    "exponential": -1076.2110864441775,
+    "sudden": -1065.7120420141769
+  },
+  "selected_convention": "sudden",
+  "selected_wins": 3,
+  "groups": 4,
+  "selection_consistent_across_groups": false,
+  "full_data_fits": {
+    "exponential": {
+      "generations": 4898.132750898823,
+      "post_growth_scaling": 2.033214345875974,
+      "ancestral_effective_size": 8172.807369481966,
+      "modern_effective_size": 16617.069189711616,
+      "scaled_duration_2N": 0.29966035717352846,
+      "theta": 68063.99685862378,
+      "multinomial_log_likelihood": -309.9542609547789,
+      "best_restart": 3,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 4,
+      "projection": 40,
+      "observed_haplotypes": 84,
+      "sequence_length": 61965066.0,
+      "mutation_rate": 3.36e-08,
+      "convention": "exponential",
+      "bounds": {
+        "lower": [
+          1.001,
+          1e-05
+        ],
+        "upper": [
+          200.0,
+          10.0
+        ]
+      }
+    },
+    "sudden": {
+      "generations": 2840.938926800166,
+      "post_growth_scaling": 1.815838020088337,
+      "ancestral_effective_size": 8215.091095957689,
+      "modern_effective_size": 14917.274750529135,
+      "scaled_duration_2N": 0.1729097640924564,
+      "theta": 68416.1401670249,
+      "multinomial_log_likelihood": -295.90870355916013,
+      "best_restart": 7,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 4,
+      "projection": 40,
+      "observed_haplotypes": 84,
+      "sequence_length": 61965066.0,
+      "mutation_rate": 3.36e-08,
+      "convention": "sudden",
+      "bounds": {
+        "lower": [
+          1.001,
+          1e-05
+        ],
+        "upper": [
+          200.0,
+          10.0
+        ]
+      }
+    }
+  },
+  "prediction": {
+    "generations": 2840.938926800166,
+    "post_growth_scaling": 1.815838020088337
+  },
+  "scope": "Model comparison and candidate estimate; independent recovery under BGS still required",
+  "source": "middle_distance_blocks_1mb.npz",
+  "source_sha256": "369f0dd08bcfc4f49fb39c60e264d587ee677baf8289ca1dcfc027f17e51403a"
+}

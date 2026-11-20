@@ -1,0 +1,14 @@
+........................................................................ [ 38%]
+........................................................................ [ 76%]
+............................................                             [100%]
+=============================== warnings summary ===============================
+tests/test_pipeline.py::PipelineTests::test_coalescent_and_network_contract
+  /home/kkor/ghist-2026-review-20261120/src/ghist_bottleneck/model.py:105: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+    self.context = nn.TransformerEncoder(layer, num_layers=context_layers)
+
+tests/test_secondary_contact.py::SecondaryContactTests::test_multimodal_posterior_contract
+  /home/kkor/ghist-2026-review-20261120/src/ghist_secondary_contact/model.py:82: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+    self.window_context = nn.TransformerEncoder(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+188 passed, 2 warnings in 9.13s

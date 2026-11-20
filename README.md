@@ -9,7 +9,8 @@ low-coverage challenges are not implemented.
 
 **November 20 review: code repaired; current final predictions still pending.**
 
-[Current review and submission blockers](docs/review_2026_11_20.md) ·
+[Latest reliability fixes and limitations](docs/reliability_2026_11_20.md) ·
+[Initial review and submission blockers](docs/review_2026_11_20.md) ·
 [Reproducible setup](docs/setup.md) ·
 [Post-freeze testing-answer audit](docs/testing_answer_audit_2026_11_20.json)
 
@@ -37,7 +38,7 @@ revealed testing answers. ↓ is better; ↑ is better.
 | 5 | [Single hard sweep](experiments/single_sweep/task5_freeze.json) · [plots](figures/task5_single_sweep/) | chr7:38.197–38.317 Mb | ↓ 27.0 kb median; ↑ score 0.625 |
 | 6 | [Single soft sweep](experiments/soft_sweep/task6_freeze.json) · [plots](figures/task6_soft_sweep/) | chr7:16.532–16.602 Mb | ↓ 16.3 kb median; ↓ 95.5 kb p90; ↑ score 0.539¹ |
 | 7 | [Sweep + background selection](experiments/single_sweep_bgs/task7_freeze.json) · [plots](figures/task7_single_sweep_bgs/) | chr7:106.417–106.577 Mb | ↓ 18.7 kb median; ↓ 45.7 kb max |
-| 8 | [Multiple sweeps + background selection](experiments/multiple_sweeps_bgs/task8_freeze.json) · [plots](figures/task8_multiple_sweeps_bgs/) | Six 120 kb intervals | ↑ 6/6 peaks; ↓ 45.7 kb max transferred error |
+| 8 | [Multiple sweeps + background selection](experiments/multiple_sweeps_bgs/task8_freeze.json) · [plots](figures/task8_multiple_sweeps_bgs/) | Six 120 kb intervals | Transferred single-sweep evidence; insufficient for Task 8 |
 | 9 | [IBD pairs](experiments/ibd_segments/task9_freeze.json) · [plots](figures/task9_ibd_segments/) | 989 pair labels | ↑ 82.34% exact; ↑ 85.35% degree |
 | 10 | [Large human family](experiments/large_family/task10_freeze.json) · [plots](figures/task10_large_family/) | 26,106 pairs; 229 people | ↑ 47.20% exact; ↑ 69.08% degree; ↑ 0.70 points vs previous³ |
 | 11 | [Inbred multifamily cohort](experiments/multifamily_inbreeding/task11_freeze.json) · [plots](figures/task11_multifamily_inbreeding/) | 275 pairs; eight families | ↑ 63.58% exact; ↑ family ARI 1.00 |

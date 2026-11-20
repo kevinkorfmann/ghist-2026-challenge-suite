@@ -1,0 +1,32 @@
+........................................................................ [ 38%]
+........................................................................ [ 76%]
+............................................                             [100%]
+=============================== warnings summary ===============================
+../../.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+tests/test_pipeline.py::PipelineTests::test_coalescent_and_network_contract
+  /vast/projects/smathi/cohort/korfmann/ghist2026/reviews/2026-11-20/src/ghist_bottleneck/model.py:105: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+    self.context = nn.TransformerEncoder(layer, num_layers=context_layers)
+
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[exponential-growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+tests/test_reliability.py::test_growth_fit_recovers_independent_expected_spectrum[sudden-sudden_growth_spectrum]
+  /vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/moments/Inference.py:340: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+    outputs = scipy.optimize.fmin_l_bfgs_b(
+
+tests/test_secondary_contact.py::SecondaryContactTests::test_multimodal_posterior_contract
+  /vast/projects/smathi/cohort/korfmann/ghist2026/reviews/2026-11-20/src/ghist_secondary_contact/model.py:82: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+    self.window_context = nn.TransformerEncoder(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+188 passed, 11 warnings in 41.76s

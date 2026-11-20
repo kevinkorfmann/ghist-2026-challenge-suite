@@ -286,7 +286,9 @@ chr1\t20\t.\tC\tT\t.\tPASS\tAA=T\tGT\t0|0\t0|1
         np.testing.assert_array_equal(first, second)
         np.testing.assert_array_equal(split1, split2)
         np.testing.assert_array_equal(domain1, domain2)
-        self.assertEqual(dict(zip(*np.unique(domain1, return_counts=True))), {0: 70, 1: 20, 2: 10})
+        self.assertEqual(
+            dict(zip(*np.unique(domain1, return_counts=True))), {0: 70, 1: 20, 2: 10}
+        )
         self.assertTrue(np.all(first[:, 4] < first[:, 3]))
         self.assertEqual(set(split1), {0, 1, 2})
 
@@ -352,12 +354,26 @@ if __name__ == "__main__":
 
 def test_fast_scanner_rejects_legacy_zero_position_and_malformed_gt(tmp_path):
     import pytest
-    for position, gt, message in [(0, '0|1', '1-based'), (100000001, '0|1', '1-based'),
-                                   (1, '01|', 'layout validation'),
-                                   (1, '|||', 'layout validation')]:
-        path = tmp_path / 'invalid.vcf.gz'
-        record = f'1\t{position}\t.\tA\tG\t.\tPASS\tAA=A\tGT\t' + '\t'.join([gt] * 67) + '\n'
-        with gzip.open(path, 'wt') as handle:
-            handle.write(record)
+
+    for position, gt, message in [
+        (0, "0|1", "1-based"),
+        (100000001, "0|1", "1-based"),
+        (1, "01|", "layout validation"),
+        (1, "|||", "layout validation"),
+    ]:
+        path = tmp_path / "invalid.vcf.gz"
+        record = (
+            f"1\t{position}\t.\tA\tG\t.\tPASS\tAA=A\tGT\t" + "\t".join([gt] * 67) + "\n"
+        )
+        with gzip.open(path, "wt") as handle:
+            names = [f"mainland_{i}" for i in range(43)] + [
+                f"island_{i}" for i in range(24)
+            ]
+            handle.write(
+                "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\t"
+                + "\t".join(names)
+                + "\n"
+                + record
+            )
         with pytest.raises(ValueError, match=message):
             scan_secondary_contact_vcf(path)
