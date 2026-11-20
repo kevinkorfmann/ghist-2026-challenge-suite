@@ -1,0 +1,28 @@
+{
+  "dataset": "testing",
+  "policy": "Renormalize the frozen model probabilities over currently accepted labels; no retraining or answer-based selection",
+  "changed_predictions": 65,
+  "validation": {
+    "challenge": 9,
+    "dataset": "testing",
+    "format_valid": true,
+    "scope": "file format and supplied pair coverage; not inference accuracy or input provenance",
+    "pairs": 989,
+    "individuals": 1878,
+    "input_pair_coverage_verified": true
+  },
+  "source_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/model_v3_shape/task9_model.joblib": "07494e08ace96bcbbe8d16f0982ee78a4db2da95b0cb8ad9d82918c86ba648ce",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/data/raw/relatedness/ibd_segments/testing/relatedness1.testing.csv": "f1afa39793c32efc7da67129807f18f9de1f3c09e4a7f81e897a2cb3e1c55746",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1"
+  },
+  "output_sha256": "5a5812051d155e054177661a817fe69e4e3489d62fe34902e2ece72783522734",
+  "submission_count": 0,
+  "evaluation_on_current_label_set": {
+    "pairs": 10034,
+    "accuracy": 0.8909706996212876,
+    "meioses_accuracy": 0.8933625672712776,
+    "source": "/vast/projects/smathi/cohort/korfmann/ghist2026/artifacts/task9_ibd_segments/calibration/replicate_7.seg",
+    "sha256": "c3098f91526deb7f085a1473ec63f2cd8815fabdd742e28a0a01667515ace2c7"
+  }
+}

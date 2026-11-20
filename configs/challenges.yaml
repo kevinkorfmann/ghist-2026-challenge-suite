@@ -2,6 +2,10 @@ project:
   synapse_project: syn74803798
   reference_wiki: https://www.synapse.org/Synapse:syn74803798/wiki/640740
   policy: local_predictions_only
+  requirements_checked: 2026-11-20
+  submission_deadline_utc: "2026-11-20T23:59:00Z"
+  tracked_challenges: 12
+  additional_low_coverage_challenges_implemented: false
 
 demography:
   bottleneck:
@@ -31,7 +35,7 @@ demography:
     recombination_map: syn75318370
     mutation_rate: 3.36e-8
     sequence_length: 108990206
-    outputs: [generations, growth_magnitude]
+    outputs: [generations, post_growth_scaling]
   split_migration_background_selection:
     path: challenges/demography/split_migration_background_selection
     testing: syn75193298
@@ -41,13 +45,21 @@ demography:
     recombination_map: syn75318369
     mutation_rate: 1.015e-8
     sequence_length: 108990206
-    outputs: [generations_since_split, population_sizes, migration_rate]
+    outputs: [AFR_population_size, EUR_population_size, generations_since_split, migration_rate]
 
 sweeps:
   shared:
     testing_accessibility: syn75220186
     final_accessibility: syn75821834
     template: syn74933514
+    testing_chromosome: "7"
+    final_chromosome: "9"
+    testing_recombination_map: syn77026803
+    final_recombination_map: syn77026807
+    testing_exons: syn77027375
+    final_exons: syn77027379
+    testing_mutation_rate: 1.44e-8
+    final_mutation_rate: 1.29e-8
   single_sweep:
     path: challenges/sweeps/single_sweep
     testing: syn75220176

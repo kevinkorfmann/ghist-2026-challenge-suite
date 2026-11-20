@@ -3,7 +3,7 @@
 #SBATCH --partition=b200-mig45
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=6
-#SBATCH --mem-per-cpu=5632M
+#SBATCH --mem-per-cpu=8192M
 #SBATCH --time=08:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err

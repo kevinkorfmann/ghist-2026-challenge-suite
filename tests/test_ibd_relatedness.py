@@ -36,3 +36,22 @@ class IbdRelatednessTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_pair_features_merge_reversed_pair_order():
+    rows = [dict(indID1=a, indID2=b, chr='1', type='IBD1', length='10', start_cM='0')
+            for a, b in [('a', 'b'), ('b', 'a')]]
+    result = pair_features(rows, 100.0)
+    assert len(result) == 1
+    assert result[0]['total_ibd1_cm'] == 20.0
+    assert result[0]['n_segments'] == 2
+
+
+def test_pair_features_reject_invalid_segments():
+    import pytest
+    row = dict(indID1='a', indID2='b', chr='1', type='IBD1', length='10', start_cM='0')
+    for changes in ({'length': 'nan'}, {'type': 'HBD'}, {'indID2': 'a'}):
+        with pytest.raises(ValueError):
+            pair_features([{**row, **changes}], 100.0)
+    with pytest.raises(ValueError, match='genome_cm'):
+        pair_features([row], 0.0)

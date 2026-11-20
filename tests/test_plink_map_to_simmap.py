@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -8,7 +9,7 @@ def test_conversion(tmp_path: Path) -> None:
     source.write_text("1 . 0.5 100\n")
     subprocess.run(
         [
-            ".venv/bin/python",
+            sys.executable,
             "scripts/plink_map_to_simmap.py",
             "--input",
             str(source),

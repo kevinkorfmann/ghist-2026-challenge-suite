@@ -9,6 +9,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
+from ghist_relatedness.labels import IBD_LABEL_MEIOSES
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_ROOT = ROOT / "artifacts/task9_ibd_segments/model_v3_shape"
@@ -45,14 +47,16 @@ def sha256(path: Path) -> str:
 def write_candidate() -> int:
     with RAW_PREDICTIONS.open() as source:
         rows = list(csv.DictReader(source))
+    for row in rows:
+        relation = row.get("relation", row.get("relationship"))
+        if relation not in IBD_LABEL_MEIOSES:
+            raise ValueError(f"Unaccepted current Task 9 relation: {relation}; rerun inference before freezing")
     with CANDIDATE.open("w", newline="") as destination:
         writer = csv.writer(destination)
         writer.writerow(("indID1", "indID2", "meioses_count", "relation"))
         for row in rows:
             relation = row.get("relation", row.get("relationship"))
-            if relation not in MEIOSES:
-                raise ValueError(f"Unaccepted relation: {relation}")
-            writer.writerow((row["indID1"], row["indID2"], MEIOSES[relation], relation))
+            writer.writerow((row["indID1"], row["indID2"], IBD_LABEL_MEIOSES[relation], relation))
     return len(rows)
 
 
@@ -144,7 +148,7 @@ def main() -> None:
         "official_schema_exact": list(candidate_rows[0])
         == ["indID1", "indID2", "meioses_count", "relation"],
         "all_testing_labels_accepted": all(
-            row["relation"] in MEIOSES for row in candidate_rows
+            row["relation"] in IBD_LABEL_MEIOSES for row in candidate_rows
         ),
     }
     gates["passed"] = all(gates.values())

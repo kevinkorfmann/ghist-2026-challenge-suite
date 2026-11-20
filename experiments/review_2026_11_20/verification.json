@@ -1,0 +1,56 @@
+{
+  "baseline_commit": "bc1afe3a6622a1df8a4c376267daf5256fa511fc",
+  "date": "2026-11-20",
+  "automated_tests": {
+    "macos": {
+      "passed": 153,
+      "warnings": 2,
+      "seconds": 9.08
+    },
+    "betty": {
+      "passed": 153,
+      "warnings": 3,
+      "seconds": 51.94,
+      "slurm_job": 10847766,
+      "job_state": "COMPLETED",
+      "exit_code": "0:0",
+      "scope": "Final reviewed code; original model environment"
+    },
+    "fresh_linux_arm64": {
+      "passed": 153,
+      "warnings": 2,
+      "seconds": 7.23,
+      "locked_environment": true
+    }
+  },
+  "static_analysis": {
+    "command": "ruff check src scripts tests",
+    "result": "passed",
+    "rules": [
+      "E4",
+      "E7",
+      "E9",
+      "F"
+    ]
+  },
+  "shell_syntax": {
+    "files": 149,
+    "result": "passed"
+  },
+  "named_archived_artifact_checksums": {
+    "checked": 75,
+    "matched": 75
+  },
+  "testing_file_validation": {
+    "valid": 12,
+    "final_files": 0
+  },
+  "limitations": [
+    "Large-data inference and all external-tool workflows were not rerun",
+    "Final-data runs explicitly deferred by the user",
+    "Testing truth used only for the post-freeze audit",
+    "Two later low-coverage challenges are not implemented"
+  ],
+  "competition_submissions_made_by_review": 0,
+  "task9_inference_slurm_job": 10847495
+}

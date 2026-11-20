@@ -77,3 +77,42 @@ class SingleSweepTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_accessibility_union_is_not_double_counted():
+    np.testing.assert_array_equal(accessible_bases(np.array([0]), np.array([30]),
+                                  np.array([[0, 20], [10, 30]])), [30])
+
+
+def test_fixed_sites_do_not_change_tajimas_d():
+    assert tajima_d(np.array([1, 2, 3, 0, 6]), 1000, 6) == tajima_d(np.array([1, 2, 3]), 1000, 6)
+
+
+def test_scan_ignores_variants_outside_accessible_intervals():
+    from ghist_single_sweep.scan import VariantMatrix
+    positions = np.array([5, 10, 20, 50])
+    haplotypes = np.array([[0, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0], [1, 0, 1, 0]], dtype=np.uint8)
+    variants = VariantMatrix('9', 100, positions, haplotypes, 0)
+    scan = scan_windows(variants, np.array([[10, 40], [60, 100]]), 100, 100)
+    assert scan['site_count'][0] == 2
+    assert scan['accessible_bases'][0] == 70
+    empty = scan_windows(variants, np.empty((0, 2), dtype=int), 100, 100)
+    assert empty['site_count'][0] == 0
+    assert empty['accessible_bases'][0] == 0
+
+
+def test_vcf_rejects_legacy_zero_coordinates_and_skips_fixed_sites(tmp_path):
+    import pytest
+    from ghist_single_sweep.scan import read_phased_biallelic_vcf
+    path = tmp_path / 'variants.vcf'
+    header = ('##fileformat=VCFv4.2\n##contig=<ID=9,length=100>\n'
+              '##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">\n'
+              '#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\ta\tb\n')
+    path.write_text(header + '9\t0\t.\tA\tC\t.\tPASS\t.\tGT\t0|1\t1|0\n')
+    with pytest.raises(ValueError, match='1-based'):
+        read_phased_biallelic_vcf(path)
+    path.write_text(header + '9\t1\t.\tA\tC\t.\tPASS\t.\tGT\t0|1\t1|0\n'
+                    '9\t2\t.\tA\tC\t.\tPASS\t.\tGT\t1|1\t1|1\n')
+    result = read_phased_biallelic_vcf(path)
+    assert result.positions.tolist() == [0]
+    assert result.skipped_records == 1

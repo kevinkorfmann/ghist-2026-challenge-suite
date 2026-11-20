@@ -2,7 +2,7 @@
 #SBATCH --job-name=splitmig-distance-fit
 #SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=2048M
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=02:00:00
 #SBATCH --array=0-3
 #SBATCH --output=logs/%x-%A_%a.out

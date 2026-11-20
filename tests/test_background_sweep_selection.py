@@ -20,3 +20,18 @@ class BackgroundSweepSelectionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_final_sweep_export_and_exon_filter(tmp_path):
+    import pytest
+    from scripts.select_background_sweep_candidates import read_exons, write_candidate_bed
+    exons = tmp_path / 'exons.bed'
+    exons.write_text('chr7\t100\t200\nchr9\t300\t400\n')
+    assert read_exons(exons, '9') == [(300, 400)]
+    with pytest.raises(ValueError, match='No exons'):
+        read_exons(exons, '8')
+    with pytest.raises(ValueError, match='No exons'):
+        nearest_exonic_position(100, [])
+    output = tmp_path / 'final.bed'
+    write_candidate_bed(output, [{'exonic_center': 350}], '9', 500)
+    assert output.read_text() == 'chr9\t0\t850\n'

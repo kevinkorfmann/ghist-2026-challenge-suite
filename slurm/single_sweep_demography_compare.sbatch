@@ -2,7 +2,7 @@
 #SBATCH --job-name=single-sweep-demography
 #SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=4
-#SBATCH --mem-per-cpu=2048M
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=02:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err

@@ -4,15 +4,26 @@
 
 # GHIST 2026 challenge suite
 
-Reproducible solutions for all 12 challenges.
+Inference methods for the original 12 GHIST 2026 challenges. The two later
+low-coverage challenges are not implemented.
 
-**12/12 methods frozen · 0 submissions · final holdouts sealed**
+**November 20 review: code repaired; current final predictions still pending.**
+
+[Current review and submission blockers](docs/review_2026_11_20.md) ·
+[Reproducible setup](docs/setup.md) ·
+[Post-freeze testing-answer audit](docs/testing_answer_audit_2026_11_20.json)
+
+The August freezes below are historical testing results. Their simulation
+metrics do not establish accuracy on the public testing answers or current
+final data. Challenges 2, 3, and 8 have substantial testing-audit weaknesses;
+the old Challenge 9 candidate uses two retired labels. No submissions have
+been made by this review.
 
 [Challenge registry](configs/challenges.yaml) ·
 [Validation protocol](docs/validation_protocol.md) ·
 [Method comparison](docs/method_comparison.md)
 
-## How close are we?
+## Historical simulation validation (August 2026)
 
 Closeness is measured only on untouched simulations or numerical checks—not on
 revealed testing answers. ↓ is better; ↑ is better.

@@ -2,7 +2,7 @@
 #SBATCH --job-name=single-sweep-chr7-summary
 #SBATCH --partition=genoa-std-mem
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=2048M
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=00:15:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err

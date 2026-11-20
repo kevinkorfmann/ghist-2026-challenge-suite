@@ -1,0 +1,131 @@
+{
+  "protocol": "Post-freeze audit only. Public answers must not enter fitting or model selection.",
+  "answer_source": "benchmarks/holdout/testing_answers_2026_11_20.json",
+  "results": [
+    {
+      "challenge": 1,
+      "historical_freeze": "experiments/bottleneck/task1_freeze.json",
+      "parameters": {
+        "generations": {
+          "prediction": 4587.059039972118,
+          "truth": 4757.0,
+          "absolute_relative_error": 0.03572439773552283
+        },
+        "post_decline_fraction": {
+          "prediction": 0.5224205941511895,
+          "truth": 0.52,
+          "absolute_relative_error": 0.004654988752287315
+        }
+      }
+    },
+    {
+      "challenge": 2,
+      "historical_freeze": "experiments/secondary_contact/task2_freeze.json",
+      "parameters": {
+        "mainland_population_size": {
+          "prediction": 21138.888966975246,
+          "truth": 46613.0,
+          "absolute_relative_error": 0.5465022854788311
+        },
+        "island_population_size": {
+          "prediction": 82967.40403239364,
+          "truth": 38811.0,
+          "absolute_relative_error": 1.1377290982554853
+        },
+        "generations_since_split": {
+          "prediction": 4544.198810769858,
+          "truth": 15347.0,
+          "absolute_relative_error": 0.7039031204294091
+        },
+        "generations_since_migration": {
+          "prediction": 1455.0418057325192,
+          "truth": 4942.0,
+          "absolute_relative_error": 0.705576324214383
+        },
+        "migration_rate": {
+          "prediction": 0.0001990061153383476,
+          "truth": 0.000175,
+          "absolute_relative_error": 0.1371778019334149
+        }
+      }
+    },
+    {
+      "challenge": 3,
+      "historical_freeze": "experiments/growth_bgs/task3_freeze.json",
+      "parameters": {
+        "generations": {
+          "prediction": 5000.0,
+          "truth": 3007.0,
+          "absolute_relative_error": 0.6627868307283007
+        },
+        "post_growth_scaling": {
+          "prediction": 2.0,
+          "truth": 1.39,
+          "absolute_relative_error": 0.4388489208633095
+        }
+      }
+    },
+    {
+      "challenge": 4,
+      "historical_freeze": "experiments/split_migration_bgs/task4_freeze.json",
+      "parameters": {
+        "AFR_population_size": {
+          "prediction": 16000.0,
+          "truth": 19715.0,
+          "absolute_relative_error": 0.18843520162312954
+        },
+        "EUR_population_size": {
+          "prediction": 24000.0,
+          "truth": 29160.0,
+          "absolute_relative_error": 0.17695473251028804
+        },
+        "generations_since_split": {
+          "prediction": 4500.0,
+          "truth": 4855.0,
+          "absolute_relative_error": 0.07312049433573631
+        },
+        "migration_rate": {
+          "prediction": 0.00015,
+          "truth": 0.000125,
+          "absolute_relative_error": 0.19999999999999996
+        }
+      }
+    },
+    {
+      "challenge": 5,
+      "historical_freeze": "experiments/single_sweep/task5_freeze.json",
+      "predicted_intervals": 1,
+      "published_sweep_sites": 1,
+      "sites_covered": 1,
+      "coverage_fraction": 1.0,
+      "note": "Coordinate overlap only; this is not an official competition score"
+    },
+    {
+      "challenge": 6,
+      "historical_freeze": "experiments/soft_sweep/task6_freeze.json",
+      "predicted_intervals": 1,
+      "published_sweep_sites": 1,
+      "sites_covered": 1,
+      "coverage_fraction": 1.0,
+      "note": "Coordinate overlap only; this is not an official competition score"
+    },
+    {
+      "challenge": 7,
+      "historical_freeze": "experiments/single_sweep_bgs/task7_freeze.json",
+      "predicted_intervals": 1,
+      "published_sweep_sites": 1,
+      "sites_covered": 1,
+      "coverage_fraction": 1.0,
+      "note": "Coordinate overlap only; this is not an official competition score"
+    },
+    {
+      "challenge": 8,
+      "historical_freeze": "experiments/multiple_sweeps_bgs/task8_freeze.json",
+      "predicted_intervals": 6,
+      "published_sweep_sites": 28,
+      "sites_covered": 2,
+      "coverage_fraction": 0.07142857142857142,
+      "note": "Coordinate overlap only; this is not an official competition score"
+    }
+  ]
+}

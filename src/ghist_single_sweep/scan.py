@@ -44,7 +44,15 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
             if not valid:
                 skipped += 1
                 continue
-            positions.append(int(record.pos) - 1)
+            position = int(record.pos) - 1
+            if record.contig != contig or not 0 <= position < contig_length:
+                raise ValueError("VCF coordinates must be 1-based and within the declared contig")
+            if positions and position < positions[-1]:
+                raise ValueError("VCF positions must be sorted")
+            if sum(row) in (0, len(row)):
+                skipped += 1
+                continue
+            positions.append(position)
             rows.append(row)
     matrix = np.asarray(rows, dtype=np.uint8)
     if matrix.ndim != 2 or matrix.shape[1] < 4:
@@ -61,24 +69,41 @@ def read_phased_biallelic_vcf(path: Path) -> VariantMatrix:
 def read_bed_intervals(path: Path, contig: str) -> np.ndarray:
     intervals: list[tuple[int, int]] = []
     for line in path.read_text().splitlines():
-        if not line or line.startswith("#"):
+        if not line.strip() or line.lstrip().startswith("#"):
             continue
         fields = line.split()
-        if fields[0] == contig:
+        if fields[0].removeprefix("chr") == contig.removeprefix("chr"):
             intervals.append((int(fields[1]), int(fields[2])))
     if not intervals:
         raise ValueError(f"no accessibility intervals for {contig}")
-    return np.asarray(intervals, dtype=np.int64)
+    return merge_intervals(np.asarray(intervals, dtype=np.int64))
+
+
+def merge_intervals(intervals: np.ndarray) -> np.ndarray:
+    intervals = np.asarray(intervals, dtype=np.int64)
+    if intervals.ndim != 2 or intervals.shape[1] != 2:
+        raise ValueError("Expected an array of BED interval pairs")
+    merged = []
+    for left, right in sorted(intervals.tolist()):
+        if left < 0 or right <= left:
+            raise ValueError("Invalid half-open accessibility interval")
+        if merged and left <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], right)
+        else:
+            merged.append([left, right])
+    return np.asarray(merged, dtype=np.int64).reshape(-1, 2)
 
 
 def accessible_bases(starts: np.ndarray, ends: np.ndarray, intervals: np.ndarray) -> np.ndarray:
     result = np.zeros(starts.size, dtype=np.int64)
-    for left, right in intervals:
+    for left, right in merge_intervals(intervals):
         result += np.maximum(0, np.minimum(ends, right) - np.maximum(starts, left))
     return result
 
 
 def tajima_d(allele_counts: np.ndarray, sequence_length: int, sample_size: int) -> float:
+    allele_counts = np.asarray(allele_counts)
+    allele_counts = allele_counts[(allele_counts > 0) & (allele_counts < sample_size)]
     segregating = int(allele_counts.size)
     if segregating < 2 or sequence_length <= 0:
         return float("nan")
@@ -147,6 +172,18 @@ def scan_windows(
     window_size: int,
     step_size: int,
 ) -> dict[str, np.ndarray]:
+    if window_size <= 0 or step_size <= 0:
+        raise ValueError("Window and step sizes must be positive")
+    intervals = merge_intervals(accessibility)
+    accessible = np.zeros(variants.positions.size, dtype=bool)
+    if len(intervals):
+        # Avoid comparing every variant with every interval on chromosome-scale data.
+        interval_index = np.searchsorted(intervals[:, 0], variants.positions, side="right") - 1
+        accessible = (interval_index >= 0) & (
+            variants.positions < intervals[np.maximum(interval_index, 0), 1]
+        )
+    positions = variants.positions[accessible]
+    variant_haplotypes = variants.haplotypes[accessible]
     starts = np.arange(0, variants.contig_length, step_size, dtype=np.int64)
     ends = np.minimum(starts + window_size, variants.contig_length)
     exposure = accessible_bases(starts, ends, accessibility)
@@ -164,9 +201,9 @@ def scan_windows(
     }
     sample_size = variants.haplotypes.shape[1]
     for index, (left, right) in enumerate(zip(starts, ends, strict=True)):
-        lo = int(np.searchsorted(variants.positions, left, side="left"))
-        hi = int(np.searchsorted(variants.positions, right, side="left"))
-        haplotypes = variants.haplotypes[lo:hi]
+        lo = int(np.searchsorted(positions, left, side="left"))
+        hi = int(np.searchsorted(positions, right, side="left"))
+        haplotypes = variant_haplotypes[lo:hi]
         if haplotypes.shape[0] == 0 or exposure[index] == 0:
             continue
         counts = haplotypes.sum(axis=1).astype(float)

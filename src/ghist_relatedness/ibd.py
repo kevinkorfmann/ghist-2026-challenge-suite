@@ -113,9 +113,19 @@ def _distribution_features(
 def pair_features(
     rows: list[dict[str, str]], genome_cm: float, sex_map: SexMap | None = None
 ) -> list[dict[str, object]]:
+    if not np.isfinite(genome_cm) or genome_cm <= 0:
+        raise ValueError("genome_cm must be positive and finite")
     grouped: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
     for row in rows:
-        grouped[(row["indID1"], row["indID2"])].append(row)
+        pair = tuple(sorted((row["indID1"], row["indID2"])))
+        if not all(pair) or pair[0] == pair[1]:
+            raise ValueError("IBD segments must identify two distinct individuals")
+        if row["type"] not in {"IBD1", "IBD2"}:
+            raise ValueError(f"Unsupported IBD segment type: {row['type']}")
+        length = float(row["length"])
+        if not np.isfinite(length) or length < 0:
+            raise ValueError("IBD segment length must be finite and nonnegative")
+        grouped[pair].append(row)
 
     output: list[dict[str, object]] = []
     for (individual1, individual2), segments in grouped.items():

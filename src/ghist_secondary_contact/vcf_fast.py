@@ -57,10 +57,16 @@ def scan_secondary_contact_vcf(path: str | Path) -> tuple[np.ndarray, dict]:
                 len(genotypes) != 4 * (POPULATION1_DIPLOIDS + POPULATION2_DIPLOIDS) - 1
                 or any(value not in valid_genotype_bytes for value in genotypes)
                 or genotypes[POPULATION1_BYTES] != 9
+                or genotypes[1::4] != b"|" * (POPULATION1_DIPLOIDS + POPULATION2_DIPLOIDS)
+                or genotypes[3::4] != b"\t" * (POPULATION1_DIPLOIDS + POPULATION2_DIPLOIDS - 1)
+                or any(value not in b"01" for value in genotypes[0::4])
+                or any(value not in b"01" for value in genotypes[2::4])
             ):
                 layout_errors += 1
                 continue
             position = int(fields[1])
+            if not 1 <= position <= 100_000_000:
+                raise ValueError("VCF positions must be 1-based within the 100 Mb region")
             if first_position is None:
                 first_position = position
             if previous_position is not None:

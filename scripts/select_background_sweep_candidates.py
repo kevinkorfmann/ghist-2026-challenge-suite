@@ -22,6 +22,8 @@ def separated_peaks(report: np.ndarray, separation: int) -> list[int]:
 
 
 def nearest_exonic_position(position: int, intervals: list[tuple[int, int]]) -> int:
+    if not intervals:
+        raise ValueError("No exons found for the selected chromosome")
     best_position = position
     best_distance = float("inf")
     for start, end in intervals:
@@ -31,6 +33,35 @@ def nearest_exonic_position(position: int, intervals: list[tuple[int, int]]) -> 
             best_position = candidate
             best_distance = distance
     return best_position
+
+
+def read_exons(path: Path, chromosome: str) -> list[tuple[int, int]]:
+    intervals = []
+    for line in path.read_text().splitlines():
+        if not line.strip() or line.startswith(("#", "track", "browser")):
+            continue
+        contig, start, end = line.split()[:3]
+        if contig.removeprefix("chr") != chromosome.removeprefix("chr"):
+            continue
+        start, end = int(start), int(end)
+        if start < 0 or end <= start:
+            raise ValueError("Invalid exon BED interval")
+        intervals.append((start, end))
+    if not intervals:
+        raise ValueError(f"No exons found for chromosome {chromosome}")
+    return intervals
+
+
+def write_candidate_bed(path: Path, candidates: list[dict], chromosome: str, half_width: int) -> None:
+    if not candidates or half_width <= 0:
+        raise ValueError("At least one candidate and a positive half width are required")
+    contig = "chr" + chromosome.removeprefix("chr")
+    rows = []
+    for candidate in sorted(candidates, key=lambda item: int(item["exonic_center"])):
+        center = int(candidate["exonic_center"])
+        rows.append(f"{contig}\t{max(0, center - half_width)}\t{center + half_width}\n")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("".join(rows))
 
 
 def local_audit_centers(directory: Path, position: int) -> list[int]:
@@ -58,6 +89,7 @@ def main() -> None:
     parser.add_argument("--task7-dir", type=Path, required=True)
     parser.add_argument("--task8-dir", type=Path, required=True)
     parser.add_argument("--exons", type=Path, required=True)
+    parser.add_argument("--chromosome", required=True, help="7 for testing; 9 for final")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--bed", type=Path, required=True)
     args = parser.parse_args()
@@ -77,11 +109,7 @@ def main() -> None:
     task7_evidence.extend(local_centers)
     task7_center = int(np.median(task7_evidence))
 
-    exons = []
-    with args.exons.open() as handle:
-        for line in handle:
-            _, start, end = line.split()
-            exons.append((int(start), int(end)))
+    exons = read_exons(args.exons, args.chromosome)
 
     candidates = []
     task8_localizations = []
@@ -120,6 +148,7 @@ def main() -> None:
     task8_half_width = 60_000
     summary = {
         "state": "PROVISIONAL",
+        "chromosome": args.chromosome.removeprefix("chr"),
         "calibration": {
             "task7_primary_position": task7_primary,
             "task7_background_maximum_mu_outside_2mb": task7_null_maximum,
@@ -138,11 +167,7 @@ def main() -> None:
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(summary, indent=2) + "\n")
-    args.bed.parent.mkdir(parents=True, exist_ok=True)
-    with args.bed.open("w") as handle:
-        for candidate in sorted(candidates, key=lambda item: int(item["exonic_center"])):
-            center = int(candidate["exonic_center"])
-            handle.write(f"chr7\t{center - task8_half_width}\t{center + task8_half_width}\n")
+    write_candidate_bed(args.bed, candidates, args.chromosome, task8_half_width)
     print(json.dumps(summary, indent=2))
 
 

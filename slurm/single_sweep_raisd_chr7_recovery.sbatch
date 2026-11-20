@@ -3,7 +3,7 @@
 #SBATCH --partition=genoa-std-mem
 #SBATCH --array=0-15
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=2048M
+#SBATCH --mem-per-cpu=5632M
 #SBATCH --time=00:30:00
 #SBATCH --output=logs/%x-%A_%a.out
 #SBATCH --error=logs/%x-%A_%a.err

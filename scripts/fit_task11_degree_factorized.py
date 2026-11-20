@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import csv
 import json
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -15,20 +14,16 @@ try:
     from scripts.fit_task11_dog_relationships import (
         LABELS,
         feature_names,
-        read_clusters,
         read_observed,
         relationship_label,
-        score,
         summarize_segments,
     )
 except ModuleNotFoundError:
     from fit_task11_dog_relationships import (
         LABELS,
         feature_names,
-        read_clusters,
         read_observed,
         relationship_label,
-        score,
         summarize_segments,
     )
 
