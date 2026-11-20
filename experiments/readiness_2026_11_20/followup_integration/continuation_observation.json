@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "observed_utc": "2026-11-20T19:40:30.486665+00:00",
+  "scope": "Read-only observation of separate continuation and submission work. This review did not run final inference or submit, and did not independently rerun the low-coverage models. No other-chat files edited or staged.",
+  "task9": {
+    "checked_at_utc": "2026-11-20T19:30:20.472869+00:00",
+    "submission_id": "9785353",
+    "submission_name": "Task9 ten-label RF 2026-11-20",
+    "entity": "syn78778815",
+    "entity_version": 1,
+    "queue": "GHIST 2026 Relatedness 1 Final",
+    "dashboard_url": "https://www.synapse.org/Synapse:syn74803798/wiki/640981",
+    "published_scores": {
+      "relation": 0.834,
+      "meioses_count": 0.842
+    },
+    "metric": "Challenge truth-class-size-weighted Jaccard; not ordinary accuracy",
+    "evidence_sha256": {
+      "score_dashboard.png": "9f60f3e2a07279842a40bb9e2ba2fb601ab78e59a7bede11894338dd3fa1e64e",
+      "score_dashboard.ax.txt": "05b74f4b8760d0719caf9c9c86a2d781e6c8a3ede497699120af86196b3d1fd6"
+    }
+  },
+  "task9_source_record_sha256": "452617f3c3d07c335712f9113182d159b7e24f35165913c0d6a34cc6b85ee419",
+  "task9_dashboard_evidence_hashes_independently_verified": true,
+  "task14": {
+    "source_record": "experiments/lowcoverage_2026_11_20/task14_confirmation_partial_1.json",
+    "source_record_sha256": "29fad397efe90d76268df72e18290aa1fffd855abe8e5915e89502e53cf21f5d",
+    "freeze_sha256": "1f61090830f5d33cd62eb117488d32f906e670d8819add5f30edb1b26b0b11bc",
+    "cohort": "split_r0_p0_v1",
+    "failed_gates": [
+      "target_stability"
+    ],
+    "alternate_seed_pop2_relative_change": 0.012768658928648202,
+    "strict_target_stability_limit": 0.01,
+    "current_policy_cannot_pass_all_six_gate": true,
+    "remaining_outcomes_not_needed_to_establish_this_failure": true,
+    "new_stabilization_policy_is_separate_development": true
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "schema": "task5_interval20_feasibility_terminal_report_v1",
+  "completed_utc": "2026-11-20T19:56:33.625732+00:00",
+  "job_id": "10855907",
+  "state": "TIMEOUT",
+  "scheduler": [
+    {
+      "JobID": "10855907",
+      "State": "TIMEOUT",
+      "ExitCode": "0:0",
+      "Elapsed": "00:45:09",
+      "Timelimit": "00:45:00",
+      "AllocCPUS": "4",
+      "ReqMem": "22G",
+      "MaxRSS": "",
+      "TotalCPU": "44:56.857",
+      "Start": "2026-11-20T19:08:13",
+      "End": "2026-11-20T19:53:22"
+    },
+    {
+      "JobID": "10855907.batch",
+      "State": "CANCELLED",
+      "ExitCode": "0:15",
+      "Elapsed": "00:45:10",
+      "Timelimit": "",
+      "AllocCPUS": "4",
+      "ReqMem": "",
+      "MaxRSS": "2125028K",
+      "TotalCPU": "44:56.855",
+      "Start": "2026-11-20T19:08:13",
+      "End": "2026-11-20T19:53:23"
+    },
+    {
+      "JobID": "10855907.extern",
+      "State": "COMPLETED",
+      "ExitCode": "0:0",
+      "Elapsed": "00:45:10",
+      "Timelimit": "",
+      "AllocCPUS": "4",
+      "ReqMem": "",
+      "MaxRSS": "340K",
+      "TotalCPU": "00:00.001",
+      "Start": "2026-11-20T19:08:13",
+      "End": "2026-11-20T19:53:23"
+    }
+  ],
+  "protocol_sha256": "c9a3c5a7597ac90e4b5354635f2aaf421f4538c438624da92f594c18c76cae1d",
+  "terminal_collection_sha256": "96ba61a4d386a09ba8aa479fdf317d0b9a52e19ac4020f5235555c29fa8a2104",
+  "source_verification": {
+    "frozen_sources_unchanged": 22,
+    "external_locks_unchanged": 148,
+    "protocol_unchanged": true,
+    "runtime_versions_match": true,
+    "exact_generated_transformation": true,
+    "midpoint_prefixes_intact": {
+      "resources": true,
+      "phase": true
+    },
+    "all_nine_output_file_hashes_verified_locally": true
+  },
+  "resource_evidence": {
+    "records": 270,
+    "duration_seconds": 2690.2855231761932,
+    "maximum_sample_gap_seconds": 10.00125241279602,
+    "last_recorded_high_water_GiB": 2.0231971740722656,
+    "last_usage_GiB": 1.7501869201660156,
+    "limit_GiB": 22,
+    "maximum_failcnt": 0,
+    "oom_controls": [
+      "oom_kill_disable 0\nunder_oom 0\noom_kill 0"
+    ],
+    "monitor_failure_file_present": false,
+    "scheduler_end_minus_last_sample_seconds": 7.140922546386719,
+    "interpretation": "No OOM or monitor error was observed. The trace is continuous at its 10-second cadence through the last sample; it does not observe the final 7.14 seconds or provide a completed cleanup sample. This is partial-stage memory headroom, not a full-run memory bound."
+  },
+  "terminal_semantics": {
+    "adapter_status_remains": "RUNNING",
+    "in_process_finalization_completed": false,
+    "explanation": "Scheduler time-limit SIGTERM stopped the batch; adapter RUNNING is stale and is not completion. Independent post-termination source/runtime/output hash verification passed. The 45-minute configured limit was unchanged; scheduler enforced it at 45:09."
+  },
+  "phase_evidence": {
+    "last_logged_tick": 27200,
+    "last_logged_diploid_N": 43410,
+    "maximum_logged_diploid_N": 43410,
+    "logged_saves": 0,
+    "logged_restores": 0,
+    "observed": "Burn-in and part of the first population-growth phase only.",
+    "source_end_tick": 41290,
+    "source_epoch_boundaries": [
+      7157,
+      32757,
+      39157,
+      40757,
+      41157,
+      41257,
+      41290
+    ],
+    "unobserved": "First peak around 71,560 diploids at tick 32,757; subsequent contraction/growth/contraction/growth cycles; final sampling and all recapitation, neutral overlay, VCF export, scan and RAiSD stages.",
+    "approximate_unobserved_discretized_maximum_diploids": 71577,
+    "maximum_qualification": "About 71,600 from the source schedule; the brief final-growth target includes the engine discretization correction. It was not observed in this attempt.",
+    "source_schedule": {
+      "constants": {
+        "Q": 1.0,
+        "burn_in": 1.0,
+        "generation_time": 30.0
+      },
+      "end_tick": 41290,
+      "epoch_boundaries": [
+        7157,
+        32757,
+        39157,
+        40757,
+        41157,
+        41257,
+        41290
+      ],
+      "catalog_sizes": [
+        7156.0,
+        7155.959997685153,
+        71559.65925132985,
+        7155.999712600628,
+        71560.21678822454,
+        7156.029247798124,
+        71560.0
+      ],
+      "growth_phases": [
+        {
+          "phase": 1,
+          "start_tick": 7158,
+          "end_tick": 32756,
+          "initial_target_diploids": 7155.959997685153,
+          "approximate_last_scheduled_target": 71560
+        },
+        {
+          "phase": 2,
+          "start_tick": 32758,
+          "end_tick": 39156,
+          "initial_target_diploids": 71559.65925132985,
+          "approximate_last_scheduled_target": 7156
+        },
+        {
+          "phase": 3,
+          "start_tick": 39158,
+          "end_tick": 40756,
+          "initial_target_diploids": 7155.999712600628,
+          "approximate_last_scheduled_target": 71560
+        },
+        {
+          "phase": 4,
+          "start_tick": 40758,
+          "end_tick": 41156,
+          "initial_target_diploids": 71560.21678822454,
+          "approximate_last_scheduled_target": 7156
+        },
+        {
+          "phase": 5,
+          "start_tick": 41158,
+          "end_tick": 41256,
+          "initial_target_diploids": 7156.029247798124,
+          "approximate_last_scheduled_target": 71577
+        },
+        {
+          "phase": 6,
+          "start_tick": 41258,
+          "end_tick": 41289,
+          "initial_target_diploids": 71560.0,
+          "approximate_last_scheduled_target": 71560
+        }
+      ],
+      "interpretation": "Source-derived targets only; later phases are unobserved."
+    }
+  },
+  "denominators": {
+    "original_planned_cases": 48,
+    "locked_cases_launched": 6,
+    "original_cases_completed": 3,
+    "original_cases_failed": 3,
+    "not_run": 42,
+    "original_workflow_attempts": 7,
+    "original_attempts_completed": 3,
+    "original_attempts_failed": 4,
+    "additional_fixed_interval20_resource_attempts": 1,
+    "additional_attempts_timed_out": 1,
+    "all_attempts_including_this_resource_probe": 8,
+    "new_independent_biological_replicates": 0,
+    "interpretation": "This same-seed resource-only attempt does not replace original failures, add an independent biological replicate, or change the original panel completion/accuracy denominators."
+  },
+  "mechanistic_assessment": {
+    "candidate": "Separately registered fixed simplificationInterval100 with default NULL simplificationRatio.",
+    "source_backed_hypothesis": "Fewer deterministic ancestry-simplification calls may reduce repeated copying/sorting/rebuilding cost, at the price of larger retained tables and temporary allocations. This changes bookkeeping frequency, with no proposed biological parameter or RNG changes.",
+    "limitations": [
+      "No profiler isolates simplification CPU time in this run; a speedup is plausible but not measured.",
+      "Fivefold interval length implies neither fivefold speedup nor fivefold memory.",
+      "Later populations up to about 71,600 diploids and downstream stages are unobserved; no safe full-run memory bound follows from the 2.023 GiB recorded peak.",
+      "Original adaptive OOM lacks a matched tick trace, so this run cannot establish matched-phase memory savings.",
+      "Existing completed paired fixture covers default-adaptive versus 20 only; it does not validate 100."
+    ],
+    "primary_documentation": "https://github.com/MesserLab/SLiM/blob/v4.3/QtSLiM/help/SLiMHelpFunctions.html",
+    "primary_documentation_section": "initializeTreeSeq; fixed interval with NULL ratio versus adaptive control, speed/memory tradeoff.",
+    "implementation_evidence": "../task5_resource_source_audit.json; version-matched SLiM4.3 species.cpp/species_eidos.cpp and bundled tskit tables.c.",
+    "independent_prospective_review": "../root_independent_reviews/task5_interval100_prospective/review.json",
+    "independent_prospective_review_sha256": "af61ad5126e7a9bc6be94e7695f7b8403eb8c9f2badf93d883570a43c2fbbc51",
+    "next_gate": "Root may separately authorize the prepared <=5-minute interval20-vs100 paired fixture after terminal review. This report authorizes no fixture or full-case launch."
+  },
+  "artifact_notes": {
+    "generated_scripts_archive": "terminal/generated_scripts.tar.gz",
+    "generated_scripts_archive_sha256": "93042c5dca871f132c568c0a5ce71fb72bbb11cc154817793528dd28a7bc6e7d",
+    "raw_resource_log": "terminal/diagnostics/resources.jsonl",
+    "raw_phase_log": "terminal/diagnostics/phase.tsv",
+    "raw_script_members": "Two complete generated SLiM scripts are in the archive; their exact hashes appear in terminal_collection.json. Uncompressed copies remain in the safe cache for independent review.",
+    "all_remote_outputs_retained": "betty:/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/readiness_sweeps/task5_interval20_feasibility"
+  },
+  "predictions_or_accuracy_inspected": false,
+  "production_defaults_changed": false,
+  "scientifically_validated": false,
+  "conclusion": "The interval20 attempt is a time-censored partial resource observation. Full Task5 resource feasibility remains unresolved."
+}

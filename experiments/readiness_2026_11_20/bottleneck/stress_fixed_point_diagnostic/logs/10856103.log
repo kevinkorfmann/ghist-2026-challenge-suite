@@ -1,0 +1,111 @@
+{
+  "schema": "bottleneck_stress_fixed_points_v1",
+  "manifest_sha256": "2cd49edaac63b6025bd756b10c8c80a525e660e88136c3f5ed74b102346315ab",
+  "state": "COMPLETED",
+  "planned_points": 4,
+  "completed_points": [
+    {
+      "engine": "moments",
+      "label": "true_shape",
+      "parameters": [
+        0.89,
+        0.6666666666666666
+      ],
+      "conditional_log_likelihood": -484.7920316427335,
+      "negative_objective": 484.7920316427335,
+      "optimal_theta": 287754.31421256595,
+      "profiled_ancestral_effective_size": 21034.672091561835,
+      "profiled_generations": 28046.229455415778,
+      "profiled_current_effective_size": 18720.858161490032,
+      "active_bins": 57,
+      "active_observed_sum": 1404134.0,
+      "active_expected_unit_theta_sum": 4.879627969583654,
+      "physical_roundtrip_scaled_time": 0.6666666666666666,
+      "physical_roundtrip_theta": 287754.31421256595
+    },
+    {
+      "engine": "moments",
+      "label": "selected",
+      "parameters": [
+        0.05504579428542256,
+        0.31932705062393096
+      ],
+      "fit_record": "inputs/moments.json",
+      "conditional_log_likelihood": -474.9901766320254,
+      "negative_objective": 474.9901766320254,
+      "optimal_theta": 4670798.273001502,
+      "profiled_ancestral_effective_size": 341432.62229543144,
+      "profiled_generations": 218057.3445287895,
+      "profiled_current_effective_size": 18794.4298892067,
+      "active_bins": 57,
+      "active_observed_sum": 1404134.0,
+      "active_expected_unit_theta_sum": 0.3006197052260382,
+      "physical_roundtrip_scaled_time": 0.31932705062393096,
+      "physical_roundtrip_theta": 4670798.273001502,
+      "archived_ll_difference": 0.0,
+      "archived_theta_relative_difference": 0.0,
+      "archived_physical_differences": {
+        "generations": 0.0,
+        "ancestral_effective_size": 0.0,
+        "fraction": 0.0
+      }
+    },
+    {
+      "engine": "dadi",
+      "label": "true_shape",
+      "parameters": [
+        0.89,
+        0.6666666666666666
+      ],
+      "conditional_log_likelihood": -485.48960790014826,
+      "negative_objective": 485.48960790014826,
+      "optimal_theta": 287785.54541813285,
+      "profiled_ancestral_effective_size": 21036.955074424914,
+      "profiled_generations": 28049.27343256655,
+      "profiled_current_effective_size": 18722.890016238172,
+      "active_bins": 57,
+      "active_observed_sum": 1404134.0,
+      "active_expected_unit_theta_sum": 4.879098420179125,
+      "physical_roundtrip_scaled_time": 0.6666666666666666,
+      "physical_roundtrip_theta": 287785.54541813285
+    },
+    {
+      "engine": "dadi",
+      "label": "selected",
+      "parameters": [
+        0.05874510805907605,
+        0.3380545068047384
+      ],
+      "fit_record": "inputs/dadi.json",
+      "conditional_log_likelihood": -477.93363646076614,
+      "negative_objective": 477.93363646076614,
+      "optimal_theta": 4378120.8288005935,
+      "profiled_ancestral_effective_size": 320038.0722807451,
+      "profiled_generations": 216380.625367213,
+      "profiled_current_effective_size": 18800.67113915076,
+      "active_bins": 57,
+      "active_observed_sum": 1404134.0,
+      "active_expected_unit_theta_sum": 0.3207161371068576,
+      "physical_roundtrip_scaled_time": 0.3380545068047384,
+      "physical_roundtrip_theta": 4378120.8288005935,
+      "archived_ll_difference": 0.0,
+      "archived_theta_relative_difference": 0.0,
+      "archived_physical_differences": {
+        "generations": 0.0,
+        "ancestral_effective_size": 0.0,
+        "fraction": 0.0
+      }
+    }
+  ],
+  "versions": {
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "numpy": "2.4.6",
+    "scipy": "1.16.3"
+  },
+  "truth_used_posthoc": true,
+  "scope": "Posthoc four-point diagnostic of one existing development case selected after poor recovery was known; no independent confirmation, optimization, grid search, new biology or holdout access.",
+  "optimized": false,
+  "simulated": false,
+  "seconds": 6.147292756009847
+}

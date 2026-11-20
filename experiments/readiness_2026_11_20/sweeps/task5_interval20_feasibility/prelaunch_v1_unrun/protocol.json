@@ -1,0 +1,63 @@
+{
+  "schema": "task5_interval20_same_seed_feasibility_protocol_v1",
+  "case": 5,
+  "seed": 202612005,
+  "scope": "One same-seed fixed-bookkeeping resource retry only; no scientific accuracy or readiness claim.",
+  "resources": {
+    "cpus": 4,
+    "memory_GiB": 22,
+    "slurm_minutes": 45,
+    "automatic_retries": 0
+  },
+  "design_relative_path": "experiments/readiness_2026_11_20/sweeps/task5_design_v4.json",
+  "accessibility_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/data/raw/shared/sweeps/testing.accessible.bed",
+  "slim_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim",
+  "raisd_path": "/vast/projects/smathi/cohort/korfmann/ghist2026/external/raisd/RAiSD",
+  "output_directory": "/vast/projects/smathi/cohort/korfmann/ghist2026/scientific/readiness_sweeps/task5_interval20_feasibility",
+  "bookkeeping_change": "initializeTreeSeq(simplificationInterval=20,timeUnit=\"generations\"); biological inputs and checkpoint event scheduling unchanged.",
+  "diagnostics": "Passive tick/population/restore-count file, cgroup/process sampling, retained generated scripts, engineDEBUG log; tree output relocated to retained path and completed raw file copied back to original engine loader path.",
+  "input_design_sha256": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+  "source_sha256": {
+    "adapter.py": "c1975fd550bb273abd202cd27c1ee77abe2c80aa8dd276c8e7189f5d29146fa7",
+    "test_adapter.py": "72520d361944c450ad6f895781f6e2e1fe9f24ac577f7262bd28c0e37b1c701a",
+    "run.sbatch": "3fda6267439e76c43509f98e4a245af129b8e0d9974a1581a36606ffe0cb3e28",
+    "snapshot.tar.gz": "04cdfbe46fa75fdf6005f46a1b81198d552a2a38015b98465477cd2f10293c59",
+    "snapshot/experiments/readiness_2026_11_20/sweeps/task5_design_v4.json": "801f6c2028483162ef4a6ddddfeb10f6dcaa5e49343eef0f5279edafe60adaa1",
+    "snapshot/scripts/check_sweep_vcf_contract.py": "20bb77ab12cb3cc6dba571271a498aa52ccebd260ab183c2b39e82e530a79eb4",
+    "snapshot/scripts/develop_soft_sweep.py": "d11e5d9dc0b6d892b033002f2c5a1e4112188681422a5fb2f03c00430046c053",
+    "snapshot/scripts/predict_single_sweep.py": "f49fdad7a78cad2ac9470f37cefa2b0e70ec106d0bbba2b62f5cc9c42daa0f91",
+    "snapshot/scripts/run_sweep_readiness_case.py": "e12a8af2873a712f10dc2c8c4dc2b581c31078b900dc4cff9226477c1c23e238",
+    "snapshot/scripts/summarize_sweep_readiness.py": "121c7b8d8e6f7d4858f11ae8a508f608a1269b6ca9cebe8b6c541578a8090307",
+    "snapshot/src/ghist_relatedness/__init__.py": "6e3af82b11024da1250ec11d16b54199ac9e6dcf8b1d76e8dff941cfab17b7cc",
+    "snapshot/src/ghist_relatedness/labels.py": "e3237a0380e26cc53337a5a2899d23b55feb6558ee2d82aa28571aa625f5223f",
+    "snapshot/src/ghist_single_sweep/__init__.py": "b0f7371b157005db3c8027224f6b8bd052c42685bed20e62454cc1cb60958f8d",
+    "snapshot/src/ghist_single_sweep/export.py": "b8f24772f8548bb079c4dd8898e3a047f8ec664c5c7384d8e8c0652002ccad56",
+    "snapshot/src/ghist_single_sweep/multiple.py": "c84729694ab5c03389dfee2d89c09c28049724f7afcce34b80cf924f7209fcfb",
+    "snapshot/src/ghist_single_sweep/peaks.py": "5d851a05d9199bb47e6725018801c36c0d7039e6f1e6b83810d8c327ed80b52a",
+    "snapshot/src/ghist_single_sweep/predict.py": "d4e69b13e6ffb796f7cb88e3810edc9876bff2e136f09775083998437a04ba0d",
+    "snapshot/src/ghist_single_sweep/recovery.py": "5930f56a5e48e4768f6244aa590ac660c310a6d9cf5a431629fdeb5d0aa7d242",
+    "snapshot/src/ghist_single_sweep/scan.py": "1a49e7be5aa4cf5769899bd7acfe9ff91e99cc1d24957f87b9d0f421f1111dce",
+    "snapshot/src/ghist_single_sweep/soft.py": "993ffdd555d7a9ec747661199267cfeba73f5c9c62d4db439600d5e47fb852e2",
+    "snapshot/src/ghist_submission/__init__.py": "32cf6432be4d983267deb9d157d4b87fd18e05f47032d44a84b7263f501356f6",
+    "snapshot/src/ghist_submission/validate.py": "b922bce5f23a9d5ae5d56237fca7e110b664fbc82b735bd4b890c2fc8e8425cc"
+  },
+  "external_sha256": {
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/data/raw/shared/sweeps/testing.accessible.bed": "d227d72cc8d99a3cabfe29b8f21ee1617bd91d436ca0a737f501844a52c1bc98",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/.cache/stdpopsim/genetic_maps/HomSap/HapMapII_GRCh38/genetic_map_Hg38_chr7.txt": "321870c6175105d1f6817bbf95430315c004db682a45be24458b0b9f7b017da8",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/SLiM-v4.3/build/slim": "caaf10c365e4ae783251ab31f9d4b9d0425ba3417a7fbccbc76ce42eea94551e",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/external/raisd/RAiSD": "a6260d883f79e25cfca5704828975e08fddaa2f9ae8fbeadae9e76b04f7e1307",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/slim_engine.py": "a58e4629196239970d0c593f71b324d3da831745a5e707fe83fdd214cea9a911",
+    "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/lib/python3.11/site-packages/stdpopsim/catalog/HomSap/demographic_models.py": "ca1adb03f251b7fc293323ef9fe4e77ec9e705a9ad38c21382946bed7c791e1c"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "msprime": "1.4.2",
+    "pysam": "0.24.0",
+    "stdpopsim": "0.3.0",
+    "tskit": "1.0.3",
+    "pyslim": "1.0.4"
+  },
+  "failure_policy": "OOM/timeout/exception retained as new failed or censored attempt; original OOM unchanged. No escalation, further case, or accuracy-based decision.",
+  "scientifically_validated": false,
+  "release_ready": false
+}

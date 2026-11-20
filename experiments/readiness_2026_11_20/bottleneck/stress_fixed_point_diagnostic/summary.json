@@ -1,0 +1,54 @@
+{
+  "schema": "bottleneck_stress_fixed_point_audit_v1",
+  "scope": "Posthoc four-point diagnostic of one existing development case selected after poor recovery was known; no independent confirmation, optimization, grid search, new biology or holdout access.",
+  "manifest_sha256": "2cd49edaac63b6025bd756b10c8c80a525e660e88136c3f5ed74b102346315ab",
+  "audit_source_sha256": "6d3f6351033981f125164da1d0a1ff604c43b4cef2b9ab570191ac215b594711",
+  "output_attestation_sha256": "c62bac73b34ab855f7b75cae157acae107b475dbdd82c177f3d84ceef56dcb3b",
+  "planned_points": 4,
+  "completed_attested_points": 4,
+  "true_theta": 287280.00000000006,
+  "true_current_effective_size": 18690.0,
+  "comparisons": [
+    {
+      "engine": "moments",
+      "selected_minus_true_shape_log_likelihood": 9.801855010708096,
+      "true_shape_profiled_theta": 287754.31421256595,
+      "true_shape_profiled_theta_relative_error": 0.0016510519791350653,
+      "selected_profiled_theta": 4670798.273001502,
+      "selected_current_effective_size": 18794.4298892067,
+      "selected_current_effective_size_relative_error": 0.0055874740078492025,
+      "true_shape_profiled_current_effective_size": 18720.858161490032,
+      "true_shape_profiled_current_effective_size_relative_error": 0.0016510519791348433,
+      "selected_physical_relative_errors": {
+        "generations": 6.7877623045996245,
+        "ancestral_effective_size": 15.25869629978245,
+        "post_decline_fraction": -0.9381507929377274
+      }
+    },
+    {
+      "engine": "dadi",
+      "selected_minus_true_shape_log_likelihood": 7.55597143938212,
+      "true_shape_profiled_theta": 287785.54541813285,
+      "true_shape_profiled_theta_relative_error": 0.001759765448805295,
+      "selected_profiled_theta": 4378120.8288005935,
+      "selected_current_effective_size": 18800.67113915076,
+      "selected_current_effective_size_relative_error": 0.005921409264353139,
+      "true_shape_profiled_current_effective_size": 18722.890016238172,
+      "true_shape_profiled_current_effective_size_relative_error": 0.001759765448805295,
+      "selected_physical_relative_errors": {
+        "generations": 6.727879477400465,
+        "ancestral_effective_size": 14.239908203845005,
+        "post_decline_fraction": -0.9339942606077797
+      }
+    }
+  ],
+  "limits": [
+    "No optimization or global optimum claim",
+    "No identifiability conclusion from one realization",
+    "Posthoc development diagnostic, not independent validation",
+    "No changed production model/settings/thresholds",
+    "Profiled theta at true shape does not fix ancestral size to generating truth"
+  ],
+  "scientifically_validated": false,
+  "release_ready": false
+}

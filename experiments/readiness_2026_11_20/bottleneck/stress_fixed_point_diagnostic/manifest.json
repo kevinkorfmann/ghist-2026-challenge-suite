@@ -1,0 +1,101 @@
+{
+  "schema": "bottleneck_stress_fixed_point_protocol_v1",
+  "scope": "Posthoc four-point diagnostic of one existing development case selected after poor recovery was known; no independent confirmation, optimization, grid search, new biology or holdout access.",
+  "case": "100mb_case_16_new_stress",
+  "truth": {
+    "generations": 28000,
+    "post_decline_fraction": 0.89,
+    "ancestral_effective_size": 21000
+  },
+  "true_theta": 287280.00000000006,
+  "true_current_effective_size": 18690.0,
+  "points": [
+    {
+      "engine": "moments",
+      "label": "true_shape",
+      "parameters": [
+        0.89,
+        0.6666666666666666
+      ]
+    },
+    {
+      "engine": "moments",
+      "label": "selected",
+      "parameters": [
+        0.05504579428542256,
+        0.31932705062393096
+      ],
+      "fit_record": "inputs/moments.json"
+    },
+    {
+      "engine": "dadi",
+      "label": "true_shape",
+      "parameters": [
+        0.89,
+        0.6666666666666666
+      ]
+    },
+    {
+      "engine": "dadi",
+      "label": "selected",
+      "parameters": [
+        0.05874510805907605,
+        0.3380545068047384
+      ],
+      "fit_record": "inputs/dadi.json"
+    }
+  ],
+  "planned_points": 4,
+  "planned_engines": 2,
+  "spectrum": "inputs/spectrum.npz",
+  "folded": true,
+  "mutation_rate": 3.42e-08,
+  "sequence_length": 100000000,
+  "sample_haplotypes": 114,
+  "dadi_grid_points": [
+    134,
+    144,
+    154
+  ],
+  "likelihood": "Archived engine Inference.ll_multinom on exactly the fixed folded active-bin domain; theta profiled analytically at each of two fixed shape points per engine.",
+  "physical_transform": "N_ancestral=theta/(4*mu*L); generations=2*N_ancestral*T; N_current=nu*N_ancestral.",
+  "selected_comparison_tolerance": {
+    "ll_absolute": 1e-08,
+    "theta_relative": 1e-12
+  },
+  "runtime_versions": {
+    "moments-popgen": "1.6.0",
+    "dadi": "2.4.4",
+    "numpy": "2.4.6",
+    "scipy": "1.16.3"
+  },
+  "replay_manifest_sha256": "522d6c1b47af4e6ebf99a7e83683b1b8d2d2cc88679a2898d2b33a527e61e152",
+  "frozen_sha256": {
+    "run.py": "c1ac572d1b6207638146c12267045377a4bfcd996abeab3d9dc699936abb8709",
+    "run.sbatch": "51f8373012aedbf12329b04f6a624c626ad3d41c5b8f7a024b530e4940b1283b",
+    "prepare.py": "cc166bfb51b55abb0d51f050b2f7e302bb74622e87c1233c98f2033f0c0e8364",
+    "inputs/biological_context.json": "e09558067df5ffac041cd5b61cd3d55198f1a3b3b38dacbe61cf9e6d10691f16",
+    "inputs/moments.json": "58e097dc47ebb42bc75f38d2eb062da2f9c41f32e199ae898c3c5e6c68ee87df",
+    "inputs/dadi.json": "813a7da73a8a3092e8f173654ef09ed3050c9a980e18f2abff409cf80a85343a",
+    "inputs/spectrum.npz": "dd76f14232d2f6e4af87b940e2f469fb0b9ac2b266d3a12084dac8a54a6f7e56",
+    "source_snapshot/src/ghist_inference/vcf.py": "a7122dbc1cb8830dbe99a9d35608471da982e991c3e36af8f8251d1e493aba81",
+    "source_snapshot/src/ghist_inference/checkpoint.py": "0665a32e9d9966b1e40471fbff56b752a9e0ef90964045d72ddfd7a1369cb11d",
+    "source_snapshot/src/ghist_inference/__init__.py": "2196b5034ca04e621c7673f18593c491f4553e75e4702318be2303f93cefa049",
+    "source_snapshot/src/ghist_inference/validation.py": "ae8b6924e254581331f0e304befc064881f4763d10e082b95220d06fa9c486eb",
+    "source_snapshot/src/ghist_bottleneck/optimization.py": "5a1ec054f9b0406f7b8a5d47b79e259f14c2632089e0b08a922fd4c2ab447f22",
+    "source_snapshot/src/ghist_bottleneck/sfs_baseline.py": "f665661e69548c624981d37dbf27de86ce54dc41dcc84b4d8c5f8f6641a2feef",
+    "source_snapshot/src/ghist_bottleneck/__init__.py": "4aa65448750ddbd3833bd89dcfe30be1e05feb70cbbadbb5481424761ee9f11d",
+    "source_snapshot/src/ghist_bottleneck/dadi_reference.py": "b0476436bf93e8efecbf5768d822bb6a91081084ccf0f36028b66ff2317bd93d"
+  },
+  "allocation": {
+    "cpus": 1,
+    "seconds": 300
+  },
+  "interpretation_limits": [
+    "No optimization or global optimum claim",
+    "No identifiability conclusion from one realization",
+    "Posthoc development diagnostic, not independent validation",
+    "No changed production model/settings/thresholds",
+    "Profiled theta at true shape does not fix ancestral size to generating truth"
+  ]
+}

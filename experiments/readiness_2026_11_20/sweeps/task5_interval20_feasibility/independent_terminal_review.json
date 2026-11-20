@@ -1,0 +1,123 @@
+{
+  "schema": "task5_interval20_independent_terminal_review_v1",
+  "reviewed_utc": "2026-11-20T20:00:05.043921+00:00",
+  "reviewer": "relatedness_science",
+  "scope": "Independent read-only resource/provenance/terminal audit; no prediction accuracy or model result inspected, no simulation or Slurm submission.",
+  "state": "TIMEOUT_PRESERVED",
+  "conditional_fixture_trigger": {
+    "satisfied_for_root_consideration": true,
+    "next_scope": "Only the separately frozen paired20/100 small software fixture, protocol0d977abaa44fa26b5166506fdac293b4158d449b32b3e5e8011dcf9618879429.",
+    "basis": "Terminal time-limit kill, continuous recorded resource prefix, no observedOOM or monitorfailure, large observed headroom, unchanged source/input/runtime and prior source-only fixture review.",
+    "execution_authorized_by_this_review": false,
+    "fullcase_interval100_authorized_or_proven_feasible": false,
+    "qualification": "Final7.140923seconds are unsampled and in-process cleanup was interrupted. The trigger uses observed evidence plus schedulerTIMEOUT, not certification of the unobserved tail."
+  },
+  "scheduler": {
+    "job_id": 10855907,
+    "state": "TIMEOUT",
+    "job_exit_field": "0:0",
+    "configured_minutes": 45,
+    "elapsed": "00:45:09",
+    "batch_state": "CANCELLED",
+    "batch_exit": "0:15",
+    "batch_elapsed": "00:45:10",
+    "batch_MaxRSS": "2125028K",
+    "cpus": 4,
+    "requested_memory": "22G",
+    "interpretation": "SchedulerTIMEOUT and batchSIGTERM override staleRUNNING/parentexit0:0; this is not success."
+  },
+  "independently_recomputed_trace": {
+    "records": 270,
+    "phase_records": 273,
+    "first_phase": [
+      1,
+      7156,
+      0,
+      0
+    ],
+    "last_phase": [
+      27200,
+      43410,
+      0,
+      0
+    ],
+    "stage_counts": {
+      "initializing": 1,
+      "slim_running": 269
+    },
+    "trace_seconds": 2690.2855231761932,
+    "maximum_gap": 10.00125241279602,
+    "first_sample_after_start_seconds": 11.573554277420044,
+    "last_sample_before_job_end_seconds": 7.140922546386719,
+    "peak_bytes": 2172391424,
+    "peak_GiB": 2.0231971740722656,
+    "sampled_headroom_GiB": 19.976802825927734,
+    "all_three_cgroup_oom_failcnt_zero": true
+  },
+  "trace_checks": [
+    "All270JSONL resource rows parse with finalnewline; alltimestamps finite/strictlyincreasing; every gap below10.1seconds and observedmaximum10.001252seconds.",
+    "Every row contains task,step,job cgroups; recordedfailcnt,under_oom andoom_kill allzero in everygroup. Joblimit exactly22GiB; highwater monotone and currentusage never exceeds it.",
+    "All273phase rows are exactly tick1 then100..27200, allpositivepopulation andzero saves/restores. LastSLiM process is present in finalresource row.",
+    "Midpoint resource andphase prefixes match their previously frozen bytecounts/SHA256 exactly.",
+    "No monitor_failure artifact; normal finalcleanup sample is absent afterSIGTERM. Continuous recordedprefix is not a full-run or finaltail memorybound."
+  ],
+  "provenance": {
+    "protocol_sha256": "c9a3c5a7597ac90e4b5354635f2aaf421f4538c438624da92f594c18c76cae1d",
+    "terminal_collection_sha256": "96ba61a4d386a09ba8aa479fdf317d0b9a52e19ac4020f5235555c29fa8a2104",
+    "author_terminal_report_sha256": "0dba0255b604964e1044be4ec75651d49c72c8f3413033de6a2104ec60218a68",
+    "pre_review_owned_manifest_sha256": "3245e7966e419791d5e2fa21d208ab5ffd7efcdf0b4d84d665cf1d668c22cc8d",
+    "owned_files_verified": 25,
+    "terminal_output_hashes_and_sizes_verified": 9,
+    "generated_scripts_archive_sha256": "93042c5dca871f132c568c0a5ce71fb72bbb11cc154817793528dd28a7bc6e7d",
+    "archive_members_equal_loose_verified_raw_scripts": true,
+    "independent_script_transform": "Verified by separately constructed string/regex transformation: one interval20 initialization, one retainedtreepath replacement and exact passive loggerappend only; no changedbiology,save/restore orRNG statements.",
+    "generated_seed": 202612005,
+    "independent_Betty_postrun_check_utc": "2026-11-20T19:57:04.356215+00:00",
+    "independent_Betty_source_hashes_verified": 22,
+    "independent_Betty_external_hashes_verified": 148,
+    "mismatches": [],
+    "runtime_versions": {
+      "numpy": "2.4.6",
+      "msprime": "1.4.2",
+      "pysam": "0.24.0",
+      "stdpopsim": "0.3.0",
+      "tskit": "1.0.3",
+      "pyslim": "1.0.4"
+    },
+    "python_version": "3.11.11",
+    "python_executable": "/vast/projects/smathi/cohort/korfmann/ghist2026/.venv/bin/python",
+    "runtime_scope": "Separate read-only post-terminal bytehash/packageversion check passed. This is not proof against transient changes between observations or a complete OS/dependency lock."
+  },
+  "unreached_or_unobserved_stages": [
+    "Observed burn-in and part of firstgrowthphase only, ending loggedtick27200/N43410. Sourceplannedend41290; later~71600population targets unobserved.",
+    "No checkpoint save/restore logged. No rawcompletedtree orfinalsimulationtree is in the terminal outputinventory.",
+    "No enginepostprocessing,recapitation,neutraloverlay,VCFexport,predictor orRAiSD completion artifact exists; finalobservedstage remainsSLiM running.",
+    "Bothadapter/case status files remain staleRUNNING becauseSIGTERM interrupted finalization; post-termination evidence collection does not convert them tosuccess."
+  ],
+  "preserved_denominators": {
+    "original_planned_cases": 48,
+    "locked_cases_launched": 6,
+    "original_cases_completed": 3,
+    "original_cases_failed": 3,
+    "not_run": 42,
+    "original_workflow_attempts": 7,
+    "original_attempts_completed": 3,
+    "original_attempts_failed": 4,
+    "additional_fixed_interval20_resource_attempts": 1,
+    "additional_attempts_timed_out": 1,
+    "all_attempts_including_this_resource_probe": 8,
+    "new_independent_biological_replicates": 0,
+    "interpretation": "This same-seed resource-only attempt does not replace original failures, add an independent biological replicate, or change the original panel completion/accuracy denominators."
+  },
+  "denominator_check": "Original status-only summary verifies48planned,3completed,3failed,42notrun; retainedadditionalcase5retryFAILED plus thissame-seedTIMEOUT give8workflowattempts,3completed/5failed-or-timeout and0newindependentreplicates. No original failure replaced.",
+  "limitations": [
+    "Observed2.023197GiBhighwater is not a later-stage/full-run bound.",
+    "No matched-phase adaptive comparison or measured interval100 speedup.",
+    "Scientificreadiness remains false; only root may decide the next boundedsoftwarefixture."
+  ],
+  "blockers_to_small_fixture_consideration": [],
+  "new_runs_launched": 0,
+  "source_edits": false,
+  "scientifically_validated": false,
+  "release_ready": false
+}
