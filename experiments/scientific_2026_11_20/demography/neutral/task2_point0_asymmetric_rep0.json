@@ -1,0 +1,141 @@
+{
+  "configuration": {
+    "task": 2,
+    "point": 0,
+    "condition": "asymmetric",
+    "parameters": [
+      12000,
+      18000,
+      7000,
+      10500,
+      2700,
+      6e-05
+    ]
+  },
+  "replicate": 0,
+  "seed": 202613210,
+  "truth": {
+    "ancestral_effective_size": 12000,
+    "population1_effective_size": 18000,
+    "population2_effective_size": 7000,
+    "generations_since_split": 10500,
+    "generations_since_contact": 2700,
+    "migration_rate": 6e-05
+  },
+  "fits": {
+    "simple": {
+      "generations_since_split": 12616.21322576652,
+      "generations_since_contact": 6962.715901488064,
+      "population1_effective_size": 18727.912463055065,
+      "population2_effective_size": 4510.746769789997,
+      "ancestral_effective_size": 11649.9031001706,
+      "migration_rate": 5.952782748658406e-05,
+      "scaled_parameters": {
+        "population1_size_ratio": 1.6075595051756966,
+        "population2_size_ratio": 0.3871917844298587,
+        "isolation_duration_2N": 0.24264138833033147,
+        "contact_duration_2N": 0.29883149420299054,
+        "migration_2N": 1.3869868439647526
+      },
+      "theta": 7828.734883314643,
+      "multinomial_log_likelihood": -1478.0270096877039,
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      },
+      "best_restart": 9,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 1,
+      "projection": [
+        20,
+        16
+      ],
+      "maxiter": 400,
+      "folded": false,
+      "convention": "simple",
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false,
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        0.15,
+        1.0
+      ]
+    },
+    "generator_matched": {
+      "generations_since_split": 11967.694215574395,
+      "generations_since_contact": 8710.94788926945,
+      "population1_effective_size": 19291.543604974006,
+      "population2_effective_size": 4665.673875483723,
+      "ancestral_effective_size": 23630.011276236062,
+      "migration_rate": 5.63367077060534e-05,
+      "scaled_parameters": {
+        "population1_size_ratio": 0.8164001015257614,
+        "population2_size_ratio": 0.1974469593324249,
+        "split_duration_2N": 0.25323081897150673,
+        "contact_fraction": 0.7278718633981545,
+        "migration_2N": 2.662474076720114
+      },
+      "theta": 15879.367577630632,
+      "multinomial_log_likelihood": -1481.0219683252017,
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      },
+      "best_restart": 6,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "restarts": 12,
+      "workers": 1,
+      "projection": [
+        20,
+        16
+      ],
+      "maxiter": 400,
+      "folded": false,
+      "convention": "generator_matched",
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false,
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        0.15,
+        1.0
+      ]
+    }
+  },
+  "relative_error": {
+    "simple": {
+      "ancestral_effective_size": -0.02917474165244993,
+      "population1_effective_size": 0.04043958128083691,
+      "population2_effective_size": -0.3556076043157147,
+      "generations_since_split": 0.20154411673966854,
+      "generations_since_contact": 1.5787836672178015,
+      "migration_rate": -0.007869541890265785
+    },
+    "generator_matched": {
+      "ancestral_effective_size": 0.9691676063530053,
+      "population1_effective_size": 0.07175242249855596,
+      "population2_effective_size": -0.33347516064518234,
+      "generations_since_split": 0.13978040148327575,
+      "generations_since_contact": 2.2262769960257223,
+      "migration_rate": -0.061054871565776714
+    }
+  },
+  "sites": 47611,
+  "length": 2000000,
+  "mutation_rate": 8.4e-08,
+  "recombination_rate": 5.39e-08,
+  "elapsed_seconds": 276.2766093891114,
+  "public_testing_answers_used": false,
+  "initialization": "Fixed generic scaled seed shared across all truths/replicates (Task 2: 1.2,0.9,0.3,0.15,1; Task 4: 1.2,0.9,0.3,1), independent of simulation truth; growth uses global random restarts",
+  "scope": "Independent msprime genealogies and infinite-sites mutations; neutral numerical/misspecification diagnostic, not BGS or whole-chromosome coverage validation"
+}

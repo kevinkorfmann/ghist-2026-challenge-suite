@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_inference.validation import validate_expected_spectrum
+from ghist_secondary_contact.contract import SPECTRUM_CONTRACT
 
 from ghist_secondary_contact.simulate import focused_parameter_design, parameter_design
 from ghist_secondary_contact.spectrum import (
@@ -56,8 +58,16 @@ def _one_point(
             2 * ancestral * migration,
         )
         expected_model = secondary_contact_spectrum
-    expected = np.asarray(expected_model(scaled, (86, 48)), dtype=np.float64)
-    expected = np.clip(expected, 0.0, None)
+    expected_spectrum = expected_model(scaled, (86, 48))
+    domain = np.ma.array(
+        np.zeros(expected_spectrum.shape), mask=np.ma.getmaskarray(expected_spectrum)
+    )
+    try:
+        validate_expected_spectrum(expected_spectrum, domain)
+    except ValueError:
+        expected_spectrum = expected_model(scaled, (86, 48), adapt_dt=True)
+        validate_expected_spectrum(expected_spectrum, domain)
+    expected = np.asarray(np.ma.filled(expected_spectrum, 0), dtype=np.float64)
     rng = np.random.default_rng(seed + point_id * 1_000_003)
     spectra, nuisance, counts = [], [], []
     for replicate in range(replicates):
@@ -65,11 +75,11 @@ def _one_point(
             mutation_multiplier = 1.0
             orientation_error = 0.0
         else:
-            mutation_multiplier = float(
-                np.exp(rng.uniform(np.log(0.85), np.log(1.15)))
-            )
+            mutation_multiplier = float(np.exp(rng.uniform(np.log(0.85), np.log(1.15))))
             orientation_error = float(rng.uniform(0.0, 0.03))
-        oriented = (1 - orientation_error) * expected + orientation_error * expected[::-1, ::-1]
+        oriented = (1 - orientation_error) * expected + orientation_error * expected[
+            ::-1, ::-1
+        ]
         theta = 4 * ancestral * mutation_rate * mutation_multiplier * sequence_length
         observed = rng.poisson(theta * oriented).astype(np.float64)
         counts.append(int(observed.sum()))
@@ -144,6 +154,8 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         args.out,
+        spectrum_contract=SPECTRUM_CONTRACT,
+        spectrum_transform=args.spectrum_transform,
         point_id=np.repeat(
             [record["point_id"] + args.point_id_offset for record in records],
             args.replicates,
@@ -161,8 +173,12 @@ def main() -> None:
         ancestral_size=np.repeat(
             [record["ancestral_size"] for record in records], args.replicates
         ),
-        joint_sfs=np.concatenate([record["spectra"] for record in records]).astype(np.float32),
-        nuisance=np.concatenate([record["nuisance"] for record in records]).astype(np.float32),
+        joint_sfs=np.concatenate([record["spectra"] for record in records]).astype(
+            np.float32
+        ),
+        nuisance=np.concatenate([record["nuisance"] for record in records]).astype(
+            np.float32
+        ),
         n_variants=np.concatenate([record["variant_counts"] for record in records]),
     )
     metadata = {

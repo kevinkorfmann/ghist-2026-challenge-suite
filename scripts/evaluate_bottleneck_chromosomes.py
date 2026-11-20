@@ -12,6 +12,7 @@ import torch
 from ghist_bottleneck.infer import _robust_block_average, predict_blocks
 from ghist_bottleneck.model import BottleneckNet
 from ghist_bottleneck.train import reference_features
+from ghist_bottleneck.provenance import require_diploid_scale
 
 
 def sha256(path: Path) -> str:
@@ -61,11 +62,13 @@ def _network_predictions(
     batch_size: int = 512,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     normalization = np.load(checkpoint_dir / "normalization.npz")
+    require_diploid_scale(normalization, context="Learned checkpoint")
     normalized = ((windows - normalization["mean"]) / normalization["std"]).astype(np.float32)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     member_means, member_variances = [], []
     for path in sorted(checkpoint_dir.glob("model_*.pt")):
         state = torch.load(path, map_location=device)
+        require_diploid_scale(state, context=f"Model checkpoint {path.name}")
         model = BottleneckNet(**state["model_config"]).to(device)
         model.load_state_dict(state["state_dict"])
         model.eval()
@@ -88,6 +91,7 @@ def _network_predictions(
     if not member_means:
         raise FileNotFoundError(f"no model checkpoints below {checkpoint_dir}")
     reference = joblib.load(checkpoint_dir / "reference.joblib")
+    require_diploid_scale(reference, context="Reference checkpoint")
     reference_prediction = reference["model"].predict(reference_features(windows, spectra))
     return (
         np.asarray(member_means),
@@ -172,6 +176,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     data = np.load(args.dataset)
+    require_diploid_scale(data, context="Chromosome validation dataset")
     cell_ids = np.unique(data["cell_id"])
     first = np.asarray([np.flatnonzero(data["cell_id"] == cell)[0] for cell in cell_ids])
     target = data["targets"][first]
@@ -232,6 +237,7 @@ def main() -> None:
     # is eligible until a matched translation-validation set exists.
     chosen = "summary"
     serializable = {
+        "coalescent_ploidy": 2,
         "dataset": str(args.dataset),
         "dataset_sha256": sha256(args.dataset),
         "checkpoint_dir": str(args.checkpoint_dir),
@@ -269,6 +275,7 @@ def main() -> None:
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     np.savez_compressed(
         args.out.with_suffix(".npz"),
+        coalescent_ploidy=np.int64(2),
         cell_id=cell_ids,
         target_latent=target,
         scenario=scenarios,

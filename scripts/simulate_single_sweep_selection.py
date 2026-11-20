@@ -3,12 +3,14 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import warnings
 from pathlib import Path
 
 import numpy as np
 import stdpopsim
 
-from ghist_single_sweep.scan import VariantMatrix, flank_ld_scan, scan_windows
+from ghist_single_sweep.scan import VariantMatrix, scan_windows
+from ghist_single_sweep.recovery import localize_from_scan
 
 
 def main() -> None:
@@ -28,7 +30,13 @@ def main() -> None:
     parser.add_argument("--selection-coefficient", type=float, default=0.05)
     parser.add_argument("--minimum-end-frequency", type=float, default=0.95)
     parser.add_argument("--samples", type=int, default=25)
-    parser.add_argument("--slim-scaling-factor", type=float, default=10.0)
+    parser.add_argument(
+        "--mutation-rate",
+        type=float,
+        default=1.44e-8,
+        help="Per generation rate; testing rate by default, set 1.29e-8 for final",
+    )
+    parser.add_argument("--slim-scaling-factor", type=float, default=1.0)
     parser.add_argument("--slim-burn-in", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=75221000)
     args = parser.parse_args()
@@ -40,17 +48,23 @@ def main() -> None:
             raise ValueError("left and genetic map require a named chromosome")
         contig = species.get_contig(
             length=args.length,
-            mutation_rate=species.genome.mean_mutation_rate,
+            mutation_rate=args.mutation_rate,
             recombination_rate=species.genome.mean_recombination_rate,
         )
     else:
-        contig = species.get_contig(
-            args.chromosome,
-            genetic_map=args.genetic_map,
-            left=args.left,
-            right=args.left + args.length,
-            mutation_rate=species.genome.mean_mutation_rate,
-        )
+        with warnings.catch_warnings(record=True) as captured:
+            warnings.simplefilter("always")
+            contig = species.get_contig(
+                args.chromosome,
+                genetic_map=args.genetic_map,
+                left=args.left,
+                right=args.left + args.length,
+                mutation_rate=args.mutation_rate,
+            )
+        if any("Genetic map not found" in str(w.message) for w in captured):
+            raise ValueError(
+                "Requested genetic map missing: refusing flat-map fallback"
+            )
     locus_id = "single_hard_sweep"
     contig.add_single_site(id=locus_id, coordinate=args.position)
     sweep_options = {
@@ -111,7 +125,9 @@ def main() -> None:
         writer.writerows(zip(*(windows[name] for name in names), strict=True))
 
     valid = np.isfinite(windows["composite_score"])
-    composite_index = np.flatnonzero(valid)[np.argmax(windows["composite_score"][valid])]
+    composite_index = np.flatnonzero(valid)[
+        np.argmax(windows["composite_score"][valid])
+    ]
     soft_valid = np.isfinite(windows["soft_composite_score"])
     soft_index = np.flatnonzero(soft_valid)[
         np.argmax(windows["soft_composite_score"][soft_valid])
@@ -123,32 +139,24 @@ def main() -> None:
     )
     joint_valid = np.isfinite(h12_h2_score)
     joint_index = np.flatnonzero(joint_valid)[np.argmax(h12_h2_score[joint_valid])]
-    truth_local = args.position - args.left
-    local_region = [max(0, truth_local - 750_000), min(args.length, truth_local + 750_000)]
-    candidates = np.arange(local_region[0], local_region[1] + 1, 1000, dtype=np.int64)
-    ld = flank_ld_scan(variants, candidates, flank_width=100_000)
-    ld_valid = np.isfinite(ld["flank_ld_ratio"])
-    ld_index = np.flatnonzero(ld_valid)[np.argmax(ld["flank_ld_ratio"][ld_valid])]
-    local_lo = int(np.searchsorted(variants.positions, local_region[0], side="left"))
-    local_hi = int(np.searchsorted(variants.positions, local_region[1], side="right"))
-    local_positions = variants.positions[local_lo:local_hi]
-    gaps = np.diff(local_positions.astype(np.int64))
-    gap_index = int(np.argmax(gaps))
+    localized = localize_from_scan(variants, windows)
     estimates = {
         "composite": int(windows["center"][composite_index] + args.left),
         "soft_composite": int(windows["center"][soft_index] + args.left),
         "h12": int(windows["center"][h12_index] + args.left),
         "h12_h2": int(windows["center"][joint_index] + args.left),
-        "flank_ld_100kb": int(ld["candidate_position"][ld_index] + args.left),
-        "largest_gap_midpoint": float(
-            (int(local_positions[gap_index]) + int(local_positions[gap_index + 1])) / 2
-            + args.left
-        ),
+        "flank_ld_100kb": int(localized["flank_ld_100kb"] + args.left),
+        "largest_gap_midpoint": localized["largest_gap_midpoint"] + args.left,
     }
     estimate_values = np.asarray(list(estimates.values()), dtype=float)
     median_pi = float(np.nanmedian(windows["pi"]))
     payload = {
         "state": "COMPLETED",
+        "localization": localized["localization"],
+        "background_selection": False,
+        "demography": "Zigzag_1S14",
+        "mutation_rate": contig.mutation_rate,
+        "stdpopsim_version": stdpopsim.__version__,
         "truth": {
             "position": args.position,
             "mutation_generation": args.mutation_generation,
@@ -163,14 +171,18 @@ def main() -> None:
         },
         "diagnostics": {
             "estimator_spread": float(np.ptp(estimate_values)),
-            "largest_gap_length": int(gaps[gap_index]),
+            "largest_gap_length": localized["largest_gap_length"],
             "peak_composite_score": float(windows["composite_score"][composite_index]),
             "peak_h12": float(windows["h12"][composite_index]),
             "maximum_h12": float(np.nanmax(windows["h12"])),
             "soft_peak_h12": float(windows["h12"][soft_index]),
             "soft_peak_h2_h1": float(windows["h2_h1"][soft_index]),
-            "peak_soft_composite_score": float(windows["soft_composite_score"][soft_index]),
-            "peak_pi_relative_median": float(windows["pi"][composite_index] / median_pi),
+            "peak_soft_composite_score": float(
+                windows["soft_composite_score"][soft_index]
+            ),
+            "peak_pi_relative_median": float(
+                windows["pi"][composite_index] / median_pi
+            ),
             "peak_tajima_d": float(windows["tajima_d"][composite_index]),
         },
         "accepted_biallelic_sites": int(variants.positions.size),

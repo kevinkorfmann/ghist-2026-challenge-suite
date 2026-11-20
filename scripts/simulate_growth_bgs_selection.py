@@ -2,10 +2,8 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 from pathlib import Path
 
-import msprime
 import numpy as np
 import stdpopsim
 
@@ -16,6 +14,7 @@ from ghist_growth_bgs.audit import (
 )
 from ghist_growth_bgs.blocks import distance_stratum_segments
 from ghist_growth_bgs.spectrum import fit_growth_spectrum
+from ghist_growth_bgs.simulation import SIMULATION_SCALING_SCHEME, growth_demography
 
 
 MIDDLE_LABELS = {"noncoding_1kb_10kb", "noncoding_10kb_100kb"}
@@ -57,26 +56,11 @@ def main() -> None:
         raise ValueError("growth and simulation scaling factors are invalid")
 
     scale = args.slim_scaling_factor
-    ancestral_unscaled = args.ancestral_size * scale
-    modern_unscaled = ancestral_unscaled * args.scaling
-    generations_unscaled = args.generations * scale
-    mutation_unscaled = args.mutation_rate / scale
-    growth_rate = (
-        math.log(args.scaling) / generations_unscaled
-        if args.convention == "exponential"
-        else 0.0
-    )
-    demography = msprime.Demography()
-    demography.add_population(
-        name="population",
-        initial_size=modern_unscaled,
-        growth_rate=growth_rate,
-    )
-    demography.add_population_parameters_change(
-        time=generations_unscaled,
-        initial_size=ancestral_unscaled,
-        growth_rate=0,
-        population="population",
+    demography = growth_demography(
+        args.ancestral_size,
+        args.generations,
+        args.scaling,
+        args.convention,
     )
     model = stdpopsim.DemographicModel(
         id="Growth_1G",
@@ -84,7 +68,7 @@ def main() -> None:
         long_description=f"{args.convention.capitalize()} growth with a fixed ancestral epoch.",
         generation_time=0.1,
         model=demography,
-        mutation_rate=mutation_unscaled,
+        mutation_rate=args.mutation_rate,
     )
     species = stdpopsim.get_species("DroMel")
     contig = species.get_contig(
@@ -92,7 +76,7 @@ def main() -> None:
         genetic_map="ComeronCrossoverV2_dm6",
         left=args.left,
         right=args.right,
-        mutation_rate=mutation_unscaled,
+        mutation_rate=args.mutation_rate,
     )
     coding = load_coding_intervals(args.coding_bed)
     contig.add_dfe(
@@ -166,6 +150,7 @@ def main() -> None:
             "mutation_rate": args.mutation_rate,
         },
         "generator": {
+            "simulation_scaling_scheme": SIMULATION_SCALING_SCHEME,
             "convention": args.convention,
             "stdpopsim": stdpopsim.__version__,
             "slim_scaling_factor": scale,

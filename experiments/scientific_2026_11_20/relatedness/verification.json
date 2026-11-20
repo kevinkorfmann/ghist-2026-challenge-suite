@@ -1,0 +1,93 @@
+{
+  "recorded_at_utc": "2026-11-20T16:32:15.728841+00:00",
+  "public_answers_used": false,
+  "final_data_runs": false,
+  "submission_count": 0,
+  "candidate_promoted": false,
+  "local_targeted_tests": {
+    "passed": 24,
+    "command": ".venv/bin/python -m pytest -q tests/test_relatedness_scientific_validation.py tests/test_human_family_relationships.py tests/test_human_family_consensus.py tests/test_relatedness_labels.py tests/test_relatedness_submission_contract.py tests/test_ibd_relatedness.py"
+  },
+  "critical_ruff": "E4,E7,E9,F passed",
+  "shell_syntax": "Changed relatedness Slurm files passed bash -n",
+  "scientific_environment": {
+    "host": "Betty",
+    "python": "3.11.11",
+    "scikit_learn": "1.9.0",
+    "ped_sim": "1.4.7"
+  },
+  "jobs": {
+    "initial_simulations": "10849217",
+    "frozen_task9_rescore": "10849336",
+    "human_interference": "10849361",
+    "task9_current_label_refit_and_evaluation": "10849312",
+    "task9_untouched_confirmation": "10849508"
+  },
+  "source_sha256": {
+    "src/ghist_relatedness/validation.py": "b9ccf30d89d3ef6e3bc1feeeec74355a251075484d3dc219ed46b45498a2fd42",
+    "scripts/validate_relatedness_scientifically.py": "218245700682118db96d21e8e34266cecf5e3504ae91046d01a21b30fbf0cdf7",
+    "scripts/train_task9_current_candidate.py": "1996f8511ce49ed374a099f01166f64d446d4afda6a32d2d21059d561ac9a02f",
+    "tests/test_relatedness_scientific_validation.py": "74f0cec5cf840ecf812e1e834748af73f29a9092cc9ae4f60885b27a196ff812",
+    "scripts/evaluate_human_empirical_background_holdout.py": "3f7643704826a400a9474b4ed690d0bd238554030932f3910fadee8a1c391e9c",
+    "scripts/evaluate_human_background_corrected_holdout.py": "7a0d29d4f4868a32fa4c4acc54b259994ebf6afd37d846da004f8f4cf75c2fbf",
+    "scripts/evaluate_human_background_robust.py": "ebef44b0326a6a7986b5dff362be758d401f36556256d9faa5c128b417e514ea",
+    "scripts/fit_human_background_corrected.py": "9b10744b6ef128c8f39d96aedb3bbe530aa78a92167db268969096d1701e68cc",
+    "scripts/fit_human_empirical_background.py": "d219b0d8e4b2e0e1464e1d2674ac012e49cbdd9a545f5273b230c21d94725f2f",
+    "scripts/fit_human_background_robust.py": "7b23a7fa80d9cbed97ee4e095306250f0e8c17cca32171b576b77e13db7efb19",
+    "scripts/fit_human_clean_spectrum.py": "584cd7e59856d036ac0f339a75152926ea8b691caa86b64ca97a272f1c2e6eaf",
+    "scripts/fit_human_family_relationships.py": "e190be00886cd810fd269c47263ec9d4ab8860469c0e5b6d71d56d69e0bb46dc",
+    "scripts/fit_task9_ibd_classifier.py": "0bd23a5adfc0d6a7b90331d9559fbb4185da3b740322ea16216813f38ddcfda5",
+    "scripts/fit_task9_degree_factorized.py": "5d198f812405388e9bccf377fe64f23e7e9200df7aa0cb99dd8071f4cd495aee",
+    "scripts/fit_task11_dog_relationships.py": "4483b9c30fa6696379f030f76c2bb42f0752c6737c7d1a184e6de8ae281b903d",
+    "scripts/fit_task11_degree_factorized.py": "1c33a177332fb396d86316fcde713154be5e2e76a57958630baba78ef30de146",
+    "scripts/freeze_task11_multifamily_inbreeding.py": "9cba739fa9e6dd0d3acf4989c853ed0270839b99da276574ae8856611a16ff52",
+    "scripts/freeze_task12_large_family_background.py": "ec9e2ececa65bfc47e0b5f62ad6a952e4cd4d90a981460bed7fa49e5c92697ab",
+    "scripts/validate_human_background_correction.py": "6e0c1c5a6cf1cdfc65cfb22581a97f5751f55b07f3a764a1534e7f9a6825baf6",
+    "slurm/human_background_validation.sbatch": "20418c7a11d7234cd76a5985e0a4f6ca9bb165914a2eccdb71f5364b30601bab",
+    "slurm/task12_background_corrected_holdout.sbatch": "991f4fb68e28934c86d63e9fdc66a210d68751a9cc833331b4381f26778d5009",
+    "slurm/task12_background_robust_holdout.sbatch": "d6a9ff6ea8dcae7e5ea8085f0024e56502cbddd9fa964e90a1af237d0f770e95",
+    "slurm/task12_empirical_background_holdout.sbatch": "434928cee6d88ba49f149822d09d0c6610931687cf7835c032d1ac10a233591e",
+    "experiments/scientific_2026_11_20/relatedness/summarize.py": "4359681232051ae72c33b498fd87f8fa1e0736a87ab18124b2ea2aacaf213ebc"
+  },
+  "simulation_sources_sha256": {
+    "configs/task9_pedigrees.def": "5fa3a31edc67d2f534886f3458e285642bd5396dca183d559b16697337b18fa2",
+    "configs/task10_human_pedigrees.def": "bb83f8d5c6aa432abca356226af14eb9231bd2d569cb766a762d641d240932f4",
+    "configs/task11_pedigrees.def": "58a658c9c56957bb5f5ef8a0610063044f9ddfcb6ca4ba638c9af618275fbf60",
+    "external/ped-sim/ped-sim": "2872021e82936de9815f1e0c28f86f823abdbcdbd4f9fd60d6150ae8da387acd",
+    "external/ped-sim-map/refined_mf.simmap": "e5cf4af7f914f9d675c3e3c5d7648775aefd456710dcab826195148ee7aadae1",
+    "external/dog-recombination/campbell2016_average.simmap": "99c7a1fb95f8e82cb44750676735b4707f1e8ea82db59c2c0c449a04eb16c843"
+  },
+  "confirmation_protocol": {
+    "seeds": [
+      2026112307,
+      2026112308
+    ],
+    "model_selection": false,
+    "release": "After candidate training.json existed; fitted artifact fixed before both datasets were generated",
+    "original_failure_discovery_sets_reused": false,
+    "matched_and_shifted_crossover_models": true
+  },
+  "limitations": [
+    "Exact IBD rather than detected segments; unrelated founders and isolated-pair templates",
+    "Pairs with no IBD are missing from segment-file evaluation; denominator conditioning explicitly reported",
+    "Crossover, map-length and background regimes are fixed sensitivity checks, not estimated probabilities for challenge accuracy",
+    "Task12 current candidate was not retrained under the corrected independent-reference training protocol"
+  ],
+  "evidence": {
+    "independent_simulation_seeds": 17,
+    "raw_component_result_files": 25,
+    "aggregate": "experiments/scientific_2026_11_20/relatedness/summary.json",
+    "aggregate_sha256": "0823569334556b7b49f6522f60a2cd9827a4056747a32a54d58caca728c1db55",
+    "summary_rebuild_command": "python3 experiments/scientific_2026_11_20/relatedness/summarize.py"
+  },
+  "slurm_accounting": {
+    "file": "slurm_accounting.psv",
+    "sha256": "f0ff3d4558d8d3b1d4e872bde2ed14e2559ef74dc6bdad28a9ccf18040aca2b0",
+    "final_jobs_completed": true,
+    "initial_failures": [
+      "10849217_3",
+      "10849217_4"
+    ],
+    "initial_failure_reason": "Frozen Task9 forest assigned zero probability to every accepted label on some valid-domain pairs; corrected scorer reports this failure rather than aborting. All initial Task9 scores were replaced by the corrected rescore job 10849336; final candidate rescore job 10849312 also reran the frozen Poisson scores."
+  }
+}

@@ -6,10 +6,19 @@ from scripts.freeze_single_sweep import validate
 def _recovery(q90: float) -> dict:
     metrics = {"quantiles": {"0.9": q90}, "median_absolute_error": 5_000}
     return {
+        "records": [
+            {
+                "seed": 1,
+                "localization": {
+                    "truth_used_for_inference": False,
+                    "region_source": "full_scan_composite_maximum",
+                },
+            }
+        ],
         "held_out_method_gate": {
             "selected": "median_all_three",
             "evaluation_metrics": {"median_all_three": metrics},
-        }
+        },
     }
 
 
@@ -32,6 +41,15 @@ def _raisd() -> dict:
 
 def _exact(passed: bool = True) -> dict:
     return {
+        "records": [
+            {
+                "seed": 2,
+                "localization": {
+                    "truth_used_for_inference": False,
+                    "region_source": "full_scan_composite_maximum",
+                },
+            }
+        ],
         "replicates": 192,
         "calibration_consensus_replicates": 10,
         "pilot_consensus_replicates": 8,

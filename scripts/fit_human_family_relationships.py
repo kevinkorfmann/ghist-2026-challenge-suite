@@ -6,6 +6,8 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 from sklearn.ensemble import ExtraTreesClassifier, RandomForestClassifier
@@ -313,6 +315,11 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=101226)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'validation': [args.validation],
+        'evaluation': [args.evaluation],
+    })
 
     training = [read_pedsim(path, args.genome_cm) for path in args.calibration]
     train = [record for replicate in training for record in replicate]

@@ -43,3 +43,30 @@
   validation before any revised estimator is promoted.
 - Final outputs require a fresh run on the correct final inputs. Exporting a
   historical testing freeze is never a final inference run.
+
+## Scientific validation corrections — November 20, 2026
+
+- Sampling haplotypes must not change a diploid population's coalescent scale.
+  Bottleneck simulation/checkpoint artifacts require `coalescent_ploidy=2`.
+- Pass physical population sizes, event times, mutation and migration rates to
+  stdpopsim; let its engine perform SLiM scaling once. Legacy BGS calibration
+  using a different selection/recombination scale cannot certify corrected fits.
+  Validate speedup approximations against unscaled simulations.
+- Retain fixed differences in joint population spectra. Only the globally
+  monomorphic corners are excluded. Task 2 simulation and checkpoint contracts
+  must match the observed extractor, including hidden demographic epochs.
+- Numerical spectrum failures must not silently mask observed likelihood bins.
+  Solver agreement establishes neither biological adequacy nor identifiability.
+- Sweep localization must choose its search region from simulated observations,
+  never the true selected position. Matching nulls must use the actual genetic
+  map and biological background; segment-scale calibration does not certify a
+  chromosome maximum or a multiple-sweep pipeline.
+- Relatedness evaluation keeps pedigrees/replicates together and reports absent
+  IBD pairs, undefined probabilities, class recall and calibration. Background
+  correction references must be independent of the evaluated clean pairs.
+  Exact simulated IBD cannot certify genotype-based detection and full-family
+  reconstruction.
+- Repaired protocols invalidate the corresponding historical promotion gates;
+  preserve old records as evidence rather than rewriting them as new passes.
+  New diagnostic simulations are not permission to retune against testing answers
+  or to submit final predictions.

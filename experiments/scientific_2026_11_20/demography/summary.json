@@ -1,0 +1,566 @@
+{
+  "protocol": "Independent msprime-generated linked 2 Mb datasets; truth-independent fixed starts for Task 2/4, globally random growth starts; two replicate seeds per configuration; no challenge data/answers",
+  "planned_runs": 22,
+  "completed_runs": 13,
+  "incomplete_runs": 9,
+  "execution_record": "execution.json",
+  "groups": {
+    "task2|point0|asymmetric|simple": {
+      "replicates": 1,
+      "replicate_ids": [
+        0
+      ],
+      "simulation_seeds": [
+        202613210
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "population1_effective_size",
+        "population2_effective_size",
+        "generations_since_split",
+        "generations_since_contact",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.02917474165244993,
+        "population1_effective_size": 0.04043958128083691,
+        "population2_effective_size": 0.3556076043157147,
+        "generations_since_split": 0.20154411673966854,
+        "generations_since_contact": 1.5787836672178015,
+        "migration_rate": 0.007869541890265785
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.02917474165244993,
+        "population1_effective_size": 0.04043958128083691,
+        "population2_effective_size": 0.3556076043157147,
+        "generations_since_split": 0.20154411673966854,
+        "generations_since_contact": 1.5787836672178015,
+        "migration_rate": 0.007869541890265785
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task2|point0|asymmetric|generator_matched": {
+      "replicates": 1,
+      "replicate_ids": [
+        0
+      ],
+      "simulation_seeds": [
+        202613210
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "population1_effective_size",
+        "population2_effective_size",
+        "generations_since_split",
+        "generations_since_contact",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.9691676063530053,
+        "population1_effective_size": 0.07175242249855596,
+        "population2_effective_size": 0.33347516064518234,
+        "generations_since_split": 0.13978040148327575,
+        "generations_since_contact": 2.2262769960257223,
+        "migration_rate": 0.061054871565776714
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.9691676063530053,
+        "population1_effective_size": 0.07175242249855596,
+        "population2_effective_size": 0.33347516064518234,
+        "generations_since_split": 0.13978040148327575,
+        "generations_since_contact": 2.2262769960257223,
+        "migration_rate": 0.061054871565776714
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point0|exponential|exponential": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202615210,
+        202615220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.011693896243756385,
+        "generations": 0.06715977764447767,
+        "post_growth_scaling": 0.031376768076519734
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.017155684605584698,
+        "generations": 0.09693472786633017,
+        "post_growth_scaling": 0.06006516101632964
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point0|exponential|sudden": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202615210,
+        202615220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.03421003064969563,
+        "generations": 0.4052257402363432,
+        "post_growth_scaling": 0.18390342243439112
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.044618721391292304,
+        "generations": 0.4361329051399835,
+        "post_growth_scaling": 0.20001525302585665
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point0|sudden|exponential": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202616210,
+        202616220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.08474926931634269,
+        "generations": 0.7023965141174491,
+        "post_growth_scaling": 0.4848510074920267
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.12447763920513377,
+        "generations": 0.7762862521291198,
+        "post_growth_scaling": 0.553649044811864
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point0|sudden|sudden": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202616210,
+        202616220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.03579564325122997,
+        "generations": 0.029895749369877656,
+        "post_growth_scaling": 0.09539768210614508
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.06444585254683166,
+        "generations": 0.04400284765550089,
+        "post_growth_scaling": 0.12650585845866713
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point1|exponential|exponential": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202617210,
+        202617220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.016715467176519783,
+        "generations": 1.8116384126209795,
+        "post_growth_scaling": 0.15864087212650962
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.020784245018031777,
+        "generations": 3.5466738414433596,
+        "post_growth_scaling": 0.3092939751619318
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point1|exponential|sudden": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202617210,
+        202617220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.015113139596632408,
+        "generations": 1.052857330145044,
+        "post_growth_scaling": 0.19397386334549704
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.019128984318032893,
+        "generations": 1.7409118345986192,
+        "post_growth_scaling": 0.3180195776150606
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point1|sudden|exponential": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202618210,
+        202618220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.05557999175095951,
+        "generations": 0.6575884565533601,
+        "post_growth_scaling": 0.17429607039986333
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.062318216796559245,
+        "generations": 0.8737540324768909,
+        "post_growth_scaling": 0.2628783605285594
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task3|point1|sudden|sudden": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202618210,
+        202618220
+      ],
+      "parameters": [
+        "ancestral_effective_size",
+        "generations",
+        "post_growth_scaling"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_effective_size": 0.054678683265625805,
+        "generations": 0.1402343153449052,
+        "post_growth_scaling": 0.12782976592883416
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_effective_size": 0.05986694990077657,
+        "generations": 0.14125277391278113,
+        "post_growth_scaling": 0.14294623444484278
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task4|point0|asymmetric|(20, 16)": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202620210,
+        202620220
+      ],
+      "parameters": [
+        "ancestral_population_size",
+        "AFR_population_size",
+        "EUR_population_size",
+        "generations_since_split",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_population_size": 0.05161769266367988,
+        "AFR_population_size": 0.20841640310410692,
+        "EUR_population_size": 0.18056216255986662,
+        "generations_since_split": 0.2889542971729509,
+        "migration_rate": 0.09804778986924734
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_population_size": 0.08684283257658731,
+        "AFR_population_size": 0.22004066674148892,
+        "EUR_population_size": 0.3065796440837516,
+        "generations_since_split": 0.4786640281975556,
+        "migration_rate": 0.14974277264308644
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task4|point0|asymmetric|(12, 10)": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202620210,
+        202620220
+      ],
+      "parameters": [
+        "ancestral_population_size",
+        "AFR_population_size",
+        "EUR_population_size",
+        "generations_since_split",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_population_size": 0.06125362276123941,
+        "AFR_population_size": 0.2534589645940374,
+        "EUR_population_size": 0.17271331024063652,
+        "generations_since_split": 0.33683601845648586,
+        "migration_rate": 0.026356673338987613
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_population_size": 0.09614039126529983,
+        "AFR_population_size": 0.27874723202604135,
+        "EUR_population_size": 0.309124767676188,
+        "generations_since_split": 0.5001695563691952,
+        "migration_rate": 0.0383753418012005
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task4|point0|matched|(20, 16)": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202619210,
+        202619220
+      ],
+      "parameters": [
+        "ancestral_population_size",
+        "AFR_population_size",
+        "EUR_population_size",
+        "generations_since_split",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_population_size": 0.03477260046708186,
+        "AFR_population_size": 0.1476098737751258,
+        "EUR_population_size": 0.22298395701783003,
+        "generations_since_split": 0.20758134978906084,
+        "migration_rate": 0.2356670024036603
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_population_size": 0.05611552016529098,
+        "AFR_population_size": 0.2528576415756856,
+        "EUR_population_size": 0.2733062314725596,
+        "generations_since_split": 0.37446976087960104,
+        "migration_rate": 0.4166419888267525
+      },
+      "all_optimizer_diagnostics_supported": true
+    },
+    "task4|point0|matched|(12, 10)": {
+      "replicates": 2,
+      "replicate_ids": [
+        0,
+        1
+      ],
+      "simulation_seeds": [
+        202619210,
+        202619220
+      ],
+      "parameters": [
+        "ancestral_population_size",
+        "AFR_population_size",
+        "EUR_population_size",
+        "generations_since_split",
+        "migration_rate"
+      ],
+      "median_absolute_relative_error": {
+        "ancestral_population_size": 0.03187527954727942,
+        "AFR_population_size": 0.2006033284197266,
+        "EUR_population_size": 0.2586627238566366,
+        "generations_since_split": 0.19146322755469275,
+        "migration_rate": 0.29853683413936
+      },
+      "maximum_absolute_relative_error": {
+        "ancestral_population_size": 0.04476145586197888,
+        "AFR_population_size": 0.33461081185541386,
+        "EUR_population_size": 0.30900620776163,
+        "generations_since_split": 0.36642440365189044,
+        "migration_rate": 0.4644686613227561
+      },
+      "all_optimizer_diagnostics_supported": true
+    }
+  },
+  "bgs": {
+    "growth_q1": {
+      "relative_error": {
+        "generations": 0.27520426561603384,
+        "post_growth_scaling": 0.045865313472353675
+      },
+      "generator": {
+        "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+        "convention": "exponential",
+        "stdpopsim": "0.3.0",
+        "slim_scaling_factor": 1.0,
+        "slim_burn_in": 2.0,
+        "chromosome": "2L",
+        "left": 5000000,
+        "right": 6000000,
+        "seed": 202611220,
+        "dfe": "Gamma_H17",
+        "genetic_map": "ComeronCrossoverV2_dm6"
+      },
+      "spectrum": {
+        "haplotypes": 40,
+        "accepted_sites": 2963,
+        "multiallelic_sites": 15,
+        "physical_exposure_bp": 462434
+      }
+    },
+    "growth_q10": {
+      "relative_error": {
+        "generations": -0.03915560987108102,
+        "post_growth_scaling": 0.06341489103866849
+      },
+      "generator": {
+        "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+        "convention": "exponential",
+        "stdpopsim": "0.3.0",
+        "slim_scaling_factor": 10.0,
+        "slim_burn_in": 2.0,
+        "chromosome": "2L",
+        "left": 5000000,
+        "right": 6000000,
+        "seed": 202611211,
+        "dfe": "Gamma_H17",
+        "genetic_map": "ComeronCrossoverV2_dm6"
+      },
+      "spectrum": {
+        "haplotypes": 40,
+        "accepted_sites": 2757,
+        "multiallelic_sites": 3,
+        "physical_exposure_bp": 462434
+      }
+    },
+    "growth_q5": {
+      "relative_error": {
+        "generations": 0.0829078222180788,
+        "post_growth_scaling": -0.007202831493282158
+      },
+      "generator": {
+        "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+        "convention": "exponential",
+        "stdpopsim": "0.3.0",
+        "slim_scaling_factor": 5.0,
+        "slim_burn_in": 2.0,
+        "chromosome": "2L",
+        "left": 5000000,
+        "right": 6000000,
+        "seed": 202611210,
+        "dfe": "Gamma_H17",
+        "genetic_map": "ComeronCrossoverV2_dm6"
+      },
+      "spectrum": {
+        "haplotypes": 40,
+        "accepted_sites": 3043,
+        "multiallelic_sites": 18,
+        "physical_exposure_bp": 462434
+      }
+    },
+    "split_q10": {
+      "relative_error": {
+        "AFR_population_size": -0.2727496426665882,
+        "EUR_population_size": -0.1341572128406523,
+        "generations_since_split": 0.16049777822641564,
+        "migration_rate": -0.05894641991528582
+      },
+      "generator": {
+        "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+        "stdpopsim": "0.3.0",
+        "slim_scaling_factor": 10.0,
+        "slim_burn_in": 2.0,
+        "chromosome": "2L",
+        "left": 5000000,
+        "right": 6000000,
+        "seed": 202611213,
+        "dfe": "Gamma_H17",
+        "genetic_map": "ComeronCrossoverV2_dm6 scaled by 0.5"
+      },
+      "spectrum": {
+        "AFR_haplotypes": 24,
+        "EUR_haplotypes": 20,
+        "accepted_sites": 1124,
+        "multiallelic_sites": 3,
+        "physical_exposure_bp": 462434
+      }
+    },
+    "split_q5": {
+      "relative_error": {
+        "AFR_population_size": -0.05058630942245568,
+        "EUR_population_size": -0.104761889762792,
+        "generations_since_split": -0.06361118941615151,
+        "migration_rate": -0.013860109681371635
+      },
+      "generator": {
+        "simulation_scaling_scheme": "physical_units_stdpopsim_q_v1",
+        "stdpopsim": "0.3.0",
+        "slim_scaling_factor": 5.0,
+        "slim_burn_in": 2.0,
+        "chromosome": "2L",
+        "left": 5000000,
+        "right": 6000000,
+        "seed": 202611212,
+        "dfe": "Gamma_H17",
+        "genetic_map": "ComeronCrossoverV2_dm6 scaled by 0.5"
+      },
+      "spectrum": {
+        "AFR_haplotypes": 24,
+        "EUR_haplotypes": 20,
+        "accepted_sites": 1241,
+        "multiallelic_sites": 5,
+        "physical_exposure_bp": 462434
+      }
+    }
+  },
+  "limitations": [
+    "Diagnostic panel, not a full-prior validation or accuracy certificate",
+    "Bounded incomplete runs are preserved in execution.json; completed records alone are a censored subset and cannot estimate overall accuracy",
+    "Neutral panel has no BGS and uses infinite-sites mutations",
+    "Replicate unit is the complete linked simulated chromosome; no random window splitting",
+    "No calibrated uncertainty intervals or coverage estimate from two replicates",
+    "BGS checks use one 1 Mb segment and independent seeds; cross-Q differences confound stochasticity and approximation",
+    "Two-N BGS burn-in and small segment/sample size require longer-run and whole-chromosome stress evaluation",
+    "No current final input was used and no prediction was promoted"
+  ]
+}

@@ -31,7 +31,9 @@ def _grouped_partition(n_points: int, seed: int) -> np.ndarray:
     return partition
 
 
-def parameter_design(n_points: int, *, seed: int = 20260822) -> tuple[np.ndarray, np.ndarray]:
+def parameter_design(
+    n_points: int, *, seed: int = 20260822
+) -> tuple[np.ndarray, np.ndarray]:
     """Create point-grouped, space-filling targets and validation partitions."""
     if n_points < 20:
         raise ValueError("at least twenty points are required for grouped validation")
@@ -102,9 +104,10 @@ def focused_parameter_design(
         width = half_widths[int(domain[row])]
         logged = log_center + (2.0 * unit[row, coordinates] - 1.0) * width
         values[row, coordinates] = np.exp(logged)
-        contact_logit = center_logit + (2.0 * unit[row, 4] - 1.0) * fraction_widths[
-            int(domain[row])
-        ]
+        contact_logit = (
+            center_logit
+            + (2.0 * unit[row, 4] - 1.0) * fraction_widths[int(domain[row])]
+        )
         fraction = 1.0 / (1.0 + np.exp(-contact_logit))
         values[row, 4] = values[row, 3] * fraction
     if not include_full_prior:
@@ -147,14 +150,17 @@ def nuisance_size_changes(
     changes: list[SizeChange] = []
     for multiplier, factor in zip((1.20, 1.10, 1.05), nuisance.ancestral_epoch_factors):
         changes.append(
-            SizeChange("ancestral", parameters.split_time * multiplier, parameters.ancestral_size * factor)
+            SizeChange(
+                "ancestral",
+                parameters.split_time * multiplier,
+                parameters.ancestral_size * factor,
+            )
         )
     for fraction, factor in zip((0.80, 0.50), nuisance.population1_epoch_factors):
         time = parameters.split_time * fraction
-        if time > parameters.contact_time:
-            changes.append(
-                SizeChange("population1", time, parameters.ancestral_size * factor)
-            )
+        changes.append(
+            SizeChange("population1", time, parameters.ancestral_size * factor)
+        )
     if nuisance.population2_epoch_factor is not None:
         changes.append(
             SizeChange(
@@ -193,7 +199,10 @@ def simulate_block(
         migration_asymmetry=nuisance.migration_asymmetry,
     )
     ancestry = msprime.sim_ancestry(
-        samples={"population1": population1_diploids, "population2": population2_diploids},
+        samples={
+            "population1": population1_diploids,
+            "population2": population2_diploids,
+        },
         ploidy=2,
         demography=demography,
         sequence_length=sequence_length,

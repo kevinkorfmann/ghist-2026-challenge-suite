@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from ghist_split_migration_bgs.spectrum import fit_isolation_with_migration_spectrum
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 PARAMETERS = (
@@ -30,8 +31,11 @@ def main() -> None:
         key=lambda path: int(path.stem.rsplit("_", 1)[1]),
     )
     if len(files) != 4:
-        raise ValueError(f"expected four chromosome-arm simulations, found {len(files)}")
+        raise ValueError(
+            f"expected four chromosome-arm simulations, found {len(files)}"
+        )
     rows = [json.loads(path.read_text()) for path in files]
+    scaling_scheme = require_physical_scaling(rows)
     spectra = [np.load(path.with_suffix(".sfs.npz"))["spectrum"] for path in files]
     truth = rows[0]["truth_in_analysis_units"]
     if any(row["truth_in_analysis_units"] != truth for row in rows[1:]):
@@ -39,22 +43,18 @@ def main() -> None:
     exposure = sum(row["spectrum"]["physical_exposure_bp"] for row in rows)
     fit = fit_isolation_with_migration_spectrum(
         np.sum(spectra, axis=0),
-        mutation_rate=1.015e-8,
+        mutation_rate=truth["mutation_rate"],
         sequence_length=exposure,
-        projection=(60, 50),
+        projection=tuple(
+            min(target, size - 1) for target, size in zip((60, 50), spectra[0].shape)
+        ),
         restarts=args.restarts,
         workers=args.workers,
         maxiter=750,
         seed=75194999,
-        initial_scaled=(
-            truth["AFR_population_size"] / truth["ancestral_population_size"],
-            truth["EUR_population_size"] / truth["ancestral_population_size"],
-            truth["generations_since_split"]
-            / (2 * truth["ancestral_population_size"]),
-            2 * truth["ancestral_population_size"] * truth["migration_rate"],
-        ),
     )
     payload = {
+        "simulation_scaling_scheme": scaling_scheme,
         "truth": truth,
         "fit": fit,
         "relative_error": {key: fit[key] / truth[key] - 1 for key in PARAMETERS},

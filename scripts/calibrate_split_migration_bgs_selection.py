@@ -8,6 +8,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 PARAMETERS = (
@@ -53,6 +54,7 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     recoveries = [json.loads(path.read_text()) for path in args.recovery]
+    scaling_scheme = require_physical_scaling(recoveries)
     raw = np.asarray([vector(row["fit"]) for row in recoveries])
     truth = np.asarray([vector(row["truth"]) for row in recoveries])
     log_raw, log_truth = np.log(raw), np.log(truth)
@@ -97,6 +99,7 @@ def main() -> None:
     observed = vector(observed_payload["projection_median"])
     calibrated = predict(selected, log_raw, log_truth, np.log(observed))
     payload = {
+        "simulation_scaling_scheme": scaling_scheme,
         "validation": "leave_one_truth_point_out",
         "truth_points": len(recoveries),
         "parameters": list(PARAMETERS),

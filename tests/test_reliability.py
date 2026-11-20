@@ -181,6 +181,17 @@ def test_task4_export_keeps_fitted_values_instead_of_preset_targets(
     ):
         args += ["--" + flag, "0" * 64]
     monkeypatch.setattr(sys, "argv", args)
+    with pytest.raises(ValueError, match="physical-unit"):
+        freeze.main()
+    # Isolate continuous export behavior using explicitly marked test fixtures;
+    # historical calibration files above must remain unmodified and rejected.
+    from ghist_growth_bgs.simulation import SIMULATION_SCALING_SCHEME
+    original_load = freeze.load
+    def marked_fixture(path):
+        result = original_load(path)
+        result["simulation_scaling_scheme"] = SIMULATION_SCALING_SCHEME
+        return result
+    monkeypatch.setattr(freeze, "load", marked_fixture)
     freeze.main()
     result = json.loads((tmp_path / "freeze.json").read_text())
     raw = json.loads((directory / "baseline_summary.json").read_text())[

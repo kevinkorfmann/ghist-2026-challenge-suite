@@ -113,8 +113,8 @@ def _simulate_cell_replica(args: tuple) -> dict:
     else:
         recombination = cfg.recombination_rate * recombination_multiplier
     ancestry = msprime.sim_ancestry(
-        samples={"pop": cfg.n_haplotypes},
-        ploidy=1,
+        samples=[msprime.SampleSet(cfg.n_haplotypes, population="pop", ploidy=1)],
+        ploidy=2,
         demography=demography,
         sequence_length=cfg.sequence_length,
         recombination_rate=recombination,
@@ -158,6 +158,7 @@ def _simulate_cell_replica(args: tuple) -> dict:
         "split": split,
         "scenario": scenario,
         "num_samples": cfg.n_haplotypes,
+        "coalescent_ploidy": 2,
         "sequence_length": cfg.sequence_length,
         "window_size": cfg.window_size,
         "mutation_rate": cfg.mutation_rate * mutation_multiplier,

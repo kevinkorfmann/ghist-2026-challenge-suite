@@ -8,6 +8,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 EVALUATOR_WEIGHT = 1e-5
 EVALUATOR_COMMIT = "43b95b482ab0b3a39659226f51088f1c65ba39c9"
@@ -31,6 +33,7 @@ def ensemble_errors(summary: dict, seed_origin: int) -> tuple[np.ndarray, np.nda
     if summary["held_out_method_gate"]["selected"] != "median_all_three":
         raise ValueError("recovery campaign did not select the locked ensemble")
     records = summary["records"]
+    validate_blind_records(records)
     truth = np.asarray([record["truth"]["position"] for record in records], dtype=float)
     estimates = np.asarray(
         [

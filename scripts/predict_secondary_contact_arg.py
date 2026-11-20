@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import require_spectrum_contract
 import torch
 
 from ghist_secondary_contact.features import inverse_transform_targets
@@ -49,6 +50,8 @@ def main() -> None:
         (path, torch.load(path, map_location="cpu", weights_only=False))
         for path in paths
     ]
+    for _, checkpoint in loaded:
+        require_spectrum_contract(checkpoint)
     selection_scores = np.asarray(
         [float(checkpoint["selection_rrmse"]) for _, checkpoint in loaded]
     )

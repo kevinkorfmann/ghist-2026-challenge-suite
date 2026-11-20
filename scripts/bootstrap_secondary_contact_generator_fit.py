@@ -7,9 +7,13 @@ from pathlib import Path
 import msprime
 import numpy as np
 
-from ghist_secondary_contact.demography import SecondaryContactParameters, build_demography
+from ghist_secondary_contact.demography import (
+    SecondaryContactParameters,
+    build_demography,
+)
 from ghist_secondary_contact.simulate import SimulationNuisance, nuisance_size_changes
 from ghist_secondary_contact.spectrum import fit_secondary_contact_spectrum
+from ghist_secondary_contact.contract import SPECTRUM_CONTRACT
 
 
 def main() -> None:
@@ -28,9 +32,15 @@ def main() -> None:
     parser.add_argument("--integration-dt-fac", type=float, default=0.02)
     parser.add_argument("--adaptive-integration", action="store_true")
     parser.add_argument("--initial-scaled", type=float, nargs=5)
-    parser.add_argument("--recombination-multipliers", type=float, nargs="+", default=(1.0,))
-    parser.add_argument("--mutation-rate-multipliers", type=float, nargs="+", default=(1.0,))
-    parser.add_argument("--local-size-multipliers", type=float, nargs="+", default=(1.0,))
+    parser.add_argument(
+        "--recombination-multipliers", type=float, nargs="+", default=(1.0,)
+    )
+    parser.add_argument(
+        "--mutation-rate-multipliers", type=float, nargs="+", default=(1.0,)
+    )
+    parser.add_argument(
+        "--local-size-multipliers", type=float, nargs="+", default=(1.0,)
+    )
     parser.add_argument("--migration-asymmetry", type=float, default=1.0)
     parser.add_argument("--polarization-error", type=float, default=0.0)
     args = parser.parse_args()
@@ -112,10 +122,13 @@ def main() -> None:
             genotypes = variant.genotypes
             count1 = int(genotypes[:86].sum())
             count2 = int(genotypes[86:].sum())
-            if args.polarization_error and polarization_rng.random() < args.polarization_error:
+            if (
+                args.polarization_error
+                and polarization_rng.random() < args.polarization_error
+            ):
                 count1 = 86 - count1
                 count2 = 48 - count2
-            if count1 in (0, 86) and count2 in (0, 48):
+            if count1 + count2 in (0, 134):
                 continue
             spectrum[count1, count2] += 1
             retained += 1
@@ -147,6 +160,7 @@ def main() -> None:
     )
     result.update(
         {
+            "spectrum_contract": SPECTRUM_CONTRACT,
             "replicate": args.replicate,
             "truth": truth.tolist(),
             "ancestral_truth": ancestral,

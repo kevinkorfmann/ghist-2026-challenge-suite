@@ -5,6 +5,8 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
@@ -146,7 +148,7 @@ def new_classifier(seed: int, max_leaf_nodes: int, minimum_leaf: int):
         max_leaf_nodes=max_leaf_nodes,
         min_samples_leaf=minimum_leaf,
         l2_regularization=3.0,
-        early_stopping=True,
+        early_stopping=False,
         random_state=seed,
     )
 
@@ -226,6 +228,11 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=112026)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'selection': [args.selection],
+        'development_evaluation': [args.development_evaluation],
+    })
 
     training = [read_pedsim_rich(path) for path in args.calibration]
     train_x = np.vstack([item[0] for item in training])

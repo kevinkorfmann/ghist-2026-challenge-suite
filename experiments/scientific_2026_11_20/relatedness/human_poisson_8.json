@@ -1,0 +1,408 @@
+{
+  "component_only": true,
+  "kind": "human",
+  "scenario": "poisson",
+  "seed": 2026112098,
+  "segment_sha256": "fa17f1a822897f9fbf0b72d899724f474410f1b272bca146446def9ac3e01b47",
+  "public_answers_used": false,
+  "models_refitted": false,
+  "runs": {
+    "task10_clean": {
+      "pairs": 6762,
+      "independent_pedigrees": 6762,
+      "accuracy": 0.4435078379177758,
+      "balanced_accuracy": 0.44440273860438445,
+      "meioses_accuracy": 0.6530612244897959,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.43138124815143447,
+        0.4547508133688258
+      ],
+      "multiclass_brier_sum": 0.6225807698746945,
+      "negative_log_likelihood": 1.2654702174054318,
+      "ece_10_equal_width_bins": 0.05663246501305055,
+      "reliability_bins": [
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "pairs": 1,
+          "mean_confidence": 0.1912252333681499,
+          "accuracy": 1.0
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 1501,
+          "mean_confidence": 0.2682762052954962,
+          "accuracy": 0.23251165889407063
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 1722,
+          "mean_confidence": 0.34526576088665045,
+          "accuracy": 0.28281068524970965
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 1033,
+          "mean_confidence": 0.4472663175466628,
+          "accuracy": 0.3543078412391094
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 828,
+          "mean_confidence": 0.5426387461957543,
+          "accuracy": 0.4830917874396135
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 394,
+          "mean_confidence": 0.6431890327492252,
+          "accuracy": 0.5609137055837563
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 197,
+          "mean_confidence": 0.7434482435567913,
+          "accuracy": 0.6142131979695431
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 90,
+          "mean_confidence": 0.8408936344744341,
+          "accuracy": 0.6555555555555556
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 996,
+          "mean_confidence": 0.997969345990065,
+          "accuracy": 0.998995983935743
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.988,
+        "avuncular_once_removed": 0.644,
+        "avuncular_twice_removed": 0.482,
+        "full_1st_cousin": 0.468,
+        "full_1st_cousin_once_removed": 0.406,
+        "full_1st_cousin_thrice_removed": 0.23046092184368738,
+        "full_1st_cousin_twice_removed": 0.27,
+        "full_2nd_cousin": 0.302,
+        "full_2nd_cousin_once_removed": 0.24649298597194388,
+        "full_2nd_cousin_twice_removed": 0.18787878787878787,
+        "full_3rd_cousin": 0.21149897330595482,
+        "full_3rd_cousin_once_removed": 0.18058690744920994,
+        "full_4th_cousin": 0.6047197640117994,
+        "siblings": 1.0
+      },
+      "confidence_is_uncalibrated": true
+    },
+    "task12_independent_reference_intensity_0.0": {
+      "pairs": 6762,
+      "independent_pedigrees": 6762,
+      "accuracy": 0.44483880508725226,
+      "balanced_accuracy": 0.44699831040559124,
+      "meioses_accuracy": 0.6536527654540077,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.43255693581780535,
+        0.456821206743567
+      ],
+      "multiclass_brier_sum": 0.619765363866913,
+      "negative_log_likelihood": 1.26749115964588,
+      "ece_10_equal_width_bins": 0.04172397297145492,
+      "reliability_bins": [
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "pairs": 3,
+          "mean_confidence": 0.19441063212235418,
+          "accuracy": 0.0
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 1868,
+          "mean_confidence": 0.2627181625659968,
+          "accuracy": 0.23501070663811563
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 1563,
+          "mean_confidence": 0.34943135533290587,
+          "accuracy": 0.3019833653230966
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 1025,
+          "mean_confidence": 0.43900791133532086,
+          "accuracy": 0.3570731707317073
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 684,
+          "mean_confidence": 0.5433048650808477,
+          "accuracy": 0.5219298245614035
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 360,
+          "mean_confidence": 0.644708872777303,
+          "accuracy": 0.575
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 184,
+          "mean_confidence": 0.7467521688396599,
+          "accuracy": 0.6684782608695652
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 79,
+          "mean_confidence": 0.8470191813831929,
+          "accuracy": 0.6708860759493671
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 996,
+          "mean_confidence": 0.9986142488437698,
+          "accuracy": 0.9949799196787149
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.99,
+        "avuncular_once_removed": 0.646,
+        "avuncular_twice_removed": 0.46,
+        "full_1st_cousin": 0.46,
+        "full_1st_cousin_once_removed": 0.422,
+        "full_1st_cousin_thrice_removed": 0.22244488977955912,
+        "full_1st_cousin_twice_removed": 0.3,
+        "full_2nd_cousin": 0.3,
+        "full_2nd_cousin_once_removed": 0.26452905811623245,
+        "full_2nd_cousin_twice_removed": 0.15353535353535352,
+        "full_3rd_cousin": 0.21765913757700206,
+        "full_3rd_cousin_once_removed": 0.15124153498871332,
+        "full_4th_cousin": 0.672566371681416,
+        "siblings": 0.998
+      },
+      "confidence_is_uncalibrated": true
+    },
+    "task12_independent_reference_intensity_0.6": {
+      "pairs": 6762,
+      "independent_pedigrees": 6762,
+      "accuracy": 0.37207926648920436,
+      "balanced_accuracy": 0.372963058682676,
+      "meioses_accuracy": 0.5422951789411417,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.36024475007394263,
+        0.3834701271813073
+      ],
+      "multiclass_brier_sum": 0.6710846496450628,
+      "negative_log_likelihood": 1.4878174621750906,
+      "ece_10_equal_width_bins": 0.04040036782651212,
+      "reliability_bins": [
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "pairs": 1575,
+          "mean_confidence": 0.17124810260939635,
+          "accuracy": 0.14476190476190476
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 1960,
+          "mean_confidence": 0.23935633280206778,
+          "accuracy": 0.2045918367346939
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 715,
+          "mean_confidence": 0.34976251810520037,
+          "accuracy": 0.27132867132867133
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 660,
+          "mean_confidence": 0.4485551029492897,
+          "accuracy": 0.4
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 523,
+          "mean_confidence": 0.5452524612151366,
+          "accuracy": 0.47992351816443596
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 227,
+          "mean_confidence": 0.6454217535463541,
+          "accuracy": 0.5462555066079295
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 86,
+          "mean_confidence": 0.7404997466378387,
+          "accuracy": 0.5697674418604651
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 35,
+          "mean_confidence": 0.8484706925302417,
+          "accuracy": 0.7428571428571429
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 981,
+          "mean_confidence": 0.997809054812108,
+          "accuracy": 0.9979612640163099
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.978,
+        "avuncular_once_removed": 0.63,
+        "avuncular_twice_removed": 0.46,
+        "full_1st_cousin": 0.356,
+        "full_1st_cousin_once_removed": 0.304,
+        "full_1st_cousin_thrice_removed": 0.09819639278557114,
+        "full_1st_cousin_twice_removed": 0.278,
+        "full_2nd_cousin": 0.178,
+        "full_2nd_cousin_once_removed": 0.0781563126252505,
+        "full_2nd_cousin_twice_removed": 0.10707070707070707,
+        "full_3rd_cousin": 0.07392197125256673,
+        "full_3rd_cousin_once_removed": 0.1580135440180587,
+        "full_4th_cousin": 0.5221238938053098,
+        "siblings": 1.0
+      },
+      "confidence_is_uncalibrated": true
+    },
+    "task12_independent_reference_intensity_1.4": {
+      "pairs": 6762,
+      "independent_pedigrees": 6762,
+      "accuracy": 0.36364980774918665,
+      "balanced_accuracy": 0.36567491932834073,
+      "meioses_accuracy": 0.5143448683821354,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.3516711032238983,
+        0.3748890860692103
+      ],
+      "multiclass_brier_sum": 0.6825683477249876,
+      "negative_log_likelihood": 1.5424388183827697,
+      "ece_10_equal_width_bins": 0.03802125221004921,
+      "reliability_bins": [
+        {
+          "lower": 0.1,
+          "upper": 0.2,
+          "pairs": 1582,
+          "mean_confidence": 0.1707659300311488,
+          "accuracy": 0.13084702907711757
+        },
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 2164,
+          "mean_confidence": 0.23576205573329964,
+          "accuracy": 0.2010166358595194
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 647,
+          "mean_confidence": 0.3511632296433334,
+          "accuracy": 0.28593508500772796
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 614,
+          "mean_confidence": 0.446680351417141,
+          "accuracy": 0.4022801302931596
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 474,
+          "mean_confidence": 0.5455236817106264,
+          "accuracy": 0.5084388185654009
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 231,
+          "mean_confidence": 0.6436873901467293,
+          "accuracy": 0.5714285714285714
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 66,
+          "mean_confidence": 0.7412226794246753,
+          "accuracy": 0.5303030303030303
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 31,
+          "mean_confidence": 0.8531572552433965,
+          "accuracy": 0.8709677419354839
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 953,
+          "mean_confidence": 0.9974309947477848,
+          "accuracy": 0.9968520461699895
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.964,
+        "avuncular_once_removed": 0.636,
+        "avuncular_twice_removed": 0.418,
+        "full_1st_cousin": 0.364,
+        "full_1st_cousin_once_removed": 0.28,
+        "full_1st_cousin_thrice_removed": 0.09619238476953908,
+        "full_1st_cousin_twice_removed": 0.226,
+        "full_2nd_cousin": 0.19,
+        "full_2nd_cousin_once_removed": 0.06012024048096192,
+        "full_2nd_cousin_twice_removed": 0.08282828282828283,
+        "full_3rd_cousin": 0.06776180698151951,
+        "full_3rd_cousin_once_removed": 0.19187358916478556,
+        "full_4th_cousin": 0.5486725663716814,
+        "siblings": 0.994
+      },
+      "confidence_is_uncalibrated": true
+    }
+  },
+  "limitations": [
+    "Exact segments bypass genotype error, phasing and IBD detection.",
+    "Pairs with no IBD are absent from Ped-sim segment files.",
+    "Pedigree templates match calibration; this is seed and crossover-model generalization, not novel topology validation.",
+    "Background is independently seeded segment addition with the already frozen unlabeled cohort bin profile; it does not reproduce correlated IBD from background demography."
+  ],
+  "correction_reference_sha256": "6da6b91da542802c2681defa5362e99d133cddaa20590654955e1745519c9299",
+  "expected_pairs_before_zero_ibd_censoring": 7000,
+  "model_sha256": {
+    "artifacts/task10_large_family/pair_model_min5/model.joblib": "8b0797a07f6c3812d3a1e84336e4303df66d04d9d5966965465560705c058a2b",
+    "artifacts/task10_large_family/clean_spectrum_v1/model.joblib": "c3c7f3e108cdac51936c60476736d5546374d9606686c86a0bee3f91b2142e21",
+    "artifacts/task12_large_family_background/empirical_background_v1/model.joblib": "23e39ac5443c0e49909e279bcbcdedb05f2c0eee2acfce954fc3e76476215077"
+  }
+}

@@ -6,6 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 def error_metrics(errors: np.ndarray) -> dict:
     return {
@@ -22,6 +24,7 @@ def error_metrics(errors: np.ndarray) -> dict:
 
 
 def summarize(records: list[dict]) -> dict:
+    validate_blind_records(records)
     truth = np.asarray([record["truth"]["position"] for record in records], dtype=float)
     raw = np.asarray(
         [
@@ -82,10 +85,10 @@ def summarize(records: list[dict]) -> dict:
     gate["passed"] = all(gate.values())
     return {
         "state": "COMPLETED",
-        "design": f"{len(records)} untouched exact-scale chromosome-7 map simulations across eight parameter cells",
+        "evaluation_status": "retrospective reanalysis of previously evaluated simulations" if any(record.get("reanalysis_of_legacy_simulation") for record in records) else "seed-heldout evaluation; provenance requires independent audit",
+        "design": f"{len(records)} exact-scale chromosome-7 map simulations across eight parameter cells",
         "replicates": len(records),
         "selected_method_locked_before_campaign": "median_all_three",
-        "observed_estimator_spread": 46_000,
         "consensus_definition": "three primary estimators span at most 50 kb",
         "calibration_replicates": int(calibration.sum()),
         "pilot_replicates": int(pilot.sum()),

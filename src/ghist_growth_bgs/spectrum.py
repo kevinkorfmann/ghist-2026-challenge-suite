@@ -9,6 +9,7 @@ from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
     optimizer_diagnostics,
+    validate_expected_spectrum,
 )
 
 
@@ -67,9 +68,13 @@ def _fit_restart(arguments: tuple) -> dict:
 
     data = moments.Spectrum(np.asarray(spectrum, dtype=np.float64))
     try:
-        model = (
+        function = (
             growth_spectrum if convention == "exponential" else sudden_growth_spectrum
         )
+
+        def model(parameters, sample_sizes):
+            return validate_expected_spectrum(function(parameters, sample_sizes), data)
+
         estimate = np.asarray(
             moments.Inference.optimize_log_lbfgsb(
                 start,

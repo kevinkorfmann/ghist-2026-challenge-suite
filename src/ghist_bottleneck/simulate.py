@@ -131,8 +131,9 @@ def simulate_one(
         time=generations, initial_size=ancestral_ne, population="pop"
     )
     ancestry = msprime.sim_ancestry(
-        samples={"pop": n_haplotypes},
-        ploidy=1,
+        # Sample gene copies without changing the diploid population time scale.
+        samples=[msprime.SampleSet(n_haplotypes, population="pop", ploidy=1)],
+        ploidy=2,
         sequence_length=cfg.sequence_length,
         recombination_rate=_recombination_model(
             cfg,
@@ -263,6 +264,7 @@ def generate_dataset(
             ]
         ),
         n_haplotypes=np.int64(observed.n_haplotypes),
+        coalescent_ploidy=np.int64(2),
         seed=np.int64(seed),
     )
 
@@ -340,6 +342,7 @@ def generate_chromosome_dataset(
         cell_id=np.asarray(cell_ids, dtype=np.int64),
         n_variants=np.asarray(variant_counts, dtype=np.int64),
         n_haplotypes=np.int64(observed.n_haplotypes),
+        coalescent_ploidy=np.int64(2),
         blocks_per_cell=np.int64(blocks_per_cell),
         seed=np.int64(seed),
     )

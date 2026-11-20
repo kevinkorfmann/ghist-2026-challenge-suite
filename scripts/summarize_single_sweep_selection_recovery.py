@@ -6,6 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 def error_metrics(errors: np.ndarray) -> dict:
     return {
@@ -23,6 +25,19 @@ def error_metrics(errors: np.ndarray) -> dict:
     }
 
 
+def load_reference_estimates(paths: list[Path], records: list[dict], directory: Path):
+    # Match generating units by filename, never by lexical versus numeric order.
+    references = [json.loads((directory / path.name).read_text()) for path in paths]
+    for record, reference in zip(records, references, strict=True):
+        if float(record["truth"]["position"]) != float(reference["truth_position"]):
+            raise ValueError(
+                "RAiSD recovery reference belongs to a different simulation"
+            )
+    return np.asarray(
+        [record["maximum"]["position"] for record in references], dtype=float
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input-dir", type=Path, required=True)
@@ -31,11 +46,15 @@ def main() -> None:
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
 
-    records = [json.loads(path.read_text()) for path in sorted(args.input_dir.glob("task_*.json"))]
+    paths = sorted(args.input_dir.glob("task_*.json"))
+    records = [json.loads(path.read_text()) for path in paths]
     if len(records) != args.expected:
         raise ValueError(f"expected {args.expected} records, found {len(records)}")
+    validate_blind_records(records)
     candidate_estimates: dict[str, np.ndarray] = {
-        method: np.asarray([record["estimates"][method] for record in records], dtype=float)
+        method: np.asarray(
+            [record["estimates"][method] for record in records], dtype=float
+        )
         for method in records[0]["estimates"]
     }
     gap = candidate_estimates["largest_gap_midpoint"]
@@ -43,13 +62,7 @@ def main() -> None:
     linkage = candidate_estimates["flank_ld_100kb"]
     reference = None
     if args.raisd_dir is not None:
-        reference_records = [
-            json.loads((args.raisd_dir / f"task_{task_index}.json").read_text())
-            for task_index in range(args.expected)
-        ]
-        reference = np.asarray(
-            [record["maximum"]["position"] for record in reference_records], dtype=float
-        )
+        reference = load_reference_estimates(paths, records, args.raisd_dir)
         candidate_estimates["raisd"] = reference
     candidate_estimates.update(
         {
@@ -94,7 +107,9 @@ def main() -> None:
     }
     selected = min(objective, key=objective.get)
     evaluation_metrics = {
-        method: error_metrics(np.abs(estimates[evaluation_mask] - truth[evaluation_mask]))
+        method: error_metrics(
+            np.abs(estimates[evaluation_mask] - truth[evaluation_mask])
+        )
         for method, estimates in candidate_estimates.items()
     }
     output = {

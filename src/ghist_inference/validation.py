@@ -3,6 +3,29 @@ from __future__ import annotations
 import numpy as np
 
 
+def validate_expected_spectrum(expected, data):
+    """Keep the likelihood domain fixed when a numerical integration fails.
+
+    moments/dadi masked-array likelihoods can silently omit negative, nonfinite,
+    zero-probability, or additionally masked model bins. A finite score is not
+    sufficient evidence that every observed bin contributed to the likelihood.
+    """
+    observed = np.asarray(data, dtype=float)
+    predicted = np.asarray(expected, dtype=float)
+    if predicted.shape != observed.shape:
+        raise ValueError("Expected and observed spectra have different shapes")
+    active = ~np.ma.getmaskarray(data)
+    invalid = active & (
+        np.ma.getmaskarray(expected)
+        | ~np.isfinite(predicted)
+        | (predicted < 0)
+        | ((predicted == 0) & (observed > 0))
+    )
+    if np.any(invalid):
+        raise ValueError("Expected spectrum would exclude observed likelihood bins")
+    return expected
+
+
 def validate_spectrum(spectrum, dimensions: int) -> np.ndarray:
     values = np.asarray(spectrum, dtype=float)
     if (

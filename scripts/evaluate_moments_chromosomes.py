@@ -10,6 +10,7 @@ import numpy as np
 
 from ghist_bottleneck.sfs_baseline import fit_two_epoch_spectrum
 from ghist_bottleneck.dadi_reference import fit_two_epoch_dadi_spectrum
+from ghist_bottleneck.provenance import require_diploid_scale
 try:
     from scripts.evaluate_bottleneck_chromosomes import _metrics, apply_affine, fit_affine
 except ModuleNotFoundError:
@@ -109,6 +110,9 @@ def main() -> None:
     args = parser.parse_args()
 
     data = np.load(args.dataset)
+    require_diploid_scale(data, context="Chromosome validation dataset")
+    split_record = json.loads(args.split_record.read_text())
+    require_diploid_scale(split_record, context="Chromosome calibration")
     cell_ids = np.unique(data["cell_id"])
     first = {int(cell): int(np.flatnonzero(data["cell_id"] == cell)[0]) for cell in cell_ids}
     nominal_cells = np.array(
@@ -135,7 +139,6 @@ def main() -> None:
                 [(cell, spectra[cell], args.restarts, args.engine) for cell in sorted(spectra)],
             )
         )
-    split_record = json.loads(args.split_record.read_text())
     split_cells = {
         name: np.asarray(
             [cell for cell in values if cell in fitted], dtype=np.int64
@@ -186,6 +189,7 @@ def main() -> None:
     )
     observed_fraction = float(1 / (1 + np.exp(-observed_chosen[1])))
     serializable = {
+        "coalescent_ploidy": 2,
         "dataset": str(args.dataset),
         "dataset_sha256": sha256(args.dataset),
         "split_record": str(args.split_record),
@@ -214,6 +218,7 @@ def main() -> None:
     args.out.write_text(json.dumps(serializable, indent=2) + "\n")
     np.savez_compressed(
         args.out.with_suffix(".npz"),
+        coalescent_ploidy=np.int64(2),
         cell_id=ordered_cells,
         target_latent=target,
         raw_latent=prediction,

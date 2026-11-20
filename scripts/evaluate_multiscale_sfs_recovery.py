@@ -15,7 +15,8 @@ from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import Ridge
 from sklearn.neural_network import MLPRegressor
 
-from run_multiscale_sfs_recovery import TOTAL_CELLS, TOTAL_POINTS
+from scripts.run_multiscale_sfs_recovery import TOTAL_CELLS, TOTAL_POINTS
+from ghist_bottleneck.provenance import require_diploid_scale
 
 
 def sha256(path: Path) -> str:
@@ -127,6 +128,8 @@ def main() -> None:
     if not paths:
         raise FileNotFoundError(args.input_glob)
     arrays = [np.load(path) for path in paths]
+    for path, array in zip(paths, arrays):
+        require_diploid_scale(array, context=f"Recovery shard {path}")
     fields = ("cell_id", "point_id", "replicate", "domain", "split", "truth", "estimate")
     merged = {field: np.concatenate([array[field] for array in arrays]) for field in fields}
     order = np.argsort(merged["cell_id"])
@@ -224,6 +227,7 @@ def main() -> None:
     )
     observed_selected_natural = to_natural(observed_selected)[0]
     serializable = {
+        "coalescent_ploidy": 2,
         "inputs": {path.name: sha256(path) for path in paths},
         "observed_sha256": sha256(args.observed),
         "evaluator_sha256": sha256(Path(__file__)),
@@ -252,6 +256,7 @@ def main() -> None:
     args.model_out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(
         {
+            "coalescent_ploidy": 2,
             "selected_candidate": selected,
             "eligible": eligible,
             "model": fitted[selected],

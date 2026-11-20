@@ -8,6 +8,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_bottleneck.provenance import require_diploid_scale
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -18,6 +20,8 @@ def main() -> None:
     if not paths:
         raise FileNotFoundError(args.input)
     chunks = [np.load(path) for path in paths]
+    for path, chunk in zip(paths, chunks):
+        require_diploid_scale(chunk, context=f"Simulation shard {path}")
     keys = ("windows", "sfs", "targets", "ancestral_ne", "nuisance")
     missing = {
         path: [key for key in keys if key not in chunk]
@@ -34,6 +38,7 @@ def main() -> None:
         if all(present):
             merged[key] = np.concatenate([chunk[key] for chunk in chunks])
     merged["n_haplotypes"] = chunks[0]["n_haplotypes"]
+    merged["coalescent_ploidy"] = np.int64(2)
     merged["nuisance_names"] = chunks[0]["nuisance_names"]
     merged["chunk_seeds"] = np.asarray([int(chunk["seed"]) for chunk in chunks])
     for chunk in chunks[1:]:

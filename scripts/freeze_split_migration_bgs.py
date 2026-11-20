@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 
 from ghist_inference.freeze import continuous_prediction
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 PARAMETERS = (
@@ -52,6 +53,7 @@ def main() -> None:
     bootstrap = load(args.bootstrap)
     calibration = load(args.calibration)
     recovery = load(args.near_recovery)
+    require_physical_scaling([calibration, recovery])
     raw = continuous_prediction(baseline["projection_median"], PARAMETERS)
 
     if calibration.get("selected_model") != "identity":

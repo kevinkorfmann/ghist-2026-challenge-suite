@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 MAX_FROZEN_HALF_WIDTH = 75_000
 
@@ -28,6 +30,8 @@ def validate(
     candidate: dict,
     raisd: dict,
 ) -> dict:
+    for recovery in (generic, chromosome, exact):
+        validate_blind_records(recovery.get("records", []))
     for label, recovery in [("generic", generic), ("chromosome", chromosome)]:
         if recovery["held_out_method_gate"]["selected"] != "median_all_three":
             raise ValueError(f"{label} recovery did not select the locked ensemble")

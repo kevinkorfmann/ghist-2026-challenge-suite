@@ -1,0 +1,64 @@
+{
+  "status": "completed; scientific readiness not established",
+  "software": {
+    "stdpopsim": "0.3.0",
+    "SLiM": "4.3",
+    "slim_git_commit": "f872f3df812df4da4e18515af43d79e2d78bf33c",
+    "raisd_git_commit": "0c705a8681e980aa694f67d90546961501c288c7"
+  },
+  "genetic_map_chr7_sha256": "321870c6175105d1f6817bbf95430315c004db682a45be24458b0b9f7b017da8",
+  "executed_sources": {
+    "scripts/validate_sweep_background_smoke.py": {
+      "repository": {
+        "sha256": "1ca3aecf1a9c813d24b393c215f69e6e5502cf7820536177bc0ae550fa6130c6",
+        "ast_sha256": "a89b435d1a65827dfb783a433808f3bde03a12244fee41744de3ac9544b2746a"
+      },
+      "executed": {
+        "sha256": "c91135e481c4f22cb413afe5cb1127f78924846928762ffa7744cee23926c379",
+        "ast_sha256": "a89b435d1a65827dfb783a433808f3bde03a12244fee41744de3ac9544b2746a"
+      },
+      "same_python_ast": true
+    },
+    "src/ghist_single_sweep/recovery.py": {
+      "repository": {
+        "sha256": "2df9e1e2e87f48db77ddcd8d33cdfc5f7bdf84fe64d7bcb948def5206d0eb1ed",
+        "ast_sha256": "9633ceb19aab77ddf74b361e7ad81f50b1d662b60bd7dc36783a760862d73f47"
+      },
+      "executed": {
+        "sha256": "7bb2745122ec20e8e20a2ebd7cefea75ce6c86d8f73cad3e3bccf90b0d50a05d",
+        "ast_sha256": "9633ceb19aab77ddf74b361e7ad81f50b1d662b60bd7dc36783a760862d73f47"
+      },
+      "same_python_ast": true
+    }
+  },
+  "jobs": {
+    "10849228": "cancelled before finalized input transfer",
+    "10849252": "failed: RAiSD GSL library not configured; flat-map fallback also observed; discarded",
+    "10849280": "12-record blind pilot, completed",
+    "10849315": "Q10 BGS null/single/multiple smoke, completed",
+    "10849317": "all192 hard-sweep simulations blind reanalysis, completed",
+    "10849339": "all48 soft-sweep simulations blind reanalysis, completed",
+    "10849369": "Q10 independent20-null calibration +24 evaluation benchmark, completed",
+    "10849403": "Q1 BGS null/single/multiple smoke, completed",
+    "10849440": "Q1 independent20-null calibration +24 evaluation benchmark, completed"
+  },
+  "tests": {
+    "focused_pytest": "28 passed",
+    "critical_ruff": "passed"
+  },
+  "public_testing_answers_used": false,
+  "submission_count": 0,
+  "benchmark_records": {
+    "exact_background_2.json": "37a328003d240fd009fe15a5f43fb5e4e61034e9d4b28ba426ce06f2c344fe73",
+    "task5_blind_recovery.json": "afe2fdc03c58d4045a60577e8dcbf491d33f0734e4c726bb5a66fff73f2617c1",
+    "task6_blind_recovery.json": "919cb3bc98642ed16467ebea10ec42a359f36e587d26c8fc9c5f68dd6ec54738",
+    "uncertainty.json": "ddfa2b06f9c6ac827bb49e8af3f72a48d62081addfcb62ecfb733879f1759b68",
+    "background_benchmark.json": "074d233e61c7583a5b4a772ca0bd572777a57d907f1b5af7a427eea3bbfed931",
+    "exact_background_1.json": "d20533d6ab43b61f6ad89c9750ccbe203c71a74f0f2c602bd69047b39fa0515a",
+    "background_benchmark_exact.json": "737ac8d30b80db5d23d8fe64587ddf587d9abbd9533d89dddaefc0c19dc7f7dc",
+    "design.json": "8423b5b484de041fad309d81a4e174bcb923228357ada0ba31a118c1fb99db53",
+    "background_0.json": "0b38a8d9eb9a3786e0051b50cfaad7db38db154ea5f18d0193ccbb58d733edb1",
+    "exact_background_0.json": "f77bddc56d1058650dd4c5e3df7818379d7729a66c2859e3a0cf4cd79fb181b2",
+    "design_exact.json": "e7960c0bf2215d3e373c1e50bee149b0a27392fd1f9f2e1edfddfaf67941c65a"
+  }
+}

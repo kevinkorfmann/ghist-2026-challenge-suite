@@ -1,0 +1,102 @@
+{
+  "component_only": true,
+  "kind": "dog",
+  "scenario": "poisson",
+  "seed": 2026112101,
+  "segment_sha256": "973ab870b51ab08fb87e15b5e5f2d38147f71a1235a2334f82db06072be622b9",
+  "public_answers_used": false,
+  "models_refitted": false,
+  "runs": {
+    "unchanged": {
+      "pairs": 4000,
+      "independent_pedigrees": 4000,
+      "accuracy": 0.6325,
+      "balanced_accuracy": 0.6325,
+      "meioses_accuracy": 0.697,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.61675,
+        0.647
+      ],
+      "multiclass_brier_sum": 0.4536179330645416,
+      "negative_log_likelihood": 0.7655370276011253,
+      "ece_10_equal_width_bins": 0.022418981015512256,
+      "reliability_bins": [
+        {
+          "lower": 0.2,
+          "upper": 0.3,
+          "pairs": 34,
+          "mean_confidence": 0.2759665032679735,
+          "accuracy": 0.29411764705882354
+        },
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 311,
+          "mean_confidence": 0.36055988818478746,
+          "accuracy": 0.3022508038585209
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 672,
+          "mean_confidence": 0.45224082690209916,
+          "accuracy": 0.47619047619047616
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 955,
+          "mean_confidence": 0.5453478295010691,
+          "accuracy": 0.5392670157068062
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 668,
+          "mean_confidence": 0.6443683325313658,
+          "accuracy": 0.6152694610778443
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 386,
+          "mean_confidence": 0.7452960664659174,
+          "accuracy": 0.689119170984456
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 290,
+          "mean_confidence": 0.8488006017689207,
+          "accuracy": 0.8551724137931035
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 684,
+          "mean_confidence": 0.9825338672201336,
+          "accuracy": 0.9736842105263158
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.716,
+        "avuncular_once_removed": 0.39,
+        "avuncular_twice_removed": 0.51,
+        "full_1st_cousin": 0.604,
+        "half_1st_cousin": 0.54,
+        "half_avuncular": 0.56,
+        "half_sibling": 0.74,
+        "siblings": 1.0
+      },
+      "confidence_is_uncalibrated": true
+    }
+  },
+  "limitations": [
+    "Exact segments bypass genotype error, phasing and IBD detection.",
+    "Pairs with no IBD are absent from Ped-sim segment files.",
+    "Pedigree templates match calibration; this is seed and crossover-model generalization, not novel topology validation.",
+    "Dog founders are unrelated; observed inbreeding and HBD-mask fragmentation are not simulated."
+  ],
+  "expected_pairs_before_zero_ibd_censoring": 4000,
+  "model_sha256": "894481f64c56b3ffd90372bcc1330b61f32565c011b486e17d7777f188fc0591"
+}

@@ -7,6 +7,10 @@ from pathlib import Path
 import numpy as np
 
 from ghist_growth_bgs.spectrum import fit_growth_spectrum
+from ghist_growth_bgs.simulation import (
+    SIMULATION_SCALING_SCHEME,
+    require_physical_scaling,
+)
 
 
 def main() -> None:
@@ -24,6 +28,7 @@ def main() -> None:
     grouped: dict[tuple[float, float], list[tuple[dict, np.ndarray]]] = {}
     for path in files:
         row = json.loads(path.read_text())
+        require_physical_scaling([row])
         truth = row["truth_in_analysis_units"]
         key = (float(truth["generations"]), float(truth["post_growth_scaling"]))
         spectrum = np.load(path.with_suffix(".sfs.npz"))["spectrum"]
@@ -68,7 +73,9 @@ def main() -> None:
                 row["generator"]["chromosome"] for row, _ in group
             ),
             "physical_exposure_bp": exposure,
-            "accepted_sites": sum(row["spectrum"]["accepted_sites"] for row, _ in group),
+            "accepted_sites": sum(
+                row["spectrum"]["accepted_sites"] for row, _ in group
+            ),
             "exponential": exponential,
             "sudden": sudden,
             "relative_error": {
@@ -84,6 +91,7 @@ def main() -> None:
         }
         print(json.dumps({key: results[key]}, indent=2), flush=True)
     payload = {
+        "simulation_scaling_scheme": SIMULATION_SCALING_SCHEME,
         "source": str(args.input_dir),
         "truth_points": len(results),
         "replicates_per_truth": 4,

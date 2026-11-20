@@ -1,0 +1,129 @@
+{
+  "configuration": {
+    "task": 4,
+    "point": 0,
+    "condition": "asymmetric",
+    "parameters": [
+      11000,
+      8000,
+      19000,
+      7800,
+      7e-05
+    ]
+  },
+  "replicate": 0,
+  "seed": 202620210,
+  "truth": {
+    "ancestral_population_size": 11000,
+    "AFR_population_size": 8000,
+    "EUR_population_size": 19000,
+    "generations_since_split": 7800,
+    "migration_rate": 7e-05
+  },
+  "fits": {
+    "(20, 16)": {
+      "AFR_population_size": 9574.337115733799,
+      "EUR_population_size": 17963.651060316348,
+      "generations_since_split": 7025.8923840429,
+      "migration_rate": 8.048199408501605e-05,
+      "ancestral_population_size": 11955.27115834246,
+      "scaled_parameters": {
+        "AFR_size_ratio": 0.8008465043515779,
+        "EUR_size_ratio": 1.5025716123369735,
+        "split_duration_2N": 0.29384077914201845,
+        "migration_2N": 1.9243681253009617
+      },
+      "theta": 970.7680180574077,
+      "multinomial_log_likelihood": -661.0550016277953,
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      },
+      "best_restart": 5,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "projection": [
+        20,
+        16
+      ],
+      "restarts": 12,
+      "workers": 1,
+      "sequence_length": 2000000,
+      "mutation_rate": 1.015e-08,
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false,
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        1.0
+      ]
+    },
+    "(12, 10)": {
+      "AFR_population_size": 10229.97785620833,
+      "EUR_population_size": 18310.264796703384,
+      "generations_since_split": 6446.680651758544,
+      "migration_rate": 7.100366034137422e-05,
+      "ancestral_population_size": 12057.544303918297,
+      "scaled_parameters": {
+        "AFR_size_ratio": 0.8484296303090448,
+        "EUR_size_ratio": 1.518573296119108,
+        "split_duration_2N": 0.2673297517830222,
+        "migration_2N": 1.7122595606129722
+      },
+      "theta": 979.0725974781657,
+      "multinomial_log_likelihood": -318.30674639374496,
+      "optimizer_diagnostics": {
+        "near_boundary_parameter_indices": [],
+        "restarts_within_0_1_log_likelihood": 12,
+        "numerically_supported": true,
+        "scope": "Restart agreement and boundary diagnostic; not proof of model adequacy or optimizer convergence"
+      },
+      "best_restart": 8,
+      "successful_restarts": 12,
+      "failed_restarts": [],
+      "projection": [
+        12,
+        10
+      ],
+      "restarts": 12,
+      "workers": 1,
+      "sequence_length": 2000000,
+      "mutation_rate": 1.015e-08,
+      "integration_dt_fac": 0.02,
+      "adaptive_integration": false,
+      "initial_scaled": [
+        1.2,
+        0.9,
+        0.3,
+        1.0
+      ]
+    }
+  },
+  "relative_error": {
+    "(20, 16)": {
+      "ancestral_population_size": 0.08684283257658731,
+      "AFR_population_size": 0.1967921394667249,
+      "EUR_population_size": -0.054544681035981646,
+      "generations_since_split": -0.0992445661483462,
+      "migration_rate": 0.14974277264308644
+    },
+    "(12, 10)": {
+      "ancestral_population_size": 0.09614039126529983,
+      "AFR_population_size": 0.27874723202604135,
+      "EUR_population_size": -0.03630185280508502,
+      "generations_since_split": -0.17350248054377648,
+      "migration_rate": 0.014338004876774724
+    }
+  },
+  "sites": 5848,
+  "length": 2000000,
+  "mutation_rate": 1.015e-08,
+  "recombination_rate": 1e-08,
+  "elapsed_seconds": 37.57028914336115,
+  "public_testing_answers_used": false,
+  "initialization": "Fixed generic scaled seed shared across all truths/replicates (Task 2: 1.2,0.9,0.3,0.15,1; Task 4: 1.2,0.9,0.3,1), independent of simulation truth; growth uses global random restarts",
+  "scope": "Independent msprime genealogies and infinite-sites mutations; neutral numerical/misspecification diagnostic, not BGS or whole-chromosome coverage validation"
+}

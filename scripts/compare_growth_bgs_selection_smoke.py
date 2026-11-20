@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from ghist_growth_bgs.spectrum import fit_growth_spectrum
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 def main() -> None:
@@ -17,6 +18,7 @@ def main() -> None:
     parser.add_argument("--restarts", type=int, default=32)
     args = parser.parse_args()
     simulation = json.loads(args.simulation.read_text())
+    scaling_scheme = require_physical_scaling([simulation])
     spectrum = np.load(args.sfs)["spectrum"]
     sudden = fit_growth_spectrum(
         spectrum,
@@ -31,6 +33,7 @@ def main() -> None:
     )
     exponential = simulation["fit"]
     result = {
+        "simulation_scaling_scheme": scaling_scheme,
         "truth": simulation["truth_in_analysis_units"],
         "exponential": exponential,
         "sudden": sudden,

@@ -1,0 +1,63 @@
+{
+  "coalescent_ploidy": 2,
+  "haplotypes": 114,
+  "parameter_points": [
+    [
+      600,
+      0.12,
+      8000
+    ],
+    [
+      1900,
+      0.35,
+      17000
+    ],
+    [
+      8500,
+      0.5,
+      32000
+    ],
+    [
+      16000,
+      0.72,
+      44000
+    ],
+    [
+      28000,
+      0.89,
+      21000
+    ],
+    [
+      4000,
+      0.94,
+      11000
+    ]
+  ],
+  "replicates": 2,
+  "sequence_length": 10000000,
+  "mutation_rate": 3.42e-08,
+  "recombination_rate": 1.87e-08,
+  "seed": 202611201,
+  "restarts": 8,
+  "fit_initialization": "random; no truth initialization",
+  "heldout_unit": "independent chromosome; repeated parameter points are reported together",
+  "calibration_or_selection": false,
+  "public_answers_used": false,
+  "missingness": "complete calls only; missing-call robustness not established",
+  "uncertainty_coverage": "not assessed; bootstrap intervals are not calibration evidence",
+  "rate_sensitivity": "At fixed SFS, inferred N and time scale inversely with assumed mutation rate; decline fraction is invariant. This structural sensitivity is not a recovery experiment.",
+  "limitation": "10 Mb diagnostic panel is not full-prior or target 100 Mb validation; dadi and moments share the same two-epoch biological model",
+  "source_sha256": {
+    "/Users/kevinkorfmann/Documents/ChatGPT/ghist/scripts/validate_bottleneck_science.py": "cf3d82a2f0086219cf9800f30f6faa1f765339e8ebddd00db3c1ca1a973daa2b",
+    "src/ghist_bottleneck/sfs_baseline.py": "9526f85448e9002082784e1b24501499f1bdee4a61ed03bec6a82509d61d23cc",
+    "src/ghist_bottleneck/dadi_reference.py": "f06698b8c762afe0ba1677af5ffd186f637f187b57b3fe41fb351b4427efe688"
+  },
+  "versions": {
+    "msprime": "1.4.5",
+    "tskit": "1.0.4",
+    "moments-popgen": "1.7.1",
+    "dadi": "2.4.5",
+    "numpy": "2.5.5"
+  },
+  "reused_spectra_sha256": "f05de61daa015380288b7e8168425ea4954d2ed19115ae83225db5636452b13a"
+}

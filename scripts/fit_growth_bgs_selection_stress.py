@@ -7,11 +7,18 @@ from pathlib import Path
 import numpy as np
 
 from ghist_growth_bgs.spectrum import fit_growth_spectrum
+from ghist_growth_bgs.simulation import (
+    SIMULATION_SCALING_SCHEME,
+    require_physical_scaling,
+)
 
 
 def load_group(files: list[Path]) -> list[tuple[dict, np.ndarray]]:
     return [
-        (json.loads(path.read_text()), np.load(path.with_suffix(".sfs.npz"))["spectrum"])
+        (
+            json.loads(path.read_text()),
+            np.load(path.with_suffix(".sfs.npz"))["spectrum"],
+        )
         for path in files
     ]
 
@@ -39,7 +46,16 @@ def main() -> None:
         ),
     }
     results = {}
+    truths = [
+        row["truth_in_analysis_units"] for group in groups.values() for row, _ in group
+    ]
+    if any(truth != truths[0] for truth in truths[1:]):
+        raise ValueError(
+            "stress comparison requires identical physical demographic truth"
+        )
+    truth = truths[0]
     for index, (label, group) in enumerate(groups.items()):
+        require_physical_scaling([row for row, _ in group])
         spectrum = np.sum([value for _, value in group], axis=0)
         exposure = sum(row["spectrum"]["physical_exposure_bp"] for row, _ in group)
         mutation_rate = group[0][0]["truth_in_analysis_units"]["mutation_rate"]
@@ -57,18 +73,23 @@ def main() -> None:
         results[label] = {
             "fit": fit,
             "relative_error": {
-                "generations": fit["generations"] / 5000 - 1,
-                "post_growth_scaling": fit["post_growth_scaling"] / 2 - 1,
+                "generations": fit["generations"] / truth["generations"] - 1,
+                "post_growth_scaling": fit["post_growth_scaling"]
+                / truth["post_growth_scaling"]
+                - 1,
             },
             "chromosome_arms": sorted(
                 row["generator"]["chromosome"] for row, _ in group
             ),
             "physical_exposure_bp": exposure,
-            "accepted_sites": sum(row["spectrum"]["accepted_sites"] for row, _ in group),
+            "accepted_sites": sum(
+                row["spectrum"]["accepted_sites"] for row, _ in group
+            ),
         }
         print(json.dumps({label: results[label]}, indent=2), flush=True)
     payload = {
-        "truth": {"generations": 5000, "post_growth_scaling": 2.0},
+        "simulation_scaling_scheme": SIMULATION_SCALING_SCHEME,
+        "truth": truth,
         "results": results,
         "maximum_absolute_relative_error": {
             key: max(abs(row["relative_error"][key]) for row in results.values())
@@ -79,8 +100,7 @@ def main() -> None:
             "post_growth_scaling": 0.05,
         },
         "freeze_gate_passed": all(
-            max(abs(row["relative_error"][key]) for row in results.values())
-            < threshold
+            max(abs(row["relative_error"][key]) for row in results.values()) < threshold
             for key, threshold in {
                 "generations": 0.20,
                 "post_growth_scaling": 0.05,

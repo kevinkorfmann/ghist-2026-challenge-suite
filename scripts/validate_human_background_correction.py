@@ -6,6 +6,8 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 
@@ -79,7 +81,7 @@ def add_background(
         for record in records
         for key in ("indID1", "indID2")
     }
-    for sample in samples:
+    for sample in sorted(samples):
         individual_effects[sample] = float(rng.lognormal(mean=0.0, sigma=0.25))
     for record in records:
         effect = np.sqrt(
@@ -144,10 +146,12 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--evaluation", type=Path, required=True)
+    parser.add_argument("--reference", type=Path, required=True, help="Independent clean simulation; never the evaluation input")
     parser.add_argument("--replicates", type=int, default=12)
     parser.add_argument("--genome-cm", type=float, default=3346.298892538)
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
+    validate_simulation_splits({"evaluation": [args.evaluation], "reference": [args.reference]})
 
     payload = joblib.load(args.model)
     model, names = payload["model"], payload["feature_names"]
@@ -156,14 +160,15 @@ def main() -> None:
         for name in names
         if name.startswith("segments_ge_")
     )
-    reference, source_lengths = read_pedsim_with_lengths(
+    evaluation, source_lengths = read_pedsim_with_lengths(
         args.evaluation, args.genome_cm
     )
-    baseline = accuracy(model, reference, names)
+    reference, _ = read_pedsim_with_lengths(args.reference, args.genome_cm)
+    baseline = accuracy(model, evaluation, names)
     rows = []
     for replicate in range(args.replicates):
         augmented = add_background(
-            reference,
+            evaluation,
             source_lengths,
             np.random.default_rng(121226000 + replicate),
             args.genome_cm,
@@ -215,6 +220,9 @@ def main() -> None:
         "state": "COMPLETED",
         "design": "held-out human pairs with heterogeneous added long-segment background",
         "replicates": args.replicates,
+        "independent_pedigree_replicates": 1,
+        "background_reference": str(args.reference),
+        "replicates_share_pedigrees": True,
         "baseline_exact_accuracy": baseline[0],
         "baseline_meioses_accuracy": baseline[1],
         "aggregates": aggregates,

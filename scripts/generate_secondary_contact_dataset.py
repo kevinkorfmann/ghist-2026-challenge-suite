@@ -7,9 +7,14 @@ import json
 from pathlib import Path
 
 import numpy as np
+from ghist_secondary_contact.contract import SPECTRUM_CONTRACT
 
 from ghist_secondary_contact.demography import SecondaryContactParameters
-from ghist_secondary_contact.simulate import draw_nuisance, parameter_design, simulate_block
+from ghist_secondary_contact.simulate import (
+    draw_nuisance,
+    parameter_design,
+    simulate_block,
+)
 
 
 def _sha256(path: Path) -> str:
@@ -98,15 +103,21 @@ def main() -> None:
     nuisance = np.asarray([record["nuisance"] for record in records], dtype=np.float64)
     np.savez_compressed(
         args.out,
+        spectrum_contract=SPECTRUM_CONTRACT,
+        spectrum_transform="log_l2",
         cell_id=np.asarray([record["cell_id"] for record in records]),
         point_id=np.asarray([record["point_id"] for record in records]),
         replicate=np.asarray([record["replicate"] for record in records]),
-        partition=np.asarray([record["partition"] for record in records], dtype=np.int8),
+        partition=np.asarray(
+            [record["partition"] for record in records], dtype=np.int8
+        ),
         truth=np.asarray([record["truth"] for record in records], dtype=np.float64),
         ancestral_size=np.asarray([record["ancestral_size"] for record in records]),
         nuisance=nuisance,
         windows=np.asarray([record["windows"] for record in records], dtype=np.float32),
-        joint_sfs=np.asarray([record["joint_sfs"] for record in records], dtype=np.float32),
+        joint_sfs=np.asarray(
+            [record["joint_sfs"] for record in records], dtype=np.float32
+        ),
         global_summary=np.asarray(
             [record["global_summary"] for record in records], dtype=np.float32
         ),

@@ -93,8 +93,8 @@ def simulate_cell(arguments: tuple[int, int, int, float, float, int]) -> dict:
         ancestry_seed = int(rng.integers(1, 2**31 - 2))
         mutation_seed = int(rng.integers(1, 2**31 - 2))
         ancestry = msprime.sim_ancestry(
-            samples={"pop": 114},
-            ploidy=1,
+            samples=[msprime.SampleSet(114, population="pop", ploidy=1)],
+            ploidy=2,
             sequence_length=block_length,
             recombination_rate=1.87e-8,
             demography=demography,
@@ -182,6 +182,7 @@ def main() -> None:
             [record["multinomial_log_likelihood"] for record in records]
         ),
         segregating_sites=np.asarray([record["segregating_sites"] for record in records]),
+        coalescent_ploidy=np.int64(2),
     )
     metadata = {
         "output": str(args.out),
@@ -193,6 +194,7 @@ def main() -> None:
         "block_length": args.block_length,
         "sequence_length": args.blocks * args.block_length,
         "mutation_rate": args.mutation_rate,
+        "coalescent_ploidy": 2,
         "restarts": args.restarts,
         "seed": args.seed,
         "broad_points": BROAD_POINTS,

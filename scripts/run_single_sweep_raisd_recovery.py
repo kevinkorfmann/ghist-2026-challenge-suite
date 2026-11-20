@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 
+import numpy as np
 import tskit
 
 
@@ -27,7 +28,9 @@ def main() -> None:
             tree_sequence.write_vcf(
                 handle,
                 contig_id="simulated",
-                allow_position_zero=True,
+                position_transform=lambda positions: (
+                    np.floor(positions).astype(int) + 1
+                ),
             )
         subprocess.run(
             [
@@ -53,8 +56,8 @@ def main() -> None:
                 if not fields or fields[0] == "//" or len(fields) < 7:
                     continue
                 row = {
-                    "position": int(fields[0]),
-                    "start": int(fields[1]),
+                    "position": int(fields[0]) - 1,
+                    "start": int(fields[1]) - 1,
                     "end": int(fields[2]),
                     "variation": float(fields[3]),
                     "frequency_spectrum": float(fields[4]),
@@ -68,6 +71,7 @@ def main() -> None:
     true_position = float(truth_record["truth"]["position"])
     result = {
         "state": "COMPLETED",
+        "coordinate_system": "zero-based position; half-open window",
         "truth_position": true_position,
         "maximum": maximum,
         "absolute_error": abs(maximum["position"] - true_position),
@@ -81,4 +85,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

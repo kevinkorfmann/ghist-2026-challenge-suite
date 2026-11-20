@@ -6,6 +6,8 @@ import json
 from collections import Counter
 from pathlib import Path
 
+from ghist_relatedness.validation import validate_simulation_splits
+
 import joblib
 import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
@@ -30,7 +32,7 @@ def classifier(seed: int, leaves: int, minimum_leaf: int):
         max_leaf_nodes=leaves,
         min_samples_leaf=minimum_leaf,
         l2_regularization=3.0,
-        early_stopping=True,
+        early_stopping=False,
         random_state=seed,
     )
 
@@ -116,6 +118,11 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=92026)
     args = parser.parse_args()
+    validate_simulation_splits({
+        'calibration': args.calibration,
+        'selection': [args.selection],
+        'development_evaluation': [args.development_evaluation],
+    })
 
     sex_map = read_sex_map(args.sex_map)
     calibration = load_simulations(args.calibration, args.genome_cm, sex_map)

@@ -137,6 +137,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_chromosome_calibration_applies_only_the_chosen_frozen_branch(self):
         calibration = {
+            "coalescent_ploidy": 2,
             "chosen_branch": "summary",
             "branches": {
                 "summary": {
@@ -221,6 +222,7 @@ class PipelineTests(unittest.TestCase):
                 target.mkdir()
                 record = {
                     "candidate": candidate,
+                    "coalescent_ploidy": 2,
                     "selection_score": 1.0 + index / 10,
                     "elapsed_seconds": 10 + index,
                     "dataset_sha256": "a" * 64,
@@ -450,6 +452,7 @@ class PipelineTests(unittest.TestCase):
                     nuisance=np.asarray([[index, 0.01 * index]]),
                     nuisance_names=names,
                     n_haplotypes=np.int64(12),
+                    coalescent_ploidy=np.int64(2),
                     seed=np.int64(100 + index),
                 )
             output = root / "merged.npz"

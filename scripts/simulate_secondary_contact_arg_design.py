@@ -6,8 +6,12 @@ from pathlib import Path
 
 import msprime
 import numpy as np
+from ghist_secondary_contact.contract import SPECTRUM_CONTRACT
 
-from ghist_secondary_contact.demography import SecondaryContactParameters, build_demography
+from ghist_secondary_contact.demography import (
+    SecondaryContactParameters,
+    build_demography,
+)
 from ghist_secondary_contact.simulate import (
     draw_nuisance,
     focused_parameter_design,
@@ -105,6 +109,7 @@ def main() -> None:
     )
     np.savez_compressed(
         args.prefix.with_suffix(".features.npz"),
+        spectrum_contract=SPECTRUM_CONTRACT,
         cell_id=args.cell_id,
         point_id=point_id + 2_000_000,
         replicate=replicate,

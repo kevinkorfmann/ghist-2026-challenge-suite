@@ -6,6 +6,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 HALF_WIDTHS = np.asarray(
     [25_000, 35_000, 50_000, 60_000, 75_000, 100_000, 125_000, 150_000, 200_000]
@@ -27,6 +29,7 @@ def error_metrics(errors: np.ndarray) -> dict:
 
 
 def summarize(records: list[dict], seed_origin: int = 75_226_000) -> dict:
+    validate_blind_records(records)
     if len(records) != 48:
         raise ValueError(f"expected 48 records, found {len(records)}")
     truth = np.asarray([record["truth"]["position"] for record in records], dtype=float)
@@ -86,7 +89,8 @@ def summarize(records: list[dict], seed_origin: int = 75_226_000) -> dict:
     gate["passed"] = all(gate.values())
     return {
         "state": "COMPLETED",
-        "design": "48 chromosome-map standing-variation sweeps; first 24 method-locked calibration and last 24 untouched evaluation",
+        "evaluation_status": "retrospective reanalysis of previously evaluated simulations" if any(record.get("reanalysis_of_legacy_simulation") for record in records) else "seed-heldout evaluation; provenance requires independent audit",
+        "design": "48 chromosome-map standing-variation sweeps; first 24 method calibration and last 24 seed-heldout evaluation",
         "replicates": len(records),
         "calibration_replicates": int(calibration.sum()),
         "evaluation_replicates": int(evaluation.sum()),

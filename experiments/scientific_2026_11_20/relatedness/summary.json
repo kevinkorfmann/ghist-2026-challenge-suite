@@ -1,0 +1,1963 @@
+{
+  "design": "Fixed models and fixed metrics on independent simulation seeds; no public answers; repeated map/background settings are not independent replicates",
+  "component_only": true,
+  "candidate_promoted": false,
+  "groups": {
+    "dog:historical_frozen:poisson:unchanged": {
+      "independent_seeds": 3,
+      "source_files": [
+        "dog_poisson_10.json",
+        "dog_poisson_11.json",
+        "dog_poisson_9.json"
+      ],
+      "seeds": [
+        2026112100,
+        2026112101,
+        2026112099
+      ],
+      "accuracy": {
+        "mean": 0.6316666666666666,
+        "minimum": 0.626,
+        "maximum": 0.6365
+      },
+      "balanced_accuracy": {
+        "mean": 0.6316666666666667,
+        "minimum": 0.626,
+        "maximum": 0.6365000000000001
+      },
+      "meioses_accuracy": {
+        "mean": 0.6994166666666667,
+        "minimum": 0.692,
+        "maximum": 0.70925
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.021578317663239525,
+        "minimum": 0.019923822420634868,
+        "maximum": 0.022418981015512256
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.4562943435945503,
+        "minimum": 0.4536179330645416,
+        "maximum": 0.4585069237657943
+      },
+      "negative_log_likelihood": {
+        "mean": 0.778315589461911,
+        "minimum": 0.7655370276011253,
+        "maximum": 0.7883997865284781
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 12000,
+      "expected_pairs_including_unobserved_zero_ibd": 12000,
+      "class_recall_mean": {
+        "avuncular": 0.7233333333333333,
+        "avuncular_once_removed": 0.372,
+        "avuncular_twice_removed": 0.546,
+        "full_1st_cousin": 0.6046666666666667,
+        "half_1st_cousin": 0.524,
+        "half_avuncular": 0.542,
+        "half_sibling": 0.7413333333333333,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:interference:task10_clean": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_interference_12.json",
+        "human_interference_13.json",
+        "human_interference_14.json"
+      ],
+      "seeds": [
+        2026112102,
+        2026112103,
+        2026112104
+      ],
+      "accuracy": {
+        "mean": 0.47496358972940245,
+        "minimum": 0.4694987505512274,
+        "maximum": 0.4790963767052956
+      },
+      "balanced_accuracy": {
+        "mean": 0.4768397341602449,
+        "minimum": 0.4710421875822881,
+        "maximum": 0.4810681249924249
+      },
+      "meioses_accuracy": {
+        "mean": 0.6928245809272601,
+        "minimum": 0.6896957224753785,
+        "maximum": 0.6967874431568138
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.025238997886570937,
+        "minimum": 0.02088110890886006,
+        "maximum": 0.029901027301039662
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.5924892599265121,
+        "minimum": 0.5903723274341505,
+        "maximum": 0.5944801313228253
+      },
+      "negative_log_likelihood": {
+        "mean": 1.1744240302295512,
+        "minimum": 1.1717670678187992,
+        "maximum": 1.1768867029778947
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20412,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9946666666666667,
+        "avuncular_once_removed": 0.6173333333333333,
+        "avuncular_twice_removed": 0.4646666666666667,
+        "full_1st_cousin": 0.5966666666666667,
+        "full_1st_cousin_once_removed": 0.4786666666666667,
+        "full_1st_cousin_thrice_removed": 0.23231529726118905,
+        "full_1st_cousin_twice_removed": 0.3,
+        "full_2nd_cousin": 0.374,
+        "full_2nd_cousin_once_removed": 0.314,
+        "full_2nd_cousin_twice_removed": 0.18002860430855874,
+        "full_3rd_cousin": 0.2289301706816982,
+        "full_3rd_cousin_once_removed": 0.22060621392552907,
+        "full_4th_cousin": 0.6738759920664534,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:interference:task12_independent_reference_intensity_0.0": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_interference_12.json",
+        "human_interference_13.json",
+        "human_interference_14.json"
+      ],
+      "seeds": [
+        2026112102,
+        2026112103,
+        2026112104
+      ],
+      "accuracy": {
+        "mean": 0.4752065049945755,
+        "minimum": 0.47140967220343966,
+        "maximum": 0.480269913451665
+      },
+      "balanced_accuracy": {
+        "mean": 0.4777884125520298,
+        "minimum": 0.4736252561125368,
+        "maximum": 0.48272722699283943
+      },
+      "meioses_accuracy": {
+        "mean": 0.6963561308086148,
+        "minimum": 0.694293677570779,
+        "maximum": 0.6991033367631927
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.01588414375763454,
+        "minimum": 0.012041791961545758,
+        "maximum": 0.021027402480485652
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.5925453840826054,
+        "minimum": 0.5903574545418977,
+        "maximum": 0.5938938754745229
+      },
+      "negative_log_likelihood": {
+        "mean": 1.1803141893005524,
+        "minimum": 1.1788869163891804,
+        "maximum": 1.181047002898007
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20412,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9946666666666667,
+        "avuncular_once_removed": 0.6086666666666667,
+        "avuncular_twice_removed": 0.42666666666666664,
+        "full_1st_cousin": 0.594,
+        "full_1st_cousin_once_removed": 0.5106666666666667,
+        "full_1st_cousin_thrice_removed": 0.1962685370741483,
+        "full_1st_cousin_twice_removed": 0.31466666666666665,
+        "full_2nd_cousin": 0.37133333333333335,
+        "full_2nd_cousin_once_removed": 0.33266666666666667,
+        "full_2nd_cousin_twice_removed": 0.15311967699463405,
+        "full_3rd_cousin": 0.26200909296632313,
+        "full_3rd_cousin_once_removed": 0.2143499673000519,
+        "full_4th_cousin": 0.7099571680599271,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:interference:task12_independent_reference_intensity_0.6": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_interference_12.json",
+        "human_interference_13.json",
+        "human_interference_14.json"
+      ],
+      "seeds": [
+        2026112102,
+        2026112103,
+        2026112104
+      ],
+      "accuracy": {
+        "mean": 0.384918605679864,
+        "minimum": 0.38059481743227325,
+        "maximum": 0.3896810230780538
+      },
+      "balanced_accuracy": {
+        "mean": 0.38508748982325886,
+        "minimum": 0.38099960207466926,
+        "maximum": 0.38957746741762034
+      },
+      "meioses_accuracy": {
+        "mean": 0.5526154355943163,
+        "minimum": 0.552256357489343,
+        "maximum": 0.5533225759131583
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.022555305324004515,
+        "minimum": 0.019056778443295796,
+        "maximum": 0.0264096014464387
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.6611412947183337,
+        "minimum": 0.6607131350916483,
+        "maximum": 0.6617782340727387
+      },
+      "negative_log_likelihood": {
+        "mean": 1.4577700260224398,
+        "minimum": 1.4557338802713244,
+        "maximum": 1.4596442779498873
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20412,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9853333333333333,
+        "avuncular_once_removed": 0.5006666666666667,
+        "avuncular_twice_removed": 0.4013333333333333,
+        "full_1st_cousin": 0.57,
+        "full_1st_cousin_once_removed": 0.39066666666666666,
+        "full_1st_cousin_thrice_removed": 0.11282565130260522,
+        "full_1st_cousin_twice_removed": 0.252,
+        "full_2nd_cousin": 0.24533333333333335,
+        "full_2nd_cousin_once_removed": 0.08533333333333333,
+        "full_2nd_cousin_twice_removed": 0.1261325344295566,
+        "full_3rd_cousin": 0.0675211037736496,
+        "full_3rd_cousin_once_removed": 0.1660982769353295,
+        "full_4th_cousin": 0.48798062441781637,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:interference:task12_independent_reference_intensity_1.4": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_interference_12.json",
+        "human_interference_13.json",
+        "human_interference_14.json"
+      ],
+      "seeds": [
+        2026112102,
+        2026112103,
+        2026112104
+      ],
+      "accuracy": {
+        "mean": 0.3636085939295063,
+        "minimum": 0.3614581802146112,
+        "maximum": 0.3654100044007628
+      },
+      "balanced_accuracy": {
+        "mean": 0.36508097898928066,
+        "minimum": 0.36334481484035924,
+        "maximum": 0.3669500599603337
+      },
+      "meioses_accuracy": {
+        "mean": 0.5195503786593182,
+        "minimum": 0.517089628869004,
+        "maximum": 0.5220848056537103
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.03018347907527555,
+        "minimum": 0.02819707942273975,
+        "maximum": 0.0320427994684926
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.676551474132242,
+        "minimum": 0.6751926440286421,
+        "maximum": 0.6788588802132479
+      },
+      "negative_log_likelihood": {
+        "mean": 1.5271294025523603,
+        "minimum": 1.5234486711949906,
+        "maximum": 1.531450377495298
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20412,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.98,
+        "avuncular_once_removed": 0.5113333333333333,
+        "avuncular_twice_removed": 0.346,
+        "full_1st_cousin": 0.5046666666666667,
+        "full_1st_cousin_once_removed": 0.35533333333333333,
+        "full_1st_cousin_thrice_removed": 0.08944555778223114,
+        "full_1st_cousin_twice_removed": 0.202,
+        "full_2nd_cousin": 0.19466666666666665,
+        "full_2nd_cousin_once_removed": 0.04533333333333334,
+        "full_2nd_cousin_twice_removed": 0.10857329884974572,
+        "full_3rd_cousin": 0.06616881647431545,
+        "full_3rd_cousin_once_removed": 0.1893878382637147,
+        "full_4th_cousin": 0.5182248611465887,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:poisson:task10_clean": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_poisson_6.json",
+        "human_poisson_7.json",
+        "human_poisson_8.json"
+      ],
+      "seeds": [
+        2026112096,
+        2026112097,
+        2026112098
+      ],
+      "accuracy": {
+        "mean": 0.4478183596013918,
+        "minimum": 0.4429779030105294,
+        "maximum": 0.45696933787587024
+      },
+      "balanced_accuracy": {
+        "mean": 0.44935088822022895,
+        "minimum": 0.44440273860438445,
+        "maximum": 0.4589863657115378
+      },
+      "meioses_accuracy": {
+        "mean": 0.6579308415443345,
+        "minimum": 0.6530612244897959,
+        "maximum": 0.6636053917938083
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.05277039198105357,
+        "minimum": 0.044298946857839215,
+        "maximum": 0.05737976407227096
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.6175195759099482,
+        "minimum": 0.6123882211141075,
+        "maximum": 0.6225807698746945
+      },
+      "negative_log_likelihood": {
+        "mean": 1.2578379336699044,
+        "minimum": 1.253409362096035,
+        "maximum": 1.2654702174054318
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20256,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9893333333333333,
+        "avuncular_once_removed": 0.656,
+        "avuncular_twice_removed": 0.47933333333333333,
+        "full_1st_cousin": 0.4653333333333334,
+        "full_1st_cousin_once_removed": 0.4106666666666667,
+        "full_1st_cousin_thrice_removed": 0.2078843094488844,
+        "full_1st_cousin_twice_removed": 0.2926666666666667,
+        "full_2nd_cousin": 0.29933333333333334,
+        "full_2nd_cousin_once_removed": 0.2625250501002004,
+        "full_2nd_cousin_twice_removed": 0.15903732174813065,
+        "full_3rd_cousin": 0.21369863247430199,
+        "full_3rd_cousin_once_removed": 0.20350275572169674,
+        "full_4th_cousin": 0.6515976989233246,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:poisson:task12_independent_reference_intensity_0.0": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_poisson_6.json",
+        "human_poisson_7.json",
+        "human_poisson_8.json"
+      ],
+      "seeds": [
+        2026112096,
+        2026112097,
+        2026112098
+      ],
+      "accuracy": {
+        "mean": 0.44722454610243934,
+        "minimum": 0.44149488358297495,
+        "maximum": 0.4553399496370908
+      },
+      "balanced_accuracy": {
+        "mean": 0.4495068272569793,
+        "minimum": 0.44355597662993124,
+        "maximum": 0.45796619473541555
+      },
+      "meioses_accuracy": {
+        "mean": 0.657188893387774,
+        "minimum": 0.6536527654540077,
+        "maximum": 0.6633091393867575
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.040116591747249554,
+        "minimum": 0.033222157166045777,
+        "maximum": 0.04540364510424796
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.6159311908836803,
+        "minimum": 0.6120534675498542,
+        "maximum": 0.619765363866913
+      },
+      "negative_log_likelihood": {
+        "mean": 1.261021602913844,
+        "minimum": 1.2557346566091818,
+        "maximum": 1.26749115964588
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20256,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9926666666666667,
+        "avuncular_once_removed": 0.6473333333333333,
+        "avuncular_twice_removed": 0.44466666666666665,
+        "full_1st_cousin": 0.4653333333333333,
+        "full_1st_cousin_once_removed": 0.43666666666666665,
+        "full_1st_cousin_thrice_removed": 0.19651350894560204,
+        "full_1st_cousin_twice_removed": 0.28733333333333333,
+        "full_2nd_cousin": 0.30666666666666664,
+        "full_2nd_cousin_once_removed": 0.28724114896459585,
+        "full_2nd_cousin_twice_removed": 0.1345987449363758,
+        "full_3rd_cousin": 0.22123340189528035,
+        "full_3rd_cousin_once_removed": 0.18303476500300253,
+        "full_4th_cousin": 0.6918073451861874,
+        "siblings": 0.998
+      }
+    },
+    "human:historical_frozen:poisson:task12_independent_reference_intensity_0.6": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_poisson_6.json",
+        "human_poisson_7.json",
+        "human_poisson_8.json"
+      ],
+      "seeds": [
+        2026112096,
+        2026112097,
+        2026112098
+      ],
+      "accuracy": {
+        "mean": 0.3734693306344378,
+        "minimum": 0.3709031588313807,
+        "maximum": 0.37742556658272847
+      },
+      "balanced_accuracy": {
+        "mean": 0.3733364859470612,
+        "minimum": 0.3700793698697606,
+        "maximum": 0.37696702928874704
+      },
+      "meioses_accuracy": {
+        "mean": 0.5436421931972706,
+        "minimum": 0.5422951789411417,
+        "maximum": 0.5448081765664347
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.03862213116909063,
+        "minimum": 0.034550354299463897,
+        "maximum": 0.04091567138129586
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.6704842865473168,
+        "minimum": 0.6691512175838895,
+        "maximum": 0.6712169924129981
+      },
+      "negative_log_likelihood": {
+        "mean": 1.489227012099879,
+        "minimum": 1.4878174621750906,
+        "maximum": 1.4903361044690806
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20256,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9773333333333333,
+        "avuncular_once_removed": 0.6286666666666667,
+        "avuncular_twice_removed": 0.4706666666666667,
+        "full_1st_cousin": 0.36466666666666664,
+        "full_1st_cousin_once_removed": 0.32533333333333336,
+        "full_1st_cousin_thrice_removed": 0.09357939439789888,
+        "full_1st_cousin_twice_removed": 0.2546666666666667,
+        "full_2nd_cousin": 0.188,
+        "full_2nd_cousin_once_removed": 0.08149632598530394,
+        "full_2nd_cousin_twice_removed": 0.11159125789600088,
+        "full_3rd_cousin": 0.07329002895056264,
+        "full_3rd_cousin_once_removed": 0.16148861749697171,
+        "full_4th_cousin": 0.49593184519878486,
+        "siblings": 1.0
+      }
+    },
+    "human:historical_frozen:poisson:task12_independent_reference_intensity_1.4": {
+      "independent_seeds": 3,
+      "source_files": [
+        "human_poisson_6.json",
+        "human_poisson_7.json",
+        "human_poisson_8.json"
+      ],
+      "seeds": [
+        2026112096,
+        2026112097,
+        2026112098
+      ],
+      "accuracy": {
+        "mean": 0.3615699265979693,
+        "minimum": 0.35948390923921103,
+        "maximum": 0.36364980774918665
+      },
+      "balanced_accuracy": {
+        "mean": 0.36285112494284155,
+        "minimum": 0.36076952385308747,
+        "maximum": 0.36567491932834073
+      },
+      "meioses_accuracy": {
+        "mean": 0.5150078666230444,
+        "minimum": 0.5140145335903901,
+        "maximum": 0.5166641978966079
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.04021153166301616,
+        "minimum": 0.03802125221004921,
+        "maximum": 0.04243741927740126
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.6840540138638981,
+        "minimum": 0.6825683477249876,
+        "maximum": 0.686467303449869
+      },
+      "negative_log_likelihood": {
+        "mean": 1.5488634033121225,
+        "minimum": 1.5424388183827697,
+        "maximum": 1.5577601741521827
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 20256,
+      "expected_pairs_including_unobserved_zero_ibd": 21000,
+      "class_recall_mean": {
+        "avuncular": 0.9646666666666667,
+        "avuncular_once_removed": 0.626,
+        "avuncular_twice_removed": 0.41133333333333333,
+        "full_1st_cousin": 0.3426666666666667,
+        "full_1st_cousin_once_removed": 0.2866666666666667,
+        "full_1st_cousin_thrice_removed": 0.09291675720919751,
+        "full_1st_cousin_twice_removed": 0.23,
+        "full_2nd_cousin": 0.19066666666666668,
+        "full_2nd_cousin_once_removed": 0.06546426185704743,
+        "full_2nd_cousin_twice_removed": 0.09051547668876918,
+        "full_3rd_cousin": 0.06714250531855394,
+        "full_3rd_cousin_once_removed": 0.18735123359441777,
+        "full_4th_cousin": 0.5305255145317965,
+        "siblings": 0.994
+      }
+    },
+    "task9:current_contract_candidate:confirmation_interference:unchanged": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8910141462442718,
+        "minimum": 0.8910141462442718,
+        "maximum": 0.8910141462442718
+      },
+      "balanced_accuracy": {
+        "mean": 0.833457599327426,
+        "minimum": 0.833457599327426,
+        "maximum": 0.833457599327426
+      },
+      "meioses_accuracy": {
+        "mean": 0.8941024108388125,
+        "minimum": 0.8941024108388125,
+        "maximum": 0.8941024108388125
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.008765913891496968,
+        "minimum": 0.008765913891496968,
+        "maximum": 0.008765913891496968
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.14592997152230006,
+        "minimum": 0.14592997152230006,
+        "maximum": 0.14592997152230006
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2558876504410492,
+        "minimum": 0.2558876504410492,
+        "maximum": 0.2558876504410492
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.997,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.978,
+        "full_2nd_cousin": 0.838,
+        "full_3rd_cousin": 0.7583417593528817,
+        "full_4th_cousin": 0.5665760869565217,
+        "full_5th_cousin": 0.33865814696485624,
+        "grandparent_grandchild": 1.0,
+        "half_1st_cousin": 0.858,
+        "siblings": 1.0
+      }
+    },
+    "task9:current_contract_candidate:confirmation_interference:map_length_minus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8803546523211795,
+        "minimum": 0.8803546523211795,
+        "maximum": 0.8803546523211795
+      },
+      "balanced_accuracy": {
+        "mean": 0.8228978172840542,
+        "minimum": 0.8228978172840542,
+        "maximum": 0.8228978172840542
+      },
+      "meioses_accuracy": {
+        "mean": 0.8841402669854552,
+        "minimum": 0.8841402669854552,
+        "maximum": 0.8841402669854552
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.013664532315846963,
+        "minimum": 0.013664532315846963,
+        "maximum": 0.013664532315846963
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.15971238959628328,
+        "minimum": 0.15971238959628328,
+        "maximum": 0.15971238959628328
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2818271868934973,
+        "minimum": 0.2818271868934973,
+        "maximum": 0.2818271868934973
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.966,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.968,
+        "full_2nd_cousin": 0.887,
+        "full_3rd_cousin": 0.7553083923154702,
+        "full_4th_cousin": 0.5557065217391305,
+        "full_5th_cousin": 0.3354632587859425,
+        "grandparent_grandchild": 0.9935,
+        "half_1st_cousin": 0.773,
+        "siblings": 0.995
+      }
+    },
+    "task9:current_contract_candidate:confirmation_interference:map_length_plus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8887228531579996,
+        "minimum": 0.8887228531579996,
+        "maximum": 0.8887228531579996
+      },
+      "balanced_accuracy": {
+        "mean": 0.8314378824416828,
+        "minimum": 0.8314378824416828,
+        "maximum": 0.8314378824416828
+      },
+      "meioses_accuracy": {
+        "mean": 0.8923092249452083,
+        "minimum": 0.8923092249452083,
+        "maximum": 0.8923092249452083
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.009803601671131762,
+        "minimum": 0.009803601671131762,
+        "maximum": 0.009803601671131762
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.15113501350021746,
+        "minimum": 0.15113501350021746,
+        "maximum": 0.15113501350021746
+      },
+      "negative_log_likelihood": {
+        "mean": 0.284431194676677,
+        "minimum": 0.284431194676677,
+        "maximum": 0.284431194676677
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.998,
+        "double_cousin": 0.998,
+        "full_1st_cousin": 0.971,
+        "full_2nd_cousin": 0.769,
+        "full_3rd_cousin": 0.7522750252780587,
+        "full_4th_cousin": 0.5774456521739131,
+        "full_5th_cousin": 0.33865814696485624,
+        "grandparent_grandchild": 1.0,
+        "half_1st_cousin": 0.91,
+        "siblings": 1.0
+      }
+    },
+    "task9:current_contract_candidate:confirmation_poisson:unchanged": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.872008012018027,
+        "minimum": 0.872008012018027,
+        "maximum": 0.872008012018027
+      },
+      "balanced_accuracy": {
+        "mean": 0.8147718827206418,
+        "minimum": 0.8147718827206418,
+        "maximum": 0.8147718827206418
+      },
+      "meioses_accuracy": {
+        "mean": 0.8771156735102654,
+        "minimum": 0.8771156735102654,
+        "maximum": 0.8771156735102654
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.019679752187267707,
+        "minimum": 0.019679752187267707,
+        "maximum": 0.019679752187267707
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.17296776371275463,
+        "minimum": 0.17296776371275463,
+        "maximum": 0.17296776371275463
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3014829095535571,
+        "minimum": 0.3014829095535571,
+        "maximum": 0.3014829095535571
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.988,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.974,
+        "full_2nd_cousin": 0.776,
+        "full_3rd_cousin": 0.7007150153217568,
+        "full_4th_cousin": 0.5563480741797432,
+        "full_5th_cousin": 0.36065573770491804,
+        "grandparent_grandchild": 0.991,
+        "half_1st_cousin": 0.802,
+        "siblings": 0.999
+      }
+    },
+    "task9:current_contract_candidate:confirmation_poisson:map_length_minus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.85678517776665,
+        "minimum": 0.85678517776665,
+        "maximum": 0.85678517776665
+      },
+      "balanced_accuracy": {
+        "mean": 0.8055024637568542,
+        "minimum": 0.8055024637568542,
+        "maximum": 0.8055024637568542
+      },
+      "meioses_accuracy": {
+        "mean": 0.8620931397095644,
+        "minimum": 0.8620931397095644,
+        "maximum": 0.8620931397095644
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.02428262209400832,
+        "minimum": 0.02428262209400832,
+        "maximum": 0.02428262209400832
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.19383622772054312,
+        "minimum": 0.19383622772054312,
+        "maximum": 0.19383622772054312
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3841582951454078,
+        "minimum": 0.3841582951454078,
+        "maximum": 0.3841582951454078
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.949,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.958,
+        "full_2nd_cousin": 0.82,
+        "full_3rd_cousin": 0.6996935648621042,
+        "full_4th_cousin": 0.5534950071326676,
+        "full_5th_cousin": 0.4098360655737705,
+        "grandparent_grandchild": 0.965,
+        "half_1st_cousin": 0.715,
+        "siblings": 0.985
+      }
+    },
+    "task9:current_contract_candidate:confirmation_poisson:map_length_plus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_current_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.8703054581872809,
+        "minimum": 0.8703054581872809,
+        "maximum": 0.8703054581872809
+      },
+      "balanced_accuracy": {
+        "mean": 0.8142457450500643,
+        "minimum": 0.8142457450500643,
+        "maximum": 0.8142457450500643
+      },
+      "meioses_accuracy": {
+        "mean": 0.8761141712568853,
+        "minimum": 0.8761141712568853,
+        "maximum": 0.8761141712568853
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.019810289940355445,
+        "minimum": 0.019810289940355445,
+        "maximum": 0.019810289940355445
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1803482954992982,
+        "minimum": 0.1803482954992982,
+        "maximum": 0.1803482954992982
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3375164239241668,
+        "minimum": 0.3375164239241668,
+        "maximum": 0.3375164239241668
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.995,
+        "double_cousin": 0.994,
+        "full_1st_cousin": 0.957,
+        "full_2nd_cousin": 0.714,
+        "full_3rd_cousin": 0.6976506639427987,
+        "full_4th_cousin": 0.5549215406562055,
+        "full_5th_cousin": 0.38688524590163936,
+        "grandparent_grandchild": 0.997,
+        "half_1st_cousin": 0.846,
+        "siblings": 1.0
+      }
+    },
+    "task9:historical_frozen:confirmation_interference:unchanged": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8910141462442718,
+        "minimum": 0.8910141462442718,
+        "maximum": 0.8910141462442718
+      },
+      "balanced_accuracy": {
+        "mean": 0.8335239547966934,
+        "minimum": 0.8335239547966934,
+        "maximum": 0.8335239547966934
+      },
+      "meioses_accuracy": {
+        "mean": 0.8942020322773461,
+        "minimum": 0.8942020322773461,
+        "maximum": 0.8942020322773461
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.008339629274930666,
+        "minimum": 0.008339629274930666,
+        "maximum": 0.008339629274930666
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.14628857643885665,
+        "minimum": 0.14628857643885665,
+        "maximum": 0.14628857643885665
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2533345932921795,
+        "minimum": 0.2533345932921795,
+        "maximum": 0.2533345932921795
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.999,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.974,
+        "full_2nd_cousin": 0.833,
+        "full_3rd_cousin": 0.7573306370070778,
+        "full_4th_cousin": 0.5774456521739131,
+        "full_5th_cousin": 0.3354632587859425,
+        "grandparent_grandchild": 1.0,
+        "half_1st_cousin": 0.859,
+        "siblings": 1.0
+      }
+    },
+    "task9:historical_frozen:confirmation_interference:map_length_minus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8811516238294481,
+        "minimum": 0.8811516238294481,
+        "maximum": 0.8811516238294481
+      },
+      "balanced_accuracy": {
+        "mean": 0.8228633402733584,
+        "minimum": 0.8228633402733584,
+        "maximum": 0.8228633402733584
+      },
+      "meioses_accuracy": {
+        "mean": 0.8848376170551903,
+        "minimum": 0.8848376170551903,
+        "maximum": 0.8848376170551903
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.014080437555167686,
+        "minimum": 0.014080437555167686,
+        "maximum": 0.014080437555167686
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1582633503246614,
+        "minimum": 0.1582633503246614,
+        "maximum": 0.1582633503246614
+      },
+      "negative_log_likelihood": {
+        "mean": 0.27787379218433145,
+        "minimum": 0.27787379218433145,
+        "maximum": 0.27787379218433145
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.979,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.967,
+        "full_2nd_cousin": 0.884,
+        "full_3rd_cousin": 0.7553083923154702,
+        "full_4th_cousin": 0.561141304347826,
+        "full_5th_cousin": 0.3226837060702875,
+        "grandparent_grandchild": 0.9945,
+        "half_1st_cousin": 0.77,
+        "siblings": 0.995
+      }
+    },
+    "task9:historical_frozen:confirmation_interference:map_length_plus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_interference.json"
+      ],
+      "seeds": [
+        2026112307
+      ],
+      "accuracy": {
+        "mean": 0.8888224745965332,
+        "minimum": 0.8888224745965332,
+        "maximum": 0.8888224745965332
+      },
+      "balanced_accuracy": {
+        "mean": 0.8309839423379646,
+        "minimum": 0.8309839423379646,
+        "maximum": 0.8309839423379646
+      },
+      "meioses_accuracy": {
+        "mean": 0.8925973896582644,
+        "minimum": 0.8925973896582644,
+        "maximum": 0.8925973896582644
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.010604063837884928,
+        "minimum": 0.010604063837884928,
+        "maximum": 0.010604063837884928
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.15151439145136317,
+        "minimum": 0.15151439145136317,
+        "maximum": 0.15151439145136317
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2646328339271663,
+        "minimum": 0.2646328339271663,
+        "maximum": 0.2646328339271663
+      },
+      "zero_accepted_probability_pairs": 1,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 10038,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.998998998998999,
+        "double_cousin": 0.998,
+        "full_1st_cousin": 0.964,
+        "full_2nd_cousin": 0.77,
+        "full_3rd_cousin": 0.7603640040444893,
+        "full_4th_cousin": 0.5855978260869565,
+        "full_5th_cousin": 0.3258785942492013,
+        "grandparent_grandchild": 1.0,
+        "half_1st_cousin": 0.907,
+        "siblings": 1.0
+      }
+    },
+    "task9:historical_frozen:confirmation_poisson:unchanged": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.8706059088632949,
+        "minimum": 0.8706059088632949,
+        "maximum": 0.8706059088632949
+      },
+      "balanced_accuracy": {
+        "mean": 0.8138957667625453,
+        "minimum": 0.8138957667625453,
+        "maximum": 0.8138957667625453
+      },
+      "meioses_accuracy": {
+        "mean": 0.8757135703555333,
+        "minimum": 0.8757135703555333,
+        "maximum": 0.8757135703555333
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.018752184250446145,
+        "minimum": 0.018752184250446145,
+        "maximum": 0.018752184250446145
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1746346018253559,
+        "minimum": 0.1746346018253559,
+        "maximum": 0.1746346018253559
+      },
+      "negative_log_likelihood": {
+        "mean": 0.30672044379169455,
+        "minimum": 0.30672044379169455,
+        "maximum": 0.30672044379169455
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.996,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.966,
+        "full_2nd_cousin": 0.77,
+        "full_3rd_cousin": 0.6925434116445353,
+        "full_4th_cousin": 0.5592011412268189,
+        "full_5th_cousin": 0.36721311475409835,
+        "grandparent_grandchild": 0.991,
+        "half_1st_cousin": 0.798,
+        "siblings": 0.999
+      }
+    },
+    "task9:historical_frozen:confirmation_poisson:map_length_minus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.8593890836254382,
+        "minimum": 0.8593890836254382,
+        "maximum": 0.8593890836254382
+      },
+      "balanced_accuracy": {
+        "mean": 0.8077246829966225,
+        "minimum": 0.8077246829966225,
+        "maximum": 0.8077246829966225
+      },
+      "meioses_accuracy": {
+        "mean": 0.8646834935897436,
+        "minimum": 0.8646834935897436,
+        "maximum": 0.8646834935897436
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.02344098236143438,
+        "minimum": 0.02344098236143438,
+        "maximum": 0.02344098236143438
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.19308177805859744,
+        "minimum": 0.19308177805859744,
+        "maximum": 0.19308177805859744
+      },
+      "negative_log_likelihood": {
+        "mean": 0.37741516352676346,
+        "minimum": 0.37741516352676346,
+        "maximum": 0.37741516352676346
+      },
+      "zero_accepted_probability_pairs": 1,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.967,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.959,
+        "full_2nd_cousin": 0.818,
+        "full_3rd_cousin": 0.6976506639427987,
+        "full_4th_cousin": 0.557774607703281,
+        "full_5th_cousin": 0.4098360655737705,
+        "grandparent_grandchild": 0.9709854927463731,
+        "half_1st_cousin": 0.713,
+        "siblings": 0.984
+      }
+    },
+    "task9:historical_frozen:confirmation_poisson:map_length_plus10pct": {
+      "independent_seeds": 1,
+      "source_files": [
+        "task9_confirmation_frozen_poisson.json"
+      ],
+      "seeds": [
+        2026112308
+      ],
+      "accuracy": {
+        "mean": 0.8672008012018027,
+        "minimum": 0.8672008012018027,
+        "maximum": 0.8672008012018027
+      },
+      "balanced_accuracy": {
+        "mean": 0.8121992191712213,
+        "minimum": 0.8121992191712213,
+        "maximum": 0.8121992191712213
+      },
+      "meioses_accuracy": {
+        "mean": 0.8730095142714072,
+        "minimum": 0.8730095142714072,
+        "maximum": 0.8730095142714072
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.021688406836993322,
+        "minimum": 0.021688406836993322,
+        "maximum": 0.021688406836993322
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.18246681791463712,
+        "minimum": 0.18246681791463712,
+        "maximum": 0.18246681791463712
+      },
+      "negative_log_likelihood": {
+        "mean": 0.32487470478567737,
+        "minimum": 0.32487470478567737,
+        "maximum": 0.32487470478567737
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 9985,
+      "expected_pairs_including_unobserved_zero_ibd": 11000,
+      "class_recall_mean": {
+        "avuncular": 0.997,
+        "double_cousin": 0.994,
+        "full_1st_cousin": 0.932,
+        "full_2nd_cousin": 0.706,
+        "full_3rd_cousin": 0.6874361593462717,
+        "full_4th_cousin": 0.5706134094151213,
+        "full_5th_cousin": 0.39344262295081966,
+        "grandparent_grandchild": 0.9955,
+        "half_1st_cousin": 0.846,
+        "siblings": 1.0
+      }
+    },
+    "task9:current_contract_candidate:interference:unchanged": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_interference_0.json",
+        "task9_current_interference_1.json",
+        "task9_current_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8891531761272737,
+        "minimum": 0.8880039820806371,
+        "maximum": 0.8910653607835299
+      },
+      "balanced_accuracy": {
+        "mean": 0.833011786753127,
+        "minimum": 0.831295589591606,
+        "maximum": 0.8352574625140591
+      },
+      "meioses_accuracy": {
+        "mean": 0.8925451234892947,
+        "minimum": 0.8907914385266301,
+        "maximum": 0.8948630821507095
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.011970560654878871,
+        "minimum": 0.009996378894725237,
+        "maximum": 0.01447411481382619
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.14839744207400243,
+        "minimum": 0.1466898776240868,
+        "maximum": 0.1497298209139849
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2605126037566712,
+        "minimum": 0.25618738754762604,
+        "maximum": 0.26475285739972776
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9923333333333333,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.9846666666666667,
+        "full_2nd_cousin": 0.827,
+        "full_3rd_cousin": 0.768995342839882,
+        "full_4th_cousin": 0.5600214749284462,
+        "full_5th_cousin": 0.3629343830962752,
+        "grandparent_grandchild": 0.9991666666666666,
+        "half_1st_cousin": 0.8353333333333333,
+        "siblings": 0.9996666666666667
+      }
+    },
+    "task9:current_contract_candidate:interference:map_length_minus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_interference_0.json",
+        "task9_current_interference_1.json",
+        "task9_current_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8797463507860362,
+        "minimum": 0.8764559482329517,
+        "maximum": 0.8831700979412352
+      },
+      "balanced_accuracy": {
+        "mean": 0.8242079719495534,
+        "minimum": 0.8188772434462812,
+        "maximum": 0.8287111577621751
+      },
+      "meioses_accuracy": {
+        "mean": 0.8832380388223043,
+        "minimum": 0.8792434046789448,
+        "maximum": 0.886967819308415
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.013700284182079546,
+        "minimum": 0.010304117941781965,
+        "maximum": 0.016094770142919716
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.16058161823497172,
+        "minimum": 0.15761913061513513,
+        "maximum": 0.16240903500627615
+      },
+      "negative_log_likelihood": {
+        "mean": 0.29445497179975627,
+        "minimum": 0.28967505395734394,
+        "maximum": 0.2970307085445077
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9616666666666667,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.975,
+        "full_2nd_cousin": 0.8726666666666667,
+        "full_3rd_cousin": 0.7655953142900304,
+        "full_4th_cousin": 0.5636663740669173,
+        "full_5th_cousin": 0.36415136447192054,
+        "grandparent_grandchild": 0.995,
+        "half_1st_cousin": 0.7513333333333333,
+        "siblings": 0.993
+      }
+    },
+    "task9:current_contract_candidate:interference:map_length_plus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_interference_0.json",
+        "task9_current_interference_1.json",
+        "task9_current_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8856954824800873,
+        "minimum": 0.8838227974116476,
+        "maximum": 0.8870677593443934
+      },
+      "balanced_accuracy": {
+        "mean": 0.8271023502590537,
+        "minimum": 0.8237471103734123,
+        "maximum": 0.828808197962324
+      },
+      "meioses_accuracy": {
+        "mean": 0.8894197872552696,
+        "minimum": 0.8872075659532106,
+        "maximum": 0.8912652408554868
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.011848012817560736,
+        "minimum": 0.010968041758264404,
+        "maximum": 0.013564244207002496
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.15444315878257595,
+        "minimum": 0.15272149368746737,
+        "maximum": 0.15699688468114437
+      },
+      "negative_log_likelihood": {
+        "mean": 0.28191409592679617,
+        "minimum": 0.27557711595577083,
+        "maximum": 0.2901908213369489
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9956666666666667,
+        "double_cousin": 0.997,
+        "full_1st_cousin": 0.9753333333333333,
+        "full_2nd_cousin": 0.7613333333333333,
+        "full_3rd_cousin": 0.7676299970818943,
+        "full_4th_cousin": 0.5512272961149882,
+        "full_5th_cousin": 0.33116620939365404,
+        "grandparent_grandchild": 0.9996666666666667,
+        "half_1st_cousin": 0.892,
+        "siblings": 1.0
+      }
+    },
+    "task9:current_contract_candidate:poisson:unchanged": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_poisson_3.json",
+        "task9_current_poisson_4.json",
+        "task9_current_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.8726131971650134,
+        "minimum": 0.8700700700700701,
+        "maximum": 0.8748745735500703
+      },
+      "balanced_accuracy": {
+        "mean": 0.8144898491897485,
+        "minimum": 0.8122299129881648,
+        "maximum": 0.8174687063090982
+      },
+      "meioses_accuracy": {
+        "mean": 0.8786271350974542,
+        "minimum": 0.8755755755755755,
+        "maximum": 0.8810957254665864
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.01781039959393826,
+        "minimum": 0.015948078690615465,
+        "maximum": 0.019853428842627995
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1732931228222444,
+        "minimum": 0.1701901253057534,
+        "maximum": 0.1774087684893008
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3224103666626819,
+        "minimum": 0.3186998112370949,
+        "maximum": 0.3250229942338469
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9876666666666667,
+        "double_cousin": 0.9996666666666667,
+        "full_1st_cousin": 0.965,
+        "full_2nd_cousin": 0.785,
+        "full_3rd_cousin": 0.7091468967968368,
+        "full_4th_cousin": 0.5702274688595834,
+        "full_5th_cousin": 0.34235745957439795,
+        "grandparent_grandchild": 0.9898333333333333,
+        "half_1st_cousin": 0.7963333333333333,
+        "siblings": 0.9996666666666667
+      }
+    },
+    "task9:current_contract_candidate:poisson:map_length_minus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_poisson_3.json",
+        "task9_current_poisson_4.json",
+        "task9_current_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.8573442405702081,
+        "minimum": 0.855252606255012,
+        "maximum": 0.8597230583985551
+      },
+      "balanced_accuracy": {
+        "mean": 0.8028530345962515,
+        "minimum": 0.7989837701852405,
+        "maximum": 0.8053083608437456
+      },
+      "meioses_accuracy": {
+        "mean": 0.8640594480435264,
+        "minimum": 0.8622694466720129,
+        "maximum": 0.8662452337949027
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.025336878695006334,
+        "minimum": 0.024177836020780705,
+        "maximum": 0.025940730605655663
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.19302433053228094,
+        "minimum": 0.1898590733408606,
+        "maximum": 0.19528281655683172
+      },
+      "negative_log_likelihood": {
+        "mean": 0.39052369229751444,
+        "minimum": 0.37308101410092304,
+        "maximum": 0.4023911742536266
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9456666666666667,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.952,
+        "full_2nd_cousin": 0.8206666666666667,
+        "full_3rd_cousin": 0.7132480341196854,
+        "full_4th_cousin": 0.5662308047998273,
+        "full_5th_cousin": 0.3715515070430016,
+        "grandparent_grandchild": 0.9728333333333333,
+        "half_1st_cousin": 0.7013333333333333,
+        "siblings": 0.985
+      }
+    },
+    "task9:current_contract_candidate:poisson:map_length_plus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_current_poisson_3.json",
+        "task9_current_poisson_4.json",
+        "task9_current_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.868639749187678,
+        "minimum": 0.8631631631631632,
+        "maximum": 0.8734697973108569
+      },
+      "balanced_accuracy": {
+        "mean": 0.809550879470413,
+        "minimum": 0.8039523902717611,
+        "maximum": 0.8157193473815016
+      },
+      "meioses_accuracy": {
+        "mean": 0.8750542412960473,
+        "minimum": 0.8694694694694695,
+        "maximum": 0.8795906080674293
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.02102425164923575,
+        "minimum": 0.017970081014145652,
+        "maximum": 0.025819016437721685
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.17986887980133628,
+        "minimum": 0.17440050881970726,
+        "maximum": 0.1860461019930389
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3623573372697287,
+        "minimum": 0.3501299394871945,
+        "maximum": 0.3779725185695362
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9923333333333333,
+        "double_cousin": 0.994,
+        "full_1st_cousin": 0.9476666666666667,
+        "full_2nd_cousin": 0.7246666666666667,
+        "full_3rd_cousin": 0.7047431027588964,
+        "full_4th_cousin": 0.5524147405768347,
+        "full_5th_cousin": 0.34351761803506575,
+        "grandparent_grandchild": 0.9948333333333333,
+        "half_1st_cousin": 0.8413333333333333,
+        "siblings": 1.0
+      }
+    },
+    "task9:historical_frozen:interference:unchanged": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_interference_0.json",
+        "task9_interference_1.json",
+        "task9_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8886867892927078,
+        "minimum": 0.8880039820806371,
+        "maximum": 0.8896662002798321
+      },
+      "balanced_accuracy": {
+        "mean": 0.8323429753630072,
+        "minimum": 0.8315826882755296,
+        "maximum": 0.8335108242208704
+      },
+      "meioses_accuracy": {
+        "mean": 0.8920455562172237,
+        "minimum": 0.8907914385266301,
+        "maximum": 0.8935638616829902
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.011205120141065183,
+        "minimum": 0.008115924740393429,
+        "maximum": 0.014846069552869129
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.14817362550925264,
+        "minimum": 0.14713635242744985,
+        "maximum": 0.14924613957754698
+      },
+      "negative_log_likelihood": {
+        "mean": 0.26415890273932524,
+        "minimum": 0.2601722901024736,
+        "maximum": 0.27026072732730866
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9943333333333333,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.982,
+        "full_2nd_cousin": 0.8246666666666667,
+        "full_3rd_cousin": 0.7679762976652024,
+        "full_4th_cousin": 0.5600077154090468,
+        "full_5th_cousin": 0.35994574055582323,
+        "grandparent_grandchild": 0.9991666666666666,
+        "half_1st_cousin": 0.8356666666666667,
+        "siblings": 0.9996666666666667
+      }
+    },
+    "task9:historical_frozen:interference:map_length_minus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_interference_0.json",
+        "task9_interference_1.json",
+        "task9_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8812105051750584,
+        "minimum": 0.8772523643603783,
+        "maximum": 0.8858684789126524
+      },
+      "balanced_accuracy": {
+        "mean": 0.8252233799632849,
+        "minimum": 0.8189824146452113,
+        "maximum": 0.8304727731852998
+      },
+      "meioses_accuracy": {
+        "mean": 0.884768557654141,
+        "minimum": 0.8801393728222997,
+        "maximum": 0.8895662602438537
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.01258202164910017,
+        "minimum": 0.007003632025443858,
+        "maximum": 0.01627632660819554
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.15879413508929707,
+        "minimum": 0.1567835367055399,
+        "maximum": 0.1602699801774668
+      },
+      "negative_log_likelihood": {
+        "mean": 0.29186317528177136,
+        "minimum": 0.2907421139925516,
+        "maximum": 0.2931121690726584
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9786666666666667,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.9743333333333333,
+        "full_2nd_cousin": 0.87,
+        "full_3rd_cousin": 0.7632219034209792,
+        "full_4th_cousin": 0.5714496166344891,
+        "full_5th_cousin": 0.3555622795773794,
+        "grandparent_grandchild": 0.9956666666666667,
+        "half_1st_cousin": 0.7503333333333333,
+        "siblings": 0.993
+      }
+    },
+    "task9:historical_frozen:interference:map_length_plus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_interference_0.json",
+        "task9_interference_1.json",
+        "task9_interference_2.json"
+      ],
+      "seeds": [
+        2026112090,
+        2026112091,
+        2026112092
+      ],
+      "accuracy": {
+        "mean": 0.8840665270775834,
+        "minimum": 0.8822299651567944,
+        "maximum": 0.885768538876674
+      },
+      "balanced_accuracy": {
+        "mean": 0.8252197154808186,
+        "minimum": 0.8219806766547084,
+        "maximum": 0.8277776261511299
+      },
+      "meioses_accuracy": {
+        "mean": 0.8878242745381085,
+        "minimum": 0.885515181682429,
+        "maximum": 0.8901659004597242
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.012480981784762276,
+        "minimum": 0.01094550455918782,
+        "maximum": 0.014687265628007956
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1550923328193074,
+        "minimum": 0.15349550849732618,
+        "maximum": 0.1569273125443393
+      },
+      "negative_log_likelihood": {
+        "mean": 0.2785841682671626,
+        "minimum": 0.27240546216236833,
+        "maximum": 0.28177222811539493
+      },
+      "zero_accepted_probability_pairs": 0,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 30077,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9953333333333333,
+        "double_cousin": 0.997,
+        "full_1st_cousin": 0.965,
+        "full_2nd_cousin": 0.754,
+        "full_3rd_cousin": 0.7662666705651935,
+        "full_4th_cousin": 0.5586111626830635,
+        "full_5th_cousin": 0.324819321559929,
+        "grandparent_grandchild": 0.9998333333333334,
+        "half_1st_cousin": 0.8913333333333333,
+        "siblings": 1.0
+      }
+    },
+    "task9:historical_frozen:poisson:unchanged": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_poisson_3.json",
+        "task9_poisson_4.json",
+        "task9_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.8721459633458143,
+        "minimum": 0.8691691691691692,
+        "maximum": 0.8752759381898455
+      },
+      "balanced_accuracy": {
+        "mean": 0.8143825020998703,
+        "minimum": 0.8113898779534526,
+        "maximum": 0.8185441522312278
+      },
+      "meioses_accuracy": {
+        "mean": 0.8782811059175687,
+        "minimum": 0.8749499399279135,
+        "maximum": 0.8814851981936779
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.01660549906407721,
+        "minimum": 0.01489291461807928,
+        "maximum": 0.018953186793852335
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.17382029096444643,
+        "minimum": 0.17098426423209323,
+        "maximum": 0.1766454829340579
+      },
+      "negative_log_likelihood": {
+        "mean": 0.3274626219001005,
+        "minimum": 0.32364211988779584,
+        "maximum": 0.3333690068098234
+      },
+      "zero_accepted_probability_pairs": 3,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9933269896482989,
+        "double_cousin": 0.9996666666666667,
+        "full_1st_cousin": 0.9573333333333333,
+        "full_2nd_cousin": 0.781,
+        "full_3rd_cousin": 0.7033742058732063,
+        "full_4th_cousin": 0.5784314190252176,
+        "full_5th_cousin": 0.34452573978531253,
+        "grandparent_grandchild": 0.9911666666666666,
+        "half_1st_cousin": 0.7953333333333333,
+        "siblings": 0.9996666666666667
+      }
+    },
+    "task9:historical_frozen:poisson:map_length_minus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_poisson_3.json",
+        "task9_poisson_4.json",
+        "task9_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.8594820251916045,
+        "minimum": 0.857457898957498,
+        "maximum": 0.861328516957656
+      },
+      "balanced_accuracy": {
+        "mean": 0.8046581325176316,
+        "minimum": 0.8015267813211322,
+        "maximum": 0.806436956547382
+      },
+      "meioses_accuracy": {
+        "mean": 0.866150598381283,
+        "minimum": 0.864374498797113,
+        "maximum": 0.8679245283018868
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.022156154894083156,
+        "minimum": 0.021183112184051764,
+        "maximum": 0.02356899836585985
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.19156887066832146,
+        "minimum": 0.1887888733344592,
+        "maximum": 0.19309582375072842
+      },
+      "negative_log_likelihood": {
+        "mean": 0.389345991510643,
+        "minimum": 0.38292102948661527,
+        "maximum": 0.39491042216196137
+      },
+      "zero_accepted_probability_pairs": 3,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9659893226559892,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.9523333333333333,
+        "full_2nd_cousin": 0.819,
+        "full_3rd_cousin": 0.7088164734106357,
+        "full_4th_cousin": 0.5676941644708179,
+        "full_5th_cousin": 0.36942253522416546,
+        "grandparent_grandchild": 0.9759921627480407,
+        "half_1st_cousin": 0.7023333333333333,
+        "siblings": 0.985
+      }
+    },
+    "task9:historical_frozen:poisson:map_length_plus10pct": {
+      "independent_seeds": 3,
+      "source_files": [
+        "task9_poisson_3.json",
+        "task9_poisson_4.json",
+        "task9_poisson_5.json"
+      ],
+      "seeds": [
+        2026112093,
+        2026112094,
+        2026112095
+      ],
+      "accuracy": {
+        "mean": 0.8666686373598858,
+        "minimum": 0.8612612612612612,
+        "maximum": 0.8716636564318684
+      },
+      "balanced_accuracy": {
+        "mean": 0.8080173132827524,
+        "minimum": 0.8020772121190014,
+        "maximum": 0.8148693893901701
+      },
+      "meioses_accuracy": {
+        "mean": 0.8731077590858498,
+        "minimum": 0.8677545299829813,
+        "maximum": 0.877583784868553
+      },
+      "ece_10_equal_width_bins": {
+        "mean": 0.02151574562891033,
+        "minimum": 0.01759196849090636,
+        "maximum": 0.02650801931547484
+      },
+      "multiclass_brier_sum": {
+        "mean": 0.1816156589039335,
+        "minimum": 0.1757695083757988,
+        "maximum": 0.186957314249836
+      },
+      "negative_log_likelihood": {
+        "mean": 0.34279285221103195,
+        "minimum": 0.330846000968474,
+        "maximum": 0.3522813636973532
+      },
+      "zero_accepted_probability_pairs": 2,
+      "genotyped_pair_pipeline_validated": false,
+      "retained_pairs_before_probability_rejection": 29932,
+      "expected_pairs_including_unobserved_zero_ibd": 33000,
+      "class_recall_mean": {
+        "avuncular": 0.9939983316649983,
+        "double_cousin": 0.994,
+        "full_1st_cousin": 0.932,
+        "full_2nd_cousin": 0.722,
+        "full_3rd_cousin": 0.6999922253320894,
+        "full_4th_cousin": 0.5519377533369556,
+        "full_5th_cousin": 0.35007882282698083,
+        "grandparent_grandchild": 0.9954993329998333,
+        "half_1st_cousin": 0.8406666666666667,
+        "siblings": 1.0
+      }
+    }
+  },
+  "result_sha256": {
+    "dog_poisson_10.json": "8b638b18af10114edd041477ae86351d994f8c76298974fc81fd64b49430d5d3",
+    "dog_poisson_11.json": "5fe4500e8e37a5ebd322e4ac53884d77b86028154ea541a6696d5562ff932501",
+    "dog_poisson_9.json": "67f4f349277677c16baa185bb59bba0c5cbd5e62b0fbc97517a1a6c1d788c705",
+    "human_interference_12.json": "748baa2706aed4b775c2ab45fc0ec9711d0fe35cc5f661d88152fce7ef591325",
+    "human_interference_13.json": "d5cf9daa8880314db01a154deec15981eb7b19bb92e859c8e3b71cf6ed5929b2",
+    "human_interference_14.json": "912de6dfb86b0ee392efd9d03e8f5f7d8ff898e259358766f5a94a0a945a0085",
+    "human_poisson_6.json": "aa67d55340fd51285d60b29a7b41c7b343ef4c6cde4cd213a95ff6c3bcbdfe8a",
+    "human_poisson_7.json": "982314476762179fa2fb6a59bee1ceebc9656bf1b2c717f61e984c5f51741561",
+    "human_poisson_8.json": "153737166f19299fbaacafbfcc6481d080831700646c6219435c127acab2eaae",
+    "task9_confirmation_current_interference.json": "1a25fcc5d791bcf40a2d4836c1b57146c86ff2d21fc587c15e1d040559e01703",
+    "task9_confirmation_current_poisson.json": "dff5621092456d9aa5af92f2257973eae8f47ba659b5710a57948217f94eef8b",
+    "task9_confirmation_frozen_interference.json": "ca3bcd6ce710e8bffae29bb5b778f7b27610ac8066fad4e9654d288a925b8929",
+    "task9_confirmation_frozen_poisson.json": "d8eb8d1b52327dfc7254ba67b877b5e0ff56ebfe21f4bf1bf9c0544f3eb58ca4",
+    "task9_current_interference_0.json": "74205f15c30c15ea0f8bda1ba2bbae8696eb5e6bae5ddc2f9074cde4aeb21d53",
+    "task9_current_interference_1.json": "ae0c9ccf65fc36397d9e9c733b312d1d5df85c45c9108f6e92980208c9b513b5",
+    "task9_current_interference_2.json": "8f2f2c1d9cca7ee45c919a4751e7f4afe5144175b15650302d6a25f31d0bb7d9",
+    "task9_current_poisson_3.json": "a75cc754c66d55d2c5274eb2da58778a716259cd6d22a54c7c6f9ca43b497948",
+    "task9_current_poisson_4.json": "b3eb2984532acbe5432dd5c4107413af3fb889881131bc7917a5339f5cf58f72",
+    "task9_current_poisson_5.json": "85a0a441a9240be2ee3c217e94508c15f3a2814b4e09eecb6393122edf3f25d3",
+    "task9_interference_0.json": "6eac2957f5c8fb273b8a46c4639f71c2671e5968c8cd68ce75c0e906be4ee1ed",
+    "task9_interference_1.json": "a42455edca8739af1d7d6746407f91a3b8291ee822d77a0a77db055c67e15987",
+    "task9_interference_2.json": "d1708c6815fe9226f1095dd6781d9afb6c2978978e4fa586f6e41c688b3ff395",
+    "task9_poisson_3.json": "730fa1ad81c2a19beb7154892306efc2295263214f5ee106a9371a5f94f5517a",
+    "task9_poisson_4.json": "56b933b6dfcac4a9881ec64d116c6d9d1af457516022507e01c44be437671439",
+    "task9_poisson_5.json": "5cd1f30da3d6301f61749f4a1e3fb80a19ca567fab32c7a23d6490c038dabec4"
+  }
+}

@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 
 from ghist_inference.freeze import continuous_prediction
+from ghist_growth_bgs.simulation import require_physical_scaling
 
 
 PARAMETERS = ("generations", "post_growth_scaling")
@@ -64,6 +65,7 @@ def main() -> None:
     grid = sources["grid"]
     calibration = sources["calibration"]
     stress = sources["stress"]
+    require_physical_scaling([smoke, grid, calibration, stress])
 
     observed = continuous_prediction(middle["median"], PARAMETERS)
     comparison = sources["model_comparison"]

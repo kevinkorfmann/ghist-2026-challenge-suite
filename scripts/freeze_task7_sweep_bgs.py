@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -8,12 +9,13 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 
+from ghist_single_sweep.recovery import validate_blind_records
+
 
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT = ROOT / "artifacts/task7_single_sweep_bgs/audit_summary.json"
 LOCALIZATION = ROOT / "artifacts/task7_single_sweep_bgs/localization/summary.json"
 RAISD = ROOT / "artifacts/task7_single_sweep_bgs/raisd_summary.json"
-RECOVERY = ROOT / "artifacts/task5_single_sweep/selection_exact_recovery_summary.json"
 FREEZE = ROOT / "experiments/single_sweep_bgs/task7_freeze.json"
 BED = ROOT / "artifacts/task7_single_sweep_bgs/task7_candidate.bed"
 FIGURE_ROOT = ROOT / "figures/task7_single_sweep_bgs/task7_localization"
@@ -28,11 +30,34 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def validate_matched_recovery(recovery: dict) -> None:
+    validate_blind_records(recovery.get("records", []))
+    if recovery.get("inference_method") != "median_multiscale_raisd_gap_ld":
+        raise ValueError(
+            "Task 7 needs recovery of the exact ten-estimate inference method"
+        )
+    for record in recovery["records"]:
+        if (
+            record.get("background_selection") is not True
+            or record.get("demography") != "bottleneck_growth"
+        ):
+            raise ValueError(
+                "Task 7 requires independently simulated bottleneck/growth plus BGS recovery"
+            )
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Historical testing export; requires new matched BGS recovery"
+    )
+    parser.add_argument("--matched-recovery", type=Path, required=True)
+    args = parser.parse_args()
+    recovery_path = args.matched_recovery
     audit = json.loads(AUDIT.read_text())
     localization = json.loads(LOCALIZATION.read_text())
     raisd = json.loads(RAISD.read_text())
-    recovery = json.loads(RECOVERY.read_text())
+    recovery = json.loads(recovery_path.read_text())
+    validate_matched_recovery(recovery)
 
     evidence: list[tuple[str, str, float]] = []
     for scale in ("25000", "50000", "100000", "250000", "500000"):
@@ -113,7 +138,9 @@ def main() -> None:
     ax.axvspan(start / 1e6, end / 1e6, color="#56B4E9", alpha=0.18, linewidth=0)
     ax.axvline(center / 1e6, color="black", linewidth=1.0)
     for index, (label, group, position) in enumerate(evidence):
-        ax.scatter(position / 1e6, index, color=colors[group], marker="o", s=27, zorder=3)
+        ax.scatter(
+            position / 1e6, index, color=colors[group], marker="o", s=27, zorder=3
+        )
     ax.set_yticks(np.arange(len(evidence)), [label for label, _, _ in evidence])
     ax.invert_yaxis()
     ax.set_xlabel("Chromosome 7 position (Mb)")
@@ -149,10 +176,14 @@ def main() -> None:
             "localizer_count": len(evidence),
             "localizer_span_bp": float(np.ptp(positions)),
             "independent_peak_to_background_ratio": signal_ratio,
-            "transferred_exact_scale_recovery": {
+            "matched_bgs_recovery": {
                 "replicates": recovery["replicates"],
-                "untouched_observed_like_replicates": recovery["evaluation_consensus_replicates"],
-                "median_absolute_error": recovery_observed_like["median_absolute_error"],
+                "untouched_observed_like_replicates": recovery[
+                    "evaluation_consensus_replicates"
+                ],
+                "median_absolute_error": recovery_observed_like[
+                    "median_absolute_error"
+                ],
                 "maximum_absolute_error": recovery_observed_like["quantiles"]["1.0"],
                 "coverage_within_50kb": recovery_observed_like["within_50kb"],
             },
@@ -167,12 +198,15 @@ def main() -> None:
             "haplotypes": audit["haplotypes"],
         },
         "source_artifacts": {
-            str(path.relative_to(ROOT)): sha256(path)
-            for path in (AUDIT, LOCALIZATION, RAISD, RECOVERY, BED)
+            str(path): sha256(path)
+            for path in (AUDIT, LOCALIZATION, RAISD, recovery_path, BED)
         },
         "figures": {
             str(path.relative_to(ROOT)): sha256(path)
-            for path in (FIGURE_ROOT.with_suffix(".pdf"), FIGURE_ROOT.with_suffix(".png"))
+            for path in (
+                FIGURE_ROOT.with_suffix(".pdf"),
+                FIGURE_ROOT.with_suffix(".png"),
+            )
         },
         "betty_job_ids": ["7824764", "7824777", "7824787"],
     }

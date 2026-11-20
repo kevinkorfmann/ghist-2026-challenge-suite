@@ -1,0 +1,270 @@
+{
+  "component_only": true,
+  "kind": "task9",
+  "scenario": "interference",
+  "seed": 2026112090,
+  "segment_sha256": "34fa87720b95ef8001667b1f9bca2b29ecbedadb00955e475428d97ce42a025b",
+  "public_answers_used": false,
+  "models_refitted": false,
+  "runs": {
+    "unchanged": {
+      "pairs": 10006,
+      "independent_pedigrees": 9006,
+      "accuracy": 0.8910653607835299,
+      "balanced_accuracy": 0.8352574625140591,
+      "meioses_accuracy": 0.8948630821507095,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.8849921300657779,
+        0.8974544624161916
+      ],
+      "multiclass_brier_sum": 0.1466898776240868,
+      "negative_log_likelihood": 0.26475285739972776,
+      "ece_10_equal_width_bins": 0.009996378894725237,
+      "reliability_bins": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 17,
+          "mean_confidence": 0.3791586492363393,
+          "accuracy": 0.5294117647058824
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 241,
+          "mean_confidence": 0.46683682175490726,
+          "accuracy": 0.5269709543568465
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 742,
+          "mean_confidence": 0.5484361161867524,
+          "accuracy": 0.4865229110512129
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 666,
+          "mean_confidence": 0.6508757457454675,
+          "accuracy": 0.6336336336336337
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 623,
+          "mean_confidence": 0.7512334765760623,
+          "accuracy": 0.7383627608346709
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 741,
+          "mean_confidence": 0.8521026341344707,
+          "accuracy": 0.8475033738191633
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 6976,
+          "mean_confidence": 0.9924208408289836,
+          "accuracy": 0.9903956422018348
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.995,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.981,
+        "full_2nd_cousin": 0.828,
+        "full_3rd_cousin": 0.7688391038696538,
+        "full_4th_cousin": 0.5692520775623269,
+        "full_5th_cousin": 0.37748344370860926,
+        "grandparent_grandchild": 0.999,
+        "half_1st_cousin": 0.834,
+        "siblings": 1.0
+      },
+      "confidence_is_uncalibrated": true,
+      "zero_accepted_probability_pairs": 0,
+      "eligible_pairs_before_probability_failure": 10006,
+      "strict_production_predictor_would_abort": false,
+      "accuracy_counting_probability_failures_wrong": 0.8910653607835299,
+      "mendelian_expected_sharing_class_accuracy": 0.8667799320407755,
+      "classifier_expected_sharing_class_accuracy": 0.8911653008195083
+    },
+    "map_length_minus10pct": {
+      "pairs": 10006,
+      "independent_pedigrees": 9006,
+      "accuracy": 0.8831700979412352,
+      "balanced_accuracy": 0.8287111577621751,
+      "meioses_accuracy": 0.886967819308415,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.8770865882352088,
+        0.8897061411401372
+      ],
+      "multiclass_brier_sum": 0.15761913061513513,
+      "negative_log_likelihood": 0.28967505395734394,
+      "ece_10_equal_width_bins": 0.010304117941781965,
+      "reliability_bins": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 20,
+          "mean_confidence": 0.38005991008489703,
+          "accuracy": 0.6
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 234,
+          "mean_confidence": 0.46421566993435587,
+          "accuracy": 0.46153846153846156
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 805,
+          "mean_confidence": 0.5498823061020969,
+          "accuracy": 0.5242236024844721
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 684,
+          "mean_confidence": 0.6490091542408423,
+          "accuracy": 0.6154970760233918
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 671,
+          "mean_confidence": 0.7505336762800546,
+          "accuracy": 0.7108792846497765
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 764,
+          "mean_confidence": 0.8530863820166674,
+          "accuracy": 0.8573298429319371
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 6828,
+          "mean_confidence": 0.9910149555838346,
+          "accuracy": 0.9874048037492678
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.958,
+        "double_cousin": 1.0,
+        "full_1st_cousin": 0.973,
+        "full_2nd_cousin": 0.875,
+        "full_3rd_cousin": 0.7678207739307535,
+        "full_4th_cousin": 0.5775623268698061,
+        "full_5th_cousin": 0.39072847682119205,
+        "grandparent_grandchild": 0.997,
+        "half_1st_cousin": 0.752,
+        "siblings": 0.996
+      },
+      "confidence_is_uncalibrated": true,
+      "zero_accepted_probability_pairs": 0,
+      "eligible_pairs_before_probability_failure": 10006,
+      "strict_production_predictor_would_abort": false,
+      "accuracy_counting_probability_failures_wrong": 0.8831700979412352,
+      "mendelian_expected_sharing_class_accuracy": 0.8527883270037977,
+      "classifier_expected_sharing_class_accuracy": 0.8832700379772137
+    },
+    "map_length_plus10pct": {
+      "pairs": 10006,
+      "independent_pedigrees": 9006,
+      "accuracy": 0.8870677593443934,
+      "balanced_accuracy": 0.828808197962324,
+      "meioses_accuracy": 0.8912652408554868,
+      "pedigree_bootstrap_accuracy_95pct": [
+        0.8810114194401352,
+        0.8932939297420308
+      ],
+      "multiclass_brier_sum": 0.15272149368746737,
+      "negative_log_likelihood": 0.2901908213369489,
+      "ece_10_equal_width_bins": 0.010968041758264404,
+      "reliability_bins": [
+        {
+          "lower": 0.3,
+          "upper": 0.4,
+          "pairs": 13,
+          "mean_confidence": 0.38047514953488737,
+          "accuracy": 0.07692307692307693
+        },
+        {
+          "lower": 0.4,
+          "upper": 0.5,
+          "pairs": 233,
+          "mean_confidence": 0.4676035525861154,
+          "accuracy": 0.5021459227467812
+        },
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "pairs": 760,
+          "mean_confidence": 0.5485352329252685,
+          "accuracy": 0.5236842105263158
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "pairs": 699,
+          "mean_confidence": 0.6478709453746496,
+          "accuracy": 0.6037195994277539
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "pairs": 644,
+          "mean_confidence": 0.7517923944844382,
+          "accuracy": 0.7437888198757764
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "pairs": 683,
+          "mean_confidence": 0.8515181343619681,
+          "accuracy": 0.8257686676427526
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.0,
+          "pairs": 6974,
+          "mean_confidence": 0.9922945111821793,
+          "accuracy": 0.9886722110696874
+        }
+      ],
+      "recall_by_label": {
+        "avuncular": 0.998,
+        "double_cousin": 0.996,
+        "full_1st_cousin": 0.976,
+        "full_2nd_cousin": 0.757,
+        "full_3rd_cousin": 0.7627291242362525,
+        "full_4th_cousin": 0.5664819944598338,
+        "full_5th_cousin": 0.3443708609271523,
+        "grandparent_grandchild": 0.9995,
+        "half_1st_cousin": 0.888,
+        "siblings": 1.0
+      },
+      "confidence_is_uncalibrated": true,
+      "zero_accepted_probability_pairs": 0,
+      "eligible_pairs_before_probability_failure": 10006,
+      "strict_production_predictor_would_abort": false,
+      "accuracy_counting_probability_failures_wrong": 0.8870677593443934,
+      "mendelian_expected_sharing_class_accuracy": 0.851888866679992,
+      "classifier_expected_sharing_class_accuracy": 0.8871676993803718
+    }
+  },
+  "limitations": [
+    "Exact segments bypass genotype error, phasing and IBD detection.",
+    "Pairs with no IBD are absent from Ped-sim segment files.",
+    "Pedigree templates match calibration; this is seed and crossover-model generalization, not novel topology validation."
+  ],
+  "expected_pairs_before_zero_ibd_censoring": 11000,
+  "model_sha256": "7fc54aa5f0dff1d8dc01364cf781d7a750970e1558a525c2fbdebcbc04a0611c"
+}

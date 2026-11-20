@@ -14,6 +14,7 @@ cd "$PROJECT_ROOT"
 PYTHONPATH=src:scripts .venv/bin/python scripts/evaluate_human_background_corrected_holdout.py \
   --candidate-model artifacts/task12_large_family_background/background_corrected_min5_v2/model.joblib \
   --baseline-model artifacts/task12_large_family_background/pair_model_min20_q0.25_trim/model.joblib \
+  --correction-reference artifacts/task10_human_calibration/replicate_0.seg \
   --holdouts \
     artifacts/task10_human_calibration/replicate_8.seg \
     artifacts/task10_human_calibration/replicate_9.seg \

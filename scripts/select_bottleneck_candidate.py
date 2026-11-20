@@ -4,6 +4,8 @@ import argparse
 import json
 from pathlib import Path
 
+from ghist_bottleneck.provenance import require_diploid_scale
+
 
 EXPECTED_CANDIDATES = {
     "baseline",
@@ -18,6 +20,8 @@ EXPECTED_CANDIDATES = {
 def select_candidate(root: Path, *, require_complete: bool = True) -> dict:
     paths = sorted(root.glob("*/experiment.json"))
     records = [json.loads(path.read_text()) for path in paths]
+    for record in records:
+        require_diploid_scale(record, context="Candidate experiment")
     by_candidate = {record["candidate"]: record for record in records}
     if len(by_candidate) != len(records):
         raise ValueError("candidate names are not unique")
@@ -50,6 +54,7 @@ def select_candidate(root: Path, *, require_complete: bool = True) -> dict:
         else None
     )
     return {
+        "coalescent_ploidy": 2,
         "status": "provisional_validation_winner",
         "winner": winner["candidate"],
         "winner_score": winner_score,

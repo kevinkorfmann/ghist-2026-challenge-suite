@@ -10,6 +10,7 @@ from ghist_inference.validation import (
     validate_spectrum,
     validate_fit_settings,
     optimizer_diagnostics,
+    validate_expected_spectrum,
 )
 from ghist_inference.vcf import diploid_alleles, validate_position
 from scipy.stats import hypergeom
@@ -26,6 +27,7 @@ def projected_sfs_from_vcf(
     counts: list[tuple[int, int]] = []
     max_called = 0
     ancestral_reference = ancestral_alternate = 0
+    incomplete_records = 0
     lengths = {c: vcf.header.contigs[c].length for c in vcf.header.contigs}
     for rec in vcf:
         validate_position(rec, lengths)
@@ -33,6 +35,7 @@ def projected_sfs_from_vcf(
             continue
         alleles = diploid_alleles(rec, vcf.header.samples)
         called, alt = len(alleles), sum(alleles)
+        incomplete_records += called < 2 * len(vcf.header.samples)
         derived = alt
         if polarized:
             ancestral = rec.info.get("AA")
@@ -75,6 +78,7 @@ def projected_sfs_from_vcf(
         "segregating_records": len(counts),
         "projected_records": kept,
         "maximum_called_haplotypes": max_called,
+        "incomplete_genotype_records": incomplete_records,
         "polarized": polarized,
         "ancestral_reference_records": ancestral_reference,
         "ancestral_alternate_records": ancestral_alternate,
@@ -82,11 +86,28 @@ def projected_sfs_from_vcf(
     return spectrum, metadata
 
 
+def spectrum_exposure(metadata: dict, sequence_length: float,
+                      callable_sequence_length: float | None) -> float:
+    """Do not infer callable exposure from variant-only genotype calls."""
+    if callable_sequence_length is None:
+        if metadata.get("incomplete_genotype_records", 0):
+            raise ValueError(
+                "Incomplete genotypes require an independently measured "
+                "callable_sequence_length for the chosen projection; a "
+                "variant-only VCF cannot establish callable exposure."
+            )
+        return sequence_length
+    if not np.isfinite(callable_sequence_length) or not 0 < callable_sequence_length <= sequence_length:
+        raise ValueError("callable_sequence_length must be positive and within sequence_length")
+    return callable_sequence_length
+
+
 def fit_two_epoch(
     path: str | Path,
     *,
     mutation_rate: float = 3.42e-8,
     sequence_length: float = 100_000_000,
+    callable_sequence_length: float | None = None,
     restarts: int = 24,
     seed: int = 4721,
     polarized: bool = True,
@@ -94,15 +115,17 @@ def fit_two_epoch(
 ) -> dict:
     """Fit the mechanistic two-epoch SFS reference with moments."""
     spectrum, metadata = projected_sfs_from_vcf(path, polarized=polarized)
+    exposure = spectrum_exposure(metadata, sequence_length, callable_sequence_length)
     result = fit_two_epoch_spectrum(
         spectrum,
         mutation_rate=mutation_rate,
-        sequence_length=sequence_length,
+        sequence_length=exposure,
         restarts=restarts,
         seed=seed,
         folded=folded,
     )
-    return {**result, "polarized": polarized, "folded": folded, "sfs": metadata}
+    return {**result, "polarized": polarized, "folded": folded, "sfs": metadata,
+            "sequence_length": sequence_length, "callable_sequence_length": exposure}
 
 
 def fit_two_epoch_spectrum(
@@ -133,7 +156,8 @@ def fit_two_epoch_spectrum(
 
     def model(params, ns):
         expectation = moments.Demographics1D.two_epoch(params, ns)
-        return expectation.fold() if folded else expectation
+        expectation = expectation.fold() if folded else expectation
+        return validate_expected_spectrum(expectation, data)
 
     lower = [0.02, 1e-4]
     upper = [0.999, 5.0]
