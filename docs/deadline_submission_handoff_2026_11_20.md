@@ -1,6 +1,6 @@
 # Deadline submission handoff — 20 November 2026
 
-Updated 2026-11-20T21:31:24.044768+00:00. **ALL TASKS 1–8 AND 12 ARE READY FOR CENTRAL SUBMISSION. No compute or scientific development remains before these entries can be submitted. Tasks 2 and 4 are definitive, not provisional.**
+Updated 2026-11-20T21:31:24.044768+00:00. **ALL TASKS 1–8 ARE READY FOR CENTRAL SUBMISSION. Tasks 2 and 4 are definitive, not provisional. Task 12 inference is complete, but the central uploader is checking its queue-specific label allowlist before submission.**
 
 This chat has made no competition submissions. Chat `01a1f9e8-d561-7de1-98f1-0255e41ead65` owns ALL Synapse uploads/submissions and their receipts. Sweep completion belongs to `01a1fad1-38c4-7b93-9e1d-a0ff8fd414f2`; all four are complete. Do not duplicate attempts. The official deadline is 23:59 UTC today (00:59 Berlin on 21 November). All candidates finished before the 22:30 UTC target. Task 9 already has receipt 9785353; the central uploader reports Task 10 submitted successfully.
 
@@ -14,7 +14,7 @@ This chat has made no competition submissions. Chat `01a1f9e8-d561-7de1-98f1-025
 | 6 | 9619680 | `/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/sweeps_takeover/ready/task6_final.bed` | `44836daae988246d2c42af96dc5402c66358ce5f743193901be5b99d19f780d1` | Finalized; independent audit passed |
 | 7 | 9619658 | `/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/sweeps_takeover/ready/task7_final.bed` | `feefe01b2c6a97bb9434136f39df7bfbd502911518aa4a7a1ddb69920d2b01c7` | Finalized; independent audit passed |
 | 8 | 9619662 | `/Users/kevinkorfmann/Documents/ChatGPT/ghist/experiments/final_submission_2026_11_20/sweeps_takeover/ready/task8_final.bed` | `c4a726508c069347627a331117069083768da97b747eb4f68bea44f23a7b8274` | Finalized; independent audit passed |
-| 12 | 9619678 | `/private/tmp/ghist-final-submissions-20261120/task12/task12.final.csv` | `b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac` | Finalized; all 43,956 pairs verified |
+| 12 | 9619678 | `/private/tmp/ghist-final-submissions-20261120/task12/task12.final.csv` | `b94c2bef386ffcf062ad2fa1fe0c0593b2d2dadfc49efdaa916596897f718dac` | Inference complete; all 43,956 pairs verified; central queue-label check pending |
 
 These are user-authorized best-effort estimates despite unmet scientific qualification gates. Format, current input identity, finite-value/pair/coordinate checks pass. Scientific qualification remains false. Candidate readiness is not a submission receipt.
 
@@ -29,3 +29,5 @@ Task 12 current v1 input and candidate_manifest.json are beside its CSV. Job 108
 All current input identities for Tasks 1–8/12 were independently rehashed in `/private/tmp/ghist-final-submissions-20261120/independent_input_identity_audit_v2.json`. Source locks and input hashes accompany every candidate. Raw VCFs and large detector/spectrum files stay local/on Betty.
 
 The central uploader should verify the exact hash, destination final queue and remaining quota, submit once, and retain confirmation/receipt. Submitted receipt records remain central; this handoff tracks preparation only.
+
+**2026-11-20T21:35:29.486801+00:00 server-schema update:** central uploader reports Task10submission9785356 INVALID because queue9619674 allows12human relationship labels and rejects `full_1st_cousin_thrice_removed`; `avuncular_twice_removed` is also absent. Generic local14-label validation was insufficient for that queue. Central owns Task10repair/retry and is checking the exact Task12allowlist before submitting its already-uploaded candidate. OriginalTask12candidate remains unchanged pending authoritative queue evidence; no duplicate submissions. This does not affect Tasks1–8.
